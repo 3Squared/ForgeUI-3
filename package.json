@@ -3,6 +3,7 @@
   "scripts": {
     "build": "turbo run build",
     "dev": "turbo run dev",
+    "test": "turbo run test",
     "lint": "turbo run lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\""
   },
@@ -12,7 +13,7 @@
     "tsconfig": "*",
     "turbo": "latest"
   },
-  "name": "ForgeUI-3",
+  "name": "ForgeUI3",
   "packageManager": "npm@8.11.0",
   "workspaces": [
     "apps/*",
