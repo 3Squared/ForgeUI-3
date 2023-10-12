@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "test": "cypress run --component && vitest --ui",
     "test:component": "cypress open --component --browser chrome",
     "test:unit": "vitest --ui --coverage",
     "build": "vue-tsc && vite build",
