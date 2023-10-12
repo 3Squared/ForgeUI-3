@@ -14,7 +14,7 @@
     "turbo": "latest"
   },
   "name": "ForgeUI3",
-  "packageManager": "npm@8.11.0",
+  "packageManager": "npm@8.19.4",
   "workspaces": [
     "apps/*",
     "packages/*"
