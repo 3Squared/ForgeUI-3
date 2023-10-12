@@ -1,0 +1,44 @@
+﻿name: Release
+
+on:
+  push:
+    branches:
+      - main
+
+concurrency: ${{ github.workflow }}-${{ github.ref }}
+
+jobs:
+  release:
+    name: Release
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: write
+      packages: write
+      pull-requests: write
+      issues: read
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js 16.x
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16.x'
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Create Release Pull Request or Publish to npm
+        id: changesets
+        uses: changesets/action@v1
+        with:
+          # This expects you to have a script called publish which does a build for your packages and calls changeset publish
+          publish: npm run publish
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
