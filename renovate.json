@@ -1,0 +1,39 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:base",
+    ":rebaseStalePrs",
+    ":automergeMinor"
+  ],
+  "semanticCommits": "enabled",
+  "semanticCommitType": "chore",
+  "ignorePresets": [":prHourlyLimit2"],
+  "automergeStrategy": "squash",
+  "platformAutomerge": true,
+  "packageRules": [
+    {
+      "matchPaths": ["+(package.json)", "packages/**"],
+      "extends": [":pinOnlyDevDependencies"]
+    },
+    {
+      "matchPaths": ["apps/**"],
+      "extends": [":pinAllExceptPeerDependencies"]
+    },
+    {
+      "matchPackageNames": ["vue"],
+      "allowedVersions": "<3.0.0"
+    },
+    {
+      "matchPackageNames": ["vue-router"],
+      "allowedVersions": "<4.0.0"
+    },
+    {
+      "matchPackageNames": ["bootstrap"],
+      "allowedVersions": "<5.0.0"
+    },
+    {
+      "matchPackageNames": ["@vue/test-utils"],
+      "allowedVersions": "<2.0.0"
+    }
+  ]
+}
