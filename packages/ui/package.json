@@ -2,10 +2,9 @@
   "name": "ui",
   "private": true,
   "version": "0.0.0",
-  "type": "module",
   "scripts": {
     "dev": "vite",
-    "test": "cypress run --component && vitest --ui",
+    "test": "cypress run --component && vitest run --coverage && node ./scripts/merge.js",
     "test:component": "cypress open --component --browser chrome",
     "test:unit": "vitest --ui --coverage",
     "build": "vue-tsc && vite build",
@@ -17,6 +16,7 @@
     "vue": "^3.3.4"
   },
   "devDependencies": {
+    "@cypress/code-coverage": "^3.12.3",
     "@iconify/vue": "^4.1.1",
     "@vitejs/plugin-vue": "^4.2.3",
     "@vitest/coverage-v8": "^0.34.6",
@@ -28,5 +28,24 @@
     "vite-plugin-istanbul": "^5.0.0",
     "vitest": "^0.34.4",
     "vue-tsc": "^1.8.5"
+  },
+  "nyc": {
+    "all": true,
+    "report-dir": "coverage/cypress",
+    "include": "*",
+    "exclude": "**/*.cy.ts",
+    "extension": [
+      ".js",
+      ".cjs",
+      ".mjs",
+      ".ts",
+      ".tsx",
+      ".jsx",
+      ".vue"
+    ],
+    "reporter": [
+      "json",
+      "cobertura"
+    ]
   }
 }

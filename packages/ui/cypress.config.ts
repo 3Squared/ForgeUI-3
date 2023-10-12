@@ -11,20 +11,16 @@ export default defineConfig({
     mochaFile: "./test-results/cypress.[hash].xml"
   },
   component: {
+    setupNodeEvents(on, config) {
+      require("@cypress/code-coverage/task")(on, config);
+      return config;
+    },
     specPattern: "**/**.cy.ts",
     devServer: {
       framework: "vue",
       bundler: "vite",
     },
   },
-  setupNodeEvents(on, config) {
-    require("@cypress/code-coverage/task")(on, config);
 
-    on("file:preprocessor", require("@cypress/code-coverage/use-babelrc"));
-    if (config.isTextTerminal) {
-      config.excludeSpecPattern = ["**/all.cy.ts"];
-    }
-    return config;
-  },
 
 });

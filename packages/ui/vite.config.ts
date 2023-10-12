@@ -24,8 +24,8 @@ export default defineConfig(({mode}) => ({
       include: "src/*",
       exclude: ["node_modules", "test/"],
       extension: [".js", ".cjs", ".mjs", ".ts", ".tsx", ".jsx", ".vue"],
-      cypress: mode == "test",
-      forceBuildInstrument: mode == "test"
+      cypress: mode === "test",
+      forceBuildInstrument: mode === "test"
     })
   ],
   test: {
