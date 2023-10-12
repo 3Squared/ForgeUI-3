@@ -5,7 +5,11 @@
     "module": "ESNext",
     "lib": ["ES2020", "DOM", "DOM.Iterable"],
     "skipLibCheck": true,
-
+    "types": [
+      "node",
+      "vue",
+      "cypress"
+    ],
     /* Bundler mode */
     "moduleResolution": "node",
     "allowImportingTsExtensions": true,
@@ -20,6 +24,10 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"],
+  "include": [
+    "src",
+    "cypress/support/component.ts",
+    "index.ts"
+  ],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
