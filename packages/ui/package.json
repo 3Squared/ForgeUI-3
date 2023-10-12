@@ -5,19 +5,26 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "test:component": "cypress open --component --browser chrome",
+    "test:unit": "vitest --ui --coverage",
     "build": "vue-tsc && vite build",
     "preview": "vite preview"
   },
   "dependencies": {
-    "vue": "^3.3.4",
-    "primevue": "^3.36.0",
     "bootstrap": "5.3.2",
-    "bootstrap-icons": "^1.11.1"
+    "bootstrap-icons": "^1.11.1",
+    "primevue": "^3.36.0",
+    "vue": "^3.3.4"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^4.2.3",
+    "@vitest/coverage-v8": "^0.34.6",
+    "@vitest/ui": "^0.34.6",
+    "cypress": "^13.3.1",
     "typescript": "^5.0.2",
     "vite": "^4.4.5",
+    "vitest": "^0.34.4",
+    "vite-plugin-istanbul": "^5.0.0",
     "vue-tsc": "^1.8.5"
   }
 }
