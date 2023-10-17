@@ -28,6 +28,32 @@ export default defineConfig(({mode}) => ({
       forceBuildInstrument: mode === "test"
     })
   ],
+  build: {
+    lib: {
+      entry: "./index.ts",
+      name: "Forge.UI3",
+      formats: ["es"]
+    },
+    rollupOptions: {
+      external: [
+        "primevue",
+        "vue"
+      ],
+      output: {
+        dir: "dist/esm",
+        format: "esm",
+        /* exports: 'named',
+
+        preserveModules: true,
+        preserveModulesRoot: 'src',*/
+        // Provide global variables to use in the UMD build
+        // for externalized deps
+        globals: {
+          vue: "Vue"
+        }
+      }
+    }
+  },
   test: {
     alias: [{ find: /^vue$/, replacement: "vue/dist/vue.runtime.common.js" }],
 

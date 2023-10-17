@@ -23,6 +23,7 @@ import './commands'
 import { mount } from 'cypress/vue'
 import PrimeVue from 'primevue/config'
 import { Bootstrap_PT } from "../../index";
+import { App } from "vue";
 
 // Augment the Cypress namespace to include type definitions for
 // your custom command.
@@ -36,15 +37,15 @@ declare global {
   }
 }
 
-Cypress.Commands.add('mount', (component, options = {}) => {
-  options.global = options.global || {}
-  options.global.plugins = options.global.plugins || []
+Cypress.Commands.add('mount', args => {
+  args.options.global = args.options.global || {}
+  args.options.global.plugins = args.options.global.plugins || []
 
-  options.global.plugins.push({
-    install(app) {
+  args.options.global.plugins.push({
+    install(app : App) {
       app.use(PrimeVue, { unstyled: true, pt: Bootstrap_PT})
     },
   })
   
-  return mount(component, options)
+  return mount(args)
 })
