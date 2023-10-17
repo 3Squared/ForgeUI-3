@@ -29,6 +29,7 @@ import { App } from "vue";
 // your custom command.
 // Alternatively, can be defined in cypress/support/component.d.ts
 // with a <reference path="./component" /> at the top of your spec.
+
 declare global {
   namespace Cypress {
     interface Chainable {
@@ -37,15 +38,15 @@ declare global {
   }
 }
 
-Cypress.Commands.add('mount', args => {
-  args.options.global = args.options.global || {}
-  args.options.global.plugins = args.options.global.plugins || []
+Cypress.Commands.add('mount', (component : any, options = {}) => {
+  options.global = options.global || {}
+  options.global.plugins = options.global.plugins || []
 
-  args.options.global.plugins.push({
+  options.global.plugins.push({
     install(app : App) {
       app.use(PrimeVue, { unstyled: true, pt: Bootstrap_PT})
     },
   })
   
-  return mount(args)
+  return mount(component, options)
 })
