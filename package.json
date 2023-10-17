@@ -8,13 +8,9 @@
     "format": "prettier --write \"**/*.{ts,tsx,md}\""
   },
   "devDependencies": {
-    "eslint": "^8.48.0",
-    "prettier": "^3.0.3",
-    "tsconfig": "*",
+    "@changesets/cli": "2.26.2",
     "turbo": "latest"
   },
-  "name": "ForgeUI3",
-  "packageManager": "npm@8.19.4",
   "workspaces": [
     "apps/*",
     "packages/*"

@@ -10,6 +10,9 @@
       "vue",
       "cypress"
     ],
+    "declaration": true,
+    "declarationDir": "dist/types",
+    
     /* Bundler mode */
     "moduleResolution": "node",
     "allowImportingTsExtensions": true,
@@ -27,7 +30,15 @@
   "include": [
     "src",
     "cypress/support/component.ts",
-    "index.ts"
+    "index.ts",
+    "tests"
   ],
-  "references": [{ "path": "./tsconfig.node.json" }]
+  "exclude": [
+    "node_modules",
+    "dist",
+    "docs",
+    "*.md",
+    "**/*.cy.ts",
+    "**/*.test.ts"
+  ]
 }

@@ -2,6 +2,9 @@
   "name": "ui",
   "private": true,
   "version": "0.0.0",
+  "main": "./dist/esm/forge-ui3.mjs",
+  "module": "./dist/esm/forge-ui3.mjs",
+  "types": "./dist/types/index..ts",
   "scripts": {
     "dev": "vite",
     "test": "cypress run --component && vitest run --coverage && node ./scripts/merge.js",
@@ -21,6 +24,7 @@
     "@vitejs/plugin-vue": "^4.2.3",
     "@vitest/coverage-v8": "^0.34.6",
     "@vitest/ui": "^0.34.6",
+    "@vue/test-utils": "^2.4.1",
     "cypress": "^13.3.1",
     "sass": "^1.69.3",
     "typescript": "^5.0.2",
