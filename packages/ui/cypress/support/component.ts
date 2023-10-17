@@ -13,7 +13,7 @@
 // https://on.cypress.io/configuration
 // ***********************************************************
 import '@cypress/code-coverage/support'
-
+import 'bootstrap/scss/bootstrap.scss';
 // Import commands.js using ES2015 syntax:
 import './commands'
 
@@ -21,6 +21,8 @@ import './commands'
 // require('./commands')
 
 import { mount } from 'cypress/vue'
+import PrimeVue from 'primevue/config'
+import { Bootstrap_PT } from "../../index";
 
 // Augment the Cypress namespace to include type definitions for
 // your custom command.
@@ -34,7 +36,15 @@ declare global {
   }
 }
 
-Cypress.Commands.add('mount', mount)
+Cypress.Commands.add('mount', (component, options = {}) => {
+  options.global = options.global || {}
+  options.global.plugins = options.global.plugins || []
 
-// Example use:
-// cy.mount(MyComponent)
+  options.global.plugins.push({
+    install(app) {
+      app.use(PrimeVue, { unstyled: true, pt: Bootstrap_PT})
+    },
+  })
+  
+  return mount(component, options)
+})

@@ -27,7 +27,8 @@
   "include": [
     "src",
     "cypress/support/component.ts",
-    "index.ts"
+    "index.ts",
+    "tests"
   ],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
