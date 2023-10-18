@@ -31,14 +31,12 @@
     "src",
     "cypress/support/component.ts",
     "index.ts",
-    "tests"
+    "tests/**/*.cy.ts"
   ],
   "exclude": [
     "node_modules",
     "dist",
     "docs",
-    "*.md",
-    "**/*.cy.ts",
-    "**/*.test.ts"
+    "*.md"
   ]
 }
