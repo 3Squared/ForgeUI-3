@@ -1,5 +1,5 @@
 import Bootstrap_PT from "./src/Bootstrap_PT"
-import ForgeCheckbox from "./src/components/checkbox/ForgeCheckbox.vue";
+import ForgeCheckbox from "@/components/ForgeCheckbox.vue";
 import ForgeToast from '@/components/ForgeToast.vue';
 
 export {
