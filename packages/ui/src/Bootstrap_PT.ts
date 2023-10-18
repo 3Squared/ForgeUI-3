@@ -41,4 +41,30 @@ export default {
       ],
     })
   },
+  toast: {
+    message: () => ({
+      class: ['toast-container w-100 position-relative'],
+    }),
+    content: () => ({
+      class: ['toast-body d-flex align-items-center gap-2']
+    }),
+    container: () => ({
+      class: ['toast show']
+    }),
+    buttonContainer: () => ({
+      class: ['ms-auto']
+    }),
+    closeButton: () => ({
+      class: ['btn-close']
+    }),
+    closeIcon: () => ({
+      class: 'd-none'
+    }),
+    summary: () => ({
+      class: ['toast-body']
+    }),
+    icon: () => ({
+      class: ['me-2']
+    }),
+  }
 } as PrimeVuePTOptions
