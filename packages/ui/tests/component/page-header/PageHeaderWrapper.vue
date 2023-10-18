@@ -10,10 +10,7 @@
 
 <script setup lang="ts">
 import ForgePageHeader from "@/components/ForgePageHeader.vue";
-import { ref } from "vue";
 import { ForgePageHeaderProps } from "../../../src/components/ForgePageHeader.vue";
 
 const props = defineProps<ForgePageHeaderProps>()
-
-let string = ref("")
 </script>
