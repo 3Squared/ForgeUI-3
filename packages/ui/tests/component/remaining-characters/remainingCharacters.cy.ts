@@ -1,4 +1,5 @@
 import RemainingCharactersWrapper from "./RemainingCharactersWrapper.vue";
+// @ts-ignore
 import { RemainingCharactersProps } from "@/components/ForgeRemainingCharacters.vue";
 
 function mountRemainingCharacters(props : RemainingCharactersProps) {
