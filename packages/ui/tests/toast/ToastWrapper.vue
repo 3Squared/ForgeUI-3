@@ -9,18 +9,11 @@
 import Button from 'primevue/button';
 import ForgeToast from '@/components/ForgeToast.vue';
 import { useToast } from 'primevue/usetoast'
-import { PropType } from 'vue';
-
-const props = defineProps({
-  message: {
-    type: String,
-    required: true
-  },
-  severity: {
-    type: String as PropType<'success' | 'error'>,
-    required: true
-  }
-})
+export interface ToastWrapperProps {
+  message: string;
+  severity: 'success' | 'error';
+}
+const props = defineProps<ToastWrapperProps>();
 
 
 const toast = useToast();
