@@ -46,4 +46,43 @@ describe("<Toast />", () => {
       .and("be.visible")
       .and("have.class", "text-danger");
   });
+
+  it("Shows an warning toast", () => {
+    // Act
+    mountToast({
+      message: "Warning World",
+      severity: "warn",
+    });
+
+    // Assert
+    cy.get(`button`).click();
+
+    cy.get('[data-pc-name="toast"]')
+      .should("exist")
+      .and("be.visible")
+      .and("have.text", " Warning World");
+    cy.get(".iconify")
+      .should("exist")
+      .and("be.visible")
+      .and("have.class", "text-warning");
+  });
+  it("Shows an info toast", () => {
+    // Act
+    mountToast({
+      message: "Info World",
+      severity: "info",
+    });
+
+    // Assert
+    cy.get(`button`).click();
+
+    cy.get('[data-pc-name="toast"]')
+      .should("exist")
+      .and("be.visible")
+      .and("have.text", " Info World");
+    cy.get(".iconify")
+      .should("exist")
+      .and("be.visible")
+      .and("have.class", "text-info");
+  });
 });

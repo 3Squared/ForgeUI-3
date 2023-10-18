@@ -11,7 +11,7 @@ import ForgeToast from '@/components/ForgeToast.vue';
 import { useToast } from 'primevue/usetoast'
 export interface ToastWrapperProps {
   message: string;
-  severity: 'success' | 'error';
+  severity: 'success' | 'error' | 'warn' | 'info';
 }
 const props = defineProps<ToastWrapperProps>();
 
