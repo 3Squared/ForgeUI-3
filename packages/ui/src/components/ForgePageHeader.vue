@@ -8,13 +8,13 @@
 </template>
 
 <script lang="ts" setup>
+export interface ForgePageHeaderProps {
+  title: string
+}
+
 /**
  *   The Forge Page Header is a component that you can put at the top of every page with the title on the left and the buttons on the right
  * @displayName Page Header
  **/
 const props = defineProps<ForgePageHeaderProps>();
-
-export interface ForgePageHeaderProps {
-  title: string
-}
 </script>

@@ -1,4 +1,5 @@
-import ForgePageHeader, { ForgePageHeaderProps } from "../../../src/components/ForgePageHeader.vue";
+// @ts-ignore
+import ForgePageHeader, { ForgePageHeaderProps } from "@/components/ForgePageHeader.vue";
 import PageHeaderWrapper from "./PageHeaderWrapper.vue";
 
 function mountPageHeader(props: ForgePageHeaderProps) {
