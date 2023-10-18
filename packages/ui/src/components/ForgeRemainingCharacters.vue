@@ -5,16 +5,12 @@
 <script setup lang="ts">
 import { computed } from "vue"
 
-const props = defineProps({
-  maxCount: {
-    type: Number,
-    required: true
-  },
-  currentCount: {
-    type: Number,
-    required: true
-  }
-})
+export interface RemainingCharactersProps {
+  maxCount: number,
+  currentCount: number
+}
+
+const props = defineProps<RemainingCharactersProps>()
 
 const remainingCount = computed(() => props.maxCount - props.currentCount);
 </script>
