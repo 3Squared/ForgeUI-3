@@ -1,5 +1,6 @@
 import { PrimeVuePTOptions } from "primevue/config";
 import { ButtonPassThroughMethodOptions } from "primevue/button";
+import { CheckboxPassThroughMethodOptions } from "primevue/checkbox";
 
 export default {
   button: {
@@ -22,6 +23,22 @@ export default {
           "btn-outline-danger": options.props.severity === "danger" && options.props.outlined,
         }
       ]
+    })
+  },
+  checkbox: {
+    root: () => ({
+      class: [
+        'form-check'
+      ]
+    }),
+    input: (options: CheckboxPassThroughMethodOptions) => ({
+      class: [
+        'form-check-input px-2 py-2 rounded',
+        {
+          'bg-primary': options.context.checked,
+          'form-check-input__focus': options.state.focused,
+        }
+      ],
     })
   },
 } as PrimeVuePTOptions
