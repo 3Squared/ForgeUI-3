@@ -12,7 +12,5 @@ import { RemainingCharactersProps } from "../../../src/components/ForgeRemaining
 
 const props = defineProps<RemainingCharactersProps>()
 
-
 let string = ref("")
-
 </script>
