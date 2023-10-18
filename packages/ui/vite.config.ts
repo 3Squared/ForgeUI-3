@@ -1,7 +1,9 @@
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import istanbulPlugin from "vite-plugin-istanbul";
+import Components from 'unplugin-vue-components/vite'
 import { join, resolve } from "path";
+import { PrimeVueResolver } from "unplugin-vue-components/resolvers";
 
 // https://vitejs.dev/config/
 export default defineConfig(({mode}) => ({
@@ -20,6 +22,11 @@ export default defineConfig(({mode}) => ({
   },
   plugins: [
     vue(),
+    Components({
+      resolvers: [
+        PrimeVueResolver()
+      ]
+    }),
     istanbulPlugin({
       include: "src/*",
       exclude: ["node_modules", "test/"],

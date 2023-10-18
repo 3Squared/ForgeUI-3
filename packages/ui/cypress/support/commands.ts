@@ -1,49 +1,29 @@
 /// <reference types="cypress" />
-// ***********************************************
-// This example commands.ts shows you how to
-// create various custom commands and overwrite
-// existing commands.
-//
-// For more comprehensive examples of custom
-// commands please read more here:
-// https://on.cypress.io/custom-commands
-// ***********************************************
-//
-//
-// -- This is a parent command --
-// Cypress.Commands.add('login', (email, password) => { ... })
-//
-//
-// -- This is a child command --
-// Cypress.Commands.add('drag', { prevSubject: 'element'}, (subject, options) => { ... })
-//
-//
-// -- This is a dual command --
-// Cypress.Commands.add('dismiss', { prevSubject: 'optional'}, (subject, options) => { ... })
-//
-//
-// -- This will overwrite an existing command --
-// Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
-//
-// declare global {
-//   namespace Cypress {
-//     interface Chainable {
-//       login(email: string, password: string): Chainable<void>
-//       drag(subject: string, options?: Partial<TypeOptions>): Chainable<Element>
-//       dismiss(subject: string, options?: Partial<TypeOptions>): Chainable<Element>
-//       visit(originalFn: CommandOriginalFn, url: string, options: Partial<VisitOptions>): Chainable<Element>
-//     }
-//   }
-// }
 
-import { mount } from 'cypress/vue';
+import { App } from "vue/dist/vue";
+import PrimeVue from "primevue/config";
+import ToastService from 'primevue/toastservice'
+import { Bootstrap_PT } from "../../index";
+import { mount } from "cypress/vue";
 
 declare global {
   namespace Cypress {
     interface Chainable {
-      mount: typeof mount;
+      mount: typeof mount
     }
   }
 }
 
-Cypress.Commands.add('mount', mount);
+Cypress.Commands.add('mount', (component: any, options = {}) => {
+  options.global = options.global || {}
+  options.global.plugins = options.global.plugins || []
+
+  options.global.plugins.push({
+    install(app: App) {
+      app.use(PrimeVue, { unstyled: true, pt: Bootstrap_PT })
+      app.use(ToastService)
+    },
+  })
+
+  return mount(component, options)
+})
