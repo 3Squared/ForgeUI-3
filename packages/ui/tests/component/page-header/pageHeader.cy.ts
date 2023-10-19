@@ -1,6 +1,5 @@
 // @ts-ignore
 import ForgePageHeader, { ForgePageHeaderProps } from "@/components/ForgePageHeader.vue";
-import PageHeaderWrapper from "./PageHeaderWrapper.vue";
 
 function mountPageHeader(props: ForgePageHeaderProps) {
   return cy.mount(ForgePageHeader, {
@@ -8,9 +7,12 @@ function mountPageHeader(props: ForgePageHeaderProps) {
   })
 }
 
-function mountPageHeaderWithSlot(props: ForgePageHeaderProps) {
-  return cy.mount(PageHeaderWrapper, {
-    props
+function mountPageHeaderWithSlot(props: ForgePageHeaderProps, slotContent: string) {
+  return cy.mount(ForgePageHeader, {
+    props,
+    slots: {
+      default: slotContent
+    }
   })
 }
 
@@ -37,7 +39,7 @@ describe("<ForgePageHeader />", () => {
     const headingClass = "h3"
 
     // Act
-    mountPageHeaderWithSlot({ title: heading })
+    mountPageHeaderWithSlot({ title: heading }, slot)
 
     // Assert
     cy.get('[data-cy="title"]')
