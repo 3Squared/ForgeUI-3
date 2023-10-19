@@ -24,7 +24,7 @@ export default defineConfig(({mode}) => ({
   ],
   optimizeDeps: {
     include: [
-      'primevue',
+      'primevue/inputtext',
     ]
   },
   resolve: {
