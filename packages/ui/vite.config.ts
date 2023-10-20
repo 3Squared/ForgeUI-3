@@ -20,6 +20,11 @@ export default defineConfig(({mode}) => ({
     ],
     extensions: [".mjs", ".js", ".ts", ".jsx", ".tsx", ".json", ".vue"]
   },
+  optimizeDeps: {
+    include: [
+      'primevue/inputtext',
+    ]
+  },
   plugins: [
     vue(),
     Components({
