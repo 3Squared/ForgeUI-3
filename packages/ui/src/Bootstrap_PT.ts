@@ -1,6 +1,7 @@
 import { PrimeVuePTOptions } from "primevue/config";
 import { ButtonPassThroughMethodOptions } from "primevue/button";
 import { CheckboxPassThroughMethodOptions } from "primevue/checkbox";
+import { DropdownPassThroughMethodOptions } from "primevue/dropdown";
 
 export default {
   button: {
@@ -66,5 +67,54 @@ export default {
     icon: () => ({
       class: ['me-2']
     }),
+  },
+  dropdown: {
+    root: (options: DropdownPassThroughMethodOptions) => ({
+        class: [
+          {
+            "rounded-0 rounded-top": options.state.overlayVisible,
+            "disabled": options.instance.disabled,
+            'form-control': !options.instance.disabled
+          },
+          'd-flex cursor-pointer']
+    }),
+    input: () => ({
+      class: ['fs-6']
+    }),
+    trigger: (options: DropdownPassThroughMethodOptions) => ({
+      class: {
+        'ms-2': options.props.showClear,
+        'ms-auto': !options.props.showClear || !options.props.modelValue
+      }
+    }),
+    loadingIcon: () => ({
+      class: ['spinner-border spinner-border-sm border-0']
+    }),
+    clearIcon: () => ({
+      class: ['ms-auto my-auto']
+    }),
+    list: () => ({
+      class: ['border list-unstyled rounded-bottom']
+    }),
+    item: (options : DropdownPassThroughMethodOptions) => ({
+      class: [
+        'px-2 py-1 cursor-pointer item',
+        {
+          'bg-primary text-white': options.context.selected
+        }
+      ]
+    }),
+    itemGroup: () => ({
+      class: ['d-flex px-2 py-1 fw-bold']
+    }),
+    filterContainer: () => ({
+      class: ['d-flex border-start border-end p-2 bg-light']
+    }),
+    filterIcon: () => ({
+      class: ['my-auto ms-3 me-2']
+    }),
+    filterInput: () => ({
+      class: ['form-control']
+    })
   }
 } as PrimeVuePTOptions

@@ -13,7 +13,8 @@
 // https://on.cypress.io/configuration
 // ***********************************************************
 import '@cypress/code-coverage/support'
-import 'bootstrap/scss/bootstrap.scss';
+import "cypress-real-events";
+import '../../src/styles/main.scss'
 // Import commands.js using ES2015 syntax:
 import './commands'
 

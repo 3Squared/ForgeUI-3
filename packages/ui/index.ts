@@ -1,4 +1,5 @@
 import Bootstrap_PT from "./src/Bootstrap_PT"
+import '@/styles/main.scss'
 import ForgeCheckbox from "@/components/ForgeCheckbox.vue";
 import ForgeToast from '@/components/ForgeToast.vue';
 

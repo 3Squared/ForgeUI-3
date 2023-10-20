@@ -1,0 +1,40 @@
+@import 'bootstrap/scss/functions';
+@import 'bootstrap/scss/variables';
+
+//Forge Theme
+$primary: #0077c8;
+$primary-dark: #006bb4;
+$primary-light: #e5f0f7;
+
+$secondary: #5f5f5f;
+
+$success: #21aa64;
+$success-dark: #177746;
+$success-light: #e9f7f0;
+
+$warning: #ffae00;
+$warning-dark: #B05319;
+$warning-light: #fff7e6;
+
+$danger: #f72323;
+$danger-dark: #C61C1C;
+$danger-light: #FCEBE9;
+
+$light: #f6f6f6;
+
+$theme-colors: map-merge($theme-colors, (
+        'primary': $primary,
+        'primary-dark': $primary-dark,
+        'primary-light': $primary-light,
+        'secondary': $secondary,
+        'success': $success,
+        'success-dark': $success-dark,
+        'success-light': $success-light,
+        'warning': $warning,
+        'warning-dark': $warning-dark,
+        'warning-light': $warning-light,
+        'danger': $danger,
+        'danger-dark': $danger-dark,
+        'danger-light': $danger-light,
+        'light': $light
+));
