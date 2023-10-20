@@ -7,6 +7,24 @@ import { PrimeVueResolver } from "unplugin-vue-components/resolvers";
 
 // https://vitejs.dev/config/
 export default defineConfig(({mode}) => ({
+  resolve: {
+    alias: [
+      {
+        find: "@",
+        replacement: resolve(__dirname, "src")
+      },
+      {
+        find: /~(.+)/,
+        replacement: join(process.cwd(), "node_modules/$1")
+      }
+    ],
+    extensions: [".mjs", ".js", ".ts", ".jsx", ".tsx", ".json", ".vue"]
+  },
+  optimizeDeps: {
+    include: [
+      'primevue/inputtext',
+    ]
+  },
   plugins: [
     vue(),
     Components({
@@ -22,24 +40,6 @@ export default defineConfig(({mode}) => ({
       forceBuildInstrument: mode === "test"
     })
   ],
-  optimizeDeps: {
-    include: [
-      'primevue/inputtext',
-    ]
-  },
-  resolve: {
-    alias: [
-      {
-        find: "@",
-        replacement: resolve(__dirname, "src")
-      },
-      {
-        find: /~(.+)/,
-        replacement: join(process.cwd(), "node_modules/$1")
-      }
-    ],
-    extensions: [".mjs", ".js", ".ts", ".jsx", ".tsx", ".json", ".vue"]
-  },
   build: {
     lib: {
       entry: "./index.ts",
