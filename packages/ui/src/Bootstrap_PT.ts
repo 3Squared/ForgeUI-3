@@ -2,6 +2,7 @@ import { PrimeVuePTOptions } from "primevue/config";
 import { ButtonPassThroughMethodOptions } from "primevue/button";
 import { CheckboxPassThroughMethodOptions } from "primevue/checkbox";
 import { DropdownPassThroughMethodOptions } from "primevue/dropdown";
+import { InputTextPassThroughMethodOptions } from "primevue/inputtext";
 
 export default {
   button: {
@@ -150,6 +151,17 @@ export default {
     }),
     filterInput: () => ({
       class: ['form-control']
+    })
+  },
+  inputtext: {
+    root: (options : InputTextPassThroughMethodOptions) => ({
+      class: [
+        'form-control',
+        {
+          'form-control-lg': options.props.size == 'large',
+          'form-control-sm': options.props.size == 'small'
+        }
+      ]
     })
   }
 } as PrimeVuePTOptions
