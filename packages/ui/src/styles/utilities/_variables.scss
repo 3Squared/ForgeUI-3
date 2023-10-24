@@ -22,19 +22,31 @@ $danger-light: #FCEBE9;
 
 $light: #f6f6f6;
 
-$theme-colors: map-merge($theme-colors, (
-        'primary': $primary,
+$base-colors: (
+  'primary': $primary,
+  'secondary': $secondary,
+  'success': $success,
+  'warning': $warning,
+  'danger': $danger,
+  'light': $light,
+  'info': $info
+);
+
+$badge-font-size: 0.75rem;
+
+$subtle-colors: (
+        'primary-subtle': $primary-light,
+        'success-subtle': $success-light,
+        'warning-subtle': $warning-light,
+        'danger-subtle': $danger-light,
+        'info-subtle': $info-bg-subtle
+);
+
+$dark-colors: (
         'primary-dark': $primary-dark,
-        'primary-light': $primary-light,
-        'secondary': $secondary,
-        'success': $success,
         'success-dark': $success-dark,
-        'success-light': $success-light,
-        'warning': $warning,
         'warning-dark': $warning-dark,
-        'warning-light': $warning-light,
-        'danger': $danger,
-        'danger-dark': $danger-dark,
-        'danger-light': $danger-light,
-        'light': $light
-));
+        'danger-dark': $danger-dark
+);
+
+$theme-colors: map-merge-multiple($theme-colors, $base-colors, $subtle-colors, $dark-colors);

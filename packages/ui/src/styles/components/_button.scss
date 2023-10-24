@@ -1,0 +1,26 @@
+@each $color, $value in $base-colors {
+  .btn.btn-text-#{$color}{
+    &:hover, &:active:focus {
+      background-color: map-get($subtle-colors, '#{$color}-subtle');
+    }
+  }
+
+  .btn.btn-#{$color} {
+    .badge {
+      background-color: white;
+      color: map-get($base-colors, $color)
+    }
+  }
+
+  .btn.btn-outline-#{$color}, .btn.btn-text-#{$color} {
+    .badge {
+      background-color: map-get($base-colors, $color);
+      color: white;
+    }
+  }
+}
+
+.badge {
+  font-size: $badge-font-size;
+  margin: auto;
+}
