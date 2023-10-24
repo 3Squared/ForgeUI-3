@@ -103,7 +103,7 @@ describe('<Button />', () => {
           // Arrange
           const id = "button"
           const label = "Button"
-          const expectedClass = severity !== undefined ? `btn text-${severity} fw-bold btn-text-${severity} raised` : 'btn text-primary fw-bold btn-text-primary raised'
+          const expectedClass = severity !== undefined ? `btn text-${severity} fw-bold btn-text-${severity} shadow` : 'btn text-primary fw-bold btn-text-primary shadow'
 
           // Act
           mountButton({ id: id, label: label, severity: severity, text: true, raised: true })
@@ -199,7 +199,7 @@ describe('<Button />', () => {
       // Arrange
       const id = "button"
       const label = "Button"
-      const expectedClass = "raised"
+      const expectedClass = "shadow"
 
       // Act
       mountButton({ id: id, label: label, raised: true })

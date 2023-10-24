@@ -47,7 +47,7 @@ export default {
         // Misc
         {
           "btn-link": props.link,
-          "raised": props.raised,
+          "shadow": props.raised,
           "rounded-pill": props.rounded,
           "btn-lg": props.size == "large",
           "btn-sm": props.size == "small"
