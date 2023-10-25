@@ -165,11 +165,16 @@ export default {
       ]
     })
   },
+
+  textarea: {
+    root: () => ({
+      class: [
+        'form-control',
+      ]
+    })
+  },
   message: {
-    root: ({ props } : MessagePassThroughMethodOptions) => {
-      console.log(props)
-      
-      return {
+    root: ({ props }: MessagePassThroughMethodOptions) => ({
       class: [
         'alert',
         {
@@ -181,7 +186,7 @@ export default {
           'alert-info': props.severity === 'info'
         }
       ]
-    }},
+    }),
     text: () => ({
       class: ['my-auto']
     }),
