@@ -41,17 +41,21 @@ describe('<ForgeAlert />', () => {
   
   it('Shows icon and be in the colour of the specified severity', () => {
     // Arrange
+    const iconUrl = "https://api.iconify.design/*"
     const content = "I am a message"
     const severity = "danger"
     const icon = "bi:emoji-smile-fill"
-
+    
+    cy.intercept(iconUrl).as('icon')
+    
     // Act
-    mountMessage({ closable: true, icon: icon, severity: severity }, content)
-
+    mountMessage({ icon: icon, severity: severity }, content)
+    cy.wait('@icon')
+    
     // Assert
     cy.get(`[data-cy="message-icon"]`)
       .should('be.visible')
-      .and('have.class', `text-${severity}`)
+      .and('have.class', `text-${severity} iconify iconify--bi`)
   })
   
   it('Should disappear after the time limit when sticky is false', () => {

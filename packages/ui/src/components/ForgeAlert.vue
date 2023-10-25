@@ -1,7 +1,7 @@
 <template>
   <Message v-bind="{...$attrs, ...props}" unstyled>
     <template #messageicon>
-      <div class="me-2 pe-1" v-show="props.icon">
+      <div class="me-2 pe-1" v-if="props.icon !== undefined">
         <Icon data-cy="message-icon" :icon="props.icon" :class="`text-${props.severity}`" :height="35" />
       </div>
     </template>

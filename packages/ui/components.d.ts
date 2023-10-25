@@ -7,7 +7,6 @@ export {}
 
 declare module 'vue' {
   export interface GlobalComponents {
-    Button: typeof import('primevue/button')['default']
     Checkbox: typeof import('primevue/checkbox')['default']
     ForgeActionButton: typeof import('./src/components/ForgeActionButton.vue')['default']
     ForgeAlert: typeof import('./src/components/ForgeAlert.vue')['default']
