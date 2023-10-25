@@ -7,7 +7,7 @@
 </template>
 
 <script setup lang="ts">
-import { Size, Variant } from "../../forge-types";
+import { Size, Variant } from "../types/forge-types";
 
 export interface ForgeStatWidgetProps {
   size?: Size,

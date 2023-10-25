@@ -1,9 +1,14 @@
 // @ts-ignore
-import ForgeStatWidget, { ForgeStatWidgetProps } from "../../../src/components/ForgeStatWidget.vue";
+import ForgeStatWidget, { ForgeStatWidgetProps } from "@/components/ForgeStatWidget.vue";
+import { Size, Variant } from "../../../src/types/forge-types";
 
+const id = "stat-widget"
 function mountStatWidget(props : ForgeStatWidgetProps, content : string) {
   cy.mount(ForgeStatWidget, {
     props,
+    attrs: {
+      id: 'stat-widget'
+    },
     slots: {
       default: content
     }
@@ -13,12 +18,11 @@ function mountStatWidget(props : ForgeStatWidgetProps, content : string) {
 describe('<ForgeStatWidget />', () => {
   it('Mounts', () => {
     // Arrange
-    const id = "stat-widget"
     const variant = 'primary'
     const content = "Stat"
   
     // Act
-    mountStatWidget({ id: id , variant: variant }, content)
+    mountStatWidget({ variant: variant }, content)
     
     // Assert
     cy.get(`#${id}`)
@@ -39,11 +43,10 @@ describe('<ForgeStatWidget />', () => {
       it(title, () => {
         // Arrange 
         const content = "Stat"
-        const id = "stat-widget"
         const expectedBackgroundClass = variant === undefined ? 'bg-primary' : `bg-${variant}`
 
         // Act
-        mountStatWidget({ id: id, variant: variant }, content)
+        mountStatWidget({ variant: variant as Variant }, content)
 
         // Assert
         cy.get(`#${id}`)
@@ -64,11 +67,10 @@ describe('<ForgeStatWidget />', () => {
       it(title, () => {
         // Arrange 
         const content = "Stat"
-        const id = "stat-widget"
         const expectedSizeClass = size === undefined ? 'widget--md' : `widget--${size}`
 
         // Act
-        mountStatWidget({ id: id, size: size }, content)
+        mountStatWidget({ size: size as Size }, content)
 
         // Assert
         cy.get(`#${id}`)
