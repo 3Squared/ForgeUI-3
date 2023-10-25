@@ -32,6 +32,7 @@
     "src",
     "cypress/support/component.ts",
     "index.ts",
+    "forge-types.d.ts",
     "tests/**/*.cy.ts"
   ],
   "exclude": [
