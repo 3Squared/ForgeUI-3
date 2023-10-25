@@ -3,6 +3,7 @@ import { ButtonPassThroughMethodOptions } from "primevue/button";
 import { CheckboxPassThroughMethodOptions } from "primevue/checkbox";
 import { DropdownPassThroughMethodOptions } from "primevue/dropdown";
 import { InputTextPassThroughMethodOptions } from "primevue/inputtext";
+import { MessagePassThroughMethodOptions } from "primevue/message";
 
 export default {
   button: {
@@ -30,7 +31,7 @@ export default {
         // Warning
         {
           "btn-warning text-white": props.severity === "warning" && !props.outlined && !props.link && !props.text,
-          "btn-outline-warning": props.severity === "warning" && props.outlined,
+          "btn-outline-warning": props.severity === "warning"  && props.outlined,
           "text-warning fw-bold btn-text-warning": props.severity === "warning" && props.text
         },
         // Danger
@@ -162,6 +163,33 @@ export default {
           'form-control-sm': options.props.size == 'small'
         }
       ]
+    })
+  },
+  message: {
+    root: ({ props } : MessagePassThroughMethodOptions) => {
+      console.log(props)
+      
+      return {
+      class: [
+        'alert',
+        {
+          'alert-primary': props.severity === 'primary' || props.severity === undefined,
+          'alert-secondary': props.severity === 'secondary',
+          'alert-success': props.severity === 'success',
+          'alert-warning': props.severity === 'warning' || props.severity === 'warn',
+          'alert-danger': props.severity === 'danger' || props.severity === 'error',
+          'alert-info': props.severity === 'info'
+        }
+      ]
+    }},
+    text: () => ({
+      class: ['my-auto']
+    }),
+    wrapper: () => ({
+      class: ['d-flex']
+    }),
+    closeButton: () => ({
+      class: ['ms-auto btn d-flex']
     })
   }
 } as PrimeVuePTOptions
