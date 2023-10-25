@@ -163,5 +163,12 @@ export default {
         }
       ]
     })
+  },
+  textarea: {
+    root: () => ({
+      class: [
+        'form-control',
+      ]
+    })
   }
 } as PrimeVuePTOptions
