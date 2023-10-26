@@ -30,6 +30,7 @@
   },
   "include": [
     "src",
+    "src/types",
     "cypress/support/component.ts",
     "index.ts",
     "tests/**/*.cy.ts"

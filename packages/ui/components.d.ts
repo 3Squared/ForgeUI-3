@@ -13,6 +13,7 @@ declare module 'vue' {
     ForgeCheckbox: typeof import('./src/components/ForgeCheckbox.vue')['default']
     ForgePageHeader: typeof import('./src/components/ForgePageHeader.vue')['default']
     ForgeRemainingCharacters: typeof import('./src/components/ForgeRemainingCharacters.vue')['default']
+    ForgeStatWidget: typeof import('./src/components/ForgeStatWidget.vue')['default']
     ForgeToast: typeof import('./src/components/ForgeToast.vue')['default']
     Message: typeof import('primevue/message')['default']
   }
