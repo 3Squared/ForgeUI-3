@@ -4,6 +4,7 @@ import { CheckboxPassThroughMethodOptions } from "primevue/checkbox";
 import { DropdownPassThroughMethodOptions } from "primevue/dropdown";
 import { InputTextPassThroughMethodOptions } from "primevue/inputtext";
 import { MessagePassThroughMethodOptions } from "primevue/message";
+import { BadgePassThroughMethodOptions } from "primevue/badge";
 
 export default {
   button: {
@@ -165,7 +166,6 @@ export default {
       ]
     })
   },
-
   textarea: {
     root: () => ({
       class: [
@@ -195,6 +195,25 @@ export default {
     }),
     closeButton: () => ({
       class: ['ms-auto btn d-flex']
+    })
+  },
+  badge: {
+    root: ({ props } : BadgePassThroughMethodOptions) => ({
+      class: [
+        'badge',
+        {
+          'text-bg-primary': props.severity === 'primary' || props.severity === null,
+          'text-bg-secondary': props.severity === 'secondary',
+          'text-bg-success': props.severity === 'success',
+          'text-bg-warning': props.severity === 'warning' || props.severity === 'warn',
+          'text-bg-danger': props.severity === 'danger',
+          'text-bg-info': props.severity === 'info'
+        },
+        {
+          'badge-xl fs-4 lh-sm': props.size === 'xlarge',
+          'badge-lg fs-5 lh-1': props.size === 'large'
+        }
+      ]
     })
   }
 } as PrimeVuePTOptions
