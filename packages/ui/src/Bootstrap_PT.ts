@@ -218,7 +218,7 @@ export default {
     })
   },
   badge: {
-    root: ({ props } : BadgePassThroughMethodOptions) => {
+    root: ({ props }: BadgePassThroughMethodOptions) => {
       return {
         class: [
           'badge',
@@ -237,5 +237,28 @@ export default {
         ]
       }
     }
+  },
+  card: {
+    root: () => ({
+      class: ['card']
+    }),
+    title: () => ({
+      class: ['card-title h4']
+    }),
+    subtitle: () => ({
+      class: ['card-subtitle mb-2']
+    }),
+    content: () => ({
+      class: ['card-text']
+    }),
+    body: () => ({
+      class: ['card-body']
+    }),
+    footer: () => ({
+      class: ['mt-3']
+    }),
+    header: () => ({
+      class: ['card-header']
+    })
   }
 } as PrimeVuePTOptions
