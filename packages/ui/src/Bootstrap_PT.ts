@@ -60,9 +60,29 @@ export default {
     loadingIcon: () => ({
       class: ['spinner-border spinner-border-sm border-0 me-2']
     }),
-    badge: () => ({
-      class: ["rounded-pill ms-2 badge"]
-    })
+    badge: ({ props } : ButtonPassThroughMethodOptions) => {
+      return {
+        class: [
+          {
+            "button-badge-primary": (props.severity === 'primary' || props.severity === null) && !props.outlined,
+            "button-badge-secondary": props.severity === 'secondary' && !props.outlined,
+            "button-badge-success": props.severity === 'success' && !props.outlined,
+            "button-badge-warning": (props.severity === 'warning' || props.severity === 'warn') && !props.outlined,
+            "button-badge-danger": props.severity === 'danger' && !props.outlined,
+            'button-badge-info': props.severity === 'info' && !props.outlined
+          },
+          {
+            "button-badge-primary outlined": (props.severity === 'primary' || props.severity === null) && props.outlined,
+            "button-badge-secondary outlined": props.severity === 'secondary' && props.outlined,
+            "button-badge-success outlined": props.severity === 'success' && props.outlined,
+            "button-badge-warning outlined": (props.severity === 'warning' || props.severity === 'warn') && props.outlined,
+            "button-badge-danger outlined": props.severity === 'danger' && props.outlined,
+            'button-badge-info outlined': props.severity === 'info' && props.outlined
+          },
+          "rounded-pill ms-2"
+        ]
+      }
+    }
   },
   checkbox: {
     root: () => ({
@@ -198,22 +218,24 @@ export default {
     })
   },
   badge: {
-    root: ({ props } : BadgePassThroughMethodOptions) => ({
-      class: [
-        'badge',
-        {
-          'text-bg-primary': props.severity === 'primary' || props.severity === null,
-          'text-bg-secondary': props.severity === 'secondary',
-          'text-bg-success': props.severity === 'success',
-          'text-bg-warning': props.severity === 'warning' || props.severity === 'warn',
-          'text-bg-danger': props.severity === 'danger',
-          'text-bg-info': props.severity === 'info'
-        },
-        {
-          'badge-xl fs-4 lh-sm': props.size === 'xlarge',
-          'badge-lg fs-5 lh-1': props.size === 'large'
-        }
-      ]
-    })
+    root: ({ props } : BadgePassThroughMethodOptions) => {
+      return {
+        class: [
+          'badge',
+          {
+            "badge-primary": props.severity === 'primary' || props.severity === null,
+            "badge-secondary": props.severity === 'secondary',
+            "badge-success": props.severity === "success",
+            "badge-warning": props.severity === "warning" || props.severity === "warn",
+            "badge-danger": props.severity === "danger",
+            "badge-info": props.severity === "info"
+          },
+          {
+            'badge-xl fs-4 lh-sm': props.size === 'xlarge',
+            'badge-lg fs-5 lh-1': props.size === 'large'
+          }
+        ]
+      }
+    }
   }
 } as PrimeVuePTOptions

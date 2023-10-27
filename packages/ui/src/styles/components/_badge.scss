@@ -11,3 +11,10 @@
   height: 2.25rem;
   line-height: 2.25rem;
 }
+
+@each $color, $value in $base-colors {
+  .badge-#{$color} {
+    background-color: map-get($theme-colors, $color);
+    color: white;
+  }
+}

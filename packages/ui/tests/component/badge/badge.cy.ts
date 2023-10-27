@@ -38,7 +38,7 @@ describe('<Badge />', () => {
       it(title, () => {
         // Arrange
         const value = 6
-        const expectedClass = severity === undefined ? 'badge text-bg-primary' : `badge text-bg-${severity}`
+        const expectedClass = severity === undefined ? 'badge badge-primary' : `badge badge-${severity}`
 
         // Act
         mountBadge({ value: value, severity: severity })

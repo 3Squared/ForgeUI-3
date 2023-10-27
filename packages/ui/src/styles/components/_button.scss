@@ -4,17 +4,13 @@
       background-color: map-get($subtle-colors, '#{$color}-subtle');
     }
   }
-
-  .btn.btn-#{$color} {
-    .badge {
-      background-color: white;
-      color: map-get($base-colors, $color)
-    }
-  }
-
-  .btn.btn-outline-#{$color}, .btn.btn-text-#{$color} {
-    .badge {
-      background-color: map-get($base-colors, $color);
+  
+  .badge.button-badge-#{$color} {
+    background-color: white;
+    color: map-get($theme-colors, $color);
+    
+    &.outlined {
+      background-color: map-get($theme-colors, $color);
       color: white;
     }
   }
