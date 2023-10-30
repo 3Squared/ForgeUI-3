@@ -218,5 +218,12 @@ export default {
     header: () => ({
       class: ['card-header']
     })
+  },
+  progressspinner: {
+    spinner: () => ({
+      class: [
+        'spinner-border'
+      ]
+    })
   }
 } as PrimeVuePTOptions
