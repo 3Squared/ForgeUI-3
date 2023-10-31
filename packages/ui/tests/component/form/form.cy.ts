@@ -1,5 +1,5 @@
 // @ts-ignore
-import ForgeForm, { ForgeFormProps } from "../../../src/components/ForgeForm.vue";
+import ForgeForm, { ForgeFormProps } from "@/components/ForgeForm.vue";
 
 const id = "from"
 const titleId = "form-title"
