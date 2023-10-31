@@ -5,6 +5,7 @@ import { DropdownPassThroughMethodOptions } from "primevue/dropdown";
 import { InputTextPassThroughMethodOptions } from "primevue/inputtext";
 import { MessagePassThroughMethodOptions } from "primevue/message";
 import { BadgePassThroughMethodOptions } from "primevue/badge";
+import { SelectButtonPassThroughMethodOptions } from "primevue/selectbutton";
 
 export default {
   button: {
@@ -265,6 +266,23 @@ export default {
     spinner: () => ({
       class: [
         'spinner-border'
+      ]
+    })
+  },
+  selectbutton: {
+    root: () => ({
+      class: ['btn-group']
+    }),
+    button: ({ context, props,  } : SelectButtonPassThroughMethodOptions) => ({
+      class: [
+        'btn',
+        {
+          'btn-primary': context.active,
+          'btn-outline-primary': !context.active
+        },
+        {
+          'disabled w-auto': props.disabled || props.optionDisabled === context.option
+        }
       ]
     })
   }
