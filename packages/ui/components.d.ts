@@ -11,6 +11,7 @@ declare module 'vue' {
     ForgeActionButton: typeof import('./src/components/ForgeActionButton.vue')['default']
     ForgeAlert: typeof import('./src/components/ForgeAlert.vue')['default']
     ForgeCheckbox: typeof import('./src/components/ForgeCheckbox.vue')['default']
+    ForgeForm: typeof import('./src/components/ForgeForm.vue')['default']
     ForgeLoader: typeof import('./src/components/ForgeLoader.vue')['default']
     ForgePageHeader: typeof import('./src/components/ForgePageHeader.vue')['default']
     ForgeRemainingCharacters: typeof import('./src/components/ForgeRemainingCharacters.vue')['default']
