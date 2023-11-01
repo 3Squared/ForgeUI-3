@@ -3,6 +3,7 @@
 import { App } from "vue/dist/vue";
 import PrimeVue from "primevue/config";
 import ToastService from 'primevue/toastservice'
+import DialogService from 'primevue/dialogservice'
 import { Bootstrap_PT } from "../../index";
 import { mount } from "cypress/vue";
 
@@ -22,6 +23,7 @@ Cypress.Commands.add('mount', (component: any, options = {}) => {
     install(app: App) {
       app.use(PrimeVue, { unstyled: true, pt: Bootstrap_PT })
       app.use(ToastService)
+      app.use(DialogService)
     },
   })
 
