@@ -18,5 +18,13 @@ import { CheckboxProps } from "primevue/checkbox";
 import { Icon } from '@iconify/vue'
 type CheckProps = Omit<CheckboxProps, "aria-label" | "aria-labelledby">
 
-const props = withDefaults(defineProps<CheckProps & { label: string }>(), { binary: true, label: ""})
+interface ForgeCheckProps extends CheckProps {
+  label: string
+}
+
+const props = withDefaults(defineProps<ForgeCheckProps>(), 
+    {
+      binary: true, 
+      label: ""
+    })
 </script>
