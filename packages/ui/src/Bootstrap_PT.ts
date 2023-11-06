@@ -6,6 +6,7 @@ import { InputTextPassThroughMethodOptions } from "primevue/inputtext";
 import { MessagePassThroughMethodOptions } from "primevue/message";
 import { BadgePassThroughMethodOptions } from "primevue/badge";
 import { SelectButtonPassThroughMethodOptions } from "primevue/selectbutton";
+import { DialogPassThroughMethodOptions } from "primevue/dialog";
 
 export default {
   button: {
@@ -284,6 +285,38 @@ export default {
           'disabled w-auto': props.disabled || props.optionDisabled === context.option
         }
       ]
+      })
+  },
+  dialog: {
+    root: () => ({
+      class: ['modal modal-dialog modal-content vw-100']
+    }),
+    header: () => ({
+      class: ['modal-header']
+    }),
+    headerTitle: () => ({
+      class: ['h5 modal-title text-black']
+    }),
+    content: () => ({
+      class: ['modal-body']
+    }),
+    footer: () => ({
+      class: ['modal-footer']
+    }),
+    headerIcons: () => ({
+      class: ['ms-auto']
+    }),
+    maximizableButton: ({ props }: DialogPassThroughMethodOptions) => ({
+      class: [
+        {
+          "me-2": props.closable
+        }
+      ]
+    }),
+    mask: ({ props } : DialogPassThroughMethodOptions) => ({
+      class: [{
+          'modal-open': props.modal && props.visible
+        }]
     })
   }
 } as PrimeVuePTOptions
