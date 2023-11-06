@@ -1,6 +1,6 @@
 <template>
   <div class="d-flex" data-cy="checkbox-container">
-    <Checkbox :id="props.name" v-bind="{...$attrs, ...props}" :input-class="{'is-invalid': hasErrors }" @input="handleChange">
+    <Checkbox :id="props.name" v-bind="{...$attrs, ...props}" v-model="checked" :input-class="{'is-invalid': hasErrors }" @input="handleChange">
       <template #icon>
         <div data-cy="checkbox-icon">
           <Icon icon="bi:check-lg" class="mb-1 fw-medium text-white" width="15" />

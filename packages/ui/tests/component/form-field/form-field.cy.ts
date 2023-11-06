@@ -2,8 +2,13 @@
 import ForgeFormField, { ForgeFormFieldProps } from "../../../src/components/ForgeFormField.vue";
 import { toTypedSchema } from "@vee-validate/zod";
 import { z } from 'zod'
+import { InputNumberProps } from "primevue/inputnumber";
+import { InputTextProps } from "primevue/inputtext";
+import { InputMaskProps } from "primevue/inputmask";
+import { TextareaProps } from "primevue/textarea";
+import { CheckboxProps } from "primevue/checkbox";
 
-function mountFormField(props : ForgeFormFieldProps) {
+function mountFormField(props : ForgeFormFieldProps & InputNumberProps & InputTextProps & InputMaskProps & TextareaProps & CheckboxProps) {
   cy.mount(ForgeFormField, {
     props
   })
@@ -107,7 +112,7 @@ describe('<ForgeFormField />', () => {
     
     it("Allows for InputText props to be passed and applied", () => {
       // Arrange
-      const size = "Large"
+      const size = "large"
       const expectedClass = "form-control-lg"
 
       // Act
