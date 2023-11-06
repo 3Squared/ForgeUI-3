@@ -181,8 +181,8 @@ export default {
       class: [
         'form-control',
         {
-          'form-control-lg': options.props.size == 'large',
-          'form-control-sm': options.props.size == 'small'
+          'form-control-lg': options.props.size?.toLowerCase() == 'large',
+          'form-control-sm': options.props.size?.toLowerCase() == 'small'
         }
       ]
     })

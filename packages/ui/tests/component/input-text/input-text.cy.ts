@@ -11,6 +11,7 @@ describe('<InputText />', () => {
   it('Mounts', () => {
     // Arrange
     const id = "input"
+    const expectedClass = "form-control"
     
     // Act
     mountInput({ id: id })
@@ -18,6 +19,7 @@ describe('<InputText />', () => {
     // Assert
     cy.get(`#${id}`)
       .should('exist')
+      .and("have.class", expectedClass)
       .and('be.visible')
   })
   
