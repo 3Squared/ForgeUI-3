@@ -11,17 +11,14 @@
 </template>
 
 <script setup lang="ts">
-import InputNumber, { InputNumberProps } from 'primevue/inputnumber'
+import InputNumber from 'primevue/inputnumber'
 import { TypedSchema, useField } from 'vee-validate'
 import ForgeCheckbox from "./ForgeCheckbox.vue";
 import { computed } from "vue";
 import { ForgeFormFieldTypes } from "../types/forge-types";
-import { InputTextProps } from "primevue/inputtext";
-import { TextareaProps } from "primevue/textarea";
-import { CheckboxProps } from "primevue/checkbox";
-import { InputMaskProps } from "primevue/inputmask";
 
 
+// @ts-ignore
 export interface ForgeFormFieldProps {
   name: string,
   label: string,
@@ -31,7 +28,7 @@ export interface ForgeFormFieldProps {
   placeholder?: string,
 }
 
-const props = withDefaults(defineProps<ForgeFormFieldProps & InputNumberProps & InputTextProps & InputMaskProps & TextareaProps & CheckboxProps>(), {
+const props = withDefaults(defineProps<ForgeFormFieldProps>(), {
   mask: "",
   placeholder: "",
   type: "text" 

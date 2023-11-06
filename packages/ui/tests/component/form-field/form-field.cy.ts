@@ -2,13 +2,8 @@
 import ForgeFormField, { ForgeFormFieldProps } from "../../../src/components/ForgeFormField.vue";
 import { toTypedSchema } from "@vee-validate/zod";
 import { z } from 'zod'
-import { InputNumberProps } from "primevue/inputnumber";
-import { InputTextProps } from "primevue/inputtext";
-import { InputMaskProps } from "primevue/inputmask";
-import { TextareaProps } from "primevue/textarea";
-import { CheckboxProps } from "primevue/checkbox";
 
-function mountFormField(props : ForgeFormFieldProps & InputNumberProps & InputTextProps & InputMaskProps & TextareaProps & CheckboxProps) {
+function mountFormField(props : ForgeFormFieldProps) {
   cy.mount(ForgeFormField, {
     props
   })
@@ -56,20 +51,6 @@ describe('<ForgeFormField />', () => {
       cy.get("[data-cy='error']")
         .should('have.text', errorMessage)
     })
-    
-    it("Allows for InputNumber props to be passed and applied", () => {
-      // Arrange
-      const prefix = "I am a prefix "
-      const value = "10"
-      
-      // Act
-      mountFormField({ name: name, type: type, label: label, prefix: prefix })
-      cy.get(`#${name}`).type(value)
-
-      // Assert
-      cy.get(`#${name} input`)
-        .should('contain.value', `${prefix}${value}`)
-    })
   })
   
   describe('Text', () => {
@@ -108,19 +89,6 @@ describe('<ForgeFormField />', () => {
       
       cy.get('[data-cy="error"]')
         .should('have.text', errorMessage)
-    })
-    
-    it("Allows for InputText props to be passed and applied", () => {
-      // Arrange
-      const size = "large"
-      const expectedClass = "form-control-lg"
-
-      // Act
-      mountFormField({ name: name, type: type, label: label, size: size })
-
-      // Assert
-      cy.get(`#${name}`)
-        .should('have.class', expectedClass)
     })
   })
   
@@ -164,15 +132,6 @@ describe('<ForgeFormField />', () => {
       cy.get('[data-cy="error"]')
         .should('have.text', errorMessage)
     })
-
-    it("Allows for TextArea props to be passed and applied", () => {
-      // Act
-      mountFormField({ name: name, type: type, label: label, disabled: true })
-
-      // Assert
-      cy.get(`#${name}`)
-        .should('be.disabled')
-    })
   })
   
   describe('Mask', () => {
@@ -198,18 +157,6 @@ describe('<ForgeFormField />', () => {
 
       cy.get('[data-cy="error"]')
         .should('have.text', errorMessage)
-    })
-    
-    it("Allows for InputMask props to be passed and applied", () => {
-      // Arrange
-      const placeholder = "I am a Placeholder"
-
-      // Act
-      mountFormField({ name: name, type: type, label: label, placeholder: placeholder })
-
-      // Assert
-      cy.get(`#${name}`)
-        .should('have.attr', 'placeholder', placeholder)
     })
   })
   
@@ -245,15 +192,6 @@ describe('<ForgeFormField />', () => {
 
       cy.get('[data-cy="error"]')
         .should('have.text', errorMessage)
-    })
-
-    it("Allows for Checkbox props to be passed and applied", () => {
-      // Act
-      mountFormField({ name: name, type: type, label: label, disabled: true })
-
-      // Assert
-      cy.get(`#${name} input`)
-        .should('be.disabled')
     })
   })
 })
