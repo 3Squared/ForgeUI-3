@@ -9,7 +9,7 @@
     </Checkbox>
     <label :for="props.name" class="form-check-label">{{ props.label }}</label>
   </div>
-  <small data-cy="error" class="text-invalid">{{ errorMessage || '&nbsp;'}}</small>
+  <small data-cy="error" class="text-invalid" v-show="hasErrors">{{ errorMessage }}</small>
 </template>
 
 
