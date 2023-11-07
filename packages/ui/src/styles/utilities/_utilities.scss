@@ -5,3 +5,7 @@
 .disabled {
   @extend .form-control, :disabled;
 }
+
+.text-invalid {
+  color: $form-invalid-color
+}

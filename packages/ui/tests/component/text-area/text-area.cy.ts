@@ -11,6 +11,7 @@ describe('<TextArea />', () => {
   it('Mounts', () => {
     // Arrange
     const id = "text-area"
+    const expectedClass = "form-control"
     
     // Act
     mountTextArea({ id: id })
@@ -18,6 +19,7 @@ describe('<TextArea />', () => {
     // Assert
     cy.get(`#${id}`)
       .should('exist')
+      .and("have.class", expectedClass)
       .and('be.visible')
   })
 
