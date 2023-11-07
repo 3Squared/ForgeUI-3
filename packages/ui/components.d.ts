@@ -22,5 +22,7 @@ declare module 'vue' {
     ForgeToast: typeof import('./src/components/ForgeToast.vue')['default']
     Message: typeof import('primevue/message')['default']
     ProgressSpinner: typeof import('primevue/progressspinner')['default']
+    TabPanel: typeof import('primevue/tabpanel')['default']
+    TabView: typeof import('primevue/tabview')['default']
   }
 }
