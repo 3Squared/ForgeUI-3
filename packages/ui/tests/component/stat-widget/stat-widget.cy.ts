@@ -1,6 +1,6 @@
 // @ts-ignore
 import ForgeStatWidget, { ForgeStatWidgetProps } from "@/components/ForgeStatWidget.vue";
-import { Size, Variant } from "../../../src/types/forge-types";
+import { Size, Severity } from "../../../src/types/forge-types";
 
 const id = "stat-widget"
 function mountStatWidget(props : ForgeStatWidgetProps, content : string) {
@@ -46,7 +46,7 @@ describe('<ForgeStatWidget />', () => {
         const expectedBackgroundClass = variant === undefined ? 'bg-primary' : `bg-${variant}`
 
         // Act
-        mountStatWidget({ variant: variant as Variant }, content)
+        mountStatWidget({ variant: variant as Severity }, content)
 
         // Assert
         cy.get(`#${id}`)
