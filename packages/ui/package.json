@@ -24,7 +24,7 @@
   "devDependencies": {
     "@cypress/code-coverage": "^3.12.3",
     "@iconify/vue": "^4.1.1",
-    "@vitejs/plugin-vue": "^4.2.3",
+    "@vitejs/plugin-vue": "^4.4.0",
     "@vitest/coverage-v8": "^0.34.6",
     "@vitest/ui": "^0.34.6",
     "cypress": "^13.4.0",
