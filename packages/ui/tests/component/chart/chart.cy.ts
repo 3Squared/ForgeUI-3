@@ -3,9 +3,6 @@ import { ChartData } from "chart.js";
 
 const id = "chart"
 
-
-
-
 function mountChart(props : ChartProps) {
   // @ts-ignore
   cy.mount(Chart, {
