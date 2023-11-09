@@ -7,11 +7,11 @@
 </template>
 
 <script setup lang="ts">
-import { Size, Variant } from "../types/forge-types";
+import { Size, Severity } from "../types/forge-types";
 
 export interface ForgeStatWidgetProps {
   size?: Size,
-  variant?: Variant
+  variant?: Severity
 }
 
 const props = withDefaults(defineProps<ForgeStatWidgetProps>(), {

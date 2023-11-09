@@ -18,15 +18,12 @@ declare module 'vue' {
     ForgeLoader: typeof import('./src/components/ForgeLoader.vue')['default']
     ForgeModal: typeof import('./src/components/ForgeModal.vue')['default']
     ForgePageHeader: typeof import('./src/components/ForgePageHeader.vue')['default']
+    ForgeProgressBar: typeof import('./src/components/ForgeProgressBar.vue')['default']
     ForgeRemainingCharacters: typeof import('./src/components/ForgeRemainingCharacters.vue')['default']
     ForgeStatWidget: typeof import('./src/components/ForgeStatWidget.vue')['default']
     ForgeToast: typeof import('./src/components/ForgeToast.vue')['default']
-    InputMask: typeof import('primevue/inputmask')['default']
-    InputText: typeof import('primevue/inputtext')['default']
     Message: typeof import('primevue/message')['default']
+    ProgressBar: typeof import('primevue/progressbar')['default']
     ProgressSpinner: typeof import('primevue/progressspinner')['default']
-    Textarea: typeof import('primevue/textarea')['default']
-    TabPanel: typeof import('primevue/tabpanel')['default']
-    TabView: typeof import('primevue/tabview')['default']
   }
 }

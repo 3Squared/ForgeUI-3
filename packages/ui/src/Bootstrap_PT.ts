@@ -360,5 +360,16 @@ export default {
     content: () => ({
       class: ['p-2']
     })
+  },
+  progressbar: {
+    root: () => ({
+      class: ['progress']
+    }),
+    value: () => ({
+      class: ['progress-bar']
+    }),
+    label: () => ({
+      class: ['text-white']
+    })
   }
 } as PrimeVuePTOptions
