@@ -8,8 +8,6 @@ import { BadgePassThroughMethodOptions } from "primevue/badge";
 import { SelectButtonPassThroughMethodOptions } from "primevue/selectbutton";
 import { DialogPassThroughMethodOptions } from "primevue/dialog";
 import { TabPanelPassThroughMethodOptions } from "primevue/tabpanel";
-import { ProgressBarPassThroughMethodOptions } from "primevue/progressbar";
-import { Severity } from "./types/forge-types";
 
 export default {
   button: {
