@@ -7,7 +7,7 @@
       <Steps v-model:active-step="localCurrentStep" :model="props.model" :pt="stepperPT" :readonly="false" />
     </div>
     <Divider />
-    <div v-for="(step, index) in props.model" :key="step.key ?? step.label" class="w-100">
+    <div v-for="(step, index) in props.model" :key="index" class="w-100">
       <slot v-if="index === localCurrentStep" :name="step.key ?? step.label" :next-step="nextStep" :previous-step="previousStep">
         <ForgeAlert severity="info" data-cy="alert">
           Please add Slot Content for the key {{ step.key ?? step.label }}
