@@ -31,7 +31,7 @@ describe('<ForgeFormField />', () => {
     const type = "number"
     const label = "A custom input"
     
-    it("Displays error message when validation isnt met", () => {
+    it("Displays error alert when validation isnt met", () => {
       // Arrange
       const errorMessage = "Must be less than 1"
       const rules = toTypedSchema(z.number().lte(1, errorMessage))
@@ -71,7 +71,7 @@ describe('<ForgeFormField />', () => {
       cy.get(`#${name}`).should('contain.value', expectedString)
     })
 
-    it("Displays error message when validation isnt met", () => {
+    it("Displays error alert when validation isnt met", () => {
       // Arrange
       const errorMessage = "Length must be greater than 10 characters"
       const rules = toTypedSchema(z.string().max(10, errorMessage))
@@ -113,7 +113,7 @@ describe('<ForgeFormField />', () => {
         .and('contain.value', expectedString)
     })
 
-    it("Displays error message when validation isnt met", () => {
+    it("Displays error alert when validation isnt met", () => {
       // Arrange
       const errorMessage = "Length must be greater than 10 characters"
       const rules = toTypedSchema(z.string().max(10, errorMessage))
@@ -140,7 +140,7 @@ describe('<ForgeFormField />', () => {
     const label = "A custom input"
     const mask = "99-999999"
 
-    it("Displays error message when validation isnt met", () => {
+    it("Displays error alert when validation isnt met", () => {
       // Arrange
       const errorMessage = "Length must be greater than 5 characters"
       const rules = toTypedSchema(z.string().max(5, errorMessage))
@@ -176,7 +176,7 @@ describe('<ForgeFormField />', () => {
         .and('be.visible')
     })
 
-    it("Displays error message when validation isnt met", () => {
+    it("Displays error alert when validation isnt met", () => {
       // Arrange
       const errorMessage = "This is required"
       const rules = toTypedSchema(z.boolean({ required_error: errorMessage }))
