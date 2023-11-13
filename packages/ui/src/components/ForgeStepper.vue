@@ -30,7 +30,7 @@ import { DefaultPassThrough } from "primevue/ts-helpers";
 
 export interface ForgeStepperProps extends /* vue-ignore */ StepsProps {
   currentStep?: number,
-  severity?: Severity
+  severity?: Severity,
   model: MenuItem[]
 }
 
