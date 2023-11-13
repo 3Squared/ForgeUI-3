@@ -8,7 +8,6 @@ import { BadgePassThroughMethodOptions } from "primevue/badge";
 import { SelectButtonPassThroughMethodOptions } from "primevue/selectbutton";
 import { DialogPassThroughMethodOptions } from "primevue/dialog";
 import { TabPanelPassThroughMethodOptions } from "primevue/tabpanel";
-import { ChipsPassThroughMethodOptions } from "primevue/chips";
 
 export default {
   button: {
