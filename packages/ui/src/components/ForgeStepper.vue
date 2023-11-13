@@ -28,10 +28,10 @@ import { MenuItem } from "primevue/menuitem";
 import ForgeAlert from "@/components/ForgeAlert.vue";
 import { DefaultPassThrough } from "primevue/ts-helpers";
 
-export interface ForgeStepperProps extends /* vue-ignore */ StepsProps {
+export interface ForgeStepperProps {
   currentStep?: number,
   severity?: Severity,
-  model: MenuItem[]
+  model: MenuItem[],
 }
 
 const emit = defineEmits(['update:currentStep'])
