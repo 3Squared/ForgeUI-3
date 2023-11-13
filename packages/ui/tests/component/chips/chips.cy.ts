@@ -3,6 +3,7 @@
 import ForgeChips, { ForgeChipsProps } from "../../../src/components/ForgeChips.vue";
 import { toTypedSchema } from "@vee-validate/zod";
 import { z } from "zod";
+import { Severity } from "../../../src/types/forge-types";
 
 const id = "chips"
 
@@ -45,7 +46,7 @@ describe("<Chips />", () => {
         const expectedClasses = variant === undefined ? 'bg-primary border-primary' : `bg-${variant} border-${variant}`
 
         // Act
-        mountChips({ chipSeverity: variant, modelValue: value})
+        mountChips({ chipSeverity: variant as Severity, modelValue: value})
 
         // Assert
         cy.get(`[data-pc-section="token"]`)
