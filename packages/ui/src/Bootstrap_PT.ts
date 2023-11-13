@@ -8,6 +8,7 @@ import { BadgePassThroughMethodOptions } from "primevue/badge";
 import { SelectButtonPassThroughMethodOptions } from "primevue/selectbutton";
 import { DialogPassThroughMethodOptions } from "primevue/dialog";
 import { TabPanelPassThroughMethodOptions } from "primevue/tabpanel";
+import { ChipsPassThroughMethodOptions } from "primevue/chips";
 
 export default {
   button: {
@@ -361,6 +362,7 @@ export default {
       class: ['p-2']
     })
   },
+  // More PassThrough options in component file.
   progressbar: {
     root: () => ({
       class: ['progress']
@@ -371,5 +373,10 @@ export default {
     label: () => ({
       class: ['text-white']
     })
+  },
+  // More PassThrough options in component file.
+  chips: {
+    root: "d-flex",
+    label: "pe-2"
   }
 } as PrimeVuePTOptions
