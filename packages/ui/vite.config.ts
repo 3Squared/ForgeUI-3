@@ -26,6 +26,14 @@ export default defineConfig(({mode}) => ({
       'primevue/badge',
       'primevue/card',
       'primevue/chips',
+      'primevue/inputmask',
+      'primevue/textarea',
+      'primevue/inputnumber',
+      'primevue/progressbar',
+      'primevue/selectbutton',
+      'primevue/tabview',
+      'primevue/tabpanel',
+      'primevue/dropdown',
       '@vee-validate/zod',
       'zod'
     ]
