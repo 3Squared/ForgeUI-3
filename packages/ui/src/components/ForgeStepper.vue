@@ -21,7 +21,7 @@
 
 <script setup lang="ts">
 import { Icon } from '@iconify/vue'
-import { StepsPassThroughMethodOptions, StepsPassThroughOptions, StepsProps } from "primevue/steps";
+import { StepsPassThroughMethodOptions, StepsPassThroughOptions } from "primevue/steps";
 import { Severity } from "../types/forge-types";
 import { computed, ref } from "vue";
 import { MenuItem } from "primevue/menuitem";
