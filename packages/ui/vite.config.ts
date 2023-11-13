@@ -23,6 +23,11 @@ export default defineConfig(({mode}) => ({
   optimizeDeps: {
     include: [
       'primevue/inputtext',
+      'primevue/badge',
+      'primevue/card',
+      'primevue/chips',
+      '@vee-validate/zod',
+      'zod'
     ]
   },
   plugins: [
