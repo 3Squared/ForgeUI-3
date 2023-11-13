@@ -24,7 +24,7 @@ import { Icon } from '@iconify/vue'
 import { StepsPassThroughMethodOptions, StepsPassThroughOptions } from "primevue/steps";
 import { Severity } from "../types/forge-types";
 import { computed, ref } from "vue";
-import { MenuItem } from "primevue/menuitem";
+import { type MenuItem } from "primevue/menuitem";
 import ForgeAlert from "@/components/ForgeAlert.vue";
 import { DefaultPassThrough } from "primevue/ts-helpers";
 
