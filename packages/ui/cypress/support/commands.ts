@@ -6,7 +6,6 @@ import ToastService from 'primevue/toastservice'
 import DialogService from 'primevue/dialogservice'
 import { Bootstrap_PT } from "../../index";
 import { mount } from "cypress/vue";
-import { clickOutside } from "../../src/helpers/directives";
 
 declare global {
   namespace Cypress {
@@ -36,8 +35,6 @@ Cypress.Commands.add('mount', (component: any, options = {}) => {
       app.use(PrimeVue, { unstyled: true, pt: Bootstrap_PT })
       app.use(ToastService)
       app.use(DialogService)
-      
-      app.directive('click-outside', clickOutside)
     },
   })
 

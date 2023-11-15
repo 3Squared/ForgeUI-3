@@ -2,7 +2,7 @@
   <div :id="props.name">
     <div v-if="!readonly">
       <div v-if="editing">
-        <div class="d-flex justify-content-between align-items-center position-relative" v-click-outside="editFinished">
+        <div class="d-flex justify-content-between align-items-center position-relative" v-on-click-outside="editFinished">
           <slot name="editor" :class="{ 'is-invalid': hasErrors }" :edit-finished="editFinished" :cancel="cancel" :val="value">
             <InputText
                 data-cy="input"
@@ -40,6 +40,7 @@ import { Icon } from '@iconify/vue'
 import { computed, ref } from "vue";
 import { TypedSchema, useField } from "vee-validate";
 import { useToast } from "primevue/usetoast";
+import { vOnClickOutside } from '@vueuse/components'
 
 export interface ForgeInlineEditorProps {
   name?: string,
@@ -80,9 +81,7 @@ const editFinished = async () => {
       await props.completeAction.apply(this, props.params)
       editing.value = !editing.value
     } catch (completeActionError) {
-      console.log("err")
       toasts.add({ severity: "error", summary: typeof completeActionError === "string" ? completeActionError : `Failed to update: ${completeActionError}` })
-      console.log(toasts)
     }
   } else {
     editing.value = !editing.value
