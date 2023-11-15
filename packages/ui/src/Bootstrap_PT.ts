@@ -371,5 +371,26 @@ export default {
     label: () => ({
       class: ['text-white']
     })
+  },
+  // More PassThrough options defined in ForgeDatepicker.
+  calendar: {
+    root: 'd-inline-flex mw-100 relative datepicker',
+    input: "form-control",
+    panel: ({ props }) => ({
+      class: [
+        "panel",
+        {
+          'shadow border-0 position-absolute': !props.inline
+        }
+      ]
+    }),
+    header: 'd-flex align-items-center justify-content-between p-2 border-bottom',
+    previousButton: "btn mb-1",
+    nextButton: "btn mb-1",
+    yearTitle: "btn",
+    monthTitle: "btn",
+    table: "m-2",
+    tableHeaderRow: "p-2",
+    weekday: 'ms-2 ps-1',
   }
 } as PrimeVuePTOptions
