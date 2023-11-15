@@ -1,6 +1,6 @@
 // @ts-ignore
 import { ForgeInlineEditorProps } from "@/components/ForgeInlineEditor.vue";
-import ForgeInlineEditor from "../../../src/components/ForgeInlineEditor.vue";
+import ForgeInlineEditor from "@/components/ForgeInlineEditor.vue";
 import { toTypedSchema } from "@vee-validate/zod";
 import { z } from "zod";
 

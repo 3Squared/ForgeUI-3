@@ -23,7 +23,6 @@ declare module 'vue' {
     ForgeRemainingCharacters: typeof import('./src/components/ForgeRemainingCharacters.vue')['default']
     ForgeStatWidget: typeof import('./src/components/ForgeStatWidget.vue')['default']
     ForgeToast: typeof import('./src/components/ForgeToast.vue')['default']
-    InputText: typeof import('primevue/inputtext')['default']
     Message: typeof import('primevue/message')['default']
     ProgressSpinner: typeof import('primevue/progressspinner')['default']
   }

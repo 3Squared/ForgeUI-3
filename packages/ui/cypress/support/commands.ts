@@ -6,7 +6,7 @@ import ToastService from 'primevue/toastservice'
 import DialogService from 'primevue/dialogservice'
 import { Bootstrap_PT } from "../../index";
 import { mount } from "cypress/vue";
-import { clickOutside } from "../../src/helpers/directives.ts";
+import { clickOutside } from "../../src/helpers/directives";
 
 declare global {
   namespace Cypress {
