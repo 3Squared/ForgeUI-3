@@ -15,6 +15,7 @@ declare module 'vue' {
     ForgeCheckbox: typeof import('./src/components/ForgeCheckbox.vue')['default']
     ForgeForm: typeof import('./src/components/ForgeForm.vue')['default']
     ForgeFormField: typeof import('./src/components/ForgeFormField.vue')['default']
+    ForgeInlineEditor: typeof import('./src/components/ForgeInlineEditor.vue')['default']
     ForgeLoader: typeof import('./src/components/ForgeLoader.vue')['default']
     ForgeModal: typeof import('./src/components/ForgeModal.vue')['default']
     ForgePageHeader: typeof import('./src/components/ForgePageHeader.vue')['default']
@@ -22,8 +23,8 @@ declare module 'vue' {
     ForgeRemainingCharacters: typeof import('./src/components/ForgeRemainingCharacters.vue')['default']
     ForgeStatWidget: typeof import('./src/components/ForgeStatWidget.vue')['default']
     ForgeToast: typeof import('./src/components/ForgeToast.vue')['default']
+    InputText: typeof import('primevue/inputtext')['default']
     Message: typeof import('primevue/message')['default']
-    ProgressBar: typeof import('primevue/progressbar')['default']
     ProgressSpinner: typeof import('primevue/progressspinner')['default']
   }
 }
