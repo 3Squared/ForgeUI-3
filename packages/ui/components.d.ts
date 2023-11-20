@@ -8,7 +8,6 @@ export {}
 declare module 'vue' {
   export interface GlobalComponents {
     Button: typeof import('primevue/button')['default']
-    Calendar: typeof import('primevue/calendar')['default']
     Checkbox: typeof import('primevue/checkbox')['default']
     Dialog: typeof import('primevue/dialog')['default']
     ForgeActionButton: typeof import('./src/components/ForgeActionButton.vue')['default']
@@ -24,6 +23,7 @@ declare module 'vue' {
     ForgeProgressBar: typeof import('./src/components/ForgeProgressBar.vue')['default']
     ForgeRemainingCharacters: typeof import('./src/components/ForgeRemainingCharacters.vue')['default']
     ForgeStatWidget: typeof import('./src/components/ForgeStatWidget.vue')['default']
+    ForgeStepper: typeof import('./src/components/ForgeStepper.vue')['default']
     ForgeToast: typeof import('./src/components/ForgeToast.vue')['default']
     InputText: typeof import('primevue/inputtext')['default']
     Message: typeof import('primevue/message')['default']

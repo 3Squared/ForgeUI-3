@@ -1,6 +1,6 @@
 <template>
   <Button v-bind="{...props, ...$attrs}" :loading="loading" :disabled="loading || props.disabled" @click="performAction"  />
-  <Toast />
+  <ForgeToast />
 </template>
 
 <script setup lang="ts">

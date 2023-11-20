@@ -37,6 +37,7 @@ export default defineConfig(({mode}) => ({
       'primevue/tabpanel',
       'primevue/calendar',
       '@vee-validate/zod', 
+      '@vueuse/components',
       'zod',
     ]
   },

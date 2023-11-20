@@ -1,3 +1,4 @@
+// @ts-ignore
 import ToastWrapper, { ToastWrapperProps } from "./ToastWrapper.vue";
 describe("<Toast />", () => {
   function mountToast(props: ToastWrapperProps) {
