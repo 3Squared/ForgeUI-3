@@ -1,0 +1,29 @@
+.bs-tooltip-end .tooltip-arrow {
+  left: calc(-1 * var(--bs-tooltip-arrow-height)) !important;
+  top: 30% !important;
+}
+
+.bs-tooltip-top {
+  margin-top: -4px !important;
+  
+  & .tooltip-arrow {
+    bottom: calc(-1 * var(--bs-tooltip-arrow-height)) !important;
+  }
+}
+
+.bs-tooltip-bottom {
+  margin-top: 4px !important;
+ 
+  & .tooltip-arrow {
+    top: calc(-1 * var(--bs-tooltip-arrow-height)) !important;
+  }
+}
+
+.bs-tooltip-start {
+  margin-left: -0.25rem !important;
+
+  & .tooltip-arrow {
+    top: 30% !important;
+    right: calc(-1 * var(--bs-tooltip-arrow-height)) !important;
+  }
+}
