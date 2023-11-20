@@ -1,6 +1,8 @@
-.datepicker {
-  
-  &.panel {
-    min-width: 350px
+.datepicker-panel {
+    min-width: 350px;
+    width: 350px
   }
+
+.p-datepicker-trigger {
+  display: none !important;
 }

@@ -8,15 +8,16 @@ export {}
 declare module 'vue' {
   export interface GlobalComponents {
     Button: typeof import('primevue/button')['default']
+    Calendar: typeof import('primevue/calendar')['default']
     Checkbox: typeof import('primevue/checkbox')['default']
     Dialog: typeof import('primevue/dialog')['default']
     ForgeActionButton: typeof import('./src/components/ForgeActionButton.vue')['default']
     ForgeAlert: typeof import('./src/components/ForgeAlert.vue')['default']
     ForgeCheckbox: typeof import('./src/components/ForgeCheckbox.vue')['default']
     ForgeDatepicker: typeof import('./src/components/ForgeDatepicker.vue')['default']
-    ForgeDatePicker: typeof import('./src/components/ForgeDatePicker.vue')['default']
     ForgeForm: typeof import('./src/components/ForgeForm.vue')['default']
     ForgeFormField: typeof import('./src/components/ForgeFormField.vue')['default']
+    ForgeInlineEditor: typeof import('./src/components/ForgeInlineEditor.vue')['default']
     ForgeLoader: typeof import('./src/components/ForgeLoader.vue')['default']
     ForgeModal: typeof import('./src/components/ForgeModal.vue')['default']
     ForgePageHeader: typeof import('./src/components/ForgePageHeader.vue')['default']
@@ -24,6 +25,7 @@ declare module 'vue' {
     ForgeRemainingCharacters: typeof import('./src/components/ForgeRemainingCharacters.vue')['default']
     ForgeStatWidget: typeof import('./src/components/ForgeStatWidget.vue')['default']
     ForgeToast: typeof import('./src/components/ForgeToast.vue')['default']
+    InputText: typeof import('primevue/inputtext')['default']
     Message: typeof import('primevue/message')['default']
     ProgressSpinner: typeof import('primevue/progressspinner')['default']
   }
