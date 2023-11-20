@@ -23,6 +23,7 @@ export default defineConfig(({mode}) => ({
   optimizeDeps: {
     include: [
       'primevue/inputtext',
+      'primevue/badge',
     ]
   },
   plugins: [
