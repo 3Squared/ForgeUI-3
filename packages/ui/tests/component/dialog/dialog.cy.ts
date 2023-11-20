@@ -100,7 +100,7 @@ describe('<Dialog />', () => {
     })
   })
 
-  it("Displays an error message if onConfirm throws an error", () => {
+  it("Displays an error alert if onConfirm throws an error", () => {
     // Arrange
     const errorMessage = "I am an Error!"
     const onConfirm = () => {

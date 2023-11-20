@@ -1,0 +1,27 @@
+.step {
+  @extend .border, .fs-5, .rounded-circle;
+  height: 50px;
+  width: 50px;
+  background-color: white;
+  
+  &.inactive {
+    background-color: $gray-300;
+    border-color: $gray-300;
+  }
+
+}
+
+.line {
+  position: relative;
+  
+  &::before {
+    display: block;
+    content: "";
+    width: 99%;
+    z-index: -1;
+    border-bottom: $gray-300 1px solid;
+    position: absolute;
+    margin: 0;
+    top: 30%;
+  }
+}

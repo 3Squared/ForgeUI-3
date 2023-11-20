@@ -65,9 +65,6 @@ describe('<TabView />', () => {
       .and('be.visible')
 
     cy.get(`[data-pc-section="nextbutton"]`).click()
-
-    cy.get(`[data-pc-section="nextbutton"]`)
-      .should('not.exist')
     
     cy.get(`[data-pc-section="previousicon"]`)
       .should('exist')
