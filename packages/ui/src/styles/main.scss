@@ -1,12 +1,14 @@
 @import 'utilities/_variables';
 @import 'utilities/_utilities';
 
+@import 'components/_alert';
 @import 'components/_badge';
 @import 'components/_button';
-@import 'components/_dropdown';
-@import 'components/_stat-widget';
-@import 'components/_loader';
-@import 'components/_dialog';
 @import 'components/_datepicker';
+@import 'components/_dialog';
+@import 'components/_dropdown';
+@import 'components/_loader';
+@import 'components/_stat-widget';
+@import 'components/_stepper';
 
 @import 'bootstrap/scss/bootstrap';

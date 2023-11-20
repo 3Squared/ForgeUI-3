@@ -13,7 +13,7 @@ function mountMessage(props : MessageProps, content : string) {
 describe('<ForgeAlert />', () => {
   it("Mounts", () => {
     // Arrange
-    const content = "I am a message"
+    const content = "I am a alert"
     const severity = 'primary'
     
     // Act
@@ -27,7 +27,7 @@ describe('<ForgeAlert />', () => {
   
   it('Closes alert on click of the close icon', () => {
     // Arrange
-    const content = "I am a message"
+    const content = "I am a alert"
 
     // Act
     mountMessage({ closable: true }, content)
@@ -42,7 +42,7 @@ describe('<ForgeAlert />', () => {
   it('Shows icon and be in the colour of the specified severity', () => {
     // Arrange
     const iconUrl = "https://api.iconify.design/*"
-    const content = "I am a message"
+    const content = "I am a alert"
     const severity = "danger"
     const icon = "bi:emoji-smile-fill"
     
@@ -60,7 +60,7 @@ describe('<ForgeAlert />', () => {
   
   it('Should disappear after the time limit when sticky is false', () => {
     // Arrange
-    const content = "I am a message"
+    const content = "I am a alert"
     const lifetime = 1000
 
     // Act

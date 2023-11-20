@@ -23,7 +23,20 @@ export default defineConfig(({mode}) => ({
   optimizeDeps: {
     include: [
       'primevue/inputtext',
+      'primevue/card',
       'primevue/badge',
+      'primevue/dropdown',
+      'primevue/inputmask', 
+      'primevue/textarea', 
+      'primevue/inputnumber',
+      'primevue/progressbar',
+      'primevue/selectbutton',
+      'primevue/divider', 
+      'primevue/steps',
+      'primevue/tabview', 
+      'primevue/tabpanel',
+      '@vee-validate/zod', 
+      'zod',
     ]
   },
   plugins: [
