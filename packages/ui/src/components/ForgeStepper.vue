@@ -30,8 +30,7 @@ import { DefaultPassThrough } from "primevue/ts-helpers";
 
 export interface ForgeStepperProps extends /* vue-ignore */ StepsProps {
   currentStep?: number,
-  severity?: Severity,
-  model: MenuItem[]
+  severity?: Severity
 }
 
 const emit = defineEmits(['update:currentStep'])
@@ -46,21 +45,21 @@ const localCurrentStep = ref<number>(props.currentStep)
 const previousStep = () => {
   do {
     localCurrentStep.value--
-  } while (props.model[localCurrentStep.value].disabled)
+  } while (props.model![localCurrentStep.value].disabled)
   emit('update:currentStep', localCurrentStep.value)
 }
 
 const nextStep = () => {
-  if (localCurrentStep.value < props.model.length - 1){
+  if (localCurrentStep.value < props.model!.length - 1){
     do {
       localCurrentStep.value++
-    } while (props.model[localCurrentStep.value].disabled)
+    } while (props.model![localCurrentStep.value].disabled)
   }
   emit('update:currentStep', localCurrentStep.value)
 }
 
 const isBackButtonDisabled = computed(() => {
-  const index = props.model.findIndex((x) => !x.disabled)
+  const index = props.model!.findIndex((x) => !x.disabled)
   return !(index < localCurrentStep.value && index > -1)
 })
 
