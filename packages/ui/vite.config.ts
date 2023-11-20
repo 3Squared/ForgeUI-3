@@ -35,7 +35,8 @@ export default defineConfig(({mode}) => ({
       'primevue/steps',
       'primevue/tabview', 
       'primevue/tabpanel',
-      '@vee-validate/zod', 
+      '@vee-validate/zod',
+      '@vueuse/components',
       'zod',
     ]
   },
