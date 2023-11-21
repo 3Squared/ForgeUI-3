@@ -11,8 +11,10 @@
 
 <script setup lang="ts">
 
+export type Position = 'top' | 'bottom' | 'left' | 'right' | undefined
+
 export interface TooltipWrapperProps {
-  position: 'top' | 'bottom' | 'left' | 'right' | undefined,
+  position: Position,
   id: string
 }
 

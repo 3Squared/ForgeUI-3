@@ -1,5 +1,5 @@
 // @ts-ignore
-import TooltipWrapper, {TooltipWrapperProps} from "./TooltipWrapper.vue";
+import TooltipWrapper, { Position, TooltipWrapperProps } from "./TooltipWrapper.vue";
 
 const inputId = "input"
 const tooltipId = '[data-pc-name="tooltip"]'
@@ -50,7 +50,7 @@ describe("<Tooltip />", () => {
       const expectedClass = getPositionClass(position)
       
       // Act
-      mountTooltip({ position: position })
+      mountTooltip({ position: position as Position })
       cy.get(`#${inputId}`).focus()
 
       // Assert
