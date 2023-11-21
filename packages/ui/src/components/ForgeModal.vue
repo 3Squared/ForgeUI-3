@@ -83,7 +83,6 @@ const success = async () => {
     error.value.hasError = false;
 
     try {
-      console.log("Running")
       const result = await props.onConfirm();
       if (result || result == undefined) {
         closeModal()

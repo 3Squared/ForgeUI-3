@@ -224,6 +224,9 @@ export default {
     wrapper: () => ({
       class: ['d-flex']
     }),
+    icon: () => ({
+      class: ['alert-icon my-auto me-2 pe-1']
+    }),
     closeButton: () => ({
       class: ['ms-auto btn d-flex']
     })
@@ -364,7 +367,7 @@ export default {
   },
   directives: {
     tooltip: {
-      root: ({ context } : TooltipPassThroughMethodOptions) => ({
+      root: ({ context }: TooltipPassThroughMethodOptions) => ({
         class: [
           'tooltip show position-absolute',
           {
@@ -384,6 +387,23 @@ export default {
         class: ['tooltip-inner']
       }
     }
+  },
+  progressbar: {
+    root: () => ({
+      class: ['progress']
+    }),
+    value: () => ({
+      class: ['progress-bar']
+    }),
+    label: () => ({
+      class: ['text-white']
+    })
+  },
+  steps: {
+    root: "w-100 mx-2 line",
+    menu: 'p-0 m-0 list-unstyled d-flex justify-content-between ',
+  },
+  divider: {
+    root: 'border-bottom m-4 w-100'
   }
-
 } as PrimeVuePTOptions

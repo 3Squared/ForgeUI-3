@@ -5,10 +5,10 @@
 </template>
 
 <script setup lang="ts">
-import { Variant } from "../types/forge-types";
+import { Severity } from "../types/forge-types";
 
 export interface ForgeLoaderProps {
-  variant? : Variant
+  variant? : Severity
 }
 
 const props = withDefaults(defineProps<ForgeLoaderProps>(), {

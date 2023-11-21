@@ -1,7 +1,7 @@
 import { ForgeLoader } from "../../../index";
 // @ts-ignore
 import { ForgeLoaderProps } from "../../../src/components/ForgeLoader.vue";
-import { Variant } from "../../../src/types/forge-types";
+import { Severity } from "../../../src/types/forge-types";
 
 const id = "spinner"
 function mountSpinner(props : ForgeLoaderProps) {
@@ -39,7 +39,7 @@ describe('<ForgeLoader />', () => {
         const expectedLoaderClass = variant === undefined ? 'text-primary' : `text-${variant}`
 
         // Act
-        mountSpinner({ variant: variant as Variant })
+        mountSpinner({ variant: variant as Severity })
 
         // Assert
         cy.get('[data-pc-name="progressspinner"]')
