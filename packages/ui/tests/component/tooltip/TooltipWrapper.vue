@@ -15,7 +15,7 @@ export type Position = 'top' | 'bottom' | 'left' | 'right' | undefined
 
 export interface TooltipWrapperProps {
   position: Position,
-  id: string
+  id?: string
 }
 
 const props = defineProps<TooltipWrapperProps>();

@@ -15,7 +15,7 @@ function mountTooltip(props : TooltipWrapperProps){
 describe("<Tooltip />", () => {
   it("Mounts", () => {
     // Act
-    mountTooltip({ position: 'right', })
+    mountTooltip({ position: 'right' as Position })
     cy.get(`#${inputId}`).focus()
 
     // Assert
