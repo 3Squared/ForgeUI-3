@@ -389,6 +389,7 @@ export default {
       }
     }
   },
+  // More PassThrough options in component file.
   progressbar: {
     root: () => ({
       class: ['progress']
@@ -448,5 +449,10 @@ export default {
   },
   divider: {
     root: 'border-bottom m-4 w-100'
+  },
+  // More PassThrough options in component file.
+  chips: {
+    root: "d-flex",
+    label: "pe-2"
   }
 } as PrimeVuePTOptions
