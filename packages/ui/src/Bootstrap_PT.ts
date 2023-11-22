@@ -9,6 +9,7 @@ import { SelectButtonPassThroughMethodOptions } from "primevue/selectbutton";
 import { DialogPassThroughMethodOptions } from "primevue/dialog";
 import { TabPanelPassThroughMethodOptions } from "primevue/tabpanel";
 import { CalendarPassThroughMethodOptions } from "primevue/calendar";
+import { MenubarPassThroughMethodOptions, MenubarProps } from "primevue/menubar";
 
 export default {
   button: {
@@ -430,5 +431,46 @@ export default {
   chips: {
     root: "d-flex",
     label: "pe-2"
+  },
+  // More PassThrough options in component file.
+  menubar: {
+    menu: (options : MenubarPassThroughMethodOptions) => {
+      
+      // Custom props object due to missing type support - https://github.com/primefaces/primevue/issues/4867
+      const props = options.props as MenubarProps & { mobileActive : boolean }
+      
+      return {
+        class: [
+          'navbar-nav navbar-collapse collapse me-auto mb-2 mb-lg-0',
+          {
+            'show': props.mobileActive
+          }
+        ]
+      }
+    },
+    menuitem: ({ context } : MenubarPassThroughMethodOptions) => ({
+        class: [
+          'nav-item',
+          {
+            'dropdown': context.item.items.length > 0,
+          }
+        ]
+    }),
+    action: ({ context }: MenubarPassThroughMethodOptions) => ({
+      class: [
+        {
+          'active': context.active,
+          'nav-link': context.level === 0,
+          'dropdown-item': context.level > 0,
+          'disabled': context.item.item.disabled,
+        }
+      ]
+    }),
+    submenu: {
+      class: 'dropdown-menu'
+    },
+    button: {
+      class: 'ms-auto me-3'
+    }
   }
 } as PrimeVuePTOptions
