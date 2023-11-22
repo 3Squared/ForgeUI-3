@@ -1,0 +1,63 @@
+@function getHoverColour($color) {
+  @if $color == danger {
+    @return #F9D9D5;
+  } @else if $color == warning {
+    @return #FFEFCF;
+  } @else if $color == success {
+    @return #C3E7D5;
+  } @else if $color == secondary {
+    @return #E5E5E5;
+  } @else {
+    @return #B9D5E7;
+  }
+}
+
+@each $color, $value in $base-colors {
+ .tile-#{$color} {
+   @if $color == secondary {
+     background-color: map-get($base-colors, "light") !important;
+     border-color: map-get($base-colors, "light") !important;
+   } @else {
+     background-color: map-get($subtle-colors, $color + "-subtle") !important;
+     border-color: map-get($subtle-colors, $color + "-subtle") !important;
+   }
+   
+   color: $black !important;
+   text-align: start !important;
+   border: none;
+ }
+
+  .btn.btn-#{$color}.tile-#{$color} {
+    &:hover {
+      background-color: getHoverColour($color) !important;
+    }
+  
+    &:active {
+      background-color: map-get($subtle-colors, $color + "-subtle") !important;
+    }
+  
+    &.tile-bar-left, &.tile-bar-top {
+      border-color: map-get($base-colors, $color) !important
+    }
+  
+    &:focus {
+      @if $color == secondary {
+        background-color: map-get($base-colors, "light") !important;
+      } @else {
+        background-color: map-get($subtle-colors, $color + "-subtle") !important;
+      }
+    }
+  }
+}
+
+.tile-bar-top {
+  @extend .rounded-top;
+  border: none !important;
+  border-top: 8px solid !important;
+}
+
+.tile-bar-left {
+  @extend .rounded-start;
+  border: none !important;
+  border-left: 8px solid !important;
+}
