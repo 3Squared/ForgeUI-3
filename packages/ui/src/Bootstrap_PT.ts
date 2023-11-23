@@ -9,7 +9,7 @@ import { SelectButtonPassThroughMethodOptions } from "primevue/selectbutton";
 import { DialogPassThroughMethodOptions } from "primevue/dialog";
 import { TabPanelPassThroughMethodOptions } from "primevue/tabpanel";
 import { CalendarPassThroughMethodOptions } from "primevue/calendar";
-import { MenubarPassThroughMethodOptions, MenubarProps } from "primevue/menubar";
+import { MenubarPassThroughMethodOptions } from "primevue/menubar";
 
 export default {
   button: {
@@ -434,41 +434,48 @@ export default {
   },
   // More PassThrough options in component file.
   menubar: {
-    menu: (options : MenubarPassThroughMethodOptions) => {
-      
-      // Custom props object due to missing type support - https://github.com/primefaces/primevue/issues/4867
-      const props = options.props as MenubarProps & { mobileActive : boolean }
-      
-      return {
-        class: [
-          'navbar-nav navbar-collapse collapse me-auto mb-2 mb-lg-0',
-          {
-            'show': props.mobileActive
-          }
-        ]
-      }
-    },
-    menuitem: ({ context } : MenubarPassThroughMethodOptions) => ({
-        class: [
-          'nav-item',
-          {
-            'dropdown': context.item.items.length > 0,
-          }
-        ]
+    menu: ({ instance } : MenubarPassThroughMethodOptions) => ({
+      class: [
+        'navbar-nav navbar-collapse collapse me-auto',
+        {
+          'show dropdown shadow-sm': instance.mobileActive
+        }
+      ]
     }),
-    action: ({ context }: MenubarPassThroughMethodOptions) => ({
+    menuitem: ({ context } : MenubarPassThroughMethodOptions) => ({
+      class: [
+        'nav-item',
+        {
+          'dropdown': context.item.items.length > 0,
+        }
+      ]
+    }),
+    action: ({ context, instance }: MenubarPassThroughMethodOptions) => ({
       class: [
         {
           'active': context.active,
           'nav-link': context.level === 0,
           'dropdown-item': context.level > 0,
           'disabled': context.item.item.disabled,
+          'px-3': instance.mobileActive
         }
       ]
     }),
-    submenu: {
-      class: 'dropdown-menu'
-    },
+    separator: ({ instance } : MenubarPassThroughMethodOptions) => ({
+      class: [
+        { 
+          'border-bottom w-100': instance.mobileActive || instance.level > 0
+        }
+      ] 
+    }),
+    submenu: ({ instance }) => ({
+      class: [
+        'dropdown-menu w-fit-content',
+        {
+          'position-absolute end-100': instance.level > 1
+        }  
+      ]
+    }),
     button: {
       class: 'ms-auto me-3'
     }

@@ -1,13 +1,17 @@
 <template>
-  <menubar v-bind="{...props, ...$attrs}" :pt="pt">
-    <template #start>
-      <a :href="logoUrl" class="navbar-brand ms-3">
+  <menubar v-bind="{...props, ...$attrs}" :pt="pt" data-cy="navbar">
+    <template #start >
+      <a :href="logoUrl" class="navbar-brand ms-3" data-cy="logo">
         <slot name="logo">
           Logo
         </slot>
       </a>
     </template>
 
+    <template #popupicon>
+      <Icon icon="bi:list" :class="props.severity === 'light' ? 'text-black' : 'text-white'" height="24" data-cy="burger-icon"/>
+    </template>
+    
     <template v-for="(_, slot) of $slots" #[slot]="scope">
       <slot :name="slot" v-bind="scope" />
     </template>
@@ -15,8 +19,8 @@
 </template>
 
 <script setup lang="ts">
-
-  import { MenubarPassThroughOptions, MenubarProps } from "primevue/menubar";
+  import { Icon } from "@iconify/vue";
+  import { MenubarPassThroughMethodOptions, MenubarPassThroughOptions, MenubarProps } from "primevue/menubar";
   import { ForgeNavbarPosition, Severity } from "../types/forge-types";
   import { computed } from "vue";
   import { PassThrough } from "primevue/ts-helpers";
@@ -31,9 +35,9 @@
     severity: "light",
     logoUrl: "#"
   })
-      
+  
   const pt = computed<PassThrough<MenubarPassThroughOptions>>(() => ({
-    root: {
+    root: ({ state }: MenubarPassThroughMethodOptions) => ({
       class: [
         'navbar container-fluid navbar-expand-lg',
         {
@@ -56,7 +60,7 @@
           "sticky-top": props.position === "sticky-top"
         }
       ]
-    }
+    })
   }))
   
 </script>
