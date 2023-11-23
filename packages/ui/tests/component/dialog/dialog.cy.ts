@@ -81,7 +81,7 @@ describe('<Dialog />', () => {
     mountDialog({ header: expectedTitle })
 
     // Assert
-    cy.get(`[data-pc-section="headertitle"]`)
+    cy.get(`[data-pc-section="title"]`)
       .and('have.text', expectedTitle)
   })
   
