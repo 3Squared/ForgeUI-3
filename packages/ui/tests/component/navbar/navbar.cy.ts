@@ -9,15 +9,11 @@ const submenuId = '[data-pc-section="submenu"]'
 const separatorId = '[data-pc-section="separator"]'
 const burgerIconId = '[data-cy="burger-icon"]'
 
-interface ForgeNavbarSlots {
-  logo: any
-}
-
-function mountNavbar(props : ForgeNavbarProps, slots? : ForgeNavbarSlots) {
+function mountNavbar(props : ForgeNavbarProps, logoContent : string = "") {
   cy.mount(ForgeNavbar, {
     props,
     slots: {
-      ...slots
+      logo: logoContent
     }
   })
 }
@@ -157,12 +153,9 @@ describe("<ForgeNavbar />", () => {
   it('Displays custom logo content when passed through the logo slot', () => {
     // Arrange
     const customLogoSlotContent = "Custom Logo!"
-    const slots = {
-      logo: customLogoSlotContent
-    } as ForgeNavbarSlots
     
     // Act
-    mountNavbar({ }, slots)
+    mountNavbar({ }, customLogoSlotContent)
     
     // Assert
     cy.get(logoCyId)

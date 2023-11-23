@@ -1,5 +1,5 @@
 <template>
-  <menubar v-bind="{...props, ...$attrs}" :pt="pt" data-cy="navbar">
+  <menubar v-bind="{...props, ...$attrs}" :pt="pt" data-cy="navbar" >
     <template #start >
       <a :href="logoUrl" class="navbar-brand ms-3" data-cy="logo">
         <slot name="logo">
@@ -9,10 +9,12 @@
     </template>
 
     <template #popupicon>
-      <Icon icon="bi:list" :class="props.severity === 'light' ? 'text-black' : 'text-white'" height="24" data-cy="burger-icon"/>
+      <slot name="popupicon">
+        <Icon icon="bi:list" :class="props.severity === 'light' ? 'text-black' : 'text-white'" height="24" data-cy="burger-icon" />
+      </slot>
     </template>
     
-    <template v-for="(_, slot) of $slots" #[slot]="scope">
+    <template v-for="(_, slot) of $slots as unknown as MenubarSlots" #[slot]="scope">
       <slot :name="slot" v-bind="scope" />
     </template>
   </menubar>
@@ -20,7 +22,7 @@
 
 <script setup lang="ts">
   import { Icon } from "@iconify/vue";
-  import { MenubarPassThroughMethodOptions, MenubarPassThroughOptions, MenubarProps } from "primevue/menubar";
+  import { MenubarPassThroughOptions, MenubarProps, MenubarSlots } from "primevue/menubar";
   import { ForgeNavbarPosition, Severity } from "../types/forge-types";
   import { computed } from "vue";
   import { PassThrough } from "primevue/ts-helpers";
@@ -37,7 +39,7 @@
   })
   
   const pt = computed<PassThrough<MenubarPassThroughOptions>>(() => ({
-    root: ({ state }: MenubarPassThroughMethodOptions) => ({
+    root: () => ({
       class: [
         'navbar container-fluid navbar-expand-lg',
         {
