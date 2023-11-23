@@ -34,6 +34,7 @@ export default defineConfig(({mode}) => ({
       'primevue/selectbutton',
       'primevue/divider', 
       'primevue/steps',
+      'primevue/menubar',
       'primevue/tabview', 
       'primevue/tabpanel',
       'primevue/calendar',
