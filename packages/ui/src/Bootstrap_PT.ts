@@ -454,5 +454,10 @@ export default {
   chips: {
     root: "d-flex",
     label: "pe-2"
+  },
+  overlaypanel: {
+    root: "card p-3 w-fit-content m-0",
+    content: "d-flex position-relative",
+    closeButton: 'position-absolute top-0 end-0 p-1'
   }
 } as PrimeVuePTOptions
