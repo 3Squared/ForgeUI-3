@@ -26,6 +26,8 @@ export default defineConfig(({mode}) => ({
       'primevue/card',
       'primevue/chips',
       'primevue/badge',
+      'primevue/usetoast',
+      'primevue/ts-helpers',
       'primevue/dropdown',
       'primevue/inputmask', 
       'primevue/textarea', 
