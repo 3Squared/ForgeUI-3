@@ -20,7 +20,7 @@ const props = defineProps<OverlayPanelWrapperProps>()
 
 const overlayPanel = ref()
 
-const toggle = (event) => {
+const toggle = (event : Event) => {
   overlayPanel.value.toggle(event)
 }
 

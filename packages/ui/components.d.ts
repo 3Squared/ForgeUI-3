@@ -28,7 +28,6 @@ declare module 'vue' {
     ForgeTile: typeof import('./src/components/ForgeTile.vue')['default']
     ForgeToast: typeof import('./src/components/ForgeToast.vue')['default']
     Message: typeof import('primevue/message')['default']
-    OverlayPanel: typeof import('primevue/overlaypanel')['default']
     ProgressSpinner: typeof import('primevue/progressspinner')['default']
   }
 }
