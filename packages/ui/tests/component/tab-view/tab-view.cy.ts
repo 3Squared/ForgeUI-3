@@ -46,7 +46,7 @@ describe('<TabView />', () => {
     cy.get(`#${secondTabHeaderId}`).should('have.class', expectedActiveClass)
   })
   
-  it.only("Displays arrows which allow the user to scroll between tabs when scrollable is true and tabs go into overflow", () => {
+  it("Displays arrows which allow the user to scroll between tabs when scrollable is true and tabs go into overflow", () => {
     // Arrange
     const tabs = Array.from({ length: 50 }, (_, i) => ({ title: `Tab ${i + 1}`, content: `Content for Tab ${i + 1}` }))
 
