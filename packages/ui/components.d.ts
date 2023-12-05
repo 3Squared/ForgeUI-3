@@ -27,7 +27,6 @@ declare module 'vue' {
     ForgeStepper: typeof import('./src/components/ForgeStepper.vue')['default']
     ForgeTile: typeof import('./src/components/ForgeTile.vue')['default']
     ForgeToast: typeof import('./src/components/ForgeToast.vue')['default']
-    InputText: typeof import('primevue/inputtext')['default']
     Message: typeof import('primevue/message')['default']
     ProgressSpinner: typeof import('primevue/progressspinner')['default']
   }
