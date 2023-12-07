@@ -16,7 +16,7 @@
     <template v-if="multiselectProps.multiple" #option="{option}" >
       <div :data-cy="option.label">
         <input
-            :checked="$attrs.modelValue.some(item => selectValue ? option[selectValue] === item[selectValue] : option.id === item.id && option.label === item.label)"
+            :checked="($attrs.modelValue as Array<any>).some(item => selectValue ? option[selectValue] === item[selectValue] : option.id === item.id && option.label === item.label)"
             name="selected"
             type="checkbox"
             class="multiselect__option--checkbox"
@@ -35,8 +35,6 @@ import { Severity } from "../types/forge-types";
 import { TypedSchema, useField } from "vee-validate";
 import { Icon } from "@iconify/vue";
 import { computed, ref, useAttrs, defineEmits } from "vue";
-import { isTemplateNode } from "@vue/compiler-core";
-import { boolean } from "zod";
 
 export interface ForgeMultiSelectProps {
   severity?: Severity,
