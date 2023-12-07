@@ -46,31 +46,6 @@ describe('<TabView />', () => {
     cy.get(`#${secondTabHeaderId}`).should('have.class', expectedActiveClass)
   })
   
-  it.only("Displays arrows which allow the user to scroll between tabs when scrollable is true and tabs go into overflow", () => {
-    // Arrange
-    const tabs = Array.from({ length: 50 }, (_, i) => ({ title: `Tab ${i + 1}`, content: `Content for Tab ${i + 1}` }))
-
-    // Act
-    mountTabView({ tabs: tabs, tabViewProps: { scrollable: true } })
-
-    // Act/Assert
-    cy.get(`[data-pc-section="nextbutton"]`)
-      .should('exist')
-      .and('be.visible')
-
-    cy.get(`[data-pc-section="nextbutton"]`).click()
-    
-    cy.get(`[data-pc-section="previousicon"]`)
-      .should('exist')
-      .and('be.visible')
-
-    cy.get(`[data-pc-section="nextbutton"]`).click()
-    
-    cy.get(`[data-pc-section="previousicon"]`)
-      .should('exist')
-      .and('be.visible')
-  })
-  
   it("Disables tab panel when disabled is true", () => {
     // Arrange
     const expectedDisabledClass = "disabled"

@@ -10,6 +10,7 @@ import { DialogPassThroughMethodOptions } from "primevue/dialog";
 import { TabPanelPassThroughMethodOptions } from "primevue/tabpanel";
 import { TooltipPassThroughMethodOptions } from "primevue/tooltip";
 import { CalendarPassThroughMethodOptions } from "primevue/calendar";
+import { MenubarPassThroughMethodOptions } from "primevue/menubar";
 
 export default {
   button: {
@@ -455,9 +456,58 @@ export default {
     root: "d-flex",
     label: "pe-2"
   },
+  // More PassThrough options in component file.
+  menubar: {
+    menu: ({ instance }: MenubarPassThroughMethodOptions) => ({
+      class: [
+        'navbar-nav navbar-collapse collapse me-auto',
+        {
+          'show dropdown shadow-sm': instance.mobileActive
+        }
+      ]
+    }),
+    menuitem: ({ context }: MenubarPassThroughMethodOptions) => ({
+      class: [
+        'nav-item',
+        {
+          'dropdown': context.item.items.length > 0,
+        }
+      ]
+    }),
+    action: ({ context, instance }: MenubarPassThroughMethodOptions) => ({
+      class: [
+        {
+          'active': context.active,
+          'nav-link': context.level === 0,
+          'dropdown-item': context.level > 0,
+          'disabled': context.item.item.disabled,
+          'px-3': instance.mobileActive
+        }
+      ]
+    }),
+    separator: ({ instance }: MenubarPassThroughMethodOptions) => ({
+      class: [
+        {
+          'border-bottom w-100': instance.mobileActive || instance.level > 0
+        }
+      ]
+    }),
+    submenu: ({ instance }) => ({
+      class: [
+        'dropdown-menu w-fit-content',
+        {
+          'position-absolute end-100': instance.level > 1
+        }
+      ]
+    }),
+    button: {
+      class: 'ms-auto me-3'
+    }
+  },
   overlaypanel: {
     root: "card p-3 w-fit-content m-0",
     content: "d-flex position-relative",
     closeButton: 'position-absolute top-0 end-0 p-1'
+
   }
 } as PrimeVuePTOptions
