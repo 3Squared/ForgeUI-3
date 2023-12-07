@@ -20,6 +20,7 @@
     "primevue": "^3.41.0",
     "vee-validate": "^4.11.8",
     "vue": "^3.3.4",
+    "vue-multiselect": "^3.0.0-beta.3",
     "zod": "^3.22.4"
   },
   "devDependencies": {

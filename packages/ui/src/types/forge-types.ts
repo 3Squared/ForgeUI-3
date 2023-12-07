@@ -2,4 +2,4 @@ export type Severity = 'primary' | 'secondary' | 'success' | 'warning' | 'danger
 export type Size = 'sm' | 'md' | 'lg' | undefined
 export type BarPosition = 'top' | 'left' | 'none'
 
-export type ForgeFormFieldTypes = "text" | "number" | "checkbox" | "textarea" | "mask" 
+export type ForgeFormFieldTypes = "text" | "number" | "checkbox" | "textarea" | "mask"
