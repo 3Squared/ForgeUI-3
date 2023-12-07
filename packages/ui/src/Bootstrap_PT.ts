@@ -458,7 +458,7 @@ export default {
   },
   // More PassThrough options in component file.
   menubar: {
-    menu: ({ instance } : MenubarPassThroughMethodOptions) => ({
+    menu: ({ instance }: MenubarPassThroughMethodOptions) => ({
       class: [
         'navbar-nav navbar-collapse collapse me-auto',
         {
@@ -466,7 +466,7 @@ export default {
         }
       ]
     }),
-    menuitem: ({ context } : MenubarPassThroughMethodOptions) => ({
+    menuitem: ({ context }: MenubarPassThroughMethodOptions) => ({
       class: [
         'nav-item',
         {
@@ -485,23 +485,29 @@ export default {
         }
       ]
     }),
-    separator: ({ instance } : MenubarPassThroughMethodOptions) => ({
+    separator: ({ instance }: MenubarPassThroughMethodOptions) => ({
       class: [
-        { 
+        {
           'border-bottom w-100': instance.mobileActive || instance.level > 0
         }
-      ] 
+      ]
     }),
     submenu: ({ instance }) => ({
       class: [
         'dropdown-menu w-fit-content',
         {
           'position-absolute end-100': instance.level > 1
-        }  
+        }
       ]
     }),
     button: {
       class: 'ms-auto me-3'
     }
+  },
+  overlaypanel: {
+    root: "card p-3 w-fit-content m-0",
+    content: "d-flex position-relative",
+    closeButton: 'position-absolute top-0 end-0 p-1'
+
   }
 } as PrimeVuePTOptions
