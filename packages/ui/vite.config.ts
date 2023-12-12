@@ -44,6 +44,7 @@ export default defineConfig(({mode}) => ({
       '@vee-validate/zod', 
       '@vueuse/components',
       'zod',
+      'vue-multiselect'
     ]
   },
   plugins: [
