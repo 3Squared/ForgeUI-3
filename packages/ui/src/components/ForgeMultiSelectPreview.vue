@@ -1,10 +1,10 @@
 <template>
   <div :class="orientation === 'column' ? 'row' : ''" data-cy="multiselect-preview">
     <div :class="orientation === 'row' ? 'col-12 mb-1' : 'col'" data-cy="multiselect-container">
-      <forge-multi-select @update:modelValue="(items) => update(items)" v-model="$attrs.modelValue" :limit-text="limitText" :options="props.options" >
+      <forge-multi-select @update:modelValue="(items : MultiSelectOption<unknown>[]) => update(items)" v-model="$attrs.modelValue" :limit-text="limitText" :options="props.options" >
         <template #tag>{{ "" }}</template>
         <template #selection>
-          <span v-if="$attrs.modelValue.length > 0" class="pl-1">{{ $attrs.modelValue.length }} items selected</span>
+          <span v-if="($attrs.modelValue as MultiSelectOption<any>[]).length > 0" class="pl-1">{{ numberOfItemsSelected }} items selected</span>
         </template>
         <slot v-for="(_, name) in $slots" :slot="name" :name="name" />
       </forge-multi-select>
@@ -15,7 +15,7 @@
       <div :style="{ height: height }" class="overflow-auto">
         <div class="border alternating-item-list">
           <div v-if="title" class="p-2 border-top border-bottom" data-cy="title">{{ title }}</div>
-          <div v-for="item in $attrs.modelValue as MultiSelectOption<any>[]" :key="item.id"
+          <div v-for="item in ($attrs.modelValue as MultiSelectOption<any>[])" :key="item.id"
                class="p-2 item d-flex justify-content-between align-items-center">
             <!-- @slot Use this slot if the default labels is not enough, maybe for a b-link to redirect the user to the item -->
             <slot name="list-item" :item="item">
@@ -25,7 +25,7 @@
               <Icon icon="bi:x" class="close-icon" :data-cy="`close-icon-${item.id}`"/>
             </Button>
           </div>
-          <div v-if="$attrs.modelValue.length === 0" class="p-2 item d-flex justify-content-between align-items-center">No Items Selected.</div>
+          <div v-if="($attrs.modelValue as MultiSelectOption<any>[]).length === 0" class="p-2 item d-flex justify-content-between align-items-center">No Items Selected.</div>
         </div>
       </div>
     </div>
@@ -40,8 +40,8 @@ import ForgeMultiSelect from "@/components/ForgeMultiSelect.vue";
 
 export interface ForgeMultiSelectPreviewProps {
   title?: string,
-  orientation: ForgeMultiSelectOrientation,
-  height: string,
+  orientation?: ForgeMultiSelectOrientation,
+  height?: string,
   options: MultiSelectOption<unknown>[],
   canRemoveItemFromPreview?: boolean
 }
@@ -56,6 +56,8 @@ const attrs = useAttrs();
 const emits = defineEmits(['update:modelValue'])
 
 const limitText = computed((count : number) => `${count} selected`);
+
+const numberOfItemsSelected = computed(() => (attrs.modelValue as MultiSelectOption<unknown>[]).length)
 
 const update = (items : MultiSelectOption<unknown>[]) => {
   emits('update:modelValue', items)

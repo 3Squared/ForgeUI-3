@@ -1,9 +1,8 @@
 // @ts-ignore
-import { ForgeMultiSelectPreviewProps } from "../../../src/components/ForgeMultiSelectPreview.vue";
-import MultiselectPreviewWrapper from "./multiselectPreviewWrapper.vue";
+import MultiselectPreviewWrapper, { MultiselectPreviewWrapperProps } from "./multiselectPreviewWrapper.vue";
 import { MultiSelectOption } from "../../../src/types/forge-types";
 
-function mountMultiselectPreview(props : ForgeMultiSelectPreviewProps) {
+function mountMultiselectPreview(props : MultiselectPreviewWrapperProps) {
   cy.mount(MultiselectPreviewWrapper, {
     props
   })
@@ -13,7 +12,7 @@ const options = [
   { label: "Option 1", id: "1" },
   { label: "Option 2", id: "2" },
   { label: "Option 3", id: "3" }
-]
+] as MultiSelectOption<any>[]
 
 const multiselectPreviewId = '[data-cy="multiselect-preview"]'
 const optionsPreviewId = '[data-cy="options-preview"]'
@@ -27,7 +26,7 @@ describe('<ForgeMultiSelectPreview />', () => {
     // Arrange
     const selectedOptions = [
       { label: "Option 1", id: "1"}
-    ]
+    ] as MultiSelectOption<any>[]
     
     // Act
     mountMultiselectPreview({options: options, selectedOptions: selectedOptions})
@@ -59,7 +58,7 @@ describe('<ForgeMultiSelectPreview />', () => {
     const title = "I am a title"
     const selectedOptions = [
       { label: "Option 1", id: "1" }
-    ]
+    ] as MultiSelectOption<any>[]
     
     // Act
     mountMultiselectPreview({ options: options, selectedOptions: selectedOptions, title: title })
@@ -75,8 +74,8 @@ describe('<ForgeMultiSelectPreview />', () => {
     const expectedClass = "row"
     const selectedOptions = [
       { label: "Option 1", id: "1" }
-    ]
-
+    ] as MultiSelectOption<any>[]
+ 
     // Act
     mountMultiselectPreview({ options: options, selectedOptions: selectedOptions, orientation: orientation })
 
@@ -91,7 +90,7 @@ describe('<ForgeMultiSelectPreview />', () => {
     const expectedClass = "col-12"
     const selectedOptions = [
       { label: "Option 1", id: "1" }
-    ]
+    ] as MultiSelectOption<any>[]
 
     // Act
     mountMultiselectPreview({ options: options, selectedOptions: selectedOptions, orientation: orientation })
@@ -104,13 +103,13 @@ describe('<ForgeMultiSelectPreview />', () => {
       .should('have.class', expectedClass)
   });
 
-  it.only('Removes item when remove icon is clicked', () => {
+  it('Removes item when remove icon is clicked', () => {
     // Arrange
     const canRemoveItemFromPreview = true
-    const option = { label: "Option 1", id: "1" }
+    const option = { label: "Option 1", id: "1" } as MultiSelectOption<any>
     const selectedOptions = [
       option
-    ]
+    ] as MultiSelectOption<any>[]
     const closeIcon = `[data-cy="close-icon-${option.id}"]`
 
     // Act
