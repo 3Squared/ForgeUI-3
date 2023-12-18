@@ -11,6 +11,7 @@ import ForgeNavbar from "./src/components/ForgeNavbar.vue";
 import ForgeMultiSelect from "./src/components/ForgeMultiSelect.vue";
 import ForgePageHeader from "./src/components/ForgePageHeader.vue";
 import ForgeDatepicker from "./src/components/ForgeDatepicker.vue";
+import ForgeRemainingCharacters from "./src/components/ForgeRemainingCharacters.vue";
 
 export {
   Bootstrap_PT,
@@ -22,7 +23,8 @@ export {
   ForgeNavbar,
   ForgeMultiSelect,
   ForgePageHeader,
-  ForgeDatepicker
+  ForgeDatepicker,
+  ForgeRemainingCharacters
 }
 
 export * from './src/types/forge-types'

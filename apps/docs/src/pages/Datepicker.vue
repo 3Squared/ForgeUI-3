@@ -38,7 +38,7 @@ const { options, propVals, config, reset } = usePlayground({
       severity: { type: "select", options: severities, required: false }
     })
 
-const value = ref<boolean>(false)
+const value = ref()
 
 const code = computed(() => {
   return `<ForgeDatepicker${propVals.value.length > 0 ? " " + propVals.value.join(" ") : ""} />`;

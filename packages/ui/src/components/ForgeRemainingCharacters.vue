@@ -10,7 +10,9 @@ export interface RemainingCharactersProps {
   currentCount: number
 }
 
-const props = defineProps<RemainingCharactersProps>()
+const props = withDefaults(defineProps<RemainingCharactersProps>(), {
+  maxCount: 300
+})
 
 const remainingCount = computed(() => props.maxCount - props.currentCount);
 </script>
