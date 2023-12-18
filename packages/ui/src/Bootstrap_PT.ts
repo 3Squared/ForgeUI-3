@@ -1,12 +1,8 @@
 import { PrimeVuePTOptions } from "primevue/config";
-import { ButtonPassThroughMethodOptions } from "primevue/button";
 import { CheckboxPassThroughMethodOptions } from "primevue/checkbox";
-import { DropdownPassThroughMethodOptions } from "primevue/dropdown";
 import { InputTextPassThroughMethodOptions } from "primevue/inputtext";
 import { MessagePassThroughMethodOptions } from "primevue/message";
-import { BadgePassThroughMethodOptions } from "primevue/badge";
 import { SelectButtonPassThroughMethodOptions } from "primevue/selectbutton";
-import { DialogPassThroughMethodOptions } from "primevue/dialog";
 import { TabPanelPassThroughMethodOptions } from "primevue/tabpanel";
 import { TooltipPassThroughMethodOptions } from "primevue/tooltip";
 import { CalendarPassThroughMethodOptions } from "primevue/calendar";
@@ -14,7 +10,7 @@ import { MenubarPassThroughMethodOptions } from "primevue/menubar";
 
 export default {
   button: {
-    root: ({ props }: ButtonPassThroughMethodOptions) => ({
+    root: ({ props }) => ({
       class: [
         'btn',
         // Primary
@@ -66,7 +62,7 @@ export default {
     loadingIcon: () => ({
       class: ['spinner-border spinner-border-sm border-0 me-2']
     }),
-    badge: ({ props } : ButtonPassThroughMethodOptions) => {
+    badge: ({ props }) => {
       return {
         class: [
           {
@@ -133,7 +129,7 @@ export default {
     }),
   },
   dropdown: {
-    root: (options: DropdownPassThroughMethodOptions) => ({
+    root: (options) => ({
         class: [
           {
             "rounded-0 rounded-top": options.state.overlayVisible,
@@ -145,7 +141,7 @@ export default {
     input: () => ({
       class: ['fs-6']
     }),
-    trigger: (options: DropdownPassThroughMethodOptions) => ({
+    trigger: (options) => ({
       class: {
         'ms-2': options.props.showClear,
         'ms-auto': !options.props.showClear || !options.props.modelValue
@@ -160,7 +156,7 @@ export default {
     list: () => ({
       class: ['border list-unstyled rounded-bottom']
     }),
-    item: (options : DropdownPassThroughMethodOptions) => ({
+    item: (options) => ({
       class: [
         'px-2 py-1 cursor-pointer item',
         {
@@ -234,7 +230,7 @@ export default {
     })
   },
   badge: {
-    root: ({ props }: BadgePassThroughMethodOptions) => {
+    root: ({ props }) => {
       return {
         class: [
           'badge',
@@ -320,14 +316,14 @@ export default {
     headerIcons: () => ({
       class: ['ms-auto']
     }),
-    maximizableButton: ({ props }: DialogPassThroughMethodOptions) => ({
+    maximizableButton: ({ props }) => ({
       class: [
         {
           "me-2": props.closable
         }
       ]
     }),
-    mask: ({ props } : DialogPassThroughMethodOptions) => ({
+    mask: ({ props }) => ({
       class: [{
           'modal-open': props.modal && props.visible
         }]

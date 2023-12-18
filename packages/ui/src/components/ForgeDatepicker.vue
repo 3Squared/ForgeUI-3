@@ -13,10 +13,8 @@
 
 <script setup lang="ts">
 import { Icon } from '@iconify/vue'
-import { CalendarPassThroughMethodOptions, CalendarPassThroughOptions, CalendarProps } from "primevue/calendar";
+import { CalendarPassThroughMethodOptions, CalendarProps } from "primevue/calendar";
 import { Severity } from "../types/forge-types";
-import { computed } from "vue";
-import { DefaultPassThrough } from "primevue/ts-helpers";
 
 export interface ForgeDatePickerProps extends /* vue-ignore */ Omit<CalendarProps, "aria-label" | "aria-labelledby"> {
   severity?: Severity
@@ -36,7 +34,7 @@ const props = withDefaults(defineProps<ForgeDatePickerProps>(), {
   appendTo: "body"
 })
 
-const pt = computed<DefaultPassThrough<CalendarPassThroughOptions>>(() => ({
+const pt = () => ({
   dayLabel: ({ context } : CalendarPassThroughMethodOptions) => ({
     class: [
       'btn rounded-circle w-100 py-2',
@@ -77,6 +75,6 @@ const pt = computed<DefaultPassThrough<CalendarPassThroughOptions>>(() => ({
       }
     ]
   }) 
-}))
+})
 
 </script>

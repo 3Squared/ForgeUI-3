@@ -1,30 +1,77 @@
-<script setup lang="ts">
-import HelloWorld from './components/HelloWorld.vue'
-</script>
-
 <template>
-  <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a>
-  </div>
-  <HelloWorld msg="Vite + Vue" />
+  <ForgeNavbar :model="pages" severity="dark">
+    <template #logo>
+      Forge.UI 3
+    </template>
+  </ForgeNavbar>
+  <main id="main-content" class="forge-layout">
+    <div class="container mt-5">
+      <router-view />
+    </div>
+  </main>
 </template>
 
-<style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
-}
-</style>
+<script setup lang="ts">
+import { RouterView, useRouter } from "vue-router/auto";
+import { ForgeNavbar } from "@3squared/forge-ui-3"
+
+const router = useRouter()
+
+const pages = [
+  {
+    label: "Getting Started"
+  },
+  { 
+    label: "Forms", 
+    items: [
+      { label: "Checkbox", command: () => router.push('/Checkbox') },
+      { label: "Date Picker", command: () => router.push('/Datepicker') },
+      { label: "File Uploader" },
+      { label: "Remaining Characters" },
+      { label: "Form" },
+      { label: "Form Field" },
+      { label: "Inline Editor" },
+      { label: "Input" },
+      { label: "Multiselect" },
+      { label: "Multiselect Preview" },
+      { label: "Select" },
+      { label: "Tags" },
+      { label: "Textarea" }
+    ]
+  },
+  {
+    label: "General",
+    items: [
+      { label: "Action Button" },
+      { label: "Alert" },
+      { label: "Button" },
+      { label: "Chart" },
+      { label: "Loader" },
+      { label: "Modal" },
+      { label: "Popover" },
+      { label: "Progress" },
+      { label: "Stat Widget" },
+      { label: "Toast" },
+      { label: "Tooltip" }
+    ]
+  },
+  {
+    label: "Layout",
+    items: [
+      { label: "Collapse" },
+      { label: "Page Header" },
+      { label: "Stepper" },
+      { label: "Tabs" }
+    ]
+  },
+  {
+    label: "Tables",
+    items: [
+      { label: "Filter Header" },
+      { label: "Table" }
+    ]
+  },
+  { label: "Icons" },
+  { label: "Colours" }
+]
+</script>

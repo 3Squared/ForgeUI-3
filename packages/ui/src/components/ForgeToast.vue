@@ -1,5 +1,5 @@
 <template>
-  <Toast>
+  <Toast >
     <template #message="{ message }">
       <Icon v-if="message.severity === 'success'" icon="bi:check-circle-fill" class="text-success" :height="35" />
       <Icon v-if="message.severity === 'error'" icon="bi:x-circle-fill" class="text-danger" :height="35" />
