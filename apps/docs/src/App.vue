@@ -28,7 +28,7 @@ const pages = [
       { label: "Date Picker", command: () => router.push('/Datepicker') },
       { label: "File Uploader" },
       { label: "Remaining Characters", command: () => router.push('/RemainingCharacters') },
-      { label: "Form" },
+      { label: "Form", command: () => router.push('/Form') },
       { label: "Form Field" },
       { label: "Inline Editor" },
       { label: "Input" },
