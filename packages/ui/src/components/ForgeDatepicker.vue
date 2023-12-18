@@ -15,6 +15,7 @@
 import { Icon } from '@iconify/vue'
 import { CalendarPassThroughMethodOptions, CalendarProps } from "primevue/calendar";
 import { Severity } from "../types/forge-types";
+import { computed } from "vue";
 
 export interface ForgeDatePickerProps extends /* vue-ignore */ Omit<CalendarProps, "aria-label" | "aria-labelledby"> {
   severity?: Severity
@@ -23,18 +24,18 @@ export interface ForgeDatePickerProps extends /* vue-ignore */ Omit<CalendarProp
 const props = withDefaults(defineProps<ForgeDatePickerProps>(), {
   severity: "primary",
   selectionMode: "single",
+  dateFormat: "dd/mm/yy",
   showOtherMonths: true,
   showIcon: true,
   numberOfMonths: 1,
   showButtonBar: true,
   view: "date",
-  showOnFocus: true, // Crucial prop for Calendar, overlay won't show without this.
   autoZIndex: true,
   baseZIndex: 0,
   appendTo: "body"
 })
 
-const pt = () => ({
+const pt = computed (() => ({
   dayLabel: ({ context } : CalendarPassThroughMethodOptions) => ({
     class: [
       'btn rounded-circle w-100 py-2',
@@ -75,6 +76,6 @@ const pt = () => ({
       }
     ]
   }) 
-})
+}))
 
 </script>

@@ -10,6 +10,7 @@ import ForgeToast from '@/components/ForgeToast.vue';
 import ForgeNavbar from "./src/components/ForgeNavbar.vue";
 import ForgeMultiSelect from "./src/components/ForgeMultiSelect.vue";
 import ForgePageHeader from "./src/components/ForgePageHeader.vue";
+import ForgeDatepicker from "./src/components/ForgeDatepicker.vue";
 
 export {
   Bootstrap_PT,
@@ -20,7 +21,8 @@ export {
   ForgeModal,
   ForgeNavbar,
   ForgeMultiSelect,
-  ForgePageHeader
+  ForgePageHeader,
+  ForgeDatepicker
 }
 
 export * from './src/types/forge-types'

@@ -1,3 +1,7 @@
-.item:hover {
-    background-color: $primary-light;
+.item {
+    background-color: white;
+    
+    &:hover {
+        background-color: $primary-light;   
+    }
 }

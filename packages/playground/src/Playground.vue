@@ -27,7 +27,7 @@
               <slot :name="key" v-bind="props.options">
                 <div v-if="isSelect(getConfig(key))">
                   <label>{{ key }}</label>
-                  <InputText v-model="props.options[key]" :options="getOptions(key)" class="mb-3"
+                  <Dropdown v-model="props.options[key]" :options="getOptions(key)" class="mb-3"
                                  :disabled="isDisabled(key)" />
                 </div>
                 <ForgeCheckbox v-else-if="typeof option === 'boolean'" :label="key" v-model="props.options[key]" binary class="mb-2" :disabled="isDisabled(key)" />
@@ -55,6 +55,7 @@
 import Card from 'primevue/card'
 import Button from 'primevue/button'
 import InputText from "primevue/inputtext";
+import Dropdown from 'primevue/dropdown'
 import { ForgeCheckbox } from '@3squared/forge-ui-3'
 import { PropDefs, SelectPropDef } from "./composables/useMapProp";
 import CodeBlock from "./components/CodeBlock.vue";

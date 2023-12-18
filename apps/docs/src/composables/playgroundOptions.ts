@@ -1,0 +1,1 @@
+export const severities = ['primary', 'secondary', 'warning', 'danger', 'success', 'info']
