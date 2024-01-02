@@ -13,6 +13,7 @@ import ForgePageHeader from "./src/components/ForgePageHeader.vue";
 import ForgeDatepicker from "./src/components/ForgeDatepicker.vue";
 import ForgeRemainingCharacters from "./src/components/ForgeRemainingCharacters.vue";
 import ForgeForm from "./src/components/ForgeForm.vue";
+import ForgeFormField from "./src/components/ForgeFormField.vue";
 
 export {
   Bootstrap_PT,
@@ -26,7 +27,8 @@ export {
   ForgePageHeader,
   ForgeDatepicker,
   ForgeRemainingCharacters,
-  ForgeForm
+  ForgeForm,
+  ForgeFormField
 }
 
 export * from './src/types/forge-types'

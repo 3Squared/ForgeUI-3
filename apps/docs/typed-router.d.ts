@@ -43,6 +43,7 @@ declare module 'vue-router/auto/routes' {
     '/Checkbox': RouteRecordInfo<'/Checkbox', '/Checkbox', Record<never, never>, Record<never, never>>,
     '/Datepicker': RouteRecordInfo<'/Datepicker', '/Datepicker', Record<never, never>, Record<never, never>>,
     '/Form': RouteRecordInfo<'/Form', '/Form', Record<never, never>, Record<never, never>>,
+    '/FormField': RouteRecordInfo<'/FormField', '/FormField', Record<never, never>, Record<never, never>>,
     '/RemainingCharacters': RouteRecordInfo<'/RemainingCharacters', '/RemainingCharacters', Record<never, never>, Record<never, never>>,
   }
 }

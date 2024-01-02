@@ -29,7 +29,7 @@ const pages = [
       { label: "File Uploader" },
       { label: "Remaining Characters", command: () => router.push('/RemainingCharacters') },
       { label: "Form", command: () => router.push('/Form') },
-      { label: "Form Field" },
+      { label: "Form Field", command: () => router.push('/FormField') },
       { label: "Inline Editor" },
       { label: "Input" },
       { label: "Multiselect" },

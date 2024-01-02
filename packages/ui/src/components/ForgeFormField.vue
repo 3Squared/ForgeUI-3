@@ -5,7 +5,7 @@
     <input-number :id="props.name" v-else-if="props.type === 'number'" :placeholder="props.placeholder" v-model="value" :input-class="{'is-invalid': hasErrors }" :class="{'is-invalid': hasErrors }" v-bind="$attrs" />
     <Textarea :id="props.name" v-else-if="props.type === 'textarea'" :placeholder="props.placeholder" v-model="value" :class="{'is-invalid': hasErrors }" v-bind="$attrs" />
     <InputMask :id="props.name" v-else-if="props.type === 'mask'" :placeholder="props.placeholder" v-model="value" :mask="props.mask" :class="{'is-invalid': hasErrors }" v-bind="$attrs"/>
-    <InputText :id="props.name" v-else-if="props.type === 'text'" placeholder="text" v-model="value" :class="{'is-invalid': hasErrors }" v-bind="$attrs" />
+    <InputText :id="props.name" v-else-if="props.type === 'text'" :placeholder="props.placeholder" v-model="value" :class="{'is-invalid': hasErrors }" v-bind="$attrs" />
     <small v-if="props.type !== 'checkbox'" v-show="hasErrors" data-cy="error" class="invalid-feedback">{{ errorMessage }}</small>
   </div>
 </template>

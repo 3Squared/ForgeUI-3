@@ -12,8 +12,7 @@
 
 <script setup lang="ts">
 import { ForgePageHeader, ForgeForm } from "@3squared/forge-ui-3";
-import InputText from 'primevue/inputtext'
-import { computed, ref, watch } from "vue";
+import { computed } from "vue";
 import { usePlayground, Playground } from "@3squared/forge-playground-3";
 
 const { options, propVals, config, reset } = usePlayground(

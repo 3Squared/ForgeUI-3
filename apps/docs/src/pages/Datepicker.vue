@@ -40,7 +40,5 @@ const { options, propVals, config, reset } = usePlayground({
 
 const value = ref()
 
-const code = computed(() => {
-  return `<ForgeDatepicker${propVals.value.length > 0 ? " " + propVals.value.join(" ") : ""} />`;
-});
+const code = computed(() => `<ForgeDatepicker${propVals.value.length > 0 ? " " + propVals.value.join(" ") : ""} />`);
 </script>
