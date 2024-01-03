@@ -32,20 +32,21 @@
     </div>
     <small v-show="hasErrors" data-cy="error" class="text-invalid">{{ errorMessage }}</small>
   </div>
-  <ForgeToast />
+<!--  TODO: Add toast back in when 'Fix Toasts' branch is merged. -->
+<!--  <ForgeToast />-->
 </template>
 
 <script setup lang="ts">
 import { Icon } from '@iconify/vue'
 import { computed, ref } from "vue";
 import { TypedSchema, useField } from "vee-validate";
-import { useToast } from "primevue/usetoast";
+//TODO: Add toast back in when 'Fix Toasts' branch is merged.
+//import { useToast } from "primevue/usetoast";
 import { vOnClickOutside } from '@vueuse/components'
 
 export interface ForgeInlineEditorProps {
   name?: string,
   rules?: TypedSchema,
-  value?: Object | string | number | Date,
   completeAction?: Function,
   params?: Array<any>,
   readonly?: boolean,
@@ -53,7 +54,6 @@ export interface ForgeInlineEditorProps {
 
 const props = withDefaults(defineProps<ForgeInlineEditorProps>(),{
   name: "",
-  value: "",
   params: Array,
   readonly: false
 })
@@ -68,7 +68,8 @@ const beginEdit = () => {
   input.value?.focus()
 }
 
-const toasts = useToast()
+//TODO: Add toast back in when 'Fix Toasts' branch is merged.
+// const toasts = useToast()
 
 
 const editFinished = async () => {
@@ -81,7 +82,8 @@ const editFinished = async () => {
       await props.completeAction.apply(this, props.params)
       editing.value = !editing.value
     } catch (completeActionError) {
-      toasts.add({ severity: "error", summary: typeof completeActionError === "string" ? completeActionError : `Failed to update: ${completeActionError}` })
+      //TODO: Add toast back in when 'Fix Toasts' branch is merged.
+      //toasts.add({ severity: "error", summary: typeof completeActionError === "string" ? completeActionError : `Failed to update: ${completeActionError}` })
     }
   } else {
     editing.value = !editing.value
@@ -97,8 +99,6 @@ const reset = () => {
 }
 
 const { errorMessage, errors, value } = useField(() => props.name, props.rules)
-
-value.value = props.value
 
 const hasErrors = computed(() => errors.value.length > 0)
 </script>

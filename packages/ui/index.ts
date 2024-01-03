@@ -7,6 +7,7 @@ import ForgeCheckbox from "@/components/ForgeCheckbox.vue";
 import ForgeLoader from "@/components/ForgeLoader.vue";
 import ForgeModal from "./src/components/ForgeModal.vue";
 import ForgeToast from '@/components/ForgeToast.vue';
+import ForgeInlineEditor from "./src/components/ForgeInlineEditor.vue";
 import ForgeNavbar from "./src/components/ForgeNavbar.vue";
 import ForgeMultiSelect from "./src/components/ForgeMultiSelect.vue";
 import ForgePageHeader from "./src/components/ForgePageHeader.vue";
@@ -28,7 +29,8 @@ export {
   ForgeDatepicker,
   ForgeRemainingCharacters,
   ForgeForm,
-  ForgeFormField
+  ForgeFormField,
+  ForgeInlineEditor
 }
 
 export * from './src/types/forge-types'

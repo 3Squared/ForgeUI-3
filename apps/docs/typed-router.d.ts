@@ -44,6 +44,7 @@ declare module 'vue-router/auto/routes' {
     '/forms/Datepicker': RouteRecordInfo<'/forms/Datepicker', '/forms/Datepicker', Record<never, never>, Record<never, never>>,
     '/forms/Form': RouteRecordInfo<'/forms/Form', '/forms/Form', Record<never, never>, Record<never, never>>,
     '/forms/FormField': RouteRecordInfo<'/forms/FormField', '/forms/FormField', Record<never, never>, Record<never, never>>,
+    '/forms/InlineEditor': RouteRecordInfo<'/forms/InlineEditor', '/forms/InlineEditor', Record<never, never>, Record<never, never>>,
     '/forms/RemainingCharacters': RouteRecordInfo<'/forms/RemainingCharacters', '/forms/RemainingCharacters', Record<never, never>, Record<never, never>>,
   }
 }
