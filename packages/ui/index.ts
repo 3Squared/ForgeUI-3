@@ -6,11 +6,9 @@ import ForgeAlert from "@/components/ForgeAlert.vue";
 import ForgeCheckbox from "@/components/ForgeCheckbox.vue";
 import ForgeLoader from "@/components/ForgeLoader.vue";
 import ForgeModal from "./src/components/ForgeModal.vue";
-import ForgeToast from '@/components/ForgeToast.vue';
 
 export {
   Bootstrap_PT,
-  ForgeToast,
   ForgeCheckbox,
   ForgeAlert,
   ForgeLoader,
