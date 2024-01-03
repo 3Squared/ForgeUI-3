@@ -1,5 +1,5 @@
 <template>
-  <ForgePageHeader title="Input Mask" />
+  <ForgePageHeader title="Input Text" />
   <p>
     Further documentation and examples can be found in the <a class="link" target="_blank"
                                                               href="https://primevue.org/inputtext/"><strong>PrimeVue

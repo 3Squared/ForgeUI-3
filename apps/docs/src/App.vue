@@ -43,7 +43,7 @@ const pages = [
       { label: "Input Number", command: () => router.push('/input/number') },
       { label: "Input Text", command: () => router.push('/input/text') },
       { label: "Inline Editor", command: () => router.push('/input/inlineeditor') },
-      { label: "Textarea", command: () => router.push('/input/textarea') }
+      { label: "Text Area", command: () => router.push('/input/textarea') }
     ]
   },
   {
