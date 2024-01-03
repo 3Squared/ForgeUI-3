@@ -30,13 +30,20 @@ const pages = [
       { label: "Remaining Characters", command: () => router.push('/forms/remainingcharacters') },
       { label: "Form", command: () => router.push('/forms/form') },
       { label: "Form Field", command: () => router.push('/forms/formfield') },
-      { label: "Inline Editor", command: () => router.push('/forms/inlineeditor') },
-      { label: "Input" },
       { label: "Multiselect" },
       { label: "Multiselect Preview" },
       { label: "Select" },
       { label: "Tags" },
-      { label: "Textarea" }
+    ]
+  },
+  {
+    label: "Input",
+    items: [
+      { label: "Input Mask", command: () => router.push('/input/mask') },
+      { label: "Input Number", command: () => router.push('/input/number') },
+      { label: "Input Text", command: () => router.push('/input/text') },
+      { label: "Inline Editor", command: () => router.push('/input/inlineeditor') },
+      { label: "Textarea", command: () => router.push('/input/textarea') }
     ]
   },
   {
