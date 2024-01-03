@@ -32,7 +32,7 @@
     </div>
     <small v-show="hasErrors" data-cy="error" class="text-invalid">{{ errorMessage }}</small>
   </div>
-  <ForgeToast />
+  <Toast />
 </template>
 
 <script setup lang="ts">
