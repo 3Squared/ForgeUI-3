@@ -40,6 +40,7 @@ export default defineConfig(({mode}) => ({
       'primevue/menubar',
       'primevue/tabview', 
       'primevue/tabpanel',
+      'primevue/toast',
       'primevue/calendar',
       '@vee-validate/zod', 
       '@vueuse/components',
