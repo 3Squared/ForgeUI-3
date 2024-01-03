@@ -33,7 +33,7 @@ import InputMask from 'primevue/inputmask'
 import Accordion from 'primevue/accordion'
 import AccordionTab from 'primevue/accordiontab'
 import { Playground, usePlayground } from "@3squared/forge-playground-3";
-import { computed, ref } from "vue";
+import { computed } from "vue";
 
 const { options, propVals, config, reset } = usePlayground({
       slotChar: '_',
