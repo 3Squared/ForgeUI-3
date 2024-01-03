@@ -48,6 +48,7 @@ declare module 'vue-router/auto/routes' {
     '/forms/RemainingCharacters': RouteRecordInfo<'/forms/RemainingCharacters', '/forms/RemainingCharacters', Record<never, never>, Record<never, never>>,
     '/input/Mask': RouteRecordInfo<'/input/Mask', '/input/Mask', Record<never, never>, Record<never, never>>,
     '/input/Number': RouteRecordInfo<'/input/Number', '/input/Number', Record<never, never>, Record<never, never>>,
+    '/input/Text': RouteRecordInfo<'/input/Text', '/input/Text', Record<never, never>, Record<never, never>>,
   }
 }
 

@@ -75,5 +75,5 @@ watch(
     (step) => (options.value.step = step)
 );
 
-const code = computed(() => `<InputMask${propVals.value.length > 0 ? " " + propVals.value.join(" ") : ""} />`)
+const code = computed(() => `<InputNumber${propVals.value.length > 0 ? " " + propVals.value.join(" ") : ""} />`)
 </script>
