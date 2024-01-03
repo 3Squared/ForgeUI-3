@@ -1,0 +1,9 @@
+.alternating-item-list {
+  & .item:nth-child(odd) {
+    background-color: $gray-200;
+  }
+
+  & .close-icon {
+    fill: $gray-700;
+  }
+}

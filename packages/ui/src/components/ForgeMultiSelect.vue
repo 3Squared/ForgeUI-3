@@ -1,5 +1,5 @@
 <template>
-  <VueMultiselect v-bind="multiselectProps" :class="[theme, hasErrors ? 'is-invalid' : '']" data-cy="multiselect" @update:model-value="select" v-model="value" >
+  <VueMultiselect v-bind="multiselectProps" :class="[theme, hasErrors ? 'is-invalid' : '']" data-cy="multiselect" @update:modelValue="select" v-model="value" >
     <template #caret="{ toggle }" v-if="shouldShowClearSelection">
       <Icon icon="bi:x" class="my-auto multiselect__clear-icon" @mousedown.prevent.stop="clearSelected()" data-cy="clear"/>
       <div class="multiselect__select" @mousedown.prevent.stop="toggle"></div>
