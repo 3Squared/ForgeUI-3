@@ -12,7 +12,7 @@
 import { Playground, usePlayground } from "@3squared/forge-playground-3";
 import { ForgeFormField, ForgePageHeader } from "@3squared/forge-ui-3";
 import { computed, ref } from "vue";
-import { formFieldTypes } from "../composables/playgroundOptions";
+import { formFieldTypes } from "../../composables/playgroundOptions";
 
 const value = ref<any>()
 const { options, propVals, config, reset } = usePlayground({

@@ -40,11 +40,11 @@ import type {
 declare module 'vue-router/auto/routes' {
   export interface RouteNamedMap {
     '/': RouteRecordInfo<'/', '/', Record<never, never>, Record<never, never>>,
-    '/Checkbox': RouteRecordInfo<'/Checkbox', '/Checkbox', Record<never, never>, Record<never, never>>,
-    '/Datepicker': RouteRecordInfo<'/Datepicker', '/Datepicker', Record<never, never>, Record<never, never>>,
-    '/Form': RouteRecordInfo<'/Form', '/Form', Record<never, never>, Record<never, never>>,
-    '/FormField': RouteRecordInfo<'/FormField', '/FormField', Record<never, never>, Record<never, never>>,
-    '/RemainingCharacters': RouteRecordInfo<'/RemainingCharacters', '/RemainingCharacters', Record<never, never>, Record<never, never>>,
+    '/forms/Checkbox': RouteRecordInfo<'/forms/Checkbox', '/forms/Checkbox', Record<never, never>, Record<never, never>>,
+    '/forms/Datepicker': RouteRecordInfo<'/forms/Datepicker', '/forms/Datepicker', Record<never, never>, Record<never, never>>,
+    '/forms/Form': RouteRecordInfo<'/forms/Form', '/forms/Form', Record<never, never>, Record<never, never>>,
+    '/forms/FormField': RouteRecordInfo<'/forms/FormField', '/forms/FormField', Record<never, never>, Record<never, never>>,
+    '/forms/RemainingCharacters': RouteRecordInfo<'/forms/RemainingCharacters', '/forms/RemainingCharacters', Record<never, never>, Record<never, never>>,
   }
 }
 

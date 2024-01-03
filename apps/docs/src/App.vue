@@ -24,12 +24,12 @@ const pages = [
   { 
     label: "Forms", 
     items: [
-      { label: "Checkbox", command: () => router.push('/Checkbox') },
-      { label: "Date Picker", command: () => router.push('/Datepicker') },
+      { label: "Checkbox", command: () => router.push('/forms/checkbox') },
+      { label: "Date Picker", command: () => router.push('/forms/datepicker') },
       { label: "File Uploader" },
-      { label: "Remaining Characters", command: () => router.push('/RemainingCharacters') },
-      { label: "Form", command: () => router.push('/Form') },
-      { label: "Form Field", command: () => router.push('/FormField') },
+      { label: "Remaining Characters", command: () => router.push('/forms/remainingcharacters') },
+      { label: "Form", command: () => router.push('/forms/form') },
+      { label: "Form Field", command: () => router.push('/forms/formfield') },
       { label: "Inline Editor" },
       { label: "Input" },
       { label: "Multiselect" },
