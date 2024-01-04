@@ -10,6 +10,7 @@ import ForgeToast from '@/components/ForgeToast.vue';
 import ForgeInlineEditor from "./src/components/ForgeInlineEditor.vue";
 import ForgeNavbar from "./src/components/ForgeNavbar.vue";
 import ForgeMultiSelect from "./src/components/ForgeMultiSelect.vue";
+import ForgeMultiSelectPreview from './src/components/ForgeMultiSelectPreview.vue'
 import ForgePageHeader from "./src/components/ForgePageHeader.vue";
 import ForgeDatepicker from "./src/components/ForgeDatepicker.vue";
 import ForgeRemainingCharacters from "./src/components/ForgeRemainingCharacters.vue";
@@ -25,6 +26,7 @@ export {
   ForgeModal,
   ForgeNavbar,
   ForgeMultiSelect,
+  ForgeMultiSelectPreview,
   ForgePageHeader,
   ForgeDatepicker,
   ForgeRemainingCharacters,

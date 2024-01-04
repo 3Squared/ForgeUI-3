@@ -30,8 +30,8 @@ const pages = [
       { label: "Remaining Characters", command: () => router.push('/forms/remainingcharacters') },
       { label: "Form", command: () => router.push('/forms/form') },
       { label: "Form Field", command: () => router.push('/forms/formfield') },
-      { label: "Multiselect", command: () => router.push('/forms/Multiselect') },
-      { label: "Multiselect Preview" },
+      { label: "Multiselect", command: () => router.push('/forms/multiselect') },
+      { label: "Multiselect Preview", command: () => router.push('/forms/multiselectpreview') },
       { label: "Select" },
       { label: "Tags" },
     ]
