@@ -139,7 +139,7 @@ export default {
           'd-flex cursor-pointer']
     }),
     input: () => ({
-      class: ['fs-6']
+      class: ['fs-6 border-0']
     }),
     trigger: (options) => ({
       class: {
