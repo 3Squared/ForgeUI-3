@@ -49,7 +49,7 @@ const pages = [
   {
     label: "General",
     items: [
-      { label: "Action Button" },
+      { label: "Action Button", command: () => router.push('/general/actionbutton') },
       { label: "Alert" },
       { label: "Button" },
       { label: "Chart" },

@@ -5,7 +5,7 @@
   </p>
   <Playground :options="options" :code="code" :config="config" @reset="reset">
     <template #component>
-      <component :is="ForgeCheckbox" v-bind="options" v-model="value"/>
+      <component :is="ForgeCheckbox" v-bind="options" v-model="value" />
     </template>
   </Playground>
 </template>

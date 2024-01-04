@@ -3,6 +3,7 @@ import '@/types/forge-types'
 import '@/styles/main.scss'
 
 import ForgeAlert from "@/components/ForgeAlert.vue";
+import ForgeActionButton from "./src/components/ForgeActionButton.vue";
 import ForgeCheckbox from "@/components/ForgeCheckbox.vue";
 import ForgeLoader from "@/components/ForgeLoader.vue";
 import ForgeModal from "./src/components/ForgeModal.vue";
@@ -20,21 +21,22 @@ import ForgeChips from "./src/components/ForgeChips.vue";
 
 export {
   Bootstrap_PT,
-  ForgeToast,
-  ForgeChips,
-  ForgeCheckbox,
+  ForgeActionButton,
   ForgeAlert,
-  ForgeLoader,
-  ForgeModal,
-  ForgeNavbar,
-  ForgeMultiSelect,
-  ForgeMultiSelectPreview,
-  ForgePageHeader,
+  ForgeCheckbox,
+  ForgeChips,
   ForgeDatepicker,
-  ForgeRemainingCharacters,
   ForgeForm,
   ForgeFormField,
-  ForgeInlineEditor
+  ForgeInlineEditor,
+  ForgeToast,
+  ForgeLoader,
+  ForgeModal,
+  ForgeMultiSelect,
+  ForgeMultiSelectPreview,
+  ForgeNavbar,
+  ForgePageHeader,
+  ForgeRemainingCharacters,
 }
 
 export * from './src/types/forge-types'

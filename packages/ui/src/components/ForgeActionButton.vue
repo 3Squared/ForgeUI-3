@@ -1,12 +1,14 @@
 <template>
-  <Button v-bind="{...props, ...$attrs}" :loading="loading" :disabled="loading || props.disabled" @click="performAction"  />
-  <ForgeToast />
+  <Button v-bind="{...props, ...$attrs}" :loading="isLoading" :disabled="isLoading" @click="performAction"/>
+  <!--  TODO: Add toast back in when 'Fix Toasts' branch is merged. -->
+  <!--  <ForgeToast />-->
 </template>
 
 <script setup lang="ts">
   import { ButtonProps } from "primevue/button";
-  import { ref } from "vue";
-  import { useToast } from "primevue/usetoast";
+  import { computed, ref } from "vue";
+  //TODO: Add toast back in when 'Fix Toasts' branch is merged.
+  //import { useToast } from "primevue/usetoast";
 
   const loading = ref<boolean>(false)
 
@@ -21,14 +23,18 @@
     params: Array
   })
   
-  const toasts = useToast()
+  //TODO: Add toast back in when 'Fix Toasts' branch is merged.
+  //const toasts = useToast()
+  
+  const isLoading = computed(() => loading.value)
   
   const performAction = async () => {
     loading.value = true
     try {
       await props.action.apply(this, props.params)
     } catch(e : any) {
-      toasts.add({ severity: "error", summary: typeof e === "string" ? e : props.errorMessage})
+      //TODO: Add toast back in when 'Fix Toasts' branch is merged.
+      //toasts.add({ severity: "error", summary: typeof e === "string" ? e : props.errorMessage})
     }
     loading.value = false
   }

@@ -49,6 +49,7 @@ declare module 'vue-router/auto/routes' {
     '/forms/Multiselect': RouteRecordInfo<'/forms/Multiselect', '/forms/Multiselect', Record<never, never>, Record<never, never>>,
     '/forms/MultiselectPreview': RouteRecordInfo<'/forms/MultiselectPreview', '/forms/MultiselectPreview', Record<never, never>, Record<never, never>>,
     '/forms/RemainingCharacters': RouteRecordInfo<'/forms/RemainingCharacters', '/forms/RemainingCharacters', Record<never, never>, Record<never, never>>,
+    '/general/ActionButton': RouteRecordInfo<'/general/ActionButton', '/general/ActionButton', Record<never, never>, Record<never, never>>,
     '/input/InlineEditor': RouteRecordInfo<'/input/InlineEditor', '/input/InlineEditor', Record<never, never>, Record<never, never>>,
     '/input/Mask': RouteRecordInfo<'/input/Mask', '/input/Mask', Record<never, never>, Record<never, never>>,
     '/input/Number': RouteRecordInfo<'/input/Number', '/input/Number', Record<never, never>, Record<never, never>>,
