@@ -16,10 +16,12 @@ import ForgeDatepicker from "./src/components/ForgeDatepicker.vue";
 import ForgeRemainingCharacters from "./src/components/ForgeRemainingCharacters.vue";
 import ForgeForm from "./src/components/ForgeForm.vue";
 import ForgeFormField from "./src/components/ForgeFormField.vue";
+import ForgeChips from "./src/components/ForgeChips.vue";
 
 export {
   Bootstrap_PT,
   ForgeToast,
+  ForgeChips,
   ForgeCheckbox,
   ForgeAlert,
   ForgeLoader,

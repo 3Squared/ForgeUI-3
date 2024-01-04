@@ -10,6 +10,7 @@ declare module 'vue' {
     Button: typeof import('primevue/button')['default']
     Calendar: typeof import('primevue/calendar')['default']
     Checkbox: typeof import('primevue/checkbox')['default']
+    Chips: typeof import('primevue/chips')['default']
     Dialog: typeof import('primevue/dialog')['default']
     ForgeActionButton: typeof import('./src/components/ForgeActionButton.vue')['default']
     ForgeAlert: typeof import('./src/components/ForgeAlert.vue')['default']

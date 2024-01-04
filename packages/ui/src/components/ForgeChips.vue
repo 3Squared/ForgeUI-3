@@ -1,7 +1,7 @@
 <template>
   <Chips v-bind="{...props, ...$attrs}" :pt="chipsPt" v-model:model-value="value">
-    <template #removetokenicon>
-      <Icon v-show="!props.disabled" icon="bi:x-lg" class="cursor-pointer"/>
+    <template #removetokenicon="{ removeCallback }">
+      <Icon v-show="!props.disabled" icon="bi:x" class="cursor-pointer" @click="removeCallback"/>
     </template>
   </Chips>
   <small v-show="hasErrors" data-cy="error" class="text-invalid">{{ errorMessage }}</small>

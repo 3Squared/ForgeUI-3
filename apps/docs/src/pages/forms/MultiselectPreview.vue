@@ -1,7 +1,6 @@
 <template>
   <div>
     <forge-page-header title="Multiselect Preview" />
-    <OPTIONS />
     <playground :options="options" :config="config" :code="code">
       <template #component>
         <component :is="ForgeMultiSelectPreview" v-bind="options" v-model="selectedItems" class="w-100" />

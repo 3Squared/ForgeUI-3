@@ -33,7 +33,7 @@ const pages = [
       { label: "Multiselect", command: () => router.push('/forms/multiselect') },
       { label: "Multiselect Preview", command: () => router.push('/forms/multiselectpreview') },
       { label: "Dropdown", command: () => router.push('/forms/dropdown') },
-      { label: "Tags" },
+      { label: "Chips", command: () => router.push('/forms/chips') },
     ]
   },
   {

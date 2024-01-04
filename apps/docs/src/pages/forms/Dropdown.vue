@@ -1,7 +1,11 @@
 <template>
   <div>
     <forge-page-header title="Dropdown" />
-    <OPTIONS />
+    <p>
+      Further documentation and examples can be found in the <a class="link" target="_blank"
+                                                                href="https://primevue.org/dropdown/"><strong>PrimeVue
+      documentation</strong></a>.
+    </p>
     <playground :options="options" :config="config" :code="code">
       <template #component>
         <component :is="Dropdown" v-bind="options" v-model="selectedItem" class="w-100" />
