@@ -8,7 +8,7 @@
           </div>
         </template>
       </Card>
-      <Card class="w-50 min-vh-60">
+      <Card class="w-50 vh-70 overflow-auto">
         <template #header>
           <div class="d-flex justify-content-between pb-2">
             <h1 class="h3">Options</h1>

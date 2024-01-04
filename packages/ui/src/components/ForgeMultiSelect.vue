@@ -1,5 +1,5 @@
 <template>
-  <VueMultiselect v-bind="multiselectProps" :class="[theme, hasErrors ? 'is-invalid' : '']" data-cy="multiselect" @update:model-value="select" v-model="value" >
+  <VueMultiselect v-bind="multiselectProps" :class="[theme, hasErrors ? 'is-invalid' : '']" data-cy="multiselect" @update:modelValue="select" v-model="value" >
     <template #caret="{ toggle }" v-if="shouldShowClearSelection">
       <Icon icon="bi:x" class="my-auto multiselect__clear-icon" @mousedown.prevent.stop="clearSelected()" data-cy="clear"/>
       <div class="multiselect__select" @mousedown.prevent.stop="toggle"></div>
@@ -97,7 +97,8 @@ const theme = computed<string>(() => `forge-multiselect-${props.severity}`)
 const optionHighlight = computed<string>(() => `multiselect-option ${selectAllHighlighted.value ? ' multiselect__option--highlight' : ''} ${isAllSelected.value ? ' multiselect__option--selected' : ''}`)
 
 const isAllSelected = computed<boolean>(() => {
-  if (!(multiselectProps.value.multiple || !props.showSelectAll || multiselectProps.value.async)) {
+  console.log(multiselectProps.value)
+  if (multiselectProps.value && !(multiselectProps.value.multiple || !props.showSelectAll || multiselectProps.value.async)) {
     return false;
   }
   return (attrs.modelValue as Array<any>).length === (attrs.options as Array<any>).length

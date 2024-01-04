@@ -5,7 +5,7 @@
     </template>
   </ForgeNavbar>
   <main id="main-content" class="forge-layout">
-    <div class="container mt-5">
+    <div class="container mt-4">
       <router-view />
     </div>
   </main>
@@ -30,7 +30,7 @@ const pages = [
       { label: "Remaining Characters", command: () => router.push('/forms/remainingcharacters') },
       { label: "Form", command: () => router.push('/forms/form') },
       { label: "Form Field", command: () => router.push('/forms/formfield') },
-      { label: "Multiselect" },
+      { label: "Multiselect", command: () => router.push('/forms/Multiselect') },
       { label: "Multiselect Preview" },
       { label: "Select" },
       { label: "Tags" },
