@@ -226,7 +226,7 @@ export default {
       class: ['alert-icon my-auto me-2 pe-1']
     }),
     closeButton: () => ({
-      class: ['ms-auto btn d-flex']
+      class: ['px-0 ms-2 btn d-flex']
     })
   },
   badge: {
