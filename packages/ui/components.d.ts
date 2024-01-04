@@ -7,10 +7,6 @@ export {}
 
 declare module 'vue' {
   export interface GlobalComponents {
-    Button: typeof import('primevue/button')['default']
-    Calendar: typeof import('primevue/calendar')['default']
-    Checkbox: typeof import('primevue/checkbox')['default']
-    Dialog: typeof import('primevue/dialog')['default']
     ForgeActionButton: typeof import('./src/components/ForgeActionButton.vue')['default']
     ForgeAlert: typeof import('./src/components/ForgeAlert.vue')['default']
     ForgeCheckbox: typeof import('./src/components/ForgeCheckbox.vue')['default']
@@ -22,6 +18,7 @@ declare module 'vue' {
     ForgeLoader: typeof import('./src/components/ForgeLoader.vue')['default']
     ForgeModal: typeof import('./src/components/ForgeModal.vue')['default']
     ForgeMultiSelect: typeof import('./src/components/ForgeMultiSelect.vue')['default']
+    ForgeMultiSelectPreview: typeof import('./src/components/ForgeMultiSelectPreview.vue')['default']
     ForgeNavbar: typeof import('./src/components/ForgeNavbar.vue')['default']
     ForgePageHeader: typeof import('./src/components/ForgePageHeader.vue')['default']
     ForgeProgressBar: typeof import('./src/components/ForgeProgressBar.vue')['default']
@@ -30,13 +27,7 @@ declare module 'vue' {
     ForgeStepper: typeof import('./src/components/ForgeStepper.vue')['default']
     ForgeTile: typeof import('./src/components/ForgeTile.vue')['default']
     ForgeToast: typeof import('./src/components/ForgeToast.vue')['default']
-    InputMask: typeof import('primevue/inputmask')['default']
-    InputText: typeof import('primevue/inputtext')['default']
-    Menubar: typeof import('primevue/menubar')['default']
-    Message: typeof import('primevue/message')['default']
-    ProgressSpinner: typeof import('primevue/progressspinner')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
-    Textarea: typeof import('primevue/textarea')['default']
   }
 }
