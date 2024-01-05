@@ -19,6 +19,7 @@ import ForgeForm from "./src/components/ForgeForm.vue";
 import ForgeFormField from "./src/components/ForgeFormField.vue";
 import ForgeChips from "./src/components/ForgeChips.vue";
 import ForgeProgressBar from "./src/components/ForgeProgressBar.vue";
+import ForgeStatWidget from "./src/components/ForgeStatWidget.vue";
 
 export {
   Bootstrap_PT,
@@ -38,7 +39,8 @@ export {
   ForgeNavbar,
   ForgePageHeader,
   ForgeRemainingCharacters,
-  ForgeProgressBar
+  ForgeProgressBar,
+  ForgeStatWidget
 }
 
 export * from './src/types/forge-types'

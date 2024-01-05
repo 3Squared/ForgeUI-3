@@ -57,7 +57,7 @@ const pages = [
       { label: "Modal", command: () => router.push('/general/modal') },
       { label: "Overlay Panel", command: () => router.push('/general/overlay') },
       { label: "Progress Bar", command: () => router.push('/general/progress') },
-      { label: "Stat Widget" },
+      { label: "Stat Widget", command: () => router.push('/general/statwidget') },
       { label: "Toast" },
       { label: "Tooltip" }
     ]
