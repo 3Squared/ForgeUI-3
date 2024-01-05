@@ -1,6 +1,6 @@
 <template>
   <div class="forge-loader">
-    <progress-spinner animation-duration=".75" :class="`text-${props.variant === undefined ? 'primary': props.variant }`"/>
+    <progress-spinner animation-duration=".75" :class="`text-${props.severity === undefined ? 'primary': props.severity }`"/>
   </div>
 </template>
 
@@ -8,10 +8,10 @@
 import { Severity } from "../types/forge-types";
 
 export interface ForgeLoaderProps {
-  variant? : Severity
+  severity? : Severity
 }
 
 const props = withDefaults(defineProps<ForgeLoaderProps>(), {
-  variant: 'primary'
+  severity: 'primary'
 })
 </script>

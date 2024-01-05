@@ -53,7 +53,7 @@ const pages = [
       { label: "Alert", command: () => router.push('/general/alert') },
       { label: "Button", command: () => router.push('/general/button') },
       { label: "Chart", command: () => router.push('/general/chart') },
-      { label: "Loader" },
+      { label: "Loader", command: () => router.push('/general/loader') },
       { label: "Modal" },
       { label: "Popover" },
       { label: "Progress" },
