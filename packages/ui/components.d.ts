@@ -29,8 +29,11 @@ declare module 'vue' {
     ForgeStatWidget: typeof import('./src/components/ForgeStatWidget.vue')['default']
     ForgeStepper: typeof import('./src/components/ForgeStepper.vue')['default']
     ForgeTile: typeof import('./src/components/ForgeTile.vue')['default']
-    ForgeToast: typeof import('./src/components/ForgeToast.vue')['default']
+    InputText: typeof import('primevue/inputtext')['default']
+    Menubar: typeof import('primevue/menubar')['default']
     Message: typeof import('primevue/message')['default']
     ProgressSpinner: typeof import('primevue/progressspinner')['default']
+    RouterLink: typeof import('vue-router')['RouterLink']
+    RouterView: typeof import('vue-router')['RouterView']
   }
 }

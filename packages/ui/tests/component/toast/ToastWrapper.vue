@@ -1,12 +1,12 @@
 <template>
   <div>
     <Button @click="showToast">Test Toast</Button>
-    <ForgeToast />
+    <Toast />
   </div>
 </template>
 
 <script setup lang="ts">
-import ForgeToast from '@/components/ForgeToast.vue';
+import Toast from 'primevue/toast'
 import { useToast } from 'primevue/usetoast'
 
 export interface ToastWrapperProps {

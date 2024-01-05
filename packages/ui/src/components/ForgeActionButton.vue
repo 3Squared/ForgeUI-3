@@ -1,10 +1,11 @@
 <template>
   <Button v-bind="{...props, ...$attrs}" :loading="loading" :disabled="loading || props.disabled" @click="performAction"  />
-  <ForgeToast />
+  <Toast />
 </template>
 
 <script setup lang="ts">
   import { ButtonProps } from "primevue/button";
+  import Toast from 'primevue/toast'
   import { ref } from "vue";
   import { useToast } from "primevue/usetoast";
 

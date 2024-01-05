@@ -32,12 +32,13 @@
     </div>
     <small v-show="hasErrors" data-cy="error" class="text-invalid">{{ errorMessage }}</small>
   </div>
-  <ForgeToast />
+  <Toast />
 </template>
 
 <script setup lang="ts">
 import { Icon } from '@iconify/vue'
 import { computed, ref } from "vue";
+import Toast from 'primevue/toast'
 import { TypedSchema, useField } from "vee-validate";
 import { useToast } from "primevue/usetoast";
 import { vOnClickOutside } from '@vueuse/components'

@@ -1,5 +1,6 @@
 // @ts-ignore
 import ToastWrapper, { ToastWrapperProps } from "./ToastWrapper.vue";
+
 describe("<Toast />", () => {
   function mountToast(props: ToastWrapperProps) {
     return cy.mount(ToastWrapper, {
@@ -20,9 +21,9 @@ describe("<Toast />", () => {
     cy.get('[data-pc-name="toast"]')
       .should("exist")
       .and("be.visible")
-      .and("have.text", " Hello World");
+      .and("have.text", "Hello World");
 
-    cy.get(".iconify")
+    cy.get('[data-pc-section="icon"]')
       .should("exist")
       .and("be.visible")
       .and("have.class", "text-success");
@@ -41,8 +42,9 @@ describe("<Toast />", () => {
     cy.get('[data-pc-name="toast"]')
       .should("exist")
       .and("be.visible")
-      .and("have.text", " Goodbye World");
-    cy.get(".iconify")
+      .and("have.text", "Goodbye World");
+
+    cy.get('[data-pc-section="icon"]')
       .should("exist")
       .and("be.visible")
       .and("have.class", "text-danger");
@@ -61,12 +63,14 @@ describe("<Toast />", () => {
     cy.get('[data-pc-name="toast"]')
       .should("exist")
       .and("be.visible")
-      .and("have.text", " Warning World");
-    cy.get(".iconify")
+      .and("have.text", "Warning World");
+    
+    cy.get('[data-pc-section="icon"]')
       .should("exist")
       .and("be.visible")
       .and("have.class", "text-warning");
   });
+  
   it("Shows an info toast", () => {
     // Act
     mountToast({
@@ -80,10 +84,11 @@ describe("<Toast />", () => {
     cy.get('[data-pc-name="toast"]')
       .should("exist")
       .and("be.visible")
-      .and("have.text", " Info World");
-    cy.get(".iconify")
+      .and("have.text", "Info World");
+    
+    cy.get('[data-pc-section="icon"]')
       .should("exist")
       .and("be.visible")
-      .and("have.class", "text-info");
+      .and("have.class", "text-primary");
   });
 });
