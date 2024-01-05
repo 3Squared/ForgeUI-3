@@ -501,9 +501,17 @@ export default {
     }
   },
   overlaypanel: {
-    root: "card p-3 w-fit-content m-0",
+    root: (options) => ({ 
+      class: [
+        "card w-fit-content m-0",
+        {
+          'p-4': options.props.showCloseIcon,
+          'p-3': !options.props.showCloseIcon
+        }
+      ]
+    }),
     content: "d-flex position-relative",
-    closeButton: 'position-absolute top-0 end-0 p-1'
-
+    closeButton: 'position-absolute top-0 end-0 p-1 btn btn-link text-black ms-2'
+    
   }
 } as PrimeVuePTOptions

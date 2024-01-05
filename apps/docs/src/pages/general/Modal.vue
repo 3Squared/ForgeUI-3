@@ -41,7 +41,7 @@ const { options, propVals, config, reset } = usePlayground({
   baseZIndex: { disabled: () : boolean => options.value.autoZIndex }
 })
 
-const code = computed(() => `<ForgeLoader${propVals.value.length > 0 ? " " + propVals.value.join(" ") : ""} />`)
+const code = computed(() => `<ForgeModal${propVals.value.length > 0 ? " " + propVals.value.join(" ") : ""} />`)
 
 const mainTsCode = `
   createApp(App)

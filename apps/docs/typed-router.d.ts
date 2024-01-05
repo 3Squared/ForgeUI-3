@@ -55,6 +55,7 @@ declare module 'vue-router/auto/routes' {
     '/general/Chart': RouteRecordInfo<'/general/Chart', '/general/Chart', Record<never, never>, Record<never, never>>,
     '/general/Loader': RouteRecordInfo<'/general/Loader', '/general/Loader', Record<never, never>, Record<never, never>>,
     '/general/Modal': RouteRecordInfo<'/general/Modal', '/general/Modal', Record<never, never>, Record<never, never>>,
+    '/general/Popover': RouteRecordInfo<'/general/Popover', '/general/Popover', Record<never, never>, Record<never, never>>,
     '/input/InlineEditor': RouteRecordInfo<'/input/InlineEditor', '/input/InlineEditor', Record<never, never>, Record<never, never>>,
     '/input/Mask': RouteRecordInfo<'/input/Mask', '/input/Mask', Record<never, never>, Record<never, never>>,
     '/input/Number': RouteRecordInfo<'/input/Number', '/input/Number', Record<never, never>, Record<never, never>>,
