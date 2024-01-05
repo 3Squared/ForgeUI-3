@@ -17,7 +17,7 @@ import { ForgePageHeader } from "@3squared/forge-ui-3";
 import InputText from 'primevue/inputtext'
 import { Playground, usePlayground } from "@3squared/forge-playground-3";
 import { computed, ref, watch } from "vue";
-import { inputTextSizes } from "../../composables/playgroundOptions";
+import { sizes } from "../../composables/playgroundOptions";
 
 const size = ref()
 
@@ -25,7 +25,7 @@ const { options, propVals, config, reset } = usePlayground({
       size: ''
     },
     {
-      size: { type: 'select', options: inputTextSizes }
+      size: { type: 'select', options: sizes }
     },
     () => {
       size.value = null

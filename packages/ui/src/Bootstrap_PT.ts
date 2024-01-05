@@ -27,25 +27,25 @@ export default {
         },
         // Success
         {
-          "btn-success": props.severity === "success" && !props.outlined && !props.link && !props.text,
+          "btn-success text-white": props.severity === "success" && !props.outlined && !props.link && !props.text,
           "btn-outline-success": props.severity === "success" && props.outlined,
           "text-success fw-bold btn-text-success": props.severity === "success" && props.text,
         },
         // Warning
         {
-          "btn-warning": props.severity === "warning" && !props.outlined && !props.link && !props.text,
+          "btn-warning text-white": props.severity === "warning" && !props.outlined && !props.link && !props.text,
           "btn-outline-warning": props.severity === "warning"  && props.outlined,
           "text-warning fw-bold btn-text-warning": props.severity === "warning" && props.text
         },
         // Danger
         {
-          "btn-danger": props.severity === "danger" && !props.outlined && !props.link && !props.text,
+          "btn-danger text-white": props.severity === "danger" && !props.outlined && !props.link && !props.text,
           "btn-outline-danger": props.severity === "danger" && props.outlined,
           "text-danger fw-bold btn-text-danger": props.severity === "danger" && props.text,
         },
         // Info
         {
-          "btn-info": props.severity === "info" && !props.outlined && !props.link && !props.text,
+          "btn-info text-white": props.severity === "info" && !props.outlined && !props.link && !props.text,
           "btn-outline-info": props.severity === "info" && props.outlined,
           "text-info fw-bold btn-text-info": props.severity === "info" && props.text
         },

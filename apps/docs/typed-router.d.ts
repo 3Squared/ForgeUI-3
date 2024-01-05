@@ -51,6 +51,7 @@ declare module 'vue-router/auto/routes' {
     '/forms/RemainingCharacters': RouteRecordInfo<'/forms/RemainingCharacters', '/forms/RemainingCharacters', Record<never, never>, Record<never, never>>,
     '/general/ActionButton': RouteRecordInfo<'/general/ActionButton', '/general/ActionButton', Record<never, never>, Record<never, never>>,
     '/general/Alert': RouteRecordInfo<'/general/Alert', '/general/Alert', Record<never, never>, Record<never, never>>,
+    '/general/Button': RouteRecordInfo<'/general/Button', '/general/Button', Record<never, never>, Record<never, never>>,
     '/input/InlineEditor': RouteRecordInfo<'/input/InlineEditor', '/input/InlineEditor', Record<never, never>, Record<never, never>>,
     '/input/Mask': RouteRecordInfo<'/input/Mask', '/input/Mask', Record<never, never>, Record<never, never>>,
     '/input/Number': RouteRecordInfo<'/input/Number', '/input/Number', Record<never, never>, Record<never, never>>,
