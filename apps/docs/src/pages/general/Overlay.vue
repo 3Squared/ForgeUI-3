@@ -1,5 +1,5 @@
 <template>
-  <ForgePageHeader title="Overlay" />
+  <ForgePageHeader title="Overlay Panel" />
   <Playground :options="options" :code="code" :config="config" @reset="reset">
     <template #component>
       <component :is="OverlayPanel" v-bind="options" ref="popover">
