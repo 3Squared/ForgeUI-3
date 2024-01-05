@@ -7,4 +7,4 @@ export const stringFilterTypes = ['contains', 'startsWith', 'notContains', 'ends
 export const numberFilterTypes = ['lt', 'lte', 'gt', 'gte']
 export const dateFilterTypes = ['dateIs', 'dateIsNot', 'dateBefore', 'dateAfter']
 
-export const filterTypes = [...stringFilterTypes, ...numberFilterTypes, ...dateFilterTypes]
+export const position = ['center', 'left', 'top', 'bottom', 'right', 'topleft', 'topright', 'bottomleft', 'bottomright']
