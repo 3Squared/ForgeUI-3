@@ -16,5 +16,5 @@ const { options, propVals, config, reset } = usePlayground({
   title: ''
 })
 
-const code = computed(() => `<ForgeLoader${propVals.value.length > 0 ? " " + propVals.value.join(" ") : ""} />`)
+const code = computed(() => `<ForgePageHeader${propVals.value.length > 0 ? " " + propVals.value.join(" ") : ""} />`)
 </script>

@@ -12,6 +12,7 @@ declare module 'vue' {
     Checkbox: typeof import('primevue/checkbox')['default']
     Chips: typeof import('primevue/chips')['default']
     Dialog: typeof import('primevue/dialog')['default']
+    Divider: typeof import('primevue/divider')['default']
     ForgeActionButton: typeof import('./src/components/ForgeActionButton.vue')['default']
     ForgeAlert: typeof import('./src/components/ForgeAlert.vue')['default']
     ForgeCheckbox: typeof import('./src/components/ForgeCheckbox.vue')['default']
@@ -39,6 +40,7 @@ declare module 'vue' {
     ProgressSpinner: typeof import('primevue/progressspinner')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    Steps: typeof import('primevue/steps')['default']
     Textarea: typeof import('primevue/textarea')['default']
   }
 }
