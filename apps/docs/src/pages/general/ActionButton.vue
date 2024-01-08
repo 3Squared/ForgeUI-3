@@ -23,10 +23,10 @@
 <script setup lang="ts">
 import { ForgePageHeader, ForgeActionButton, ForgeCheckbox } from "@3squared/forge-ui-3";
 import InputText from "primevue/inputtext";
-import Button from 'primevue/button'
 import { Playground, usePlayground } from "@3squared/forge-playground-3";
 import { computed, ref, watch } from "vue";
 import { severities } from "../../composables/playgroundOptions";
+import { useToast } from 'primevue/usetoast'
 
 const throwError = ref(false);
 const hideSpinner = ref(false);
@@ -34,6 +34,8 @@ const errorMessage = ref("This action failed");
 const content = ref("Action Button");
 
 const disabled = ref(false)
+
+const toast = useToast()
 
 const { options, propVals, config, reset } = usePlayground(
     {
@@ -44,8 +46,7 @@ const { options, propVals, config, reset } = usePlayground(
         if (throwError.value) {
           throw errorMessage.value;
         } else {
-          //TODO: Remove when Toast Fix has been implemented.
-          window.alert("Action completed successfully!");
+          toast.add({ severity: 'success', summary: "Action completed successfully!"})
         }
       },
       params: ["ArrayOfActionParams"],

@@ -35,7 +35,7 @@ const props = withDefaults(defineProps<ForgeDatePickerProps>(), {
   appendTo: "body"
 })
 
-const pt = computed (() => ({
+const pt = computed(() => ({
   dayLabel: ({ context } : CalendarPassThroughMethodOptions) => ({
     class: [
       'btn rounded-circle w-100 py-2',

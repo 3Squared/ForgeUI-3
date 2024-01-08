@@ -8,8 +8,8 @@
       </a>
     </template>
 
-    <template #popupicon>
-      <slot name="popupicon">
+    <template #menubuttonicon>
+      <slot name="menubuttonicon">
         <Icon icon="bi:list" :class="props.severity === 'light' ? 'text-black' : 'text-white'" height="24" data-cy="burger-icon" />
       </slot>
     </template>

@@ -116,16 +116,24 @@ export default {
       class: ['ms-auto']
     }),
     closeButton: () => ({
-      class: ['btn-close']
+      class: ['btn-close toast-close-icon']
     }),
     closeIcon: () => ({
       class: 'd-none'
     }),
     summary: () => ({
-      class: ['toast-body']
+      class: ['toast-body ps-1']
     }),
-    icon: () => ({
-      class: ['me-2']
+    icon: ({props}) => ({
+      class: [
+        'toast-icon',
+        {
+          'text-primary': props.message?.severity === 'info',
+          'text-success': props.message?.severity === 'success',
+          'text-danger': props.message?.severity === 'error',
+          'text-warning': props.message?.severity === 'warn',
+        }
+      ]
     }),
   },
   dropdown: {

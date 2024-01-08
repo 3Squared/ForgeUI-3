@@ -32,23 +32,21 @@
     </div>
     <small v-show="hasErrors" data-cy="error" class="text-invalid">{{ errorMessage }}</small>
   </div>
-<!--  TODO: Add toast back in when 'Fix Toasts' branch is merged. -->
-<!--  <ForgeToast />-->
 </template>
 
 <script setup lang="ts">
 import { Icon } from '@iconify/vue'
 import { computed, ref } from "vue";
 import { TypedSchema, useField } from "vee-validate";
-//TODO: Add toast back in when 'Fix Toasts' branch is merged.
-//import { useToast } from "primevue/usetoast";
 import { vOnClickOutside } from '@vueuse/components'
 
 export interface ForgeInlineEditorProps {
   name?: string,
   rules?: TypedSchema,
   completeAction?: Function,
+  errorAction?: Function,
   params?: Array<any>,
+  errorParams?: Array<any>,
   readonly?: boolean,
 }
 
@@ -68,10 +66,6 @@ const beginEdit = () => {
   input.value?.focus()
 }
 
-//TODO: Add toast back in when 'Fix Toasts' branch is merged.
-// const toasts = useToast()
-
-
 const editFinished = async () => {
   if(hasErrors.value) {
     return false
@@ -82,8 +76,9 @@ const editFinished = async () => {
       await props.completeAction.apply(this, props.params)
       editing.value = !editing.value
     } catch (completeActionError) {
-      //TODO: Add toast back in when 'Fix Toasts' branch is merged.
-      //toasts.add({ severity: "error", summary: typeof completeActionError === "string" ? completeActionError : `Failed to update: ${completeActionError}` })
+      if (props.errorAction) {
+        await props.errorAction.apply(this, props.errorParams)
+      }
     }
   } else {
     editing.value = !editing.value

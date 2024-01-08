@@ -26,7 +26,6 @@ declare module 'vue' {
     ForgeStatWidget: typeof import('./src/components/ForgeStatWidget.vue')['default']
     ForgeStepper: typeof import('./src/components/ForgeStepper.vue')['default']
     ForgeTile: typeof import('./src/components/ForgeTile.vue')['default']
-    ForgeToast: typeof import('./src/components/ForgeToast.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
   }

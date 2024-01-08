@@ -1,20 +1,19 @@
 <template>
-  <Button v-bind="{...props, ...$attrs}" :loading="isLoading" :disabled="isLoading" @click="performAction"/>
-  <!--  TODO: Add toast back in when 'Fix Toasts' branch is merged. -->
-  <!--  <ForgeToast />-->
+  <Button v-bind="{...props, ...$attrs}" :loading="loading" :disabled="loading || props.disabled" @click="performAction"  />
+  <Toast />
 </template>
 
 <script setup lang="ts">
   import { ButtonProps } from "primevue/button";
-  import { computed, ref } from "vue";
-  //TODO: Add toast back in when 'Fix Toasts' branch is merged.
-  //import { useToast } from "primevue/usetoast";
+  import Toast from 'primevue/toast'
+  import { ref } from "vue";
 
   const loading = ref<boolean>(false)
 
   export interface ForgeActionButtonProps extends /* @vue-ignore */ ButtonProps {
-    errorMessage?: string,
     action: Function,
+    errorAction: Function,
+    errorParams?: Array<any>,
     params?: Array<any>
   }
   
@@ -23,18 +22,12 @@
     params: Array
   })
   
-  //TODO: Add toast back in when 'Fix Toasts' branch is merged.
-  //const toasts = useToast()
-  
-  const isLoading = computed(() => loading.value)
-  
   const performAction = async () => {
     loading.value = true
     try {
       await props.action.apply(this, props.params)
     } catch(e : any) {
-      //TODO: Add toast back in when 'Fix Toasts' branch is merged.
-      //toasts.add({ severity: "error", summary: typeof e === "string" ? e : props.errorMessage})
+      await props.errorAction.apply(this, props.errorParams ? [...props.errorParams, e] : [e])
     }
     loading.value = false
   }
