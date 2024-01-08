@@ -18,11 +18,13 @@
       <ForgeCheckbox v-model="hideSpinner" label="Hide Spinner" class="mb-2" />
     </template>
   </Playground>
+  <Toast />
 </template>
 
 <script setup lang="ts">
 import { ForgePageHeader, ForgeActionButton, ForgeCheckbox } from "@3squared/forge-ui-3";
 import InputText from "primevue/inputtext";
+import Toast from 'primevue/toast'
 import { Playground, usePlayground } from "@3squared/forge-playground-3";
 import { computed, ref, watch } from "vue";
 import { severities } from "../../composables/playgroundOptions";
