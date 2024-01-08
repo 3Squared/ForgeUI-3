@@ -67,6 +67,7 @@ declare module 'vue-router/auto/routes' {
     '/input/TextArea': RouteRecordInfo<'/input/TextArea', '/input/TextArea', Record<never, never>, Record<never, never>>,
     '/layout/PageHeader': RouteRecordInfo<'/layout/PageHeader', '/layout/PageHeader', Record<never, never>, Record<never, never>>,
     '/layout/Stepper': RouteRecordInfo<'/layout/Stepper', '/layout/Stepper', Record<never, never>, Record<never, never>>,
+    '/layout/Tabs': RouteRecordInfo<'/layout/Tabs', '/layout/Tabs', Record<never, never>, Record<never, never>>,
   }
 }
 

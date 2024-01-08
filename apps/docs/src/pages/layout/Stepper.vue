@@ -17,7 +17,7 @@
 </template>
 
 <script setup lang="ts">
-import { ForgeStepper } from "@3squared/forge-ui-3";
+import { ForgeStepper, ForgePageHeader } from "@3squared/forge-ui-3";
 import { Playground, usePlayground, CodeBlock } from "@3squared/forge-playground-3";
 import { computed } from "vue";
 import { severities } from "../../composables/playgroundOptions";

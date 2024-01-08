@@ -360,13 +360,13 @@ export default {
       class: ['nav-item']
     }),
     headerAction: (options : TabPanelPassThroughMethodOptions & { tabpanel : Partial<TabPanelPassThroughMethodOptions>}) => ({
-      class: [
-        'nav-link cursor-pointer',
-        {
-          'active': options.tabpanel.context!.active,
-          'disabled': options.tabpanel.props!.disabled
-        }
-      ]
+        class: [
+          'nav-link cursor-pointer',
+          {
+            'active': options.tabpanel.context!.active,
+            'disabled': options.tabpanel.props?.disabled
+          }
+        ]
     }),
     content: () => ({
       class: ['p-2']
