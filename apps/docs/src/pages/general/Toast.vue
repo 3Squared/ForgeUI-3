@@ -1,5 +1,10 @@
 <template>
   <ForgePageHeader title="Toast" />
+  <p>
+    Further documentation and examples can be found in the <a class="link" target="_blank"
+                                                              href="https://primevue.org/toast/"><strong>PrimeVue
+    documentation</strong></a>.
+  </p>
   <Playground :options="options" :code="code" :config="config" @reset="reset">
     <template #component>
       <Button label="Show Toast!" @click="showToast"/>

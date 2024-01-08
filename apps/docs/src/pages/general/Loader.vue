@@ -1,5 +1,10 @@
 <template>
   <ForgePageHeader title="Loader" />
+  <p>
+    Further documentation and examples can be found in the <a class="link" target="_blank"
+                                                              href="https://primevue.org/button/"><strong>PrimeVue
+    documentation</strong></a>.
+  </p>
   <Playground :options="options" :code="code" :config="config" @reset="reset">
     <template #component>
       <component :is="ForgeLoader" v-bind="options" />

@@ -11,7 +11,6 @@
       </a>
       as shown below.
     </p>
-    <OPTIONS />
     <iframe name="PrimeVue Chart Documentation" src="https://primevue.org/chart/" class="iframe" />
   </div>
 </template>

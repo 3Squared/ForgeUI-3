@@ -59,7 +59,7 @@ const pages = [
       { label: "Progress Bar", command: () => router.push('/general/progress') },
       { label: "Stat Widget", command: () => router.push('/general/statwidget') },
       { label: "Toast", command: () => router.push('/general/toast') },
-      { label: "Tooltip" }
+      { label: "Tooltip", command: () => router.push('/general/tooltip') }
     ]
   },
   {

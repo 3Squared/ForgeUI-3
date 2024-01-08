@@ -59,6 +59,7 @@ declare module 'vue-router/auto/routes' {
     '/general/Progress': RouteRecordInfo<'/general/Progress', '/general/Progress', Record<never, never>, Record<never, never>>,
     '/general/StatWidget': RouteRecordInfo<'/general/StatWidget', '/general/StatWidget', Record<never, never>, Record<never, never>>,
     '/general/Toast': RouteRecordInfo<'/general/Toast', '/general/Toast', Record<never, never>, Record<never, never>>,
+    '/general/Tooltip': RouteRecordInfo<'/general/Tooltip', '/general/Tooltip', Record<never, never>, Record<never, never>>,
     '/input/InlineEditor': RouteRecordInfo<'/input/InlineEditor', '/input/InlineEditor', Record<never, never>, Record<never, never>>,
     '/input/Mask': RouteRecordInfo<'/input/Mask', '/input/Mask', Record<never, never>, Record<never, never>>,
     '/input/Number': RouteRecordInfo<'/input/Number', '/input/Number', Record<never, never>, Record<never, never>>,

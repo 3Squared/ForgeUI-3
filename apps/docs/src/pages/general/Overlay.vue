@@ -1,5 +1,10 @@
 <template>
   <ForgePageHeader title="Overlay Panel" />
+  <p>
+    Further documentation and examples can be found in the <a class="link" target="_blank"
+                                                              href="https://primevue.org/overlaypanel/"><strong>PrimeVue
+    documentation</strong></a>.
+  </p>
   <Playground :options="options" :code="code" :config="config" @reset="reset">
     <template #component>
       <component :is="OverlayPanel" v-bind="options" ref="popover">
