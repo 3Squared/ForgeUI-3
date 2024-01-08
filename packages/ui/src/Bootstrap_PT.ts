@@ -103,6 +103,7 @@ export default {
     })
   },
   toast: {
+    root: 'bg-white',
     message: () => ({
       class: ['toast-container w-100 position-relative'],
     }),
