@@ -66,7 +66,7 @@ const pages = [
     label: "Layout",
     items: [
       { label: "Collapse" },
-      { label: "Page Header" },
+      { label: "Page Header", command: () => router.push('/layout/pageheader') },
       { label: "Stepper" },
       { label: "Tabs" }
     ]
