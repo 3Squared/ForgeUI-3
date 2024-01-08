@@ -7,7 +7,6 @@ import ForgeActionButton from "./src/components/ForgeActionButton.vue";
 import ForgeCheckbox from "@/components/ForgeCheckbox.vue";
 import ForgeLoader from "@/components/ForgeLoader.vue";
 import ForgeModal from "./src/components/ForgeModal.vue";
-import ForgeToast from '@/components/ForgeToast.vue';
 import ForgeInlineEditor from "./src/components/ForgeInlineEditor.vue";
 import ForgeNavbar from "./src/components/ForgeNavbar.vue";
 import ForgeMultiSelect from "./src/components/ForgeMultiSelect.vue";
@@ -32,7 +31,6 @@ export {
   ForgeForm,
   ForgeFormField,
   ForgeInlineEditor,
-  ForgeToast,
   ForgeLoader,
   ForgeModal,
   ForgeMultiSelect,

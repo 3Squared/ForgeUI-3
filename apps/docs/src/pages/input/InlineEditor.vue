@@ -11,6 +11,7 @@
       </div>
     </template>
   </Playground>
+  <Toast />
 </template>
 
 <script setup lang="ts">
@@ -18,10 +19,15 @@ import { ForgeInlineEditor, ForgePageHeader } from "@3squared/forge-ui-3";
 import { Playground, usePlayground } from "@3squared/forge-playground-3";
 import { computed, ref } from "vue";
 import Button from 'primevue/button'
+import Toast from 'primevue/toast'
+import { useToast } from "primevue/usetoast";
 
 const value = ref<string>()
+
+const toast = useToast()
+
 const completeAction = () => {
-  window.alert("Completed!")
+  toast.add({ severity: 'success', summary: "Completed!" })
 }
 
 const { options, propVals, config, reset } = usePlayground({
