@@ -18,10 +18,3 @@
 <script setup lang="ts">
 import { ForgePageHeader } from "@3squared/forge-ui-3";
 </script>
-
-<style scoped>
-.iframe {
-  width: 100%;
-  height: 700px;
-}
-</style>

@@ -79,7 +79,7 @@ const pages = [
       { label: "Table" }
     ]
   },
-  { label: "Icons" },
+  { label: "Icons", command: () => router.push('/icons') },
   { label: "Colours", command: () => router.push('/colours') }
 ]
 </script>
