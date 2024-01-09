@@ -18,7 +18,6 @@
       <ForgeCheckbox v-model="hideSpinner" label="Hide Spinner" class="mb-2" />
     </template>
   </Playground>
-  <Toast />
 </template>
 
 <script setup lang="ts">

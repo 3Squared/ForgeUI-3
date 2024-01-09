@@ -103,7 +103,6 @@ export default {
     })
   },
   toast: {
-    root: 'bg-white',
     message: () => ({
       class: ['toast-container w-100 position-relative'],
     }),
@@ -111,7 +110,7 @@ export default {
       class: ['toast-body d-flex align-items-center gap-2']
     }),
     container: () => ({
-      class: ['toast show']
+      class: ['toast bg-white show']
     }),
     buttonContainer: () => ({
       class: ['ms-auto']
@@ -522,5 +521,20 @@ export default {
     content: "d-flex position-relative",
     closeButton: 'position-absolute top-0 end-0 p-1 btn btn-link text-black ms-2'
     
+  },
+  menu: {
+    menu: (options) => ({
+        class: [
+          'dropdown dropdown-menu',
+          {
+            'show': options.state.overlayVisible
+          }
+        ]
+    }),
+    menuitem: () => ({
+      class: [
+        'dropdown-item cursor-pointer'
+      ]
+    })
   }
 } as PrimeVuePTOptions

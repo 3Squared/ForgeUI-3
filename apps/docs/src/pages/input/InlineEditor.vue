@@ -11,7 +11,6 @@
       </div>
     </template>
   </Playground>
-  <Toast />
 </template>
 
 <script setup lang="ts">

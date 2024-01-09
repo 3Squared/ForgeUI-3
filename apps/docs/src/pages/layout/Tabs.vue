@@ -9,7 +9,7 @@
     <template #component>
       <component :is="TabView" :activeIndex="options.activeIndex" :lazy="options.lazy" :scrollable="options.scrollable" :selectOnFocus="options.selectOnFocus">
         <component :is="TabPanel" :header="options.header" :disabled="options.disabled" />
-        <component :is="TabPanel" :header="options.header" :disabled="options.disabled" />
+        <component :is="TabPanel" header="Header 2" :disabled="options.disabled" />
       </component>
     </template>
   </Playground>

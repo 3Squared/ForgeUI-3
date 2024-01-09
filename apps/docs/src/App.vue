@@ -9,10 +9,12 @@
       <router-view />
     </div>
   </main>
+  <Toast />
 </template>
 
 <script setup lang="ts">
 import { RouterView, useRouter } from "vue-router/auto";
+import Toast from 'primevue/toast'
 import { ForgeNavbar } from "@3squared/forge-ui-3"
 
 const router = useRouter()
@@ -78,6 +80,6 @@ const pages = [
     ]
   },
   { label: "Icons" },
-  { label: "Colours" }
+  { label: "Colours", command: () => router.push('/colours') }
 ]
 </script>
