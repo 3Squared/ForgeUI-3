@@ -412,7 +412,7 @@ export default {
     input: "form-control",
     panel: ({ props }) => ({
       class: [
-        "datepicker-panel",
+        "datepicker-panel bg-white",
         {
           'shadow border-0 position-absolute': !props.inline
         }

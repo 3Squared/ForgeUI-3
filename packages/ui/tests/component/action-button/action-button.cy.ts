@@ -1,8 +1,9 @@
 // @ts-ignore
 import ForgeActionButton, { ForgeActionButtonProps } from "@/components/ForgeActionButton.vue";
+import { types } from "sass";
+import Error = types.Error;
 
 const buttonId = "button"
-const toastId = '[data-pc-name="toast"]'
 
 function mountActionButton(props : ForgeActionButtonProps) {
   return cy.mount(ForgeActionButton, { 
@@ -46,38 +47,24 @@ describe('<ForgeActionButton />', () => {
     })
   })
 
-  it("Displays toast with a error message on error", () => {
+  it("Performs error action with parameters when function fails", () => {
     // Arrange
     const label = "Button"
     const expectedErrorMessage = "Action has failed."
     const action = () => {
-      throw Error()
+      throw new Error('')
     }
+    
+    const errorAction = (errorMessage : string) => new Promise(() => window.alert(errorMessage))
 
     // Act
-    mountActionButton({ label: label, action: action, errorMessage: expectedErrorMessage })
+    mountActionButton({ label: label, action: action, errorAction: errorAction, errorParams: [expectedErrorMessage] })
     cy.get(`#${buttonId}`).click()
 
     // Assert
-    cy.get(toastId)
-      .should('be.visible')
-      .and('contain.text', expectedErrorMessage)
-  })
-  
-  it("Displays toast with a custom error message on error if specified", () => {
-    // Arrange
-    const label = "Button"
-    const expectedErrorMessage = "Hello from the action button"
-    const action = () => { throw Error(expectedErrorMessage) }
-
-    // Act
-    mountActionButton({ label: label, action: action, errorMessage: expectedErrorMessage })
-    cy.get(`#${buttonId}`).click()
-
-    // Assert
-    cy.get(toastId)
-      .should('be.visible')
-      .and('contain.text', expectedErrorMessage)
+    cy.on("window:alert", (str) => {
+      return expect(str).to.equal(expectedErrorMessage)
+    })
   })
   
   it("Displays loading spinner and disable button when performing action", () => {
