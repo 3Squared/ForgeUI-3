@@ -10,8 +10,6 @@ const errorCyDataId = '[data-cy="error"]'
 const valueCyDataId = '[data-cy="value"]'
 const editIconCyDataId = '[data-cy="edit-icon"]'
 const clearIconCyDataId = '[data-cy="clear-icon"]'
-const toastId = '[data-pc-name="toast"]'
-const readonlyValueId = '[data-cy="readonly-value"]'
 
 function mountInlineEditor(props : ForgeInlineEditorProps) {
   cy.mount(ForgeInlineEditor, {
