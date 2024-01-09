@@ -20,6 +20,7 @@ import ForgeChips from "./src/components/ForgeChips.vue";
 import ForgeProgressBar from "./src/components/ForgeProgressBar.vue";
 import ForgeStatWidget from "./src/components/ForgeStatWidget.vue";
 import ForgeStepper from "./src/components/ForgeStepper.vue";
+import ForgeTile from "./src/components/ForgeTile.vue";
 
 export {
   Bootstrap_PT,
@@ -40,7 +41,8 @@ export {
   ForgeRemainingCharacters,
   ForgeProgressBar,
   ForgeStatWidget,
-  ForgeStepper
+  ForgeStepper,
+  ForgeTile
 }
 
 export * from './src/types/forge-types'

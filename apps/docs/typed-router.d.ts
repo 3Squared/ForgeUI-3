@@ -59,6 +59,7 @@ declare module 'vue-router/auto/routes' {
     '/general/Overlay': RouteRecordInfo<'/general/Overlay', '/general/Overlay', Record<never, never>, Record<never, never>>,
     '/general/Progress': RouteRecordInfo<'/general/Progress', '/general/Progress', Record<never, never>, Record<never, never>>,
     '/general/StatWidget': RouteRecordInfo<'/general/StatWidget', '/general/StatWidget', Record<never, never>, Record<never, never>>,
+    '/general/Tile': RouteRecordInfo<'/general/Tile', '/general/Tile', Record<never, never>, Record<never, never>>,
     '/general/Toast': RouteRecordInfo<'/general/Toast', '/general/Toast', Record<never, never>, Record<never, never>>,
     '/general/Tooltip': RouteRecordInfo<'/general/Tooltip', '/general/Tooltip', Record<never, never>, Record<never, never>>,
     '/Icons': RouteRecordInfo<'/Icons', '/Icons', Record<never, never>, Record<never, never>>,

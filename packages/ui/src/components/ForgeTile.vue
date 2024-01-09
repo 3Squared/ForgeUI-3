@@ -1,5 +1,5 @@
 <template>
-  <Button v-if="props.clickable" class="d-flex w-100 p-0" :severity="props.severity" :class="buttonClass" unstyled data-cy="button-tile">
+  <Button v-if="props.clickable" class="d-flex w-100 p-0 text-body" :severity="props.severity" :class="buttonClass" unstyled data-cy="button-tile">
     <div class="p-4 text-wrap w-100">
       <!-- 
         @slot Allows for content to be inserted into the Tile.
@@ -34,10 +34,10 @@ const props = withDefaults(defineProps<ForgeTileProps>(), {
 })
 
 const buttonClass = computed(() => {
-  return `${props.severity === undefined ? `tile-primary` :`tile-${props.severity}`} ${props.barPosition === 'none' ? '' : `tile-bar-${props.barPosition}`}`
+  return `${props.severity === undefined ? `tile-primary` :`tile-${props.severity}`} ${props.barPosition === 'none' ? 'border-0' : `tile-bar-${props.barPosition}`}`
 })
 
 const tileClass = computed(() => {
-  return `${props.severity === undefined ? `tile-primary` : `tile-${props.severity}`} ${props.barPosition === 'none' ? '' : `tile-bar-${props.barPosition}`}`
+  return `${props.severity === undefined ? `tile-primary border-primary` : `tile-${props.severity} border-${props.severity}`} ${props.barPosition === 'none' ? '' : `tile-bar-${props.barPosition}`}`
 })
 </script>

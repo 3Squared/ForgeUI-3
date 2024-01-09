@@ -60,6 +60,7 @@ const pages = [
       { label: "Overlay Panel", command: () => router.push('/general/overlay') },
       { label: "Progress Bar", command: () => router.push('/general/progress') },
       { label: "Stat Widget", command: () => router.push('/general/statwidget') },
+      { label: "Tile", command: () => router.push('/general/tile') },
       { label: "Toast", command: () => router.push('/general/toast') },
       { label: "Tooltip", command: () => router.push('/general/tooltip') }
     ]

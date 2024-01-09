@@ -16,10 +16,10 @@
  .tile-#{$color} {
    @if $color == secondary {
      background-color: map-get($base-colors, "light") !important;
-     border-color: map-get($base-colors, "light") !important;
+     border-color: black !important;
    } @else {
      background-color: map-get($subtle-colors, $color + "-subtle") !important;
-     border-color: map-get($subtle-colors, $color + "-subtle") !important;
+     border-color: map-get($base-colors, $color) !important;
    }
    
    color: $black !important;

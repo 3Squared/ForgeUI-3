@@ -13,14 +13,6 @@ import { Playground, usePlayground } from "@3squared/forge-playground-3";
 import { computed, ref } from "vue";
 import { severities, statWidgetSizes } from "../../composables/playgroundOptions";
 
-const popover = ref()
-
-const toggle = (event: Event) => {
-  popover.value.toggle(event);
-}
-
-const mode = ref(['determinate', 'indeterminate'])
-
 const { options, propVals, config, reset } = usePlayground({
   severity: severities[0],
   size: statWidgetSizes[1]
