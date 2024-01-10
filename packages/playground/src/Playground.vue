@@ -1,8 +1,8 @@
 <template>
   <div class="d-flex flex-column">
     <div class="d-flex flex-row mb-2 h-100">
-      <Card class="w-75 me-2" :pt="{ content: { class: 'h-100' }}">
-        <template #content class="h-100">
+      <Card class="w-75 me-2" :pt="{ content: { class: 'h-100' } }">
+        <template #content>
           <div class="d-flex h-100 align-items-center justify-content-center">
             <slot href="component" name="component" />
           </div>
@@ -27,14 +27,19 @@
               <slot :name="key" v-bind="props.options">
                 <div v-if="isSelect(getConfig(key))">
                   <label>{{ key }}</label>
-                  <Dropdown v-model="props.options[key]" :options="getOptions(key)" class="mb-3"
-                                 :disabled="isDisabled(key)" />
+                  <Dropdown v-model="props.options[key]" :options="getOptions(key)" class="mb-3" :disabled="isDisabled(key)" />
                 </div>
-                <ForgeCheckbox v-else-if="typeof option === 'boolean'" :label="key" v-model="props.options[key]" binary class="mb-2" :disabled="isDisabled(key)" />
+                <ForgeCheckbox
+                  v-else-if="typeof option === 'boolean'"
+                  v-model="props.options[key]"
+                  :label="key"
+                  binary
+                  class="mb-2"
+                  :disabled="isDisabled(key)"
+                />
                 <template v-else-if="typeof option === 'number'">
                   <label>{{ key }}</label>
-                  <InputText v-model.number="props.options[key]" class="mb-2" type="number"
-                                :disabled="isDisabled(key)" />
+                  <InputText v-model.number="props.options[key]" class="mb-2" type="number" :disabled="isDisabled(key)" />
                 </template>
                 <template v-else-if="typeof option === 'string'">
                   <label>{{ key }}</label>
@@ -52,25 +57,25 @@
 </template>
 
 <script setup lang="ts">
-import Card from 'primevue/card'
-import Button from 'primevue/button'
+import Card from "primevue/card";
+import Button from "primevue/button";
 import InputText from "primevue/inputtext";
-import Dropdown from 'primevue/dropdown'
-import { ForgeCheckbox } from '@3squared/forge-ui-3'
+import Dropdown from "primevue/dropdown";
+import { ForgeCheckbox } from "@3squared/forge-ui-3";
 import { PropDefs, SelectPropDef } from "./composables/useMapProp";
 import CodeBlock from "./components/CodeBlock.vue";
 
 export interface ForgePlaygroundProps {
-  code: string,
-  options: Object,
-  rerender: boolean,
-  config: Partial<Record<string, PropDefs>>
+  code: string;
+  options: object;
+  rerender: boolean;
+  config: Partial<Record<string, PropDefs>>;
 }
 
 const props = withDefaults(defineProps<ForgePlaygroundProps>(), {
   rerender: false,
   code: ""
-})
+});
 
 function getConfig(key: string): PropDefs {
   return props.config![key]! ?? {};

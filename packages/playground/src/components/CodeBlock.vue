@@ -11,11 +11,11 @@
 <script setup lang="ts">
 import { computed } from "vue";
 import Prism from "prismjs";
-import Button from 'primevue/button'
-import { Icon } from "@iconify/vue"
+import Button from "primevue/button";
+import { Icon } from "@iconify/vue";
 
 export interface CodeBlockProps {
-  code: string
+  code: string;
 }
 
 const props = defineProps<CodeBlockProps>();
@@ -24,5 +24,5 @@ const formattedCode = computed(() => Prism.highlight(props.code, Prism.languages
 
 function copyToClipboard() {
   navigator.clipboard.writeText(props.code!);
-};
+}
 </script>

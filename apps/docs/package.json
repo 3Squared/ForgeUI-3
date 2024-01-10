@@ -6,7 +6,7 @@
   "scripts": {
     "preview": "npm run build && vite preview",
     "build-bundle": "cd .. && npm i && npm run build && cd docs",
-    "build": "vite build --base=/ForgeUI/",
+    "build": "vite build --base=/ForgeUI3/",
     "network": "npm run build && vite preview --host",
     "dev": "vite",
     "start": "vite preview --port=3000",
@@ -22,6 +22,7 @@
     "rgb-hex": "^4.1.0"
   },
   "devDependencies": {
+    "eslint-config-custom": "*",
     "@vitejs/plugin-vue": "^4.5.0",
     "typescript": "^5.0.2",
     "unplugin-vue-router": "^0.7.0",

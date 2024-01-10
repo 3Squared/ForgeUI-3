@@ -13,39 +13,39 @@
         <component :is="Button" v-bind="options">{{ content }}</component>
       </template>
       <template #additionalOptions>
-        <template>
+        <div>
           <label>Button Content</label>
           <InputText v-model="content"></InputText>
-        </template>
+        </div>
       </template>
     </playground>
   </div>
 </template>
 
 <script setup lang="ts">
-import InputText from 'primevue/inputtext'
+import InputText from "primevue/inputtext";
 import Button from "primevue/button";
 import Playground from "./Playground.vue";
 import { computed, ref, watch } from "vue";
 import { usePlayground } from "./composables/useMapProp";
 
-const content = ref("I am a Button")
+const content = ref("I am a Button");
 
 const { options, propVals, config, reset } = usePlayground(
-    {
-      label: "",
-      badge: "",
-      disabled: false,
-      squared: false,
-      pressed: false,
-      to: "",
-      replace: false,
-      href: ""
-    },
-    {
-      replace: { disabled: () => !options.value.to }
-    },
-    () => (content.value = "I am a Button")
+  {
+    label: "",
+    badge: "",
+    disabled: false,
+    squared: false,
+    pressed: false,
+    to: "",
+    replace: false,
+    href: ""
+  },
+  {
+    replace: { disabled: () => !options.value.to }
+  },
+  () => (content.value = "I am a Button")
 );
 
 const code = computed(() => {
@@ -53,11 +53,11 @@ const code = computed(() => {
 });
 
 watch(
-    () => options.value.to,
-    (val) => {
-      if (!val) {
-        options.value.replace = false;
-      }
+  () => options.value.to,
+  (val) => {
+    if (!val) {
+      options.value.replace = false;
     }
+  }
 );
 </script>

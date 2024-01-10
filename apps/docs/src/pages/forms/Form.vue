@@ -16,20 +16,20 @@ import { computed } from "vue";
 import { usePlayground, Playground } from "@3squared/forge-playground-3";
 
 const { options, propVals, config, reset } = usePlayground(
-    {
-      onSubmit: async () => {
-        await new Promise((resolve) => setTimeout(resolve, 500));
-      },
-      title: "Forge Form Title",
-      hideTitle: false,
-      titleClass: "",
-      submitText: "Submit",
-      cancelText: "Cancel",
-      hideCancel: false,
+  {
+    onSubmit: async () => {
+      await new Promise((resolve) => setTimeout(resolve, 500));
     },
-    {
-      onSubmit: { required: true }
-    }
+    title: "Forge Form Title",
+    hideTitle: false,
+    titleClass: "",
+    submitText: "Submit",
+    cancelText: "Cancel",
+    hideCancel: false
+  },
+  {
+    onSubmit: { required: true }
+  }
 );
 
 const code = computed(() => {

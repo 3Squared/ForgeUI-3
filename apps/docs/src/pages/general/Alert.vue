@@ -1,15 +1,17 @@
 <template>
-  <ForgePageHeader title="Alert" />
-  <p>
-    Further documentation and examples can be found in the <a class="link" target="_blank"
-                                                              href="https://primevue.org/message/"><strong>PrimeVue
-    documentation</strong></a>.
-  </p>
-  <Playground :options="options" :code="code" :config="config" @reset="reset">
-    <template #component>
-      <component :is="ForgeAlert" v-bind="options">{{ content }}</component>
-    </template>
-  </Playground>
+  <div>
+    <ForgePageHeader title="Alert" />
+    <p>
+      Further documentation and examples can be found in the
+      <a class="link" target="_blank" href="https://primevue.org/message/"><strong>PrimeVue documentation</strong></a>
+      .
+    </p>
+    <Playground :options="options" :code="code" :config="config" @reset="reset">
+      <template #component>
+        <component :is="ForgeAlert" v-bind="options">{{ content }}</component>
+      </template>
+    </Playground>
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -20,15 +22,17 @@ import { severities } from "../../composables/playgroundOptions";
 
 const content = ref("Alert");
 
-const { options, propVals, config, reset } = usePlayground({
+const { options, propVals, config, reset } = usePlayground(
+  {
     sticky: true,
     severity: severities[0],
     closable: false,
-    icon: ''
+    icon: ""
   },
-    {
-      severity: { type: 'select', options: severities}
-    })
+  {
+    severity: { type: "select", options: severities }
+  }
+);
 
-const code = computed(() => `<ForgeAlert${propVals.value.length > 0 ? " " + propVals.value.join(" ") : ""} />`)
+const code = computed(() => `<ForgeAlert${propVals.value.length > 0 ? " " + propVals.value.join(" ") : ""} />`);
 </script>

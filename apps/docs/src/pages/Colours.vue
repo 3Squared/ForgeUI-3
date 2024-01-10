@@ -1,63 +1,60 @@
 <template>
+  <div>
     <div v-for="palette in palettes">
       <h1 class="mb-4 pb-1">{{ palette.title }}</h1>
-      <div class="d-flex ">
-        <template v-for="colour in palette.colours">
+      <div class="d-flex">
+        <div v-for="colour in palette.colours">
           <div class="d-flex mb-4 pb-1 me-5">
             <div class="color-swatch d-flex flex-column h-100 pr-5">
               <p class="text-center mb-1">{{ colour.label }}</p>
               <div :id="`swatch-${colour.background}`" :class="colour.background"></div>
-              <Button link @click="(event) => toggle(event, colour.text)">Copy
+              <Button link @click="(event) => toggle(event, colour.text)">
+                Copy
                 <Icon icon="bi:chevron-down" />
               </Button>
-              <Menu ref="menu" :model="menuItems" :popup="true" :id="`${colour.text}-menu`">
+              <Menu :id="`${colour.text}-menu`" ref="menu" :model="menuItems" :popup="true">
                 <template #item="{ label }">
                   <div @click="getColour(colour.background)">{{ label }}</div>
                 </template>
               </Menu>
             </div>
           </div>
-        </template>
+        </div>
       </div>
     </div>
+  </div>
 </template>
 
 <script setup lang="ts">
-//@ts-ignore
 import rgbHex from "rgb-hex";
-import { Icon } from '@iconify/vue'
-import Button from 'primevue/button'
-import Menu from 'primevue/menu'
+import { Icon } from "@iconify/vue";
+import Button from "primevue/button";
+import Menu from "primevue/menu";
 import { ref } from "vue";
-import { useToast } from 'primevue/usetoast'
-import Toast from 'primevue/toast'
+import { useToast } from "primevue/usetoast";
 
 interface Shade {
-  background: string,
-  text: string,
-  label: string
+  background: string;
+  text: string;
+  label: string;
 }
 
 interface Colour {
-  title: string,
-  colours: Shade[]
+  title: string;
+  colours: Shade[];
 }
 
-const menu = ref()
+const menu = ref();
 const menuItems = ref([
   {
-    items: [
-      { label: "Hex Code" },
-      { label: "Background Class" },
-      { label: "Text Class" },
-    ]
+    items: [{ label: "Hex Code" }, { label: "Background Class" }, { label: "Text Class" }]
   }
-])
+]);
 
-const toast = useToast()
+const toast = useToast();
 
-const toggle = (event : Event, text : string) => {
-  menu.value.find((s : any) => s.id === `${text}-menu`).toggle(event)
+const toggle = (event: Event, text: string) => {
+  menu.value.find((s: { id: string }) => s.id === `${text}-menu`).toggle(event);
 };
 
 const palettes = [
@@ -92,7 +89,7 @@ const palettes = [
 
 const copyToClipboard = (value: string) => {
   navigator.clipboard.writeText(value);
-  toast.add({ severity: "success", summary: "Copied to clipboard", life: 3000 })
+  toast.add({ severity: "success", summary: "Copied to clipboard", life: 3000 });
 };
 
 const getColour = (colour: string) => {

@@ -1,14 +1,10 @@
-import { createApp } from 'vue'
+import { createApp } from "vue";
 import "prismjs";
-import App from './App.vue'
+import App from "./App.vue";
 import { Bootstrap_PT } from "@3squared/forge-ui-3";
-import ToastService from 'primevue/toastservice'
-import DialogService from 'primevue/dialogservice'
+import ToastService from "primevue/toastservice";
+import DialogService from "primevue/dialogservice";
 import PrimeVue from "primevue/config";
-import './main.scss'
+import "./main.scss";
 
-createApp(App)
-  .use(PrimeVue, { unstyled: true, pt: Bootstrap_PT })
-  .use(ToastService)
-  .use(DialogService)
-  .mount('#app')
+createApp(App).use(PrimeVue, { unstyled: true, pt: Bootstrap_PT }).use(ToastService).use(DialogService).mount("#app");

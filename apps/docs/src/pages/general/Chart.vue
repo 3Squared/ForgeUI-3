@@ -5,7 +5,8 @@
       Documentation and examples can be found in the
       <a class="link" target="_blank" href="https://www.chartjs.org/docs/latest/">
         <strong>Chart.js documentation</strong>
-      </a> and the 
+      </a>
+      and the
       <a class="link" target="_blank" href="https://primevue.org/chart/">
         <strong>PrimeVue documentation</strong>
       </a>

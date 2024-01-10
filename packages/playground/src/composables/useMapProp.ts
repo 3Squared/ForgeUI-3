@@ -29,20 +29,26 @@ interface PropDef {
 
 export interface SelectPropDef extends PropDef {
   type: "select";
-  options: any[];
+  options: [];
 }
 
 export type PropDefs = SelectPropDef | PropDef;
 
-export function usePlayground<T extends Record<string, any>>(defaultProps: T, inConfig?: Partial<Record<keyof T, PropDefs>>, additionalReset?: () => void) {
+export function usePlayground<T extends Record<string, string | number | boolean | object>>(
+  defaultProps: T,
+  inConfig?: Partial<Record<keyof T, PropDefs>>,
+  additionalReset?: () => void
+) {
   const options = ref<T>({ ...defaultProps });
   const config = ref(inConfig ?? ({} as Partial<Record<keyof T, PropDefs>>));
 
   const propVals = computed(() => {
-    return Object.entries(options.value)
-      // @ts-ignore
-      .filter(([key, value]) => defaultProps[key] !== value || (defaultProps[key] !== value && !value) || (config.value[key] && config.value[key].required))
-      .map(([k, v]) => useStringifyProp(k, v as any));
+    return (
+      Object.entries(options.value)
+        // @ts-expect-error
+        .filter(([key, value]) => defaultProps[key] !== value || (defaultProps[key] !== value && !value) || (config.value[key] && config.value[key].required))
+        .map(([k, v]) => useStringifyProp(k, v))
+    );
   });
 
   const reset = () => {
