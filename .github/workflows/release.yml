@@ -14,8 +14,7 @@ jobs:
     name: Release
     # Remove once packages is ready to be deployed. 
     on:
-      push:
-        - release
+      push: [release]
     # ^^^
     runs-on: ubuntu-latest
     permissions:
@@ -52,12 +51,8 @@ jobs:
 
   deploy-forge-ui-docs:
     on:
-      pull_request:
-        branches: 
-          - main
       push:
-        branches:
-          - main
+        branches: [ main ]
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
