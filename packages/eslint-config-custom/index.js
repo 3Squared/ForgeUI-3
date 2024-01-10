@@ -43,6 +43,7 @@ module.exports = {
   "vue/this-in-template": ["error", "never"],
   "vue/max-attributes-per-line": "off",
   "vue/require-v-for-key": "off",
+  "vue/no-v-model-argument": "off",
   "@typescript-eslint/ban-ts-comment": "warn",
   "no-useless-escape": "warn",
   "vue/html-closing-bracket-newline": [

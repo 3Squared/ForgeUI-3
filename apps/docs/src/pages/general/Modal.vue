@@ -8,7 +8,7 @@
     </p>
     <Playground :options="options" :code="code" :config="config" @reset="reset">
       <template #component>
-        <component :is="ForgeModal" v-bind="options" v-model="visible" />
+        <component :is="ForgeModal" v-bind="options" v-model:visible="visible" />
         <Button label="Click me!" @click="visible = true" />
       </template>
     </Playground>
