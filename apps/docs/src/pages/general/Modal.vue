@@ -51,7 +51,7 @@ const { options, propVals, config, reset } = usePlayground(
   }
 );
 
-const code = computed(() => `<ForgeModal${propVals.value.length > 0 ? " " + propVals.value.join(" ") : ""} />`);
+const code = computed(() => `<ForgeModal v-model:visible="visible"${propVals.value.length > 0 ? " " + propVals.value.join(" ") : ""} />`);
 
 const mainTsCode = `
   createApp(App)
