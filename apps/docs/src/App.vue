@@ -75,7 +75,9 @@ const pages = [
   },
   {
     label: "Tables",
-    items: [{ label: "Filter Header" }, { label: "Table" }]
+    items: [
+        { label: "Filter Header" }, 
+      { label: "Table", command: () => router.push('/table/table') }]
   },
   { label: "Icons", command: () => router.push("/icons") },
   { label: "Colours", command: () => router.push("/colours") }

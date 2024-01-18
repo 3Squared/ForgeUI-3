@@ -55,7 +55,7 @@ const props = withDefaults(defineProps<ForgeMultiSelectPreviewProps>(), {
 const attrs = useAttrs();
 const emits = defineEmits(['update:modelValue'])
 
-const limitText = computed((count : number) => `${count} selected`);
+const limitText = computed(() => `${(attrs.modelValue as MultiSelectOption<unknown>[]).length} selected`);
 
 const numberOfItemsSelected = computed(() => (attrs.modelValue as MultiSelectOption<unknown>[]).length)
 

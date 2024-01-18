@@ -7,6 +7,8 @@ import { TabPanelPassThroughMethodOptions } from "primevue/tabpanel";
 import { TooltipPassThroughMethodOptions } from "primevue/tooltip";
 import { CalendarPassThroughMethodOptions } from "primevue/calendar";
 import { MenubarPassThroughMethodOptions } from "primevue/menubar";
+import { DataTablePassThroughMethodOptions } from "primevue/datatable";
+import { ColumnPassThroughMethodOptions } from "primevue/column";
 
 export default {
   button: {
@@ -136,15 +138,15 @@ export default {
       ]
     }),
   },
-  dropdown: {
+  dropdown: { 
     root: (options) => ({
-        class: [
-          {
-            "rounded-0 rounded-top": options.state.overlayVisible,
-            "disabled": options.instance.disabled,
-            'form-control': !options.instance.disabled
-          },
-          'd-flex cursor-pointer']
+      class: [
+        {
+          "rounded-0 rounded-top": options.state.overlayVisible,
+          "disabled": options.instance.disabled,
+          'form-control': !options.instance.disabled
+        },
+        'd-flex cursor-pointer position-relative w-auto']
     }),
     input: () => ({
       class: ['fs-6 border-0']
@@ -172,6 +174,9 @@ export default {
         }
       ]
     }),
+    panel: () => ({
+      class: ['position-absolute w-100 start-0']
+    }),
     itemGroup: () => ({
       class: ['d-flex px-2 py-1 fw-bold']
     }),
@@ -183,12 +188,83 @@ export default {
     }),
     filterInput: () => ({
       class: ['form-control']
-    })
+    }),
+  },
+  column: {
+    sortBadge: 'ms-2 my-auto cursor-pointer',
+    headerCell: (options : ColumnPassThroughMethodOptions & { props: { reorderableColumns: boolean }, column : { context: { sortable: string | undefined, frozen: boolean | '', resizable: boolean }}}) => {
+      console.log(options)
+      
+      return {
+        class: [{
+          'cursor-move': options.props.reorderableColumns,
+          'position-sticky': options.column?.context.frozen !== undefined || options.column?.context.frozen || options.column?.context.frozen === '',
+          'overflow-hidden position-relative bg-clip-padding': options.column?.context.resizable
+        }]
+      }
+    },
+    roweditorinitbutton: 'btn',
+    rowtoggler: {
+      class: 'btn'
+    },
+    columnresizer: {
+      class: 'position-absolute top-0 end-0 m-0 h-100 p-0 cursor-resize border border-transparent'
+    },
+    roweditorsavebutton: 'btn',
+    roweditorcancelbutton: 'btn',
+    columnFilter: 'd-flex',
+    bodyCell: (options: ColumnPassThroughMethodOptions & { props: { resizableColumns: boolean }, column: { props: { frozen: boolean | '' }}}) => {
+      return {
+        class: {
+          'position-sticky': options.column.props?.frozen !== undefined,
+          'overflow-hidden text-nowrap': options.props.resizableColumns
+        }
+      }
+    },
+    rowreordericon: 'cursor-move',
+    filterInput: 'me-2',
+    filterMenuButton: 'btn',
+    headerFilterClearButton: (options : { column: { context: { hidden: boolean }}}) => ({
+      class: [
+        'btn',
+        {
+          'd-none': !options.column.context.hidden
+        }
+      ]
+    }),
+    filterOverlay: {
+      class: [
+        'show dropdown-menu'
+      ]
+    },
+    filterRowItems: {
+      class: [
+        'list-unstyled'
+      ]
+    },
+    filterRowItem: (options) => {
+      return {
+        class: [
+          'dropdown-item cursor-pointer',
+          {
+            //@ts-ignore
+            'active': options.column.context?.highlighted
+          }
+        ]
+      }
+    },
+    filterSeparator: {
+      class: [
+        'dropdown-divider'
+      ]
+    },
+    headerContent: 'd-flex', 
+    sort: 'd-flex ms-auto my-auto cursor-pointer'
   },
   inputtext: {
     root: (options : InputTextPassThroughMethodOptions) => ({
       class: [
-        'form-control',
+        'form-control w-auto',
         {
           'form-control-lg': options.props.size?.toLowerCase() == 'large',
           'form-control-sm': options.props.size?.toLowerCase() == 'small'
@@ -534,6 +610,79 @@ export default {
     menuitem: () => ({
       class: [
         'dropdown-item cursor-pointer'
+      ]
+    })
+  },
+  dataTable: {
+    table: (options : DataTablePassThroughMethodOptions) => {
+      return {
+        class: [
+          'table position-relative',
+          {
+            'table-striped': options.props.stripedRows,
+            'table-hover': options.props.rowHover,
+            'table-bordered': options.props.showGridlines,
+            'table-sm': options.props.size === 'small',
+            'table-lg': options.props.size === 'large',
+            'opacity-50': options.props.loading
+          }
+        ]
+      }
+    },
+    bodyRow: (options : DataTablePassThroughMethodOptions) => {
+      return {
+        class: {
+          'table-active': options.context.selected
+        }
+      }
+    },
+    rowgrouptoggler: 'btn',
+    thead: () => {
+      return {
+        class: 'sticky-header'
+      }
+    },
+    //@ts-ignore
+    tbody: (options ) => {
+      return {
+        class: {
+          'sticky-header': options.props.frozenRow
+        }
+      }
+    },
+    loadingOverlay: () => {
+      return {
+        class: 'table-overlay table-spinner'
+      }
+    },
+    loadingIcon: () => {
+      return {
+        class: 'spinner-border border-0'
+      }
+    }
+  },
+  paginator: {
+    root: (options) => {
+      return {
+        class: [
+          'm-auto pagination justify-content-center',
+          {
+            'opacity-50': options.parent?.props.loading
+          }]
+      }
+    },
+    pages: 'd-flex',
+    firstPageButton: 'page-link',
+    previousPageButton: 'page-link',
+    nextPageButton: 'page-link',
+    lastPageButton: 'page-link me-2',
+    pageButton: ({ context }) => ({
+      class: [
+        'page-link',
+        {
+          'active': context.active,
+          'disabled': context.disabled
+        }
       ]
     })
   }
