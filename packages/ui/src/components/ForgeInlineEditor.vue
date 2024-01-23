@@ -32,29 +32,26 @@
     </div>
     <small v-show="hasErrors" data-cy="error" class="text-invalid">{{ errorMessage }}</small>
   </div>
-  <Toast />
 </template>
 
 <script setup lang="ts">
 import { Icon } from '@iconify/vue'
 import { computed, ref } from "vue";
-import Toast from 'primevue/toast'
 import { TypedSchema, useField } from "vee-validate";
-import { useToast } from "primevue/usetoast";
 import { vOnClickOutside } from '@vueuse/components'
 
 export interface ForgeInlineEditorProps {
   name?: string,
   rules?: TypedSchema,
-  value?: Object | string | number | Date,
   completeAction?: Function,
+  errorAction?: Function,
   params?: Array<any>,
+  errorParams?: Array<any>,
   readonly?: boolean,
 }
 
 const props = withDefaults(defineProps<ForgeInlineEditorProps>(),{
   name: "",
-  value: "",
   params: Array,
   readonly: false
 })
@@ -69,9 +66,6 @@ const beginEdit = () => {
   input.value?.focus()
 }
 
-const toasts = useToast()
-
-
 const editFinished = async () => {
   if(hasErrors.value) {
     return false
@@ -82,7 +76,9 @@ const editFinished = async () => {
       await props.completeAction.apply(this, props.params)
       editing.value = !editing.value
     } catch (completeActionError) {
-      toasts.add({ severity: "error", summary: typeof completeActionError === "string" ? completeActionError : `Failed to update: ${completeActionError}` })
+      if (props.errorAction) {
+        await props.errorAction.apply(this, props.errorParams)
+      }
     }
   } else {
     editing.value = !editing.value
@@ -98,8 +94,6 @@ const reset = () => {
 }
 
 const { errorMessage, errors, value } = useField(() => props.name, props.rules)
-
-value.value = props.value
 
 const hasErrors = computed(() => errors.value.length > 0)
 </script>

@@ -24,12 +24,12 @@ export interface ForgeDatePickerProps extends /* vue-ignore */ Omit<CalendarProp
 const props = withDefaults(defineProps<ForgeDatePickerProps>(), {
   severity: "primary",
   selectionMode: "single",
+  dateFormat: "dd/mm/yy",
   showOtherMonths: true,
   showIcon: true,
   numberOfMonths: 1,
   showButtonBar: true,
   view: "date",
-  showOnFocus: true, // Crucial prop for Calendar, overlay won't show without this.
   autoZIndex: true,
   baseZIndex: 0,
   appendTo: "body"

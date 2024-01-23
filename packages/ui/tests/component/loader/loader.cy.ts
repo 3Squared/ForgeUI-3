@@ -39,7 +39,7 @@ describe('<ForgeLoader />', () => {
         const expectedLoaderClass = variant === undefined ? 'text-primary' : `text-${variant}`
 
         // Act
-        mountSpinner({ variant: variant as Severity })
+        mountSpinner({ severity: variant as Severity })
 
         // Assert
         cy.get('[data-pc-name="progressspinner"]')

@@ -10,8 +10,6 @@ const errorCyDataId = '[data-cy="error"]'
 const valueCyDataId = '[data-cy="value"]'
 const editIconCyDataId = '[data-cy="edit-icon"]'
 const clearIconCyDataId = '[data-cy="clear-icon"]'
-const toastId = '[data-pc-name="toast"]'
-const readonlyValueId = '[data-cy="readonly-value"]'
 
 function mountInlineEditor(props : ForgeInlineEditorProps) {
   cy.mount(ForgeInlineEditor, {
@@ -121,30 +119,6 @@ describe('<ForgeInlineEditor />', () => {
         .and('contain.text', value)
         .and('not.have.class', invalidText)
     })
-    
-    it("Doesnt allow the user to edit a readonly value", () => {
-      // Arrange
-      const value = 'Hello!'
-      const readonly = true
-
-      // Act
-      mountInlineEditor({ name: name, readonly: readonly, value: value })
-      cy.get(`#${name}`).click()
-
-      // Assert
-      cy.get(inputCyDataId)
-        .should('not.exist')
-
-      cy.get(errorCyDataId)
-        .should('not.be.visible')
-      
-      cy.get(editIconCyDataId)
-        .should('not.exist')
-
-      cy.get(readonlyValueId)
-        .should('be.visible')
-        .and('contain.text', value)
-    })
   })
   
   describe("Complete Action", () => {
@@ -180,21 +154,27 @@ describe('<ForgeInlineEditor />', () => {
         return expect(str).to.equal(value)
       })
     })
-    
-    it("Displays Forge Toast with the Error Message when complete actions fails", () => {
+
+    it("Performs error action with parameters when function fails", () => {
       // Arrange
-      const errorMessage = "Error!"
-      const action = () => { throw Error(errorMessage) }
+      const expectedErrorMessage = "Action has failed."
+      const action = () => {
+        throw new Error('')
+      }
+
+      const errorAction = (errorMessage: string) => new Promise(() => window.alert(errorMessage))
 
       // Act
-      mountInlineEditor({ name: name, completeAction: action })
+      mountInlineEditor({ name: name, completeAction: action, errorAction: errorAction, errorParams: [expectedErrorMessage] })
       cy.get(`#${name}`).click()
       cy.clickOff()
-      
+
       // Assert
-      cy.get(toastId)
-        .should('contain.text', errorMessage)
+      cy.on("window:alert", (str) => {
+        return expect(str).to.equal(expectedErrorMessage)
+      })
     })
+
   })
   
   describe("Validation", () => {

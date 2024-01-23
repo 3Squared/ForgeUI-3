@@ -1,7 +1,7 @@
 <template>
   <Dialog v-bind="props">
     <template #closeicon>
-      <Icon data-cy="close-icon" icon="bi:x-lg" width="21" height="21" />
+      <Icon data-cy="close-icon" icon="bi:x-lg" width="21" height="21" @click="closeModal"/>
     </template>
     <template #maximizeicon>
       <Icon data-cy="maximisable-icon" icon="bi:arrows-fullscreen" />
@@ -56,7 +56,7 @@ const props = withDefaults(defineProps<ForgeModalProps>(), {
   modal: true,
   closable: false,
   showHeader: true,
-  header: "Test",
+  header: "Header",
   cancelText: "Cancel",
   cancelClass: "",
   submitText: "Submit",

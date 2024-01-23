@@ -7,13 +7,13 @@
   import { ButtonProps } from "primevue/button";
   import Toast from 'primevue/toast'
   import { ref } from "vue";
-  import { useToast } from "primevue/usetoast";
 
   const loading = ref<boolean>(false)
 
   export interface ForgeActionButtonProps extends /* @vue-ignore */ ButtonProps {
-    errorMessage?: string,
     action: Function,
+    errorAction: Function,
+    errorParams?: Array<any>,
     params?: Array<any>
   }
   
@@ -22,14 +22,12 @@
     params: Array
   })
   
-  const toasts = useToast()
-  
   const performAction = async () => {
     loading.value = true
     try {
       await props.action.apply(this, props.params)
     } catch(e : any) {
-      toasts.add({ severity: "error", summary: typeof e === "string" ? e : props.errorMessage})
+      await props.errorAction.apply(this, props.errorParams ? [...props.errorParams, e] : [e])
     }
     loading.value = false
   }

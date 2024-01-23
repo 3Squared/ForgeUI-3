@@ -49,4 +49,10 @@ $dark-colors: (
         'danger-dark': $danger-dark
 );
 
+@each $color, $value in $grays {
+  .bg-grey-#{$color} {
+    background-color: $value !important;
+  }
+}
+
 $theme-colors: map-merge-multiple($theme-colors, $base-colors, $subtle-colors, $dark-colors);

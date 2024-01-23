@@ -1,5 +1,5 @@
 <template>
-  <div v-bind="$attrs" :class='`d-flex shadow m-2 align-items-center widget--${props.size} bg-${props.variant}`'>
+  <div v-bind="$attrs" :class='`d-flex shadow m-2 align-items-center widget--${props.size} bg-${props.severity}`'>
     <span class="value text-light w-100 text-center">
       <slot />
     </span>
@@ -11,11 +11,11 @@ import { Size, Severity } from "../types/forge-types";
 
 export interface ForgeStatWidgetProps {
   size?: Size,
-  variant?: Severity
+  severity: Severity
 }
 
 const props = withDefaults(defineProps<ForgeStatWidgetProps>(), {
   size: 'md',
-  variant: 'primary'
+  severity: 'primary'
 })
 </script>

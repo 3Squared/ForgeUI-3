@@ -97,7 +97,8 @@ const theme = computed<string>(() => `forge-multiselect-${props.severity}`)
 const optionHighlight = computed<string>(() => `multiselect-option ${selectAllHighlighted.value ? ' multiselect__option--highlight' : ''} ${isAllSelected.value ? ' multiselect__option--selected' : ''}`)
 
 const isAllSelected = computed<boolean>(() => {
-  if (!(multiselectProps.value.multiple || !props.showSelectAll || multiselectProps.value.async)) {
+  console.log(multiselectProps.value)
+  if (multiselectProps.value && !(multiselectProps.value.multiple || !props.showSelectAll || multiselectProps.value.async)) {
     return false;
   }
   return (attrs.modelValue as Array<any>).length === (attrs.options as Array<any>).length

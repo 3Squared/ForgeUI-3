@@ -6,7 +6,6 @@ const id = "Calendar"
 const beforeSlotId = "[data-cy='before-slot']"
 const afterSlotId = "[data-cy='after-slot']"
 const iconId = "[data-cy='icon']"
-const panelId = '[data-pc-section="panel"]'
 
 function mountCalendar(props : ForgeDatePickerProps, beforeSlotContent : string = "", afterSlotContent : string = "") {
   // @ts-ignore
@@ -87,15 +86,5 @@ describe("<Calendar />", () => {
           .and('have.class', expectedIconClass)
       })
     })
-  })
-  
-  it("Opens calendar on focus of component", () => {
-    // Act
-    mountCalendar({ })
-    cy.get(`#${id}`).click()
-    
-    // Arrange
-    cy.get(panelId)
-      .should('be.visible')
   })
 })

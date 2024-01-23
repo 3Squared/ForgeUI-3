@@ -2,7 +2,7 @@ export type Severity = 'primary' | 'secondary' | 'success' | 'warning' | 'danger
 export type Size = 'sm' | 'md' | 'lg' | undefined
 export type BarPosition = 'top' | 'left' | 'none'
 
-export type ForgeFormFieldTypes = "text" | "number" | "checkbox" | "textarea" | "mask" 
+export type ForgeFormFieldTypes = "text" | "number" | "checkbox" | "textarea" | "mask"
 export type ForgeNavbarPosition = "fixed-top" | "fixed-bottom" | "sticky-top"
 
 export type ForgeMultiSelectOrientation = "row" | "column"

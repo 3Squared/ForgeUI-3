@@ -27,25 +27,25 @@ export default {
         },
         // Success
         {
-          "btn-success": props.severity === "success" && !props.outlined && !props.link && !props.text,
+          "btn-success text-white": props.severity === "success" && !props.outlined && !props.link && !props.text,
           "btn-outline-success": props.severity === "success" && props.outlined,
           "text-success fw-bold btn-text-success": props.severity === "success" && props.text,
         },
         // Warning
         {
-          "btn-warning": props.severity === "warning" && !props.outlined && !props.link && !props.text,
+          "btn-warning text-white": props.severity === "warning" && !props.outlined && !props.link && !props.text,
           "btn-outline-warning": props.severity === "warning"  && props.outlined,
           "text-warning fw-bold btn-text-warning": props.severity === "warning" && props.text
         },
         // Danger
         {
-          "btn-danger": props.severity === "danger" && !props.outlined && !props.link && !props.text,
+          "btn-danger text-white": props.severity === "danger" && !props.outlined && !props.link && !props.text,
           "btn-outline-danger": props.severity === "danger" && props.outlined,
           "text-danger fw-bold btn-text-danger": props.severity === "danger" && props.text,
         },
         // Info
         {
-          "btn-info": props.severity === "info" && !props.outlined && !props.link && !props.text,
+          "btn-info text-white": props.severity === "info" && !props.outlined && !props.link && !props.text,
           "btn-outline-info": props.severity === "info" && props.outlined,
           "text-info fw-bold btn-text-info": props.severity === "info" && props.text
         },
@@ -110,7 +110,7 @@ export default {
       class: ['toast-body d-flex align-items-center gap-2']
     }),
     container: () => ({
-      class: ['toast show']
+      class: ['toast bg-white show']
     }),
     buttonContainer: () => ({
       class: ['ms-auto']
@@ -147,7 +147,7 @@ export default {
           'd-flex cursor-pointer']
     }),
     input: () => ({
-      class: ['fs-6']
+      class: ['fs-6 border-0']
     }),
     trigger: (options) => ({
       class: {
@@ -234,7 +234,7 @@ export default {
       class: ['alert-icon my-auto me-2 pe-1']
     }),
     closeButton: () => ({
-      class: ['ms-auto btn d-flex']
+      class: ['px-0 ms-2 btn d-flex']
     })
   },
   badge: {
@@ -359,13 +359,13 @@ export default {
       class: ['nav-item']
     }),
     headerAction: (options : TabPanelPassThroughMethodOptions & { tabpanel : Partial<TabPanelPassThroughMethodOptions>}) => ({
-      class: [
-        'nav-link cursor-pointer',
-        {
-          'active': options.tabpanel.context!.active,
-          'disabled': options.tabpanel.props!.disabled
-        }
-      ]
+        class: [
+          'nav-link cursor-pointer',
+          {
+            'active': options.tabpanel.context!.active,
+            'disabled': options.tabpanel.props?.disabled
+          }
+        ]
     }),
     content: () => ({
       class: ['p-2']
@@ -412,7 +412,7 @@ export default {
     input: "form-control",
     panel: ({ props }) => ({
       class: [
-        "datepicker-panel",
+        "datepicker-panel bg-white",
         {
           'shadow border-0 position-absolute': !props.inline
         }
@@ -509,9 +509,32 @@ export default {
     }
   },
   overlaypanel: {
-    root: "card p-3 w-fit-content m-0",
+    root: (options) => ({ 
+      class: [
+        "card w-fit-content m-0",
+        {
+          'p-4': options.props.showCloseIcon,
+          'p-3': !options.props.showCloseIcon
+        }
+      ]
+    }),
     content: "d-flex position-relative",
-    closeButton: 'position-absolute top-0 end-0 p-1'
-
+    closeButton: 'position-absolute top-0 end-0 p-1 btn btn-link text-black ms-2'
+    
+  },
+  menu: {
+    menu: (options) => ({
+        class: [
+          'dropdown dropdown-menu',
+          {
+            'show': options.state.overlayVisible
+          }
+        ]
+    }),
+    menuitem: () => ({
+      class: [
+        'dropdown-item cursor-pointer'
+      ]
+    })
   }
 } as PrimeVuePTOptions
