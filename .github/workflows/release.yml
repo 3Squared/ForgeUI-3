@@ -7,15 +7,16 @@ permissions:
   id-token: write
   pull-requests: write
 
+on:
+  push:
+    branches:
+      - main
+
 concurrency: ${{ github.workflow }}-${{ github.ref }}
 
 jobs:
   release:
     name: Release
-    # Remove once packages is ready to be deployed. 
-    on:
-      push: [release]
-    # ^^^
     runs-on: ubuntu-latest
     permissions:
       id-token: write
@@ -38,27 +39,13 @@ jobs:
       - name: Install Dependencies
         run: npm ci
 
-      - name: Create Release Pull Request or Publish to npm
-        id: changesets
-        uses: changesets/action@v1
-        with:
-          # This expects you to have a script called publish which does a build for your packages and calls changeset publish
-          publish: npm run publish
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-
-  deploy-forge-ui-docs:
-    on:
-      push:
-        branches: [ main ]
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
-    needs: build
-    steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v2
+#      - name: Create Release Pull Request or Publish to npm
+#        id: changesets
+#        uses: changesets/action@v1
+#        with:
+#          # This expects you to have a script called publish which does a build for your packages and calls changeset publish
+#          publish: npm run publish
+#        env:
+#          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+#          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
