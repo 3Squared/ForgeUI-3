@@ -8,7 +8,7 @@ import { TooltipPassThroughMethodOptions } from "primevue/tooltip";
 import { CalendarPassThroughMethodOptions } from "primevue/calendar";
 import { MenubarPassThroughMethodOptions } from "primevue/menubar";
 import { DataTablePassThroughMethodOptions } from "primevue/datatable";
-import { ColumnPassThroughMethodOptions } from "primevue/column";
+import { ColumnPassThroughMethodOptions, ColumnProps } from "primevue/column";
 
 export default {
   button: {
@@ -102,7 +102,7 @@ export default {
           'form-check-input__focus': options.state.focused,
         }
       ],
-    })
+    }),
   },
   toast: {
     message: () => ({
@@ -146,7 +146,7 @@ export default {
           "disabled": options.instance.disabled,
           'form-control': !options.instance.disabled
         },
-        'd-flex cursor-pointer position-relative w-auto']
+        'd-flex cursor-pointer w-100']
     }),
     input: () => ({
       class: ['fs-6 border-0']
@@ -164,7 +164,7 @@ export default {
       class: ['ms-auto my-auto']
     }),
     list: () => ({
-      class: ['border list-unstyled rounded-bottom']
+      class: ['border list-unstyled rounded-bottom bg-white']
     }),
     item: (options) => ({
       class: [
@@ -173,9 +173,6 @@ export default {
           'bg-primary text-white': options.context.selected
         }
       ]
-    }),
-    panel: () => ({
-      class: ['position-absolute w-100 start-0']
     }),
     itemGroup: () => ({
       class: ['d-flex px-2 py-1 fw-bold']
@@ -192,9 +189,7 @@ export default {
   },
   column: {
     sortBadge: 'ms-2 my-auto cursor-pointer',
-    headerCell: (options : ColumnPassThroughMethodOptions & { props: { reorderableColumns: boolean }, column : { context: { sortable: string | undefined, frozen: boolean | '', resizable: boolean }}}) => {
-      console.log(options)
-      
+    headerCell: (options : ColumnPassThroughMethodOptions & { props: { reorderableColumns: boolean }, column : { context: { frozen: boolean | '', resizable: boolean }}}) => {
       return {
         class: [{
           'cursor-move': options.props.reorderableColumns,
@@ -222,14 +217,18 @@ export default {
       }
     },
     rowreordericon: 'cursor-move',
-    filterInput: 'me-2',
-    filterMenuButton: 'btn',
-    headerFilterClearButton: (options : { column: { context: { hidden: boolean }}}) => ({
+    filterInput: 'flex-grow-0 w-auto',
+    filterMenuButton: ({ props } : ColumnProps & { props: { type: string }}) => {
+      return {
+        class: ['btn',
+          {
+            'd-none': props.type !== 'text' && props.type !== 'numeric' && props.type !== 'date'
+          }]
+      }
+    },
+    headerFilterClearButton: () => ({
       class: [
         'btn',
-        {
-          'd-none': !options.column.context.hidden
-        }
       ]
     }),
     filterOverlay: {
@@ -271,6 +270,72 @@ export default {
         }
       ]
     })
+  },
+  multiselect: {
+    root: {
+      class: ['form-control d-flex cursor-pointer']
+    },
+    trigger: {
+      class: ['ms-auto']
+    },
+    panel: {
+      class: ['border rounded-bottom bg-white']
+    },
+    list: {
+      class: ['p-2 mb-0 list-unstyled']
+    },
+    item: {
+      class: ['dropdown-item d-flex']
+    },
+    checkboxcontainer: {
+      class: ['form-check']
+    },
+    header: {
+      class: "d-flex border-bottom pb-2"
+    },
+    headercheckboxcontainer: {
+      class: ['form-check ms-2 mt-2']
+    },
+    headercheckbox: (options : any) => {
+      return {
+        class: [
+          'form-check-input px-2 py-2 rounded position-relative',
+          {
+            'bg-primary': options.instance.allSelected
+          }
+        ]
+      }
+    },
+    headercheckboxicon: {
+      class: 'mb-1 fw-medium text-white position-absolute filter-header-multiselect__check-icon'
+    },
+    filtercontainer: {
+      class: ['d-flex position-relative mt-1 ps-2']
+    },
+    filterinput: {
+      class: ['form-control']
+    },
+    filtericon: {
+      class: ['position-absolute bottom-0 end-0'],
+      style: "top: 35%; left: 87%;"
+    },
+    closebutton: {
+      class: 'btn'
+    },
+    checkbox: (options) => {
+      return {
+        class: [
+          'form-check-input px-2 py-2 rounded position-relative',
+          {
+            'bg-primary': options.context.selected,
+            'form-check-input__focus': options.state.focused,
+          }
+        ]
+      }
+    },
+    checkboxicon: {
+      class: 'mb-1 fw-medium text-white position-absolute filter-header-multiselect__check-icon'
+    }
   },
   inputmask: {
     root: () => ({

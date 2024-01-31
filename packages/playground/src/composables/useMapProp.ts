@@ -29,7 +29,7 @@ interface PropDef {
 
 export interface SelectPropDef extends PropDef {
   type: "select";
-  options: [];
+  options: any[];
 }
 
 export type PropDefs = SelectPropDef | PropDef;

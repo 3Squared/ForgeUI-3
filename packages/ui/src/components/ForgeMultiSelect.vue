@@ -16,7 +16,7 @@
     <template v-if="multiselectProps.multiple" #option="{option}" >
       <div :data-cy="option.label">
         <input
-            :checked="($attrs.modelValue as Array<any>).some(item => selectValue ? option[selectValue] === item[selectValue] : option.id === item.id && option.label === item.label)"
+            :checked="isChecked(option)"
             name="selected"
             type="checkbox"
             class="multiselect__option--checkbox"
@@ -34,7 +34,7 @@ import VueMultiselect from "vue-multiselect";
 import { Severity } from "../types/forge-types";
 import { TypedSchema, useField } from "vee-validate";
 import { Icon } from "@iconify/vue";
-import { computed, ref, useAttrs, defineEmits } from "vue";
+import { computed, ref, useAttrs } from "vue";
 
 export interface ForgeMultiSelectProps {
   severity?: Severity,
@@ -97,7 +97,6 @@ const theme = computed<string>(() => `forge-multiselect-${props.severity}`)
 const optionHighlight = computed<string>(() => `multiselect-option ${selectAllHighlighted.value ? ' multiselect__option--highlight' : ''} ${isAllSelected.value ? ' multiselect__option--selected' : ''}`)
 
 const isAllSelected = computed<boolean>(() => {
-  console.log(multiselectProps.value)
   if (multiselectProps.value && !(multiselectProps.value.multiple || !props.showSelectAll || multiselectProps.value.async)) {
     return false;
   }
@@ -123,8 +122,15 @@ const clearSelected = () => {
   emits('update:modelValue', value.value)
 }
 
-const select = (value: any) => {
-  emits("update:modelValue", value);
+const select = (value: Array<any>) => {
+  emits("update:modelValue", props.selectValue ? value.map(s => s[props.selectValue!]) : value);
+}
+
+const isChecked = (option : any) => {
+  if( attrs.modelValue !== null){
+    return (attrs.modelValue as Array<any>).some(item => multiselectProps.value.selectValue ? option[props.selectValue] === item : option.id === item.id && option.label === item.label)
+  }
+  return false
 }
 
 const selectAll = () => {

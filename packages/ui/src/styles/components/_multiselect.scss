@@ -1,6 +1,7 @@
 @import 'vue-multiselect/dist/vue-multiselect.css';
 
 .multiselect {
+  cursor: pointer;
   box-sizing: content-box;
   display: block;
   position: relative;
@@ -24,12 +25,8 @@
     .multiselect__tags,
     .multiselect__tags:hover,
     &:not(.multiselect--disabled):not(.multiselect--active) .multiselect__tags:hover {
-      //display: table;
       @extend .is-invalid;
       @extend .form-control;
-      //padding-top: 0;
-      //padding-bottom: 0;
-      //padding-left: 5px;
     }
   }
 }
@@ -300,4 +297,9 @@
       color: #ff0000;
     }
   }
+}
+
+.filter-header-multiselect__check-icon {
+  top: 1px;
+  left: 1px;
 }

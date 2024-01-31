@@ -21,6 +21,8 @@ import ForgeProgressBar from "./src/components/ForgeProgressBar.vue";
 import ForgeStatWidget from "./src/components/ForgeStatWidget.vue";
 import ForgeStepper from "./src/components/ForgeStepper.vue";
 import ForgeTile from "./src/components/ForgeTile.vue";
+import ForgeTable from "./src/components/table/ForgeTable.vue"; 
+import ForgeFilterHeader from "./src/components/table/ForgeFilterHeader.vue";
 
 export {
   Bootstrap_PT,
@@ -42,7 +44,9 @@ export {
   ForgeProgressBar,
   ForgeStatWidget,
   ForgeStepper,
-  ForgeTile
+  ForgeTile,
+  ForgeTable,
+  ForgeFilterHeader
 }
 
 export * from './src/types/forge-types'
