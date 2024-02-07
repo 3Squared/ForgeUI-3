@@ -8,6 +8,8 @@ export default defineConfig({
     VueRouter({
       routesFolder: ["src/pages"]
     }),
-    vue()
+    vue({
+      include: [/\.vue$/]
+    })
   ]
 });

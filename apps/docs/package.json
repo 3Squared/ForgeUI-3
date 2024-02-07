@@ -6,7 +6,7 @@
   "scripts": {
     "preview": "npm run build && vite preview",
     "build-bundle": "cd .. && npm i && npm run build && cd docs",
-    "build": "vite build --base=/ForgeUI3/",
+    "build": "vite build",
     "network": "npm run build && vite preview --host",
     "dev": "vite",
     "start": "vite preview --port=3000",
