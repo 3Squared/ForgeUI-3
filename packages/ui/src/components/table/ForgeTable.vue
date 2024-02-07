@@ -1,6 +1,9 @@
 <template>
-  <slot name="above-table" />
-  <DataTable v-bind="props" :rows="perPage" :total-records="total" ref="forgeTable" @update:filters="updateFilter">
+  <span data-cy="above-table-slot"><slot name="above-table" /></span>
+  <DataTable v-bind="{...props }" :rows="perPage" :total-records="total" :filter-display="props.filters ? 'row' : undefined" ref="forgeTable" @update:filters="updateFilter" data-cy="table">
+    <template v-for="(_, name) in $slots as unknown as DataTableSlots" #[name]="slotProps">
+      <slot :name="name" v-bind="slotProps || {}"></slot>
+    </template>
     <template #header>
       <div class="d-flex">
         <div class="d-flex align-items-end mb-2">
@@ -9,11 +12,11 @@
           </span>
         </div>
         <div class="ms-auto">
-          <Button v-if="showClearButton" outlined :class="showExporter || showColumnCustomiser ? 'me-2' : ''" @click="clearAllFilters">
+          <Button v-if="showClearButton" outlined :class="showExporter ? 'me-2' : ''" @click="clearAllFilters">
             <Icon icon="bi:funnel-fill" width="24" height="24" />
             Clear
           </Button>
-          <Button v-if="showExporter" outlined :class="showClearButton || showColumnCustomiser ? 'me-2' : ''" @click="exportData">
+          <Button v-if="showExporter" outlined :class="showClearButton ? 'me-2' : ''" @click="exportData">
             <Icon icon="typcn:export" width="24" height="24" />
             Export
           </Button>
@@ -34,7 +37,7 @@
 </template>
 
 <script setup lang="ts">
-import DataTable, { DataTableFilterMeta, DataTableProps } from "primevue/datatable";
+import DataTable, { DataTableFilterMeta, DataTableProps, DataTableSlots } from "primevue/datatable";
 import Button from 'primevue/button'
 import ForgePaginationHeader from "@/components/table/ForgePaginationHeader.vue";
 import { computed, ref } from "vue";
@@ -44,12 +47,11 @@ import { Icon } from '@iconify/vue'
 import { ForgeTableFilter } from "../../types/forge-types";
 
 export interface ForgeTableProps extends DataTableProps {
-  items: any[],
+  value: any[],
   legacyPaginationFooter?: boolean,
   total: number,
   showClearButton?: boolean,
-  showExporter?: boolean,
-  showColumnCustomiser?: boolean
+  showExporter?: boolean
 }
 
 const emits = defineEmits(['update:filters'])

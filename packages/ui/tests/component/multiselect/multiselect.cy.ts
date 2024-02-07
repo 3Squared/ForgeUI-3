@@ -39,7 +39,7 @@ describe("<ForgeMultiselect />", () => {
       .and('be.visible')
   })
   
-  it.only("Displays validation", () => {
+  it("Displays validation", () => {
     // Arrange
     const errorMessage = "Must be less than 1"
 

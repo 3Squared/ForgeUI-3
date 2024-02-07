@@ -1,7 +1,7 @@
 <template>
   <ForgeTable :total="products.length" :value="products" v-model:filters="filters" filter-display="row" sort-mode="multiple" 
-              show-clear-button show-exporter show-column-customiser stripedRows removableSort
-              :reorderableColumns="true">
+              show-clear-button show-exporter show-column-customiser removableSort 
+              :reorderableColumns="true" >
     <template #above-table>
       Some stuff above the table
     </template>

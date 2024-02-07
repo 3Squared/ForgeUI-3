@@ -5,8 +5,10 @@
       <Dropdown :options="props.pageSizes" :model-value="props.perPage"
                 @change="(event : DropdownChangeEvent) => update(event)" />
     </div>
-    <span class="mx-2">|</span>
-    <span class="w-auto">{{ props.total }} {{ pluralise(props.total, 'result') }} across {{ pageText }}</span>
+    <div v-if="props.total">
+      <span class="mx-2">|</span>
+      <span class="w-auto">{{ props.total }} {{ pluralise(props.total, 'result') }} across {{ pageText }}</span>
+    </div>
   </div>
 </template>
 
