@@ -5,6 +5,10 @@
   "main": "./dist/esm/forge-ui-3.mjs",
   "module": "./dist/esm/forge-ui-3.mjs",
   "types": "./dist/types/index.ts",
+  "files": [
+    "dist/*",
+    "src/styles/*"
+  ],
   "scripts": {
     "dev": "vite",
     "test": "cypress run --component && vitest run --coverage && node ./scripts/merge.js",
