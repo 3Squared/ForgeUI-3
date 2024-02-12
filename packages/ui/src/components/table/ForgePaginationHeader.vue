@@ -1,5 +1,5 @@
 <template>
-  <div class="d-flex justify-content-start align-items-baseline">
+  <div class="d-flex justify-content-start align-items-baseline" data-cy="pagination-header">
     Number of results per page
     <div class="ms-2">
       <Dropdown :options="props.pageSizes" :model-value="props.perPage"
@@ -7,7 +7,7 @@
     </div>
     <div v-if="props.total">
       <span class="mx-2">|</span>
-      <span class="w-auto">{{ props.total }} {{ pluralise(props.total, 'result') }} across {{ pageText }}</span>
+      <span class="w-auto" data-cy="total">{{ props.total }} {{ pluralise(props.total, 'result') }} across {{ pageText }}</span>
     </div>
   </div>
 </template>

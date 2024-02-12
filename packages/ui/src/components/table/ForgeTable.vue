@@ -8,15 +8,15 @@
       <div class="d-flex">
         <div class="d-flex align-items-end mb-2">
           <span v-if="paginator && !legacyPaginationFooter">
-            <forge-pagination-header :total="total" :page-sizes="pageSizes" v-model:per-page="perPage" v-if="total != -1" />
+            <forge-pagination-header :total="total ?? value.length" :page-sizes="pageSizes" v-model:per-page="perPage" />
           </span>
         </div>
         <div class="ms-auto">
-          <Button v-if="showClearButton" outlined :class="showExporter ? 'me-2' : ''" @click="clearAllFilters">
+          <Button v-if="showClearButton" outlined :class="showExporter ? 'me-2' : ''" @click="clearAllFilters" data-cy="clear-all">
             <Icon icon="bi:funnel-fill" width="24" height="24" />
             Clear
           </Button>
-          <Button v-if="showExporter" outlined :class="showClearButton ? 'me-2' : ''" @click="exportData">
+          <Button v-if="showExporter" outlined :class="showClearButton ? 'me-2' : ''" @click="exportData" data-cy="exporter">
             <Icon icon="typcn:export" width="24" height="24" />
             Export
           </Button>
@@ -25,13 +25,15 @@
     </template>
     <slot />
     <template #paginatorstart v-if="legacyPaginationFooter">
-      <span class="d-flex">
-        <span class="me-2 my-auto">Page Size:</span>
+      <span class="d-flex" data-cy="legacy-page-size">
+        <span class="me-2 my-auto text-nowrap">Page Size:</span>
         <Dropdown :options="pageSizes" v-model="perPage" class="ms-2" />
       </span>
     </template>
-    <template #paginatorend v-if="legacyPaginationFooter">
-      {{ total }} {{ pluralise(total as number, "item") }} in {{ pageText }}
+    <template #paginatorend v-if="legacyPaginationFooter" >
+      <span data-cy="legacy-total">
+      {{ total ?? value.length }} {{ pluralise(total ?? value.length as number, "results") }} across {{ pageText }}
+      </span>
     </template>
   </DataTable>
 </template>
@@ -49,7 +51,7 @@ import { ForgeTableFilter } from "../../types/forge-types";
 export interface ForgeTableProps extends DataTableProps {
   value: any[],
   legacyPaginationFooter?: boolean,
-  total: number,
+  total?: number,
   showClearButton?: boolean,
   showExporter?: boolean
 }
@@ -80,7 +82,7 @@ const updateFilter = (filters : DataTableFilterMeta | undefined) => {
 }
 
 const pageText = computed<string>(() => {
-  const pages = Math.ceil(props.total / perPage.value)
+  const pages = Math.ceil(props.total ?? props.value.length / perPage.value)
   return `${pages} ${pluralise(pages, 'page')}`
 })
 
