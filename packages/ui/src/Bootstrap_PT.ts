@@ -611,7 +611,7 @@ export default {
     }),
     menuitem: ({ context }: MenubarPassThroughMethodOptions) => ({
       class: [
-        'nav-item',
+        'nav-item cursor-pointer',
         {
           'dropdown': context.item.items.length > 0,
         }
@@ -643,9 +643,20 @@ export default {
         }
       ]
     }),
-    button: {
-      class: 'ms-auto me-3'
-    }
+    button: (options: MenubarPassThroughMethodOptions & { state: { queryMatches: boolean }}) => {
+      console.log(options)
+      
+      return {
+        class: [
+          'ms-auto me-3',
+          {
+            'd-none': !options.state.queryMatches
+          }
+        ]
+      }
+
+    },
+    submenuicon: 'ms-1'
   },
   overlaypanel: {
     root: (options) => ({ 
