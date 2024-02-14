@@ -17,7 +17,7 @@
     <Playground :code="componentCode" :options="options" :config="config" @reset="reset">
       <template #component>
         <component :is="ForgeTable" v-bind="options" v-model:filters="filters" v-model:selection="selection" :value="products">
-          <Column v-for="column in columns"  :key="column.field as string" v-bind="column">
+          <Column v-for="column in columns" :key="column.field as string" v-bind="column">
             <template #filter="{ field }">
               <forge-filter-header v-model="filters[field].value" :data-type="column.dataType" :dropdown-options="dropdownOptions" />
             </template>
