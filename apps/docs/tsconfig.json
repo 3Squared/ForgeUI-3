@@ -12,6 +12,7 @@
     "isolatedModules": true,
     "esModuleInterop": true,
     "composite": true,
+    "baseUrl": "./",
     "allowSyntheticDefaultImports": true,
     "lib": [
       "ESNext",
@@ -23,8 +24,12 @@
     ]
   },
   "include": [
-    "src",
-    "index.ts",
-    "typed-router.d.ts"
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "src/**/*.vue",
+    "tests/**/*.ts",
+    "tests/**/*.tsx",
+    "./src/custom-typings.ts",
+    "./types/routes.d.ts"
   ]
 }

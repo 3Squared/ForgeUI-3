@@ -1,12 +1,12 @@
 {
   "name": "forge-ui-3-styleguide",
-  "private": true,
+  "private": false,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
     "preview": "npm run build && vite preview",
     "build-bundle": "cd .. && npm i && npm run build && cd docs",
-    "build": "vite build --base=/ForgeUI3/",
+    "build": "vite build --base=/ForgeUI-3/",
     "network": "npm run build && vite preview --host",
     "dev": "vite",
     "start": "vite preview --port=3000",
