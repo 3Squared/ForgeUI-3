@@ -9,8 +9,8 @@ export type ForgeFormFieldTypes = "text" | "number" | "checkbox" | "textarea" | 
 export type ForgeNavbarPosition = "fixed-top" | "fixed-bottom" | "sticky-top"
 
 export type ForgeMultiSelectOrientation = "row" | "column"
-
-export type ForgeColumn = ColumnProps & { dataType?: 'text' | 'numeric' | 'date' | 'select' | 'multiselect' }
+export type ForgeColumnDataType = 'text' | 'numeric' | 'date' | 'select' | 'multiselect' | undefined
+export type ForgeColumn = ColumnProps & { dataType?: ForgeColumnDataType }
 export type ForgeTableFilter = { 
   value?: any,
   matchMode?: FilterMatchModeOptions,

@@ -9,6 +9,7 @@ import { CalendarPassThroughMethodOptions } from "primevue/calendar";
 import { MenubarPassThroughMethodOptions } from "primevue/menubar";
 import { DataTablePassThroughMethodOptions } from "primevue/datatable";
 import { ColumnPassThroughMethodOptions, ColumnProps } from "primevue/column";
+import { MultiSelectPassThroughMethodOptions } from "primevue/multiselect";
 
 export default {
   button: {
@@ -100,6 +101,7 @@ export default {
         {
           'bg-primary': options.context.checked,
           'form-check-input__focus': options.state.focused,
+          'disabled': options.context.disabled
         }
       ],
     }),
@@ -207,7 +209,6 @@ export default {
     },
     roweditorsavebutton: 'btn',
     roweditorcancelbutton: 'btn',
-    columnFilter: 'd-flex',
     bodyCell: (options: ColumnPassThroughMethodOptions & { props: { resizableColumns: boolean }, column: { props: { frozen: boolean | '' }}}) => {
       return {
         class: {
@@ -217,7 +218,6 @@ export default {
       }
     },
     rowreordericon: 'cursor-move',
-    filterInput: 'flex-grow-0 w-auto',
     filterMenuButton: ({ props } : ColumnProps & { props: { type: string }}) => {
       return {
         class: ['btn',
@@ -241,6 +241,7 @@ export default {
         'list-unstyled'
       ]
     },
+    columnfilter: 'd-flex',
     filterRowItem: (options) => {
       return {
         class: [
@@ -263,7 +264,7 @@ export default {
   inputtext: {
     root: (options : InputTextPassThroughMethodOptions) => ({
       class: [
-        'form-control w-auto',
+        'form-control',
         {
           'form-control-lg': options.props.size?.toLowerCase() == 'large',
           'form-control-sm': options.props.size?.toLowerCase() == 'small'
@@ -286,9 +287,6 @@ export default {
     },
     item: {
       class: ['dropdown-item d-flex']
-    },
-    checkboxcontainer: {
-      class: ['form-check']
     },
     header: {
       class: "d-flex border-bottom pb-2"
@@ -322,7 +320,7 @@ export default {
     closebutton: {
       class: 'btn'
     },
-    checkbox: (options) => {
+    checkbox: (options : MultiSelectPassThroughMethodOptions) => {
       return {
         class: [
           'form-check-input px-2 py-2 rounded position-relative',
@@ -549,7 +547,7 @@ export default {
   },
   // More PassThrough options defined in ForgeDatepicker.
   calendar: {
-    root: 'd-inline-flex mw-100 relative',
+    root: 'd-inline-flex relative',
     input: "form-control",
     panel: ({ props }) => ({
       class: [

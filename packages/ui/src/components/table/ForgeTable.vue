@@ -1,6 +1,6 @@
 <template>
   <span data-cy="above-table-slot"><slot name="above-table" /></span>
-  <DataTable v-bind="{...props }" :rows="perPage" :total-records="total" :filter-display="props.filters ? 'row' : undefined" ref="forgeTable" @update:filters="updateFilter" data-cy="table">
+  <DataTable class="w-100" v-bind="{...props, ...$attrs }" :rows="perPage" :total-records="total" :filter-display="props.filters ? 'row' : undefined" ref="forgeTable" @update:filters="updateFilter" data-cy="table">
     <template v-for="(_, name) in $slots as unknown as DataTableSlots" #[name]="slotProps">
       <slot :name="name" v-bind="slotProps || {}"></slot>
     </template>
@@ -12,11 +12,11 @@
           </span>
         </div>
         <div class="ms-auto">
-          <Button v-if="showClearButton" outlined :class="showExporter ? 'me-2' : ''" @click="clearAllFilters" data-cy="clear-all">
+          <Button v-if="showClearButton" outlined :class="showExporterButton ? 'me-2' : ''" @click="clearAllFilters" data-cy="clear-all">
             <Icon icon="bi:funnel-fill" width="24" height="24" />
             Clear
           </Button>
-          <Button v-if="showExporter" outlined :class="showClearButton ? 'me-2' : ''" @click="exportData" data-cy="exporter">
+          <Button v-if="showExporterButton" outlined @click="exportData" data-cy="exporter">
             <Icon icon="typcn:export" width="24" height="24" />
             Export
           </Button>
@@ -32,7 +32,7 @@
     </template>
     <template #paginatorend v-if="legacyPaginationFooter" >
       <span data-cy="legacy-total">
-      {{ total ?? value.length }} {{ pluralise(total ?? value.length as number, "results") }} across {{ pageText }}
+      {{ total ?? value.length }} {{ pluralise(total ?? value.length as number, "result") }} across {{ pageText }}
       </span>
     </template>
   </DataTable>
@@ -53,7 +53,7 @@ export interface ForgeTableProps extends DataTableProps {
   legacyPaginationFooter?: boolean,
   total?: number,
   showClearButton?: boolean,
-  showExporter?: boolean
+  showExporterButton?: boolean
 }
 
 const emits = defineEmits(['update:filters'])
@@ -63,7 +63,7 @@ const props = withDefaults(defineProps<ForgeTableProps>(), {
   paginator: true,
   alwaysShowPaginator: true,
   showClearButton: false,
-  showExporter: false
+  showExporterButton: false
 })
 
 const pageSizes = ref<Array<number>>([10, 20, 50, 100])
@@ -82,7 +82,7 @@ const updateFilter = (filters : DataTableFilterMeta | undefined) => {
 }
 
 const pageText = computed<string>(() => {
-  const pages = Math.ceil(props.total ?? props.value.length / perPage.value)
+  const pages = Math.ceil((props.total ?? props.value.length) / perPage.value)
   return `${pages} ${pluralise(pages, 'page')}`
 })
 

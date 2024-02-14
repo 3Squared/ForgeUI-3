@@ -3,7 +3,7 @@
     <template #above-table>{{ aboveTableContent }}</template>
     <Column v-bind="column" v-for="column in columns">
       <template #filter="{ field }">
-        <forge-filter-header :column="column" v-model="tableProps.filters[field].value" :dropdown-options="dropdownOptions" />
+        <forge-filter-header :data-type="column.dataType" v-model="tableProps.filters[field].value" :dropdown-options="dropdownOptions" />
       </template>
     </Column>
     <template #footer>{{ footerContent }}</template>

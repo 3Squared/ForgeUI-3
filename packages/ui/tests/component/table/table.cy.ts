@@ -125,7 +125,7 @@ describe('<ForgeTable />', () => {
   describe('Global Buttons', () => {
     it("Should export a csv of the table when the 'Export' button is clicked", () => {
       //Act
-      mountTable({ tableProps: { value: items, showExporter: true }, columns: columns })
+      mountTable({ tableProps: { value: items, showExporterButton: true }, columns: columns })
       cy.get(exporterId).click()
 
       //Assert
