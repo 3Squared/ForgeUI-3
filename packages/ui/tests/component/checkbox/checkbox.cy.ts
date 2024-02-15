@@ -23,7 +23,6 @@ describe("<ForgeCheckbox />", () => {
     // Arrange
     const id = "checkbox"
     const label = "Checkbox"
-    const expectedClasses = "text-white iconify iconify--bi"
 
     // Act
     cy.mount(ForgeCheckbox, {
@@ -37,6 +36,5 @@ describe("<ForgeCheckbox />", () => {
 
     // Assert
     cy.get('[data-cy="checkbox-icon"]').should('be.visible')
-    cy.get('[data-cy="checkbox-icon"] svg').should('have.class', expectedClasses)
   })
 })

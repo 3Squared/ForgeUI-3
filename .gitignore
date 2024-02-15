@@ -41,3 +41,4 @@ packages/ui/.nyc_output
 /packages/ui/.vscode/
 /packages/ui/test-results/
 packages/ui/test-results
+*.csv
