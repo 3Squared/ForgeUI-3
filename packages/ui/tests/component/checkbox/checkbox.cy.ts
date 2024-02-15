@@ -1,5 +1,7 @@
 import { ForgeCheckbox } from "../../../index";
 
+const checkboxInput = '[data-pc-section="input"]'
+const checkboxContainer = '[data-cy="checkbox-container"]'
 describe("<ForgeCheckbox />", () => {
   it("Mounts", () => {
     // Arrange
@@ -16,14 +18,17 @@ describe("<ForgeCheckbox />", () => {
     })
     
     // Assert
-    cy.get('[data-cy="checkbox-container"]').should('be.visible').and('contain.text', label)
+    cy.get(checkboxContainer).should('be.visible').and('contain.text', label)
   })
   
   it("Displays a white tick when checked", () => {
     // Arrange
     const id = "checkbox"
     const label = "Checkbox"
-
+    const expectedClass = "bg-primary"
+    const expectedCssProperty = 'background-image'
+    const whiteTickUrl = `url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='%23fff' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='m6 10 3 3 6-6'/%3e%3c/svg%3e")`
+    
     // Act
     cy.mount(ForgeCheckbox, {
       props: {
@@ -35,6 +40,10 @@ describe("<ForgeCheckbox />", () => {
     })
 
     // Assert
-    cy.get('[data-cy="checkbox-icon"]').should('be.visible')
+    cy.get(checkboxInput)
+      .should('be.visible')
+      .and('have.css', expectedCssProperty, whiteTickUrl)
+      .and('have.class', expectedClass)
+
   })
 })

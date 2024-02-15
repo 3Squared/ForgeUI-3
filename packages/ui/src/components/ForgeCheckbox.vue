@@ -1,6 +1,10 @@
 <template>
   <div class="d-flex" data-cy="checkbox-container">
-    <Checkbox :id="props.name" v-bind="{...$attrs, ...props}" :value="checked" :input-class="{'is-invalid': hasErrors }" @change="changeState" />
+    <Checkbox :id="props.name" v-bind="{...$attrs, ...props}" :value="checked" :input-class="{'is-invalid': hasErrors }" @change="changeState">
+      <template #icon>
+        <div />
+      </template>
+    </Checkbox>
     <label :for="props.name" :class="'form-check-label' && `${props.disabled ? 'opacity-50' : 'cursor-pointer'}`" @click="changeState">
       <slot>{{ props.label }}</slot>
     </label>
