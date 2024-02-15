@@ -13,7 +13,6 @@ export default defineConfig({
   component: {
     setupNodeEvents(on, config) {
       require("@cypress/code-coverage/task")(on, config);
-      require('cypress-terminal-report/src/installLogsPrinter')(on);
       return config;
     },
     specPattern: "**/**.cy.ts",

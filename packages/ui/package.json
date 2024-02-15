@@ -36,7 +36,6 @@
     "@vitest/ui": "^0.34.6",
     "cypress": "^13.4.0",
     "cypress-real-events": "^1.11.0",
-    "cypress-terminal-report": "^6.0.0",
     "sass": "^1.70.0",
     "typescript": "^5.0.2",
     "unplugin-vue-components": "^0.26.0",
