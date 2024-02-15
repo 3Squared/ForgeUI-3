@@ -27,7 +27,6 @@ const clearAllButtonId = '[data-cy="clear-all"]'
 // Pagination Header
 const paginationHeaderId = '[data-cy="pagination-header"]'
 const totalId = '[data-cy="total"]'
-const exporterId = '[data-cy="exporter"]'
 
 // Pagination Footer
 const legacyPageSizeId = '[data-cy="legacy-page-size"]'
