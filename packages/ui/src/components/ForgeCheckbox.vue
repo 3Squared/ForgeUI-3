@@ -12,7 +12,6 @@
 
 <script setup lang="ts" >
 import { CheckboxProps } from "primevue/checkbox";
-import { Icon } from '@iconify/vue'
 import { TypedSchema, useField } from "vee-validate";
 import { computed } from "vue";
 type CheckProps = Omit<CheckboxProps, "aria-label" | "aria-labelledby">
