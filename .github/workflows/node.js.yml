@@ -20,7 +20,7 @@ concurrency:
 
 jobs:
   build:
-    uses: '.github/workflows/build.yml@ref'
+    uses: '.github/workflows/build.yml'
   
   deploy-docs:
-    uses: '.github/workflows/deploy-docs.yml@ref'
+    uses: '.github/workflows/deploy-docs.yml'
