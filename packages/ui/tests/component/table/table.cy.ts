@@ -123,15 +123,6 @@ describe('<ForgeTable />', () => {
   })
   
   describe('Global Buttons', () => {
-    it.skip("Should export a csv of the table when the 'Export' button is clicked", () => {
-      //Act
-      mountTable({ tableProps: { value: items, showExporterButton: true }, columns: columns })
-      cy.get(exporterId).click()
-
-      //Assert
-      cy.readFile('cypress\\Downloads\\download.csv').should('exist')
-    })
-
     it('Should show legacy pagination in the footer when "legacyPaginationFooter" is true', () => {
       //Act
       mountTable({ tableProps: { value: items, legacyPaginationFooter: true }, columns: columns })
