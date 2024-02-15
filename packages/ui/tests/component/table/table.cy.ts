@@ -280,7 +280,7 @@ describe('<ForgeTable />', () => {
         .and('contain.text', filter[1])
     })
     
-    it.skip('Clears all filters when the "Clear" button is clicked', () => {
+    it('Clears all filters when the "Clear" button is clicked', () => {
       // Arrange
       const stringFilter = "Column 4"
       const numericFilter = "3"
