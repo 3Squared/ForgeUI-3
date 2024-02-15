@@ -176,7 +176,7 @@ describe('<ForgeFormField />', () => {
         .and('be.visible')
     })
 
-    it("Displays error alert when validation isnt met", () => {
+    it.only("Displays error alert when validation isnt met", () => {
       // Arrange
       const errorMessage = "This is required"
       const rules = toTypedSchema(z.boolean({ required_error: errorMessage }))

@@ -1,6 +1,5 @@
 <template>
-  <Dropdown :options="options" class="w-25" append-to="self"/>
-  sdf
+  <Dropdown :options="options" class="w-25" id="dropdown"/>
 </template>
 
 <script setup lang="ts">

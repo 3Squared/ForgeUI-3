@@ -24,7 +24,7 @@ function mountWrapperDropdown(props: DropdownProps) {
 }
   
 describe("<Dropdown />", () => {
-  it.only('Mounts', () => {
+  it('Mounts', () => {
     // Arrange
     const options = [
           'Option 1',
