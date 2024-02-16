@@ -18,6 +18,14 @@ export type ForgeTableFilter = {
   constraints?: Array<ForgeTableFilterConstraint>
 }
 
+export interface ForgeFileStatus {
+  file: File;
+  status: "NotUploaded" | "Uploaded" | "Failed";
+  blobFileName: string | null;
+  duplicateWarning: boolean;
+  customFileName: string | null;
+}
+
 export type ForgeTableFilterConstraint = {
   value: unknown,
   matchMode: FilterMatchModeOptions

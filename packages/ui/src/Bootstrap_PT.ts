@@ -759,5 +759,9 @@ export default {
         }
       ]
     })
+  },
+  image: {
+    root: "position-relative",
+    button: 'position-absolute d-flex align-items-center justify-content-center opacity-0'
   }
 } as PrimeVuePTOptions

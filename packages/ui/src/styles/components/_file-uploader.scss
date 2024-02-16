@@ -1,0 +1,10 @@
+.file-container {
+  max-height: 500px;
+  overflow-y: auto;
+  border: var(--bs-border-width) dashed var(--bs-border-color);
+  border-radius: 0.25rem;
+}
+
+.image-file-thumbnail {
+  width: 120px;
+}
