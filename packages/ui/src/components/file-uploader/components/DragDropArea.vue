@@ -10,13 +10,7 @@
       Drag and drop files here
     </div>
     <div v-else class="d-flex flex-column">
-      <span v-for="({ file }, index) in files">
-        <FileInfo
-            :key="file.name"
-            :file="file"
-            :class="index === files.length - 1 || files.length == 1 ? '' : 'border-bottom'"
-        />
-      </span>
+      <slot />
     </div>
   </div>
 </template>

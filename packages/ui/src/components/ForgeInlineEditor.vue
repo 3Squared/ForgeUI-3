@@ -18,7 +18,7 @@
       </div>
       <div v-else class="d-flex text-muted" @click="beginEdit" @focus="beginEdit" >
         <slot>
-          <div class="pt-2 pe-2 cursor-pointer" :class="{ 'text-invalid': hasErrors }" data-cy="value">{{ !value ? 'Click to edit' : value }}</div>
+          <div class="pe-2 cursor-pointer" :class="{ 'text-invalid': hasErrors }" data-cy="value">{{ !value ? 'Click to edit' : value }}</div>
         </slot>
         <Button link class="p-0 m-0">
           <Icon icon="bi:pencil" :class="hasErrors ? 'text-invalid' : 'text-muted'" data-cy="edit-icon" @keydown.enter="beginEdit"/>
@@ -36,7 +36,7 @@
 
 <script setup lang="ts">
 import { Icon } from '@iconify/vue'
-import { computed, ref } from "vue";
+import { computed, ref, onMounted } from "vue";
 import { TypedSchema, useField } from "vee-validate";
 import { vOnClickOutside } from '@vueuse/components'
 
@@ -56,8 +56,7 @@ const props = withDefaults(defineProps<ForgeInlineEditorProps>(),{
   readonly: false
 })
 
-const emits = defineEmits(['input'])
-
+const modelValue = defineModel()
 const editing = ref<boolean>(false)
 const input = ref()
 
@@ -70,7 +69,7 @@ const editFinished = async () => {
   if(hasErrors.value) {
     return false
   }
-  emits('input', value.value)
+  modelValue.value = value.value
   if (props.completeAction) {
     try {
       await props.completeAction.apply(this, props.params)
@@ -94,6 +93,10 @@ const reset = () => {
 }
 
 const { errorMessage, errors, value } = useField(() => props.name, props.rules)
+
+onMounted(() => {
+  value.value = modelValue.value
+})
 
 const hasErrors = computed(() => errors.value.length > 0)
 </script>
