@@ -10,7 +10,7 @@
           :accept="acceptedFileTypes"
           :disabled="uploadDisabled"
           :multiple="multiple"
-          @input="(event) => addFiles([...(event.target as any).files], files)"
+          @input="(event) => addUploadedFiles([...(event.target as any).files])"
       />
       <label :class="{ disabled: uploadDisabled }" class="btn btn-primary" for="file-input">
         {{ placeholder }}
@@ -28,12 +28,16 @@ interface FileUploaderButtonProps {
   acceptedFileTypes: string,
   multiple: boolean,
   placeholder: string,
-  maxFileInput: number,
-  files: ForgeFileStatus[]
+  maxFileInput: number
 }
 
-const { acceptedFileTypes, multiple, placeholder, maxFileInput, files } = defineProps<FileUploaderButtonProps>()
+const files = defineModel<ForgeFileStatus[]>({ required: true })
 
-const uploadDisabled = computed<boolean>(() => maxFileInput <= files.length)
+const { acceptedFileTypes, multiple, placeholder, maxFileInput } = defineProps<FileUploaderButtonProps>()
 
+const uploadDisabled = computed<boolean>(() => maxFileInput <= files.value.length)
+
+const addUploadedFiles = (filesToUpload : File[]) => {
+  files.value = addFiles(filesToUpload, files.value)
+}
 </script>
