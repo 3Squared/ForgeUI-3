@@ -1,7 +1,7 @@
 <template>
   <div class="py-4 px-3 d-flex">
     <div>
-      <Image v-if="isImage(file.type)" image-class="image-file-thumbnail"  :src="getThumbnailUrl(file)" :alt="file.name" class="image-file-thumbnail" preview />
+      <Image v-if="isImage(file.type)" image-class="image-file-thumbnail"  :src="getThumbnailUrl(file)" :alt="file.name" width="125px" preview />
       <Icon v-else icon="file-earmark"/>
     </div>
     <div>
