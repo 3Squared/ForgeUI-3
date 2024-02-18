@@ -42,3 +42,4 @@ packages/ui/.nyc_output
 /packages/ui/test-results/
 packages/ui/test-results
 *.csv
+packages/ui/stats.html

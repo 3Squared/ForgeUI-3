@@ -34,7 +34,7 @@
 </template>
 
 <script setup lang="ts">
-import { ForgeInlineEditor} from "@3squared/forge-ui-3";
+import ForgeInlineEditor from "@/components/ForgeInlineEditor.vue";
 import { Icon } from "@iconify/vue";
 import Image from 'primevue/image'
 import {isImage, getThumbnailUrl, formatFileSize, FileUploadStatus} from '../utilities/utilities'

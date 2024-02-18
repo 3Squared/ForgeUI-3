@@ -4,6 +4,7 @@ import istanbulPlugin from "vite-plugin-istanbul";
 import Components from 'unplugin-vue-components/vite'
 import { join, resolve } from "path";
 import { PrimeVueResolver } from "unplugin-vue-components/resolvers";
+import { visualizer } from "rollup-plugin-visualizer";
 
 // https://vitejs.dev/config/
 export default defineConfig(({mode}) => ({
@@ -58,6 +59,7 @@ export default defineConfig(({mode}) => ({
         PrimeVueResolver()
       ]
     }),
+    visualizer(),
     istanbulPlugin({
       include: "src/*",
       exclude: ["node_modules", "test/"],
@@ -73,9 +75,21 @@ export default defineConfig(({mode}) => ({
       formats: ["es"]
     },
     rollupOptions: {
+      plugins: [
+        visualizer()
+      ],
       external: [
-        "primevue",
-        "vue"
+        "@azure/storage-blob",
+        "@azure/abort-controller",
+        "@vueuse/components",
+        '@iconify/vue',
+        "bootstrap",
+        "flatpickr",
+        /^primevue\/*/,
+        "vue",
+        "vue-multiselect",
+        "vee-validate",
+        "zod"
       ],
       output: {
         dir: "dist/esm",
