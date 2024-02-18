@@ -51,5 +51,6 @@ declare module 'vue' {
     Steps: typeof import('primevue/steps')['default']
     Textarea: typeof import('primevue/textarea')['default']
     UploadButton: typeof import('./src/components/file-uploader/components/UploadButton.vue')['default']
+    UploadStatus: typeof import('./src/components/file-uploader/components/UploadStatus.vue')['default']
   }
 }

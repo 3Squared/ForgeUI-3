@@ -5,8 +5,11 @@
       <FileInfo
           :key="file.name"
           :class="index === files.length - 1 || files.length == 1 ? '' : 'border-bottom'"
-          v-model="files[index].file"
+          :duplicate-warning="files[index].duplicateWarning"
+          v-model:file="files[index].file"
+          v-model:blob-file-name="files[index].blobFileName"
           v-bind="props"
+          @deleted="delFiles"
       />
     </span>
   </DragDropArea>
@@ -26,11 +29,12 @@ const files = ref<ForgeFileStatus[]>([])
 export interface ForgeFileUploaderProps {
   acceptedFileTypes: string,
   maxFileSize: number,
+  getFileUrlAction: Function,
   placeholder?: string,
   customFileNameRules?: TypedSchema,
   maxFileInput?: number,
   multiple?: boolean,
-  editableFileName?: boolean
+  editableFileName?: boolean,
 }
 
 const props = withDefaults(defineProps<ForgeFileUploaderProps>(), {
@@ -39,4 +43,9 @@ const props = withDefaults(defineProps<ForgeFileUploaderProps>(), {
   editableFileName: false,
   placeholder: "Browse your computer"
 })
+
+const delFiles = () => {
+  files.value = []
+  console.log(files.value)
+}
 </script>

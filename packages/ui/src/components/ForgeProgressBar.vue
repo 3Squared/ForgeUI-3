@@ -1,6 +1,7 @@
 <template>
-  <ProgressBar v-bind="{...$attrs, ...props}" :pt="pt" />
-
+  <ProgressBar v-bind="{...$attrs, ...props}" :pt="pt">
+    <slot/>
+  </ProgressBar>
 </template>
 
 <script setup lang="ts">

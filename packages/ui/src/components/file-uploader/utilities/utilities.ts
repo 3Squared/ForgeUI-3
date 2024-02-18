@@ -26,6 +26,11 @@ export function addFiles(filesToUpload: File[], files : ForgeFileStatus[]) {
   return files
 }
 
+export function deleteFile(fileToDelete: File, files: ForgeFileStatus[]) {
+
+  return files.filter(file => file.file !== fileToDelete)
+}
+
 export function formatFileSize(bytes: number, si = true, dp = 1) {
   const thresh = si ? 1000 : 1024;
 
@@ -52,4 +57,11 @@ export function isImage(mimeType: string): boolean {
 export function getThumbnailUrl(file: File) {
   return URL.createObjectURL(file)
 }
+
+export function uploadToBlob() {
+
+}
+
+
+export type FileUploadStatus = "Not Uploaded" | "Preparing" | "Uploading" | "Uploaded" | "Failed" | "Aborted" | "DeleteFileFailed" | "InvalidFileType" | "InvalidFileSize";
 
