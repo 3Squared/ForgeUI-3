@@ -1,6 +1,8 @@
 <template>
-  <ForgeProgressBar v-if="uploadStatus === 'Not Uploaded'" animate striped>{{ ((bytesUploaded / fileSize) * 100).toFixed(0)}}%</ForgeProgressBar>
-  <ForgeAlert v-else :severity="alertSeverity">{{ alertMessage }}</ForgeAlert>
+  <div>
+    <ForgeProgressBar v-if="uploadStatus === 'Not Uploaded'" animate striped>{{ ((bytesUploaded / fileSize) * 100).toFixed(0)}}%</ForgeProgressBar>
+    <ForgeAlert v-else :severity="alertSeverity">{{ alertMessage }}</ForgeAlert>
+  </div>
 </template>
 
 <script setup lang="ts">

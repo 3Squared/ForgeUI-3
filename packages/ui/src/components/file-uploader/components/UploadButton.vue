@@ -7,7 +7,7 @@
           ref="fileUpload"
           type="file"
           class="d-none"
-          :accept="acceptedFileTypes"
+          :accept="acceptedFileTypes.join(', ')"
           :disabled="uploadDisabled"
           :multiple="multiple"
           @input="(event) => addUploadedFiles([...(event.target as any).files])"
@@ -16,6 +16,7 @@
         {{ placeholder }}
       </label>
     </div>
+    <div class="ms-auto">Accepted File Types: {{acceptedFileTypes.join(", ")}}</div>
   </div>
 </template>
 
@@ -25,7 +26,7 @@ import { computed } from "vue";
 import { ForgeFileStatus } from "../../../types/forge-types";
 
 interface FileUploaderButtonProps {
-  acceptedFileTypes: string,
+  acceptedFileTypes: string[],
   multiple: boolean,
   placeholder: string,
   maxFileInput: number

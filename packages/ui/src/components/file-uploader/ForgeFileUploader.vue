@@ -1,6 +1,7 @@
 <template>
-  <UploadButton v-bind="props" v-model="files" />
-  <DragDropArea :max-file-input="props.maxFileInput" v-model="files">
+  <div data-cy="file-uploader">
+    <UploadButton v-bind="props" v-model="files" />
+    <DragDropArea :max-file-input="props.maxFileInput" v-model="files">
     <span v-for="({ file }, index) in files">
       <FileInfo
           :key="file.name"
@@ -9,11 +10,13 @@
           v-model:file="files[index].file"
           v-model:blob-file-name="files[index].blobFileName"
           v-bind="props"
-          @deleted="delFiles"
+          @deleted="deleteFiles"
       />
     </span>
-  </DragDropArea>
-  <MaxFileSize :max-file-size="props.maxFileSize"/>
+    </DragDropArea>
+    <MaxFileSize :max-file-size="props.maxFileSize"/>
+  </div>
+
 </template>
 
 <script setup lang="ts">
@@ -27,7 +30,7 @@ import {TypedSchema} from "vee-validate";
 
 const files = ref<ForgeFileStatus[]>([])
 export interface ForgeFileUploaderProps {
-  acceptedFileTypes: string,
+  acceptedFileTypes: string[],
   maxFileSize: number,
   getFileUrlAction: Function,
   placeholder?: string,
@@ -44,8 +47,7 @@ const props = withDefaults(defineProps<ForgeFileUploaderProps>(), {
   placeholder: "Browse your computer"
 })
 
-const delFiles = () => {
-  files.value = []
-  console.log(files.value)
+const deleteFiles = (fileInfo : File) => {
+  files.value = files.value.filter((f) => f.file != fileInfo)
 }
 </script>

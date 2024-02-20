@@ -644,8 +644,6 @@ export default {
       ]
     }),
     button: (options: MenubarPassThroughMethodOptions & { state: { queryMatches: boolean }}) => {
-      console.log(options)
-      
       return {
         class: [
           'ms-auto me-3',

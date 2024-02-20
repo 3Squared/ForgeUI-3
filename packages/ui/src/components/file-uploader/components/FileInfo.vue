@@ -12,16 +12,16 @@
       <span class="text-black-50">File type: {{ fileType }}</span>
       <span class="text-black-50">File size: {{ formatFileSize(file.size) }}</span>
     </div>
-    <UploadStatus
-        class="ms-auto my-auto"
-        :file-size="file.size"
-        :upload-status="uploadStatus"
-        :bytes-uploaded="bytesUploaded"
-        v-bind="props"
-    />
+
     <div class="ms-auto my-auto">
-      <Button link @click="uploadBlob" v-if="uploadStatus === 'Uploaded' || uploadStatus === 'Failed' || uploadStatus === 'Aborted'">
-        <Icon :icon="uploadStatus === 'Uploaded' ? 'bi:upload' : 'bi:arrow-clockwise'" />
+      <UploadStatus
+          :file-size="file.size"
+          :upload-status="uploadStatus"
+          :bytes-uploaded="bytesUploaded"
+          v-bind="props"
+      />
+      <Button link @click="uploadBlob" v-if="uploadStatus === 'Not Uploaded' || uploadStatus === 'Failed' || uploadStatus === 'Aborted'">
+        <Icon :icon="uploadStatus === 'Not Uploaded' ? 'bi:upload' : 'bi:arrow-clockwise'" />
       </Button>
       <Button link @click="controller.value.abort()" v-if="uploadStatus === 'Uploading'">
         <Icon :icon="'bi:x-circle-fill'" />
@@ -112,7 +112,6 @@ const uploadBlob = async () => {
 }
 
 const deleteFileFromBlob = async () => {
-  console.log("Hello")
   if(uploadStatus.value === 'Uploaded') {
     if(blobUploadUrl.value !== null) {
       try {
@@ -127,8 +126,6 @@ const deleteFileFromBlob = async () => {
     }
   }
 
-  emits('deleted', file)
-  console.log("UHOH")
-
+  emits('deleted', file.value)
 }
 </script>
