@@ -9,14 +9,17 @@
           class="d-none"
           :accept="acceptedFileTypes.join(', ')"
           :disabled="uploadDisabled"
-          :multiple="multiple"
+          :multiple="maxFileInput > 1"
           @input="(event) => addUploadedFiles([...(event.target as any).files])"
       />
       <label :class="{ disabled: uploadDisabled }" class="btn btn-primary" for="file-input">
-        {{ placeholder }}
+        <slot name="button-content">
+          <Icon icon="bi:upload" class="me-2" height="20px" width="20px" />
+          Browse your computer
+        </slot>
       </label>
     </div>
-    <div class="ms-auto" v-if="showDragDropArea">Accepted File Types: {{acceptedFileTypes.map((type) => type.split('/').pop()).join(", ")}}</div>
+    <div class="ms-auto" v-if="showDragDropArea" :key="acceptedFileTypes.length">Accepted File Types: {{acceptedFileTypes.map((type) => type.split('/').pop()).join(", ")}}</div>
   </div>
 </template>
 
@@ -24,18 +27,17 @@
 import { addFiles } from '../utilities/utilities'
 import { computed } from "vue";
 import { ForgeFileStatus } from "../../../types/forge-types";
+import { Icon } from "@iconify/vue";
 
 interface FileUploaderButtonProps {
   acceptedFileTypes: string[],
-  multiple: boolean,
-  placeholder: string,
   maxFileInput: number,
   showDragDropArea: boolean
 }
 
 const files = defineModel<ForgeFileStatus[]>({ required: true })
 
-const { acceptedFileTypes, multiple, placeholder, maxFileInput, showDragDropArea } = defineProps<FileUploaderButtonProps>()
+const { acceptedFileTypes, maxFileInput, showDragDropArea } = defineProps<FileUploaderButtonProps>()
 
 const uploadDisabled = computed<boolean>(() => maxFileInput <= files.value.length)
 

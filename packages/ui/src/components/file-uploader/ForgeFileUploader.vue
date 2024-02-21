@@ -34,21 +34,17 @@ export interface ForgeFileUploaderProps {
   acceptedFileTypes: string[],
   maxFileSize: number,
   getFileUrlAction: (fileName: string) => Promise<[string, string]>,
-  showDragDropArea?: boolean, 
-  placeholder?: string,
+  showDragDropArea?: boolean,
   customFileNameRules?: TypedSchema,
   maxFileInput?: number,
-  multiple?: boolean,
   editableFileName?: boolean,
   autoUploadToBlob?: boolean
 }
 
 const props = withDefaults(defineProps<ForgeFileUploaderProps>(), {
   maxFileInput: 3,
-  multiple: true,
   editableFileName: false,
   autoUploadToBlob: true,
-  placeholder: "Browse your computer",
   showDragDropArea: true
 })
 

@@ -27,7 +27,7 @@ interface DragDropAreaProps {
   acceptedFileTypes: string[]
 }
 
-const { acceptedFileTypes, maxFileInput } = defineProps<DragDropAreaProps>()
+const { acceptedFileTypes, maxFileInput, maxFileSize } = defineProps<DragDropAreaProps>()
 
 const files = defineModel<ForgeFileStatus[]>({ required: true })
 
@@ -40,7 +40,7 @@ const dropFiles = (event: any) => {
   if (event.dataTransfer.files.length > maxFileInput || uploadDisabled.value) {
     event.preventDefault()
   } else {
-    files.value = addFiles([...event.dataTransfer.files], files.value, acceptedFileTypes, maxFileInput)
+    files.value = addFiles([...event.dataTransfer.files], files.value, acceptedFileTypes, maxFileSize)
   }
 }
 </script>

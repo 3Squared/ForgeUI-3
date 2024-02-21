@@ -408,7 +408,7 @@ export default {
       class: ['card-subtitle mb-2']
     }),
     content: () => ({
-      class: ['card-text']
+      class: ['card-text h-100']
     }),
     body: () => ({
       class: ['card-body']
