@@ -52,7 +52,7 @@ const { options, propVals, config, reset } = usePlayground(
     placeholder: "Select...",
     allowEmpty: true,
     resetAfter: false,
-    closeOnSelect: true,
+    closeOnSelect: false,
     taggable: false,
     tagPlaceholder: "Please enter to create a tag",
     tagPosition: tagPositions[0],

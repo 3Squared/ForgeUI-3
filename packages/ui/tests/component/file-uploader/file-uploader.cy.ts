@@ -11,7 +11,9 @@ function mountFileUploader(props : ForgeFileUploaderProps) {
 describe("<ForgeFileUploader />", () => {
   it("Mounts", () => {
     // Act
-    mountFileUploader({ acceptedFileTypes: ['.jpg'], getFileUrlAction: () => {}, maxFileSize: 5420000})
+    mountFileUploader({ acceptedFileTypes: ['.jpg'], getFileUrlAction: (fileName: string) => {
+      return Promise.resolve([fileName, ''])
+    }, maxFileSize: 5420000})
     
     // Assert
     cy.get(fileUploaderId)

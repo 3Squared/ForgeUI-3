@@ -16,7 +16,7 @@
         {{ placeholder }}
       </label>
     </div>
-    <div class="ms-auto">Accepted File Types: {{acceptedFileTypes.join(", ")}}</div>
+    <div class="ms-auto" v-if="showDragDropArea">Accepted File Types: {{acceptedFileTypes.map((type) => type.split('/').pop()).join(", ")}}</div>
   </div>
 </template>
 
@@ -29,16 +29,17 @@ interface FileUploaderButtonProps {
   acceptedFileTypes: string[],
   multiple: boolean,
   placeholder: string,
-  maxFileInput: number
+  maxFileInput: number,
+  showDragDropArea: boolean
 }
 
 const files = defineModel<ForgeFileStatus[]>({ required: true })
 
-const { acceptedFileTypes, multiple, placeholder, maxFileInput } = defineProps<FileUploaderButtonProps>()
+const { acceptedFileTypes, multiple, placeholder, maxFileInput, showDragDropArea } = defineProps<FileUploaderButtonProps>()
 
 const uploadDisabled = computed<boolean>(() => maxFileInput <= files.value.length)
 
 const addUploadedFiles = (filesToUpload : File[]) => {
-  files.value = addFiles(filesToUpload, files.value)
+  files.value = addFiles(filesToUpload, files.value, acceptedFileTypes, maxFileInput)
 }
 </script>

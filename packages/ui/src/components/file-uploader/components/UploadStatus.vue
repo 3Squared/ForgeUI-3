@@ -1,7 +1,7 @@
 <template>
   <div class="d-flex align-items-center me-2">
     <ForgeProgressBar v-if="uploadStatus === 'Uploading'" :pixelWidth="200" animate striped >{{ ((bytesUploaded / fileSize) * 100).toFixed(0)}}%</ForgeProgressBar>
-    <ForgeAlert v-if="uploadStatus !== 'Uploading' && uploadStatus !== 'Not Uploaded' && uploadStatus !== 'Uploaded'" :severity="alertSeverity" class="mb-0 w-75 ms-auto">{{ alertMessage }}</ForgeAlert>
+    <ForgeAlert v-if="uploadStatus !== 'Uploading' && uploadStatus !== 'Not Uploaded' && uploadStatus !== 'Uploaded' && uploadStatus !== 'Preparing'" :severity="alertSeverity" class="mb-0 w-75 ms-auto">{{ alertMessage }}</ForgeAlert>
   </div>
 </template>
 
@@ -20,7 +20,7 @@ interface UploadStatusProps {
 
 const { fileSize, uploadStatus, bytesUploaded, maxFileSize} = defineProps<UploadStatusProps>()
 
-const alertSeverity = computed<string>(() => uploadStatus === 'Failed' || uploadStatus === 'InvalidFileType' || uploadStatus === 'InvalidFileSize' || uploadStatus === 'Duplicate' ? 'danger' : 'warning');
+const alertSeverity = computed<string>(() => uploadStatus === 'Failed' || uploadStatus === 'InvalidFileType' || uploadStatus === 'InvalidFileSize' ? 'danger' : 'warning');
 const alertMessage = computed<string>(() => {
   switch (uploadStatus) {
     case 'InvalidFileType':

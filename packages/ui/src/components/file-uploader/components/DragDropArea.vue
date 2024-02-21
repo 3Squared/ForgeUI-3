@@ -1,6 +1,6 @@
 <template>
   <div
-      :class="`${dragInput ? 'border-2 border-primary bg-body-tertiary' : ''} mt-3 file-container border-dashed border-2`"
+      :class="`${ dragInput ? 'border-2 border-primary bg-body-tertiary' : '' } mt-3 file-container border-dashed border-2`"
       @dragleave.prevent="dragInput = false"
       @dragover.prevent="dragInput = true"
       @drop.prevent="dropFiles"
@@ -22,10 +22,12 @@ import { computed, ref, defineModel } from "vue";
 import { ForgeFileStatus } from "../../../types/forge-types";
 
 interface DragDropAreaProps {
-  maxFileInput: number
+  maxFileInput: number,
+  maxFileSize: number,
+  acceptedFileTypes: string[]
 }
 
-const { maxFileInput } = defineProps<DragDropAreaProps>()
+const { acceptedFileTypes, maxFileInput } = defineProps<DragDropAreaProps>()
 
 const files = defineModel<ForgeFileStatus[]>({ required: true })
 
@@ -38,7 +40,7 @@ const dropFiles = (event: any) => {
   if (event.dataTransfer.files.length > maxFileInput || uploadDisabled.value) {
     event.preventDefault()
   } else {
-    files.value = addFiles([...event.dataTransfer.files], files.value)
+    files.value = addFiles([...event.dataTransfer.files], files.value, acceptedFileTypes, maxFileInput)
   }
 }
 </script>

@@ -1,15 +1,15 @@
 <template>
   <div class="py-4 px-3 d-flex">
     <div>
-      <Image v-if="isImage(file.type)" image-class="image-file-thumbnail border"  :src="getThumbnailUrl(file)" :alt="file.name" width="75px" preview />
-      <Icon v-else icon="file-earmark"/>
+      <Image v-if="isImage(file.type)" image-class="image-file-thumbnail border"  :src="getThumbnailUrl(file)" :alt="file.name" width="125px" preview />
+      <Icon v-else icon="file-earmark" color="black" width="32px"/>
     </div>
     <div class="ms-3 d-flex flex-column">
       <div>
         <ForgeInlineEditor v-if="editableFileName" v-model="fileName" :rules="customFileNameRules" :name="file.name" :complete-action="updateFileName"/>
         <span v-else>{{ file.name }}</span>
       </div>
-      <span class="text-black-50">File type: {{ fileType }}</span>
+      <span class="text-black-50">File type: {{ file.type.split('/').pop() }}</span>
       <span class="text-black-50">File size: {{ formatFileSize(file.size) }}</span>
     </div>
 
@@ -21,8 +21,8 @@
           :bytes-uploaded="bytesUploaded"
           :max-file-size="maxFileSize"
       />
-      <Button link @click="uploadBlob" v-if="uploadStatus === 'Not Uploaded' || uploadStatus === 'Failed' || uploadStatus === 'Aborted'">
-        <Icon :icon="uploadStatus === 'Not Uploaded' ? 'bi:upload' : 'bi:arrow-clockwise'" />
+      <Button link @click="uploadBlob" v-if="uploadStatus === 'Not Uploaded' || uploadStatus === 'Failed' || uploadStatus === 'Duplicate' || uploadStatus === 'Aborted'">
+        <Icon :icon="uploadStatus === 'Not Uploaded' || uploadStatus === 'Duplicate' ? 'bi:upload' : 'bi:arrow-clockwise'" />
       </Button>
       <Button link @click="controller.value.abort()" v-if="uploadStatus === 'Uploading'">
         <Icon :icon="'bi:x-circle-fill'" />
@@ -54,7 +54,7 @@ interface FileInfoProps {
   editableFileName: boolean,
   acceptedFileTypes: string,
   maxFileSize: number,
-  getFileUrlAction: Function,
+  getFileUrlAction: (fileName : string) => Promise<[string, string]>,
   customFileNameRules?: TypedSchema,
   autoUploadToBlob?: boolean
 }
@@ -67,13 +67,11 @@ const uploadStatus = defineModel<FileUploadStatus>('uploadStatus', { required: t
 const emits = defineEmits(['deleted'])
 
 const fileName = ref<string>(file.value.name)
-const fileType = ref<string>(file.value.type.split('/').pop() ?? "")
-
 const blobUploadUrl = ref<string>("")
 const bytesUploaded = ref<number>(0)
 const controller = ref();
 
-const validFileType = computed<boolean>(() => acceptedFileTypes.includes(fileType.value ?? ""))
+const validFileType = computed<boolean>(() => acceptedFileTypes.includes(file.value.type))
 const validFileSize = computed<boolean>(() => file.value.size <= maxFileSize)
 
 const updateFileName = () => {
@@ -81,8 +79,8 @@ const updateFileName = () => {
 }
 
 const uploadBlob = async () => {
-  if(!validFileType || !validFileSize){
-    uploadStatus.value = !validFileType ? 'InvalidFileType' : 'InvalidFileSize'
+  if(!validFileType.value || !validFileSize.value){
+    uploadStatus.value = !validFileType.value ? 'InvalidFileType' : 'InvalidFileSize'
     return;
   }
   uploadStatus.value = 'Preparing'
