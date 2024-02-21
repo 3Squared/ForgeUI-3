@@ -1,5 +1,6 @@
 import { ColumnProps } from "primevue/column";
 import { FilterMatchModeOptions, FilterOperatorOptions } from "primevue/api";
+import { FileUploadStatus } from "../components/file-uploader/utilities/utilities";
 
 export type Severity = 'primary' | 'secondary' | 'success' | 'warning' | 'danger' | 'info' | undefined
 export type Size = 'sm' | 'md' | 'lg' | undefined
@@ -20,10 +21,8 @@ export type ForgeTableFilter = {
 
 export interface ForgeFileStatus {
   file: File;
-  status: "NotUploaded" | "Uploaded" | "Failed";
+  status: FileUploadStatus;
   blobFileName: string | null;
-  duplicateWarning: boolean;
-  customFileName: string | null;
 }
 
 export type ForgeTableFilterConstraint = {

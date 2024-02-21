@@ -1,7 +1,7 @@
 <template>
-  <div>
-    <ForgeProgressBar v-if="uploadStatus === 'Not Uploaded'" animate striped>{{ ((bytesUploaded / fileSize) * 100).toFixed(0)}}%</ForgeProgressBar>
-    <ForgeAlert v-else :severity="alertSeverity">{{ alertMessage }}</ForgeAlert>
+  <div class="d-flex align-items-center me-2">
+    <ForgeProgressBar v-if="uploadStatus === 'Uploading'" :pixelWidth="200" animate striped >{{ ((bytesUploaded / fileSize) * 100).toFixed(0)}}%</ForgeProgressBar>
+    <ForgeAlert v-if="uploadStatus !== 'Uploading' && uploadStatus !== 'Not Uploaded' && uploadStatus !== 'Uploaded'" :severity="alertSeverity" class="mb-0 w-75 ms-auto">{{ alertMessage }}</ForgeAlert>
   </div>
 </template>
 
@@ -15,13 +15,12 @@ interface UploadStatusProps {
   fileSize: number,
   maxFileSize: number,
   bytesUploaded: number,
-  uploadStatus: FileUploadStatus,
-  duplicateWarning: boolean,
+  uploadStatus: FileUploadStatus
 }
 
-const { fileSize, duplicateWarning, uploadStatus, bytesUploaded, maxFileSize} = defineProps<UploadStatusProps>()
+const { fileSize, uploadStatus, bytesUploaded, maxFileSize} = defineProps<UploadStatusProps>()
 
-const alertSeverity = computed<string>(() => uploadStatus === 'Failed' || uploadStatus === 'InvalidFileType' || uploadStatus === 'InvalidFileSize' || duplicateWarning ? 'danger' : 'warning');
+const alertSeverity = computed<string>(() => uploadStatus === 'Failed' || uploadStatus === 'InvalidFileType' || uploadStatus === 'InvalidFileSize' || uploadStatus === 'Duplicate' ? 'danger' : 'warning');
 const alertMessage = computed<string>(() => {
   switch (uploadStatus) {
     case 'InvalidFileType':
@@ -30,6 +29,10 @@ const alertMessage = computed<string>(() => {
       return `Upload Failed: File size exceeds the ${formatFileSize(maxFileSize)} limit.`
     case 'Aborted':
       return 'Upload Failed: User cancelled.'
+    case 'DeleteFileFailed': 
+      return 'Failed to delete: connection error, please try again';
+    case 'Duplicate':
+      return 'Upload Failed: A file with the same name has already been uploaded.';
     default:
       return 'Upload Failed: Connection error, please try again.'
   }

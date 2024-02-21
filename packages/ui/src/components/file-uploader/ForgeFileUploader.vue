@@ -6,9 +6,9 @@
       <FileInfo
           :key="file.name"
           :class="index === files.length - 1 || files.length == 1 ? '' : 'border-bottom'"
-          :duplicate-warning="files[index].duplicateWarning"
           v-model:file="files[index].file"
           v-model:blob-file-name="files[index].blobFileName"
+          v-model:upload-status="files[index].status"
           v-bind="props"
           @deleted="deleteFiles"
       />
@@ -38,12 +38,14 @@ export interface ForgeFileUploaderProps {
   maxFileInput?: number,
   multiple?: boolean,
   editableFileName?: boolean,
+  autoUploadToBlob?: boolean
 }
 
 const props = withDefaults(defineProps<ForgeFileUploaderProps>(), {
   maxFileInput: 3,
   multiple: true,
   editableFileName: false,
+  autoUploadToBlob: true,
   placeholder: "Browse your computer"
 })
 

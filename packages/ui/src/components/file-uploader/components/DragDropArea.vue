@@ -1,6 +1,6 @@
 <template>
   <div
-      :class="`${dragInput ? 'drag-border' : ''} mt-3 file-container border-dashed`"
+      :class="`${dragInput ? 'border-2 border-primary bg-body-tertiary' : ''} mt-3 file-container border-dashed border-2`"
       @dragleave.prevent="dragInput = false"
       @dragover.prevent="dragInput = true"
       @drop.prevent="dropFiles"

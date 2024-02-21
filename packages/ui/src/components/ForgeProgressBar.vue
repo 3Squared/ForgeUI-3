@@ -1,5 +1,5 @@
 <template>
-  <ProgressBar v-bind="{...$attrs, ...props}" :pt="pt">
+  <ProgressBar v-bind="{...$attrs, ...props}" :pt="pt" >
     <slot/>
   </ProgressBar>
 </template>
@@ -13,7 +13,8 @@ import { computed } from "vue";
 export interface ForgeProgressBarProps extends /* vue-ignore */ ProgressBarProps {
   severity: Severity,
   striped: boolean,
-  animate: boolean
+  animate: boolean,
+  pixelWidth?: number
 }
 
 const props = withDefaults(defineProps<ForgeProgressBarProps>(), {
@@ -45,6 +46,9 @@ const severity = computed(() => {
 })
 
 const pt = computed(() => ({
+  root: {
+    style: props.pixelWidth ? `width: ${props.pixelWidth}px` : ''
+  },
   value: {
     class: [severity.value, striped.value, animate.value]
   },

@@ -1,5 +1,17 @@
 import { ForgeFileStatus } from "../../../types/forge-types";
+import { BlockBlobClient } from "@azure/storage-blob";
 
+export type FileUploadStatus =
+  "Not Uploaded"
+  | "Preparing"
+  | "Uploading"
+  | "Uploaded"
+  | "Failed"
+  | "Aborted"
+  | "Duplicate"
+  | "DeleteFileFailed"
+  | "InvalidFileType"
+  | "InvalidFileSize";
 export function addFiles(filesToUpload: File[], files : ForgeFileStatus[]) {
   // Get local version of the currently uploaded files.
   const uploadedFiles = files.flatMap(fileStatus => fileStatus.file)
@@ -9,21 +21,36 @@ export function addFiles(filesToUpload: File[], files : ForgeFileStatus[]) {
 
   // Add any new files to Files array
   filesToUpload.forEach((file) => {
-    const fileIndex = uploadedFiles.findIndex(uploadedFile => uploadedFile === file)
+    const fileIndex = uploadedFiles.findIndex(uploadedFile => uploadedFile.name === file.name)
+    console.log(fileIndex)
     if (fileIndex === -1) {
       files.unshift({
         file: file,
-        status: "NotUploaded",
-        blobFileName: null,
-        duplicateWarning: false,
-        customFileName: null
+        status: 'Not Uploaded',
+        blobFileName: null
       })
     } else {
-      files[fileIndex].duplicateWarning = true;
+      files[fileIndex].status = 'Duplicate';
     }
   })
   
   return files
+}
+
+export async function deleteFile(uploadStatus : FileUploadStatus, blobUploadUrl : string) {
+  if (uploadStatus === 'Uploaded') {
+    if (blobUploadUrl !== null) {
+      try {
+        const blockBlobClient = new BlockBlobClient(blobUploadUrl)
+        await blockBlobClient.delete()
+      } catch (exception) {
+        if (exception !== 'BlobNotFound') {
+          uploadStatus = 'DeleteFileFailed'
+          return;
+        }
+      }
+    }
+  }
 }
 
 export function formatFileSize(bytes: number, si = true, dp = 1) {
@@ -53,4 +80,3 @@ export function getThumbnailUrl(file: File) {
   return URL.createObjectURL(file)
 }
 
-export type FileUploadStatus = "Not Uploaded" | "Preparing" | "Uploading" | "Uploaded" | "Failed" | "Aborted" | "DeleteFileFailed" | "InvalidFileType" | "InvalidFileSize";
