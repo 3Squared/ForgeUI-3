@@ -4,7 +4,6 @@
     <div>
       <input
           id="file-input"
-          ref="fileUpload"
           type="file"
           class="d-none"
           :accept="acceptedFileTypes.join(', ')"
@@ -12,14 +11,14 @@
           :multiple="maxFileInput > 1"
           @input="(event) => addUploadedFiles([...(event.target as any).files])"
       />
-      <label :class="{ disabled: uploadDisabled }" class="btn btn-primary" for="file-input">
+      <label :class="{ disabled: uploadDisabled }" class="btn btn-primary" id="file-input-button" for="file-input">
         <slot name="button-content">
           <Icon icon="bi:upload" class="me-2" height="20px" width="20px" />
           Browse your computer
         </slot>
       </label>
     </div>
-    <div class="ms-auto" v-if="showDragDropArea" :key="acceptedFileTypes.length">Accepted File Types: {{acceptedFileTypes.map((type) => type.split('/').pop()).join(", ")}}</div>
+    <div class="ms-auto" v-if="showDragDropArea" :key="acceptedFileTypes.length" id="accepted-file-types">Accepted File Types: {{acceptedFileTypes.map((type) => type.split('/').pop()).join(", ")}}</div>
   </div>
 </template>
 

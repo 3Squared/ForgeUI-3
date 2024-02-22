@@ -1,6 +1,6 @@
 <template>
   <div class="d-flex justify-content-end mt-1">
-    <div>Max file size: {{ formatFileSize(maxFileSize) }}</div>
+    <div id="max-file-size">Max file size: {{ formatFileSize(maxFileSize) }}</div>
   </div>
 </template>
 

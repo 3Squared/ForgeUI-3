@@ -1,11 +1,12 @@
 <template>
   <div
+      id="drag-drop-area"
       :class="`${ dragInput ? 'border-2 border-primary bg-body-tertiary' : '' } mt-3 file-container border-dashed border-2`"
       @dragleave.prevent="dragInput = false"
       @dragover.prevent="dragInput = true"
       @drop.prevent="dropFiles"
   >
-    <div v-if="files.length === 0" class="py-4 px-3">
+    <div v-if="files.length === 0" class="py-4 px-3" id="placeholder-message">
       <Icon icon="bi:upload" class="me-2" height="20px" width="20px" />
       Drag and drop files here
     </div>

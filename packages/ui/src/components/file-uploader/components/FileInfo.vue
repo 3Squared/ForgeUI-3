@@ -1,16 +1,16 @@
 <template>
-  <div class="py-4 px-3 d-flex">
+  <div class="py-4 px-3 d-flex" :data-cy="`file-info-${file.name}`">
     <div>
-      <Image v-if="isImage(file.type)" image-class="image-file-thumbnail border"  :src="getThumbnailUrl(file)" :alt="file.name" width="75px" preview />
-      <Icon v-else icon="bi:file-earmark" color="black" width="75px"/>
+      <Image v-if="isImage(file.type)" id="thumbnail-image" image-class="image-file-thumbnail border"  :src="getThumbnailUrl(file)" :alt="file.name" width="75px" preview />
+      <Icon v-else id="file-earmark" icon="bi:file-earmark" color="black" width="75px"/>
     </div>
     <div class="ms-3 d-flex flex-column">
       <div>
-        <ForgeInlineEditor v-if="editableFileName" v-model="fileName" :rules="customFileNameRules" :name="file.name" :complete-action="updateFileName"/>
-        <span v-else>{{ file.name }}</span>
+        <ForgeInlineEditor v-if="editableFileName" id="edit-file-name" v-model="fileName" :rules="customFileNameRules" :name="file.name" :complete-action="updateFileName"/>
+        <span v-else id="file-name">{{ file.name }}</span>
       </div>
-      <span class="text-black-50">File type: {{ file.type.split('/').pop() }}</span>
-      <span class="text-black-50">File size: {{ formatFileSize(file.size) }}</span>
+      <span class="text-black-50" id="file-type">File type: {{ file.type.split('/').pop() }}</span>
+      <span class="text-black-50" id="file-size">File size: {{ formatFileSize(file.size) }}</span>
     </div>
 
     <div class="ms-auto my-auto d-flex">
@@ -27,7 +27,7 @@
       <Button link @click="controller.value.abort()" v-if="uploadStatus === 'Uploading'">
         <Icon :icon="'bi:x-circle-fill'" />
       </Button>
-      <Button link @click="deleteFileFromBlob" v-else>
+      <Button link @click="deleteFileFromBlob" v-else id="delete-button">
         <Icon :icon="'bi:trash'" />
       </Button>
     </div>
