@@ -2,7 +2,7 @@
   <div class="py-4 px-3 d-flex">
     <div>
       <Image v-if="isImage(file.type)" image-class="image-file-thumbnail border"  :src="getThumbnailUrl(file)" :alt="file.name" width="75px" preview />
-      <Icon v-else icon="file-earmark" color="black" width="32px"/>
+      <Icon v-else icon="bi:file-earmark" color="black" width="75px"/>
     </div>
     <div class="ms-3 d-flex flex-column">
       <div>
