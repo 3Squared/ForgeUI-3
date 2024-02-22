@@ -28,7 +28,7 @@ const pages = [
     items: [
       { label: "Checkbox", command: () => router.push("/forms/checkbox") },
       { label: "Date Picker", command: () => router.push("/forms/datepicker") },
-      { label: "File Uploader", command: () => router.push("/forms/fileuploader")},
+      { label: "File Uploader", command: () => router.push("/forms/fileuploader") },
       { label: "Remaining Characters", command: () => router.push("/forms/remainingcharacters") },
       { label: "Form", command: () => router.push("/forms/form") },
       { label: "Form Field", command: () => router.push("/forms/formfield") },
