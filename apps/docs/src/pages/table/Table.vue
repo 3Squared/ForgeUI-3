@@ -39,7 +39,7 @@ import { ForgePageHeader, ForgeFilterHeader, ForgeColumn, ForgeTable, ForgeTable
 import { Playground, usePlayground, CodeBlock } from "@3squared/forge-playground-3";
 import Column from "primevue/column";
 import { computed, ref } from "vue";
-import InputNumber from 'primevue/inputnumber'
+import InputNumber from "primevue/inputnumber";
 import { FilterMatchMode } from "primevue/api";
 import InputText from "primevue/inputtext";
 
