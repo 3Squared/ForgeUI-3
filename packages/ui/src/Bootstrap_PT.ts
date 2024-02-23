@@ -259,7 +259,28 @@ export default {
       ]
     },
     headerContent: 'd-flex', 
-    sort: 'd-flex ms-auto my-auto cursor-pointer'
+    sort: 'd-flex ms-auto my-auto cursor-pointer',
+    rowCheckbox: (options : any) => {
+      return {
+        class: [
+          'form-check-input px-2 py-2 rounded position-relative',
+          {
+            'bg-primary': options.props.checked,
+            'form-check-input__focus': options.state.focused,
+          }
+        ]
+      }
+    },
+    rowRadioButton: (options : any) => {
+        return {
+          class: [
+            'form-check-input',
+            {
+              'disabled': options.props.disabled
+            }
+          ]
+        }
+    },
   },
   inputtext: {
     root: (options : InputTextPassThroughMethodOptions) => ({
