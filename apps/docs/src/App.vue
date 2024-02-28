@@ -73,10 +73,7 @@ const pages = [
       { label: "Tabs", command: () => router.push("/layout/tabs") }
     ]
   },
-  {
-    label: "Tables",
-    items: [{ label: "Filter Header" }, { label: "Table" }]
-  },
+  { label: "Table", command: () => router.push("/table/table") },
   { label: "Icons", command: () => router.push("/icons") },
   { label: "Colours", command: () => router.push("/colours") }
 ];

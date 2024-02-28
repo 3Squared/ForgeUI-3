@@ -1,10 +1,21 @@
 import Dropdown, { DropdownProps } from "primevue/dropdown";
 import { ref } from "vue";
+import DropdownWrapper from "./dropdownWrapper.vue";
 
 const controlId = "dropdown"
 function mountDropdown(props : DropdownProps) {
   // @ts-ignore
   return cy.mount(Dropdown, {
+    props: {
+      id: controlId,
+      ...props,
+    }
+  })
+}
+
+function mountWrapperDropdown(props: DropdownProps) {
+  // @ts-ignore
+  return cy.mount(DropdownWrapper, {
     props: {
       id: controlId,
       ...props,
@@ -22,7 +33,7 @@ describe("<Dropdown />", () => {
     ]
     
     // Act
-    mountDropdown({ options: options })
+    mountWrapperDropdown({ options: options })
     
     // Assert
     cy.get(`#${controlId}`).should('be.visible')

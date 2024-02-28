@@ -22,6 +22,7 @@ export default defineConfig(({mode}) => ({
   },
   optimizeDeps: {
     include: [
+      'sass',
       'primevue/inputtext',
       'primevue/card',
       'primevue/chips',
@@ -42,6 +43,8 @@ export default defineConfig(({mode}) => ({
       'primevue/tabpanel',
       'primevue/toast',
       'primevue/calendar',
+      'primevue/api', 
+      'primevue/column',
       '@vee-validate/zod', 
       '@vueuse/components',
       'zod',

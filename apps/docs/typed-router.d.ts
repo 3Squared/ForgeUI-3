@@ -71,6 +71,7 @@ declare module 'vue-router/auto/routes' {
     '/layout/PageHeader': RouteRecordInfo<'/layout/PageHeader', '/layout/PageHeader', Record<never, never>, Record<never, never>>,
     '/layout/Stepper': RouteRecordInfo<'/layout/Stepper', '/layout/Stepper', Record<never, never>, Record<never, never>>,
     '/layout/Tabs': RouteRecordInfo<'/layout/Tabs', '/layout/Tabs', Record<never, never>, Record<never, never>>,
+    '/table/Table': RouteRecordInfo<'/table/Table', '/table/Table', Record<never, never>, Record<never, never>>,
   }
 }
 

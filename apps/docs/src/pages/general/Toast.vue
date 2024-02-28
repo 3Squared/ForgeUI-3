@@ -9,7 +9,7 @@
     <Playground :options="options" :code="code" :config="config" @reset="reset">
       <template #component>
         <Button label="Show Toast!" @click="showToast" />
-        <component :is="Toast" v-bind="options" class="w-100">Stat</component>
+        <component :is="Toast" v-bind="options">Stat</component>
       </template>
       <template #additionalOptions>
         <h5 class="mt-4">Message Options</h5>
@@ -47,7 +47,6 @@ const life = ref<number>();
 
 const { options, config, reset } = usePlayground(
   {
-    group: "",
     position: "top-right",
     autoZIndex: true,
     baseZIndex: 0
@@ -65,7 +64,7 @@ const { options, config, reset } = usePlayground(
 );
 
 const showToast = () => {
-  toast.add({ severity: severity.value, summary: summary.value, closable: closable.value, group: options.value.group, life: life.value });
+  toast.add({ severity: severity.value, summary: summary.value, closable: closable.value, life: life.value });
 };
 
 const code = computed(
@@ -83,7 +82,7 @@ const code = computed(
     const toast = useToast()
     
     const showToast = () => {
-     toast.add({ severity: "${severity.value}", summary: "${summary.value}", closable: ${closable.value}, group: ${options.value.group}, life: ${life.value} })
+     toast.add({ severity: "${severity.value}", summary: "${summary.value}", closable: ${closable.value}, life: ${life.value} })
     }
   <\/script>
 `

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <ForgePageHeader title="Stat Widget" />
+    <ForgePageHeader title="Tile" />
     <Playground :options="options" :code="code" :config="config" @reset="reset">
       <template #component>
         <component :is="ForgeTile" v-bind="options" class="w-100">Content</component>
@@ -29,5 +29,5 @@ const { options, propVals, config, reset } = usePlayground(
   }
 );
 
-const code = computed(() => `<ForgeStatWidget${propVals.value.length > 0 ? " " + propVals.value.join(" ") : ""}>Content</ForgeStatWidget>`);
+const code = computed(() => `<ForgeTile${propVals.value.length > 0 ? " " + propVals.value.join(" ") : ""}>Content</ForgeTile>`);
 </script>

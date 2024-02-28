@@ -7,6 +7,9 @@ import { TabPanelPassThroughMethodOptions } from "primevue/tabpanel";
 import { TooltipPassThroughMethodOptions } from "primevue/tooltip";
 import { CalendarPassThroughMethodOptions } from "primevue/calendar";
 import { MenubarPassThroughMethodOptions } from "primevue/menubar";
+import { DataTablePassThroughMethodOptions } from "primevue/datatable";
+import { ColumnPassThroughMethodOptions, ColumnProps } from "primevue/column";
+import { MultiSelectPassThroughMethodOptions } from "primevue/multiselect";
 
 export default {
   button: {
@@ -98,9 +101,10 @@ export default {
         {
           'bg-primary': options.context.checked,
           'form-check-input__focus': options.state.focused,
+          'disabled': options.context.disabled
         }
       ],
-    })
+    }),
   },
   toast: {
     message: () => ({
@@ -136,15 +140,15 @@ export default {
       ]
     }),
   },
-  dropdown: {
+  dropdown: { 
     root: (options) => ({
-        class: [
-          {
-            "rounded-0 rounded-top": options.state.overlayVisible,
-            "disabled": options.instance.disabled,
-            'form-control': !options.instance.disabled
-          },
-          'd-flex cursor-pointer']
+      class: [
+        {
+          "rounded-0 rounded-top": options.state.overlayVisible,
+          "disabled": options.instance.disabled,
+          'form-control': !options.instance.disabled
+        },
+        'd-flex cursor-pointer w-100']
     }),
     input: () => ({
       class: ['fs-6 border-0']
@@ -162,7 +166,7 @@ export default {
       class: ['ms-auto my-auto']
     }),
     list: () => ({
-      class: ['border list-unstyled rounded-bottom']
+      class: ['border list-unstyled rounded-bottom bg-white']
     }),
     item: (options) => ({
       class: [
@@ -183,7 +187,100 @@ export default {
     }),
     filterInput: () => ({
       class: ['form-control']
-    })
+    }),
+  },
+  column: {
+    sortBadge: 'ms-2 my-auto cursor-pointer',
+    headerCell: (options : ColumnPassThroughMethodOptions & { props: { reorderableColumns: boolean }, column : { context: { frozen: boolean | '', resizable: boolean }}}) => {
+      return {
+        class: [{
+          'cursor-move': options.props.reorderableColumns,
+          'position-sticky': options.column?.context.frozen !== undefined || options.column?.context.frozen || options.column?.context.frozen === '',
+          'overflow-hidden position-relative bg-clip-padding': options.column?.context.resizable
+        }]
+      }
+    },
+    roweditorinitbutton: 'btn',
+    rowtoggler: {
+      class: 'btn'
+    },
+    columnresizer: {
+      class: 'position-absolute top-0 end-0 m-0 h-100 p-0 cursor-resize border border-transparent'
+    },
+    roweditorsavebutton: 'btn',
+    roweditorcancelbutton: 'btn',
+    bodyCell: (options: ColumnPassThroughMethodOptions & { props: { resizableColumns: boolean }, column: { props: { frozen: boolean | '' }}}) => {
+      return {
+        class: {
+          'position-sticky': options.column.props?.frozen !== undefined,
+          'overflow-hidden text-nowrap': options.props.resizableColumns
+        }
+      }
+    },
+    rowreordericon: 'cursor-move',
+    filterMenuButton: ({ props } : ColumnProps & { props: { type: string }}) => {
+      return {
+        class: ['btn',
+          {
+            'd-none': props.type !== 'text' && props.type !== 'numeric' && props.type !== 'date'
+          }]
+      }
+    },
+    headerFilterClearButton: () => ({
+      class: [
+        'btn',
+      ]
+    }),
+    filterOverlay: {
+      class: [
+        'show dropdown-menu'
+      ]
+    },
+    filterRowItems: {
+      class: [
+        'list-unstyled'
+      ]
+    },
+    columnfilter: 'd-flex',
+    filterRowItem: (options) => {
+      return {
+        class: [
+          'dropdown-item cursor-pointer',
+          {
+            //@ts-ignore
+            'active': options.column.context?.highlighted
+          }
+        ]
+      }
+    },
+    filterSeparator: {
+      class: [
+        'dropdown-divider'
+      ]
+    },
+    headerContent: 'd-flex', 
+    sort: 'd-flex ms-auto my-auto cursor-pointer',
+    rowCheckbox: (options : any) => {
+      return {
+        class: [
+          'form-check-input px-2 py-2 rounded position-relative',
+          {
+            'bg-primary': options.props.checked,
+            'form-check-input__focus': options.state.focused,
+          }
+        ]
+      }
+    },
+    rowRadioButton: (options : any) => {
+        return {
+          class: [
+            'form-check-input',
+            {
+              'disabled': options.props.disabled
+            }
+          ]
+        }
+    },
   },
   inputtext: {
     root: (options : InputTextPassThroughMethodOptions) => ({
@@ -195,6 +292,69 @@ export default {
         }
       ]
     })
+  },
+  multiselect: {
+    root: {
+      class: ['form-control d-flex cursor-pointer']
+    },
+    trigger: {
+      class: ['ms-auto']
+    },
+    panel: {
+      class: ['border rounded-bottom bg-white']
+    },
+    list: {
+      class: ['p-2 mb-0 list-unstyled']
+    },
+    item: {
+      class: ['dropdown-item d-flex']
+    },
+    header: {
+      class: "d-flex border-bottom pb-2"
+    },
+    headercheckboxcontainer: {
+      class: ['form-check ms-2 mt-2']
+    },
+    headercheckbox: (options : any) => {
+      return {
+        class: [
+          'form-check-input px-2 py-2 rounded position-relative',
+          {
+            'bg-primary': options.instance.allSelected
+          }
+        ]
+      }
+    },
+    headercheckboxicon: {
+      class: 'mb-1 fw-medium text-white position-absolute filter-header-multiselect__check-icon'
+    },
+    filtercontainer: {
+      class: ['d-flex position-relative mt-1 ps-2']
+    },
+    filterinput: {
+      class: ['form-control']
+    },
+    filtericon: {
+      class: ['position-absolute bottom-0 end-0'],
+      style: "top: 35%; left: 87%;"
+    },
+    closebutton: {
+      class: 'btn'
+    },
+    checkbox: (options : MultiSelectPassThroughMethodOptions) => {
+      return {
+        class: [
+          'form-check-input px-2 py-2 rounded position-relative',
+          {
+            'bg-primary': options.context.selected,
+            'form-check-input__focus': options.state.focused,
+          }
+        ]
+      }
+    },
+    checkboxicon: {
+      class: 'mb-1 fw-medium text-white position-absolute filter-header-multiselect__check-icon'
+    }
   },
   inputmask: {
     root: () => ({
@@ -408,7 +568,7 @@ export default {
   },
   // More PassThrough options defined in ForgeDatepicker.
   calendar: {
-    root: 'd-inline-flex mw-100 relative',
+    root: 'd-inline-flex relative',
     input: "form-control",
     panel: ({ props }) => ({
       class: [
@@ -472,7 +632,7 @@ export default {
     }),
     menuitem: ({ context }: MenubarPassThroughMethodOptions) => ({
       class: [
-        'nav-item',
+        'nav-item cursor-pointer',
         {
           'dropdown': context.item.items.length > 0,
         }
@@ -504,9 +664,20 @@ export default {
         }
       ]
     }),
-    button: {
-      class: 'ms-auto me-3'
-    }
+    button: (options: MenubarPassThroughMethodOptions & { state: { queryMatches: boolean }}) => {
+      console.log(options)
+      
+      return {
+        class: [
+          'ms-auto me-3',
+          {
+            'd-none': !options.state.queryMatches
+          }
+        ]
+      }
+
+    },
+    submenuicon: 'ms-1'
   },
   overlaypanel: {
     root: (options) => ({ 
@@ -534,6 +705,79 @@ export default {
     menuitem: () => ({
       class: [
         'dropdown-item cursor-pointer'
+      ]
+    })
+  },
+  dataTable: {
+    table: (options : DataTablePassThroughMethodOptions) => {
+      return {
+        class: [
+          'table position-relative',
+          {
+            'table-striped': options.props.stripedRows,
+            'table-hover': options.props.rowHover,
+            'table-bordered': options.props.showGridlines,
+            'table-sm': options.props.size === 'small',
+            'table-lg': options.props.size === 'large',
+            'opacity-50': options.props.loading
+          }
+        ]
+      }
+    },
+    bodyRow: (options : DataTablePassThroughMethodOptions) => {
+      return {
+        class: {
+          'table-active': options.context.selected
+        }
+      }
+    },
+    rowgrouptoggler: 'btn',
+    thead: () => {
+      return {
+        class: 'sticky-header'
+      }
+    },
+    //@ts-ignore
+    tbody: (options ) => {
+      return {
+        class: {
+          'sticky-header': options.props.frozenRow
+        }
+      }
+    },
+    loadingOverlay: () => {
+      return {
+        class: 'table-overlay table-spinner'
+      }
+    },
+    loadingIcon: () => {
+      return {
+        class: 'spinner-border border-0'
+      }
+    }
+  },
+  paginator: {
+    root: (options) => {
+      return {
+        class: [
+          'm-auto pagination justify-content-center',
+          {
+            'opacity-50': options.parent?.props.loading
+          }]
+      }
+    },
+    pages: 'd-flex',
+    firstPageButton: 'page-link',
+    previousPageButton: 'page-link',
+    nextPageButton: 'page-link',
+    lastPageButton: 'page-link me-2',
+    pageButton: ({ context }) => ({
+      class: [
+        'page-link',
+        {
+          'active': context.active,
+          'disabled': context.disabled
+        }
       ]
     })
   }

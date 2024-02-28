@@ -65,7 +65,7 @@ const { options, propVals, config } = usePlayground(
   }
 );
 
-const code = computed(() => `<forge-multi-select-preview ${propVals.value.join(" ")}/>`);
+const code = computed(() => `<Dropdown ${propVals.value.join(" ")}/>`);
 const optionsArrayExample = computed(
   () => `<script setup lang="ts">
  const optionsArray = ref([
