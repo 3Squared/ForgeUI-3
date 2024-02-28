@@ -33,6 +33,7 @@ jobs:
         with:
           workflow: build.yml
           name: github-pages
+          skip_unpack: true
           
       - name: Deploy to GitHub Pages
         id: deployment
