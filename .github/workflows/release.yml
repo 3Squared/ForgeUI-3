@@ -2,7 +2,7 @@
 
 on:
   workflow_run:
-    workflows: [ build ]
+    workflows: ["Build Package"]
     types:
       - completed
     branches: [ main ]
