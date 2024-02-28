@@ -19,18 +19,12 @@ export function addFiles(filesToUpload: File[], files : ForgeFileStatus[], accep
 
   // Reset all the duplicate warnings.
   files = files.map(file => ({ ...file, status: file.status == 'Duplicate' ? 'Not Uploaded' : file.status }))
-
-  console.log(acceptedFileTypes)
   
   // Add any new files to Files array
   filesToUpload.forEach((file) => {
     const fileIndex = uploadedFiles.findIndex(uploadedFile => uploadedFile.name === file.name)
     let status: FileUploadStatus = 'Not Uploaded'
     if (fileIndex === -1) {
-      console.log(file.type)
-      console.log(acceptedFileTypes)
-      console.log(!acceptedFileTypes.includes(file.type))
-      console.log(!(file.size <= maxFileSize))
       if (!acceptedFileTypes.includes(file.type) || !(file.size <= maxFileSize)) {
         status = !acceptedFileTypes.includes(file.type) ? 'InvalidFileType' : 'InvalidFileSize'
       }
@@ -84,7 +78,7 @@ export function formatFileSize(bytes: number, si = true, dp = 1) {
 }
 
 export function isImage(mimeType: string): boolean {
-  return ['image/gif', 'image/png', 'image/jpeg'].includes(mimeType)
+  return ['image/gif', 'image/png', 'image/jpeg', 'image/svg'].includes(mimeType)
 }
 
 export function getThumbnailUrl(file: File) {
