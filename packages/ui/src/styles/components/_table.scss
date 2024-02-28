@@ -34,3 +34,11 @@ table.table-lg {
   flex: 1 1 auto;
   width: 1%;
 }
+
+[data-pc-section="headercheckbox.icon"], [data-pc-section="rowcheckbox.icon"] {
+  display: none;
+}
+
+[data-pc-name="rowradiobutton"] > [data-pc-section="input"] {
+  @extend .form-check-input;
+}
