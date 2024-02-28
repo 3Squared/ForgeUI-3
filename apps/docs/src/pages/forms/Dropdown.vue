@@ -57,7 +57,7 @@ const { options, propVals, config } = usePlayground(
   {
     vModel: { required: true, disabled: () => true },
     options: { required: true },
-    filterMatchMode: { type: "select", options: stringFilterTypes, disabled: () => !options.value.filter },
+    filterMatchMode: { type: "select", options: stringFilterTypes, disabled: (): boolean => !options.value.filter },
     filterPlaceholder: { disabled: (): boolean => !options.value.filter },
     optionLabel: { type: "select", options: Object.keys(opts.value[0]) },
     optionValue: { type: "select", options: Object.keys(opts.value[0]) },

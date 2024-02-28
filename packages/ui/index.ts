@@ -23,6 +23,7 @@ import ForgeStepper from "./src/components/ForgeStepper.vue";
 import ForgeTile from "./src/components/ForgeTile.vue";
 import ForgeTable from "./src/components/table/ForgeTable.vue"; 
 import ForgeFilterHeader from "./src/components/table/ForgeFilterHeader.vue";
+import ForgeFileUploader from "./src/components/file-uploader/ForgeFileUploader.vue";
 
 export {
   Bootstrap_PT,
@@ -46,7 +47,8 @@ export {
   ForgeStepper,
   ForgeTile,
   ForgeTable,
-  ForgeFilterHeader
+  ForgeFilterHeader,
+  ForgeFileUploader
 }
 
 export * from './src/types/forge-types'

@@ -22,7 +22,7 @@
           <slot name="header" />
         </template>
         <template #content>
-          <div class="scroll p-3">
+          <div class="scroll p-3 h-100">
             <template v-for="(option, key) in props.options">
               <slot :name="key" v-bind="props.options">
                 <div v-if="isSelect(getConfig(key))">

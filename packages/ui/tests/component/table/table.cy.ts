@@ -234,7 +234,7 @@ describe('<ForgeTable />', () => {
     it('Filters out rows based on date value', () => {
       // Act
       cy.get(filterId).eq(2).click()
-      cy.get(datePickerDayLabelId).contains(new RegExp('^' + new Date().getDate() + '$')).click()
+      cy.get(datePickerDayLabelId).not(".disabled").contains(new RegExp('^' + new Date().getDate() + '$')).click()
 
       // Assert
       cy.get(tableRowId).should('contain.text', new Date().getDate()).and('have.length', 1)
@@ -282,7 +282,7 @@ describe('<ForgeTable />', () => {
       cy.get(filterId).eq(1).type(`${numericFilter.toString()}{enter}`)
 
       cy.get(filterId).eq(2).click()
-      cy.get(datePickerDayLabelId).contains(new RegExp('^' + new Date().getDate() + '$')).click()
+      cy.get(datePickerDayLabelId).not(".disabled").contains(new RegExp('^' + new Date().getDate() + '$')).click()
 
       cy.get(filterId).eq(3).click()
       cy.contains(dropdownFilterLabelId, stringFilter).click()

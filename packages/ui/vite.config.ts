@@ -4,6 +4,7 @@ import istanbulPlugin from "vite-plugin-istanbul";
 import Components from 'unplugin-vue-components/vite'
 import { join, resolve } from "path";
 import { PrimeVueResolver } from "unplugin-vue-components/resolvers";
+import { visualizer } from "rollup-plugin-visualizer";
 
 // https://vitejs.dev/config/
 export default defineConfig(({mode}) => ({
@@ -22,33 +23,52 @@ export default defineConfig(({mode}) => ({
   },
   optimizeDeps: {
     include: [
-      'sass',
-      'primevue/inputtext',
-      'primevue/card',
-      'primevue/chips',
-      'primevue/badge',
-      'primevue/usetoast',
-      'primevue/ts-helpers',
-      'primevue/dropdown',
-      'primevue/inputmask',
-      'primevue/overlaypanel',
-      'primevue/textarea', 
-      'primevue/inputnumber',
-      'primevue/progressbar',
-      'primevue/selectbutton',
-      'primevue/divider', 
-      'primevue/steps',
-      'primevue/menubar',
-      'primevue/tabview', 
-      'primevue/tabpanel',
-      'primevue/toast',
-      'primevue/calendar',
-      'primevue/api', 
-      'primevue/column',
-      '@vee-validate/zod', 
+      '@azure/storage-blob',
+      '@cypress/code-coverage/support',
+      '@iconify/vue',
+      '@vee-validate/zod',
       '@vueuse/components',
-      'zod',
-      'vue-multiselect'
+      'cypress-real-events',
+      'cypress/vue',
+      'primevue/api',
+      'primevue/badge',
+      'primevue/button',
+      'primevue/calendar',
+      'primevue/card',
+      'primevue/checkbox',
+      'primevue/chips',
+      'primevue/column',
+      'primevue/config',
+      'primevue/datatable',
+      'primevue/divider',
+      'primevue/dialog',
+      'primevue/dialogservice',
+      'primevue/dropdown',
+      'primevue/image',
+      'primevue/inputmask',
+      'primevue/inputnumber',
+      'primevue/inputtext',
+      'primevue/menubar',
+      'primevue/message',
+      'primevue/multiselect',
+      'primevue/progressbar',
+      'primevue/progressspinner',
+      'primevue/overlaypanel',
+      'primevue/selectbutton',
+      'primevue/steps',
+      'primevue/tabpanel',
+      'primevue/tabview',
+      'primevue/textarea',
+      'primevue/toast',
+      'primevue/toastservice',
+      'primevue/tooltip',
+      'primevue/ts-helpers',
+      'primevue/usetoast',
+      'sass',
+      'vee-validate',
+      'vue-multiselect',
+      'vue', 
+      'zod'
     ]
   },
   plugins: [
@@ -58,6 +78,7 @@ export default defineConfig(({mode}) => ({
         PrimeVueResolver()
       ]
     }),
+    visualizer(),
     istanbulPlugin({
       include: "src/*",
       exclude: ["node_modules", "test/"],
@@ -73,9 +94,21 @@ export default defineConfig(({mode}) => ({
       formats: ["es"]
     },
     rollupOptions: {
+      plugins: [
+        visualizer()
+      ],
       external: [
-        "primevue",
-        "vue"
+        "@azure/storage-blob",
+        "@azure/abort-controller",
+        "@vueuse/components",
+        '@iconify/vue',
+        "bootstrap",
+        "flatpickr",
+        /^primevue\/*/,
+        "vue",
+        "vue-multiselect",
+        "vee-validate",
+        "zod"
       ],
       output: {
         dir: "dist/esm",

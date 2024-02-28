@@ -9,7 +9,7 @@
         <span :class="`multiselect__option ${optionHighlight}`">
           <input :checked="isAllSelected" name="selected" type="checkbox"
                  class="multiselect__option--checkbox" />
-          Toggle all
+          <strong>Select all</strong>
         </span>
       </li>
     </template>
@@ -64,6 +64,7 @@ const props = withDefaults(defineProps<ForgeMultiSelectProps>(), {
   expandLeft: false,
   showClearSelection: false,
   showSelectAll: false,
+  closeOnSelect: false,
   selectValue: "",
   name: ""
 })
