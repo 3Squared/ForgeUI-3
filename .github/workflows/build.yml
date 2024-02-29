@@ -48,10 +48,3 @@ jobs:
         with:
           recreate: true
           path: code-coverage-results.md
-
-
-      - name: Upload artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: github-pages
-          path: apps/docs/dist
