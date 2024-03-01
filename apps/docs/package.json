@@ -23,7 +23,7 @@
   },
   "devDependencies": {
     "eslint-config-custom": "*",
-    "@vitejs/plugin-vue": "4.6.2",
+    "@vitejs/plugin-vue": "5.0.4",
     "typescript": "5.3.3",
     "unplugin-vue-router": "0.8.4",
     "vite": "5.1.4",
