@@ -2,6 +2,7 @@
   "name": "forge-ui-3-styleguide",
   "version": "1.0.0",
   "type": "module",
+  "private": true,
   "scripts": {
     "preview": "npm run build && vite preview",
     "build-bundle": "cd .. && npm i && npm run build && cd docs",
