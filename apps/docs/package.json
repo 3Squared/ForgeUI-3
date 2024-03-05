@@ -27,6 +27,6 @@
     "typescript": "5.3.3",
     "unplugin-vue-router": "0.8.4",
     "vite": "5.1.5",
-    "vue-tsc": "2.0.4"
+    "vue-tsc": "2.0.5"
   }
 }
