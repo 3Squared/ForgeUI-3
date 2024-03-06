@@ -1,5 +1,4 @@
 import Bootstrap_PT from "./src/Bootstrap_PT"
-import '@/types/forge-types'
 import '@/styles/main.scss'
 
 import ForgeAlert from "@/components/ForgeAlert.vue";
@@ -51,4 +50,4 @@ export {
   ForgeFileUploader
 }
 
-export * from './src/types/forge-types'
+export * from './src/types/forge-types.ts'
