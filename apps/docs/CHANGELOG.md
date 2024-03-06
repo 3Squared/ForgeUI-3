@@ -1,5 +1,11 @@
 # forge-ui-3-styleguide
 
+## 1.0.1
+
+### Patch Changes
+
+- be547c0: Remove Route Searcher here filler text from landing page
+
 ## 1.0.0
 
 ### Major Changes
