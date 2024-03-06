@@ -1,5 +1,11 @@
 # @3squared/forge-ui-3
 
+## 0.1.1
+
+### Patch Changes
+
+- 09f15a8: Add types to bundled package
+
 ## 0.1.0
 
 ### Minor Changes
