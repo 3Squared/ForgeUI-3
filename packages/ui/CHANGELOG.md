@@ -1,5 +1,11 @@
 # @3squared/forge-ui-3
 
+## 0.1.2
+
+### Patch Changes
+
+- 2a2565c: Update type declaration in package.json
+
 ## 0.1.1
 
 ### Patch Changes
