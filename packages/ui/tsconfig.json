@@ -21,6 +21,7 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "preserve",
+    "outDir": "dist",
 
     /* Linting */
     "strict": true,
@@ -30,10 +31,7 @@
   },
   "include": [
     "src",
-    "src/types",
-    "cypress/support/component.ts",
-    "index.ts",
-    "tests/**/*.cy.ts"
+    "index.ts"
   ],
   "exclude": [
     "node_modules",
