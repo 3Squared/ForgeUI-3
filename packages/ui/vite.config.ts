@@ -8,137 +8,139 @@ import { visualizer } from "rollup-plugin-visualizer";
 import dts from 'vite-plugin-dts'
 
 // https://vitejs.dev/config/
-export default defineConfig(({mode}) => ({
-  resolve: {
-    alias: [
-      {
-        find: "@",
-        replacement: resolve(__dirname, "src")
-      },
-      {
-        find: /~(.+)/,
-        replacement: join(process.cwd(), "node_modules/$1")
-      }
-    ],
-    extensions: [".mjs", ".js", ".ts", ".jsx", ".tsx", ".json", ".vue"]
-  },
-  optimizeDeps: {
-    include: [
-      '@azure/storage-blob',
-      '@cypress/code-coverage/support',
-      '@iconify/vue',
-      '@vee-validate/zod',
-      '@vueuse/components',
-      'cypress-real-events',
-      'cypress/vue',
-      'primevue/api',
-      'primevue/badge',
-      'primevue/button',
-      'primevue/calendar',
-      'primevue/card',
-      'primevue/checkbox',
-      'primevue/chips',
-      'primevue/column',
-      'primevue/config',
-      'primevue/datatable',
-      'primevue/divider',
-      'primevue/dialog',
-      'primevue/dialogservice',
-      'primevue/dropdown',
-      'primevue/image',
-      'primevue/inputmask',
-      'primevue/inputnumber',
-      'primevue/inputtext',
-      'primevue/menubar',
-      'primevue/message',
-      'primevue/multiselect',
-      'primevue/progressbar',
-      'primevue/progressspinner',
-      'primevue/overlaypanel',
-      'primevue/selectbutton',
-      'primevue/steps',
-      'primevue/tabpanel',
-      'primevue/tabview',
-      'primevue/textarea',
-      'primevue/toast',
-      'primevue/toastservice',
-      'primevue/tooltip',
-      'primevue/ts-helpers',
-      'primevue/usetoast',
-      'sass',
-      'vee-validate',
-      'vue-multiselect',
-      'vue', 
-      'zod'
-    ]
-  },
-  plugins: [
-    vue(),
-    Components({
-      resolvers: [
-        PrimeVueResolver()
-      ]
-    }),
-    visualizer(),
-    istanbulPlugin({
-      include: "src/*",
-      exclude: ["node_modules", "test/"],
-      extension: [".js", ".cjs", ".mjs", ".ts", ".tsx", ".jsx", ".vue"],
-      cypress: mode === "test",
-      forceBuildInstrument: mode === "test"
-    }),
-    dts()
-  ],
-  build: {
-    lib: {
-      entry: "./index.ts",
-      name: "Forge.UI3",
-      formats: ["es"]
+export default defineConfig(({mode}) => {
+  return ({
+    resolve: {
+      alias: [
+        {
+          find: "@",
+          replacement: resolve(__dirname, "src")
+        },
+        {
+          find: /~(.+)/,
+          replacement: join(process.cwd(), "node_modules/$1")
+        }
+      ],
+      extensions: [".mjs", ".js", ".ts", ".jsx", ".tsx", ".json", ".vue"]
     },
-    rollupOptions: {
-      plugins: [
-        visualizer()
-      ],
-      external: [
-        "@azure/storage-blob",
-        "@azure/abort-controller",
-        "@vueuse/components",
+    optimizeDeps: {
+      include: [
+        '@azure/storage-blob',
+        '@cypress/code-coverage/support',
         '@iconify/vue',
-        "bootstrap",
-        "flatpickr",
-        /^primevue\/*/,
-        "vue",
-        "vue-multiselect",
-        "vee-validate",
-        "zod"
-      ],
-      output: {
-        dir: "dist/esm",
-        format: "esm",
-        /* exports: 'named',
-
-        preserveModules: true,
-        preserveModulesRoot: 'src',*/
-        // Provide global variables to use in the UMD build
-        // for externalized deps
-        globals: {
-          vue: "Vue"
+        '@vee-validate/zod',
+        '@vueuse/components',
+        'cypress-real-events',
+        'cypress/vue',
+        'primevue/api',
+        'primevue/badge',
+        'primevue/button',
+        'primevue/calendar',
+        'primevue/card',
+        'primevue/checkbox',
+        'primevue/chips',
+        'primevue/column',
+        'primevue/config',
+        'primevue/datatable',
+        'primevue/divider',
+        'primevue/dialog',
+        'primevue/dialogservice',
+        'primevue/dropdown',
+        'primevue/image',
+        'primevue/inputmask',
+        'primevue/inputnumber',
+        'primevue/inputtext',
+        'primevue/menubar',
+        'primevue/message',
+        'primevue/multiselect',
+        'primevue/progressbar',
+        'primevue/progressspinner',
+        'primevue/overlaypanel',
+        'primevue/selectbutton',
+        'primevue/steps',
+        'primevue/tabpanel',
+        'primevue/tabview',
+        'primevue/textarea',
+        'primevue/toast',
+        'primevue/toastservice',
+        'primevue/tooltip',
+        'primevue/ts-helpers',
+        'primevue/usetoast',
+        'sass',
+        'vee-validate',
+        'vue-multiselect',
+        'vue',
+        'zod'
+      ]
+    },
+    plugins: [
+      vue(),
+      Components({
+        resolvers: [
+          PrimeVueResolver()
+        ]
+      }),
+      visualizer(),
+      istanbulPlugin({
+        include: "src/*",
+        exclude: ["node_modules", "test/"],
+        extension: [".js", ".cjs", ".mjs", ".ts", ".tsx", ".jsx", ".vue"],
+        cypress: mode === "test",
+        forceBuildInstrument: mode === "test"
+      }),
+      dts()
+    ],
+    build: {
+      lib: {
+        entry: "./index.ts",
+        name: "Forge.UI3",
+        formats: ["es"]
+      },
+      rollupOptions: {
+        plugins: [
+          visualizer()
+        ],
+        external: [
+          "@azure/storage-blob",
+          "@azure/abort-controller",
+          "@vueuse/components",
+          '@iconify/vue',
+          "bootstrap",
+          "flatpickr",
+          /^primevue\/*/,
+          "vue",
+          "vue-multiselect",
+          "vee-validate",
+          "zod"
+        ],
+        output: {
+          dir: "dist/esm",
+          format: "esm",
+          /* exports: 'named',
+  
+          preserveModules: true,
+          preserveModulesRoot: 'src',*/
+          // Provide global variables to use in the UMD build
+          // for externalized deps
+          globals: {
+            vue: "Vue"
+          }
         }
       }
-    }
-  },
-  test: {
-    alias: [{ find: /^vue$/, replacement: "vue/dist/vue.runtime.common.js" }],
+    },
+    test: {
+      alias: [{ find: /^vue$/, replacement: "vue/dist/vue.runtime.common.js" }],
 
-    reporters: ["default", "junit"],
-    outputFile: "test-results/vitest.xml",
-    coverage: {
-      all: true,
-      include: ["src"],
-      exclude: ["**/*.cy.ts", "scripts", "**/*.test.ts"],
-      reportsDirectory: "./coverage/vitest",
-      reporter: ["cobertura", "html", "json"],
-      provider: "v8"
+      reporters: ["default", "junit"],
+      outputFile: "test-results/vitest.xml",
+      coverage: {
+        all: true,
+        include: ["src"],
+        exclude: ["**/*.cy.ts", "scripts", "**/*.test.ts"],
+        reportsDirectory: "./coverage/vitest",
+        reporter: ["cobertura", "html", "json"],
+        provider: "v8"
+      }
     }
-  }
-}))
+  });
+})
