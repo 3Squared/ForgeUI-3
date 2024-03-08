@@ -1,5 +1,11 @@
 # forge-ui-3-styleguide
 
+## 1.1.0
+
+### Minor Changes
+
+- b755a9d: Add Getting Started guide
+
 ## 1.0.1
 
 ### Patch Changes
