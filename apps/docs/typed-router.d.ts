@@ -42,6 +42,7 @@ declare module 'vue-router/auto-routes' {
     '/general/Tile': RouteRecordInfo<'/general/Tile', '/general/Tile', Record<never, never>, Record<never, never>>,
     '/general/Toast': RouteRecordInfo<'/general/Toast', '/general/Toast', Record<never, never>, Record<never, never>>,
     '/general/Tooltip': RouteRecordInfo<'/general/Tooltip', '/general/Tooltip', Record<never, never>, Record<never, never>>,
+    '/guides/Installation': RouteRecordInfo<'/guides/Installation', '/guides/Installation', Record<never, never>, Record<never, never>>,
     '/Icons': RouteRecordInfo<'/Icons', '/Icons', Record<never, never>, Record<never, never>>,
     '/input/InlineEditor': RouteRecordInfo<'/input/InlineEditor', '/input/InlineEditor', Record<never, never>, Record<never, never>>,
     '/input/Mask': RouteRecordInfo<'/input/Mask', '/input/Mask', Record<never, never>, Record<never, never>>,
