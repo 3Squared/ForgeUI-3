@@ -21,11 +21,8 @@ const router = useRouter();
 
 const pages = [
   {
-    label: "Guides", 
-    items: [
-      { label: "Getting Started", command: () => router.push("/guides/installation") },
-      { label: "Migrating from Forge.UI (Coming Soon...)"}
-    ] 
+    label: "Guides",
+    items: [{ label: "Getting Started", command: () => router.push("/guides/installation") }, { label: "Migrating from Forge.UI (Coming Soon...)" }]
   },
   {
     label: "Forms",
