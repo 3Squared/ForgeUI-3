@@ -18,22 +18,6 @@
     {
       "matchPaths": ["apps/**"],
       "extends": [":pinAllExceptPeerDependencies"]
-    },
-    {
-      "matchPackageNames": ["vue"],
-      "allowedVersions": "<3.0.0"
-    },
-    {
-      "matchPackageNames": ["vue-router"],
-      "allowedVersions": "<4.0.0"
-    },
-    {
-      "matchPackageNames": ["bootstrap"],
-      "allowedVersions": "<5.0.0"
-    },
-    {
-      "matchPackageNames": ["@vue/test-utils"],
-      "allowedVersions": "<2.0.0"
     }
   ]
 }
