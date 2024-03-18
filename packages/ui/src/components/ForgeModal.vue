@@ -1,5 +1,5 @@
 <template>
-  <Dialog v-bind="props">
+  <Dialog v-bind="props" @maximize="fullscreen = true" @unmaximize="fullscreen = false" :pt="pt">
     <template #closeicon>
       <Icon data-cy="close-icon" icon="bi:x-lg" width="21" height="21" @click="closeModal"/>
     </template>
@@ -31,10 +31,10 @@
 
 <script setup lang="ts">
 import { Icon } from '@iconify/vue'
-import { DialogProps } from "primevue/dialog";
+import { DialogPassThroughOptions, DialogProps } from "primevue/dialog";
 import ForgeAlert from "./ForgeAlert.vue";
 import ForgeLoader from "./ForgeLoader.vue";
-import { ref } from "vue";
+import { computed, ref } from "vue";
 import { parseError } from "../helpers";
 
 interface ModalError {
@@ -50,7 +50,8 @@ export interface ForgeModalProps extends DialogProps {
   onConfirm?: Function | null,
 }
 
-const emit = defineEmits(['update:visible'])
+const visible = defineModel<boolean>('visible', { required: true })
+const fullscreen = ref<boolean>(false)
 
 const props = withDefaults(defineProps<ForgeModalProps>(), {
   modal: true,
@@ -73,7 +74,7 @@ const error = ref<ModalError>({
 })
 
 const closeModal = () => {
-  emit("update:visible", false)
+  visible.value = false
 }
 
 const success = async () => {
@@ -96,4 +97,13 @@ const success = async () => {
     loading.value = false;
   }
 }
+
+const pt = computed<DialogPassThroughOptions>(() => ({
+  root: [
+    'modal modal-dialog modal-content h-auto',
+    {
+      'vw-100 mw-100 vh-100': fullscreen.value
+    }
+  ]
+}))
 </script>

@@ -466,9 +466,6 @@ export default {
       })
   },
   dialog: {
-    root: () => ({
-      class: ['modal modal-dialog modal-content vw-100']
-    }),
     header: () => ({
       class: ['modal-header']
     }),
@@ -484,8 +481,18 @@ export default {
     headerIcons: () => ({
       class: ['ms-auto']
     }),
+    icons: 'd-flex w-100',
+    closeButton: ({ props }) => ({
+      class: [
+        'btn',
+        {
+          'ms-auto': !props.maximizable
+        }
+      ]
+    }),
     maximizableButton: ({ props }) => ({
       class: [
+        'btn ms-auto',
         {
           "me-2": props.closable
         }
