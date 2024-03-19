@@ -102,7 +102,7 @@ const pt = computed<DialogPassThroughOptions>(() => ({
   root: [
     'modal modal-dialog modal-content h-auto',
     {
-      'vw-100 mw-100 vh-100': fullscreen.value
+      'mw-100 vh-100 vw-100 top-0 start-0': fullscreen.value
     }
   ]
 }))

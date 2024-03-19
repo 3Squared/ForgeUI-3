@@ -481,7 +481,7 @@ export default {
     headerIcons: () => ({
       class: ['ms-auto']
     }),
-    icons: 'd-flex w-100',
+    icons: 'd-flex ms-auto',
     closeButton: ({ props }) => ({
       class: [
         'btn',
