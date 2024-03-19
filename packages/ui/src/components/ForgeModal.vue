@@ -100,7 +100,7 @@ const success = async () => {
 
 const pt = computed<DialogPassThroughOptions>(() => ({
   root: [
-    'modal modal-dialog modal-content h-auto',
+    'modal modal-dialog modal-content h-auto m-0',
     {
       'mw-100 vh-100 vw-100 top-0 start-0': fullscreen.value
     }
