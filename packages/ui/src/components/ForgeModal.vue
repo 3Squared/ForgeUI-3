@@ -1,5 +1,5 @@
 <template>
-  <Dialog v-bind="props" @maximize="fullscreen = true" @unmaximize="fullscreen = false" :pt="pt">
+  <Dialog v-bind="props" @maximize="maximise" @unmaximize="minimise" :pt="pt">
     <template #closeicon>
       <Icon data-cy="close-icon" icon="bi:x-lg" width="21" height="21" @click="closeModal"/>
     </template>
@@ -72,6 +72,14 @@ const error = ref<ModalError>({
   header: "",
   message: []
 })
+
+const minimise = () => {
+  fullscreen.value = false
+}
+
+const maximise = () => {
+  fullscreen.value = true
+}
 
 const closeModal = () => {
   visible.value = false
