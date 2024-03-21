@@ -667,7 +667,7 @@ export default {
       class: [
         'dropdown-menu w-fit-content',
         {
-          'position-absolute end-100': instance.level > 1
+          'position-absolute start-100 top-0': instance.level > 1
         }
       ]
     }),

@@ -21,7 +21,7 @@ import { ForgePageHeader } from "@3squared/forge-ui-3";
 import Dropdown from "primevue/dropdown";
 import { computed, ref } from "vue";
 import { usePlayground, Playground, CodeBlock } from "@3squared/forge-playground-3";
-import { stringFilterTypes } from "../../composables/playgroundOptions";
+import { stringFilterTypes } from "../../../composables/playgroundOptions";
 
 const selectedItem = ref();
 
