@@ -3,6 +3,9 @@ import DialogWrapper from "./DialogWrapper.vue";
 import { ForgeModalProps } from "../../../src/components/ForgeModal.vue";
 
 const modalId = "modal"
+const dialog = '[data-pc-name="dialog"]'
+const maximiseButton = '[data-pc-section="maximizablebutton"]'
+const closeButton = '[data-pc-section="closebutton"]'
 
 function mountDialog(props : ForgeModalProps) {
   cy.mount(DialogWrapper, {
@@ -48,11 +51,21 @@ describe('<Dialog />', () => {
   it("Displays close icon in the top right corner", () => {
     // Arrange
     const iconClass = "iconify iconify--bi"
+    const buttonClass = 'btn'
+    const positionClass = 'd-flex ms-auto'
     
     // Act
     mountDialog({ closable: true })
 
     // Assert
+    cy.get(`[data-pc-section="icons"]`)
+      .should('have.class', positionClass)
+
+    cy.get(closeButton)
+      .should('exist')
+      .and('be.visible')
+      .and('have.class', buttonClass)
+    
     cy.get(`[data-cy="close-icon"]`)
       .should('exist')
       .and('be.visible')
@@ -62,15 +75,41 @@ describe('<Dialog />', () => {
   it("Displays maximisable icon when maximizable prop is true", () => {
     // Arrange
     const iconClass = "iconify iconify--bi"
-
+    const buttonClass = 'btn'
+    const positionClass = 'd-flex ms-auto'
+    
     // Act
     mountDialog({ maximizable: true })
 
     // Assert
+    cy.get(`[data-pc-section="icons"]`)
+      .should('have.class', positionClass)
+    
+    cy.get(maximiseButton)
+      .should('exist')
+      .and('be.visible')
+      .and('have.class', buttonClass)
+    
     cy.get(`[data-cy="maximisable-icon"]`)
       .should('exist')
       .and('be.visible')
       .and('have.class', iconClass)
+  })
+  
+  it("Should take up the entire screen when maximised", () => {
+    // Arrange
+    const fullscreenClass = 'mw-100 vh-100 vw-100 top-0 start-0'
+    
+    // Act
+    mountDialog({ maximizable: true })
+    
+    cy.get(maximiseButton).click()
+    
+    // Assert
+    cy.get(dialog)
+      .should('exist')
+      .and('be.visible')
+      .and('have.class', fullscreenClass)
   })
   
   it('Displays custom title which is passed in via props', () => {

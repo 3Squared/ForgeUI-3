@@ -31,6 +31,8 @@
   },
   "include": [
     "src",
+    "**/*.cy.ts",
+    "cypress/support/component.ts",
     "index.ts"
   ],
   "exclude": [
