@@ -21,7 +21,7 @@
 import { RouterView, useRouter } from "vue-router/auto";
 import Toast from "primevue/toast";
 import { ForgeNavbar } from "@3squared/forge-ui-3";
-import { version } from '../../../packages/ui/package.json'
+import { version } from "../../../packages/ui/package.json";
 
 const router = useRouter();
 
