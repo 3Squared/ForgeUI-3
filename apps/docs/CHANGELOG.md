@@ -1,5 +1,11 @@
 # forge-ui-3-styleguide
 
+## 1.2.0
+
+### Minor Changes
+
+- 4bdab41: Add changelog for Forge.UI 3 to documentation site
+
 ## 1.1.0
 
 ### Minor Changes
