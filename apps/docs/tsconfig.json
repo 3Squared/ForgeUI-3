@@ -30,6 +30,6 @@
     "tests/**/*.ts",
     "tests/**/*.tsx",
     "./src/custom-typings.ts",
-    "./types/routes.d.ts"
+    "./types/routes.d.ts",
   ]
 }

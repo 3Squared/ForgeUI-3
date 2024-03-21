@@ -2,6 +2,11 @@
   <div>
     <ForgeNavbar :model="pages" severity="dark">
       <template #logo>Forge.UI 3</template>
+      <template #end>
+        <div class="navbar-nav cursor-pointer nav-item me-3">
+          <a class="nav-link" @click.capture="router.push('/changelog')">v{{ version }}</a>
+        </div>
+      </template>
     </ForgeNavbar>
     <main id="main-content" class="forge-layout">
       <div class="container mt-4">
@@ -16,6 +21,7 @@
 import { RouterView, useRouter } from "vue-router/auto";
 import Toast from "primevue/toast";
 import { ForgeNavbar } from "@3squared/forge-ui-3";
+import { version } from '../../../packages/ui/package.json'
 
 const router = useRouter();
 
