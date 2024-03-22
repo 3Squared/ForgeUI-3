@@ -1,5 +1,22 @@
 # forge-ui-3-styleguide
 
+## 1.3.0
+
+### Minor Changes
+
+- 554a00d: Fix issue where the second layer of the Menu Item Dropdown would appear left of the original dropdown instead of the right.
+
+### Patch Changes
+
+- Updated dependencies [554a00d]
+  - @3squared/forge-ui-3@0.1.4
+
+## 1.2.0
+
+### Minor Changes
+
+- 4bdab41: Add changelog for Forge.UI 3 to documentation site
+
 ## 1.1.0
 
 ### Minor Changes
