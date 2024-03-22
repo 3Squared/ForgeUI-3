@@ -5,6 +5,7 @@ import ForgeAlert from "@/components/ForgeAlert.vue";
 import ForgeActionButton from "./src/components/ForgeActionButton.vue";
 import ForgeCheckbox from "@/components/ForgeCheckbox.vue";
 import ForgeLoader from "@/components/ForgeLoader.vue";
+import ForgeLink from "./src/components/ForgeLink.vue";
 import ForgeModal from "./src/components/ForgeModal.vue";
 import ForgeInlineEditor from "./src/components/ForgeInlineEditor.vue";
 import ForgeNavbar from "./src/components/ForgeNavbar.vue";
@@ -34,6 +35,7 @@ export {
   ForgeForm,
   ForgeFormField,
   ForgeInlineEditor,
+  ForgeLink,
   ForgeLoader,
   ForgeModal,
   ForgeMultiSelect,
