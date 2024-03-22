@@ -1,11 +1,13 @@
 <template>
   <a :class="`
+    cursor-pointer
+    link
     link-${severity}
     link-opacity-${opacity} 
     link-opacity-${hoverOpacity}-hover 
-    link-underline-${underlineSeverity}
-    link-underline-${underlineOpacity}
-    link-underline-${underlineHoverOpacity}-hover
+    link-underline-${underlineSeverity ? underlineSeverity : severity}
+    link-underline-opacity-${underlineOpacity}
+    link-underline-opacity-${underlineHoverOpacity}-hover
     ${ underlineOffset ? `link-offset-${underlineOffset}` : '' }
     ${ animateIconOnHover ? `icon-link icon-link-hover` : '' }
     `
@@ -38,10 +40,10 @@ const {
   opacity = '100',
   hoverOpacity = '100',
   underlineHoverOpacity = '3',
-  underlineSeverity = 'primary',
   underlineOpacity = '100',
   animateIconOnHover = false,
-  underlineOffset
+  underlineOffset,
+  underlineSeverity
 } = defineProps<ForgeLinkProps>()
 
 </script>
