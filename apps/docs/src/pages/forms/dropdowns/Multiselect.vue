@@ -22,17 +22,17 @@
 import { ForgePageHeader, ForgeMultiSelect } from "@3squared/forge-ui-3";
 import { Playground, usePlayground, CodeBlock } from "@3squared/forge-playground-3";
 import { computed, ref } from "vue";
-import { severities } from "../../composables/playgroundOptions";
+import { severities } from "../../../composables/playgroundOptions";
 
-const multiSelectOptions = ref([
+const multiSelectOptions = [
   { id: "option-1", label: "Option 1" },
   { id: "option-2", label: "Option 2" },
   { id: "option-3", label: "Option 3" },
   { id: "option-4", label: "Option 4" },
   { id: "option-5", label: "Option 5" },
   { id: "option-6", label: "Option 6" }
-]);
-const selected = ref<object[] | null | object>([]);
+];
+const selected = ref([{ id: "option-1", label: "Option 1" }]);
 
 const tagPositions = ["top", "bottom"];
 
@@ -46,7 +46,8 @@ const { options, propVals, config, reset } = usePlayground(
     selectValue: "",
     name: "",
     label: "label",
-    searchable: true,
+    // TODO: Fix Searchable [Github Issue: https://github.com/3Squared/ForgeUI-3/issues/139]
+    //searchable: true,
     clearOnSelect: true,
     hideSelected: false,
     placeholder: "Select...",

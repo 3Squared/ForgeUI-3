@@ -18,7 +18,7 @@
 import { ForgePageHeader, ForgeChips } from "@3squared/forge-ui-3";
 import { Playground, usePlayground } from "@3squared/forge-playground-3";
 import { computed } from "vue";
-import { severities } from "../../composables/playgroundOptions";
+import { severities } from "../../../composables/playgroundOptions";
 
 const { options, propVals, config, reset } = usePlayground({
   name: "",

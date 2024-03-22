@@ -19,7 +19,7 @@ import { ForgePageHeader } from "@3squared/forge-ui-3";
 import InputText from "primevue/inputtext";
 import { Playground, usePlayground } from "@3squared/forge-playground-3";
 import { computed, ref, watch } from "vue";
-import { sizes } from "../../composables/playgroundOptions";
+import { sizes } from "../../../composables/playgroundOptions";
 
 const size = ref();
 
