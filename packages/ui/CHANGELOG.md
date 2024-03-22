@@ -1,5 +1,11 @@
 # @3squared/forge-ui-3
 
+## 0.1.4
+
+### Patch Changes
+
+- 554a00d: Fix issue where the second layer of the Menu Item Dropdown would appear left of the original dropdown instead of the right.
+
 ## 0.1.3
 
 ### Patch Changes
