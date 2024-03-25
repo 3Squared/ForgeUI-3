@@ -21,25 +21,24 @@ import { linkOffsets, linkOpacities, severities } from "../../composables/playgr
 import { computed } from "vue";
 
 const { options, propVals, config, reset } = usePlayground(
-    {
-      label: "Hello",
-      severity: severities[0],
-      underlineSeverity: severities[0],
-      underlineOffset: '0',
-      underlineOpacity: '100',
-      hoverOpacity: '100',
-      underlineHoverOpacity: '100'
-    },
-    {
-      severity: { type: "select", options: severities },
-      underlineSeverity: { type: "select", options: severities },
-      underlineOffset: { type: "select", options: linkOffsets },
-      underlineOpacity: { type: "select", options: linkOpacities },
-      hoverOpacity: { type: "select", options: linkOpacities },
-      underlineHoverOpacity: { type: "select", options: linkOpacities },
-    },
-    () => {
-    }
+  {
+    label: "Hello",
+    severity: severities[0],
+    underlineSeverity: severities[0],
+    underlineOffset: "0",
+    underlineOpacity: "100",
+    hoverOpacity: "100",
+    underlineHoverOpacity: "100"
+  },
+  {
+    severity: { type: "select", options: severities },
+    underlineSeverity: { type: "select", options: severities },
+    underlineOffset: { type: "select", options: linkOffsets },
+    underlineOpacity: { type: "select", options: linkOpacities },
+    hoverOpacity: { type: "select", options: linkOpacities },
+    underlineHoverOpacity: { type: "select", options: linkOpacities }
+  },
+  () => {}
 );
 
 const code = computed(() => `<ForgeLink${propVals.value.length > 0 ? " " + propVals.value.join(" ") : ""} />`);
