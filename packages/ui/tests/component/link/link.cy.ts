@@ -1,4 +1,4 @@
-import ForgeLink, { ForgeLinkProps, LinkOpacity, UnderlineOffset } from "../../../src/components/ForgeLink.vue";
+import ForgeLink, { ForgeLinkProps, LinkOpacity, Target, UnderlineOffset } from "../../../src/components/ForgeLink.vue";
 import { Severity } from "../../../src/types/forge-types.ts";
 
 const linkId = "#link"
@@ -350,7 +350,7 @@ describe("<ForgeLink />", () => {
         const expectedTarget = target ?? '_blank'
         
         // Act
-        mountLink({ label, url, target })
+        mountLink({ label, url, target: target as Target})
 
         // Assert
         cy.get(linkId)
