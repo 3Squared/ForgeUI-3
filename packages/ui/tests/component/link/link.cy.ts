@@ -337,4 +337,27 @@ describe("<ForgeLink />", () => {
     })
   })
 
+  describe("Target", () => {
+    ;[
+      { target: undefined },
+      { target: '_blank' },
+      { target: '_parent' },
+      { target: '_self' },
+      { target: '_top' },
+    ].forEach(({ target }) => {
+      it(`Adds ${ target ?? '_blank' } to target attribute when target is ${ target }`, () => {
+        // Arrange
+        const expectedTarget = target ?? '_blank'
+        
+        // Act
+        mountLink({ label, url, target })
+
+        // Assert
+        cy.get(linkId)
+          .should("exist")
+          .and("be.visible")
+          .and('have.attr', 'target', expectedTarget)
+      })
+    })
+  })
 })

@@ -1,8 +1,9 @@
 <template>
-  <a 
+  <a
       id="link"
       class="cursor-pointer d-flex"
       :href="url"
+      :target="target"
       :class="linkClasses"
   >
     <slot>
@@ -19,9 +20,11 @@ import { Severity } from "../types/forge-types";
 
 export type LinkOpacity = '10' | '25' | '50' | '75' | '100'
 export type UnderlineOffset = '1' | '2' | '3'
+export type Target = '_blank' | '_parent' | '_self' | '_top'
 
 export interface ForgeLinkProps {
   url: string,
+  target?: Target,
   opacity?: LinkOpacity,
   severity?: Severity,
   underlineSeverity?: Severity,
@@ -37,6 +40,7 @@ export interface ForgeLinkProps {
 
 const {
   severity = 'primary',
+  target = '_blank',
   opacity,
   hoverOpacity,
   underlineHoverOpacity,
