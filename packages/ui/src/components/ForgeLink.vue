@@ -1,23 +1,15 @@
 <template>
-  <a :class="`
-    cursor-pointer
-    link
-    link-${severity}
-    link-opacity-${opacity} 
-    link-opacity-${hoverOpacity}-hover 
-    link-underline-${underlineSeverity ? underlineSeverity : severity}
-    link-underline-opacity-${underlineOpacity}
-    link-underline-opacity-${underlineHoverOpacity}-hover
-    ${ underlineOffset ? `link-offset-${underlineOffset}` : '' }
-    ${ animateIconOnHover ? `icon-link icon-link-hover` : '' }
-    `
-  ">
-    <slot>{{ label }}</slot>
-  </a>
+  <a 
+      id="link"
+      class="cursor-pointer"
+      :class="classes"
+  >
+  <slot>{{ label }}</slot>
+</a>
 </template>
 
 <script setup lang="ts">
-import { defineProps } from "vue";
+import { computed, defineProps } from "vue";
 import { Severity } from "../types/forge-types";
 
 type LinkOpacity = '10' | '25' | '50' | '75' | '100'
@@ -37,13 +29,24 @@ export interface ForgeLinkProps {
 
 const {
   severity = 'primary',
-  opacity = '100',
-  hoverOpacity = '100',
-  underlineHoverOpacity = '3',
-  underlineOpacity = '100',
-  animateIconOnHover = false,
+  opacity,
+  hoverOpacity,
+  underlineHoverOpacity,
+  underlineOpacity,
+  animateIconOnHover,
   underlineOffset,
   underlineSeverity
 } = defineProps<ForgeLinkProps>()
+
+const classes = computed<Object>(() => ({
+  [`link-${severity}`]: severity,
+  [`link-opacity-${opacity}`]: opacity,
+  [`link-opacity-${hoverOpacity}-hover`]: hoverOpacity,
+  [`link-underline-${underlineSeverity}`]: underlineSeverity,
+  [`link-underline-opacity-${underlineOpacity}`]: underlineOpacity,
+  [`link-underline-opacity-${underlineHoverOpacity}-hover`]: underlineHoverOpacity,
+  [`link-offset-${underlineOffset}`]: underlineOffset,
+  'icon-link icon-link-hover': animateIconOnHover  
+}))
 
 </script>
