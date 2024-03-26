@@ -24,6 +24,7 @@ export type Target = '_blank' | '_parent' | '_self' | '_top'
 
 export interface ForgeLinkProps {
   url: string,
+  label?: string,
   target?: Target,
   opacity?: LinkOpacity,
   severity?: Severity,
@@ -32,7 +33,6 @@ export interface ForgeLinkProps {
   underlineOpacity?: '0' | LinkOpacity,
   hoverOpacity?: LinkOpacity,
   underlineHoverOpacity?: LinkOpacity,
-  label?: string,
   animateIconOnHover?: boolean,
   positionIconEnd?: boolean,
   iconName?: string

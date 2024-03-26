@@ -17,18 +17,23 @@
 <script setup lang="ts">
 import { ForgePageHeader, ForgeLink } from "@3squared/forge-ui-3";
 import { Playground, usePlayground } from "@3squared/forge-playground-3";
-import { linkOffsets, linkOpacities, severities } from "../../composables/playgroundOptions";
+import { linkOffsets, linkOpacities, linkTarget, severities } from "../../composables/playgroundOptions";
 import { computed } from "vue";
 
 const { options, propVals, config, reset } = usePlayground(
   {
     label: "Hello",
-    severity: severities[0],
-    underlineSeverity: severities[0],
-    underlineOffset: "0",
-    underlineOpacity: "100",
-    hoverOpacity: "100",
-    underlineHoverOpacity: "100"
+    url: "",
+    target: "",
+    severity: "",
+    underlineSeverity: "",
+    underlineOffset: "",
+    underlineOpacity: "",
+    hoverOpacity: "",
+    underlineHoverOpacity: "",
+    animateIconOnHover: false,
+    iconName: "",
+    positionIconEnd: false
   },
   {
     severity: { type: "select", options: severities },
@@ -36,7 +41,9 @@ const { options, propVals, config, reset } = usePlayground(
     underlineOffset: { type: "select", options: linkOffsets },
     underlineOpacity: { type: "select", options: linkOpacities },
     hoverOpacity: { type: "select", options: linkOpacities },
-    underlineHoverOpacity: { type: "select", options: linkOpacities }
+    underlineHoverOpacity: { type: "select", options: linkOpacities },
+    target: { type: "select", options: linkTarget },
+    positionIconEnd: { disabled: () : boolean => !(options.value.iconName !== "") }
   },
   () => {}
 );

@@ -41,7 +41,7 @@
                   <label>{{ key }}</label>
                   <InputText v-model.number="props.options[key]" class="mb-2" type="number" :disabled="isDisabled(key)" />
                 </template>
-                <template v-else-if="typeof option === 'string'">
+                <template v-else-if="typeof option === 'string' || typeof option === undefined">
                   <label>{{ key }}</label>
                   <InputText v-model="props.options[key]" class="mb-2" :disabled="isDisabled(key)" />
                 </template>
