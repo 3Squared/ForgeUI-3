@@ -43,7 +43,7 @@ const { options, propVals, config, reset } = usePlayground(
     hoverOpacity: { type: "select", options: linkOpacities },
     underlineHoverOpacity: { type: "select", options: linkOpacities },
     target: { type: "select", options: linkTarget },
-    positionIconEnd: { disabled: () : boolean => !(options.value.iconName !== "") }
+    positionIconEnd: { disabled: (): boolean => !(options.value.iconName !== "") }
   },
   () => {}
 );

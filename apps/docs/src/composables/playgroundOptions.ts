@@ -6,7 +6,7 @@ export const statWidgetSizes = ["sm", "md", "lg"];
 
 export const linkOffsets = ["0", "1", "2", "3"];
 export const linkOpacities = ["10", "25", "50", "75", "100"];
-export const linkTarget = ["_blank", "_parent", "_self", "_top"]
+export const linkTarget = ["_blank", "_parent", "_self", "_top"];
 
 export const stringFilterTypes = ["contains", "startsWith", "notContains", "endsWith", "notEquals", "in", "between"];
 export const numberFilterTypes = ["lt", "lte", "gt", "gte"];
