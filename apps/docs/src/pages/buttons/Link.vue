@@ -24,8 +24,9 @@ const { options, propVals, config, reset } = usePlayground(
   {
     label: "Hello",
     url: "",
-    target: "",
-    severity: "",
+    target: "_target",
+    severity: "primary",
+    opacity: "",
     underlineSeverity: "",
     underlineOffset: "",
     underlineOpacity: "",
@@ -37,9 +38,10 @@ const { options, propVals, config, reset } = usePlayground(
   },
   {
     severity: { type: "select", options: severities },
+    opacity: { type: "select", options: linkOpacities },
     underlineSeverity: { type: "select", options: severities },
     underlineOffset: { type: "select", options: linkOffsets },
-    underlineOpacity: { type: "select", options: linkOpacities },
+    underlineOpacity: { type: "select", options: ["0", ...linkOpacities] },
     hoverOpacity: { type: "select", options: linkOpacities },
     underlineHoverOpacity: { type: "select", options: linkOpacities },
     target: { type: "select", options: linkTarget },

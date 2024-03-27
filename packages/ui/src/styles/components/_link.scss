@@ -1,0 +1,7 @@
+@each $color, $value in $theme-colors {
+  a.link-underline-#{$color} {
+    &:hover, &:focus {
+      text-decoration-color: rgba(shift-color($value, $link-shade-percentage), var(--#{$prefix}link-underline-opacity, 1)) !important;
+    }
+  }
+}
