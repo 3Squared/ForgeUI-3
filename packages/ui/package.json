@@ -55,7 +55,7 @@
     "vite-plugin-istanbul": "5.0.0",
     "vitest": "1.4.0",
     "vue-tsc": "2.0.7",
-    "vite-plugin-dts": "3.7.3"
+    "vite-plugin-dts": "3.8.0"
   },
   "nyc": {
     "all": true,
