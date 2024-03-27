@@ -74,7 +74,11 @@ export default defineConfig(({mode}) => {
       ]
     },
     plugins: [
-      vue(),
+      vue({
+        script: {
+          propsDestructure: true
+        }
+      }),
       Components({
         resolvers: [
           PrimeVueResolver()

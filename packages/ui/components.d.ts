@@ -25,6 +25,7 @@ declare module 'vue' {
     ForgeForm: typeof import('./src/components/ForgeForm.vue')['default']
     ForgeFormField: typeof import('./src/components/ForgeFormField.vue')['default']
     ForgeInlineEditor: typeof import('./src/components/ForgeInlineEditor.vue')['default']
+    ForgeLink: typeof import('./src/components/ForgeLink.vue')['default']
     ForgeLoader: typeof import('./src/components/ForgeLoader.vue')['default']
     ForgeModal: typeof import('./src/components/ForgeModal.vue')['default']
     ForgeMultiSelect: typeof import('./src/components/ForgeMultiSelect.vue')['default']
