@@ -46,8 +46,7 @@ const { options, propVals, config, reset } = usePlayground(
     underlineHoverOpacity: { type: "select", options: linkOpacities },
     target: { type: "select", options: linkTarget },
     positionIconEnd: { disabled: (): boolean => !(options.value.iconName !== "") }
-  },
-  () => {}
+  }
 );
 
 const code = computed(() => `<ForgeLink${propVals.value.length > 0 ? " " + propVals.value.join(" ") : ""} />`);
