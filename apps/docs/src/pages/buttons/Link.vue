@@ -24,7 +24,7 @@ const { options, propVals, config, reset } = usePlayground(
   {
     label: "Hello",
     url: "",
-    target: "_target",
+    target: "_blank",
     severity: "primary",
     opacity: "",
     underlineSeverity: "",
