@@ -1,5 +1,17 @@
 # forge-ui-3-styleguide
 
+## 1.4.0
+
+### Minor Changes
+
+- d4efc70: - Add Forge Link Component.
+  - This utility component allows developers to implement a link to an external site, which incorporates [link](https://getbootstrap.com/docs/5.3/utilities/link/) and [icon-link](https://getbootstrap.com/docs/5.3/helpers/icon-link/) styling from Bootstrap 5.
+
+### Patch Changes
+
+- Updated dependencies [d4efc70]
+  - @3squared/forge-ui-3@0.2.0
+
 ## 1.3.0
 
 ### Minor Changes
