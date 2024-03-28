@@ -4,7 +4,6 @@ import istanbulPlugin from "vite-plugin-istanbul";
 import Components from 'unplugin-vue-components/vite'
 import { join, resolve } from "path";
 import { PrimeVueResolver } from "unplugin-vue-components/resolvers";
-import { visualizer } from "rollup-plugin-visualizer";
 import dts from 'vite-plugin-dts'
 
 // https://vitejs.dev/config/
@@ -84,7 +83,6 @@ export default defineConfig(({mode}) => {
           PrimeVueResolver()
         ]
       }),
-      visualizer(),
       istanbulPlugin({
         include: "src/*",
         exclude: ["node_modules", "test/"],
@@ -101,9 +99,7 @@ export default defineConfig(({mode}) => {
         formats: ["es"]
       },
       rollupOptions: {
-        plugins: [
-          visualizer()
-        ],
+
         external: [
           "@azure/storage-blob",
           "@azure/abort-controller",
