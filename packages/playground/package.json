@@ -2,10 +2,10 @@
   "name": "@3squared/forge-playground-3",
   "author": "Jacob Minor",
   "version": "1.0.0",
-  "type": "module",
-  "main": "./dist/forge-playground-3.js",
-  "module": "./dist/forge-playground-3.js",
-  "types": "./dist/types",
+  "license": "MIT",
+  "main": "./dist/esm/forge-playground-3.mjs",
+  "module": "./dist/esm/forge-playground-3.mjs",
+  "types": "./dist/index.d.ts",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -21,13 +21,14 @@
     "vue": "^3.3.4"
   },
   "devDependencies": {
+    "rollup-plugin-visualizer": "^5.12.0",
     "@types/node": "18.19.26",
     "@vitejs/plugin-vue": "5.0.4",
     "eslint-config-custom": "*",
     "sass": "1.72.0",
     "typescript": "5.4.3",
     "vite": "5.2.6",
-    "vue-tsc": "2.0.7"
+    "vite-plugin-dts": "3.7.3"
   },
   "files": [
     "dist/*",
