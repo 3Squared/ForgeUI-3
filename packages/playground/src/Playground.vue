@@ -1,7 +1,7 @@
 <template>
   <div class="d-flex flex-column">
     <div class="d-flex flex-row mb-2 h-100">
-      <Card class="w-75 me-2" :pt="{ content: { class: 'h-100' } }">
+      <Card class="w-75 vh-70 me-2" :pt="{ content: { class: 'h-100' } }">
         <template #content>
           <div class="d-flex h-100 align-items-center justify-content-center">
             <slot href="component" name="component" />
