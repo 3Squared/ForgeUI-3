@@ -1,7 +1,7 @@
 {
   "name": "@3squared/forge-playground-3",
   "author": "Jacob Minor",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "license": "MIT",
   "main": "./dist/esm/forge-playground-3.mjs",
   "module": "./dist/esm/forge-playground-3.mjs",

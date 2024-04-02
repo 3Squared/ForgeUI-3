@@ -1,5 +1,11 @@
 # @3squared/forge-playground-3
 
+## 1.0.1
+
+### Patch Changes
+
+- 1174632: Fix missing type issues
+
 ## 1.0.0
 
 ### Major Changes
