@@ -57,6 +57,9 @@
     "vitest": "1.4.0",
     "vite-plugin-dts": "3.8.1"
   },
+  "optionalDependencies": {
+    "@rollup/rollup-linux-x64-gnu": "4.6.1"
+  },
   "nyc": {
     "all": true,
     "report-dir": "coverage/cypress",
