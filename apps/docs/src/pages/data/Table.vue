@@ -67,17 +67,7 @@ const products = [
   { code: 2, name: "Running Trainers", category: "Fitness", quantity: 3 },
   { code: 3, name: "Watch", category: "Accessories", quantity: 12 },
   { code: 4, name: "Socks", category: "Clothing", quantity: 10 },
-  { code: 5, name: "Trousers", category: "Clothing", quantity: 15 },
-  { code: 6, name: "Blue Shirt", category: "Clothing", quantity: 10 },
-  { code: 7, name: "Running Trainers", category: "Fitness", quantity: 3 },
-  { code: 8, name: "Watch", category: "Accessories", quantity: 12 },
-  { code: 9, name: "Socks", category: "Clothing", quantity: 10 },
-  { code: 10, name: "Trousers", category: "Clothing", quantity: 15 },
-  { code: 11, name: "Blue Shirt", category: "Clothing", quantity: 10 },
-  { code: 12, name: "Running Trainers", category: "Fitness", quantity: 3 },
-  { code: 13, name: "Watch", category: "Accessories", quantity: 12 },
-  { code: 14, name: "Socks", category: "Clothing", quantity: 10 },
-  { code: 15, name: "Trousers", category: "Clothing", quantity: 15 }
+  { code: 5, name: "Trousers", category: "Clothing", quantity: 15 }
 ];
 
 const { options, propVals, config, reset } = usePlayground(
