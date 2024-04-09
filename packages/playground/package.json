@@ -21,7 +21,7 @@
     "vue": "^3.3.4"
   },
   "devDependencies": {
-    "@types/node": "18.19.30",
+    "@types/node": "18.19.31",
     "@vitejs/plugin-vue": "5.0.4",
     "eslint-config-custom": "*",
     "eslint-plugin-prettier": "5.1.3",
