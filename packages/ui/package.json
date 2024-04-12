@@ -47,7 +47,7 @@
     "@vitest/ui": "1.5.0",
     "cypress": "13.7.3",
     "cypress-real-events": "1.12.0",
-    "sass": "1.74.1",
+    "sass": "1.75.0",
     "typescript": "5.4.5",
     "unplugin-vue-components": "0.26.0",
     "rollup-plugin-visualizer": "5.12.0",
