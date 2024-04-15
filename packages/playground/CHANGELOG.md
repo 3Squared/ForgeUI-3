@@ -1,5 +1,11 @@
 # @3squared/forge-playground-3
 
+## 1.0.2
+
+### Patch Changes
+
+- c3418e4: Fix styling issues where options card and component card would be different sizes
+
 ## 1.0.1
 
 ### Patch Changes
