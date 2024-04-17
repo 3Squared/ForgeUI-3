@@ -35,9 +35,11 @@ value.value = props.modelValue
 const hasErrors = computed(() => errors.value.length > 0)
 
 const chipsPt = computed<DefaultPassThrough<ChipsPassThroughOptions>>(() => ({
+  inputtoken: 'list-unstyled',
+  input: 'border-0', 
   container: ({ props }: ChipsPassThroughMethodOptions) => ({
     class: [
-      'form-control mb-0',
+      'form-control mb-0 d-flex',
       {
         'disabled': props.disabled,
         'is-invalid': hasErrors.value
@@ -46,7 +48,7 @@ const chipsPt = computed<DefaultPassThrough<ChipsPassThroughOptions>>(() => ({
   }),
   token: {
     class: [
-      'rounded px-2 py-1 me-2 text-white',
+      'rounded px-2 py-1 me-2 text-white list-unstyled',
       {
         'rounded-pill': props.pill,
         'opacity-75': props.disabled

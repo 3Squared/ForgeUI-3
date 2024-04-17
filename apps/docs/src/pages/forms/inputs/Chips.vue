@@ -32,5 +32,5 @@ const { options, propVals, config, reset } = usePlayground({
   placeholder: ""
 });
 
-const code = computed(() => `<TextArea${propVals.value.length > 0 ? " " + propVals.value.join(" ") : ""} />`);
+const code = computed(() => `<ForgeChips${propVals.value.length > 0 ? " " + propVals.value.join(" ") : ""} />`);
 </script>
