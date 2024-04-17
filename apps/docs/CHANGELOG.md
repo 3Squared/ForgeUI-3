@@ -1,5 +1,15 @@
 # forge-ui-3-styleguide
 
+## 1.4.1
+
+### Patch Changes
+
+- 12803a1: - Fix issue with the documentation page where it showed the incorrect tag in the generated code.
+  - Fix ForgeChips styling issue where it showed the outline of the input textbox in the container.
+  - Fix ForgeChips styling issue where each tag and input would have a bulletpoint before them.
+- Updated dependencies [12803a1]
+  - @3squared/forge-ui-3@0.2.1
+
 ## 1.4.0
 
 ### Minor Changes
