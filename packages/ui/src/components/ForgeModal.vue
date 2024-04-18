@@ -26,12 +26,15 @@
         <Button :label="submitText" class="ms-auto" @click="success" id="submit-button"/>
       </div>
     </template>
+    <template v-for="(_, name) in $slots as unknown as DialogSlots" #[name]="slotProps">
+      <slot :name="name" v-bind="slotProps || {}"></slot>
+    </template>
   </Dialog>
 </template>
 
 <script setup lang="ts">
 import { Icon } from '@iconify/vue'
-import { DialogPassThroughOptions, DialogProps } from "primevue/dialog";
+import { DialogPassThroughOptions, DialogProps, DialogSlots } from "primevue/dialog";
 import ForgeAlert from "./ForgeAlert.vue";
 import ForgeLoader from "./ForgeLoader.vue";
 import { computed, ref } from "vue";
