@@ -4,7 +4,7 @@
       <Icon data-cy="close-icon" icon="bi:x-lg" width="18" height="18" @click="closeModal"/>
     </template>
     <template #maximizeicon>
-      <Icon data-cy="maximisable-icon" icon="bi:arrows-fullscreen" width="14" height="14" />
+      <Icon data-cy="maximisable-icon" :icon="!fullscreen ? 'bi:arrows-angle-expand' : 'bi:arrows-angle-contract'" width="16" height="16" />
     </template>
     <template #default>
       <forge-alert v-if="error.hasError" severity="danger" data-cy="error">
