@@ -484,7 +484,7 @@ export default {
     icons: 'd-flex ms-auto',
     closeButton: ({ props }) => ({
       class: [
-        'btn',
+        'btn p-0',
         {
           'ms-auto': !props.maximizable
         }
@@ -492,9 +492,9 @@ export default {
     }),
     maximizableButton: ({ props }) => ({
       class: [
-        'btn ms-auto',
+        'btn ms-auto p-0',
         {
-          "me-2": props.closable
+          "me-3": props.closable
         }
       ]
     }),

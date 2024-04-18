@@ -7,6 +7,9 @@ const dialog = '[data-pc-name="dialog"]'
 const maximiseButton = '[data-pc-section="maximizablebutton"]'
 const closeButton = '[data-pc-section="closebutton"]'
 
+const submitButtonId = "#submit-button"
+const cancelButtonId = "#cancel-button"
+
 function mountDialog(props : ForgeModalProps) {
   cy.mount(DialogWrapper, {
     props
@@ -131,7 +134,7 @@ describe('<Dialog />', () => {
 
     // Act
     mountDialog({ onConfirm: onConfirm })
-    cy.get(`[data-cy="submit-button"]`).click()
+    cy.get(submitButtonId).click()
 
     // Assert
     cy.on("window:alert", (str) => {
@@ -148,7 +151,7 @@ describe('<Dialog />', () => {
 
     // Act
     mountDialog({ onConfirm: onConfirm })
-    cy.get(`[data-cy="submit-button"]`).click()
+    cy.get(submitButtonId).click()
 
     // Assert
     cy.get(`[data-cy="error"]`)
@@ -163,7 +166,7 @@ describe('<Dialog />', () => {
 
     // Act
     mountDialog({ onConfirm: onConfirm })
-    cy.get(`[data-cy="submit-button"]`).click()
+    cy.get(submitButtonId).click()
 
     // Assert
     cy.get(`[data-cy="loader"]`)
@@ -179,7 +182,7 @@ describe('<Dialog />', () => {
 
     // Act
     mountDialog({ onConfirm: onConfirm })
-    cy.get(`[data-cy="cancel-button"]`).click()
+    cy.get(cancelButtonId).click()
 
     // Assert
     cy.get(`#${modalId}`)
@@ -197,7 +200,7 @@ describe('<Dialog />', () => {
     mountDialog({ onConfirm: onConfirm, cancelText: cancelButtonText })
     
     // Assert
-    cy.get(`[data-cy="cancel-button"]`)
+    cy.get(cancelButtonId)
       .should('contain.text', cancelButtonText)
   })
 
@@ -212,7 +215,7 @@ describe('<Dialog />', () => {
     mountDialog({ onConfirm: onConfirm, submitText: submitButtonText })
 
     // Assert
-    cy.get(`[data-cy="submit-button"]`)
+    cy.get(submitButtonId)
       .should('contain.text', submitButtonText)
   })
   

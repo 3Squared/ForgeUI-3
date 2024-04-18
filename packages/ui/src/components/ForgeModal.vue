@@ -1,10 +1,10 @@
 <template>
   <Dialog v-bind="props" @maximize="maximise" @unmaximize="minimise" :pt="pt">
     <template #closeicon>
-      <Icon data-cy="close-icon" icon="bi:x-lg" width="21" height="21" @click="closeModal"/>
+      <Icon data-cy="close-icon" icon="bi:x-lg" width="18" height="18" @click="closeModal"/>
     </template>
     <template #maximizeicon>
-      <Icon data-cy="maximisable-icon" icon="bi:arrows-fullscreen" />
+      <Icon data-cy="maximisable-icon" icon="bi:arrows-fullscreen" width="14" height="14" />
     </template>
     <template #default>
       <forge-alert v-if="error.hasError" severity="danger" data-cy="error">
@@ -22,8 +22,8 @@
     </template>
     <template #footer v-if="showFooter">
       <div class="d-flex w-100" data-cy="footer">
-        <Button :label="cancelText" outlined @click="closeModal" data-cy="cancel-button"/>
-        <Button :label="submitText" class="ms-auto" @click="success" data-cy="submit-button"/>
+        <Button :label="cancelText" outlined @click="closeModal" id="cancel-button"/>
+        <Button :label="submitText" class="ms-auto" @click="success" id="submit-button"/>
       </div>
     </template>
   </Dialog>
