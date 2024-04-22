@@ -23,8 +23,8 @@
     </template>
     <template #footer v-if="showFooter">
       <div class="d-flex w-100" data-cy="footer">
-        <Button :label="cancelText" outlined @click="closeModal" id="cancel-button"/>
-        <Button :label="submitText" class="ms-auto" @click="success" id="submit-button"/>
+        <Button :label="cancelText" :class="props.cancelClass" outlined @click="closeModal" id="cancel-button"/>
+        <Button :label="submitText" :class="props.submitClass" class="ms-auto" @click="success" id="submit-button"/>
       </div>
     </template>
 
