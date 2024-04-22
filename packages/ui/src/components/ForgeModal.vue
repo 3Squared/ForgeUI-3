@@ -1,12 +1,13 @@
 <template>
   <Dialog v-bind="props" @maximize="maximise" @unmaximize="minimise" :pt="pt">
+
     <template #closeicon>
       <Icon data-cy="close-icon" icon="bi:x-lg" width="18" height="18" @click="closeModal"/>
     </template>
     <template #maximizeicon>
       <Icon data-cy="maximisable-icon" :icon="!fullscreen ? 'bi:arrows-angle-expand' : 'bi:arrows-angle-contract'" width="16" height="16" />
     </template>
-    <template #default>
+    <template v-for="(_, name) in $slots as unknown as DialogSlots" #[name]="slotProps">
       <forge-alert v-if="error.hasError" severity="danger" data-cy="error">
         <p :class="error.message.length > 0 ? 'my-auto' : 'mb-0'">{{ error.header }}</p>
         <ul v-if="error.message.length > 0">
@@ -15,7 +16,7 @@
           </li>
         </ul>
       </forge-alert>
-      <slot />
+      <slot :name="name" v-bind="slotProps || {}" />
       <slot v-if="loading" name="loader">
         <forge-loader data-cy="loader" />
       </slot>
@@ -26,9 +27,7 @@
         <Button :label="submitText" class="ms-auto" @click="success" id="submit-button"/>
       </div>
     </template>
-    <template v-for="(_, name) in $slots as unknown as DialogSlots" #[name]="slotProps">
-      <slot :name="name" v-bind="slotProps || {}"></slot>
-    </template>
+
   </Dialog>
 </template>
 
