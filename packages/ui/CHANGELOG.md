@@ -1,5 +1,11 @@
 # @3squared/forge-ui-3
 
+## 0.2.3
+
+### Patch Changes
+
+- ed5f7b5: - Fix styling issue with ForgeChips where the input would have an outline on focus state, making the chips appear like they were outside the input.
+
 ## 0.2.2
 
 ### Patch Changes
