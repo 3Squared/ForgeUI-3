@@ -1,5 +1,15 @@
 # forge-ui-3-styleguide
 
+## 1.4.2
+
+### Patch Changes
+
+- 6670934: - Fix issue where PrimeVue slots weren't rendering.
+  - Fix issue where CancelClass and SubmitClass didn't affect button styling.
+  - Fix styling issue where close and maximise icons were too big.
+- Updated dependencies [6670934]
+  - @3squared/forge-ui-3@0.2.2
+
 ## 1.4.1
 
 ### Patch Changes
