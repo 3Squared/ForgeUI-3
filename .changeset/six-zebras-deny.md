@@ -4,4 +4,5 @@
 ---
 
 - Fix issue where PrimeVue slots weren't rendering.
+- Fix issue where CancelClass and SubmitClass didn't affect button styling.
 - Fix styling issue where close and maximise icons were too big.
