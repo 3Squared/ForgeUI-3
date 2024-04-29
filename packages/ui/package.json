@@ -41,7 +41,7 @@
     "zod": "^3.22.4"
   },
   "devDependencies": {
-    "@cypress/code-coverage": "3.12.37",
+    "@cypress/code-coverage": "3.12.38",
     "@vitejs/plugin-vue": "5.0.4",
     "@vitest/coverage-v8": "1.5.2",
     "@vitest/ui": "1.5.2",
