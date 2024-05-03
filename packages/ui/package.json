@@ -43,8 +43,8 @@
   "devDependencies": {
     "@cypress/code-coverage": "3.12.38",
     "@vitejs/plugin-vue": "5.0.4",
-    "@vitest/coverage-v8": "1.5.3",
-    "@vitest/ui": "1.5.3",
+    "@vitest/coverage-v8": "1.6.0",
+    "@vitest/ui": "1.6.0",
     "cypress": "13.8.1",
     "cypress-real-events": "1.12.0",
     "sass": "1.76.0",
@@ -54,7 +54,7 @@
     "vite": "5.2.11",
     "vite-bundle-visualizer": "1.1.0",
     "vite-plugin-istanbul": "5.0.0",
-    "vitest": "1.5.3",
+    "vitest": "1.6.0",
     "vite-plugin-dts": "3.9.0"
   },
   "optionalDependencies": {
