@@ -66,7 +66,7 @@ describe('<Button />', () => {
           mountButton({ id: id, label: label, severity: severity, badge: '8' })
 
           // Assert
-          cy.get(`[data-pc-section="badge"]`)
+          cy.get(`[data-pc-name="badge"]`)
             .should('have.class', expectedClass)
             .and('have.css', 'background-color', expectedBackgroundColour)
         })
@@ -81,7 +81,7 @@ describe('<Button />', () => {
           mountButton({ id: id, label: label, severity: severity, outlined: true, badge: '8' })
 
           // Assert
-          cy.get(`[data-pc-section="badge"]`)
+          cy.get(`[data-pc-name="badge"]`)
             .should('have.class', expectedClass)
             .and('have.css', 'background-color', rgb)
         })
@@ -235,7 +235,7 @@ describe('<Button />', () => {
     mountButton({ id: id, label: label, severity: severity, badge: '8', badgeClass: badgeClassOverride })
 
     // Assert
-    cy.get(`[data-pc-section="badge"]`)
+    cy.get(`[data-pc-name="badge"]`)
       .should('have.class', expectedClass)
       .and('have.css', 'background-color', expectedRgb)
   })

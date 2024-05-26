@@ -3,6 +3,7 @@
   "repository": "https://github.com/3Squared/ForgeUI-3",
   "description": "ForgeUI 3 is Vue 3 UI Library which combines a variety of popular packages to create a consistent UI for your application.",
   "version": "0.2.3",
+  "type": "module",
   "license": "MIT",
   "contributors": [
     {
@@ -10,8 +11,8 @@
       "email": "jacob.minor@3squared.com"
     }
   ],
-  "main": "./dist/esm/forge-ui-3.mjs",
-  "module": "./dist/esm/forge-ui-3.mjs",
+  "main": "./dist/esm/forge-ui-3.js",
+  "module": "./dist/esm/forge-ui-3.js",
   "types": "./dist/index.d.ts",
   "files": [
     "dist/*",
@@ -20,7 +21,7 @@
   ],
   "scripts": {
     "dev": "vite",
-    "test": "cypress run --component --headed --browser chrome && vitest run --coverage && node ./scripts/merge.js",
+    "test": "cypress run --component --headed --browser chrome && vitest run --coverage && node ./scripts/merge.cjs",
     "test:component": "cypress open --component --browser chrome",
     "test:unit": "vitest --ui --coverage",
     "build": "vite build",
@@ -53,7 +54,7 @@
     "rollup-plugin-visualizer": "5.12.0",
     "vite": "5.2.11",
     "vite-bundle-visualizer": "1.2.1",
-    "vite-plugin-istanbul": "5.0.0",
+    "vite-plugin-istanbul": "6.0.2",
     "vitest": "1.6.0",
     "vite-plugin-dts": "3.9.1"
   },
