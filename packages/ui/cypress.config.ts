@@ -1,4 +1,5 @@
 import { defineConfig } from "cypress";
+import coverageTask from "@cypress/code-coverage/task";
 
 export default defineConfig({
   video: false,
@@ -12,7 +13,7 @@ export default defineConfig({
   },
   component: {
     setupNodeEvents(on, config) {
-      require("@cypress/code-coverage/task")(on, config);
+      coverageTask(on, config);
       return config;
     },
     specPattern: "**/**.cy.ts",
