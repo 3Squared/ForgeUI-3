@@ -15,15 +15,19 @@ import InputPT from "./passthroughs/Input.pt.ts";
 import InputMaskPT from "./passthroughs/InputMask.pt.ts";
 import TextAreaPT from "./passthroughs/TextArea.pt.ts";
 import ChipsPT from "./passthroughs/Chips.pt.ts";
+import DialogPT from "./passthroughs/Dialog.pt.ts";
+import OverlayPanelPT from "./passthroughs/OverlayPanel.pt.ts";
 
 export default {
   ...ButtonPT,
   ...CheckboxPT,
   ...ChipsPT, 
   ...ColumnPT,
+  ...DialogPT,
   ...DropdownPT,
   ...InputPT,
   ...InputMaskPT,
+  ...OverlayPanelPT,
   ...TextAreaPT, 
   multiselect: {
     root: {
@@ -182,45 +186,6 @@ export default {
         }
       ]
       })
-  },
-  dialog: {
-    header: () => ({
-      class: ['modal-header']
-    }),
-    headerTitle: () => ({
-      class: ['h5 modal-title text-black']
-    }),
-    content: () => ({
-      class: ['modal-body']
-    }),
-    footer: () => ({
-      class: ['modal-footer']
-    }),
-    headerIcons: () => ({
-      class: ['ms-auto']
-    }),
-    icons: 'd-flex ms-auto',
-    closeButton: ({ props }) => ({
-      class: [
-        'btn p-0',
-        {
-          'ms-auto': !props.maximizable
-        }
-      ]
-    }),
-    maximizableButton: ({ props }) => ({
-      class: [
-        'btn ms-auto p-0',
-        {
-          "me-3": props.closable
-        }
-      ]
-    }),
-    mask: ({ props }) => ({
-      class: [{
-          'modal-open': props.modal && props.visible
-        }]
-    })
   },
   tabview: {
     navContainer: () => ({
@@ -396,20 +361,6 @@ export default {
 
     },
     submenuicon: 'ms-1'
-  },
-  overlaypanel: {
-    root: (options) => ({ 
-      class: [
-        "card w-fit-content m-0",
-        {
-          'p-4': options.props.showCloseIcon,
-          'p-3': !options.props.showCloseIcon
-        }
-      ]
-    }),
-    content: "d-flex position-relative",
-    closeButton: 'position-absolute top-0 end-0 p-1 btn btn-link text-black ms-2'
-    
   },
   menu: {
     menu: (options) => ({
