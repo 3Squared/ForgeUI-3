@@ -1,5 +1,6 @@
 @import 'bootstrap/scss/functions';
 @import 'bootstrap/scss/variables';
+@import 'bootstrap/scss/variables-dark';
 
 //Forge Theme
 $primary: #0077c8;
@@ -59,3 +60,27 @@ $dark-colors: (
 }
 
 $theme-colors: map-merge-multiple($theme-colors, $base-colors, $subtle-colors, $dark-colors);
+
+$brand-text-emphasis: shade-color($indigo, 60%) !default;
+$brand-bg-subtle: $indigo-100 !default;
+$brand-border-subtle: tint-color($indigo, 60%) !default;
+
+@import 'bootstrap/scss/maps';
+
+$brand-theme-colors-text: (
+  "brand": $brand-text-emphasis
+);
+
+$theme-colors-text: map-merge($theme-colors-text, $brand-theme-colors-text);
+
+$brand-theme-colors-bg-subtle: (
+  "brand": $brand-bg-subtle
+);
+
+$theme-colors-bg-subtle: map-merge($theme-colors-bg-subtle, $brand-theme-colors-bg-subtle);
+
+$brand-theme-colors-border-subtle: (
+  "brand": $brand-border-subtle
+);
+
+$theme-colors-border-subtle: map-merge($theme-colors-border-subtle, $brand-theme-colors-border-subtle)
