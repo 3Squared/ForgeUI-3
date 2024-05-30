@@ -30,6 +30,8 @@ const { options, propVals, config, reset } = usePlayground({
   allowDuplicate: true,
   disabled: false,
   placeholder: ""
+}, {
+  chipSeverity: { type: "select", options: severities }
 });
 
 const code = computed(() => `<ForgeChips${propVals.value.length > 0 ? " " + propVals.value.join(" ") : ""} />`);
