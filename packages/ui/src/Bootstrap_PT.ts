@@ -1,5 +1,4 @@
 import { PrimeVuePTOptions } from "primevue/config";
-import { InputTextPassThroughMethodOptions } from "primevue/inputtext";
 import { MessagePassThroughMethodOptions } from "primevue/message";
 import { SelectButtonPassThroughMethodOptions } from "primevue/selectbutton";
 import { TabPanelPassThroughMethodOptions } from "primevue/tabpanel";
@@ -12,23 +11,20 @@ import ButtonPT from "./passthroughs/Button.pt.ts";
 import CheckboxPT from "./passthroughs/Checkbox.pt.ts";
 import DropdownPT from "./passthroughs/Dropdown.pt.ts";
 import ColumnPT from "./passthroughs/Column.pt.ts";
+import InputPT from "./passthroughs/Input.pt.ts";
+import InputMaskPT from "./passthroughs/InputMask.pt.ts";
+import TextAreaPT from "./passthroughs/TextArea.pt.ts";
+import ChipsPT from "./passthroughs/Chips.pt.ts";
 
 export default {
   ...ButtonPT,
   ...CheckboxPT,
+  ...ChipsPT, 
   ...ColumnPT,
-  ...DropdownPT, 
-  inputtext: {
-    root: (options : InputTextPassThroughMethodOptions) => ({
-      class: [
-        'form-control',
-        {
-          'form-control-lg': options.props.size?.toLowerCase() == 'large',
-          'form-control-sm': options.props.size?.toLowerCase() == 'small'
-        }
-      ]
-    })
-  },
+  ...DropdownPT,
+  ...InputPT,
+  ...InputMaskPT,
+  ...TextAreaPT, 
   multiselect: {
     root: {
       class: ['form-control d-flex cursor-pointer']
@@ -91,20 +87,6 @@ export default {
     checkboxicon: {
       class: 'mb-1 fw-medium text-white position-absolute filter-header-multiselect__check-icon'
     }
-  },
-  inputmask: {
-    root: () => ({
-      class: [
-        'form-control'
-      ]
-    })
-  },
-  textarea: {
-    root: () => ({
-      class: [
-        'form-control',
-      ]
-    })
   },
   message: {
     root: ({ props }: MessagePassThroughMethodOptions) => ({
@@ -357,11 +339,6 @@ export default {
   },
   divider: {
     root: 'border-bottom m-4 w-100'
-  },
-  // More PassThrough options in component file.
-  chips: {
-    root: "d-flex",
-    label: "pe-2"
   },
   // More PassThrough options in component file.
   menubar: {
