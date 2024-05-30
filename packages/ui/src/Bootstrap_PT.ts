@@ -1,5 +1,4 @@
 import { PrimeVuePTOptions } from "primevue/config";
-import { MessagePassThroughMethodOptions } from "primevue/message";
 import { SelectButtonPassThroughMethodOptions } from "primevue/selectbutton";
 import { TabPanelPassThroughMethodOptions } from "primevue/tabpanel";
 import { TooltipPassThroughMethodOptions } from "primevue/tooltip";
@@ -17,6 +16,7 @@ import TextAreaPT from "./passthroughs/TextArea.pt.ts";
 import ChipsPT from "./passthroughs/Chips.pt.ts";
 import DialogPT from "./passthroughs/Dialog.pt.ts";
 import OverlayPanelPT from "./passthroughs/OverlayPanel.pt.ts";
+import MessagePT from "./passthroughs/Message.pt.ts";
 
 export default {
   ...ButtonPT,
@@ -27,6 +27,7 @@ export default {
   ...DropdownPT,
   ...InputPT,
   ...InputMaskPT,
+  ...MessagePT,
   ...OverlayPanelPT,
   ...TextAreaPT, 
   multiselect: {
@@ -91,33 +92,6 @@ export default {
     checkboxicon: {
       class: 'mb-1 fw-medium text-white position-absolute filter-header-multiselect__check-icon'
     }
-  },
-  message: {
-    root: ({ props }: MessagePassThroughMethodOptions) => ({
-      class: [
-        'alert',
-        {
-          'alert-primary': props.severity === 'primary' || props.severity === undefined,
-          'alert-secondary': props.severity === 'secondary',
-          'alert-success': props.severity === 'success',
-          'alert-warning': props.severity === 'warning' || props.severity === 'warn',
-          'alert-danger': props.severity === 'danger' || props.severity === 'error',
-          'alert-info': props.severity === 'info'
-        }
-      ]
-    }),
-    text: () => ({
-      class: ['my-auto']
-    }),
-    wrapper: () => ({
-      class: ['d-flex']
-    }),
-    icon: () => ({
-      class: ['alert-icon my-auto me-2 pe-1']
-    }),
-    closeButton: () => ({
-      class: ['px-0 ms-2 btn d-flex']
-    })
   },
   badge: {
     root: ({ props }) => {
