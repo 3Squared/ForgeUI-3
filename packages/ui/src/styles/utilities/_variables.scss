@@ -23,6 +23,7 @@ $danger-light: #FCEBE9;
 $light: #f6f6f6;
 
 $base-colors: (
+  'brand': $indigo,
   'primary': $primary,
   'secondary': $secondary,
   'success': $success,
@@ -35,6 +36,7 @@ $base-colors: (
 $badge-font-size: 0.75rem;
 
 $subtle-colors: (
+        'brand-subtle': $indigo-100,
         'primary-subtle': $primary-light,
         'success-subtle': $success-light,
         'warning-subtle': $warning-light,
@@ -43,6 +45,7 @@ $subtle-colors: (
 );
 
 $dark-colors: (
+        'brand-dark': $indigo-800,
         'primary-dark': $primary-dark,
         'success-dark': $success-dark,
         'warning-dark': $warning-dark,

@@ -2,7 +2,7 @@ import { ColumnProps } from "primevue/column";
 import { FilterMatchModeOptions, FilterOperatorOptions } from "primevue/api";
 import { FileUploadStatus } from "../components/file-uploader/utilities/utilities";
 
-export type Severity = 'primary' | 'secondary' | 'success' | 'warning' | 'danger' | 'info' | undefined
+export type Severity = 'primary' | 'secondary' | 'success' | 'warning' | 'danger' | 'info' | 'brand' | undefined
 export type Size = 'sm' | 'md' | 'lg' | undefined
 export type BarPosition = 'top' | 'left' | 'none'
 
