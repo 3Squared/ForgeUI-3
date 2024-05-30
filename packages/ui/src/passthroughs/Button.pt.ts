@@ -7,9 +7,9 @@ export default {
         'btn',
         // Brand
         {
-          "btn-brand": (props.severity === null || props.severity === "brand") && !props.outlined && !props.link && !props.text,
-          "btn-outline-brand": (props.severity === null || props.severity === "brand") && props.outlined,
-          "text-brand fw-bold btn-text-brand": (props.severity === null || props.severity === "brand") && props.text,
+          "btn-brand": props.severity === "brand" && !props.outlined && !props.link && !props.text,
+          "btn-outline-brand": props.severity === "brand" && props.outlined,
+          "text-brand fw-bold btn-text-brand": props.severity === "brand" && props.text,
         },
         // Primary
         {
