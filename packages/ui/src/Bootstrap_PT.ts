@@ -11,59 +11,12 @@ import { ColumnPassThroughMethodOptions, ColumnProps } from "primevue/column";
 import { MultiSelectPassThroughMethodOptions } from "primevue/multiselect";
 import ButtonPT from "./passthroughs/Button.pt.ts";
 import CheckboxPT from "./passthroughs/Checkbox.pt.ts";
+import DropdownPT from "./passthroughs/Dropdown.pt.ts";
 
 export default {
   ...ButtonPT,
   ...CheckboxPT,
-  dropdown: { 
-    root: (options) => ({
-      class: [
-        {
-          "rounded-0 rounded-top": options.state.overlayVisible,
-          "disabled": options.instance.disabled,
-          'form-control': !options.instance.disabled
-        },
-        'd-flex cursor-pointer w-100']
-    }),
-    input: () => ({
-      class: ['fs-6 border-0']
-    }),
-    trigger: (options) => ({
-      class: {
-        'ms-2': options.props.showClear,
-        'ms-auto': !options.props.showClear || !options.props.modelValue
-      }
-    }),
-    loadingIcon: () => ({
-      class: ['spinner-border spinner-border-sm border-0']
-    }),
-    clearIcon: () => ({
-      class: ['ms-auto my-auto']
-    }),
-    list: () => ({
-      class: ['border list-unstyled rounded-bottom bg-white']
-    }),
-    item: (options) => ({
-      class: [
-        'px-2 py-1 cursor-pointer item',
-        {
-          'bg-primary text-white': options.context.selected
-        }
-      ]
-    }),
-    itemGroup: () => ({
-      class: ['d-flex px-2 py-1 fw-bold']
-    }),
-    filterContainer: () => ({
-      class: ['d-flex border-start border-end p-2 bg-light']
-    }),
-    filterIcon: () => ({
-      class: ['my-auto ms-3 me-2']
-    }),
-    filterInput: () => ({
-      class: ['form-control']
-    }),
-  },
+  ...DropdownPT, 
   column: {
     sortBadge: 'ms-2 my-auto cursor-pointer',
     headerCell: (options : ColumnPassThroughMethodOptions & { props: { reorderableColumns: boolean }, column : { context: { frozen: boolean | '', resizable: boolean }}}) => {
