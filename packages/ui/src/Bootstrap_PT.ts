@@ -1,5 +1,4 @@
 import { PrimeVuePTOptions } from "primevue/config";
-import { CheckboxPassThroughMethodOptions } from "primevue/checkbox";
 import { InputTextPassThroughMethodOptions } from "primevue/inputtext";
 import { MessagePassThroughMethodOptions } from "primevue/message";
 import { SelectButtonPassThroughMethodOptions } from "primevue/selectbutton";
@@ -11,60 +10,11 @@ import { DataTablePassThroughMethodOptions } from "primevue/datatable";
 import { ColumnPassThroughMethodOptions, ColumnProps } from "primevue/column";
 import { MultiSelectPassThroughMethodOptions } from "primevue/multiselect";
 import ButtonPT from "./passthroughs/Button.pt.ts";
+import CheckboxPT from "./passthroughs/Checkbox.pt.ts";
 
 export default {
   ...ButtonPT,
-  checkbox: {
-    root: () => ({
-      class: [
-        'form-check'
-      ]
-    }),
-    input: (options: CheckboxPassThroughMethodOptions) => ({
-      class: [
-        'form-check-input px-2 py-2 rounded',
-        {
-          'bg-primary': options.context.checked,
-          'form-check-input__focus': options.state.focused,
-          'disabled': options.context.disabled
-        }
-      ],
-    }),
-  },
-  toast: {
-    message: () => ({
-      class: ['toast-container w-100 position-relative'],
-    }),
-    content: () => ({
-      class: ['toast-body d-flex align-items-center gap-2']
-    }),
-    container: () => ({
-      class: ['toast bg-white show']
-    }),
-    buttonContainer: () => ({
-      class: ['ms-auto']
-    }),
-    closeButton: () => ({
-      class: ['btn-close toast-close-icon']
-    }),
-    closeIcon: () => ({
-      class: 'd-none'
-    }),
-    summary: () => ({
-      class: ['toast-body ps-1']
-    }),
-    icon: ({props}) => ({
-      class: [
-        'toast-icon',
-        {
-          'text-primary': props.message?.severity === 'info',
-          'text-success': props.message?.severity === 'success',
-          'text-danger': props.message?.severity === 'error',
-          'text-warning': props.message?.severity === 'warn',
-        }
-      ]
-    }),
-  },
+  ...CheckboxPT,
   dropdown: { 
     root: (options) => ({
       class: [
