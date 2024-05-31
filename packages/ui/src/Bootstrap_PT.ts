@@ -1,8 +1,6 @@
 import { PrimeVuePTOptions } from "primevue/config";
 import { SelectButtonPassThroughMethodOptions } from "primevue/selectbutton";
 import { TooltipPassThroughMethodOptions } from "primevue/tooltip";
-import { MenubarPassThroughMethodOptions } from "primevue/menubar";
-import { DataTablePassThroughMethodOptions } from "primevue/datatable";
 import ButtonPT from "./passthroughs/Button.pt.ts";
 import CheckboxPT from "./passthroughs/Checkbox.pt.ts";
 import DropdownPT from "./passthroughs/Dropdown.pt.ts";
@@ -20,6 +18,7 @@ import DatepickerPT from "./passthroughs/Datepicker.pt.ts";
 import MultiselectPT from "./passthroughs/Dropdown.pt.ts";
 import ProgressBarPT from "./passthroughs/ProgressBar.pt.ts";
 import TablePT from "./passthroughs/Table.pt.ts";
+import NavbarPT from "./passthroughs/Navbar.pt.ts";
 
 export default {
   ...ButtonPT,
@@ -33,6 +32,7 @@ export default {
   ...InputMaskPT,
   ...MessagePT,
   ...MultiselectPT,
+  ...NavbarPT,
   ...OverlayPanelPT,
   ...ProgressBarPT,
   ...StepsPT,
@@ -136,78 +136,7 @@ export default {
   divider: {
     root: 'border-bottom m-4 w-100'
   },
-  // More PassThrough options in component file.
-  menubar: {
-    menu: ({ instance }: MenubarPassThroughMethodOptions) => ({
-      class: [
-        'navbar-nav navbar-collapse collapse me-auto',
-        {
-          'show dropdown shadow-sm': instance.mobileActive
-        }
-      ]
-    }),
-    menuitem: ({ context }: MenubarPassThroughMethodOptions) => ({
-      class: [
-        'nav-item cursor-pointer',
-        {
-          'dropdown': context.item.items.length > 0,
-        }
-      ]
-    }),
-    action: ({ context, instance }: MenubarPassThroughMethodOptions) => ({
-      class: [
-        {
-          'active': context.active,
-          'nav-link': context.level === 0,
-          'dropdown-item': context.level > 0,
-          'disabled': context.item.item.disabled,
-          'px-3': instance.mobileActive
-        }
-      ]
-    }),
-    separator: ({ instance }: MenubarPassThroughMethodOptions) => ({
-      class: [
-        {
-          'border-bottom w-100': instance.mobileActive || instance.level > 0
-        }
-      ]
-    }),
-    submenu: ({ instance }) => ({
-      class: [
-        'dropdown-menu w-fit-content',
-        {
-          'position-absolute start-100 top-0': instance.level > 1
-        }
-      ]
-    }),
-    button: (options: MenubarPassThroughMethodOptions & { state: { queryMatches: boolean }}) => {
-      return {
-        class: [
-          'ms-auto me-3',
-          {
-            'd-none': !options.state.queryMatches
-          }
-        ]
-      }
 
-    },
-    submenuicon: 'ms-1'
-  },
-  menu: {
-    menu: (options) => ({
-        class: [
-          'dropdown dropdown-menu',
-          {
-            'show': options.state.overlayVisible
-          }
-        ]
-    }),
-    menuitem: () => ({
-      class: [
-        'dropdown-item cursor-pointer'
-      ]
-    })
-  },
   image: {
     root: "position-relative d-inline-block",
     button: 'preview-button',

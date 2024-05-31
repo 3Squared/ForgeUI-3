@@ -1,4 +1,5 @@
 import { DataTablePassThroughMethodOptions } from "primevue/datatable";
+import { PaginatorPassThroughMethodOptions } from "primevue/paginator";
 
 export default {
   dataTable: {
@@ -50,7 +51,7 @@ export default {
     }
   },
   paginator: {
-    root: (options) => {
+    root: (options : PaginatorPassThroughMethodOptions<any>) => {
       return {
         class: [
           'm-auto pagination justify-content-center',
@@ -64,7 +65,7 @@ export default {
     previousPageButton: 'page-link',
     nextPageButton: 'page-link',
     lastPageButton: 'page-link me-2',
-    pageButton: ({ context }) => ({
+    pageButton: ({ context } : PaginatorPassThroughMethodOptions<any>) => ({
       class: [
         'page-link',
         {
