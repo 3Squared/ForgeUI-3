@@ -74,6 +74,7 @@ const stepperPT = computed<DefaultPassThrough<StepsPassThroughOptions>>(() => ({
          {
            'inactive': options.context.disabled,
            'bg-primary text-white': options.context.index === localCurrentStep.value && (props.severity === undefined || props.severity === 'primary'),
+           'bg-brand text-white': options.context.index === localCurrentStep.value && props.severity === 'brand',
            'bg-secondary text-white': options.context.index === localCurrentStep.value && props.severity === 'secondary',
            'bg-success text-white': options.context.index === localCurrentStep.value && props.severity === 'success',
            'bg-warning text-white': options.context.index === localCurrentStep.value && props.severity === 'warning',
@@ -87,6 +88,7 @@ const stepperPT = computed<DefaultPassThrough<StepsPassThroughOptions>>(() => ({
       'h5',
       {
         'border-bottom border-2 border-primary': options.context.index === localCurrentStep.value && (props.severity === undefined || props.severity === 'primary'),
+        'border-bottom border-2 border-brand': options.context.index === localCurrentStep.value && props.severity === 'brand',
         'border-bottom border-2 border-secondary': options.context.index === localCurrentStep.value && props.severity === 'secondary',
         'border-bottom border-2 border-success': options.context.index === localCurrentStep.value && props.severity === 'success',
         'border-bottom border-2 border-warning': options.context.index === localCurrentStep.value && props.severity === 'warning',

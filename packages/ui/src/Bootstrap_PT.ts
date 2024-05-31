@@ -1,6 +1,5 @@
 import { PrimeVuePTOptions } from "primevue/config";
 import { SelectButtonPassThroughMethodOptions } from "primevue/selectbutton";
-import { TabPanelPassThroughMethodOptions } from "primevue/tabpanel";
 import { TooltipPassThroughMethodOptions } from "primevue/tooltip";
 import { CalendarPassThroughMethodOptions } from "primevue/calendar";
 import { MenubarPassThroughMethodOptions } from "primevue/menubar";
@@ -17,6 +16,8 @@ import ChipsPT from "./passthroughs/Chips.pt.ts";
 import DialogPT from "./passthroughs/Dialog.pt.ts";
 import OverlayPanelPT from "./passthroughs/OverlayPanel.pt.ts";
 import MessagePT from "./passthroughs/Message.pt.ts";
+import StepsPT from "./passthroughs/Steps.pt.ts";
+import TabsPT from "./passthroughs/Tabs.pt.ts";
 
 export default {
   ...ButtonPT,
@@ -29,7 +30,9 @@ export default {
   ...InputMaskPT,
   ...MessagePT,
   ...OverlayPanelPT,
-  ...TextAreaPT, 
+  ...StepsPT,
+  ...TabsPT, 
+  ...TextAreaPT,
   multiselect: {
     root: {
       class: ['form-control d-flex cursor-pointer']
@@ -161,40 +164,7 @@ export default {
       ]
       })
   },
-  tabview: {
-    navContainer: () => ({
-      class: ['nav nav-tabs position-relative']
-    }),
-    navContent: () => ({
-      class: ['overflow-hidden']
-    }),
-    nav: () => ({
-      class: ['mb-0 list-unstyled d-flex']
-    }),
-    previousButton: () => ({
-      class: ['bg-white btn h-100 position-absolute top-0 d-flex align-items-center justify-content-center']
-    }),
-    nextButton: () => ({
-      class: ['bg-white btn h-100 position-absolute top-0 end-0 d-flex align-items-center justify-content-center']
-    })
-  },
-  tabpanel: {
-    root: () => ({
-      class: ['nav-item']
-    }),
-    headerAction: (options : TabPanelPassThroughMethodOptions & { tabpanel : Partial<TabPanelPassThroughMethodOptions>}) => ({
-        class: [
-          'nav-link cursor-pointer',
-          {
-            'active': options.tabpanel.context!.active,
-            'disabled': options.tabpanel.props?.disabled
-          }
-        ]
-    }),
-    content: () => ({
-      class: ['p-2']
-    })
-  },
+
   directives: {
     tooltip: {
       root: ({ context }: TooltipPassThroughMethodOptions) => ({
@@ -271,10 +241,6 @@ export default {
         }
       ]
     })
-  },
-  steps: {
-    root: "w-100 mx-2 line",
-    menu: 'p-0 m-0 list-unstyled d-flex justify-content-between ',
   },
   divider: {
     root: 'border-bottom m-4 w-100'
