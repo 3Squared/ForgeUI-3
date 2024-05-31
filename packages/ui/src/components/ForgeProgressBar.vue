@@ -28,6 +28,8 @@ const animate = computed(() => props.animate ? 'progress-bar-animated' : null)
 
 const severity = computed(() => {
   switch (props.severity) {
+    case "brand":
+      return 'bg-brand'
     case 'secondary':
       return 'bg-secondary'
     case 'success':
