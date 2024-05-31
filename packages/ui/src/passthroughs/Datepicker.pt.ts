@@ -34,7 +34,6 @@ export default {
     minute: "my-2",
     secondPicker: "px-2 fs-5",
     second: "my-2",
-    clearbutton: "ms-auto",
     buttonbar: ({ props }: CalendarPassThroughMethodOptions) => ({
       class: [
         'p-2 d-flex',
