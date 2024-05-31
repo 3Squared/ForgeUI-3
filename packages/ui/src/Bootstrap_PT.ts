@@ -18,9 +18,11 @@ import DatepickerPT from "./passthroughs/Datepicker.pt.ts";
 import MultiselectPT from "./passthroughs/Dropdown.pt.ts";
 import ProgressBarPT from "./passthroughs/ProgressBar.pt.ts";
 import TablePT from "./passthroughs/Table.pt.ts";
+import BadgePT from "./passthroughs/Badge.pt.ts";
 import NavbarPT from "./passthroughs/Navbar.pt.ts";
 
 export default {
+  ...BadgePT,
   ...ButtonPT,
   ...CheckboxPT,
   ...ChipsPT, 
@@ -39,27 +41,7 @@ export default {
   ...TablePT,
   ...TabsPT, 
   ...TextAreaPT,
-  badge: {
-    root: ({ props }) => {
-      return {
-        class: [
-          'badge',
-          {
-            "badge-primary": props.severity === 'primary' || props.severity === null,
-            "badge-secondary": props.severity === 'secondary',
-            "badge-success": props.severity === "success",
-            "badge-warning": props.severity === "warning" || props.severity === "warn",
-            "badge-danger": props.severity === "danger",
-            "badge-info": props.severity === "info"
-          },
-          {
-            'badge-xl fs-4 lh-sm': props.size === 'xlarge',
-            'badge-lg fs-5 lh-1': props.size === 'large'
-          }
-        ]
-      }
-    }
-  },
+
   card: {
     root: () => ({
       class: ['card']
