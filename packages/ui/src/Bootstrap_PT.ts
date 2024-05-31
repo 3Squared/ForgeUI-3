@@ -24,6 +24,7 @@ import ProgressSpinnerPT from "./passthroughs/ProgressSpinner.pt.ts";
 import CardPT from "./passthroughs/Card.pt.ts";
 import DividerPT from "./passthroughs/Divider.pt.ts";
 import ImagePT from "./passthroughs/Image.pt.ts";
+import ToastPT from "./passthroughs/Toast.pt.ts";
 
 export default {
   ...BadgePT,
@@ -49,6 +50,7 @@ export default {
   ...StepsPT,
   ...TablePT,
   ...TabsPT, 
+  ...ToastPT,
   ...TextAreaPT,
   directives: {
     ...TooltipPT
