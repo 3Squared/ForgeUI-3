@@ -1,6 +1,4 @@
 import { PrimeVuePTOptions } from "primevue/config";
-import { SelectButtonPassThroughMethodOptions } from "primevue/selectbutton";
-import { TooltipPassThroughMethodOptions } from "primevue/tooltip";
 import ButtonPT from "./passthroughs/Button.pt.ts";
 import CheckboxPT from "./passthroughs/Checkbox.pt.ts";
 import DropdownPT from "./passthroughs/Dropdown.pt.ts";
@@ -20,16 +18,25 @@ import ProgressBarPT from "./passthroughs/ProgressBar.pt.ts";
 import TablePT from "./passthroughs/Table.pt.ts";
 import BadgePT from "./passthroughs/Badge.pt.ts";
 import NavbarPT from "./passthroughs/Navbar.pt.ts";
+import TooltipPT from "./passthroughs/Tooltip.pt.ts";
+import SelectButtonPT from "./passthroughs/SelectButton.pt.ts";
+import ProgressSpinnerPT from "./passthroughs/ProgressSpinner.pt.ts";
+import CardPT from "./passthroughs/Card.pt.ts";
+import DividerPT from "./passthroughs/Divider.pt.ts";
+import ImagePT from "./passthroughs/Image.pt.ts";
 
 export default {
   ...BadgePT,
   ...ButtonPT,
+  ...CardPT,
   ...CheckboxPT,
   ...ChipsPT, 
   ...ColumnPT,
   ...DatepickerPT,
   ...DialogPT,
+  ...DividerPT,
   ...DropdownPT,
+  ...ImagePT,
   ...InputPT,
   ...InputMaskPT,
   ...MessagePT,
@@ -37,98 +44,13 @@ export default {
   ...NavbarPT,
   ...OverlayPanelPT,
   ...ProgressBarPT,
+  ...ProgressSpinnerPT,
+  ...SelectButtonPT,
   ...StepsPT,
   ...TablePT,
   ...TabsPT, 
   ...TextAreaPT,
-
-  card: {
-    root: () => ({
-      class: ['card']
-    }),
-    title: () => ({
-      class: ['card-title h4']
-    }),
-    subtitle: () => ({
-      class: ['card-subtitle mb-2']
-    }),
-    content: () => ({
-      class: ['card-text h-100']
-    }),
-    body: () => ({
-      class: ['card-body']
-    }),
-    footer: () => ({
-      class: ['mt-3']
-    }),
-    header: () => ({
-      class: ['card-header']
-    })
-  },
-  progressspinner: {
-    spinner: () => ({
-      class: [
-        'spinner-border'
-      ]
-    })
-  },
-  selectbutton: {
-    root: () => ({
-      class: ['btn-group']
-    }),
-    button: ({ context, props,  } : SelectButtonPassThroughMethodOptions) => ({
-      class: [
-        'btn',
-        {
-          'btn-primary': context.active,
-          'btn-outline-primary': !context.active
-        },
-        {
-          'disabled w-auto': props.disabled || props.optionDisabled === context.option
-        }
-      ]
-      })
-  },
-
   directives: {
-    tooltip: {
-      root: ({ context }: TooltipPassThroughMethodOptions) => ({
-        class: [
-          'tooltip show position-absolute',
-          {
-            'bs-tooltip-end ms-1': context?.right || (!context?.right && !context?.left && !context?.top && !context?.bottom),
-            'bs-tooltip-start me-1': context?.left,
-            'bs-tooltip-top': context?.top,
-            'bs-tooltip-bottom': context?.bottom
-          }
-        ]
-      }),
-      arrow: () => ({
-        class: [
-          'tooltip-arrow position-absolute',
-        ]
-      }),
-      text: {
-        class: ['tooltip-inner']
-      }
-    }
-  },
-
-
-  divider: {
-    root: 'border-bottom m-4 w-100'
-  },
-
-  image: {
-    root: "position-relative d-inline-block",
-    button: 'preview-button',
-    mask: "position-fixed top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center mask",
-    preview: 'preview',
-    toolbar: 'position-absolute top-0 end-0 d-flex p-3',
-    rotaterightbutton: 'btn text-white',
-    rotateleftbutton: 'btn text-white',
-    zoomoutbutton: 'btn text-white',
-    zoominbutton: 'btn text-white',
-    closebutton: 'btn text-white'
+    ...TooltipPT
   }
 } as PrimeVuePTOptions
