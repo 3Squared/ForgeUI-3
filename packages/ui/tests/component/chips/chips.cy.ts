@@ -34,6 +34,7 @@ describe("<Chips />", () => {
     ;[
       { title: "Defaults to primary when variant is undefined" },
       { title: "Displays primary chips when variant is primary", variant: 'primary' },
+      { title: "Displays brand chips when variant is brand", variant: 'brand' },
       { title: "Displays secondary chips when variant is secondary", variant: 'secondary' },
       { title: "Displays success chips when variant is success", variant: 'success' },
       { title: "Displays warning chips when variant is warning", variant: 'warning' },

@@ -171,6 +171,7 @@ describe("<ForgeNavbar />", () => {
         { title: "Displays light navbar when severity is light", severity: "light" },
         { title: "Displays dark navbar when severity is dark", severity: "dark" },
         { title: "Displays primary navbar when severity is primary", severity: "primary" },
+        { title: "Displays brand navbar when severity is brand", severity: "brand" },
         { title: "Displays secondary navbar when severity is secondary", severity: "secondary" },
         { title: "Displays success navbar when severity is success", severity: "success" },
         { title: "Displays warning navbar when severity is warning", severity: "warning" },

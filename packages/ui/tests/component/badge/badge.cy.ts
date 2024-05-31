@@ -29,6 +29,7 @@ describe('<Badge />', () => {
     ;[
       { title: 'Defaults to primary when severity isnt defined', severity: undefined },
       { title: 'Displays primary badge when severity is primary', severity: 'primary' },
+      { title: 'Displays brand badge when severity is brand', severity: 'brand' },
       { title: 'Displays secondary badge when severity is secondary', severity: 'secondary' },
       { title: 'Displays success badge when severity is success', severity: 'success' },
       { title: 'Displays warning badge when severity is warning', severity: 'warning' },

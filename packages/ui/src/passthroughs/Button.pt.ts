@@ -65,6 +65,7 @@ export default {
         class: [
           {
             "button-badge-primary": (props.severity === 'primary' || props.severity === null) && !props.outlined,
+            "button-badge-brand": props.severity === 'brand' && !props.outlined,
             "button-badge-secondary": props.severity === 'secondary' && !props.outlined,
             "button-badge-success": props.severity === 'success' && !props.outlined,
             "button-badge-warning": (props.severity === 'warning' || props.severity === 'warn') && !props.outlined,
@@ -73,6 +74,7 @@ export default {
           },
           {
             "button-badge-primary outlined": (props.severity === 'primary' || props.severity === null) && props.outlined,
+            "button-badge-brand outlined": props.severity === 'brand' && props.outlined,
             "button-badge-secondary outlined": props.severity === 'secondary' && props.outlined,
             "button-badge-success outlined": props.severity === 'success' && props.outlined,
             "button-badge-warning outlined": (props.severity === 'warning' || props.severity === 'warn') && props.outlined,

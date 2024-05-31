@@ -36,6 +36,7 @@ describe("<ForgeLink />", () => {
     ;[
       { severity: undefined },
       { severity: "primary" },
+      { severity: "brand" },
       { severity: "secondary" },
       { severity: "success" },
       { severity: "warning" },

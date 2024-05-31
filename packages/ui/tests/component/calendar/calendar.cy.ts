@@ -66,6 +66,7 @@ describe("<Calendar />", () => {
     ;[
       { title: "Displays primary icon when severity is undefined", severity: undefined },
       { title: "Displays primary icon when severity is primary", severity: "primary" },
+      { title: "Displays brand icon when severity is brand", severity: "brand" },
       { title: "Displays secondary icon when severity is secondary", severity: "secondary" },
       { title: "Displays success icon when severity is success", severity: "success" },
       { title: "Displays warning icon when severity is warning", severity: "warning" },

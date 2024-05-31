@@ -35,6 +35,7 @@ describe('<ForgeStatWidget />', () => {
       { title: "Defaults to primary when variant is undefined" },
       { title: "Displays primary stat widget when variant is primary", severity: 'primary' },
       { title: "Displays secondary stat widget when variant is secondary", severity: 'secondary' },
+      { title: "Displays brand stat widget when variant is brand", severity: 'brand' },
       { title: "Displays success stat widget when variant is success", severity: 'success' },
       { title: "Displays warning stat widget when variant is warning", severity: 'warning' },
       { title: "Displays danger stat widget when variant is danger", severity: 'danger' },

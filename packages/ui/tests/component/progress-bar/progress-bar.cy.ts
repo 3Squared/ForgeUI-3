@@ -89,6 +89,7 @@ describe("<ForgeProgressBar />", () => {
     ;[
       { title: 'Defaults to primary when severity isnt defined', severity: undefined },
       { title: 'Displays primary background when severity is primary', severity: 'primary' },
+      { title: 'Displays brand background when severity is brand', severity: 'brand' },
       { title: 'Displays secondary background when severity is secondary', severity: 'secondary' },
       { title: 'Displays success background when severity is success', severity: 'success' },
       { title: 'Displays warning background when severity is warning', severity: 'warning' },

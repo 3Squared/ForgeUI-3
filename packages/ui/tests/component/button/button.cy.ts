@@ -22,10 +22,10 @@ describe('<Button />', () => {
   })
   
   describe('Variants', () => {
-    ;[{ severity: undefined, rgb: 'rgb(0, 119, 200)' }, { severity: "primary", rgb: 'rgb(0, 119, 200)' }, 
+    ;[{ severity: undefined, rgb: 'rgb(0, 119, 200)' }, { severity: "primary", rgb: 'rgb(0, 119, 200)' },
       { severity: "secondary", rgb: 'rgb(95, 95, 95)' }, { severity: "success", rgb: 'rgb(33, 170, 100)' },
       { severity: "info", rgb: 'rgb(13, 202, 240)' }, { severity: "warning", rgb: 'rgb(255, 174, 0)' }, 
-      { severity: "danger", rgb: 'rgb(247, 35, 35)' }
+      { severity: "danger", rgb: 'rgb(247, 35, 35)' }, { severity: "brand", rgb: 'rgb(102, 16, 242)' },
     ].forEach(({ severity, rgb }) => {
 
       describe(severity !== undefined ? severity : 'not specified', () => {
