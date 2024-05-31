@@ -1,10 +1,8 @@
 import { PrimeVuePTOptions } from "primevue/config";
 import { SelectButtonPassThroughMethodOptions } from "primevue/selectbutton";
 import { TooltipPassThroughMethodOptions } from "primevue/tooltip";
-import { CalendarPassThroughMethodOptions } from "primevue/calendar";
 import { MenubarPassThroughMethodOptions } from "primevue/menubar";
 import { DataTablePassThroughMethodOptions } from "primevue/datatable";
-import { MultiSelectPassThroughMethodOptions } from "primevue/multiselect";
 import ButtonPT from "./passthroughs/Button.pt.ts";
 import CheckboxPT from "./passthroughs/Checkbox.pt.ts";
 import DropdownPT from "./passthroughs/Dropdown.pt.ts";
@@ -18,84 +16,25 @@ import OverlayPanelPT from "./passthroughs/OverlayPanel.pt.ts";
 import MessagePT from "./passthroughs/Message.pt.ts";
 import StepsPT from "./passthroughs/Steps.pt.ts";
 import TabsPT from "./passthroughs/Tabs.pt.ts";
+import DatepickerPT from "./passthroughs/Datepicker.pt.ts";
+import MultiselectPT from "./passthroughs/Dropdown.pt.ts";
 
 export default {
   ...ButtonPT,
   ...CheckboxPT,
   ...ChipsPT, 
   ...ColumnPT,
+  ...DatepickerPT,
   ...DialogPT,
   ...DropdownPT,
   ...InputPT,
   ...InputMaskPT,
   ...MessagePT,
+  ...MultiselectPT,
   ...OverlayPanelPT,
   ...StepsPT,
   ...TabsPT, 
   ...TextAreaPT,
-  multiselect: {
-    root: {
-      class: ['form-control d-flex cursor-pointer']
-    },
-    trigger: {
-      class: ['ms-auto']
-    },
-    panel: {
-      class: ['border rounded-bottom bg-white']
-    },
-    list: {
-      class: ['p-2 mb-0 list-unstyled']
-    },
-    item: {
-      class: ['dropdown-item d-flex']
-    },
-    header: {
-      class: "d-flex border-bottom pb-2"
-    },
-    headercheckboxcontainer: {
-      class: ['form-check ms-2 mt-2']
-    },
-    headercheckbox: (options : any) => {
-      return {
-        class: [
-          'form-check-input px-2 py-2 rounded position-relative',
-          {
-            'bg-primary': options.instance.allSelected
-          }
-        ]
-      }
-    },
-    headercheckboxicon: {
-      class: 'mb-1 fw-medium text-white position-absolute filter-header-multiselect__check-icon'
-    },
-    filtercontainer: {
-      class: ['d-flex position-relative mt-1 ps-2']
-    },
-    filterinput: {
-      class: ['form-control']
-    },
-    filtericon: {
-      class: ['position-absolute bottom-0 end-0'],
-      style: "top: 35%; left: 87%;"
-    },
-    closebutton: {
-      class: 'btn'
-    },
-    checkbox: (options : MultiSelectPassThroughMethodOptions) => {
-      return {
-        class: [
-          'form-check-input px-2 py-2 rounded position-relative',
-          {
-            'bg-primary': options.context.selected,
-            'form-check-input__focus': options.state.focused,
-          }
-        ]
-      }
-    },
-    checkboxicon: {
-      class: 'mb-1 fw-medium text-white position-absolute filter-header-multiselect__check-icon'
-    }
-  },
   badge: {
     root: ({ props }) => {
       return {
@@ -200,48 +139,7 @@ export default {
       class: ['text-white']
     })
   },
-  // More PassThrough options defined in ForgeDatepicker.
-  calendar: {
-    root: 'd-inline-flex relative',
-    input: "form-control",
-    panel: ({ props }) => ({
-      class: [
-        "datepicker-panel bg-white",
-        {
-          'shadow border-0 position-absolute': !props.inline
-        }
-      ]
-    }),
-    header: 'd-flex align-items-center justify-content-between p-2 border-bottom',
-    previousButton: "btn mb-1",
-    nextButton: "btn mb-1",
-    yearTitle: "btn",
-    monthTitle: "btn",
-    table: "m-2",
-    tableHeaderRow: "p-2",
-    weekday: 'ms-2 ps-1',
-    monthPicker: 'my-2',
-    month: 'btn w-25',
-    yearPicker: "my-2",
-    year: "btn w-25",
-    timePicker: 'd-flex justify-content-center align-items-center border-top p-2',
-    separatorContainer: "d-flex flex-column align-items-center px-2",
-    separator: "fs-4 mb-2",
-    hourPicker: "px-2 fs-5",
-    hour: "my-2",
-    minutePicker: "px-2 fs-5",
-    minute: "my-2",
-    secondPicker: "px-2 fs-5",
-    second: "my-2",
-    buttonbar: ({ props } : CalendarPassThroughMethodOptions) => ({
-      class: [
-        'p-2',
-        {
-          'border-top': !props.showTime
-        }
-      ]
-    })
-  },
+
   divider: {
     root: 'border-bottom m-4 w-100'
   },
