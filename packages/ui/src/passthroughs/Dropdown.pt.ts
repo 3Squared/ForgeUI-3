@@ -9,13 +9,18 @@ export default {
       class: ['ms-auto']
     },
     panel: {
-      class: ['border rounded-bottom bg-white']
+      class: ['dropdown-menu show']
     },
-    list: {
-      class: ['p-2 mb-0 list-unstyled']
-    },
-    item: {
-      class: ['dropdown-item d-flex']
+    list: 'list-unstyled mb-0',
+    item: ({ context } : DropdownPassThroughMethodOptions<any>) => {
+      return {
+        class: [
+          'dropdown-item d-flex cursor-pointer',
+          {
+            'bg-primary text-white': context.selected
+          }
+        ]
+      }
     },
     header: {
       class: "d-flex border-bottom pb-2"
