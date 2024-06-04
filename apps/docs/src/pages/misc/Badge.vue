@@ -16,21 +16,21 @@
 
 <script setup lang="ts">
 import { ForgePageHeader } from "@3squared/forge-ui-3";
-import Badge from 'primevue/badge'
+import Badge from "primevue/badge";
 import { Playground, usePlayground } from "@3squared/forge-playground-3";
 import { computed, ref } from "vue";
 import { severities, sizes } from "../../composables/playgroundOptions";
 
 const { options, propVals, config, reset } = usePlayground(
-    {
-      value: 'Forge.UI',
-      severity: severities[0],
-      size: sizes[0],
-    },
-    {
-      severity: { type: "select", options: severities },
-      size: { type: "select", options: sizes }
-    }
+  {
+    value: "Forge.UI",
+    severity: severities[0],
+    size: sizes[0]
+  },
+  {
+    severity: { type: "select", options: severities },
+    size: { type: "select", options: sizes }
+  }
 );
 
 const code = computed(() => `<Badge${propVals.value.length > 0 ? " " + propVals.value.join(" ") : ""} />`);

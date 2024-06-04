@@ -98,9 +98,7 @@ const pages = [
   },
   {
     label: "Misc",
-    items: [
-      { label: "Badge", command: () => router.push("/misc/badge")}
-    ]
+    items: [{ label: "Badge", command: () => router.push("/misc/badge") }]
   },
   { label: "Icons", command: () => router.push("/icons") },
   { label: "Colours", command: () => router.push("/colours") }
