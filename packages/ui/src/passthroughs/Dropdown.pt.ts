@@ -19,8 +19,7 @@ export default {
         }
       ]
     }),
-    panel: 'dropdown-menu show w-100',
-    list: 'list-unstyled mb-0',
+    list: 'list-unstyled mb-0 dropdown-menu show w-100',
     item: ({ context } : DropdownPassThroughMethodOptions<any>) => ({
       class: [
         'dropdown-item d-flex cursor-pointer',
