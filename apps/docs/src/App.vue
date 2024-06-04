@@ -96,6 +96,12 @@ const pages = [
       { label: "Tooltip", command: () => router.push("/overlay/tooltip") }
     ]
   },
+  {
+    label: "Misc",
+    items: [
+      { label: "Badge", command: () => router.push("/misc/badge")}
+    ]
+  },
   { label: "Icons", command: () => router.push("/icons") },
   { label: "Colours", command: () => router.push("/colours") }
 ];
