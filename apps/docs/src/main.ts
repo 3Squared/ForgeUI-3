@@ -7,7 +7,7 @@ import DialogService from "primevue/dialogservice";
 import { Bootstrap_PT } from "@3squared/forge-ui-3";
 import Tooltip from "primevue/tooltip";
 import { createRouter, createWebHashHistory } from "vue-router/auto";
-import { routes } from 'vue-router/auto-routes';
+import { routes } from "vue-router/auto-routes";
 
 const router = createRouter({
   history: createWebHashHistory(),
