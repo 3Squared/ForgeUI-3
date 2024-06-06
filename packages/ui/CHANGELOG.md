@@ -1,5 +1,12 @@
 # @3squared/forge-ui-3
 
+## 0.3.0
+
+### Minor Changes
+
+- ee10f17: - Add customisable Brand colour.
+  - Refactor Passthrough objects into their own files.
+
 ## 0.2.3
 
 ### Patch Changes
