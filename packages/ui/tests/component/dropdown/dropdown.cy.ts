@@ -69,7 +69,7 @@ describe("<Dropdown />", () => {
       'Option 2',
       'Option 3'
     ]
-    const primarySubtle = 'rgb(229, 240, 247)'
+    const hoverColour = 'rgb(248, 249, 250)'
 
     // Act
     mountDropdown({ options: options })
@@ -79,7 +79,7 @@ describe("<Dropdown />", () => {
     // Assert
     cy.get('#dropdown_0')
       .should('be.visible')
-      .and('have.css', 'background-color', primarySubtle)
+      .and('have.css', 'background-color', hoverColour)
   })
   
   it('Displays placeholder in dropdown', () => {
@@ -147,13 +147,14 @@ describe("<Dropdown />", () => {
       'Option 2',
       'Option 3'
     ]
+    const expectedClass = "spinner-border spinner-border-sm border-0"
 
     // Act
     mountDropdown({ options: options, loading: true })
 
     // Assert
     cy.get(`[data-pc-section="loadingicon"]`)
-      .should('have.class', 'spinner-border spinner-border-sm')
+      .should('have.class', expectedClass)
   })
   
   it('Displays group header in bold', () => {
@@ -176,7 +177,7 @@ describe("<Dropdown />", () => {
     cy.get(`#${controlId}`).click()
 
     // Assert
-    cy.get('[data-pc-section="itemgroup"]')
+    cy.get('[data-pc-section="itemgrouplabel"]')
       .should('be.visible')
       .and('contain.text', groupHeader)
       .and('have.class', boldClass)

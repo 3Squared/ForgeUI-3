@@ -46,6 +46,7 @@
           'bg-light': props.severity === 'light',
           'bg-dark': props.severity === 'dark',
           'bg-primary': props.severity === 'primary',
+          'bg-brand': props.severity === 'brand',
           'bg-secondary': props.severity === 'secondary',
           'bg-success': props.severity === 'success',
           'bg-warning': props.severity === 'warning',

@@ -75,6 +75,7 @@ const palettes = [
   {
     title: "System Colours",
     colours: [
+      { background: "bg-brand", text: "text-brand", label: "Brand" },
       { background: "bg-primary", text: "text-primary", label: "Primary" },
       { background: "bg-secondary", text: "text-secondary", label: "Secondary" },
       { background: "bg-info", text: "text-info", label: "Info" },

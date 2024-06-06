@@ -1,7 +1,12 @@
 @import 'bootstrap/scss/functions';
 @import 'bootstrap/scss/variables';
+@import 'bootstrap/scss/variables-dark';
 
 //Forge Theme
+$brand: $indigo;
+$brand-light: $indigo-100;
+$brand-dark: $indigo-800;
+
 $primary: #0077c8;
 $primary-dark: #006bb4;
 $primary-light: #e5f0f7;
@@ -23,6 +28,7 @@ $danger-light: #FCEBE9;
 $light: #f6f6f6;
 
 $base-colors: (
+  'brand': $brand,
   'primary': $primary,
   'secondary': $secondary,
   'success': $success,
@@ -35,6 +41,7 @@ $base-colors: (
 $badge-font-size: 0.75rem;
 
 $subtle-colors: (
+        'brand-subtle': $brand-light,
         'primary-subtle': $primary-light,
         'success-subtle': $success-light,
         'warning-subtle': $warning-light,
@@ -43,6 +50,7 @@ $subtle-colors: (
 );
 
 $dark-colors: (
+        'brand-dark': $brand-dark,
         'primary-dark': $primary-dark,
         'success-dark': $success-dark,
         'warning-dark': $warning-dark,
@@ -56,3 +64,27 @@ $dark-colors: (
 }
 
 $theme-colors: map-merge-multiple($theme-colors, $base-colors, $subtle-colors, $dark-colors);
+
+$brand-text-emphasis: shade-color($brand, 60%) !default;
+$brand-bg-subtle: $brand-light !default;
+$brand-border-subtle: tint-color($brand-dark, 60%) !default;
+
+@import 'bootstrap/scss/maps';
+
+$brand-theme-colors-text: (
+  "brand": $brand-text-emphasis
+);
+
+$theme-colors-text: map-merge($theme-colors-text, $brand-theme-colors-text);
+
+$brand-theme-colors-bg-subtle: (
+  "brand": $brand-bg-subtle
+);
+
+$theme-colors-bg-subtle: map-merge($theme-colors-bg-subtle, $brand-theme-colors-bg-subtle);
+
+$brand-theme-colors-border-subtle: (
+  "brand": $brand-border-subtle
+);
+
+$theme-colors-border-subtle: map-merge($theme-colors-border-subtle, $brand-theme-colors-border-subtle)

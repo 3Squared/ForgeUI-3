@@ -55,6 +55,7 @@ const chipsPt = computed<DefaultPassThrough<ChipsPassThroughOptions>>(() => ({
       },
       {
         'bg-primary border-primary': (props.chipSeverity === undefined || props.chipSeverity === "primary"),
+        'bg-brand border-brand': props.chipSeverity === "brand",
         'bg-secondary border-secondary': props.chipSeverity === "secondary",
         'bg-success border-success': props.chipSeverity === "success",
         'bg-warning border-warning': props.chipSeverity === "warning",

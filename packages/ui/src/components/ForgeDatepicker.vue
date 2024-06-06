@@ -42,6 +42,7 @@ const pt = computed(() => ({
       {
         'disabled border-0': context.disabled,
         'btn-primary': context.selected && !context.disabled && (props.severity === undefined || props.severity === 'primary'),
+        'btn-brand': context.selected && !context.disabled && props.severity === 'brand',
         'btn-secondary': context.selected && !context.disabled && props.severity === 'secondary',
         'btn-success': context.selected && !context.disabled && props.severity === 'success',
         'btn-warning': context.selected && !context.disabled && props.severity === 'warning',
@@ -50,32 +51,38 @@ const pt = computed(() => ({
       }
     ]
   }),
-  clearButton: () => ({
-    class: [
-      'btn',
-      {
-        'btn-link text-primary': (props.severity === undefined || props.severity === 'primary'),
-        'btn-link text-secondary': props.severity === 'secondary',
-        'btn-link text-success': props.severity === 'success',
-        'btn-link text-warning': props.severity === 'warning',
-        'btn-link text-danger': props.severity === 'danger',
-        'btn-link text-info': props.severity === 'info'
-      }
-    ]
-  }),
-  todayButton: () => ({
-    class: [
-      'btn',
-      {
-        'btn-link text-primary': (props.severity === undefined || props.severity === 'primary'),
-        'btn-link text-secondary': props.severity === 'secondary',
-        'btn-link text-success': props.severity === 'success',
-        'btn-link text-warning': props.severity === 'warning',
-        'btn-link text-danger': props.severity === 'danger',
-        'btn-link text-info': props.severity === 'info'
-      }
-    ]
-  }) 
+  clearButton: {
+    root: () => ({
+      class: [
+        'btn ms-auto',
+        {
+          'btn-link text-primary': (props.severity === undefined || props.severity === 'primary'),
+          'btn-link text-brand': props.severity === 'brand',
+          'btn-link text-secondary': props.severity === 'secondary',
+          'btn-link text-success': props.severity === 'success',
+          'btn-link text-warning': props.severity === 'warning',
+          'btn-link text-danger': props.severity === 'danger',
+          'btn-link text-info': props.severity === 'info'
+        }
+      ]
+    })
+  },
+  todayButton: {
+    root: () => ({
+      class: [
+        'btn',
+        {
+          'btn-link text-primary': (props.severity === undefined || props.severity === 'primary'),
+          'btn-link text-brand': props.severity === 'brand',
+          'btn-link text-secondary': props.severity === 'secondary',
+          'btn-link text-success': props.severity === 'success',
+          'btn-link text-warning': props.severity === 'warning',
+          'btn-link text-danger': props.severity === 'danger',
+          'btn-link text-info': props.severity === 'info'
+        }
+      ]
+    })
+  }
 }))
 
 </script>

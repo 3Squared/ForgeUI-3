@@ -33,6 +33,7 @@ describe('<ForgeStepper />', () => {
     ;[
       { title: "Should display primary stepper when severity is undefined", severity: "primary" },
       { title: "Should display primary stepper when severity is primary", severity: "primary" },
+      { title: "Should display brand stepper when severity is brand", severity: "brand" },
       { title: "Should display secondary stepper when severity is secondary", severity: "secondary" },
       { title: "Should display success stepper when severity is success", severity: "success" },
       { title: "Should display warning stepper when severity is warning", severity: "warning" },

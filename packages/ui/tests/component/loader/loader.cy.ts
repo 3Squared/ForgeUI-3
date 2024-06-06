@@ -28,6 +28,7 @@ describe('<ForgeLoader />', () => {
   describe('Variant', () => {
     ;[{ title: "Defaults to primary when variant is undefined" },
       { title: "Displays primary loader when variant is primary", variant: 'primary' },
+      { title: "Displays brand loader when variant is brand", variant: 'brand' },
       { title: "Displays secondary loader when variant is secondary", variant: 'secondary' },
       { title: "Displays success loader when variant is success", variant: 'success' },
       { title: "Displays warning loader when variant is warning", variant: 'warning' },

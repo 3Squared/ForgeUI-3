@@ -41,6 +41,7 @@ describe("<ForgeTile />", () => {
       ;[
         { title: "Displays primary button tile when severity is undefined", severity: undefined },
         { title: "Displays primary button tile when severity is primary", severity: "primary" },
+        { title: "Displays brand button tile when severity is brand", severity: "brand" },
         { title: "Displays secondary button tile when severity is secondary", severity: "secondary" },
         { title: "Displays success button tile when severity is success", severity: "success" },
         { title: "Displays warning button tile when severity is warning", severity: "warning" },
