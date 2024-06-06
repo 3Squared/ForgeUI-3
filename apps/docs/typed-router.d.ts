@@ -44,6 +44,7 @@ declare module 'vue-router/auto-routes' {
     '/forms/inputs/Text': RouteRecordInfo<'/forms/inputs/Text', '/forms/inputs/Text', Record<never, never>, Record<never, never>>,
     '/forms/inputs/TextArea': RouteRecordInfo<'/forms/inputs/TextArea', '/forms/inputs/TextArea', Record<never, never>, Record<never, never>>,
     '/forms/RemainingCharacters': RouteRecordInfo<'/forms/RemainingCharacters', '/forms/RemainingCharacters', Record<never, never>, Record<never, never>>,
+    '/forms/Switch': RouteRecordInfo<'/forms/Switch', '/forms/Switch', Record<never, never>, Record<never, never>>,
     '/guides/Installation': RouteRecordInfo<'/guides/Installation', '/guides/Installation', Record<never, never>, Record<never, never>>,
     '/Icons': RouteRecordInfo<'/Icons', '/Icons', Record<never, never>, Record<never, never>>,
     '/layout/Alert': RouteRecordInfo<'/layout/Alert', '/layout/Alert', Record<never, never>, Record<never, never>>,

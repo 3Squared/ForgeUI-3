@@ -74,7 +74,8 @@ const pages = [
           { label: "Text Area", command: () => router.push("/forms/inputs/textarea") }
         ]
       },
-      { label: "Remaining Characters", command: () => router.push("/forms/remainingcharacters") }
+      { label: "Remaining Characters", command: () => router.push("/forms/remainingcharacters") },
+      { label: "Switch", command: () => router.push("/forms/switch") }
     ]
   },
   {

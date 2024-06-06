@@ -5,6 +5,7 @@ import DropdownPT from "./passthroughs/Dropdown.pt.ts";
 import ColumnPT from "./passthroughs/Column.pt.ts";
 import InputPT from "./passthroughs/Input.pt.ts";
 import InputMaskPT from "./passthroughs/InputMask.pt.ts";
+import InputSwitchPT from "./passthroughs/InputSwitch.pt.ts";
 import TextAreaPT from "./passthroughs/TextArea.pt.ts";
 import ChipsPT from "./passthroughs/Chips.pt.ts";
 import DialogPT from "./passthroughs/Dialog.pt.ts";
@@ -40,6 +41,7 @@ export default {
   ...ImagePT,
   ...InputPT,
   ...InputMaskPT,
+  ...InputSwitchPT,
   ...MessagePT,
   ...MultiselectPT,
   ...NavbarPT,
