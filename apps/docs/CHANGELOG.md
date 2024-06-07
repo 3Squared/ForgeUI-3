@@ -1,5 +1,11 @@
 # forge-ui-3-styleguide
 
+## 1.5.0
+
+### Minor Changes
+
+- 09ab424: Add badge documentation page
+
 ## 1.4.3
 
 ### Patch Changes
