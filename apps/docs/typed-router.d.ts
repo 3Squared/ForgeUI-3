@@ -51,6 +51,7 @@ declare module 'vue-router/auto-routes' {
     '/layout/PageHeader': RouteRecordInfo<'/layout/PageHeader', '/layout/PageHeader', Record<never, never>, Record<never, never>>,
     '/layout/Stepper': RouteRecordInfo<'/layout/Stepper', '/layout/Stepper', Record<never, never>, Record<never, never>>,
     '/layout/Tabs': RouteRecordInfo<'/layout/Tabs', '/layout/Tabs', Record<never, never>, Record<never, never>>,
+    '/misc/Badge': RouteRecordInfo<'/misc/Badge', '/misc/Badge', Record<never, never>, Record<never, never>>,
     '/overlay/Modal': RouteRecordInfo<'/overlay/Modal', '/overlay/Modal', Record<never, never>, Record<never, never>>,
     '/overlay/Overlay': RouteRecordInfo<'/overlay/Overlay', '/overlay/Overlay', Record<never, never>, Record<never, never>>,
     '/overlay/Toast': RouteRecordInfo<'/overlay/Toast', '/overlay/Toast', Record<never, never>, Record<never, never>>,
