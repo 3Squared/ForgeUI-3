@@ -1,5 +1,20 @@
 # forge-ui-3-styleguide
 
+## 1.5.0
+
+### Minor Changes
+
+- 09ab424: Add badge documentation page
+
+## 1.4.3
+
+### Patch Changes
+
+- ee10f17: - Add customisable Brand colour.
+  - Refactor Passthrough objects into their own files.
+- Updated dependencies [ee10f17]
+  - @3squared/forge-ui-3@0.3.0
+
 ## 1.4.2
 
 ### Patch Changes
