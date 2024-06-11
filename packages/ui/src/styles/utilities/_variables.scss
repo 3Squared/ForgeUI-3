@@ -3,9 +3,11 @@
 @import 'bootstrap/scss/variables-dark';
 
 //Forge Theme
-$brand: $indigo;
-$brand-light: $indigo-100;
-$brand-dark: $indigo-800;
+$brand: $indigo !default;
+$brand-dark: $indigo-800 !default;
+$brand-shade-1: $indigo-100 !default;
+$brand-shade-2: $indigo-300 !default;
+$brand-shade-3: $indigo-600 !default;
 
 $primary: #0077c8;
 $primary-dark: #006bb4;
@@ -41,7 +43,9 @@ $base-colors: (
 $badge-font-size: 0.75rem;
 
 $subtle-colors: (
-        'brand-subtle': $brand-light,
+        'brand-shade-1': $brand-shade-1,
+        'brand-shade-2': $brand-shade-2,
+        'brand-shade-3': $brand-shade-3,
         'primary-subtle': $primary-light,
         'success-subtle': $success-light,
         'warning-subtle': $warning-light,
@@ -66,7 +70,7 @@ $dark-colors: (
 $theme-colors: map-merge-multiple($theme-colors, $base-colors, $subtle-colors, $dark-colors);
 
 $brand-text-emphasis: shade-color($brand, 60%) !default;
-$brand-bg-subtle: $brand-light !default;
+$brand-bg-subtle: $brand-shade-1 !default;
 $brand-border-subtle: tint-color($brand-dark, 60%) !default;
 
 @import 'bootstrap/scss/maps';
