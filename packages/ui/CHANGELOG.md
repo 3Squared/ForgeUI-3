@@ -1,5 +1,11 @@
 # @3squared/forge-ui-3
 
+## 0.3.1
+
+### Patch Changes
+
+- bc17ec1: Fix issue where brand colours weren't customisable
+
 ## 0.3.0
 
 ### Minor Changes
