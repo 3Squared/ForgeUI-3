@@ -1,5 +1,16 @@
 # forge-ui-3-styleguide
 
+## 1.6.0
+
+### Minor Changes
+
+- 52adf7f: Add input switch component
+
+### Patch Changes
+
+- Updated dependencies [52adf7f]
+  - @3squared/forge-ui-3@0.4.0
+
 ## 1.5.0
 
 ### Minor Changes

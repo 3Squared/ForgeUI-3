@@ -1,5 +1,11 @@
 # @3squared/forge-ui-3
 
+## 0.4.0
+
+### Minor Changes
+
+- 52adf7f: Add input switch component
+
 ## 0.3.1
 
 ### Patch Changes
