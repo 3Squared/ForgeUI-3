@@ -1,5 +1,11 @@
 # @3squared/forge-ui-3
 
+## 0.4.1
+
+### Patch Changes
+
+- cafa2d7: Fix issue where toast text wouldn't wrap when it exceeded the width of the toast container.
+
 ## 0.4.0
 
 ### Minor Changes
