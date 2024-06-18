@@ -1,6 +1,8 @@
 // @ts-ignore
 import ToastWrapper, { ToastWrapperProps } from "./ToastWrapper.vue";
 
+const containerId = '[data-pc-section="container"]'
+
 describe("<Toast />", () => {
   function mountToast(props: ToastWrapperProps) {
     return cy.mount(ToastWrapper, {
@@ -91,4 +93,19 @@ describe("<Toast />", () => {
       .and("be.visible")
       .and("have.class", "text-primary");
   });
+
+  it("Wraps text when message content is too long", () => {
+    // Arrange
+    const message = "I am a really really really really long string that will have to wrap in a toast notification!"
+    const expectedClasses = "overflow-hidden text-break"
+    
+    // Act
+    mountToast({ severity: "info", message })
+
+    cy.get(`button`).click();
+
+    // Assert
+    cy.get(containerId)
+      .should("have.class", expectedClasses)
+  })
 });

@@ -9,7 +9,7 @@ export default {
       class: ['toast-body d-flex align-items-center gap-2']
     }),
     container: () => ({
-      class: ['toast bg-white show']
+      class: ['toast bg-white show overflow-hidden text-break']
     }),
     buttonContainer: () => ({
       class: ['ms-auto']
@@ -20,8 +20,8 @@ export default {
     closeIcon: () => ({
       class: 'd-none'
     }),
-    summary: () => ({
-      class: ['toast-body ps-1']
+    text: () => ({
+      class: ['ps-1']
     }),
     icon: ({ props } : ToastPassThroughMethodOptions) => ({
       class: [
