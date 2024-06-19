@@ -32,7 +32,7 @@ const multiSelectOptions = [
   { id: "option-5", label: "Option 5" },
   { id: "option-6", label: "Option 6" }
 ];
-const selected = ref([{ id: "option-1", label: "Option 1" }]);
+const selected = ref([]);
 
 const tagPositions = ["top", "bottom"];
 
@@ -46,11 +46,10 @@ const { options, propVals, config, reset } = usePlayground(
     selectValue: "",
     name: "",
     label: "label",
-    // TODO: Fix Searchable [Github Issue: https://github.com/3Squared/ForgeUI-3/issues/139]
-    //searchable: true,
+    searchable: true,
     clearOnSelect: true,
     hideSelected: false,
-    placeholder: "Select...",
+    placeholder: "Search",
     allowEmpty: true,
     resetAfter: false,
     closeOnSelect: false,
