@@ -35,7 +35,8 @@ const pages = [
     items: [
       { label: "Action Button", command: () => router.push("/buttons/actionbutton") },
       { label: "Button", command: () => router.push("/buttons/button") },
-      { label: "Link", command: () => router.push("/buttons/link") }
+      { label: "Link", command: () => router.push("/buttons/link") },
+      { label: "Select Button", command: () => router.push("/buttons/selectbutton") },
     ]
   },
   {
