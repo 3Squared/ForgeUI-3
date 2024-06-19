@@ -24,29 +24,32 @@ const opts = ref([
   { label: "Option 1", value: 1 },
   { label: "Option 2", value: 2 },
   { label: "Option 3", value: 3 }
-])
+]);
 
-const propertyNames = ["label", "value"]
+const propertyNames = ["label", "value"];
 
 const { options, propVals, config, reset } = usePlayground(
-    {
-      optionLabel: "label",
-      optionValue: "value",
-      multiple: false,
-      disabled: false,
-      allowEmpty: true
-    },
-    {
-      optionLabel: { type: "select", options: propertyNames },
-      optionValue: { type: "select", options: propertyNames },
-    }
+  {
+    optionLabel: "label",
+    optionValue: "value",
+    multiple: false,
+    disabled: false,
+    allowEmpty: true
+  },
+  {
+    optionLabel: { type: "select", options: propertyNames },
+    optionValue: { type: "select", options: propertyNames }
+  }
 );
 
-const value = ref<String | number>(1)
+const value = ref<string | number>(1);
 
 const code = computed(() => `<SelectButton options="options" ${propVals.value.length > 0 ? " " + propVals.value.join(" ") : ""} />`);
 
-watch(() => options.value.optionValue, (val) => {
-  value.value = val === "value" ? opts.value[0].value : opts.value[1].label
-})
+watch(
+  () => options.value.optionValue,
+  (val) => {
+    value.value = val === "value" ? opts.value[0].value : opts.value[1].label;
+  }
+);
 </script>
