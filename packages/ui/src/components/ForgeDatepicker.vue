@@ -48,7 +48,14 @@ const pt = computed(() => ({
         'btn-success': context.selected && !context.disabled && props.severity === 'success',
         'btn-warning': context.selected && !context.disabled && props.severity === 'warning',
         'btn-danger': context.selected && !context.disabled && props.severity === 'danger',
-        'btn-info': context.selected && !context.disabled && props.severity === 'info'
+        'btn-info': context.selected && !context.disabled && props.severity === 'info',
+        'text-primary': !context.selected && context.today && (props.severity === undefined || props.severity === 'primary'),
+        'text-brand': !context.selected && context.today && props.severity === 'brand',
+        'text-secondary': !context.selected && context.today && props.severity === 'secondary',
+        'text-success': !context.selected && context.today && props.severity === 'success',
+        'text-warning': !context.selected && context.today && props.severity === 'warning',
+        'text-danger': !context.selected && context.today && props.severity === 'danger',
+        'text-info': !context.selected && context.today && props.severity === 'info'
       }
     ]
   }),
