@@ -1,4 +1,4 @@
-import { CalendarPassThroughMethodOptions } from "primevue/calendar";
+import { CalendarPassThroughMethodOptions, CalendarPassThroughOptions } from "primevue/calendar";
 
 export default {
   // More PassThrough options defined in ForgeDatepicker.
@@ -14,16 +14,16 @@ export default {
       ]
     }),
     header: 'd-flex align-items-center justify-content-between p-2 border-bottom',
-    previousButton: "btn mb-1",
-    nextButton: "btn mb-1",
-    yearTitle: "btn",
-    monthTitle: "btn",
-    table: "m-2",
+    previousButton: "btn mb-1 ms-auto",
+    tableheadercell: "pe-none",
+    nextButton: "btn mb-1 me-auto",
+    yearTitle: "btn ps-0 pe-1 fw-bold",
+    monthTitle: "btn ps-1 fw-bold",
+    decadetitle: "fw-bold",
+    table: "datepicker-table",
     tableHeaderRow: "text-center",
-    monthPicker: 'my-2',
-    month: 'btn w-25',
-    yearPicker: "my-2",
-    year: "btn w-25",
+    monthPicker: "d-flex flex-row flex-wrap m-2",
+    yearPicker: "d-flex flex-row flex-wrap m-2",
     timePicker: 'd-flex justify-content-center align-items-center border-top p-2',
     separatorContainer: "d-flex flex-column align-items-center px-2",
     hourPicker: "px-2 d-flex flex-column",
@@ -42,5 +42,5 @@ export default {
     }),
     decrementButton: "btn btn-sm",
     incrementButton: "btn btn-sm",
-  },
+  } as CalendarPassThroughOptions,
 }

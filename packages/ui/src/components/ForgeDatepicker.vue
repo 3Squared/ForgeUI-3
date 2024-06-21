@@ -3,8 +3,12 @@
     <slot name="before" />
   </span>
   
-  <Calendar v-bind="{...props, ...$attrs}" :pt="pt" />
-  <Icon data-cy="icon" icon="bi:calendar3" width="32" height="32" v-show="props.showIcon" class="ps-2" :class="props.severity == undefined ? 'text-primary' : `text-${props.severity}`"/>
+  <div class="position-relative">
+    <Calendar v-bind="{...props, ...$attrs}" :pt="pt" />
+    <Icon data-cy="icon" icon="bi:calendar4" v-show="props.showIcon" class="position-absolute end-0 top-50 bottom-50 my-auto me-2 text-muted" />
+    <Icon data-cy="icon" icon="bi:x" v-show="props.modelValue" class="position-absolute end-0 top-50 bottom-50 my-auto text-muted cursor-pointer" :class="props.showIcon ? 'datepicker-close-icon' : 'me-2'" />
+  </div>
+
   
   <span data-cy="after-slot">
      <slot name="after" />
@@ -20,6 +24,9 @@ import { computed } from "vue";
 export interface ForgeDatePickerProps extends /* vue-ignore */ Omit<CalendarProps, "aria-label" | "aria-labelledby"> {
   severity?: Severity
 }
+
+const emits = defineEmits(['update:modelValue'])
+
 
 const props = withDefaults(defineProps<ForgeDatePickerProps>(), {
   severity: "primary",
@@ -37,18 +44,17 @@ const props = withDefaults(defineProps<ForgeDatePickerProps>(), {
 })
 
 const pt = computed(() => ({
-  dayLabel: ({ context } : CalendarPassThroughMethodOptions) => ({
+  day: ({context} : CalendarPassThroughMethodOptions) => ({
     class: [
-      'btn rounded-circle w-100 py-2',
+      `text-center date-${ props.severity === undefined ? 'primary' : props.severity }`,
       {
-        'disabled border-0': context.disabled,
-        'btn-primary': context.selected && !context.disabled && (props.severity === undefined || props.severity === 'primary'),
-        'btn-brand': context.selected && !context.disabled && props.severity === 'brand',
-        'btn-secondary': context.selected && !context.disabled && props.severity === 'secondary',
-        'btn-success': context.selected && !context.disabled && props.severity === 'success',
-        'btn-warning': context.selected && !context.disabled && props.severity === 'warning',
-        'btn-danger': context.selected && !context.disabled && props.severity === 'danger',
-        'btn-info': context.selected && !context.disabled && props.severity === 'info',
+        'cursor-pointer': !context.disabled,
+        'pe-none': context.disabled,
+        'text-white': context.selected
+      },
+      // Severities
+      {
+        'selected': context.selected && !context.disabled,
         'text-primary': !context.selected && context.today && (props.severity === undefined || props.severity === 'primary'),
         'text-brand': !context.selected && context.today && props.severity === 'brand',
         'text-secondary': !context.selected && context.today && props.severity === 'secondary',
@@ -56,6 +62,14 @@ const pt = computed(() => ({
         'text-warning': !context.selected && context.today && props.severity === 'warning',
         'text-danger': !context.selected && context.today && props.severity === 'danger',
         'text-info': !context.selected && context.today && props.severity === 'info'
+      }
+    ]
+  }),
+  dayLabel: ({ context } : CalendarPassThroughMethodOptions) => ({
+    class: [
+      // Disabled States
+      {
+        'text-muted': context.disabled,
       }
     ]
   }),
@@ -90,7 +104,37 @@ const pt = computed(() => ({
         }
       ]
     })
-  }
+  },
+  year: ({ context }: CalendarPassThroughMethodOptions) => {
+    return {
+      class: [
+        "col-3 text-center cursor-pointer py-2",
+        {
+          'text-primary': (props.severity === undefined || props.severity === 'primary') && context.year.value === new Date().getFullYear(),
+          'text-brand': props.severity === 'brand' && context.year.value === new Date().getFullYear(),
+          'text-secondary': props.severity === 'secondary' && context.year.value === new Date().getFullYear(),
+          'text-success': props.severity === 'success' && context.year.value === new Date().getFullYear(),
+          'text-warning': props.severity === 'warning' && context.year.value === new Date().getFullYear(),
+          'text-danger': props.severity === 'danger' && context.year.value === new Date().getFullYear(),
+          'text-info': props.severity === 'info' && context.year.value === new Date().getFullYear()
+        }
+      ]
+    }
+  },
+  month: ({ context }: CalendarPassThroughMethodOptions) => ({
+    class: [
+      "col-3 text-center cursor-pointer py-2",
+      {
+        'text-primary': (props.severity === undefined || props.severity === 'primary') && (context.monthIndex + 1) === (new Date().getMonth() + 1),
+        'text-brand': props.severity === 'brand' && (context.monthIndex + 1) === (new Date().getMonth() + 1),
+        'text-secondary': props.severity === 'secondary' && (context.monthIndex + 1) === (new Date().getMonth() + 1),
+        'text-success': props.severity === 'success' && (context.monthIndex + 1) === (new Date().getMonth() + 1),
+        'text-warning': props.severity === 'warning' && (context.monthIndex + 1) === (new Date().getMonth() + 1),
+        'text-danger': props.severity === 'danger' && (context.monthIndex + 1) === (new Date().getMonth() + 1),
+        'text-info': props.severity === 'info' && (context.monthIndex + 1) === (new Date().getMonth() + 1)
+      }
+    ]
+  }),
 }))
 
 </script>

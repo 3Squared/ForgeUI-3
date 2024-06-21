@@ -6,3 +6,47 @@
 .p-datepicker-trigger {
   display: none !important;
 }
+
+.datepicker-close-icon {
+  margin: 1.75rem;
+  
+  &:hover {
+    color: map-get($theme-colors, 'danger') !important;
+  }
+}
+
+.datepicker-table {
+  border-collapse: separate;
+  border-spacing: 10px 12px;
+  margin: 6px;
+}
+
+@each $color, $value in $base-colors {
+  .date-#{$color} {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    
+    &.selected, &.selected:hover {
+      border-radius: 50%;
+      background-color: map-get($theme-colors, $color);
+    }
+    
+    &:hover {
+      @if($color == 'brand') {
+        background-color: map-get($subtle-colors, '#{$color}-shade-1');
+        color: map-get($theme-colors, $color)
+      } @else {
+        background-color: map-get($subtle-colors, '#{$color}-subtle');
+        color: map-get($theme-colors, $color)
+      }
+      
+    }
+  }
+}
+
+.date {
+
+
+
+}

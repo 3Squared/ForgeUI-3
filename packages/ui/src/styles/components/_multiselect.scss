@@ -262,7 +262,7 @@
 
     .multiselect__tag-icon:focus:after,
     .multiselect__tag-icon:hover:after {
-      color: #ff0000;
+      color: map-get($theme-colors, 'danger') !important;
     }
 
     .multiselect__clear-icon {
@@ -294,7 +294,7 @@
 
     .multiselect__clear-icon:focus:after,
     .multiselect__clear-icon:hover:after {
-      color: #ff0000;
+      color: map-get($theme-colors, 'danger') !important;
     }
   }
 }
