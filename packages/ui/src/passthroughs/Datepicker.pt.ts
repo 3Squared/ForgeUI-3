@@ -27,13 +27,12 @@ export default {
     year: "btn w-25",
     timePicker: 'd-flex justify-content-center align-items-center border-top p-2',
     separatorContainer: "d-flex flex-column align-items-center px-2",
-    separator: "fs-4 mb-2",
-    hourPicker: "px-2 fs-5",
-    hour: "my-2",
-    minutePicker: "px-2 fs-5",
-    minute: "my-2",
-    secondPicker: "px-2 fs-5",
-    second: "my-2",
+    hourPicker: "px-2 d-flex flex-column",
+    hour: "mx-auto",
+    minutePicker: "px-2 d-flex flex-column",
+    minute: "mx-auto",
+    secondPicker: "px-2 d-flex flex-column",
+    second: "mx-auto",
     buttonbar: ({ props }: CalendarPassThroughMethodOptions) => ({
       class: [
         'p-2 d-flex',
@@ -41,6 +40,8 @@ export default {
           'border-top': !props.showTime
         }
       ]
-    })
+    }),
+    decrementButton: "btn btn-sm",
+    incrementButton: "btn btn-sm",
   },
 }
