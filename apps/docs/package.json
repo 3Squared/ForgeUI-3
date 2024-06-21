@@ -20,7 +20,7 @@
     "rgb-hex": "4.1.0",
     "unplugin-vue-markdown": "0.26.2",
     "vue": "3.4.29",
-    "vue-router": "4.3.3"
+    "vue-router": "4.4.0"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "5.0.5",
