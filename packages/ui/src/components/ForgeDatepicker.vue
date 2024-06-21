@@ -31,6 +31,7 @@ const props = withDefaults(defineProps<ForgeDatePickerProps>(), {
   showButtonBar: true,
   view: "date",
   autoZIndex: true,
+  manualInput: true,
   baseZIndex: 0,
   appendTo: "body"
 })

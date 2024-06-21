@@ -32,6 +32,7 @@ const { options, propVals, config, reset } = usePlayground(
     showButtonBar: true,
     showTime: false,
     showOnFocus: true, // Crucial prop for Calendar, overlay won't show without this.
+    manualInput: true,
     autoZIndex: true,
     inline: false,
     baseZIndex: 0
