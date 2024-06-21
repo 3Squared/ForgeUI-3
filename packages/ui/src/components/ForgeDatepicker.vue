@@ -28,7 +28,7 @@ const props = withDefaults(defineProps<ForgeDatePickerProps>(), {
   showOtherMonths: true,
   showIcon: true,
   numberOfMonths: 1,
-  showButtonBar: true,
+  showButtonBar: false,
   view: "date",
   autoZIndex: true,
   manualInput: true,
