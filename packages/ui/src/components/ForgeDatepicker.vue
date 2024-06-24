@@ -4,9 +4,9 @@
   </span>
   
   <div class="position-relative">
-    <Calendar v-bind="{...props, ...$attrs}" :pt="pt" />
+    <Calendar v-bind="{...props, ...$attrs}" :pt="pt" v-model="model"/>
     <Icon data-cy="icon" icon="bi:calendar4" v-show="props.showIcon" class="position-absolute end-0 top-50 bottom-50 my-auto me-2 text-muted" />
-    <Icon data-cy="icon" icon="bi:x" v-show="props.modelValue" class="position-absolute end-0 top-50 bottom-50 my-auto text-muted cursor-pointer" :class="props.showIcon ? 'datepicker-close-icon' : 'me-2'" />
+    <Icon data-cy="icon" icon="bi:x" v-show="props.modelValue" @click="clear" class="position-absolute end-0 top-50 bottom-50 my-auto text-muted cursor-pointer" :class="props.showIcon ? 'datepicker-close-icon' : 'me-2'" />
   </div>
 
   
@@ -25,9 +25,6 @@ export interface ForgeDatePickerProps extends /* vue-ignore */ Omit<CalendarProp
   severity?: Severity
 }
 
-const emits = defineEmits(['update:modelValue'])
-
-
 const props = withDefaults(defineProps<ForgeDatePickerProps>(), {
   severity: "primary",
   selectionMode: "single",
@@ -42,6 +39,12 @@ const props = withDefaults(defineProps<ForgeDatePickerProps>(), {
   baseZIndex: 0,
   appendTo: "body"
 })
+
+const model = defineModel<Date | Date[] | (Date | null)[] | null | undefined>()
+
+const clear = () => {
+  model.value = null
+}
 
 const pt = computed(() => ({
   day: ({context} : CalendarPassThroughMethodOptions) => ({
