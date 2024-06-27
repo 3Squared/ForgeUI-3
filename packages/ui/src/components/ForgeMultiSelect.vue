@@ -20,6 +20,13 @@
         </ForgeCheckbox>
       </div>
     </template>
+    <template #tag="{option, remove}">
+      <div class="multiselect__tag d-inline-flex">
+        <div class="my-auto">{{ option.label }}</div>
+        <Icon icon="bi:x" class="my-auto multiselect__tag-icon" @mousedown.prevent.stop="removeElement(remove, option)"
+              height="18px" width="18px"  />
+      </div>
+    </template>
     <slot v-for="(_, name) in $slots" :slot="name" :name="name" />
   </VueMultiselect>
   <small v-show="hasErrors" data-cy="error" class="invalid-feedback">{{ errorMessage }}</small>
@@ -64,6 +71,15 @@ const props = withDefaults(defineProps<ForgeMultiSelectProps>(), {
   selectValue: "",
   name: ""
 })
+
+const removeElement = (remove : Function, element : any) => {
+  const elementToRemove = {
+    ...element,
+    $isDisabled: element.$isDisabled ?? false
+  }
+  
+  remove(elementToRemove);
+}
 
 const attrs = useAttrs()
 const emits = defineEmits(['update:modelValue'])
