@@ -36,8 +36,7 @@ const props = withDefaults(defineProps<ForgeCheckProps>(),
 
 const { checked, handleChange, setValue, errors, errorMessage } = useField(() => props.name ?? props.label, props.rules, {
   type: "checkbox",
-  checkedValue: true,
-  initialValue: props.modelValue
+  checkedValue: true
 })
 
 const changeState = (event : Event) => {
@@ -48,8 +47,10 @@ const changeState = (event : Event) => {
 }
 
 onMounted(() => {
-  if (props.value !== checked?.value) {
+  if (props.value !== undefined && props.value !== checked?.value) {
     setValue(props.value)
+  } else if (props.modelValue !== undefined && props.modelValue !== checked?.value){
+    setValue(props.modelValue)
   }
 })
 
