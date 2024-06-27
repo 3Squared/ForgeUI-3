@@ -17,7 +17,7 @@
 <script setup lang="ts" >
 import { CheckboxProps } from "primevue/checkbox";
 import { TypedSchema, useField } from "vee-validate";
-import { computed, watch } from "vue";
+import { computed, onMounted, watch } from "vue";
 type CheckProps = Omit<CheckboxProps, "aria-label" | "aria-labelledby">
 
 export interface ForgeCheckProps extends CheckProps {
@@ -47,9 +47,16 @@ const changeState = (event : Event) => {
   }
 }
 
+onMounted(() => {
+  if (props.value !== checked?.value) {
+    setValue(props.value)
+  }
+})
+
 const hasErrors = computed(() => errors.value.length > 0)
 
 watch(() => props.value, (value) => {
+
   if(value !== checked?.value)
   {
     setValue(value)
