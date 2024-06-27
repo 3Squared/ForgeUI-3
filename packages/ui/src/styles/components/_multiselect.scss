@@ -162,7 +162,11 @@
     }
     
     .multiselect__tag {
-      background: map-get($subtle-colors, $color + "-subtle");
+      @if($color == "brand") {
+        background: map-get($subtle-colors, "brand-shade-1");
+      } @else {
+        background: map-get($subtle-colors, $color + "-subtle");
+      }
       padding: 4px 3px 4px 10px;
       border-radius: 21px;
       border: 1px solid $value;
