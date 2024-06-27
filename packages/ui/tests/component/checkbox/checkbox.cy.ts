@@ -32,7 +32,7 @@ describe("<ForgeCheckbox />", () => {
     // Act
     cy.mount(ForgeCheckbox, {
       props: {
-        modelValue: true,
+        value: true,
         binary: true,
         name: id,
         label: label
