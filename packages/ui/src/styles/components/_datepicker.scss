@@ -1,7 +1,10 @@
 .datepicker-panel {
-    min-width: 317px;
-    width: unset !important;
-  }
+    min-width: 317px !important;
+}
+
+.p-datepicker-multiple-month {
+  max-width: 948px;
+}
 
 .p-datepicker-trigger {
   display: none !important;

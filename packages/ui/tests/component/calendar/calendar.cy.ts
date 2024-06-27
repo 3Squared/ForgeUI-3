@@ -1,11 +1,9 @@
 // @ts-ignore
 import ForgeDatepicker, { ForgeDatePickerProps } from "../../../src/components/ForgeDatepicker.vue";
-import { Severity } from "../../../src/types/forge-types";
 
 const id = "Calendar"
 const beforeSlotId = "[data-cy='before-slot']"
 const afterSlotId = "[data-cy='after-slot']"
-const iconId = "[data-cy='icon']"
 
 function mountCalendar(props : ForgeDatePickerProps, beforeSlotContent : string = "", afterSlotContent : string = "") {
   // @ts-ignore
