@@ -46,7 +46,7 @@ const columns = [
 const items = [
   { column1: "column 1", column2: 2, column3: new Date(), column4: 'Column 4', column5: 'Column 4' },
   { column1: "column i", column2: 3, column3: new Date(new Date().setDate(new Date().getDate() + 1)), column4: 'Column Four', column5: 'Column Four' },
-  { column1: "column one", column2: 4, column3: new Date(new Date().setDate(new Date().getDate() + 2)), column4: 'column iiii', column5: 'Column iiii' },
+  { column1: "column one", column2: 4, column3: new Date(new Date().setDate("19")), column4: 'column iiii', column5: 'Column iiii' },
   { column1: "column", column2: 5, column3: new Date(new Date().setDate(new Date().getDate() + 3)), column4: 'column', column5: 'Column' },
   { column1: "column", column2: 5, column3: new Date(new Date().setDate(new Date().getDate() + 3)), column4: 'column', column5: 'Column' },
   { column1: "column", column2: 5, column3: new Date(new Date().setDate(new Date().getDate() + 3)), column4: 'column', column5: 'Column' },
@@ -232,12 +232,15 @@ describe('<ForgeTable />', () => {
     })
 
     it('Filters out rows based on date value', () => {
+      // Arrange
+      const expectedDate = "19"
+      
       // Act
       cy.get(filterId).eq(2).click()
-      cy.get(datePickerDayLabelId).not(".disabled").contains(new RegExp('^' + new Date().getDate() + '$')).click()
+      cy.get(datePickerDayLabelId).not(".disabled").contains(expectedDate).click()
 
       // Assert
-      cy.get(tableRowId).should('contain.text', new Date().getDate()).and('have.length', 1)
+      cy.get(tableRowId).should('contain.text', expectedDate).and('have.length', 1)
     });
     
     it('Filters out rows based on singular selection', () => {
@@ -275,6 +278,7 @@ describe('<ForgeTable />', () => {
       const stringFilter = "Column 4"
       const numericFilter = "3"
       const multiselectFilter = ['Column 4', 'Column Four']
+      const dateToSelect = "19"
 
       // Act
       cy.get(filterId).eq(0).type(stringFilter)
@@ -282,7 +286,7 @@ describe('<ForgeTable />', () => {
       cy.get(filterId).eq(1).type(`${numericFilter.toString()}{enter}`)
 
       cy.get(filterId).eq(2).click()
-      cy.get(datePickerDayLabelId).not(".disabled").contains(new RegExp('^' + new Date().getDate() + '$')).click()
+      cy.get(datePickerDayLabelId).not(".disabled").contains(dateToSelect).click()
 
       cy.get(filterId).eq(3).click()
       cy.contains(dropdownFilterLabelId, stringFilter).click()
