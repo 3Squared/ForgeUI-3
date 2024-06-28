@@ -1,5 +1,11 @@
 # @3squared/forge-ui-3
 
+## 0.5.0
+
+### Minor Changes
+
+- c20f659: Improve appearance and functionality of the Datepicker - Allow users to manually enter a date by typing. - Hide the 'Today' and 'Clear' buttons by default. - Adding missing styling for time picker. - Highlight current day, month and year in variant colour. - Update the styling of circle that surrounds the selected date along with its hover state. - Update appearance of the calendar icon, making it appear inside the datepicker input. - Add a Clear button inside the datepicker input.
+
 ## 0.4.2
 
 ### Patch Changes
