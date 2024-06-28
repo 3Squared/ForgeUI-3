@@ -135,7 +135,7 @@
     .multiselect__tags {
       min-height: 31px;
       display: block;
-      padding: 3px 26px 0 3px;
+      padding: 3px 26px 3px 3px;
       border-radius: 5px;
       border: 1px solid $input-border-color;
       background: #fff;
@@ -242,7 +242,39 @@
 
     .multiselect__tag-icon:focus:after,
     .multiselect__tag-icon:hover:after {
-      color: #ff0000;
+      color: map-get($theme-colors, 'danger') !important;
+    }
+
+    .multiselect__clear-icon {
+      cursor: pointer;
+      position: absolute;
+      right: 20px;
+      top: 1px;
+      bottom: 0;
+      font-weight: 400;
+      font-style: initial;
+      width: 22px;
+      text-align: center;
+      line-height: 21px;
+      transition: all 0.2s ease;
+      border-radius: 0;
+      z-index: 1;
+    }
+
+    .multiselect__clear-icon:after {
+      content: "×";
+      color: $gray-800;
+      font-size: 14px;
+    }
+
+    .multiselect__clear-icon:focus,
+    .multiselect__clear-icon:hover {
+      background: none;
+    }
+
+    .multiselect__clear-icon:focus:after,
+    .multiselect__clear-icon:hover:after {
+      color: map-get($theme-colors, 'danger') !important;
     }
   }
 }
