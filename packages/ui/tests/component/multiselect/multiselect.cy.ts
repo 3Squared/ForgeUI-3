@@ -79,7 +79,7 @@ describe("<ForgeMultiselect />", () => {
     
     it("Allows the user to unselect an option by clicking on a selected option", () => {
       // Arrange
-      const expectedPlaceholder = "Select..."
+      const expectedPlaceholder = "Select"
       
       // Act
       mountMultiselect({ options: options })
@@ -121,6 +121,32 @@ describe("<ForgeMultiselect />", () => {
     })
   })
   
+  describe("Placeholder", () => {
+    it("Should default to Search if searchable is true", () => {
+      // Arrange
+      const expectedPlaceholder = "Search"
+
+      // Act
+      mountMultiselect({ options: options, searchable: true })
+
+      // Assert
+      cy.get(inputId)
+        .should('contain.text', expectedPlaceholder)
+    })
+
+    it("Should default to Select if searchable is false", () => {
+      // Arrange
+      const expectedPlaceholder = "Select"
+
+      // Act
+      mountMultiselect({ options: options, searchable: false })
+
+      // Assert
+      cy.get(inputId)
+        .should('contain.text', expectedPlaceholder)
+    })
+  })
+  
   describe("Clear button", () => {
     it("Displays a clear button in the multiselect when showClearSelection is true", () => {
       // Arrange
@@ -140,7 +166,7 @@ describe("<ForgeMultiselect />", () => {
 
     it('Clears all selected options on click of the clear button', () => {
       // Arrange
-      const expectedPlaceholder = "Select..."
+      const expectedPlaceholder = "Select"
       const showClearSelection = true
 
       // Act
@@ -202,7 +228,7 @@ describe("<ForgeMultiselect />", () => {
     it("Unselects all options on toggle off of select all", () => {
       // Arrange
       const showSelectAll = true
-      const expectedPlaceholder = "Select..."
+      const expectedPlaceholder = "Select"
 
       // Act
       mountMultiselect({ options: options, showSelectAll: showSelectAll })

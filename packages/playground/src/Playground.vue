@@ -8,7 +8,7 @@
           </div>
         </template>
       </Card>
-      <Card class="w-50 vh-70 overflow-auto">
+      <Card class="w-50 vh-70">
         <template #header>
           <div class="d-flex justify-content-between pb-2">
             <h1 class="h3">Options</h1>
@@ -22,7 +22,7 @@
           <slot name="header" />
         </template>
         <template #content>
-          <div class="scroll p-3 h-100">
+          <div class="p-3 h-100">
             <template v-for="(option, key) in props.options">
               <slot :name="key" v-bind="props.options">
                 <div v-if="isSelect(getConfig(key))">

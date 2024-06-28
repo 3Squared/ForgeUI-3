@@ -1,27 +1,30 @@
 <template>
   <VueMultiselect v-bind="multiselectProps" :class="[theme, hasErrors ? 'is-invalid' : '']" data-cy="multiselect" @update:modelValue="select" v-model="value" >
-    <template #caret="{ toggle }" v-if="shouldShowClearSelection">
-      <Icon icon="bi:x" class="my-auto multiselect__clear-icon" @mousedown.prevent.stop="clearSelected()" data-cy="clear"/>
-      <div class="multiselect__select" @mousedown.prevent.stop="toggle"></div>
+    <template #caret="{ toggle }">
+      <Icon icon="bi:x" class="my-auto multiselect__clear-icon" @mousedown.prevent.stop="clearSelected()" data-cy="clear" height="18px" width="18px" v-if="shouldShowClearSelection"/>
+      <Icon icon="bi:chevron-down" @click="toggle" class="multiselect__select" />
     </template>
     <template v-if="multiselectProps.multiple && showSelectAll && !multiselectProps.async" #beforeList>
       <li class="multiselect__element" @click="selectAll" @mouseover="onMouseOver" @mouseleave="onMouseLeave" data-cy="toggle-all">
-        <span :class="`multiselect__option ${optionHighlight}`">
-          <input :checked="isAllSelected" name="selected" type="checkbox"
-                 class="multiselect__option--checkbox" />
-          <strong>Select all</strong>
+        <span :class="`${optionHighlight}`">
+          <ForgeCheckbox :value="isAllSelected">
+            <div class="ps-1">Select all</div>
+          </ForgeCheckbox>
         </span>
       </li>
     </template>
     <template v-if="multiselectProps.multiple" #option="{option}" >
       <div :data-cy="option.label">
-        <input
-            :checked="isChecked(option)"
-            name="selected"
-            type="checkbox"
-            class="multiselect__option--checkbox"
-        />
-        {{ option[multiselectProps.label] }}
+        <ForgeCheckbox :value="isChecked(option)" :key="option">
+          <div class="ps-1">{{ option[multiselectProps.label] }}</div>
+        </ForgeCheckbox>
+      </div>
+    </template>
+    <template #tag="{option, remove}">
+      <div class="multiselect__tag d-inline-flex">
+        <div class="my-auto">{{ option.label }}</div>
+        <Icon icon="bi:x" class="my-auto multiselect__tag-icon" @mousedown.prevent.stop="removeElement(remove, option)"
+              height="18px" width="18px"  />
       </div>
     </template>
     <slot v-for="(_, name) in $slots" :slot="name" :name="name" />
@@ -69,6 +72,15 @@ const props = withDefaults(defineProps<ForgeMultiSelectProps>(), {
   name: ""
 })
 
+const removeElement = (remove : Function, element : any) => {
+  const elementToRemove = {
+    ...element,
+    $isDisabled: element.$isDisabled ?? false
+  }
+  
+  remove(elementToRemove);
+}
+
 const attrs = useAttrs()
 const emits = defineEmits(['update:modelValue'])
 
@@ -82,12 +94,12 @@ const multiselectProps = computed<VueMultiSelectDefaults>(() => {
     label: "label",
     trackBy: "id",
     showPointer: !selectAllHighlighted.value,
-    placeholder: "Select...",
+    placeholder: !!((attrs.searchable === null || attrs.searchable)) ? "Search" : "Select",
     allowEmpty: true,
     selectValue: '',
     closeOnSelect: !!(attrs.multiple === null || attrs.multiple),
     clearOnSelect: !!(attrs.multiple === null || attrs.multiple),
-    searchable: !!((attrs.searchable === null || attrs.searchable) && !isAllSelected.value),
+    searchable: !!((attrs.searchable === null || attrs.searchable)) && (attrs.modelValue as Array<any>).length === (attrs.options as Array<any>).length,
     async: false,
     ...attrs
   }
@@ -95,7 +107,7 @@ const multiselectProps = computed<VueMultiSelectDefaults>(() => {
 
 const theme = computed<string>(() => `forge-multiselect-${props.severity}`)
 
-const optionHighlight = computed<string>(() => `multiselect-option ${selectAllHighlighted.value ? ' multiselect__option--highlight' : ''} ${isAllSelected.value ? ' multiselect__option--selected' : ''}`)
+const optionHighlight = computed<string>(() => `multiselect__option ${selectAllHighlighted.value ? ' multiselect__option--highlight' : ''} ${isAllSelected.value ? ' multiselect__option--selected' : ''}`)
 
 const isAllSelected = computed<boolean>(() => {
   if (multiselectProps.value && !(multiselectProps.value.multiple || !props.showSelectAll || multiselectProps.value.async)) {
