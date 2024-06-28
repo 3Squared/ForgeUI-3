@@ -1,5 +1,17 @@
 # @3squared/forge-playground-3
 
+## 1.0.3
+
+### Patch Changes
+
+- e20f354: Refactor Forge Multiselect
+  - Update checkbox to use ForgeCheckbox.
+  - Update Chevron to use the Bootstrap Chevron.
+  - Update Placeholder to update depending on if searchable is true or not.
+  - Fix issue where including Searchable broke Forge Multiselect (https://github.com/3Squared/ForgeUI-3/issues/139).
+- Updated dependencies [e20f354]
+  - @3squared/forge-ui-3@0.4.2
+
 ## 1.0.2
 
 ### Patch Changes

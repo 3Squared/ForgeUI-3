@@ -1,7 +1,11 @@
 @each $color, $value in $base-colors {
   .btn.btn-text-#{$color}{
     &:hover, &:active:focus {
-      background-color: map-get($subtle-colors, '#{$color}-subtle');
+      @if ($color == 'brand') {
+        background-color: map-get($subtle-colors, '#{$color}-shade-1');
+      } @else {
+        background-color: map-get($subtle-colors, '#{$color}-subtle');
+      }
     }
   }
   

@@ -29,9 +29,10 @@ const { options, propVals, config, reset } = usePlayground(
     showOtherMonths: true,
     showIcon: true,
     numberOfMonths: 1,
-    showButtonBar: true,
     showTime: false,
     showOnFocus: true, // Crucial prop for Calendar, overlay won't show without this.
+    showButtonBar: false,
+    manualInput: true,
     autoZIndex: true,
     inline: false,
     baseZIndex: 0
