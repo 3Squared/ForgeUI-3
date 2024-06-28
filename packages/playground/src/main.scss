@@ -14,7 +14,8 @@ $codeBlockBackground: #282c34;
 }
 
 .card-body {
-  padding: 0
+  padding: 0;
+  overflow-y: scroll;
 }
 
 @import 'prismjs/themes/prism-tomorrow.css';
