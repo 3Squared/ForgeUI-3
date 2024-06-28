@@ -8,7 +8,11 @@
     </p>
     <Playground :options="options" :code="code" :config="config" @reset="reset">
       <template #component>
-        <component :is="SelectButton" v-bind="options" v-model="value" :options="opts" />
+        <component :is="SelectButton" v-bind="options" v-model="value" :options="opts" :multiple="multiple" />
+      </template>
+      <template #additionalOptions>
+        <ForgeCheckbox label="Multiple" :value="multiple" @mousedown="clickMultiple"/>
+        {{ multiple }}
       </template>
     </Playground>
   </div>
@@ -16,7 +20,7 @@
 
 <script setup lang="ts">
 import { Playground, usePlayground } from "@3squared/forge-playground-3";
-import { ForgePageHeader } from "@3squared/forge-ui-3";
+import { ForgePageHeader, ForgeCheckbox } from "@3squared/forge-ui-3";
 import SelectButton from "primevue/selectbutton";
 import { computed, ref, watch } from "vue";
 
@@ -32,7 +36,6 @@ const { options, propVals, config, reset } = usePlayground(
   {
     optionLabel: "label",
     optionValue: "value",
-    multiple: false,
     disabled: false,
     allowEmpty: true
   },
@@ -42,9 +45,20 @@ const { options, propVals, config, reset } = usePlayground(
   }
 );
 
-const value = ref<string | number>(1);
+const multiple = ref<boolean>(false)
 
-const code = computed(() => `<SelectButton options="options" ${propVals.value.length > 0 ? " " + propVals.value.join(" ") : ""} />`);
+const value = ref<any>();
+
+const code = computed(() => `<SelectButton options="options" ${propVals.value.length > 0 ? " " + propVals.value.join(" ") : ""} ${ multiple ? "multiple" : "" }/>`);
+
+const clickMultiple = () => {
+  value.value = null
+  if(multiple.value) {
+    multiple.value = false
+  } else {
+    multiple.value = true
+  }
+}
 
 watch(
   () => options.value.optionValue,
