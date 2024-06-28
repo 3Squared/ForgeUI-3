@@ -11,7 +11,7 @@
         <component :is="SelectButton" v-bind="options" v-model="value" :options="opts" :multiple="multiple" />
       </template>
       <template #additionalOptions>
-        <ForgeCheckbox label="Multiple" :value="multiple" @mousedown="clickMultiple"/>
+        <ForgeCheckbox label="Multiple" :value="multiple" @mousedown="clickMultiple" />
         {{ multiple }}
       </template>
     </Playground>
@@ -45,20 +45,22 @@ const { options, propVals, config, reset } = usePlayground(
   }
 );
 
-const multiple = ref<boolean>(false)
+const multiple = ref<boolean>(false);
 
-const value = ref<any>();
+const value = ref();
 
-const code = computed(() => `<SelectButton options="options" ${propVals.value.length > 0 ? " " + propVals.value.join(" ") : ""} ${ multiple ? "multiple" : "" }/>`);
+const code = computed(
+  () => `<SelectButton options="options" ${propVals.value.length > 0 ? " " + propVals.value.join(" ") : ""} ${multiple.value ? "multiple" : ""}/>`
+);
 
 const clickMultiple = () => {
-  value.value = null
-  if(multiple.value) {
-    multiple.value = false
+  value.value = null;
+  if (multiple.value) {
+    multiple.value = false;
   } else {
-    multiple.value = true
+    multiple.value = true;
   }
-}
+};
 
 watch(
   () => options.value.optionValue,
