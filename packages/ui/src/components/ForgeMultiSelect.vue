@@ -16,7 +16,7 @@
     <template v-if="multiselectProps.multiple" #option="{option}" >
       <div :data-cy="option.label">
         <ForgeCheckbox :value="isChecked(option)" :key="option">
-          <div class="ps-1">{{ option[multiselectProps.label] }}</div>
+          <div class="ps-1 w-100">{{ option[multiselectProps.label] }}</div>
         </ForgeCheckbox>
       </div>
     </template>
@@ -141,7 +141,8 @@ const select = (value: Array<any>) => {
 
 const isChecked = (option : any) => {
   if( attrs.modelValue !== null){
-    return (attrs.modelValue as Array<any>).some(item => multiselectProps.value.selectValue ? option[props.selectValue] === item : option.id === item.id && option.label === item.label)
+    return (attrs.modelValue as Array<any>)
+        .some(item => multiselectProps.value.selectValue ? option[props.selectValue] === item : option.id === item.id && option.label === item.label)
   }
   return false
 }

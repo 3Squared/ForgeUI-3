@@ -54,5 +54,9 @@ onMounted(() => {
   }
 })
 
+watch(() => props.value, (value) => {
+  setValue(value)
+})
+
 const hasErrors = computed(() => errors.value.length > 0)
 </script>

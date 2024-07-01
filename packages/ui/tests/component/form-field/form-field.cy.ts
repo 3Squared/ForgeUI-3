@@ -176,7 +176,7 @@ describe('<ForgeFormField />', () => {
         .and('be.visible')
     })
 
-    it.only("Displays error alert when validation isnt met", () => {
+    it("Displays error alert when validation isnt met", () => {
       // Arrange
       const errorMessage = "This is required"
       const rules = toTypedSchema(z.boolean({ required_error: errorMessage }))
@@ -184,7 +184,7 @@ describe('<ForgeFormField />', () => {
 
       // Act
       mountFormField({ name: name, type: type, label: label, rules: rules })
-      cy.get(`#${name}`).dblclick()
+      cy.get(`#${name} label`).dblclick()
 
       // Assert
       cy.get(`[data-pc-section="input"]`)
