@@ -1,5 +1,11 @@
 # forge-ui-3-styleguide
 
+## 1.7.0
+
+### Minor Changes
+
+- 738a286: Add Select Button Documentation page
+
 ## 1.6.2
 
 ### Patch Changes
