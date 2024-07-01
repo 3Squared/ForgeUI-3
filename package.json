@@ -9,7 +9,7 @@
     "format": "prettier --write \"**/*.{ts,tsx,md}\""
   },
   "devDependencies": {
-    "@changesets/cli": "2.27.6",
+    "@changesets/cli": "2.27.7",
     "@types/prismjs": "1.26.4",
     "turbo": "latest"
   },
