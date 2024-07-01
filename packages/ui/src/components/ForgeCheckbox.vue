@@ -1,6 +1,6 @@
 <template>
-  <div class="d-flex" data-cy="checkbox-container">
-    <Checkbox :id="props.name" v-bind="{...$attrs, ...props}" v-model="checked" :input-class="{'is-invalid': hasErrors }" @change="changeState">
+  <div class="d-flex" data-cy="checkbox-container" v-bind="{...$attrs}">
+    <Checkbox :id="props.name" v-bind="{...props}" v-model="checked" :input-class="{'is-invalid': hasErrors }" @change="changeState">
       <template #icon>
         <div />
       </template>
@@ -54,13 +54,9 @@ onMounted(() => {
   }
 })
 
-const hasErrors = computed(() => errors.value.length > 0)
-
 watch(() => props.value, (value) => {
-
-  if(value !== checked?.value)
-  {
-    setValue(value)
-  }
+  setValue(value)
 })
+
+const hasErrors = computed(() => errors.value.length > 0)
 </script>

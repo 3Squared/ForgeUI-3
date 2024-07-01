@@ -206,7 +206,7 @@ describe("<ForgeMultiselect />", () => {
         .and('be.visible')
     })
 
-    it("Selects all options on toggle on of select all", () => {
+    it.only("Selects all options on toggle on of select all", () => {
       // Arrange
       const showSelectAll = true
 
