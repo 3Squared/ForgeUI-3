@@ -2,4 +2,4 @@
 "@3squared/forge-ui-3": patch
 ---
 
-Fix issue where base colour variables couldn't be overwritten in external projects.
+- Split out components into separate scss file to allow for external projects to have the choice of just importing the component classes.
