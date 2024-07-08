@@ -1,5 +1,11 @@
 # @3squared/forge-ui-3
 
+## 0.5.3
+
+### Patch Changes
+
+- a905cf8: Fix issue where bootstrap imports wouldn't resolve in external apps
+
 ## 0.5.2
 
 ### Patch Changes
