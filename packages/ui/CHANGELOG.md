@@ -1,5 +1,11 @@
 # @3squared/forge-ui-3
 
+## 0.5.2
+
+### Patch Changes
+
+- d2ed79a: - Update bootstrap import statements so that they are imported from the root node_modules folder.
+
 ## 0.5.1
 
 ### Patch Changes
