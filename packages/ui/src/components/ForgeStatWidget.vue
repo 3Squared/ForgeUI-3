@@ -1,6 +1,6 @@
 <template>
   <div v-bind="$attrs" :class='`d-flex shadow m-2 align-items-center widget--${props.size} bg-${props.severity}`'>
-    <span class="value text-light w-100 text-center">
+    <span class="value text-white w-100 text-center">
       <slot />
     </span>
   </div>
