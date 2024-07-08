@@ -1,6 +1,6 @@
-@import '../../../../../node_modules/bootstrap/scss/functions';
-@import '../../../../../node_modules/bootstrap/scss/variables';
-@import '../../../../../node_modules/bootstrap/scss/variables-dark';
+@import 'bootstrap/scss/functions';
+@import 'bootstrap/scss/variables';
+@import 'bootstrap/scss/variables-dark';
 
 //Forge Theme
 $brand: $indigo !default;
@@ -73,7 +73,7 @@ $brand-text-emphasis: shade-color($brand, 60%) !default;
 $brand-bg-subtle: $brand-shade-1 !default;
 $brand-border-subtle: tint-color($brand-dark, 60%) !default;
 
-@import '../../../../../node_modules/bootstrap/scss/maps';
+@import 'bootstrap/scss/maps';
 
 $brand-theme-colors-text: (
   "brand": $brand-text-emphasis
