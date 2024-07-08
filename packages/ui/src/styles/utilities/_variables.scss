@@ -9,25 +9,25 @@ $brand-shade-1: $indigo-100 !default;
 $brand-shade-2: $indigo-300 !default;
 $brand-shade-3: $indigo-600 !default;
 
-$primary: #0077c8 !default;
-$primary-dark: #006bb4 !default;
-$primary-light: #e5f0f7 !default;
+$primary: #0077c8;
+$primary-dark: #006bb4;
+$primary-light: #e5f0f7;
 
-$secondary: #5f5f5f !default;
+$secondary: #5f5f5f;
 
-$success: #21aa64 !default;
-$success-dark: #177746 !default;
-$success-light: #e9f7f0 !default;
+$success: #21aa64;
+$success-dark: #177746;
+$success-light: #e9f7f0;
 
-$warning: #ffae00 !default;
-$warning-dark: #B05319 !default;
-$warning-light: #fff7e6 !default;
+$warning: #ffae00;
+$warning-dark: #B05319;
+$warning-light: #fff7e6;
 
-$danger: #f72323 !default;
-$danger-dark: #C61C1C !default;
-$danger-light: #FCEBE9 !default;
+$danger: #f72323;
+$danger-dark: #C61C1C;
+$danger-light: #FCEBE9;
 
-$light: #f6f6f6 !default;
+$light: #f6f6f6;
 
 $base-colors: (
   'brand': $brand,
@@ -40,7 +40,7 @@ $base-colors: (
   'info': $info
 );
 
-$badge-font-size: 0.75rem !default;
+$badge-font-size: 0.75rem;
 
 $subtle-colors: (
         'brand-shade-1': $brand-shade-1,
