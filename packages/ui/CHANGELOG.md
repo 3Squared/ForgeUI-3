@@ -1,5 +1,11 @@
 # @3squared/forge-ui-3
 
+## 0.5.4
+
+### Patch Changes
+
+- f2d0c19: - Update naming convention of SCSS variables to match bootstrap 5 naming conventions.
+
 ## 0.5.3
 
 ### Patch Changes
