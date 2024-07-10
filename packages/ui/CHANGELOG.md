@@ -1,5 +1,11 @@
 # @3squared/forge-ui-3
 
+## 0.5.5
+
+### Patch Changes
+
+- a7949c0: - Fix issue where tile-brand hover colour defaulted to the tile-primary hover colour.
+
 ## 0.5.4
 
 ### Patch Changes
