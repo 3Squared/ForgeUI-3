@@ -11,21 +11,21 @@ $brand-shade-3: $indigo-600 !default;
 
 $primary: #0077c8;
 $primary-dark: #006bb4;
-$primary-light: #e5f0f7;
+$primary-subtle: #e5f0f7;
 
 $secondary: #5f5f5f;
 
 $success: #21aa64;
 $success-dark: #177746;
-$success-light: #e9f7f0;
+$success-subtle: #e9f7f0;
 
 $warning: #ffae00;
 $warning-dark: #B05319;
-$warning-light: #fff7e6;
+$warning-subtle: #fff7e6;
 
 $danger: #f72323;
 $danger-dark: #C61C1C;
-$danger-light: #FCEBE9;
+$danger-subtle: #FCEBE9;
 
 $light: #f6f6f6;
 
@@ -46,10 +46,11 @@ $subtle-colors: (
         'brand-shade-1': $brand-shade-1,
         'brand-shade-2': $brand-shade-2,
         'brand-shade-3': $brand-shade-3,
-        'primary-subtle': $primary-light,
-        'success-subtle': $success-light,
-        'warning-subtle': $warning-light,
-        'danger-subtle': $danger-light,
+        'primary-subtle': $primary-subtle,
+        'secondary-subtle': $light,
+        'success-subtle': $success-subtle,
+        'warning-subtle': $warning-subtle,
+        'danger-subtle': $danger-subtle,
         'info-subtle': $info-bg-subtle
 );
 

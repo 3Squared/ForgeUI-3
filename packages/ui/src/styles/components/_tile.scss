@@ -14,11 +14,7 @@
 
 @each $color, $value in $base-colors {
  .tile-#{$color} {
-   @if $color == secondary {
-     background-color: map-get($base-colors, "light") !important;
-     border-color: black !important;
-   } 
-   @else if $color == brand {
+   @if $color == brand {
      background-color: map-get($subtle-colors, $color + "-shade-1") !important;
      border-color: map-get($base-colors, $color) !important;
    }
@@ -46,11 +42,7 @@
     }
   
     &:focus {
-      @if $color == secondary {
-        background-color: map-get($base-colors, "light") !important;
-      } @else {
-        background-color: map-get($subtle-colors, $color + "-subtle") !important;
-      }
+      background-color: map-get($subtle-colors, $color + "-subtle") !important;
     }
   }
 }
