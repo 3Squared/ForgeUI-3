@@ -7,6 +7,8 @@
     @return #C3E7D5;
   } @else if $color == secondary {
     @return #E5E5E5;
+  } @else if $color == brand {
+    @return map-get($subtle-colors, "brand-shade-2") 
   } @else {
     @return #B9D5E7;
   }
