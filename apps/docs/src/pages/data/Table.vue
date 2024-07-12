@@ -44,7 +44,6 @@ import InputNumber from "primevue/inputnumber";
 import InputText from "primevue/inputtext";
 import { FilterMatchMode } from "primevue/api";
 
-
 const columns = [
   { field: "code", header: "Code", sortable: true },
   { field: "name", header: "Name", sortable: true },
