@@ -35,14 +35,15 @@
 </template>
 
 <script setup lang="ts">
+import { computed, ref } from "vue";
 import { ForgePageHeader, ForgeFilterHeader, ForgeColumn, ForgeTable, ForgeTableFilter } from "@3squared/forge-ui-3";
 import { Playground, usePlayground, CodeBlock } from "@3squared/forge-playground-3";
-import Column from "primevue/column";
-import { computed, ref } from "vue";
-import InputNumber from "primevue/inputnumber";
-import { FilterMatchMode } from "primevue/api";
-import InputText from "primevue/inputtext";
 import { severities } from "../../composables/playgroundOptions";
+import Column from "primevue/column";
+import InputNumber from "primevue/inputnumber";
+import InputText from "primevue/inputtext";
+import { FilterMatchMode } from "primevue/api";
+
 
 const columns = [
   { field: "code", header: "Code", sortable: true },

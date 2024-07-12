@@ -4,6 +4,7 @@ import { PaginatorPassThroughMethodOptions } from "primevue/paginator";
 export default {
   // More PT options can be found in the ForgeTable file.
   dataTable: {
+    datatable: 'position-relative',
     table: (options: DataTablePassThroughMethodOptions) => {
       return {
         class: [
@@ -38,11 +39,6 @@ export default {
     loadingOverlay: () => {
       return {
         class: 'table-overlay table-spinner'
-      }
-    },
-    loadingIcon: () => {
-      return {
-        class: 'spinner-border border-0'
       }
     }
   },
