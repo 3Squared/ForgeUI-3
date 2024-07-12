@@ -42,3 +42,7 @@ table.table-lg {
 [data-pc-name="rowradiobutton"] > [data-pc-section="input"] {
   @extend .form-check-input;
 }
+
+.pagination .page-link.active {
+  z-index: 0;
+}
