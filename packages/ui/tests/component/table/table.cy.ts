@@ -309,6 +309,30 @@ describe('<ForgeTable />', () => {
   
   describe("Styling", () => {
     describe("Datatable", () => {
+
+      ;[
+        { title: "Shouldn't add ForgeTable class when severity is undefined", severity: undefined, expectedClass: 'forge-table' },
+        { title: "Should add forge-table-primary class when severity is primary", severity: "primary", expectedClass: "forge-table-primary" },
+        { title: "Should add forge-table-brand class when severity is brand", severity: "brand", expectedClass: "forge-table-brand" },
+        { title: "Should add forge-table-secondary class when severity is secondary", severity: "secondary", expectedClass: "forge-table-secondary" },
+        { title: "Should add forge-table-success class when severity is success", severity: "success", expectedClass: "forge-table-success" },
+        { title: "Should add forge-table-warning class when severity is warning", severity: "warning", expectedClass: "forge-table-warning" },
+        { title: "Should add forge-table-danger class when severity is danger", severity: "danger", expectedClass: "forge-table-danger" },
+        { title: "Should add forge-table-info class when severity is info", severity: "info", expectedClass: "forge-table-info" },
+      ].forEach(({ title, expectedClass, severity }) => {
+        it.only(title, () => {
+          // Act
+          mountTable({ tableProps: { value: items, severity: severity }, columns: columns })
+          
+          // Asset
+          if(!severity) {
+            cy.get(tableId).should("not.have.class", expectedClass)
+          } else {
+            cy.get(tableId).should("have.class", expectedClass)
+          }
+        })
+      })
+      
       ;[
         { title: "Should display a striped table when stripedRows is true", props: { stripedRows: true }, expectedClass: "table-striped" },
         { title: "Should show hover state when rowHover is true", props: { rowHover: true }, expectedClass: "table-hover" },
