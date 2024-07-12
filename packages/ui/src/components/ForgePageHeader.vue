@@ -1,6 +1,6 @@
 <template>
   <div class="d-flex justify-content-between pb-2">
-    <h1 data-cy="title" class="h3">{{ props.title }}</h1>
+    <h3 data-cy="title" class="my-auto">{{ props.title }}</h3>
     <div data-cy="slot" class="d-flex align-items-center">
       <slot /> 
     </div>
