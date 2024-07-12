@@ -2,6 +2,7 @@ import { DataTablePassThroughMethodOptions } from "primevue/datatable";
 import { PaginatorPassThroughMethodOptions } from "primevue/paginator";
 
 export default {
+  // More PT options can be found in the ForgeTable file.
   dataTable: {
     table: (options: DataTablePassThroughMethodOptions) => {
       return {
@@ -26,11 +27,6 @@ export default {
       }
     },
     rowgrouptoggler: 'btn',
-    thead: () => {
-      return {
-        class: 'sticky-header'
-      }
-    },
     //@ts-ignore
     tbody: (options) => {
       return {

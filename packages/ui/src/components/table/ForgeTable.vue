@@ -1,6 +1,6 @@
 <template>
   <span data-cy="above-table-slot"><slot name="above-table" /></span>
-  <DataTable class="w-100" v-bind="{...props, ...$attrs }" :rows="perPage" :total-records="total" :filter-display="props.filters ? 'row' : undefined" ref="forgeTable" @update:filters="updateFilter" data-cy="table">
+  <DataTable class="w-100" v-bind="{...props, ...$attrs }" :rows="perPage" :total-records="total" :filter-display="props.filters ? 'row' : undefined" ref="forgeTable" @update:filters="updateFilter" :pt="pt" data-cy="table">
     <template v-for="(_, name) in $slots as unknown as DataTableSlots" #[name]="slotProps">
       <slot :name="name" v-bind="slotProps || {}"></slot>
     </template>
@@ -39,7 +39,12 @@
 </template>
 
 <script setup lang="ts">
-import DataTable, { DataTableFilterMeta, DataTableProps, DataTableSlots } from "primevue/datatable";
+import DataTable, {
+  DataTableFilterMeta,
+  DataTablePassThroughOptions,
+  DataTableProps,
+  DataTableSlots
+} from "primevue/datatable";
 import Button from 'primevue/button'
 import ForgePaginationHeader from "@/components/table/ForgePaginationHeader.vue";
 import { computed, ref } from "vue";
@@ -47,13 +52,15 @@ import Dropdown from "primevue/dropdown";
 import { pluralise } from "@3squared/forge-ui-3/src/components/table/table-helpers";
 import { Icon } from '@iconify/vue'
 import { ForgeTableFilter } from "../../types/forge-types";
+import { DefaultPassThrough } from "primevue/ts-helpers";
 
 export interface ForgeTableProps extends DataTableProps {
   value: any[],
   legacyPaginationFooter?: boolean,
   total?: number,
   showClearButton?: boolean,
-  showExporterButton?: boolean
+  showExporterButton?: boolean,
+  stickyHeader?: boolean
 }
 
 const emits = defineEmits(['update:filters'])
@@ -63,7 +70,8 @@ const props = withDefaults(defineProps<ForgeTableProps>(), {
   paginator: true,
   alwaysShowPaginator: true,
   showClearButton: false,
-  showExporterButton: false
+  showExporterButton: false,
+  stickyHeader: true
 })
 
 const pageSizes = ref<Array<number>>([10, 20, 50, 100])
@@ -89,4 +97,16 @@ const pageText = computed<string>(() => {
 const exportData = () => {
   forgeTable.value.exportCSV()
 }
+
+const pt = computed<DefaultPassThrough<DataTablePassThroughOptions>>(() => ({
+  thead: () => ({
+    class: [
+      {
+        'sticky-header': props.stickyHeader
+      }
+    ],
+    style: "position: "
+  })
+}))
+
 </script>

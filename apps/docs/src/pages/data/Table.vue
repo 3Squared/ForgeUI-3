@@ -76,6 +76,7 @@ const { options, propVals, config, reset } = usePlayground(
     total: products.length,
     first: 0,
     pageLinkSize: 5,
+    stickyHeader: true,
     showGridlines: false,
     stripedRows: false,
     rowHover: false,
