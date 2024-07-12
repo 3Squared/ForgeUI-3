@@ -42,6 +42,7 @@ import { computed, ref } from "vue";
 import InputNumber from "primevue/inputnumber";
 import { FilterMatchMode } from "primevue/api";
 import InputText from "primevue/inputtext";
+import { severities } from "../../composables/playgroundOptions";
 
 const columns = [
   { field: "code", header: "Code", sortable: true },
@@ -72,6 +73,7 @@ const products = [
 
 const { options, propVals, config, reset } = usePlayground(
   {
+    severity: 'undefined',
     legacyPaginationFooter: false,
     total: products.length,
     first: 0,
@@ -98,6 +100,7 @@ const { options, propVals, config, reset } = usePlayground(
     editMode: ""
   },
   {
+    severity: { type: "select", options: ['undefined', ...severities] },
     size: { type: "select", options: ["small", "large"] },
     scrollHeight: { disabled: (): boolean => !options.value.scrollable },
     sortMode: { type: "select", options: ["single", "multiple"] },

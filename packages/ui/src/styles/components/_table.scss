@@ -46,3 +46,41 @@ table.table-lg {
 .pagination .page-link.active {
   z-index: 0;
 }
+
+@each $color, $value in $base-colors {
+  .forge-table-#{$color} {
+    & .page-link {
+      color: $value;
+      
+      &.active {
+        background-color: $value;
+        border-color: $value;
+        color: white;
+      }
+    }
+
+    thead > tr {
+      @if ($color == "brand") {
+        border-color: $brand-shade-1
+      } @else {
+        border-color: map-get($subtle-colors, $color + "-subtle")
+      }
+      
+      & > th {
+        @if($color == "brand") {
+          background-color: $brand-shade-1
+        } @else {
+          background-color: map-get($subtle-colors, $color + "-subtle")
+        }
+      }
+    }
+    
+    .table-hover > tbody > tr:hover > * {
+      @if ($color == "brand") {
+        background-color: $brand-shade-1
+      } @else {
+        background-color: map-get($subtle-colors, $color + "-subtle")
+      }
+    }
+  }
+}

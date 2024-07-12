@@ -1,6 +1,6 @@
 <template>
   <span data-cy="above-table-slot"><slot name="above-table" /></span>
-  <DataTable class="w-100" v-bind="{...props, ...$attrs }" :rows="perPage" :total-records="total" :filter-display="props.filters ? 'row' : undefined" ref="forgeTable" @update:filters="updateFilter" :pt="pt" data-cy="table">
+  <DataTable class="w-100" :class="`${props.severity ? `forge-table-${props.severity}` : ''}`" v-bind="{...props, ...$attrs }"  :rows="perPage" :total-records="total" :filter-display="props.filters ? 'row' : undefined" ref="forgeTable" @update:filters="updateFilter" :pt="pt" data-cy="table">
     <template v-for="(_, name) in $slots as unknown as DataTableSlots" #[name]="slotProps">
       <slot :name="name" v-bind="slotProps || {}"></slot>
     </template>
@@ -51,7 +51,7 @@ import { computed, ref } from "vue";
 import Dropdown from "primevue/dropdown";
 import { pluralise } from "@3squared/forge-ui-3/src/components/table/table-helpers";
 import { Icon } from '@iconify/vue'
-import { ForgeTableFilter } from "../../types/forge-types";
+import { ForgeTableFilter, Severity } from "../../types/forge-types";
 import { DefaultPassThrough } from "primevue/ts-helpers";
 
 export interface ForgeTableProps extends DataTableProps {
@@ -60,7 +60,8 @@ export interface ForgeTableProps extends DataTableProps {
   total?: number,
   showClearButton?: boolean,
   showExporterButton?: boolean,
-  stickyHeader?: boolean
+  stickyHeader?: boolean,
+  severity?: Severity
 }
 
 const emits = defineEmits(['update:filters'])
