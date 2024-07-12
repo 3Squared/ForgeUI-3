@@ -1,5 +1,11 @@
 # @3squared/forge-ui-3
 
+## 0.6.1
+
+### Patch Changes
+
+- 3180962: - Fix issue where the table loading spinner stopped the user from using the rest of the page whilst the table was loading.
+
 ## 0.6.0
 
 ### Minor Changes
