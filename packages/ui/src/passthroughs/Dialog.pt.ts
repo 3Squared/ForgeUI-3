@@ -35,7 +35,9 @@ export default {
       ]
     }),
     mask: ({ props } : DialogPassThroughMethodOptions<any>) => ({
-      class: [{
+      class: [
+      'z-3',
+      {
         'modal-open': props.modal && props.visible
       }]
     })
