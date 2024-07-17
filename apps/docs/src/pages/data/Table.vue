@@ -36,12 +36,7 @@
 
 <script setup lang="ts">
 import { computed, ref } from "vue";
-import {
-  ForgePageHeader,
-  ForgeFilterHeader,
-  ForgeColumn,
-  ForgeTable, ForgeTableContext,
-} from "@3squared/forge-ui-3";
+import { ForgePageHeader, ForgeFilterHeader, ForgeColumn, ForgeTable, ForgeTableContext } from "@3squared/forge-ui-3";
 import { Playground, usePlayground, CodeBlock } from "@3squared/forge-playground-3";
 import { severities } from "../../composables/playgroundOptions";
 import Column from "primevue/column";
