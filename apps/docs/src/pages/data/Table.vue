@@ -163,7 +163,7 @@ const scriptCode = computed<string>(
     { field: 'quantity', header: 'Quantity', dataType: 'numeric', sortable: true }
   ] as ForgeColumn[];
   
-  const filters = ref<ForgeTableFilter>({
+  const filters = ref({
     code: { value: null, matchMode: FilterMatchMode.STARTS_WITH },
     name: { value: null, matchMode: FilterMatchMode.STARTS_WITH },
     category: { value: null, matchMode: FilterMatchMode.IN },
