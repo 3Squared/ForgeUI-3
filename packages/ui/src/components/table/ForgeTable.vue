@@ -1,7 +1,9 @@
 <template>
   <div class="position-relative">
     <span data-cy="above-table-slot" ><slot name="above-table" /></span>
-    <DataTable class="w-100" :class="`${props.severity ? `forge-table-${props.severity}` : ''}`" v-bind="{...props, ...$attrs }"  :rows="perPage" :total-records="total" :filter-display="props.filters ? 'row' : undefined" ref="forgeTable" @update:filters="updateFilter" :pt="pt" data-cy="table">
+    <DataTable class="w-100" :class="`${props.severity ? `forge-table-${props.severity}` : ''}`"
+               v-bind="{...props, ...$attrs }" :pt="pt"  :rows="perPage" :total-records="total" :filter-display="props.filters ? 'row' : undefined" ref="forgeTable" data-cy="table"
+               @update:filters="updateFilter">
       <template v-for="(_, name) in $slots as unknown as DataTableSlots" #[name]="slotProps">
         <slot :name="name" v-bind="slotProps || {}"></slot>
       </template>
@@ -10,7 +12,7 @@
           <div class="d-flex">
             <div class="d-flex align-items-end mb-2">
               <span v-if="paginator && !legacyPaginationFooter">
-                <forge-pagination-header :total="total ?? value.length" :page-sizes="pageSizes" v-model:per-page="perPage" />
+                <forge-pagination-header :total="total" :page-sizes="pageSizes" v-model:per-page="perPage" />
               </span>
             </div>
             <div class="ms-auto">
@@ -25,7 +27,6 @@
             </div>
           </div>
         </div>
-
       </template>
       <slot />
       <template #paginatorstart v-if="legacyPaginationFooter">
@@ -36,7 +37,7 @@
       </template>
       <template #paginatorend v-if="legacyPaginationFooter" >
         <span data-cy="legacy-total" :class="props.loading ? 'opacity-50' : ''">
-        {{ total ?? value.length }} {{ pluralise(total ?? value.length as number, "result") }} across {{ pageText }}
+        {{ total }} {{ pluralise(total, "result") }} across {{ pageText }}
         </span>
       </template>
     </DataTable>
@@ -45,7 +46,7 @@
 
 <script setup lang="ts">
 import DataTable, {
-  DataTableFilterMeta,
+  DataTableFilterMeta, DataTableFilterMetaData,
   DataTablePassThroughOptions,
   DataTableProps,
   DataTableSlots
@@ -56,13 +57,12 @@ import { computed, ref } from "vue";
 import Dropdown from "primevue/dropdown";
 import { pluralise } from "@3squared/forge-ui-3/src/components/table/table-helpers";
 import { Icon } from '@iconify/vue'
-import { ForgeTableFilter, Severity } from "../../types/forge-types";
+import { Severity } from "../../types/forge-types";
 import { DefaultPassThrough } from "primevue/ts-helpers";
 
 export interface ForgeTableProps extends DataTableProps {
   value: any[],
   legacyPaginationFooter?: boolean,
-  total?: number,
   showClearButton?: boolean,
   showExporterButton?: boolean,
   stickyHeader?: boolean,
@@ -81,12 +81,18 @@ const props = withDefaults(defineProps<ForgeTableProps>(), {
 })
 
 const pageSizes = ref<Array<number>>([10, 20, 50, 100])
-const perPage = ref<number>(20)
 const forgeTable = ref()
+const perPage = ref<number>(20)
+
+const total = computed(() => props.totalRecords ?? props.value.length)
 
 const clearAllFilters = () => {
   for (const key in props.filters){
-    (props.filters[key] as ForgeTableFilter).value = null;
+    if(typeof props.filters[key] === "string") {
+      props.filters[key] = ""
+    } else {
+      (props.filters[key] as DataTableFilterMetaData).value = null
+    }
   }
   updateFilter(props.filters)
 }
@@ -96,7 +102,7 @@ const updateFilter = (filters : DataTableFilterMeta | undefined) => {
 }
 
 const pageText = computed<string>(() => {
-  const pages = Math.ceil((props.total ?? props.value.length) / perPage.value)
+  const pages = Math.ceil(total.value / perPage.value)
   return `${pages} ${pluralise(pages, 'page')}`
 })
 

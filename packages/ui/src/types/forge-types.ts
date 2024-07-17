@@ -1,6 +1,7 @@
 import { ColumnProps } from "primevue/column";
-import { FilterMatchModeOptions, FilterOperatorOptions } from "primevue/api";
+import { FilterMatchModeOptions } from "primevue/api";
 import { FileUploadStatus } from "../components/file-uploader/utilities/utilities";
+import { DataTableFilterMeta } from "primevue/datatable";
 
 export type Severity = 'primary' | 'secondary' | 'success' | 'warning' | 'danger' | 'info' | 'brand' | undefined
 export type Size = 'sm' | 'md' | 'lg' | undefined
@@ -12,12 +13,6 @@ export type ForgeNavbarPosition = "fixed-top" | "fixed-bottom" | "sticky-top"
 export type ForgeMultiSelectOrientation = "row" | "column"
 export type ForgeColumnDataType = 'text' | 'numeric' | 'date' | 'select' | 'multiselect' | undefined
 export type ForgeColumn = ColumnProps & { dataType?: ForgeColumnDataType }
-export type ForgeTableFilter = { 
-  value?: any,
-  matchMode?: FilterMatchModeOptions,
-  operator?: FilterOperatorOptions,
-  constraints?: Array<ForgeTableFilterConstraint>
-}
 
 export interface ForgeFileStatus {
   file: File;
@@ -39,4 +34,13 @@ export interface MultiSelectOption<T> {
 export interface SelectListOption<T> {
   value: T;
   text: string;
+}
+
+export interface ForgeTableContext {
+  total: number,
+  page: number,
+  perPage: number,
+  sortField: string,
+  sortDirection: 'Asc' | 'Desc',
+  filters: DataTableFilterMeta
 }

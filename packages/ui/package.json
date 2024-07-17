@@ -35,7 +35,7 @@
     "@vee-validate/zod": "^4.11.8",
     "@vueuse/components": "^10.6.1",
     "bootstrap": "5.3.3",
-    "primevue": "^3.48.1",
+    "primevue": "^3.53.0",
     "vee-validate": "^4.11.8",
     "vue": "^3.4.14",
     "vue-multiselect": "^3.0.0-beta.3",
