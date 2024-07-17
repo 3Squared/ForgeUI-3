@@ -16,7 +16,7 @@
     </p>
     <Playground :code="componentCode" :options="options" :config="config" @reset="reset">
       <template #component>
-        <component :is="ForgeTable" v-bind="options" v-model:filters="filters" v-model:selection="selection" :value="products">
+        <component :is="ForgeTable" v-bind="options" v-model:filters="filters" v-model:selection="selection" :value="products" @update:tableContext="updateContext">
           <Column v-for="column in columns" :key="column.field as string" sortable v-bind="column">
             <template #filter="{ field }">
               <forge-filter-header v-model="filters[field].value" :data-type="column.dataType" :dropdown-options="dropdownOptions" />
@@ -65,8 +65,6 @@ const filters = ref({
 });
 
 const dropdownOptions = ["Fitness", "Clothing"];
-
-const tableContext = ref<ForgeTableContext>()
 const selection = ref();
 
 const products = [

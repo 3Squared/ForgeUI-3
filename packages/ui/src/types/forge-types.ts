@@ -41,6 +41,6 @@ export interface ForgeTableContext {
   page: number,
   perPage: number,
   sortField: string,
-  sortDirection: 'Asc' | 'Desc',
-  filters: DataTableFilterMeta
+  sortDirection: 'Asc' | 'Desc' | 'None',
+  filters: DataTableFilterMeta | undefined
 }
