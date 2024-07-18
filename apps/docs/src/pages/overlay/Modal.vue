@@ -22,7 +22,7 @@ import { ForgePageHeader, ForgeModal } from "@3squared/forge-ui-3";
 import Button from "primevue/button";
 import { Playground, usePlayground, CodeBlock } from "@3squared/forge-playground-3";
 import { computed, ref } from "vue";
-import { position } from "../../composables/playgroundOptions";
+import { buttonTypes, position } from "../../composables/playgroundOptions";
 
 const visible = ref<boolean>(false);
 
@@ -43,11 +43,15 @@ const { options, propVals, config, reset } = usePlayground(
     position: position[0],
     autoZIndex: true,
     baseZIndex: 0,
-    blockScroll: false
+    blockScroll: false,
+    cancelButtonType: "button",
+    submitButtonType: "button"
   },
   {
     position: { type: "select", options: position },
-    baseZIndex: { disabled: (): boolean => options.value.autoZIndex }
+    baseZIndex: { disabled: (): boolean => options.value.autoZIndex },
+    cancelButtonType: { type: "select", options: buttonTypes },
+    submitButtonType: { type: "select", options: buttonTypes },
   }
 );
 
