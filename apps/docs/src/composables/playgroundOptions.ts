@@ -13,4 +13,4 @@ export const numberFilterTypes = ["lt", "lte", "gt", "gte"];
 export const dateFilterTypes = ["dateIs", "dateIsNot", "dateBefore", "dateAfter"];
 
 export const position = ["center", "left", "top", "bottom", "right", "topleft", "topright", "bottomleft", "bottomright"];
-export const buttonTypes = ["button", "reset", "submit"]
+export const buttonTypes = ["button", "reset", "submit"];

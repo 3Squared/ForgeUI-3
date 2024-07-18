@@ -51,7 +51,7 @@ const { options, propVals, config, reset } = usePlayground(
     position: { type: "select", options: position },
     baseZIndex: { disabled: (): boolean => options.value.autoZIndex },
     cancelButtonType: { type: "select", options: buttonTypes },
-    submitButtonType: { type: "select", options: buttonTypes },
+    submitButtonType: { type: "select", options: buttonTypes }
   }
 );
 
