@@ -17,7 +17,7 @@
     <Playground :code="componentCode" :options="options" :config="config" @reset="reset">
       <template #component>
         <component :is="ForgeTable" v-bind="options" v-model:filters="filters" v-model:selection="selection" :value="products">
-          <Column v-for="column in columns" :key="column.field as string" v-bind="column">
+          <Column v-for="column in columns" :key="column.field as string" sortable v-bind="column">
             <template #filter="{ field }">
               <forge-filter-header v-model="filters[field].value" :data-type="column.dataType" :dropdown-options="dropdownOptions" />
             </template>
@@ -36,7 +36,7 @@
 
 <script setup lang="ts">
 import { computed, ref } from "vue";
-import { ForgePageHeader, ForgeFilterHeader, ForgeColumn, ForgeTable, ForgeTableFilter } from "@3squared/forge-ui-3";
+import { ForgePageHeader, ForgeFilterHeader, ForgeColumn, ForgeTable, ForgeTableContext } from "@3squared/forge-ui-3";
 import { Playground, usePlayground, CodeBlock } from "@3squared/forge-playground-3";
 import { severities } from "../../composables/playgroundOptions";
 import Column from "primevue/column";
@@ -51,7 +51,7 @@ const columns = [
   { field: "quantity", header: "Quantity", dataType: "numeric", sortable: true }
 ] as ForgeColumn[];
 
-const filters = ref<ForgeTableFilter>({
+const filters = ref({
   global: { value: null, matchMode: FilterMatchMode.CONTAINS },
   code: { value: null, matchMode: FilterMatchMode.STARTS_WITH },
   name: { value: null, matchMode: FilterMatchMode.STARTS_WITH },
@@ -60,7 +60,6 @@ const filters = ref<ForgeTableFilter>({
 });
 
 const dropdownOptions = ["Fitness", "Clothing"];
-
 const selection = ref();
 
 const products = [
@@ -86,7 +85,7 @@ const { options, propVals, config, reset } = usePlayground(
     loading: false,
     scrollable: false,
     scrollHeight: "",
-    sortMode: "",
+    sortMode: "single",
     removableSort: false,
     showExporterButton: false,
     exportFileName: "download",
@@ -164,7 +163,7 @@ const scriptCode = computed<string>(
     { field: 'quantity', header: 'Quantity', dataType: 'numeric', sortable: true }
   ] as ForgeColumn[];
   
-  const filters = ref<ForgeFilterHeader>({
+  const filters = ref({
     code: { value: null, matchMode: FilterMatchMode.STARTS_WITH },
     name: { value: null, matchMode: FilterMatchMode.STARTS_WITH },
     category: { value: null, matchMode: FilterMatchMode.IN },

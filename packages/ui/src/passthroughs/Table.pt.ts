@@ -53,13 +53,13 @@ export default {
       }
     },
     pages: 'd-flex',
-    firstPageButton: 'page-link',
-    previousPageButton: 'page-link',
-    nextPageButton: 'page-link',
-    lastPageButton: 'page-link me-2',
+    firstPageButton: 'page-link cursor-pointer',
+    previousPageButton: 'page-link cursor-pointer',
+    nextPageButton: 'page-link cursor-pointer',
+    lastPageButton: 'page-link me-2 cursor-pointer',
     pageButton: ({ context } : PaginatorPassThroughMethodOptions<any>) => ({
       class: [
-        'page-link',
+        'page-link cursor-pointer',
         {
           'active': context.active,
           'disabled': context.disabled
