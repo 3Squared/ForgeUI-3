@@ -1,5 +1,26 @@
 # @3squared/forge-ui-3
 
+## 0.7.0
+
+### Minor Changes
+
+- 1d88aef: - Add @update:tableContext event to table to allow user to retrieve the table context easily. The Table context retrieves the following information about the table:
+
+  - Total Items
+  - Current Page
+  - Items per page
+  - Sort Field
+  - Sort Direction
+  - Filters
+
+  - Fix issue where cursor doesn't change to pointer when hovering over the pagination buttons.
+
+### Patch Changes
+
+- 1e67190: - Fix ForgeFormField validation so that it can be accessed via Form level validation.
+  - Update ForgeFormField to use Yup instead of Zod.
+  - Add cancelButtonType and submitButtonType to ForgeModal so that the buttons can be converted into submit/reset buttons for form use.
+
 ## 0.6.1
 
 ### Patch Changes
