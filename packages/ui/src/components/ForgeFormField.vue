@@ -1,40 +1,71 @@
 <template>
-  <div class="d-flex flex-column">
-    <label :for="props.name" v-if="props.type !== 'checkbox'">{{ props.label }}</label>
-    <forge-checkbox :id="props.name" v-if="props.type === 'checkbox'" :rules="rules" :label="props.label" v-bind="$attrs" />
-    <input-number :id="props.name" v-else-if="props.type === 'number'" :placeholder="props.placeholder" v-model="value" :input-class="{'is-invalid': hasErrors }" :class="{'is-invalid': hasErrors }" v-bind="$attrs" />
-    <Textarea :id="props.name" v-else-if="props.type === 'textarea'" :placeholder="props.placeholder" v-model="value" :class="{'is-invalid': hasErrors }" v-bind="$attrs" />
-    <InputMask :id="props.name" v-else-if="props.type === 'mask'" :placeholder="props.placeholder" v-model="value" :mask="props.mask" :class="{'is-invalid': hasErrors }" v-bind="$attrs"/>
-    <InputText :id="props.name" v-else-if="props.type === 'text'" :placeholder="props.placeholder" v-model="value" :class="{'is-invalid': hasErrors }" v-bind="$attrs" />
-    <small v-if="props.type !== 'checkbox'" v-show="hasErrors" data-cy="error" class="invalid-feedback">{{ errorMessage }}</small>
+  <forge-checkbox :id="props.name" v-if="props.type === 'checkbox'" :label="props.label" v-bind="$attrs"
+                  :name="props.name" v-model="model"/>
+  <div class="d-flex flex-column" v-else>
+    <label :for="props.name">{{ props.label }}</label>
+    <input-number :id="props.name" v-if="props.type === 'number'" v-bind="$attrs"
+                  :placeholder="props.placeholder" :input-class="{'is-invalid': hasErrors }" :class="{'is-invalid': hasErrors }"
+                  v-model="model"
+                  @input="change"
+    />
+    <Textarea :id="props.name" v-else-if="props.type === 'textarea'" v-bind="$attrs"
+              :placeholder="props.placeholder" :class="{'is-invalid': hasErrors }"
+              v-model="model"
+              @input="change" @blur="handleBlur"
+    />
+    <InputMask :id="props.name" v-else-if="props.type === 'mask'" v-bind="$attrs"
+               :placeholder="props.placeholder" :mask="props.mask" :class="{'is-invalid': hasErrors }"
+               v-model="model"
+               @input="change" @blur="handleBlur"
+    />
+    <InputText :id="props.name" v-else-if="props.type === 'text'" v-bind="$attrs" 
+               :placeholder="props.placeholder" :class="{'is-invalid': hasErrors }"
+               v-model="model"
+               @input="change" @blur="handleBlur"
+    />
+    <small v-show="hasErrors" data-cy="error" class="invalid-feedback">{{ errorMessage }}</small>
   </div>
 </template>
 
 <script setup lang="ts">
 import InputNumber from 'primevue/inputnumber'
-import { TypedSchema, useField } from 'vee-validate'
+import { useField } from 'vee-validate'
 import ForgeCheckbox from "./ForgeCheckbox.vue";
-import { computed } from "vue";
+import { computed, watch } from "vue";
 import { ForgeFormFieldTypes } from "../types/forge-types";
-
 
 // @ts-ignore
 export interface ForgeFormFieldProps {
   name: string,
   label: string,
   type?: ForgeFormFieldTypes,
-  rules?: TypedSchema,
   mask?: string,
   placeholder?: string,
 }
 
+const model = defineModel<any>()
+
 const props = withDefaults(defineProps<ForgeFormFieldProps>(), {
   mask: "",
   placeholder: "",
-  type: "text" 
+  type: "text"
 })
 
-const { errors, value, errorMessage } = useField(() => props.name, props.rules)
+const change = (event : any) => {
+  if(props.type == "number") {
+    handleChange(event.value)
+  } else {
+    handleChange(event)
+  }
+}
+
+const { errors, value, errorMessage, handleChange, handleBlur } = useField(() => props.name, undefined, {
+  initialValue: model.value
+})
 
 const hasErrors = computed(() => errors.value.length > 0)
+
+watch(() => value.value, (newValue) => {
+  model.value = newValue
+}, { immediate: true })
 </script>

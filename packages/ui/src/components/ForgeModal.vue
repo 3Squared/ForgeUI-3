@@ -23,8 +23,9 @@
     </template>
     <template #footer v-if="showFooter">
       <div class="d-flex w-100" data-cy="footer">
-        <Button :label="cancelText" :class="props.cancelClass" outlined @click="closeModal" id="cancel-button"/>
-        <Button :label="submitText" :class="props.submitClass" class="ms-auto" @click="success" id="submit-button"/>
+        <Button :label="cancelText" :class="props.cancelClass" outlined @click="closeModal" id="cancel-button" :type="props.cancelButtonType" />
+        <Button :label="submitText" :class="props.submitClass" class="ms-auto" @click="success" id="submit-button"
+                :type="props.submitButtonType"/>
       </div>
     </template>
 
@@ -50,6 +51,8 @@ export interface ForgeModalProps extends DialogProps {
   submitText?: string,
   showFooter?: boolean,
   onConfirm?: Function | null,
+  submitButtonType?: 'button' | 'reset' | 'submit',
+  cancelButtonType?: 'button' | 'reset' | 'submit'
 }
 
 const visible = defineModel<boolean>('visible', { required: true })
@@ -65,7 +68,9 @@ const props = withDefaults(defineProps<ForgeModalProps>(), {
   submitText: "Submit",
   submitClass: "",
   showFooter: true,
-  onConfirm: null
+  onConfirm: null,
+  cancelButtonType: "button",
+  submitButtonType: "button"
 })
 
 const loading = ref(false)
