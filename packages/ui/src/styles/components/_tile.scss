@@ -8,55 +8,50 @@
   } @else if $color == secondary {
     @return #E5E5E5;
   } @else if $color == brand {
-    @return map-get($subtle-colors, "brand-shade-2") 
+    @return map-get($subtle-colors, "brand-shade-2")
   } @else {
     @return #B9D5E7;
   }
 }
 
 @each $color, $value in $base-colors {
- .tile-#{$color} {
-   @if $color == brand {
-     background-color: map-get($subtle-colors, $color + "-shade-1") !important;
-     border-color: map-get($base-colors, $color) !important;
-   }
-   @else{
-     background-color: map-get($subtle-colors, $color + "-subtle") !important;
-     border-color: map-get($base-colors, $color) !important;
-   }
-   
-   color: $black !important;
-   text-align: start !important;
-   border: none;
- }
+  .tile-#{$color} {
+    @if $color == brand {
+      background-color: map-get($subtle-colors, $color + "-shade-1") !important;
+      border-color: map-get($base-colors, $color) !important;
+    } @else {
+      background-color: map-get($subtle-colors, $color + "-subtle") !important;
+      border-color: map-get($base-colors, $color) !important;
+    }
+
+    color: $railsmart-black !important;
+    text-align: start !important;
+    border: none;
+  }
 
   .btn.btn-#{$color}.tile-#{$color} {
     &:hover {
       background-color: getHoverColour($color) !important;
     }
-  
+
     &:active {
       background-color: map-get($subtle-colors, $color + "-subtle") !important;
     }
-  
-    &.tile-bar-left, &.tile-bar-top {
-      border-color: map-get($base-colors, $color) !important
+
+    &.tile-bar-top {
+      @extend .rounded-top;
+      border: none !important;
+      border-top: 8px solid map-get($base-colors, $color) !important;
     }
-  
+
+    &.tile-bar-left {
+      @extend .rounded-start;
+      border: none !important;
+      border-left: 8px solid map-get($base-colors, $color) !important;
+    }
+
     &:focus {
       background-color: map-get($subtle-colors, $color + "-subtle") !important;
     }
   }
-}
-
-.tile-bar-top {
-  @extend .rounded-top;
-  border: none !important;
-  border-top: 8px solid !important;
-}
-
-.tile-bar-left {
-  @extend .rounded-start;
-  border: none !important;
-  border-left: 8px solid !important;
 }
