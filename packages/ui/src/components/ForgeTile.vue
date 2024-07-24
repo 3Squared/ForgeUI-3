@@ -24,20 +24,22 @@ import { computed } from "vue";
 export interface ForgeTileProps {
   severity: Severity,
   barPosition: BarPosition,
-  clickable: boolean
+  clickable: boolean,
+  selected?: boolean
 }
 
 const props = withDefaults(defineProps<ForgeTileProps>(), {
   severity: 'primary',
   barPosition: 'none',
-  clickable: false
+  clickable: false,
+  selected: false
 })
 
 const buttonClass = computed(() => {
-  return `${props.severity === undefined ? `tile-primary` :`tile-${props.severity}`} ${props.barPosition === 'none' ? 'border-0' : `tile-bar-${props.barPosition}`}`
+  return `${props.severity === undefined ? `tile-primary` :`tile-${props.severity}`} ${props.barPosition === 'none' ? '' : `tile-bar-${props.barPosition}`} ${props.selected ? 'selected' : ''}`
 })
 
 const tileClass = computed(() => {
-  return `${props.severity === undefined ? `tile-primary border-primary` : `tile-${props.severity} border-${props.severity}`} ${props.barPosition === 'none' ? '' : `tile-bar-${props.barPosition}`}`
+  return `${props.severity === undefined ? `tile-primary border-primary` : `tile-${props.severity} border-${props.severity}`} ${props.barPosition === 'none' ? '' : `tile-bar-${props.barPosition}`} ${props.selected ? 'selected' : ''}`
 })
 </script>

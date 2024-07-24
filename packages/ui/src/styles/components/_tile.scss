@@ -18,36 +18,40 @@
   .tile-#{$color} {
     @if $color == brand {
       background-color: map-get($subtle-colors, $color + "-shade-1") !important;
-      border-color: map-get($base-colors, $color) !important;
     } @else {
       background-color: map-get($subtle-colors, $color + "-subtle") !important;
-      border-color: map-get($base-colors, $color) !important;
     }
 
-    color: $railsmart-black !important;
+    color: $black !important;
     text-align: start !important;
     border: none;
+
+    &.tile-bar-top {
+      @extend .rounded-top;
+      border: none;
+      border-top: 8px solid map-get($base-colors, $color) !important;
+    }
+
+    &.tile-bar-left {
+      @extend .rounded-start;
+      border: none;
+      border-left: 8px solid map-get($base-colors, $color) !important;
+    }
+
+    &.selected {
+      border: 1px solid;
+      border-color: map-get($base-colors, $color) !important;
+    }
   }
 
   .btn.btn-#{$color}.tile-#{$color} {
+    border-color: map-get($subtle-colors, $color + "-subtle");
     &:hover {
       background-color: getHoverColour($color) !important;
     }
 
     &:active {
       background-color: map-get($subtle-colors, $color + "-subtle") !important;
-    }
-
-    &.tile-bar-top {
-      @extend .rounded-top;
-      border: none !important;
-      border-top: 8px solid map-get($base-colors, $color) !important;
-    }
-
-    &.tile-bar-left {
-      @extend .rounded-start;
-      border: none !important;
-      border-left: 8px solid map-get($base-colors, $color) !important;
     }
 
     &:focus {
