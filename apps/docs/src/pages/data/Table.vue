@@ -36,7 +36,7 @@
 
 <script setup lang="ts">
 import { computed, ref } from "vue";
-import { ForgePageHeader, ForgeFilterHeader, ForgeColumn, ForgeTable, ForgeTableContext } from "@3squared/forge-ui-3";
+import { ForgePageHeader, ForgeFilterHeader, ForgeColumn, ForgeTable } from "@3squared/forge-ui-3";
 import { Playground, usePlayground, CodeBlock } from "@3squared/forge-playground-3";
 import { severities } from "../../composables/playgroundOptions";
 import Column from "primevue/column";
@@ -48,7 +48,8 @@ const columns = [
   { field: "code", header: "Code", sortable: true },
   { field: "name", header: "Name", sortable: true },
   { field: "category", header: "Category", sortable: true },
-  { field: "quantity", header: "Quantity", dataType: "numeric", sortable: true }
+  { field: "quantity", header: "Quantity", dataType: "numeric", sortable: true },
+  { field: "quantity", header: "Quantity", dataType: "multiselect", sortable: true },
 ] as ForgeColumn[];
 
 const filters = ref({
