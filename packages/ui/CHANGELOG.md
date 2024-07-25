@@ -1,5 +1,11 @@
 # @3squared/forge-ui-3
 
+## 0.7.2
+
+### Patch Changes
+
+- 89f595b: - Fix issue where ForgeDatepicker panel wouldn't open without setting the showOnFocus prop.
+
 ## 0.7.1
 
 ### Patch Changes
