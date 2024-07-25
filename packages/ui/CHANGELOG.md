@@ -1,5 +1,12 @@
 # @3squared/forge-ui-3
 
+## 0.7.1
+
+### Patch Changes
+
+- 250ce31: - Fix issue where the Multiselect in the ForgeFilterHeader was unstyled.
+  - Fix issue where ForgeChips, ForgeMultiselect and ForgeInlineEditor were still using Zod for validation.
+
 ## 0.7.0
 
 ### Minor Changes
