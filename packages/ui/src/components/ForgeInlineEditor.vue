@@ -42,7 +42,6 @@ import { vOnClickOutside } from '@vueuse/components'
 
 export interface ForgeInlineEditorProps {
   name?: string,
-  rules?: TypedSchema,
   completeAction?: Function,
   errorAction?: Function,
   params?: Array<any>,
@@ -92,7 +91,9 @@ const reset = () => {
   value.value = null
 }
 
-const { errorMessage, errors, value } = useField(() => props.name, props.rules)
+const { errorMessage, errors, value } = useField(() => props.name, undefined, {
+  initialValue: modelValue.value
+})
 
 onMounted(() => {
   value.value = modelValue.value

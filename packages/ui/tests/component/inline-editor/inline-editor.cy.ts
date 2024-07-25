@@ -1,8 +1,8 @@
 // @ts-ignore
 import { ForgeInlineEditorProps } from "@/components/ForgeInlineEditor.vue";
 import ForgeInlineEditor from "@/components/ForgeInlineEditor.vue";
-import { toTypedSchema } from "@vee-validate/zod";
-import { z } from "zod";
+import * as yup from 'yup'
+import InlineEditorValidationWrapper, { InlineEditorValidationWrapperProps } from "./inlineEditorValidationWrapper.vue";
 
 const name = "inlineEditor"
 const inputCyDataId = '[data-cy="input"]'
@@ -13,6 +13,12 @@ const clearIconCyDataId = '[data-cy="clear-icon"]'
 
 function mountInlineEditor(props : ForgeInlineEditorProps) {
   cy.mount(ForgeInlineEditor, {
+    props
+  })
+}
+
+function mountInlineEditorValidationWrapper(props: InlineEditorValidationWrapperProps) {
+  cy.mount(InlineEditorValidationWrapper, {
     props
   })
 }
@@ -51,12 +57,15 @@ describe('<ForgeInlineEditor />', () => {
     it("Allows the user to click off when there are no errors", () => {
       // Arrange
       const errorMessage = "Length must be greater than 10 characters"
-      const rules = toTypedSchema(z.string().max(10, errorMessage))
-      const value = 'Hello!'
+      const value = 'HelloIamDefinitelyLongerThan10Characters!'
       const invalidText = "text-invalid"
 
+      const schema = yup.object().shape({
+        inlineEditor: yup.string().min(10, errorMessage)
+      })
+      
       // Act
-      mountInlineEditor({ name: name, rules: rules })
+      mountInlineEditorValidationWrapper({ name: name, schema: schema })
       cy.get(`#${name}`).click()
       cy.get(`#${name}`).type(`${value}`)
       cy.clickOff()
@@ -181,13 +190,15 @@ describe('<ForgeInlineEditor />', () => {
     it("Displays error message when validation rule isnt met", () => {
       // Arrange
       const errorMessage = "Length must be greater than 10 characters"
-      const rules = toTypedSchema(z.string().max(10, errorMessage))
       const value = 'Iamlongerthan10characters'
       const invalidInput = "is-invalid"
       const invalidText = "text-invalid"
+      const schema = yup.object().shape({
+        inlineEditor: yup.string().max(10, errorMessage)
+      })
 
       // Act
-      mountInlineEditor({ name: name, rules: rules })
+      mountInlineEditorValidationWrapper({ name: name, schema: schema })
       cy.get(`#${name}`).click()
       cy.get(`#${name}`).type(value)
 
@@ -205,13 +216,15 @@ describe('<ForgeInlineEditor />', () => {
     it('Doesnt allow the user to exit the inline editor if there are errors', () => {
       // Arrange
       const errorMessage = "Length must be greater than 10 characters"
-      const rules = toTypedSchema(z.string().max(10, errorMessage))
       const value = 'Iamlongerthan10characters'
       const invalidInput = "is-invalid"
       const invalidText = "text-invalid"
+      const schema = yup.object().shape({
+        inlineEditor: yup.string().max(10, errorMessage)
+      })
 
       // Act
-      mountInlineEditor({ name: name, rules: rules })
+      mountInlineEditorValidationWrapper({ name: name, schema: schema })
       cy.get(`#${name}`).click()
       cy.get(`#${name}`).type(value)
       cy.clickOff()
@@ -233,12 +246,14 @@ describe('<ForgeInlineEditor />', () => {
     it("Allows the user to exit on press of the escape key and displays validation errors", () => {
       // Arrange
       const errorMessage = "Length must be greater than 10 characters"
-      const rules = toTypedSchema(z.string().max(10, errorMessage))
       const value = 'Iamlongerthan10characters'
       const invalidText = "text-invalid"
+      const schema = yup.object().shape({
+        inlineEditor: yup.string().max(10, errorMessage)
+      })
 
       // Act
-      mountInlineEditor({ name: name, rules: rules })
+      mountInlineEditorValidationWrapper({ name: name, schema: schema })
       cy.get(`#${name}`).click()
       cy.get(`#${name}`).type(`${value}{esc}`)
 

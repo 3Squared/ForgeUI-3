@@ -36,7 +36,7 @@
 
 <script setup lang="ts">
 import { computed, ref } from "vue";
-import { ForgePageHeader, ForgeFilterHeader, ForgeColumn, ForgeTable, ForgeTableContext } from "@3squared/forge-ui-3";
+import { ForgePageHeader, ForgeFilterHeader, ForgeColumn, ForgeTable } from "@3squared/forge-ui-3";
 import { Playground, usePlayground, CodeBlock } from "@3squared/forge-playground-3";
 import { severities } from "../../composables/playgroundOptions";
 import Column from "primevue/column";
@@ -47,7 +47,7 @@ import { FilterMatchMode } from "primevue/api";
 const columns = [
   { field: "code", header: "Code", sortable: true },
   { field: "name", header: "Name", sortable: true },
-  { field: "category", header: "Category", sortable: true },
+  { field: "category", header: "Category", sortable: true, dataType: "multiselect" },
   { field: "quantity", header: "Quantity", dataType: "numeric", sortable: true }
 ] as ForgeColumn[];
 
@@ -157,10 +157,10 @@ const scriptCode = computed<string>(
 
   // Columns the table should contain. DataType is used to specify the type of filter ForgeFilterHeader should display.
   const columns = [
-    { field: 'code', header: 'Code', sortable: true },
-    { field: 'name', header: 'Name', sortable: true },
-    { field: 'category', header: 'Category', sortable: true },
-    { field: 'quantity', header: 'Quantity', dataType: 'numeric', sortable: true }
+    { field: "code", header: "Code", sortable: true },
+    { field: "name", header: "Name", sortable: true },
+    { field: "category", header: "Category", dataType: "multiselect", sortable: true },
+    { field: "quantity", header: "Quantity", dataType: "numeric", sortable: true }
   ] as ForgeColumn[];
   
   const filters = ref({
