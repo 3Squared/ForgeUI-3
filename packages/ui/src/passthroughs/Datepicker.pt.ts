@@ -3,7 +3,7 @@ import { CalendarPassThroughMethodOptions, CalendarPassThroughOptions } from "pr
 export default {
   // More PassThrough options defined in ForgeDatepicker.
   calendar: {
-    root: 'd-inline-flex relative',
+    root: 'd-inline-flex relative w-100',
     input: "form-control",
     panel: ({ props }: CalendarPassThroughMethodOptions) => ({
       class: [
