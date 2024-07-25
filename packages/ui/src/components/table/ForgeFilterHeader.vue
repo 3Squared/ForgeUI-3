@@ -1,9 +1,9 @@
 <template>
-    <InputNumber v-if="dataType === 'numeric'" v-bind="$attrs" class="w-100"/>
-    <ForgeDatepicker v-else-if="dataType === 'date'" v-bind="$attrs" :show-icon="false" :show-on-focus="true" class="w-100"/>
-    <Dropdown v-else-if="dataType === 'select'" v-bind="$attrs" :options="dropdownOptions" class="dropdown-input w-100" />
+    <InputNumber v-if="dataType === 'numeric'" v-bind="$attrs" />
+    <ForgeDatepicker v-else-if="dataType === 'date'" v-bind="$attrs" :show-icon="false" :show-on-focus="true"/>
+    <Dropdown v-else-if="dataType === 'select'" v-bind="$attrs" :options="dropdownOptions" />
     <MultiSelect v-else-if="dataType === 'multiselect'" v-bind="$attrs" :options="dropdownOptions" :showToggleAll="false" placeholder=" " filter />
-    <InputText v-else v-bind="$attrs" class="w-100"/>
+    <InputText v-else v-bind="$attrs"/>
 </template>
 
 <script setup lang="ts"> 

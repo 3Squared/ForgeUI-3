@@ -5,11 +5,12 @@ export default {
     sortBadge: 'ms-2 my-auto cursor-pointer',
     headerCell: (options: ColumnPassThroughMethodOptions & { props: { reorderableColumns: boolean }, column: { context: { frozen: boolean | '', resizable: boolean } } }) => {
       return {
-        class: [{
+        class: [
+          {
           'cursor-move': options.props.reorderableColumns,
           'position-sticky': options.column?.context.frozen !== undefined || options.column?.context.frozen || options.column?.context.frozen === '',
           'overflow-hidden position-relative bg-clip-padding': options.column?.context.resizable
-        }]
+        }],
       }
     },
     roweditorinitbutton: 'btn',
@@ -53,7 +54,8 @@ export default {
         'list-unstyled'
       ]
     },
-    columnfilter: 'd-flex',
+    columnfilter: 'd-flex w-100',
+    filterinput: "w-100",
     filterRowItem: (options : ColumnPassThroughMethodOptions) => {
       return {
         class: [
