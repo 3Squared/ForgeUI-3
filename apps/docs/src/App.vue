@@ -103,7 +103,6 @@ const pages = [
     items: [{ label: "Badge", command: () => router.push("/misc/badge") }]
   },
   { label: "Icons", command: () => router.push("/icons") },
-  { label: "Colours", command: () => router.push("/colours") },
-  { label: "Test", command: () => router.push("/test") }
+  { label: "Colours", command: () => router.push("/colours") }
 ];
 </script>
