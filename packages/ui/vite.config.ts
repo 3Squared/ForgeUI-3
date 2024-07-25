@@ -28,7 +28,6 @@ export default defineConfig(({mode}) => {
         '@azure/storage-blob',
         '@cypress/code-coverage/support',
         '@iconify/vue',
-        '@vee-validate/zod',
         '@vueuse/components',
         'cypress-real-events',
         'cypress/vue',
@@ -69,8 +68,7 @@ export default defineConfig(({mode}) => {
         'sass',
         'vee-validate',
         'vue-multiselect',
-        'vue',
-        'zod'
+        'vue'
       ]
     },
     plugins: [
@@ -114,8 +112,7 @@ export default defineConfig(({mode}) => {
           /^primevue\/*/,
           "vue",
           "vue-multiselect",
-          "vee-validate",
-          "zod"
+          "vee-validate"
         ],
         output: {
           dir: "dist/esm",
