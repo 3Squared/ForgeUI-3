@@ -157,10 +157,10 @@ const scriptCode = computed<string>(
 
   // Columns the table should contain. DataType is used to specify the type of filter ForgeFilterHeader should display.
   const columns = [
-    { field: 'code', header: 'Code', sortable: true },
-    { field: 'name', header: 'Name', sortable: true },
-    { field: 'category', header: 'Category', sortable: true },
-    { field: 'quantity', header: 'Quantity', dataType: 'numeric', sortable: true }
+    { field: "code", header: "Code", sortable: true },
+    { field: "name", header: "Name", sortable: true },
+    { field: "category", header: "Category", dataType: "multiselect", sortable: true },
+    { field: "quantity", header: "Quantity", dataType: "numeric", sortable: true }
   ] as ForgeColumn[];
   
   const filters = ref({
