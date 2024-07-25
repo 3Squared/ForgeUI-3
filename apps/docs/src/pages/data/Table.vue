@@ -47,9 +47,8 @@ import { FilterMatchMode } from "primevue/api";
 const columns = [
   { field: "code", header: "Code", sortable: true },
   { field: "name", header: "Name", sortable: true },
-  { field: "category", header: "Category", sortable: true },
-  { field: "quantity", header: "Quantity", dataType: "numeric", sortable: true },
-  { field: "quantity", header: "Quantity", dataType: "multiselect", sortable: true },
+  { field: "category", header: "Category", sortable: true, dataType: "multiselect" },
+  { field: "quantity", header: "Quantity", dataType: "numeric", sortable: true }
 ] as ForgeColumn[];
 
 const filters = ref({
