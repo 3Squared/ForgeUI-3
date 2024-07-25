@@ -21,7 +21,8 @@ const { options, propVals, config, reset } = usePlayground(
   {
     severity: severities[0],
     barPosition: "none",
-    clickable: false
+    clickable: false,
+    selected: false
   },
   {
     severity: { type: "select", options: severities },
