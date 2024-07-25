@@ -66,11 +66,11 @@ describe("<ForgeTile />", () => {
     
     describe("Bar", () => {
       ;[
-        { title: "Displays no border on the button tile when position is undefined", position: undefined },
-        { title: "Displays no border on the button tile when position is none", position: "none" },
-        { title: "Displays border at the top of the button tile when position is top", position: "top" },
-        { title: "Displays border on the left of the button tile when position is left", position: "left" },
-      ].forEach(({ title, position }) => {
+        { title: "Displays no border on the button tile when position is undefined", position: undefined, expectedBorderWidth: "2px" },
+        { title: "Displays no border on the button tile when position is none", position: "none", expectedBorderWidth: "2px" },
+        { title: "Displays border at the top of the button tile when position is top", position: "top", expectedBorderWidth: "8px 2px 2px" },
+        { title: "Displays border on the left of the button tile when position is left", position: "left", expectedBorderWidth: "2px 2px 2px 8px" },
+      ].forEach(({ title, position, expectedBorderWidth }) => {
         it(title, () => {
           // Arrange
           const expectedClass = `tile-bar-${position}`
@@ -87,6 +87,22 @@ describe("<ForgeTile />", () => {
               .should('have.class', expectedClass)
           }
         });
+
+        it(`should add a 2px border when the selected prop is true and the bar position is ${position}`, () => {
+          // Arrange
+          const selected = true
+          const expectedClass = "selected"
+
+          // Act
+          mountTile({ selected, barPosition: position, clickable: true })
+
+          // Assert
+          cy.get(buttonTileId)
+            .should('exist')
+            .and('be.visible')
+            .and('have.class', expectedClass)
+            .and("have.css", "border-width", expectedBorderWidth)
+        })
       })
     })
   })
@@ -118,11 +134,11 @@ describe("<ForgeTile />", () => {
     
     describe("Bar", () => {
       ;[
-        { title: "Displays no border on tile when position is undefined", position: undefined },
-        { title: "Displays no border on tile when position is none", position: "none" },
-        { title: "Displays border at the top of the tile when position is top", position: "top" },
-        { title: "Displays border on the left of the tile when position is left", position: "left" },
-      ].forEach(({ title, position }) => {
+        { title: "Displays no border on tile when position is undefined", position: undefined, expectedBorderWidth: "2px" },
+        { title: "Displays no border on tile when position is none", position: "none", expectedBorderWidth: "2px" },
+        { title: "Displays border at the top of the tile when position is top", position: "top", expectedBorderWidth: "8px 2px 2px" },
+        { title: "Displays border on the left of the tile when position is left", position: "left", expectedBorderWidth: "2px 2px 2px 8px" },
+      ].forEach(({ title, position, expectedBorderWidth }) => {
         it(title, () => {
           // Arrange
           const expectedClass = `tile-bar-${position}`
@@ -139,6 +155,22 @@ describe("<ForgeTile />", () => {
               .should('have.class', expectedClass)
           }
         });
+
+        it(`should add a 2px border when the selected prop is true and the bar position is ${position}`, () => {
+          // Arrange
+          const selected = true
+          const expectedClass = "selected"
+
+          // Act
+          mountTile({ selected, barPosition: position })
+
+          // Assert
+          cy.get(tileId)
+            .should('exist')
+            .and('be.visible')
+            .and('have.class', expectedClass)
+            .and("have.css", "border-width", expectedBorderWidth)
+        })
       })
     })
   })
