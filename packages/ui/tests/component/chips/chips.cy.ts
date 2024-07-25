@@ -1,14 +1,23 @@
 
 // @ts-ignore
 import ForgeChips, { ForgeChipsProps } from "../../../src/components/ForgeChips.vue";
-import { toTypedSchema } from "@vee-validate/zod";
-import { z } from "zod";
 import { Severity } from "../../../src/types/forge-types";
+import ChipsValidationWrapper, { ChipsValidationWrapperProps } from "./chipsValidationWrapper.vue";
+import * as yup from 'yup'
 
 const id = "chips"
 
 function mountChips(props : ForgeChipsProps) {
   cy.mount(ForgeChips, {
+    props,
+    attrs: {
+      id: id
+    }
+  })
+}
+
+function mountChipsValidationWrapper(props : ChipsValidationWrapperProps) {
+  cy.mount(ChipsValidationWrapper, {
     props,
     attrs: {
       id: id
@@ -111,12 +120,15 @@ describe("<Chips />", () => {
   it("Displays validation error when a rule isn't met", () => {
     // Arrange
     const validationMessage = "Must be greater than 2 characters."
-    const rules = toTypedSchema(z.array(z.string().min(2, validationMessage)))
     const expectedErrorTextClass = "text-invalid"
     const expectedErrorClass = "is-invalid"
+    const name = "chips"
+    const schema = yup.object().shape({
+      chips: yup.array().of(yup.string().min(2, validationMessage))
+    })
     
     // Act
-    mountChips({ rules: rules })
+    mountChipsValidationWrapper({ schema, name })
     cy.get(`#${id}`).type("H{enter}")
 
     // Assert

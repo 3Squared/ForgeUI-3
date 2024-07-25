@@ -1,15 +1,16 @@
 // @ts-ignore
 import { ForgeMultiSelectProps } from "@/components/ForgeMultiSelect";
 import MultiselectWrapper from "./multiselectWrapper.vue";
-import { toTypedSchema } from "@vee-validate/zod";
-import { z } from "zod";
+import MultiselectValidationWrapper, { MultiSelectValidationWrapperProps } from "./multiselectValidationWrapper.vue";
+import * as yup from 'yup'
+import { MultiSelectOption } from "../../../src/types/forge-types.ts";
 
 
 const options = [
   { label: "Option 1", id: "1" },
   { label: "Option 2", id: "2" },
   { label: "Option 3", id: "3" }
-]
+] as MultiSelectOption<any>[]
 
 const multiselectId = '[data-cy="multiselect"]'
 const option1Id = '[data-cy="Option 1"]'
@@ -28,6 +29,12 @@ function mountMultiselect(props : ForgeMultiSelectProps) {
   })
 }
 
+function mountMultiselectValidationWrapper(props : MultiSelectValidationWrapperProps) {
+  cy.mount(MultiselectValidationWrapper, {
+    props
+  })
+}
+
 describe("<ForgeMultiselect />", () => {
   it("Mounts", () => {
     // Act
@@ -42,17 +49,14 @@ describe("<ForgeMultiselect />", () => {
   it("Displays validation", () => {
     // Arrange
     const errorMessage = "Must be less than 1"
-
-    const rules = toTypedSchema(
-      z.array(
-        z.object({
-          id: z.string(),
-          label: z.string()
-        })
-      ).max(2, errorMessage))
+    const schema = yup.object().shape({
+      select: yup.array().max(1, errorMessage)
+    })
+    
     
     // Act
-    mountMultiselect({ options: options, rules: rules })
+    //@ts-ignore
+    mountMultiselectValidationWrapper({ options: options, schema: schema })
     cy.get(multiselectId).click()
     cy.get(option1Id).click()
     cy.get(option2Id).click()
@@ -206,7 +210,7 @@ describe("<ForgeMultiselect />", () => {
         .and('be.visible')
     })
 
-    it.only("Selects all options on toggle on of select all", () => {
+    it("Selects all options on toggle on of select all", () => {
       // Arrange
       const showSelectAll = true
 

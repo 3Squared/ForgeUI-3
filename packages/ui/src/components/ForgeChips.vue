@@ -13,13 +13,12 @@ import { ChipsPassThroughMethodOptions, ChipsPassThroughOptions, ChipsProps } fr
 import { Severity } from "../types/forge-types";
 import { computed } from "vue";
 import { DefaultPassThrough } from "primevue/ts-helpers";
-import { TypedSchema, useField } from "vee-validate";
+import { useField } from "vee-validate";
 
 export interface ForgeChipsProps extends /* vue-ignore */ Omit<ChipsProps, "aria-label" | "aria-labelledby"> {
   chipSeverity?: Severity,
   pill?: boolean,
-  name?: string,
-  rules?: TypedSchema
+  name?: string
 }
 
 const props = withDefaults(defineProps<ForgeChipsProps>(), {
@@ -29,8 +28,9 @@ const props = withDefaults(defineProps<ForgeChipsProps>(), {
   pill: false
 })
 
-const { errors, value, errorMessage } = useField(() => props.name, props.rules)
-value.value = props.modelValue
+const { errors, value, errorMessage } = useField(() => props.name, undefined,  {
+  initialValue: props.modelValue
+})
 
 const hasErrors = computed(() => errors.value.length > 0)
 
