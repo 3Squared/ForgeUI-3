@@ -1,5 +1,11 @@
 # @3squared/forge-ui-3
 
+## 0.8.0
+
+### Minor Changes
+
+- 748a0ea: - Add selected prop and styling to visually show that a tile has been selected.
+
 ## 0.7.2
 
 ### Patch Changes

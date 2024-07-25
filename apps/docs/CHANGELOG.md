@@ -1,5 +1,13 @@
 # forge-ui-3-styleguide
 
+## 1.8.1
+
+### Patch Changes
+
+- 748a0ea: - Add selected prop and styling to visually show that a tile has been selected.
+- Updated dependencies [748a0ea]
+  - @3squared/forge-ui-3@0.8.0
+
 ## 1.8.0
 
 ### Minor Changes
