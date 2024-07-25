@@ -14,7 +14,7 @@ import MessagePT from "./passthroughs/Message.pt.ts";
 import StepsPT from "./passthroughs/Steps.pt.ts";
 import TabsPT from "./passthroughs/Tabs.pt.ts";
 import DatepickerPT from "./passthroughs/Datepicker.pt.ts";
-import MultiselectPT from "./passthroughs/Dropdown.pt.ts";
+import MultiselectPT from "./passthroughs/Multiselect.pt.ts";
 import ProgressBarPT from "./passthroughs/ProgressBar.pt.ts";
 import TablePT from "./passthroughs/Table.pt.ts";
 import BadgePT from "./passthroughs/Badge.pt.ts";

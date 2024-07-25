@@ -320,7 +320,7 @@ describe('<ForgeTable />', () => {
         { title: "Should add forge-table-danger class when severity is danger", severity: "danger", expectedClass: "forge-table-danger" },
         { title: "Should add forge-table-info class when severity is info", severity: "info", expectedClass: "forge-table-info" },
       ].forEach(({ title, expectedClass, severity }) => {
-        it.only(title, () => {
+        it(title, () => {
           // Act
           mountTable({ tableProps: { value: items, severity: severity }, columns: columns })
           

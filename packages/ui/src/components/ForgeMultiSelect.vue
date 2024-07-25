@@ -45,7 +45,6 @@ export interface ForgeMultiSelectProps {
   showClearSelection?: boolean,
   expandLeft?: boolean,
   selectValue?: string,
-  rules?: TypedSchema,
   name?: string
 }
 
@@ -84,7 +83,9 @@ const removeElement = (remove : Function, element : any) => {
 const attrs = useAttrs()
 const emits = defineEmits(['update:modelValue'])
 
-const { errors, value, errorMessage } = useField(() => props.name, props.rules)
+const { errors, value, errorMessage } = useField(() => props.name, undefined, {
+  initialValue: attrs.modelValue
+})
 
 const selectAllHighlighted = ref<boolean>(false)
 
