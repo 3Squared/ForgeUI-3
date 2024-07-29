@@ -5,8 +5,8 @@
   
   <div class="position-relative">
     <Calendar v-bind="{...props, ...$attrs}" :pt="pt" v-model="model"/>
-    <Icon data-cy="icon" icon="bi:calendar4" v-show="props.showIcon" class="position-absolute end-0 top-50 bottom-50 my-auto me-2 text-muted" />
-    <Icon data-cy="icon" icon="bi:x" v-show="props.modelValue" @click="clear" class="position-absolute end-0 top-50 bottom-50 my-auto text-muted cursor-pointer" :class="props.showIcon ? 'datepicker-close-icon' : 'me-2'" />
+    <Icon data-cy="icon" icon="bi:calendar4" v-show="props.showIcon" class="position-absolute end-0 top-50 bottom-50 my-auto me-2 text-muted bg-white" />
+    <Icon data-cy="icon" icon="bi:x" v-show="props.modelValue" @click="clear" class="position-absolute end-0 top-50 bottom-50 my-auto text-muted cursor-pointer bg-white" :class="props.showIcon ? 'datepicker-close-icon' : 'me-2'" />
   </div>
 
   

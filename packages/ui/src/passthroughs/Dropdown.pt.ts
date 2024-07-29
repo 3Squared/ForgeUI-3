@@ -58,6 +58,7 @@ export default {
     checkboxicon: 'mb-1 fw-medium text-white position-absolute filter-header-multiselect__check-icon',
     clearicon: "ms-auto my-auto",
     loadingIcon: 'spinner-border spinner-border-sm border-0',
-    itemGroupLabel: "ps-2 fw-bold"
+    itemGroupLabel: "ps-2 fw-bold",
+    input: 'w-100'
   }
 }
