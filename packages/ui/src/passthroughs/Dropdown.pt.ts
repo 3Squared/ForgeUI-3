@@ -22,7 +22,7 @@ export default {
     list: 'list-unstyled mb-0 dropdown-menu show w-100',
     item: ({ context } : DropdownPassThroughMethodOptions<any>) => ({
       class: [
-        'dropdown-item d-flex cursor-pointer',
+        'dropdown-item d-flex cursor-pointer text-wrap',
         {
           'bg-primary text-white': context.selected
         }
