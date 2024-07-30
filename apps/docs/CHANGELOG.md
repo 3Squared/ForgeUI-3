@@ -1,5 +1,13 @@
 # forge-ui-3-styleguide
 
+## 1.8.2
+
+### Patch Changes
+
+- 56d26fe: - Add Clear button to Forge Filter header and method prop to customise clear functionality.
+- Updated dependencies [56d26fe]
+  - @3squared/forge-ui-3@0.9.0
+
 ## 1.8.1
 
 ### Patch Changes
