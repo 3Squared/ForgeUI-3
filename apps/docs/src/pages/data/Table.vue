@@ -17,9 +17,15 @@
     <Playground :code="componentCode" :options="options" :config="config" @reset="reset">
       <template #component>
         <component :is="ForgeTable" v-bind="options" v-model:filters="filters" v-model:selection="selection" :value="products">
-          <Column v-for="column in columns" :key="column.field as string" sortable v-bind="column">
+          <Column v-for="column in columns" :key="column.field as string" sortable v-bind="column" :show-clear-button="false">
             <template #filter="{ field }">
-              <forge-filter-header v-model="filters[field].value" :data-type="column.dataType" :dropdown-options="dropdownOptions" />
+              <forge-filter-header
+                v-model="filters[field].value"
+                :data-type="column.dataType"
+                :dropdown-options="column.dataType === 'multiselect' ? multiselectOptions : dropdownOptions"
+                show-clear-button
+                :placeholder="field"
+              />
             </template>
             <template #editor="{ data, field }">
               <InputText v-if="field !== 'quantity' && field !== 'code'" v-model="data[field]" autofocus />
@@ -46,9 +52,10 @@ import { FilterMatchMode } from "primevue/api";
 
 const columns = [
   { field: "code", header: "Code", sortable: true },
-  { field: "name", header: "Name", sortable: true },
-  { field: "category", header: "Category", sortable: true, dataType: "multiselect" },
-  { field: "quantity", header: "Quantity", dataType: "numeric", sortable: true }
+  { field: "name", header: "Name", dataType: "select", sortable: true },
+  { field: "category", header: "Category", dataType: "multiselect", sortable: true },
+  { field: "quantity", header: "Quantity", dataType: "numeric", sortable: true },
+  { field: "date", header: "Date", dataType: "date", sortable: true }
 ] as ForgeColumn[];
 
 const filters = ref({
@@ -56,18 +63,20 @@ const filters = ref({
   code: { value: null, matchMode: FilterMatchMode.STARTS_WITH },
   name: { value: null, matchMode: FilterMatchMode.STARTS_WITH },
   category: { value: null, matchMode: FilterMatchMode.IN },
-  quantity: { value: null, matchMode: FilterMatchMode.EQUALS }
+  quantity: { value: null, matchMode: FilterMatchMode.EQUALS },
+  date: { value: null, matchMode: FilterMatchMode.EQUALS }
 });
 
-const dropdownOptions = ["Fitness", "Clothing"];
+const multiselectOptions = ["Fitness", "Clothing"];
+const dropdownOptions = ["Blue Shirt", "Running Trainers", "Watch", "Socks", "Trousers"];
 const selection = ref();
 
 const products = [
-  { code: 1, name: "Blue Shirt", category: "Clothing", quantity: 10 },
-  { code: 2, name: "Running Trainers", category: "Fitness", quantity: 3 },
-  { code: 3, name: "Watch", category: "Accessories", quantity: 12 },
-  { code: 4, name: "Socks", category: "Clothing", quantity: 10 },
-  { code: 5, name: "Trousers", category: "Clothing", quantity: 15 }
+  { code: 1, name: "Blue Shirt", category: "Clothing", quantity: 10, date: new Date() },
+  { code: 2, name: "Running Trainers", category: "Fitness", quantity: 3, date: new Date().setDate(new Date().getDate() + 1) },
+  { code: 3, name: "Watch", category: "Accessories", quantity: 12, date: new Date().setDate(new Date().getDate() + 2) },
+  { code: 4, name: "Socks", category: "Clothing", quantity: 10, date: new Date().setDate(new Date().getDate() + 3) },
+  { code: 5, name: "Trousers", category: "Clothing", quantity: 15, date: new Date().setDate(new Date().getDate() + 4) }
 ];
 
 const { options, propVals, config, reset } = usePlayground(
