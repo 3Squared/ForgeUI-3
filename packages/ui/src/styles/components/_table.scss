@@ -62,6 +62,20 @@ table.table-lg {
         color: white;
       }
     }
+    
+    .table-bordered > thead > tr {
+      
+      &:first-child {
+        border: 1px solid $table-border-color;
+        border-bottom: 0
+      }
+      
+      &:last-child {
+        border: 1px solid $table-border-color;
+        border-top: 0
+      }
+
+    }
 
     thead > tr {
       @if ($color == "brand") {
