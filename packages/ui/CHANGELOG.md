@@ -1,5 +1,11 @@
 # @3squared/forge-ui-3
 
+## 0.9.0
+
+### Minor Changes
+
+- 56d26fe: - Add Clear button to Forge Filter header and method prop to customise clear functionality.
+
 ## 0.8.0
 
 ### Minor Changes
