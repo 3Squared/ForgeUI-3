@@ -1,8 +1,8 @@
 <template>
-  <forge-checkbox :id="props.name" v-if="props.type === 'checkbox'" :label="props.label" v-bind="$attrs"
+  <forge-checkbox :id="props.name" v-if="props.type === 'checkbox'" :label="props.fieldLabel" v-bind="$attrs"
                   :name="props.name" v-model="model"/>
-  <div class="d-flex flex-column" v-else>
-    <label :for="props.name">{{ props.label }}</label>
+  <div class="d-flex flex-column w-100" v-else>
+    <label :for="props.name" class="mb-1">{{ props.fieldLabel }}</label>
     <input-number :id="props.name" v-if="props.type === 'number'" v-bind="$attrs"
                   :placeholder="props.placeholder" :input-class="{'is-invalid': hasErrors }" :class="{'is-invalid': hasErrors }"
                   v-model="model"
@@ -23,7 +23,10 @@
                v-model="model"
                @input="change" @blur="handleBlur"
     />
-    <small v-show="hasErrors" data-cy="error" class="invalid-feedback">{{ errorMessage }}</small>
+    <Dropdown v-else-if="props.type === 'select'" v-bind="{...props,...$attrs}" v-model="model" />
+    <ForgeMultiSelect v-else-if="props.type === 'multiselect'" v-bind="{...props,...$attrs}" v-model="model" />
+    <ForgeDatepicker v-else-if="props.type === 'datepicker'" v-bind="{...props,...$attrs}" v-model="model" />
+    <small v-show="hasErrors && props.type !== 'multiselect' && props.type !== 'select' && props.type !== 'datepicker'" data-cy="error" class="invalid-feedback">{{ errorMessage }}</small>
   </div>
 </template>
 
@@ -37,7 +40,7 @@ import { ForgeFormFieldTypes } from "../types/forge-types";
 // @ts-ignore
 export interface ForgeFormFieldProps {
   name: string,
-  label: string,
+  fieldLabel?: string,
   type?: ForgeFormFieldTypes,
   mask?: string,
   placeholder?: string,
