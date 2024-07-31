@@ -71,7 +71,6 @@ const { errors, value, errorMessage, handleChange, handleBlur } = useField(() =>
 const hasErrors = computed(() => errors.value.length > 0)
 
 watch(() => value.value, (newValue) => {
-  console.log(hasErrors.value)
   model.value = newValue
 }, { immediate: true })
 </script>
