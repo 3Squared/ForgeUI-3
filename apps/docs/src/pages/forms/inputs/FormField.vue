@@ -3,7 +3,7 @@
     <ForgePageHeader title="Form Field" />
     <Playground :options="options" :code="code" :config="config" @reset="reset">
       <template #component>
-        <component :is="ForgeFormField" v-bind="options" v-model="value" :options="dropdownOptions" optionLabel="label" />
+        <component :is="ForgeFormField" v-bind="options" v-model="value" :options="dropdownOptions" option-label="label" />
       </template>
     </Playground>
   </div>
@@ -39,15 +39,18 @@ const dropdownOptions = [
   { id: "option-4", label: "Option 4" },
   { id: "option-5", label: "Option 5" },
   { id: "option-6", label: "Option 6" }
-]
+];
 
-watch(() => options.value.type, (newType) => {
-  if(newType == 'multiselect') {
-    value.value = []
-  } else {
-    value.value = null
+watch(
+  () => options.value.type,
+  (newType) => {
+    if (newType == "multiselect") {
+      value.value = [];
+    } else {
+      value.value = null;
+    }
   }
-})
+);
 
 const code = computed(() => `<ForgeFormField${propVals.value.length > 0 ? " " + propVals.value.join(" ") : ""} />`);
 </script>
