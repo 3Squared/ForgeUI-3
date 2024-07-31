@@ -37,7 +37,7 @@
 <script setup lang="ts">
 import { Icon } from '@iconify/vue'
 import { computed, ref, onMounted } from "vue";
-import { TypedSchema, useField } from "vee-validate";
+import { useField } from "vee-validate";
 import { vOnClickOutside } from '@vueuse/components'
 
 export interface ForgeInlineEditorProps {

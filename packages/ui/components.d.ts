@@ -14,6 +14,7 @@ declare module 'vue' {
     Dialog: typeof import('primevue/dialog')['default']
     Divider: typeof import('primevue/divider')['default']
     DragDropArea: typeof import('./src/components/file-uploader/components/DragDropArea.vue')['default']
+    Dropdown: typeof import('primevue/dropdown')['default']
     FileInfo: typeof import('./src/components/file-uploader/components/FileInfo.vue')['default']
     ForgeActionButton: typeof import('./src/components/ForgeActionButton.vue')['default']
     ForgeAlert: typeof import('./src/components/ForgeAlert.vue')['default']

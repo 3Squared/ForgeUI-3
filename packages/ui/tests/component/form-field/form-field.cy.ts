@@ -1,42 +1,53 @@
 // @ts-ignore
 import ForgeFormField, { ForgeFormFieldProps } from "../../../src/components/ForgeFormField.vue";
+import FormFieldValidationWrapper, { FormFieldValidationWrapperProps } from "./formFieldValidationWrapper.vue";
+import * as yup from "yup"
+import { MultiSelectOption } from "../../../src/types/forge-types.ts";
 
-function mountFormField(props : ForgeFormFieldProps) {
+function mountFormField(props: ForgeFormFieldProps) {
   cy.mount(ForgeFormField, {
     props
   })
 }
 
+function mountFormFieldValidation(props: FormFieldValidationWrapperProps) {
+  cy.mount(FormFieldValidationWrapper, {
+    props
+  })
+}
+
+const validationWrapperSubmitButton = '#form-button'
+
+const name = "input"
+const label = "A custom input"
+
 // TODO: Rewrite tests to check validation is met.
-describe.skip('<ForgeFormField />', () => {
+describe('<ForgeFormField />', () => {
   it('Mounts', () => {
-    // Arrange
-    const name = "input"
-    const label = "A custom input"
-    
     // Act
-    mountFormField({ name: name, label: label })
-    
+    mountFormField({ name: name, fieldLabel: label })
+
     // Assert
     cy.get(`#${name}`)
       .should('exist')
       .and('be.visible')
   })
-  
-  describe('Number', () => {      
+
+  describe('Number', () => {
     // Arrange
-    const name = "input"
     const type = "number"
-    const label = "A custom input"
-    
+
     it("Displays error alert when validation isnt met", () => {
       // Arrange
       const errorMessage = "Must be less than 1"
       const value = '2'
       const invalid = "is-invalid"
-      
+      const schema = yup.object().shape({
+        input: yup.number().max(1, errorMessage)
+      })
+
       // Act
-      mountFormField({ name: name, type: type, label: label })
+      mountFormFieldValidation({ name: name, type: type, fieldLabel: label, schema })
       cy.get(`#${name}`).type(value)
       cy.get(`#${name} input`).blur()
 
@@ -44,24 +55,22 @@ describe.skip('<ForgeFormField />', () => {
       cy.get(`#${name} input`)
         .should('contain.value', value)
         .and('have.class', invalid)
-      
+
       cy.get("[data-cy='error']")
         .should('have.text', errorMessage)
     })
   })
-  
+
   describe('Text', () => {
     // Arrange
-    const name = "input"
     const type = "text"
-    const label = "A custom input"
-    
+
     it("Allows for alphanumeric characters to be inputted when type is text", () => {
       // Arrange
       const expectedString = "Hello123"
 
       // Act
-      mountFormField({ name: name, type: type, label: label })
+      mountFormField({ name: name, type: type, fieldLabel: label })
       cy.get(`#${name}`).type(expectedString)
 
       // Assert
@@ -71,35 +80,36 @@ describe.skip('<ForgeFormField />', () => {
     it("Displays error alert when validation isnt met", () => {
       // Arrange
       const errorMessage = "Length must be greater than 10 characters"
-      const value = 'I am longer than 10 characters'
+      const value = 'Not 10'
       const invalid = "is-invalid"
-
+      const schema = yup.object().shape({
+        input: yup.string().min(10, errorMessage)
+      })
+      
       // Act
-      mountFormField({ name: name, type: type, label: label })
+      mountFormFieldValidation({ name: name, type: type, fieldLabel: label, schema })
       cy.get(`#${name}`).type(value)
 
       // Assert
       cy.get(`#${name}`)
         .should('contain.value', value)
         .and('have.class', invalid)
-      
+
       cy.get('[data-cy="error"]')
         .should('have.text', errorMessage)
     })
   })
-  
+
   describe('Text Area', () => {
     // Arrange
-    const name = "input"
     const type = "textarea"
-    const label = "A custom input"
-    
+
     it("Displays text area when type is text area", () => {
       // Arrange
       const expectedString = "Hello123"
 
       // Act
-      mountFormField({ name: name, type: type, label: label })
+      mountFormField({ name: name, type: type, fieldLabel: label })
       cy.get(`#${name}`).type(expectedString)
 
       // Assert
@@ -112,11 +122,14 @@ describe.skip('<ForgeFormField />', () => {
     it("Displays error alert when validation isnt met", () => {
       // Arrange
       const errorMessage = "Length must be greater than 10 characters"
-      const value = 'I am longer than 10 characters'
+      const value = 'Not 10'
       const invalid = "is-invalid"
+      const schema = yup.object().shape({
+        input: yup.string().min(10, errorMessage)
+      })
 
       // Act
-      mountFormField({ name: name, label: label, type: type})
+      mountFormFieldValidation({ name: name, type: type, fieldLabel: label, schema })
       cy.get(`#${name}`).type(value)
 
       // Assert
@@ -128,22 +141,22 @@ describe.skip('<ForgeFormField />', () => {
         .should('have.text', errorMessage)
     })
   })
-  
+
   describe('Mask', () => {
-    const name = "input"
     const type = "mask"
-    const label = "A custom input"
     const mask = "99-999999"
 
     it("Displays error alert when validation isnt met", () => {
       // Arrange
-      const errorMessage = "Length must be greater than 5 characters"
-      const value = 'I am longer than 10 characters'
+      const errorMessage = "Invalid"
       const invalid = "is-invalid"
+      const schema = yup.object().shape({
+        input: yup.string().max(1, errorMessage)
+      })
 
       // Act
-      mountFormField({ name: name, label: label, type: type,  mask: mask })
-      cy.get(`#${name}`).type(value)
+      mountFormFieldValidation({ name: name, fieldLabel: label, type: type, mask: mask, schema })
+      cy.get(`#${name}`).type(mask)
 
       // Assert
       cy.get(`#${name}`)
@@ -153,16 +166,14 @@ describe.skip('<ForgeFormField />', () => {
         .should('have.text', errorMessage)
     })
   })
-  
+
   describe('Checkbox', () => {
     // Arrange
     const type = "checkbox"
-    const label = "A custom input"
-    const name = "input"
     
     it("Displays checkbox when type is checkbox", () => {
       // Act
-      mountFormField({ name: name, type: type, label: label })
+      mountFormField({ name: name, type: type, fieldLabel: label })
 
       // Assert
       cy.get(`[data-cy="checkbox-container"]`)
@@ -174,13 +185,131 @@ describe.skip('<ForgeFormField />', () => {
       // Arrange
       const errorMessage = "This is required"
       const invalid = "is-invalid"
-
+      const schema = yup.object().shape({
+        input: yup.boolean().required(errorMessage)
+      })
+      
       // Act
-      mountFormField({ name: name, type: type, label: label })
-      cy.get(`#${name} label`).dblclick()
+      mountFormFieldValidation({ name: name, type: type, fieldLabel: label, schema })
+      cy.get(validationWrapperSubmitButton).click()
 
       // Assert
       cy.get(`[data-pc-section="input"]`)
+        .and('have.class', invalid)
+
+      cy.get('[data-cy="error"]')
+        .should('have.text', errorMessage)
+    })
+  })
+  
+  describe("Select", () => {
+    const type = "select"
+    const dropdownId = '[data-pc-name="dropdown"]'
+    
+    it("Displays dropdown when type is select", () => {
+      // Act
+      mountFormField({ name: name, type: type, fieldLabel: label })
+
+      // Assert
+      cy.get(dropdownId)
+        .should('exist')
+        .and('be.visible')
+    })
+
+    it("Displays error when validation isnt met", () => {
+      // Arrange
+      const errorMessage = "This is required"
+      const invalid = "is-invalid"
+      const schema = yup.object().shape({
+        input: yup.array().required(errorMessage)
+      })
+
+      // Act
+      mountFormFieldValidation({ name: name, type: type, fieldLabel: label, schema })
+      cy.get(validationWrapperSubmitButton).click()
+
+      // Assert
+      cy.get(dropdownId)
+        .and('have.class', invalid)
+
+      cy.get('[data-cy="error"]')
+        .should('have.text', errorMessage)
+    })
+  })
+  
+  describe("Multiselect", () => {
+    const type = "multiselect"
+    const multiselectId = '[data-cy="multiselect"]'
+    const items = [
+      { id: "1", label: "1" },
+      { id: "2", label: "2" },
+      { id: "3", label: "3" },
+    ] as MultiSelectOption<string>[]
+    const option1Id = '[data-cy="1"]'
+    const option2Id = '[data-cy="2"]'
+
+
+    it("Displays dropdown when type is select", () => {
+      // Act
+      //@ts-ignore
+      mountFormField({ name: name, type: type, fieldLabel: label, options: items, modelValue: [] })
+
+      // Assert
+      cy.get(multiselectId)
+        .should('exist')
+        .and('be.visible')
+    })
+
+    it("Displays error when validation isnt met", () => {
+      // Arrange
+      const errorMessage = "Must be less than 1"
+      const schema = yup.object().shape({
+        input: yup.array().max(1, errorMessage)
+      })
+
+
+      // Act
+      //@ts-ignore
+      mountFormFieldValidation({ name: name, type: type, fieldLabel: label, options: items, modelValue: [], schema: schema })
+      cy.get(multiselectId).click()
+      cy.get(option1Id).click()
+      cy.get(option2Id).click()
+
+
+      // Assert
+      cy.get('[data-cy="error"]').should('contain.text', errorMessage)
+    })
+  })
+  
+  describe("Datepicker", () => {
+    const type = "datepicker"
+    const datepickerId = '[data-pc-name="calendar"]'
+    const datepickerInputId = '[data-pc-section="input"]'
+
+    it("Displays datepicker when type is datepicker", () => {
+      // Act
+      mountFormField({ name: name, type: type, fieldLabel: label })
+
+      // Assert
+      cy.get(datepickerId)
+        .should('exist')
+        .and('be.visible')
+    })
+
+    it("Displays error when validation isnt met", () => {
+      // Arrange
+      const errorMessage = "This is required"
+      const invalid = "is-invalid"
+      const schema = yup.object().shape({
+        input: yup.array().required(errorMessage)
+      })
+
+      // Act
+      mountFormFieldValidation({ name: name, type: type, fieldLabel: label, schema })
+      cy.get(validationWrapperSubmitButton).click()
+
+      // Assert
+      cy.get(datepickerInputId)
         .and('have.class', invalid)
 
       cy.get('[data-cy="error"]')
