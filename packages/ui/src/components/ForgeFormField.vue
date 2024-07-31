@@ -1,6 +1,6 @@
 <template>
   <forge-checkbox :id="props.name" v-if="props.type === 'checkbox'" :label="props.fieldLabel" v-bind="$attrs"
-                  :name="props.name" v-model="model"/>
+                  :name="props.name" v-model="model" />
   <div class="d-flex flex-column w-100" v-else>
     <label :for="props.name" class="mb-1">{{ props.fieldLabel }}</label>
     <input-number :id="props.name" v-if="props.type === 'number'" v-bind="$attrs"
@@ -15,18 +15,20 @@
     />
     <InputMask :id="props.name" v-else-if="props.type === 'mask'" v-bind="$attrs"
                :placeholder="props.placeholder" :mask="props.mask" :class="{'is-invalid': hasErrors }"
-               v-model="model"
-               @input="change" @blur="handleBlur"
+               v-model="model" @complete="change" @blur="handleBlur"
     />
     <InputText :id="props.name" v-else-if="props.type === 'text'" v-bind="$attrs" 
                :placeholder="props.placeholder" :class="{'is-invalid': hasErrors }"
                v-model="model"
                @input="change" @blur="handleBlur"
     />
-    <Dropdown v-else-if="props.type === 'select'" v-bind="{...props,...$attrs}" v-model="model" />
-    <ForgeMultiSelect v-else-if="props.type === 'multiselect'" v-bind="{...props,...$attrs}" v-model="model" />
-    <ForgeDatepicker v-else-if="props.type === 'datepicker'" v-bind="{...props,...$attrs}" v-model="model" />
-    <small v-show="hasErrors && props.type !== 'multiselect' && props.type !== 'select' && props.type !== 'datepicker'" data-cy="error" class="invalid-feedback">{{ errorMessage }}</small>
+    <Dropdown v-else-if="props.type === 'select'" v-bind="{...props,...$attrs}" v-model="model"
+              :class="{'is-invalid': hasErrors }" />
+    <ForgeMultiSelect v-else-if="props.type === 'multiselect'" v-bind="{...props,...$attrs}" v-model="model"
+                      :class="{'is-invalid': hasErrors }" />
+    <ForgeDatepicker v-else-if="props.type === 'datepicker'" v-bind="{...props,...$attrs}" v-model="model"
+                     :class="{'is-invalid': hasErrors }"/>
+    <small v-show="hasErrors && props.type !== 'multiselect' && props.type !== 'datepicker'" data-cy="error" class="invalid-feedback">{{ errorMessage }}</small>
   </div>
 </template>
 
@@ -69,6 +71,7 @@ const { errors, value, errorMessage, handleChange, handleBlur } = useField(() =>
 const hasErrors = computed(() => errors.value.length > 0)
 
 watch(() => value.value, (newValue) => {
+  console.log(hasErrors.value)
   model.value = newValue
 }, { immediate: true })
 </script>

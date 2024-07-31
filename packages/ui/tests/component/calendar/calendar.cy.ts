@@ -1,9 +1,14 @@
 // @ts-ignore
 import ForgeDatepicker, { ForgeDatePickerProps } from "../../../src/components/ForgeDatepicker.vue";
+import CalendarValidationWrapper, { CalendarValidationWrapperProps } from "./calendarValidationWrapper.vue";
+import * as yup from 'yup'
 
 const id = "Calendar"
+const input = '[name="datepicker"]'
+const errorMessageId = '[data-cy="error"]'
 const beforeSlotId = "[data-cy='before-slot']"
 const afterSlotId = "[data-cy='after-slot']"
+const validationWrapperSubmitButton = "#form-button"
 
 function mountCalendar(props : ForgeDatePickerProps, beforeSlotContent : string = "", afterSlotContent : string = "") {
   // @ts-ignore
@@ -16,6 +21,16 @@ function mountCalendar(props : ForgeDatePickerProps, beforeSlotContent : string 
       before: beforeSlotContent,
       after: afterSlotContent
     }
+  })
+}
+
+function mountCalendarValidationWrapper(props : CalendarValidationWrapperProps) {
+  // @ts-ignore
+  cy.mount(CalendarValidationWrapper, {
+    props: {
+      ...props,
+      id: id
+    },
   })
 }
 
@@ -58,5 +73,29 @@ describe("<Calendar />", () => {
         .and("be.visible")
         .and("contain.text", afterSlotContent)
     });
+  })
+  
+  it("Displays validation error when schema isn't satisfied", () => {
+    // Arrange
+    const name = "datepicker"
+    const errorMessage = "Required"
+    const invalidClass = 'is-invalid'
+    const errorMessageClass = 'text-invalid'
+    const schema = yup.object().shape({
+      datepicker: yup.date().required(errorMessage)
+    })
+    
+    // Act
+    mountCalendarValidationWrapper({ name, schema })
+    cy.get(validationWrapperSubmitButton).click()
+
+    // Assert
+    cy.get(input)
+      .should('have.class', invalidClass)
+      
+    cy.get(errorMessageId)
+      .should('be.visible')
+      .and("have.text", errorMessage)
+      .and("have.class", errorMessageClass)
   })
 })

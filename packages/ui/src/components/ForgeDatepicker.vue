@@ -1,18 +1,29 @@
 <template>
-  <span data-cy="before-slot">
-    <slot name="before" />
-  </span>
-  
-  <div class="position-relative">
-    <Calendar v-bind="{...props, ...$attrs}" :pt="pt" v-model="model"/>
-    <Icon data-cy="icon" icon="bi:calendar4" v-show="props.showIcon" class="position-absolute end-0 top-50 bottom-50 my-auto me-2 text-muted bg-white" />
-    <Icon data-cy="icon" icon="bi:x" v-show="props.modelValue" @click="clear" class="position-absolute end-0 top-50 bottom-50 my-auto text-muted cursor-pointer bg-white" :class="props.showIcon ? 'datepicker-close-icon' : 'me-2'" />
+  <div class="d-flex">
+    <span data-cy="before-slot">
+      <slot name="before" />
+    </span>
+
+    <div class="position-relative">
+      <Calendar v-bind="{...props, ...$attrs}" :pt="pt" v-model="model" @update:model-value="handleChange"
+                @blur="handleBlur" :input-class="{'is-invalid': hasErrors}" />
+      <Icon data-cy="icon" icon="bi:calendar4" v-show="props.showIcon"
+            class="position-absolute end-0 top-50 bottom-50 my-auto me-2 bg-white" 
+            :class="`${ hasErrors ? 'text-danger-dark' : 'text-muted'}`"
+      />
+      <Icon data-cy="icon" icon="bi:x" v-show="props.modelValue" @click="clear"
+            class="position-absolute end-0 top-50 bottom-50 my-auto text-muted cursor-pointer bg-white"
+            :class="props.showIcon ? 'datepicker-close-icon' : 'me-2'" />
+    </div>
+
+
+    <span data-cy="after-slot">
+      <slot name="after" />
+    </span>
   </div>
 
-  
-  <span data-cy="after-slot">
-     <slot name="after" />
-  </span>
+  <small data-cy="error" class="text-invalid" v-show="hasErrors">{{ errorMessage }}</small>
+
 </template>
 
 <script setup lang="ts">
@@ -20,12 +31,14 @@ import { Icon } from '@iconify/vue'
 import { CalendarPassThroughMethodOptions, CalendarProps } from "primevue/calendar";
 import { Severity } from "../types/forge-types";
 import { computed } from "vue";
+import { useField } from "vee-validate";
 
 export interface ForgeDatePickerProps extends /* vue-ignore */ Omit<CalendarProps, "aria-label" | "aria-labelledby"> {
   severity?: Severity
 }
 
 const props = withDefaults(defineProps<ForgeDatePickerProps>(), {
+  name: "",
   severity: "primary",
   selectionMode: "single",
   dateFormat: "dd/mm/yy",
@@ -41,11 +54,19 @@ const props = withDefaults(defineProps<ForgeDatePickerProps>(), {
   appendTo: "body"
 })
 
+
 const model = defineModel<Date | Date[] | (Date | null)[] | null | undefined>()
+
+const { errors, errorMessage, handleChange, handleBlur } = useField(() => props.name, undefined, {
+  initialValue: model.value
+})
 
 const clear = () => {
   model.value = null
 }
+
+const hasErrors = computed(() => errors.value.length > 0)
+
 
 const pt = computed(() => ({
   day: ({context} : CalendarPassThroughMethodOptions) => ({
