@@ -1,5 +1,12 @@
 # @3squared/forge-ui-3
 
+## 0.10.0
+
+### Minor Changes
+
+- 4544bd7: - Add Dropdown, ForgeMultiselect and ForgeDatepicker to ForgeFormField.
+  - Add validation to ForgeDatePicker.
+
 ## 0.9.0
 
 ### Minor Changes

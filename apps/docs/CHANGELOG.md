@@ -1,5 +1,17 @@
 # forge-ui-3-styleguide
 
+## 1.9.0
+
+### Minor Changes
+
+- 4544bd7: - Add Dropdown, ForgeMultiselect and ForgeDatepicker to ForgeFormField.
+  - Add validation to ForgeDatePicker.
+
+### Patch Changes
+
+- Updated dependencies [4544bd7]
+  - @3squared/forge-ui-3@0.10.0
+
 ## 1.8.2
 
 ### Patch Changes
