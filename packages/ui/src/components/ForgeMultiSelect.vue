@@ -35,7 +35,7 @@
 <script setup lang="ts">
 import VueMultiselect from "vue-multiselect";
 import { Severity } from "../types/forge-types";
-import { TypedSchema, useField } from "vee-validate";
+import { useField } from "vee-validate";
 import { Icon } from "@iconify/vue";
 import { computed, ref, useAttrs } from "vue";
 

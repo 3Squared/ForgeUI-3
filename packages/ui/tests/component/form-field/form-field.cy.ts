@@ -15,7 +15,7 @@ describe.skip('<ForgeFormField />', () => {
     const label = "A custom input"
     
     // Act
-    mountFormField({ name: name, label: label })
+    mountFormField({ name: name, fieldLabel: label })
     
     // Assert
     cy.get(`#${name}`)
@@ -36,7 +36,7 @@ describe.skip('<ForgeFormField />', () => {
       const invalid = "is-invalid"
       
       // Act
-      mountFormField({ name: name, type: type, label: label })
+      mountFormField({ name: name, type: type, fieldLabel: label })
       cy.get(`#${name}`).type(value)
       cy.get(`#${name} input`).blur()
 
@@ -61,7 +61,7 @@ describe.skip('<ForgeFormField />', () => {
       const expectedString = "Hello123"
 
       // Act
-      mountFormField({ name: name, type: type, label: label })
+      mountFormField({ name: name, type: type, fieldLabel: label })
       cy.get(`#${name}`).type(expectedString)
 
       // Assert
@@ -75,7 +75,7 @@ describe.skip('<ForgeFormField />', () => {
       const invalid = "is-invalid"
 
       // Act
-      mountFormField({ name: name, type: type, label: label })
+      mountFormField({ name: name, type: type, fieldLabel: label })
       cy.get(`#${name}`).type(value)
 
       // Assert
@@ -99,7 +99,7 @@ describe.skip('<ForgeFormField />', () => {
       const expectedString = "Hello123"
 
       // Act
-      mountFormField({ name: name, type: type, label: label })
+      mountFormField({ name: name, type: type, fieldLabel: label })
       cy.get(`#${name}`).type(expectedString)
 
       // Assert
@@ -116,7 +116,7 @@ describe.skip('<ForgeFormField />', () => {
       const invalid = "is-invalid"
 
       // Act
-      mountFormField({ name: name, label: label, type: type})
+      mountFormField({ name: name, fieldLabel: label, type: type})
       cy.get(`#${name}`).type(value)
 
       // Assert
@@ -142,7 +142,7 @@ describe.skip('<ForgeFormField />', () => {
       const invalid = "is-invalid"
 
       // Act
-      mountFormField({ name: name, label: label, type: type,  mask: mask })
+      mountFormField({ name: name, fieldLabel: label, type: type,  mask: mask })
       cy.get(`#${name}`).type(value)
 
       // Assert
@@ -162,7 +162,7 @@ describe.skip('<ForgeFormField />', () => {
     
     it("Displays checkbox when type is checkbox", () => {
       // Act
-      mountFormField({ name: name, type: type, label: label })
+      mountFormField({ name: name, type: type, fieldLabel: label })
 
       // Assert
       cy.get(`[data-cy="checkbox-container"]`)
@@ -176,7 +176,7 @@ describe.skip('<ForgeFormField />', () => {
       const invalid = "is-invalid"
 
       // Act
-      mountFormField({ name: name, type: type, label: label })
+      mountFormField({ name: name, type: type, fieldLabel: label })
       cy.get(`#${name} label`).dblclick()
 
       // Assert
