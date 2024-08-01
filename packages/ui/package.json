@@ -58,7 +58,7 @@
     "vite-plugin-dts": "3.9.1"
   },
   "optionalDependencies": {
-    "@rollup/rollup-linux-x64-gnu": "4.19.1"
+    "@rollup/rollup-linux-x64-gnu": "4.19.2"
   },
   "nyc": {
     "all": true,
