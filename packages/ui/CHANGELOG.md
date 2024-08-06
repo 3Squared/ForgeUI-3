@@ -1,5 +1,12 @@
 # @3squared/forge-ui-3
 
+## 0.10.1
+
+### Patch Changes
+
+- 62aff77: - Fix issue where label and value wasn't taken into consideration by Dropdown or Multiselect in ForgeFilterHeader.
+  - Fix issue in ForgeFilterHeader Multiselect where the placeholder text was the wrong colour.
+
 ## 0.10.0
 
 ### Minor Changes
