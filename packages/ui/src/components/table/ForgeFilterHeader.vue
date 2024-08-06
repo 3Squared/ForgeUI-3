@@ -4,7 +4,7 @@
     <ForgeDatepicker v-else-if="dataType === 'date'" v-model="modelValue" v-bind="$attrs" :show-icon="false"
                      :show-on-focus="true" />
     <Dropdown v-else-if="dataType === 'select'" v-model="modelValue" v-bind="$attrs" :options="dropdownOptions"
-              :option-label="optionLabel" :option-value="optionValue"
+              :option-value="optionValue" :option-label="optionLabel"
     >
       <template #value="{ value, placeholder }">
         <div class="d-flex w-100">
@@ -61,7 +61,7 @@ const {
   dropdownOptions,
   clearFilter,
   optionValue,
-  optionLabel = "label",
+  optionLabel,
   showClearButton = false
 } = defineProps<ForgeFilterHeaderProps>()
 
@@ -74,10 +74,10 @@ const label = (values: string[] | string | object, placeholder: string): string 
 
   const getLabel = (value: any): string => {
     const option = dropdownOptions?.find(opt =>
-        optionValue ? opt[optionValue as string] === value :
-            typeof value === 'object' && Object.keys(opt).every(key => value.hasOwnProperty(key) && opt[key] === value[key])
+        optionValue ? opt[optionValue as string] === value : Object.keys(opt).every(key => value.hasOwnProperty(key) && opt[key] === value[key])
     );
-    return option ? option[optionLabel] : '';
+    
+    return optionLabel ? option[optionLabel] : option;
   };
 
   if (Array.isArray(values)) {
