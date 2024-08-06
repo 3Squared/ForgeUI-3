@@ -3,10 +3,12 @@
     <InputNumber v-if="dataType === 'numeric'" v-model="modelValue" v-bind="$attrs" />
     <ForgeDatepicker v-else-if="dataType === 'date'" v-model="modelValue" v-bind="$attrs" :show-icon="false"
                      :show-on-focus="true" />
-    <Dropdown v-else-if="dataType === 'select'" v-model="modelValue" v-bind="$attrs" :options="dropdownOptions">
+    <Dropdown v-else-if="dataType === 'select'" v-model="modelValue" v-bind="$attrs" :options="dropdownOptions"
+              :option-value="optionValue" :option-label="optionLabel"
+    >
       <template #value="{ value, placeholder }">
         <div class="d-flex w-100">
-          <span :class="{ 'filter-placeholder': value === null }">{{ value !== null ? value : placeholder }}</span>
+          <span :class="{ 'filter-placeholder': value === null }">{{ label(value, placeholder) }}</span>
           <Button v-if="showClearButton && modelValue !== null"
                   @click.prevent="clear" size="small"
                   class="bg-transparent border-0 ms-auto p-0 pe-1">
@@ -16,10 +18,10 @@
       </template>
     </Dropdown>
     <MultiSelect v-else-if="dataType === 'multiselect'" v-model="modelValue" v-bind="$attrs" :options="dropdownOptions"
-                 :showToggleAll="false" filter>
+                 :showToggleAll="false" :option-label="optionLabel" :option-value="optionValue" filter>
       <template #value="{ value, placeholder }">
         <div class="d-flex w-100">
-          <span :class="{ 'filter-placeholder': (value as string[])?.length === 0 }">{{ value !== null && (value as string[])?.length > 0 ? (value as string[]).join(', ') : placeholder }}</span>
+          <span :class="{ 'filter-placeholder': (value as string[])?.length === 0 || value === null }">{{ label(value, placeholder) }}</span>
           <Button v-if="showClearButton && (value as [])?.length > 0" @click.prevent="clear" size="small"
                   class="bg-transparent border-0 ms-auto p-0 pe-1">
             <Icon icon="bi:x" width="1rem" height="1rem" class="text-black" />
@@ -43,17 +45,47 @@ import Dropdown from "primevue/dropdown";
 import ForgeDatepicker from "@/components/ForgeDatepicker.vue";
 import MultiSelect from "primevue/multiselect";
 import { Icon } from '@iconify/vue'
+import { useAttrs } from "vue";
 
 export interface ForgeFilterHeaderProps {
   dataType: 'numeric' | 'date' | 'multiselect' | 'select' | undefined,
   dropdownOptions?: any[],
   showClearButton?: boolean
-  clearFilter?: Function
+  clearFilter?: Function,
+  optionLabel?: string,
+  optionValue?: string
 }
 
-const { dataType, dropdownOptions, clearFilter, showClearButton = false } = defineProps<ForgeFilterHeaderProps>()
+const {
+  dataType,
+  dropdownOptions,
+  clearFilter,
+  optionValue,
+  optionLabel,
+  showClearButton = false
+} = defineProps<ForgeFilterHeaderProps>()
 
 const modelValue = defineModel({ required: true })
+
+const label = (values: string[] | string | object, placeholder: string): string => {
+  if (!values || (Array.isArray(values) && values.length === 0)) {
+    return placeholder;
+  }
+
+  const getLabel = (value: any): string => {
+    const option = dropdownOptions?.find(opt =>
+        optionValue ? opt[optionValue as string] === value : Object.keys(opt).every(key => value.hasOwnProperty(key) && opt[key] === value[key])
+    );
+    
+    return optionLabel ? option[optionLabel] : option;
+  };
+
+  if (Array.isArray(values)) {
+    return values.map(getLabel).join(', ');
+  } else {
+    return typeof values === 'object' ? getLabel(values) : values;
+  }
+};
 
 const clear = () => {
   if(clearFilter) {
