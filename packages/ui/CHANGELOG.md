@@ -1,5 +1,11 @@
 # @3squared/forge-ui-3
 
+## 0.11.0
+
+### Minor Changes
+
+- 8f243cc: Add utility methods to convert arrays and objects to multiselect options.
+
 ## 0.10.2
 
 ### Patch Changes
