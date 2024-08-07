@@ -4,7 +4,7 @@
       <slot name="before" />
     </span>
 
-    <div class="position-relative">
+    <div class="position-relative w-100">
       <Calendar v-bind="{...props, ...$attrs}" :pt="pt" v-model="model" @update:model-value="handleChange"
                 @blur="handleBlur" :input-class="{'is-invalid': hasErrors}" />
       <Icon data-cy="icon" icon="bi:calendar4" v-show="props.showIcon"
