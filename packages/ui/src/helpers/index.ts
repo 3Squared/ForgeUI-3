@@ -1,3 +1,5 @@
+import { MultiSelectOption } from "../types/forge-types.ts";
+
 export function parseError(error: any) {
   const result = {
     errorMessage: "",
@@ -26,4 +28,12 @@ export function parseError(error: any) {
     result.errorMessage = error;
   }
   return result;
+}
+
+export function enumToMultiSelectList<T>(items: readonly T[], formatter?: (val: T) => string): MultiSelectOption<T>[] {
+  return items.map((i) => ({ id: i, label: formatter ? formatter(i) : `${i}` }));
+}
+
+export function convertToMultiSelectOption<T>(id: T & Pick<string, "toString">, label?: string, shortLabel?: string): MultiSelectOption<T> {
+  return { id: id, label: label ?? id.toString(), shortLabel: shortLabel };
 }
