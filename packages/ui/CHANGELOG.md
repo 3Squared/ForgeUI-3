@@ -1,5 +1,11 @@
 # @3squared/forge-ui-3
 
+## 0.10.2
+
+### Patch Changes
+
+- cbd59d2: Fix issue where label wouldn't display in ForgeFilterHeader if optionValue is defined
+
 ## 0.10.1
 
 ### Patch Changes
