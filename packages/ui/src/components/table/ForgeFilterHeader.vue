@@ -83,7 +83,7 @@ const label = (values: string[] | string | object, placeholder: string): string 
   if (Array.isArray(values)) {
     return values.map(getLabel).join(', ');
   } else {
-    return typeof values === 'object' ? getLabel(values) : values;
+    return getLabel(values);
   }
 };
 
