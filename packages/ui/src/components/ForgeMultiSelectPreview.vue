@@ -1,10 +1,10 @@
 <template>
   <div :class="orientation === 'column' ? 'row' : ''" data-cy="multiselect-preview">
     <div :class="orientation === 'row' ? 'col-12 mb-1' : 'col'" data-cy="multiselect-container">
-      <forge-multi-select @update:modelValue="(items : MultiSelectOption<unknown>[]) => update(items)" v-model="$attrs.modelValue" :limit-text="limitText" :options="props.options" >
+      <forge-multi-select v-model="model" :limit-text="() => `${model.length} selected`" :options="props.options" v-bind="{...$attrs}">
         <template #tag>{{ "" }}</template>
         <template #selection>
-          <span v-if="($attrs.modelValue as MultiSelectOption<any>[]).length > 0" class="pl-1">{{ numberOfItemsSelected }} items selected</span>
+          <span v-if="model.length > 0" class="pl-1">{{ model.length }} items selected</span>
         </template>
         <slot v-for="(_, name) in $slots" :slot="name" :name="name" />
       </forge-multi-select>
@@ -15,7 +15,7 @@
       <div :style="{ height: height }" class="overflow-auto">
         <div class="border alternating-item-list">
           <div v-if="title" class="p-2 border-top border-bottom" data-cy="title">{{ title }}</div>
-          <div v-for="item in ($attrs.modelValue as MultiSelectOption<any>[])" :key="item.id"
+          <div v-for="item in model" :key="item.id"
                class="p-2 item d-flex justify-content-between align-items-center">
             <!-- @slot Use this slot if the default labels is not enough, maybe for a b-link to redirect the user to the item -->
             <slot name="list-item" :item="item">
@@ -25,7 +25,7 @@
               <Icon icon="bi:x" class="close-icon" :data-cy="`close-icon-${item.id}`"/>
             </Button>
           </div>
-          <div v-if="($attrs.modelValue as MultiSelectOption<any>[]).length === 0" class="p-2 item d-flex justify-content-between align-items-center">No Items Selected.</div>
+          <div v-if="model.length === 0" class="p-2 item d-flex justify-content-between align-items-center">{{ props.optionsPreviewEmptyText }}</div>
         </div>
       </div>
     </div>
@@ -34,37 +34,30 @@
 
 <script setup lang="ts">
 import { Icon } from '@iconify/vue'
-import { ForgeMultiSelectOrientation, MultiSelectOption } from "../types/forge-types";
-import { computed, useAttrs } from "vue";
+import { ForgeMultiSelectOrientation, MultiSelectOption } from "../types/forge-types"; 
 import ForgeMultiSelect from "@/components/ForgeMultiSelect.vue";
 
 export interface ForgeMultiSelectPreviewProps {
   title?: string,
   orientation?: ForgeMultiSelectOrientation,
   height?: string,
-  options: MultiSelectOption<unknown>[],
-  canRemoveItemFromPreview?: boolean
+  options: MultiSelectOption<any>[],
+  canRemoveItemFromPreview?: boolean,
+  optionsPreviewEmptyText?: string
 }
 
 const props = withDefaults(defineProps<ForgeMultiSelectPreviewProps>(), {
   orientation: "row",
   canRemoveItemFromPreview: false,
   height: "200px",
-  title: "Selected Items"
+  title: "Selected Items",
+  optionsPreviewEmptyText: 'No Items Selected.'
 })
-const attrs = useAttrs();
-const emits = defineEmits(['update:modelValue'])
 
-const limitText = computed(() => `${(attrs.modelValue as MultiSelectOption<unknown>[]).length} selected`);
-
-const numberOfItemsSelected = computed(() => (attrs.modelValue as MultiSelectOption<unknown>[]).length)
-
-const update = (items : MultiSelectOption<unknown>[]) => {
-  emits('update:modelValue', items)
-}
+const model = defineModel<MultiSelectOption<unknown>[]>({ default: []})
 
 const removeSelectedItem = (id : unknown) => {
-  update((attrs.modelValue as MultiSelectOption<any>[]).filter((x) => x.id !== id))
+  model.value = model.value.filter((x) => x.id !== id)
 }
 
 </script>
