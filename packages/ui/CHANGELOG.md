@@ -1,5 +1,12 @@
 # @3squared/forge-ui-3
 
+## 0.11.1
+
+### Patch Changes
+
+- 9d36cda: - Fix issue where clicking multiselect option wouldn't check checkbox when clicking in a certain area of the option.
+  - Fix issue where attributes weren't passed to ForgeMultiselect when using ForgeMultiselectPreview.
+
 ## 0.11.0
 
 ### Minor Changes
