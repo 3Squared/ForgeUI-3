@@ -7,7 +7,7 @@
     <template v-if="multiselectProps.multiple && showSelectAll && !multiselectProps.async" #beforeList>
       <li class="multiselect__element" @click="selectAll" @mouseover="onMouseOver" @mouseleave="onMouseLeave" data-cy="toggle-all">
         <span :class="`${optionHighlight}`">
-          <ForgeCheckbox :value="isAllSelected">
+          <ForgeCheckbox :value="isAllSelected" class="w-100 p-1">
             <div class="ps-1">Select all</div>
           </ForgeCheckbox>
         </span>
@@ -15,7 +15,7 @@
     </template>
     <template v-if="multiselectProps.multiple" #option="{option}" >
       <div :data-cy="option.label">
-        <ForgeCheckbox :value="isChecked(option)" :key="option">
+        <ForgeCheckbox :value="isChecked(option)" class="w-100 p-1">
           <div class="ps-1 w-100">{{ option[multiselectProps.label] }}</div>
         </ForgeCheckbox>
       </div>
@@ -141,7 +141,7 @@ const select = (value: Array<any>) => {
 }
 
 const isChecked = (option : any) => {
-  if( attrs.modelValue !== null){
+  if(attrs.modelValue !== null){
     return (attrs.modelValue as Array<any>)
         .some(item => multiselectProps.value.selectValue ? option[props.selectValue] === item : option.id === item.id && option.label === item.label)
   }
