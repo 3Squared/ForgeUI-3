@@ -45,7 +45,8 @@ const { options, propVals, config } = usePlayground(
     canRemoveItemFromPreview: true,
     multiple: true,
     trackBy: "id",
-    label: "label"
+    label: "label",
+    optionsPreviewEmptyText: "No Items Selected."
   },
   {
     vModel: { required: true, disabled: () => true },
