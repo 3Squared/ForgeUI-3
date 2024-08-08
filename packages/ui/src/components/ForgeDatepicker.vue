@@ -57,11 +57,12 @@ const props = withDefaults(defineProps<ForgeDatePickerProps>(), {
 
 const model = defineModel<Date | Date[] | (Date | null)[] | null | undefined>()
 
-const { errors, errorMessage, handleChange, handleBlur } = useField(() => props.name, undefined, {
+const { errors, errorMessage, handleChange, handleBlur, setValue } = useField(() => props.name, undefined, {
   initialValue: model.value
 })
 
 const clear = () => {
+  setValue(null)
   model.value = null
 }
 

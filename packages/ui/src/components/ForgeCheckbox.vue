@@ -1,11 +1,11 @@
 <template>
   <div class="d-flex" data-cy="checkbox-container" v-bind="{...$attrs}">
-    <Checkbox :id="props.name" v-bind="{...props}" v-model="checked" :input-class="{'is-invalid': hasErrors }" @change="changeState">
+    <Checkbox :id="props.name" v-bind="{...props}" v-model="model" :input-class="{'is-invalid': hasErrors }" @update:model-value="changeState">
       <template #icon>
         <div />
       </template>
     </Checkbox>
-    <label :for="props.name" :class="`${props.disabled ? 'opacity-50' : 'cursor-pointer'} ${hasErrors ? 'text-danger-dark' : ''}`" @click="changeState">
+    <label :for="props.name" class="w-100 my-auto" :class="`${props.disabled ? 'opacity-50' : 'cursor-pointer'} ${hasErrors ? 'text-danger-dark' : ''}`" @click="changeState">
       <slot>{{ props.label }}</slot>
     </label>
   </div>
@@ -18,13 +18,14 @@
 import { CheckboxProps } from "primevue/checkbox";
 import { useField } from "vee-validate";
 import { computed, onMounted, watch } from "vue";
+
 type CheckProps = Omit<CheckboxProps, "aria-label" | "aria-labelledby">
 
 export interface ForgeCheckProps extends CheckProps {
   label: string
 }
 
-const emits = defineEmits(['update:modelValue'])
+const model = defineModel<boolean>()
 
 const props = withDefaults(defineProps<ForgeCheckProps>(), 
     {
@@ -32,15 +33,15 @@ const props = withDefaults(defineProps<ForgeCheckProps>(),
       label: ""
     })
 
-const { checked, handleChange, setValue, errors, errorMessage } = useField(() => props.name ?? props.label, undefined, {
+const { handleChange, checked, setValue, errors, errorMessage } = useField(() => props.name ?? props.label, undefined, {
   type: "checkbox",
-  checkedValue: true
+  checkedValue: model.value
 })
 
 const changeState = (event : Event) => {
   if(!props.disabled) {
     handleChange(event)
-    emits('update:modelValue', !props.modelValue)
+    model.value = !model.value
   }
 }
 
