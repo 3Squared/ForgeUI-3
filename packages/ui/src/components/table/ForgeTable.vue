@@ -66,7 +66,8 @@ export interface ForgeTableProps extends DataTableProps {
   showClearButton?: boolean,
   showExporterButton?: boolean,
   stickyHeader?: boolean,
-  severity?: Severity
+  severity?: Severity,
+  clearAll?: Function
 }
 
 const emits = defineEmits(['update:filters', 'update:tableContext', 'sort', 'page'])
@@ -124,13 +125,18 @@ const pt = computed<DefaultPassThrough<DataTablePassThroughOptions>>(() => ({
 }))
 
 const clearAllFilters = () => {
-  for (const key in props.filters){
-    if(typeof props.filters[key] === "string") {
-      props.filters[key] = ""
-    } else {
-      (props.filters[key] as DataTableFilterMetaData).value = null
+  if(props.clearAll) {
+    props.clearAll()
+  } else {
+    for (const key in props.filters){
+      if(typeof props.filters[key] === "string") {
+        props.filters[key] = ""
+      } else {
+        (props.filters[key] as DataTableFilterMetaData).value = null
+      }
     }
   }
+
   emitUpdateFilter(props.filters)
 }
 const exportData = () => {
