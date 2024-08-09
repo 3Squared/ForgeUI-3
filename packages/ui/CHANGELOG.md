@@ -1,5 +1,11 @@
 # @3squared/forge-ui-3
 
+## 0.12.0
+
+### Minor Changes
+
+- 6a541da: Add Clear All prop to Forge Table so that the developer is able to customise how filters are cleared.
+
 ## 0.11.1
 
 ### Patch Changes
