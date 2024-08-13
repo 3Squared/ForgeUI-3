@@ -77,7 +77,7 @@ const pages = [
         ]
       },
       { label: "Remaining Characters", command: () => router.push("/forms/remainingcharacters") },
-      { label: "Switch", command: () => router.push("/forms/switch") },
+      { label: "Switch", command: () => router.push("/forms/switch") }
     ]
   },
   {
