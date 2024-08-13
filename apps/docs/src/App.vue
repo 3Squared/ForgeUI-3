@@ -62,6 +62,7 @@ const pages = [
           { label: "Multiselect Preview", command: () => router.push("/forms/dropdowns/multiselectpreview") }
         ]
       },
+      { label: "File Uploader", command: () => router.push("/forms/fileuploader") },
       { label: "Form", command: () => router.push("/forms/form") },
       {
         label: "Inputs",
@@ -76,7 +77,7 @@ const pages = [
         ]
       },
       { label: "Remaining Characters", command: () => router.push("/forms/remainingcharacters") },
-      { label: "Switch", command: () => router.push("/forms/switch") }
+      { label: "Switch", command: () => router.push("/forms/switch") },
     ]
   },
   {
