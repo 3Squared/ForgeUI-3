@@ -1,5 +1,11 @@
 # forge-ui-3-styleguide
 
+## 1.9.1
+
+### Patch Changes
+
+- 4294ef1: Add missing File Uploader link to Navbar
+
 ## 1.9.0
 
 ### Minor Changes
