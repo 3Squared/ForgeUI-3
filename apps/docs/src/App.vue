@@ -62,6 +62,7 @@ const pages = [
           { label: "Multiselect Preview", command: () => router.push("/forms/dropdowns/multiselectpreview") }
         ]
       },
+      { label: "File Uploader", command: () => router.push("/forms/fileuploader") },
       { label: "Form", command: () => router.push("/forms/form") },
       {
         label: "Inputs",
