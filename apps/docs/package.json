@@ -27,7 +27,7 @@
     "eslint-config-custom": "*",
     "eslint-plugin-prettier": "5.2.1",
     "typescript": "5.5.4",
-    "unplugin-vue-router": "0.10.3",
+    "unplugin-vue-router": "0.10.4",
     "vite": "5.4.0",
     "vue-tsc": "2.0.29"
   }
