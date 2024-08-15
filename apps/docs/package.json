@@ -19,7 +19,7 @@
     "@iconify/vue": "4.1.2",
     "rgb-hex": "4.1.0",
     "unplugin-vue-markdown": "0.26.2",
-    "vue": "3.4.37",
+    "vue": "3.4.38",
     "vue-router": "4.4.3"
   },
   "devDependencies": {
