@@ -36,6 +36,7 @@
                   binary
                   class="mb-2"
                   :disabled="isDisabled(key)"
+                  :name="key"
                 />
                 <template v-else-if="typeof option === 'number'">
                   <label>{{ key }}</label>

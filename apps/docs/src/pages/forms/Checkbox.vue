@@ -8,7 +8,7 @@
     </p>
     <Playground :options="options" :code="code" :config="config" @reset="reset">
       <template #component>
-        <component :is="ForgeCheckbox" v-bind="options" v-model="value" />
+        <ForgeCheckbox v-model="value" v-bind="options"/>
       </template>
     </Playground>
   </div>
@@ -16,14 +16,13 @@
 
 <script setup lang="ts">
 import { ForgeCheckbox, ForgePageHeader } from "@3squared/forge-ui-3";
-import { Playground, usePlayground } from "@3squared/forge-playground-3";
+import { usePlayground, Playground } from "@3squared/forge-playground-3";
 import { computed, ref } from "vue";
 
 const { options, propVals, config, reset } = usePlayground(
   {
     label: "",
-    binary: true,
-    name: "",
+    name: "test",
     disabled: false,
     readonly: false,
     tabindex: 0
