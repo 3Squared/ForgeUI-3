@@ -18,7 +18,7 @@
       </li>
     </template>
     <template v-if="multiselectProps.multiple" #option="{option}">
-      <div class="d-flex py-1">
+      <div class="d-flex py-1" :data-cy="option.label">
         <input
             :checked="isChecked(option)"
             name="selected"

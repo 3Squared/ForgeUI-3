@@ -1,16 +1,19 @@
 <template>
-  <div class="d-flex cursor-pointer" @click="handleChange(value)">
-    <Checkbox v-bind="{ ...$attrs, ...props }" binary v-model="value"
-              :input-id="props.name" :input-class="{'is-invalid': hasErrors }"
-    />
-    <label :for="props.name" @click="handleChange(value)"
-           :class="`${props.disabled ? 'opacity-50' : 'cursor-pointer'} ${hasErrors ? 'text-danger-dark' : ''}`"
-           class="w-100 my-auto"
-    >
-      <slot>{{ props.label }}</slot>
-    </label>
+  <div class="d-flex flex-column">
+    <div class="d-flex cursor-pointer" data-cy="checkbox-container" @click="handleChange(value)" v-bind="{...$attrs}">
+      <Checkbox v-bind="{ ...props }" binary v-model="value"
+                :input-id="props.name" :input-class="{'is-invalid': hasErrors }"
+      />
+      <label :for="props.name" @click="handleChange(value)"
+             :class="`${props.disabled ? 'opacity-50' : 'cursor-pointer'} ${hasErrors ? 'text-danger-dark' : ''}`"
+             class="w-100 my-auto"
+      >
+        <slot>{{ props.label }}</slot>
+      </label>
+    </div>
+    <small data-cy="error" class="text-invalid" v-show="hasErrors">{{ errorMessage }}</small>
   </div>
-  <small data-cy="error" class="text-invalid" v-show="hasErrors">{{ errorMessage }}</small>
+
 </template>
 
 <script setup lang="ts">
@@ -36,7 +39,7 @@ const {
   handleChange,
   errors,
   errorMessage
-} = useField(() => 'test', undefined, {
+} = useField(() => props.name ?? "", undefined, {
   type: "checkbox",
   checkedValue: value.value
 })
