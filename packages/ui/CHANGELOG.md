@@ -1,5 +1,11 @@
 # @3squared/forge-ui-3
 
+## 0.12.1
+
+### Patch Changes
+
+- d6deb37: Fix issue where divider had a large margin.
+
 ## 0.12.0
 
 ### Minor Changes
