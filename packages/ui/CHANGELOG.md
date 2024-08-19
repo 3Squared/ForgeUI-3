@@ -1,5 +1,11 @@
 # @3squared/forge-ui-3
 
+## 0.13.0
+
+### Minor Changes
+
+- f373b6f: - Add size prop to ForgeModal, this will allow for a modals width to be made bigger or smaller.
+
 ## 0.12.1
 
 ### Patch Changes
