@@ -1,6 +1,7 @@
 import DialogWrapper from "./DialogWrapper.vue";
 // @ts-ignore
 import { ForgeModalProps } from "../../../src/components/ForgeModal.vue";
+import { Size } from "../../../src/types/forge-types.ts";
 
 const modalId = "modal"
 const dialog = '[data-pc-name="dialog"]'
@@ -231,5 +232,25 @@ describe('<Dialog />', () => {
     // Assert
     cy.get(`[data-cy="footer"]`)
       .should('not.exist')
+  })
+  
+  describe("Sizes", () => {
+    ;[
+      { title: "Should show medium sized modal when size is undefined", size: undefined, expectedClass: "modal" },
+      { title: "Should show medium sized modal when size is md", size: "md", expectedClass: "modal" },
+      { title: "Should show small sized modal when size is sm", size: "sm", expectedClass: "modal-sm"},
+      { title: "Should show large sized modal when size is lg", size: "lg", expectedClass: "modal-lg" },
+      { title: "Should show extra large sized modal when size is xl", size: "xl", expectedClass: "modal-xl" },
+    ].forEach(({ title, size, expectedClass}) => {
+      it(title, () => {
+        // Act
+        mountDialog({ size: size as Size | 'xl' })
+        
+        // Assert
+        cy.get(`#${modalId}`)
+          .should('exist')
+          .and('have.class', expectedClass)
+      })
+    })
   })
 })

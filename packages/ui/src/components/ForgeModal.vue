@@ -39,6 +39,7 @@ import ForgeAlert from "./ForgeAlert.vue";
 import ForgeLoader from "./ForgeLoader.vue";
 import { computed, ref } from "vue";
 import { parseError } from "../helpers";
+import { Size } from "../types/forge-types.ts";
 
 interface ModalError {
   hasError: boolean;
@@ -52,7 +53,8 @@ export interface ForgeModalProps extends DialogProps {
   showFooter?: boolean,
   onConfirm?: Function | null,
   submitButtonType?: 'button' | 'reset' | 'submit',
-  cancelButtonType?: 'button' | 'reset' | 'submit'
+  cancelButtonType?: 'button' | 'reset' | 'submit',
+  size?: Size | 'xl'
 }
 
 const visible = defineModel<boolean>('visible', { required: true })
@@ -70,7 +72,8 @@ const props = withDefaults(defineProps<ForgeModalProps>(), {
   showFooter: true,
   onConfirm: null,
   cancelButtonType: "button",
-  submitButtonType: "button"
+  submitButtonType: "button",
+  size: "md"
 })
 
 const loading = ref(false)
@@ -117,7 +120,10 @@ const pt = computed<DialogPassThroughOptions>(() => ({
   root: [
     'modal modal-dialog modal-content h-auto m-0',
     {
-      'mw-100 vh-100 vw-100 top-0 start-0': fullscreen.value
+      'mw-100 vh-100 vw-100 top-0 start-0': fullscreen.value,
+      'modal-sm': props.size === 'sm',
+      'modal-lg': props.size === 'lg',
+      'modal-xl': props.size === 'xl'
     }
   ]
 }))

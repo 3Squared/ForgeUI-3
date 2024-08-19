@@ -2,7 +2,7 @@ export const severities = ["primary", "secondary", "warning", "danger", "success
 
 export const formFieldTypes = ["text", "number", "checkbox", "textarea", "mask", "select", "multiselect", "datepicker"];
 export const sizes = ["small", "large"];
-export const statWidgetSizes = ["sm", "md", "lg"];
+export const shorthandSizes = ["sm", "md", "lg"];
 
 export const linkOffsets = ["0", "1", "2", "3"];
 export const linkOpacities = ["10", "25", "50", "75", "100"];
