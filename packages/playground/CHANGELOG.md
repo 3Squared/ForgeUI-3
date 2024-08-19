@@ -1,5 +1,14 @@
 # @3squared/forge-playground-3
 
+## 1.0.4
+
+### Patch Changes
+
+- f5e8319: - Refactor ForgeCheckbox so that the implementation is simpler.
+  - Fix issue where clicking right at the top of a multiselect option wouldn't check the checkbox.
+- Updated dependencies [f5e8319]
+  - @3squared/forge-ui-3@0.13.1
+
 ## 1.0.3
 
 ### Patch Changes
