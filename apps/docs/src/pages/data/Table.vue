@@ -83,7 +83,7 @@ const { options, propVals, config, reset } = usePlayground(
   {
     severity: "undefined",
     legacyPaginationFooter: false,
-    total: products.length,
+    totalRecords: products.length,
     first: 0,
     pageLinkSize: 5,
     stickyHeader: true,
@@ -135,11 +135,6 @@ const componentCode = computed<string>(
       <template #filter="{ field }">
         <forge-filter-header :data-type="column.dataType" v-model="filters[field].value" :dropdown-options="dropdownOptions" />
       </template>
-      // Required for inline Editing
-      <template #editor="{ data, field }">
-        <InputText v-model="data[field]" autofocus v-if="field !== 'quantity' && field !== 'code'" />
-        <InputNumber v-model="data[field]" autofocus v-else />
-      </template>
     </Column>
   </ForgeTable>
 `
@@ -148,8 +143,9 @@ const componentCode = computed<string>(
 const scriptCode = computed<string>(
   () => `
  <script setup lang="ts">
- import { ForgeColumn } from "@3squared/forge-ui-3";
+ import { ForgeColumn, ForgeFilterHeader } from "@3squared/forge-ui-3";
  import { FilterMatchMode } from "primevue/api";
+ import { ref } from 'vue'
 
   // Data to appear in table, properties must match the 'field' property in columns array unless specified otherwise.
   const tableData = [
@@ -170,9 +166,9 @@ const scriptCode = computed<string>(
     { field: "name", header: "Name", sortable: true },
     { field: "category", header: "Category", dataType: "multiselect", sortable: true },
     { field: "quantity", header: "Quantity", dataType: "numeric", sortable: true }
-  ] as ForgeColumn[];
+  ];
   
-  const filters = ref({
+  const tableFilters = ref({
     code: { value: null, matchMode: FilterMatchMode.STARTS_WITH },
     name: { value: null, matchMode: FilterMatchMode.STARTS_WITH },
     category: { value: null, matchMode: FilterMatchMode.IN },

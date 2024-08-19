@@ -48,6 +48,7 @@ export default defineConfig(({mode}) => {
         'primevue/image',
         'primevue/inputmask',
         'primevue/inputnumber',
+        'primevue/inputswitch',
         'primevue/inputtext',
         'primevue/menubar',
         'primevue/message',
@@ -68,7 +69,8 @@ export default defineConfig(({mode}) => {
         'sass',
         'vee-validate',
         'vue-multiselect',
-        'vue'
+        'vue',
+        'yup'
       ]
     },
     plugins: [

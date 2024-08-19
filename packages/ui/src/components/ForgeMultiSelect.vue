@@ -1,30 +1,39 @@
 <template>
-  <VueMultiselect v-bind="multiselectProps" :class="[theme, hasErrors ? 'is-invalid' : '']" data-cy="multiselect" @update:modelValue="select" v-model="value" >
+  <VueMultiselect v-bind="multiselectProps" :class="[theme, hasErrors ? 'is-invalid' : '']" data-cy="multiselect"
+                  @update:modelValue="select" v-model="value">
     <template #caret="{ toggle }">
-      <Icon icon="bi:x" class="my-auto multiselect__clear-icon" @mousedown.prevent.stop="clearSelected()" data-cy="clear" height="18px" width="18px" v-if="shouldShowClearSelection"/>
+      <Icon icon="bi:x" class="my-auto multiselect__clear-icon" @mousedown.prevent.stop="clearSelected()"
+            data-cy="clear" height="18px" width="18px" v-if="shouldShowClearSelection" />
       <Icon icon="bi:chevron-down" @click="toggle" class="multiselect__select" />
     </template>
     <template v-if="multiselectProps.multiple && showSelectAll && !multiselectProps.async" #beforeList>
-      <li class="multiselect__element" @click="selectAll" @mouseover="onMouseOver" @mouseleave="onMouseLeave" data-cy="toggle-all">
-        <span :class="`${optionHighlight}`">
-          <ForgeCheckbox :value="isAllSelected" class="w-100 p-1">
-            <div class="ps-1">Select all</div>
-          </ForgeCheckbox>
-        </span>
+      <li class="multiselect__element" @click="selectAll" @mouseover="onMouseOver" @mouseleave="onMouseLeave"
+          data-cy="toggle-all">
+        <div class="d-flex py-1" :class="optionHighlight">
+          <input :checked="isAllSelected" name="selected" type="checkbox"
+                 class="form-check-input px-2 py-2 rounded ms-2 cursor-pointer"
+          />
+          <div class="my-auto ms-1">Toggle all</div>
+        </div>
       </li>
     </template>
-    <template v-if="multiselectProps.multiple" #option="{option}" >
-      <div :data-cy="option.label">
-        <ForgeCheckbox :value="isChecked(option)" class="w-100 p-1">
-          <div class="ps-1 w-100">{{ option[multiselectProps.label] }}</div>
-        </ForgeCheckbox>
+    <template v-if="multiselectProps.multiple" #option="{option}">
+      <div class="d-flex py-1" :data-cy="option.label">
+        <input
+            :checked="isChecked(option)"
+            name="selected"
+            type="checkbox"
+            class="form-check-input px-2 py-2 rounded ms-2 cursor-pointer"
+        />
+        <div class="my-auto ms-1">{{ option[multiselectProps.label] }}</div>
       </div>
+
     </template>
     <template #tag="{option, remove}">
       <div class="multiselect__tag d-inline-flex">
         <div class="my-auto">{{ option.label }}</div>
         <Icon icon="bi:x" class="my-auto multiselect__tag-icon" @mousedown.prevent.stop="removeElement(remove, option)"
-              height="18px" width="18px"  />
+              height="18px" width="18px" />
       </div>
     </template>
     <slot v-for="(_, name) in $slots" :slot="name" :name="name" />
@@ -71,12 +80,12 @@ const props = withDefaults(defineProps<ForgeMultiSelectProps>(), {
   name: ""
 })
 
-const removeElement = (remove : Function, element : any) => {
+const removeElement = (remove: Function, element: any) => {
   const elementToRemove = {
     ...element,
     $isDisabled: element.$isDisabled ?? false
   }
-  
+
   remove(elementToRemove);
 }
 
@@ -140,8 +149,8 @@ const select = (value: Array<any>) => {
   emits("update:modelValue", props.selectValue ? value.map(s => s[props.selectValue!]) : value);
 }
 
-const isChecked = (option : any) => {
-  if(attrs.modelValue !== null){
+const isChecked = (option: any) => {
+  if (attrs.modelValue !== null) {
     return (attrs.modelValue as Array<any>)
         .some(item => multiselectProps.value.selectValue ? option[props.selectValue] === item : option.id === item.id && option.label === item.label)
   }
