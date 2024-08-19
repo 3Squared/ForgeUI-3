@@ -1,5 +1,12 @@
 # @3squared/forge-ui-3
 
+## 0.13.1
+
+### Patch Changes
+
+- f5e8319: - Refactor ForgeCheckbox so that the implementation is simpler.
+  - Fix issue where clicking right at the top of a multiselect option wouldn't check the checkbox.
+
 ## 0.13.0
 
 ### Minor Changes
