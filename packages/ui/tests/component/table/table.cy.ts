@@ -33,6 +33,7 @@ const legacyPageSizeId = '[data-cy="legacy-page-size"]'
 const legacyTotalId = '[data-cy="legacy-total"]'
 
 const aboveTableSlotId = '[data-cy="above-table-slot"]'
+const emptyTableSlotId = '[data-cy="empty-message"]'
 
 const columns = [
   { header: "Column 1", field: 'column1' },
@@ -147,6 +148,21 @@ describe('<ForgeTable />', () => {
         .and('be.visible')
         .and('contain.text', content)
     })
+    
+    it("Displays a default empty slot if empty message prop isn't defined or the slot isn't defined", () => {
+      // Arrange
+      const expectedContent = "No items Found."
+
+      // Act
+      mountTable({ tableProps: { value: [] }, columns: columns })
+
+      // Assert
+      cy.get(emptyTableSlotId)
+        .should('exist')
+        .and('be.visible')
+        .and('contain.text', expectedContent)
+    })
+    
     it("Displays content in a pre-defined slot", () => {
       // Arrange
       const content = "I'm in the footer!"
@@ -161,7 +177,21 @@ describe('<ForgeTable />', () => {
         .and('contain.text', content)
     })
   })
-  
+
+  it('Should display custom empty message if table has no items and the empty message prop is passed', () => {
+    // Arrange
+    const expectedContent = "Empty!."
+
+    // Act
+    mountTable({ tableProps: { value: [], emptyMessage: expectedContent }, columns: columns })
+
+    // Assert
+    cy.get(emptyTableSlotId)
+      .should('exist')
+      .and('be.visible')
+      .and('contain.text', expectedContent)
+  });
+
   describe("Filters", () => {
     beforeEach(() => {
       const filters = {

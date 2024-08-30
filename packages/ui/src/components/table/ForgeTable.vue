@@ -9,7 +9,7 @@
       </template>
       <template #empty>
         <div class="d-flex w-100">
-          <h5 class="mx-auto">{{ emptyMessage ?? 'No items Found.'}}</h5>
+          <h5 class="mx-auto" data-cy="empty-message">{{ emptyMessage ?? 'No items Found.'}}</h5>
         </div>
       </template>
       <template #header>
