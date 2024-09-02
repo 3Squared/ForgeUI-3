@@ -21,7 +21,8 @@ import { Playground, usePlayground } from "@3squared/forge-playground-3";
 import { computed } from "vue";
 
 const { options, propVals, config, reset } = usePlayground({
-  autoResize: false
+  autoResize: false,
+  placeholder: ""
 });
 
 const code = computed(() => `<TextArea${propVals.value.length > 0 ? " " + propVals.value.join(" ") : ""} />`);

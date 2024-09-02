@@ -25,7 +25,8 @@ const size = ref();
 
 const { options, propVals, config, reset } = usePlayground(
   {
-    size: ""
+    size: "",
+    placeholder: ""
   },
   {
     size: { type: "select", options: sizes }

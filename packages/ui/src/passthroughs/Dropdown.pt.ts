@@ -2,14 +2,18 @@ import { DropdownPassThroughMethodOptions } from "primevue/dropdown";
 
 export default {
   dropdown: {
-    root: ({ props }: DropdownPassThroughMethodOptions<any>) => ({
-      class: [
-        'form-control d-flex cursor-pointer',
-        {
-          'disabled': props.disabled
-        }
-      ]
-    }),
+    root: ({ props }: DropdownPassThroughMethodOptions<any>) => {
+      
+      return {
+        class: [
+          'form-control d-flex cursor-pointer',
+          {
+            'disabled': props.disabled
+          }
+        ]
+      }
+
+    },
     trigger: (options : DropdownPassThroughMethodOptions<any>) => ({
       class: [
         'my-auto',
@@ -59,6 +63,13 @@ export default {
     clearicon: "ms-auto my-auto",
     loadingIcon: 'spinner-border spinner-border-sm border-0',
     itemGroupLabel: "ps-2 fw-bold",
-    input: 'w-100'
+    input: ({ instance } : DropdownPassThroughMethodOptions<any>) => ({
+      class: [
+        'w-100',
+        {
+          'filter-placeholder': instance.modelValue === undefined
+        }
+      ]
+    })
   }
 }

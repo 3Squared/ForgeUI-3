@@ -2,9 +2,11 @@
   <VueMultiselect v-bind="multiselectProps" :class="[theme, hasErrors ? 'is-invalid' : '']" data-cy="multiselect"
                   @update:modelValue="select" v-model="value">
     <template #caret="{ toggle }">
-      <Icon icon="bi:x" class="my-auto multiselect__clear-icon" @mousedown.prevent.stop="clearSelected()"
-            data-cy="clear" height="18px" width="18px" v-if="shouldShowClearSelection" />
-      <Icon icon="bi:chevron-down" @click="toggle" class="multiselect__select" />
+      <div class="multiselect__caret">
+        <Icon icon="bi:x" class="my-auto text-black multiselect__clear" @mousedown.prevent.stop="clearSelected()"
+              data-cy="clear" height="18px" width="18px" v-if="shouldShowClearSelection" />
+        <Icon icon="bi:chevron-down" @click="toggle" class="multiselect__arrow"/>
+      </div>
     </template>
     <template v-if="multiselectProps.multiple && showSelectAll && !multiselectProps.async" #beforeList>
       <li class="multiselect__element" @click="selectAll" @mouseover="onMouseOver" @mouseleave="onMouseLeave"
