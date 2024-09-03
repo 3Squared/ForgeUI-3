@@ -111,6 +111,19 @@ describe('<Button />', () => {
           // Assert
           cy.get(`#${id}`).should('have.class', expectedClass)
         })
+
+        it(`Applies ${severity !== undefined ? severity : 'primary'} link button classes when severity is ${severity} and link prop is true`, () => {
+          // Arrange
+          const id = "button"
+          const label = "Button"
+          const expectedClass = `link-${severity !== undefined ? severity : 'primary'} text-decoration-underline link-underline-${severity !== undefined ? severity : 'primary'}`
+
+          // Act
+          mountButton({ id: id, label: label, link: true, severity: severity })
+
+          // Assert
+          cy.get(`#${id}`).should('have.class', expectedClass)
+        })
       })
     })
   })
@@ -136,34 +149,6 @@ describe('<Button />', () => {
   })
   
   describe('States', () => {
-    it('Applies link button classes when link prop is true', () => {
-      // Arrange
-      const id = "button"
-      const label = "Button"
-      const expectedClass = `btn btn-link`
-
-      // Act
-      mountButton({ id: id, label: label, link: true })
-
-      // Assert
-      cy.get(`#${id}`).should('have.class', expectedClass)
-    })
-
-    it("Doesn't apply severity classes when link is true", () => {
-      // Arrange
-      const id = "button"
-      const severity = "Danger"
-      const label = "Button"
-      const absentClass = "btn btn-danger"
-      const expectedClass = "btn btn-link"
-
-      // Act
-      mountButton({ id: id, label: label, severity: severity, link: true })
-
-      // Assert
-      cy.get(`#${id}`).should('have.class', expectedClass).and('not.have.class', absentClass)
-    })
-
     it("Greys out when disabled", () => {
       // Arrange
       const id = "button"
