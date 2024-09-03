@@ -1,5 +1,15 @@
 # @3squared/forge-ui-3
 
+## 0.14.0
+
+### Minor Changes
+
+- c212535: Add default empty table slot content and empty message prop to allow easy customisation to tables which contain no content.
+
+### Patch Changes
+
+- 2e9e692: Fix issue where dropdown placeholder text was a different colour and refactor ForgeMultiselect css
+
 ## 0.13.1
 
 ### Patch Changes
