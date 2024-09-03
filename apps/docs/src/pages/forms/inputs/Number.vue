@@ -54,7 +54,8 @@ const { options, propVals, config, reset } = usePlayground(
     incrementButtonClass: "",
     decrementButtonClass: "",
     prefix: "",
-    suffix: ""
+    suffix: "",
+    placeholder: ""
   },
   {},
   () => {
