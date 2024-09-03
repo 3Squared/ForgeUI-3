@@ -91,6 +91,7 @@ const { options, propVals, config, reset } = usePlayground(
     stripedRows: false,
     rowHover: false,
     size: "",
+    emptyMessage: "",
     loading: false,
     scrollable: false,
     scrollHeight: "",

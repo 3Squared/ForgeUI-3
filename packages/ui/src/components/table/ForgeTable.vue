@@ -7,6 +7,11 @@
       <template v-for="(_, name) in $slots as unknown as DataTableSlots" #[name]="slotProps">
         <slot :name="name" v-bind="slotProps || {}"></slot>
       </template>
+      <template #empty>
+        <div class="d-flex w-100">
+          <h5 class="mx-auto" data-cy="empty-message">{{ emptyMessage ?? 'No items Found.'}}</h5>
+        </div>
+      </template>
       <template #header>
         <div :class="props.loading ? 'opacity-50' : ''">
           <div class="d-flex">
@@ -67,7 +72,8 @@ export interface ForgeTableProps extends DataTableProps {
   showExporterButton?: boolean,
   stickyHeader?: boolean,
   severity?: Severity,
-  clearAll?: Function
+  clearAll?: Function,
+  emptyMessage?: string
 }
 
 const emits = defineEmits(['update:filters', 'update:tableContext', 'sort', 'page'])
