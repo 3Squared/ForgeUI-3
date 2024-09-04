@@ -17,13 +17,12 @@
     <Playground :code="componentCode" :options="options" :config="config" @reset="reset">
       <template #component>
         <component :is="ForgeTable" v-bind="options" v-model:filters="filters" v-model:selection="selection" :value="products">
-          <Column v-for="column in columns" :key="column.field as string" sortable v-bind="column" :show-clear-button="false">
+          <Column v-for="column in columns" :key="column.field as string" sortable v-bind="column">
             <template #filter="{ field }">
               <forge-filter-header
                 v-model="filters[field].value"
                 :data-type="column.dataType"
                 :dropdown-options="column.dataType === 'multiselect' ? multiselectOptions : dropdownOptions"
-                show-clear-button
                 :placeholder="field"
               />
             </template>
