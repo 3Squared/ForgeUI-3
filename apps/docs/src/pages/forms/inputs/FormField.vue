@@ -20,12 +20,14 @@ const { options, propVals, config, reset } = usePlayground(
   {
     name: "",
     fieldLabel: "",
+    fieldLabelPosition: "top",
     type: "text",
     mask: "",
     placeholder: ""
   },
   {
     type: { type: "select", options: formFieldTypes },
+    fieldLabelPosition: { type: "select", options: ['top', 'left'] },
     name: { required: true },
     mask: { disabled: (): boolean => options.value.type !== "mask" },
     placeholder: { disabled: (): boolean => options.value.type === "checkbox" }
