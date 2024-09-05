@@ -39,11 +39,18 @@ export default {
           }]
       }
     },
-    headerFilterClearButton: () => ({
-      class: [
-        'btn',
-      ]
-    }),
+    headerFilterClearButton: ({ props } : ColumnPassThroughMethodOptions & { props: { filters: object}}) => {
+      console.log()
+      
+      return {
+        class: [
+          'btn',
+          { 
+            'd-none': props.filters[props.field].value === null
+          }
+        ]
+      }
+    },
     filterOverlay: {
       class: [
         'show dropdown-menu'
