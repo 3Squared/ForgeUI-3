@@ -17,11 +17,11 @@ function mountFormFieldValidation(props: FormFieldValidationWrapperProps) {
 }
 
 const validationWrapperSubmitButton = '#form-button'
+const inputWrapper = '[data-cy="input-wrapper"]'
 
 const name = "input"
 const label = "A custom input"
 
-// TODO: Rewrite tests to check validation is met.
 describe('<ForgeFormField />', () => {
   it('Mounts', () => {
     // Act
@@ -32,6 +32,52 @@ describe('<ForgeFormField />', () => {
       .should('exist')
       .and('be.visible')
   })
+
+  describe("Field Label Position", () => {
+    it('Should display label to the left of the form field if FieldLabelPosition is Left', () => {
+      // Arrange
+      const fieldLabelPosition = 'left'
+      const expectedClass = "flex-row"
+
+      // Act
+      mountFormField({ name: name, fieldLabel: label, fieldLabelPosition: fieldLabelPosition })
+
+      // Assert
+      cy.get(`#${name}`)
+        .should('exist')
+        .and('be.visible')
+
+      cy.get(inputWrapper)
+        .should('have.class', expectedClass)
+    });
+
+    it.only('Should display validation underneath the input if FieldLabelPosition is Left', () => {
+      // Arrange
+      const fieldLabelPosition = 'left'
+      const expectedClass = "flex-row"
+      const errorMessage = "Length must be greater than 10 characters"
+      const schema = yup.object().shape({
+        input: yup.string().min(10, errorMessage)
+      })
+      
+      // Act
+      mountFormFieldValidation({ name: name, fieldLabel: label, fieldLabelPosition: fieldLabelPosition, schema })
+      cy.get(`#${name}`).type(fieldLabelPosition)
+      
+      // Assert
+      cy.get(`#${name}`)
+        .should('exist')
+        .and('be.visible')
+
+      cy.get(inputWrapper)
+        .should('have.class', expectedClass)
+
+      cy.get('[data-cy="error"]')
+        .should('have.text', errorMessage)
+    });
+  })
+  
+
 
   describe('Number', () => {
     // Arrange
