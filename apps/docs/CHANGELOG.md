@@ -1,5 +1,20 @@
 # forge-ui-3-styleguide
 
+## 1.13.0
+
+### Minor Changes
+
+- ddaf434: Add prop to ForgeFormField to position the label above or to the left of the input
+
+### Patch Changes
+
+- 1663233: Fix issue where Clear Button on table appears when there is no active filter
+- Updated dependencies [bf2b021]
+- Updated dependencies [ddaf434]
+- Updated dependencies [1663233]
+- Updated dependencies [7a4acdc]
+  - @3squared/forge-ui-3@0.15.0
+
 ## 1.12.0
 
 ### Minor Changes

@@ -1,5 +1,18 @@
 # @3squared/forge-ui-3
 
+## 0.15.0
+
+### Minor Changes
+
+- ddaf434: Add prop to ForgeFormField to position the label above or to the left of the input
+
+### Patch Changes
+
+- bf2b021: Fix button link styling so that it is inline with ForgeLink
+- 1663233: Fix issue where Clear Button on table appears when there is no active filter
+- 7a4acdc: - Fix issue where large images would appear off the screen.
+  - Fix issue where the toolbar would appear under the image.
+
 ## 0.14.0
 
 ### Minor Changes
