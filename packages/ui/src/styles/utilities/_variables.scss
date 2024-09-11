@@ -62,10 +62,28 @@ $dark-colors: (
         'danger-dark': $danger-dark
 );
 
+$font-weights: (
+        'fw-100': 100,
+        'fw-200': 200,
+        'fw-300': 300,
+        'fw-400': 400,
+        'fw-500': 500,
+        'fw-600': 600,
+        'fw-700': 700,
+        'fw-800': 800,
+        'fw-900': 900
+);
+
 @each $color, $value in $grays {
   .bg-grey-#{$color} {
     background-color: $value !important;
   }
+}
+
+@each $font-weight, $value in $font-weights {
+ .fw-#{$value} {
+   font-weight: $value;
+ }
 }
 
 $theme-colors: map-merge-multiple($theme-colors, $base-colors, $subtle-colors, $dark-colors);
