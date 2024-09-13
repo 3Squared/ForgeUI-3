@@ -14,15 +14,18 @@ export default {
       }
 
     },
-    trigger: (options : DropdownPassThroughMethodOptions<any>) => ({
-      class: [
-        'my-auto',
-        {
-          'ms-auto' : !options.props.showClear,
-          'ms-2': options.props.showClear
-        }
-      ]
-    }),
+    trigger: ({ state } : DropdownPassThroughMethodOptions<any>) => {
+
+      return {
+        class: [
+          'my-auto ms-2',
+          {
+            'rotate-180': state.overlayVisible
+          }
+        ] 
+      }
+
+    },
     list: 'list-unstyled mb-0 dropdown-menu show w-100',
     item: ({ context } : DropdownPassThroughMethodOptions<any>) => ({
       class: [
