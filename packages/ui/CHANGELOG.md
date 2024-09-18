@@ -1,5 +1,15 @@
 # @3squared/forge-ui-3
 
+## 0.16.0
+
+### Minor Changes
+
+- 1b4c94b: Add utility classes to modify font weight via css classes
+
+### Patch Changes
+
+- 331eb6e: Fix padding between dropdown/multiselect arrow and label
+
 ## 0.15.0
 
 ### Minor Changes
