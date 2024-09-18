@@ -14,7 +14,7 @@ export default {
     list: 'list-unstyled mb-0',
     item: 'dropdown-item d-flex cursor-pointer',
     header: 'd-flex',
-    labelContainer: "w-100",
+    labelContainer: "w-100 me-2",
     label: "w-100",
     filterContainer: "d-flex w-100",
     filterIcon: 'd-none',
