@@ -25,31 +25,31 @@ const textboxLabel = ref("Textbox Label");
 const text = ref<string>("Hello");
 
 const { options, propVals, config, reset } = usePlayground(
-  {
-    maxCount: 300,
-    currentCount: text.value.length
-  },
-  {
-    currentCount: { required: true },
-    maxCount: { required: true }
-  },
-  () => {
-    text.value = "Hello";
-  }
+    {
+      maxCount: 300,
+      currentCount: text.value.length
+    },
+    {
+      currentCount: { required: true },
+      maxCount: { required: true }
+    },
+    () => {
+      text.value = "Hello";
+    }
 );
 
 watch(
-  () => text.value,
-  (text) => (options.value.currentCount = text.length)
+    () => text.value,
+    (text) => (options.value.currentCount = text.length)
 );
 
 const code = computed(() => {
-  return `<div class="d-flex flex-column w-100">
-  <div class="d-flex justify-content-between">
-    <label>${textboxLabel.value}</label>
-    <forge-remaining-characters ${propVals.value.join(" ")} />
-  </div>
-  <b-form-textarea v-model="textVariable" rows="4" />
+  return `<div class="d-flex flex-column w-75">
+   <div class="d-flex justify-content-between">
+     <label>{{ textboxLabel }}</label>
+     <ForgeRemainingCharacters :maxCount="props.maxCount" :currentCount="text.length" />
+   </div>
+   <TextArea v-model="text" />
 </div>`;
 });
 </script>
