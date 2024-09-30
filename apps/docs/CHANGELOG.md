@@ -1,5 +1,11 @@
 # forge-ui-3-styleguide
 
+## 1.13.1
+
+### Patch Changes
+
+- c8c65ca: Update sample code in ForgeRemainingCharacters
+
 ## 1.13.0
 
 ### Minor Changes
