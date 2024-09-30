@@ -25,22 +25,22 @@ const textboxLabel = ref("Textbox Label");
 const text = ref<string>("Hello");
 
 const { options, propVals, config, reset } = usePlayground(
-    {
-      maxCount: 300,
-      currentCount: text.value.length
-    },
-    {
-      currentCount: { required: true },
-      maxCount: { required: true }
-    },
-    () => {
-      text.value = "Hello";
-    }
+  {
+    maxCount: 300,
+    currentCount: text.value.length
+  },
+  {
+    currentCount: { required: true },
+    maxCount: { required: true }
+  },
+  () => {
+    text.value = "Hello";
+  }
 );
 
 watch(
-    () => text.value,
-    (text) => (options.value.currentCount = text.length)
+  () => text.value,
+  (text) => (options.value.currentCount = text.length)
 );
 
 const code = computed(() => {
