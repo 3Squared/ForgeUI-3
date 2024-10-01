@@ -139,7 +139,7 @@ export default defineConfig(({mode}) => {
       coverage: {
         all: true,
         include: ["src/helpers/**"],
-        exclude: ["**/*.cy.ts", "scripts", "**/*.test.ts", "src/components", "src/passthroughs"],
+        exclude: ["**/*.cy.ts", "scripts", "**/*.test.ts", "src/components", "src/passthroughs", "src/styles/**"],
         reportsDirectory: "./coverage/vitest",
         reporter: ["cobertura", "html", "json"],
         provider: "v8"
