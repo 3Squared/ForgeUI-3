@@ -63,7 +63,7 @@
   "nyc": {
     "all": true,
     "report-dir": "coverage/cypress",
-    "include": "*",
+    "include": ["**/*.vue"],
     "exclude": "**/*.cy.ts",
     "extension": [
       ".js",
