@@ -138,8 +138,8 @@ export default defineConfig(({mode}) => {
       outputFile: "test-results/vitest.xml",
       coverage: {
         all: true,
-        include: ["src"],
-        exclude: ["**/*.cy.ts", "scripts", "**/*.test.ts"],
+        include: ["src/helpers/**"],
+        exclude: ["**/*.cy.ts", "scripts", "**/*.test.ts", "src/components", "src/passthroughs", "src/styles/**"],
         reportsDirectory: "./coverage/vitest",
         reporter: ["cobertura", "html", "json"],
         provider: "v8"
