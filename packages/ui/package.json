@@ -65,7 +65,9 @@
     "report-dir": "coverage/cypress",
     "include": ["**/*.vue"],
     "exclude": [
-      "tests/**"
+      "tests/**",
+      "src/helpers/**",
+      "main"
     ],
     "extension": [
       ".js",
