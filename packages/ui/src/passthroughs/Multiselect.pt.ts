@@ -4,7 +4,7 @@ export default {
   multiselect: {
     root: ({ props }: MultiSelectPassThroughMethodOptions) => ({
       class: [
-        'form-control d-flex cursor-pointer w-100',
+        'form-control d-flex cursor-pointer position-relative w-100',
         {
           'disabled': props.disabled
         }
@@ -25,7 +25,7 @@ export default {
     trigger: ({ state } : MultiSelectPassThroughMethodOptions) => {
       return {
         class: [
-          'ms-auto my-auto', {
+          'ms-auto my-auto filter-trigger', {
           'rotate-180': state.overlayVisible 
         }]
       }
