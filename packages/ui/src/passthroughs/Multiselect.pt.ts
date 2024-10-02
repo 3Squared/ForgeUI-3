@@ -10,7 +10,7 @@ export default {
         }
       ]
     }),
-    panel: 'dropdown-menu show',
+    panel: 'dropdown-menu overflow-y-auto show',
     list: 'list-unstyled mb-0',
     item: 'dropdown-item d-flex cursor-pointer',
     header: 'd-flex',
