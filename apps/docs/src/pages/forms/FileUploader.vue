@@ -31,11 +31,7 @@ const { options, propVals, config, reset } = usePlayground({
   autoUploadToBlob: true
 });
 
-const acceptedTypes = [
-  { fileType: 'image/jpeg' },
-  { fileType: 'image/gif', label: 'GIF' },
-  { fileType: 'image/csv', label: 'CSV' }
-] as ForgeFileType[]
+const acceptedTypes = [{ fileType: "image/jpeg" }, { fileType: "image/gif", label: "GIF" }, { fileType: "image/csv", label: "CSV" }] as ForgeFileType[];
 
 const code = computed(
   () =>
