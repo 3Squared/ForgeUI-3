@@ -18,29 +18,39 @@
         </slot>
       </label>
     </div>
-    <div class="ms-auto" v-if="showDragDropArea" :key="acceptedFileTypes.length" id="accepted-file-types">Accepted File Types: {{acceptedFileTypes.map((type) => type.split('/').pop()).join(", ")}}</div>
+    <Button link class="ms-auto" v-if="showDragDropArea" :key="acceptedFileTypes.length" id="accepted-file-types" @click="toggleAcceptedFileTypesOverlay">Accepted File Types</Button>
+    <OverlayPanel ref="acceptedFilesOverlay">
+      <div class="text-break accepted-file-types-container" id="accepted-file-types-overlay">
+        {{acceptedFileTypes.map((type) => (type.label ?? type.fileType.split('/').pop())).join(", ")}}
+      </div>
+    </OverlayPanel>
+<!--    : {{acceptedFileTypes.map((type) => type.split('/').pop()).join(", ")}}-->
   </div>
 </template>
 
 <script setup lang="ts">
 import { addFiles } from '../utilities/utilities'
-import { computed } from "vue";
-import { ForgeFileStatus } from "../../../types/forge-types";
+import { computed, ref } from "vue";
+import { ForgeFileStatus, ForgeFileType } from "../../../types/forge-types";
+import OverlayPanel from 'primevue/overlaypanel';
 import { Icon } from "@iconify/vue";
 
 interface FileUploaderButtonProps {
-  acceptedFileTypes: string[],
+  acceptedFileTypes: ForgeFileType[],
   maxFileInput: number,
   showDragDropArea: boolean
 }
 
 const files = defineModel<ForgeFileStatus[]>({ required: true })
+const acceptedFilesOverlay = ref()
+
+const toggleAcceptedFileTypesOverlay = (event: Event) => acceptedFilesOverlay.value.toggle(event)
 
 const { acceptedFileTypes, maxFileInput, showDragDropArea } = defineProps<FileUploaderButtonProps>()
 
 const uploadDisabled = computed<boolean>(() => maxFileInput <= files.value.length)
 
 const addUploadedFiles = (filesToUpload : File[]) => {
-  files.value = addFiles(filesToUpload, files.value, acceptedFileTypes, maxFileInput)
+  files.value = addFiles(filesToUpload, files.value, acceptedFileTypes.map(ft => ft.fileType), maxFileInput)
 }
 </script>
