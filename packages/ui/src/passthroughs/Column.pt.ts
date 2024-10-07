@@ -6,6 +6,7 @@ export default {
     headerCell: (options: ColumnPassThroughMethodOptions & { props: { reorderableColumns: boolean }, column: { context: { frozen: boolean | '', resizable: boolean } } }) => {
       return {
         class: [
+          'align-top',
           {
           'cursor-move': options.props.reorderableColumns,
           'position-sticky': options.column?.context.frozen !== undefined || options.column?.context.frozen || options.column?.context.frozen === '',
@@ -40,8 +41,6 @@ export default {
       }
     },
     headerFilterClearButton: ({ props } : ColumnPassThroughMethodOptions & { props: { filters: object}}) => {
-      console.log()
-      
       return {
         class: [
           'btn',
@@ -80,7 +79,8 @@ export default {
       ]
     },
     headerContent: 'd-flex',
-    sort: 'd-flex ms-auto my-auto cursor-pointer',
+    headerTitle: "text-break",
+    sort: 'd-flex ms-auto cursor-pointer table-sort-icon',
     rowCheckbox: (options: any) => {
       return {
         class: [
