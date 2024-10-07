@@ -1,5 +1,15 @@
 # @3squared/forge-ui-3
 
+## 0.16.1
+
+### Patch Changes
+
+- 6cd40a3: Fix issue where form-control ! was visible underneath ForgeDatepicker Calendar icon when the field is invalid.
+- ccc8b13: Fix issue where ForgeLink wouldn't wrap text when inside a container.
+- e08dba8: - Fix issue where ForgeMultiselect panel would appear underneath other elements.
+  - Fix issue in ForgeMultiselect and Dropdown where placeholder text would wrap, causing the element to become misshapen.
+  - Fix issue in ForgeFilterHeader where items would spill out of the dropdown panel past a certain size.
+
 ## 0.16.0
 
 ### Minor Changes
