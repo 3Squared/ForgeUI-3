@@ -1,5 +1,27 @@
 # forge-ui-3-styleguide
 
+## 1.14.0
+
+### Minor Changes
+
+- 84503ba: Update FileUploader so that:
+
+  - Accepted file types appear in an overlay instead of inline.
+  - File types can be configured with custom labels.
+
+  **BREAKING CHANGE MIGRATION GUIDE**
+
+  File Uploaders `acceptedFileTypes` prop will now be required to use the custom `ForgeFileType` interface provided by the import `@3squared/forge-ui-3/src/types/forge-types.ts`.
+
+  In order to fix the breaking change, you will simply have to update your accepted file type array to use the interface. For example:
+
+  `['image/jpeg'] -> [{ fileType: 'image/jpeg' }] as ForgeFileType[]`
+
+### Patch Changes
+
+- Updated dependencies [84503ba]
+  - @3squared/forge-ui-3@1.0.0
+
 ## 1.13.1
 
 ### Patch Changes
