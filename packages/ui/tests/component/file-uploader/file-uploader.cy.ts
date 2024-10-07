@@ -18,6 +18,7 @@ const editableFileNameInputId = '#edit-file-name'
 const inlineEditorInputId = '[data-cy="input"]'
 const deleteButtonId = '#delete-button'
 const uploadStatusAlertId = '#upload-status-alert'
+const acceptedFileTypesOverlay = '#accepted-file-types-overlay'
 
 function mountFileUploader(props : ForgeFileUploaderProps) {
   cy.mount(ForgeFileUploader, {
@@ -28,7 +29,7 @@ function mountFileUploader(props : ForgeFileUploaderProps) {
 describe("<ForgeFileUploader />", () => {
   it("Mounts", () => {
     // Arrange
-    const acceptedFileTypes = ['image/jpeg']
+    const acceptedFileTypes = [{ fileType: 'image/jpeg' }]
     const maxFileSize = 5420000
     
     // Act
@@ -45,7 +46,7 @@ describe("<ForgeFileUploader />", () => {
   describe("Interactions", () => {
     it("Should show placeholder text if there are no files uploaded", () => {
       // Arrange
-      const acceptedFileTypes = ['application/json']
+      const acceptedFileTypes = [{ fileType: 'application/json' }]
       const maxFileSize = 5420000
       const placeholder = 'Drag and drop files here'
 
@@ -65,7 +66,7 @@ describe("<ForgeFileUploader />", () => {
 
     it("Should upload a file when uploading using the button", () => {
       // Arrange
-      const acceptedFileTypes = ['application/json']
+      const acceptedFileTypes = [ { fileType: 'application/json' }]
       const maxFileSize = 5420000
       const fileLocation = 'cypress/fixtures/testFile.json'
       const fileName = 'testFile.json'
@@ -88,7 +89,7 @@ describe("<ForgeFileUploader />", () => {
 
     it('Should upload a file by dragging and dropping it into the Drag Drop area', () => {
       // Arrange
-      const acceptedFileTypes = ['application/json']
+      const acceptedFileTypes = [{ fileType: 'application/json' }]
       const maxFileSize = 5420000
       const fileLocation = 'cypress/fixtures/testFile.json'
       const fileName = 'testFile.json'
@@ -111,7 +112,7 @@ describe("<ForgeFileUploader />", () => {
 
     it('Should delete a file on click on the trash icon', () => {
       // Arrange
-      const acceptedFileTypes = ['application/json']
+      const acceptedFileTypes = [{ fileType: 'application/json' }]
       const maxFileSize = 5420000
       const fileLocation = 'cypress/fixtures/testFile.json'
 
@@ -140,7 +141,7 @@ describe("<ForgeFileUploader />", () => {
   describe("File Info", () => {
     it("Should display file-earmark icon if the file isn't an image", () => {
       // Arrange
-      const acceptedFileTypes = ['application/json']
+      const acceptedFileTypes = [{ fileType: 'application/json' }]
       const maxFileSize = 5420000
       const fileLocation = 'cypress/fixtures/testFile.json'
 
@@ -164,7 +165,7 @@ describe("<ForgeFileUploader />", () => {
 
     it(`Should display json next to the File Type heading`, () => {
       // Arrange
-      const acceptedFileTypes = ['application/json']
+      const acceptedFileTypes = [{ fileType: 'application/json' }]
       const expectedFileType = 'json'
       const maxFileSize = 5420000
       const fileLocation = 'cypress/fixtures/testFile.json'
@@ -187,7 +188,7 @@ describe("<ForgeFileUploader />", () => {
     
     it("Should display file size next to File Size heading", () => {
       // Arrange
-      const acceptedFileTypes = ['application/json']
+      const acceptedFileTypes = [{ fileType: 'application/json' }]
       const maxFileSize = 5420000
       const fileLocation = 'cypress/fixtures/testFile.json'
 
@@ -214,7 +215,7 @@ describe("<ForgeFileUploader />", () => {
     ].forEach(({ fileType }) => {
       it(`Should display thumbnail image if file type is a ${fileType}`, () => {
         // Arrange
-        const acceptedFileTypes = [`image/${fileType}`]
+        const acceptedFileTypes = [{ fileType: `image/${fileType}` }]
         const maxFileSize = 5420000
         const fileLocation = `cypress/fixtures/3squaredLogo.${fileType}`
 
@@ -238,7 +239,7 @@ describe("<ForgeFileUploader />", () => {
 
       it(`Should display image preview when clicking on the thumbnail image if file type is a ${fileType}`, () => {
         // Arrange
-        const acceptedFileTypes = [`image/${fileType}`]
+        const acceptedFileTypes = [{ fileType: `image/${fileType}` }]
         const maxFileSize = 5420000
         const fileLocation = `cypress/fixtures/3squaredLogo.${fileType}`
 
@@ -265,7 +266,7 @@ describe("<ForgeFileUploader />", () => {
   describe('Props', () => {
     it("Should display the maximum file size", () => {
       // Arrange
-      const acceptedFileTypes = ['application/json']
+      const acceptedFileTypes = [{ fileType: 'application/json' }]
       const maxFileSize = 5420000
       const parsedFileSize = '5.4 MB'
       
@@ -285,7 +286,7 @@ describe("<ForgeFileUploader />", () => {
     
     it("Should stop accepting files if number of uploaded files is greater than maxFileInput", () => {
       // Arrange
-      const acceptedFileTypes = ['application/json']
+      const acceptedFileTypes = [{ fileType: 'application/json' }]
       const maxFileSize = 5420000
       const maxFileInput = 1
       const file1Location = 'cypress/fixtures/testFile.json'
@@ -316,11 +317,11 @@ describe("<ForgeFileUploader />", () => {
         .should('have.class', 'disabled')
     })
     
-    it("Should display a list of accepted file types", () => {
+    it("Should display a list of accepted file types and prioritise custom labels", () => {
       // Arrange
-      const acceptedFileTypes = ['application/json', 'image/jpeg']
+      const acceptedFileTypes = [ { fileType: 'application/json', label: "JSON" }, { fileType: 'image/jpeg' }]
       const maxFileSize = 5420000
-      const parsedFileTypes = 'json, jpeg'
+      const parsedFileTypes = 'JSON, jpeg'
 
       // Act
       mountFileUploader({
@@ -331,6 +332,9 @@ describe("<ForgeFileUploader />", () => {
       
       // Assert
       cy.get(acceptedFileTypesId)
+        .click()
+        
+      cy.get(acceptedFileTypesOverlay)
         .should('exist')
         .and('be.visible')
         .and('contain.text', parsedFileTypes)
@@ -338,7 +342,7 @@ describe("<ForgeFileUploader />", () => {
     
     it("Should only display the upload button if showDragDropArea is false", () => {
       // Arrange
-      const acceptedFileTypes = ['application/json', 'image/jpeg']
+      const acceptedFileTypes = [{ fileType: 'application/json', label: "JSON" }, { fileType: 'image/jpeg' }]
       const maxFileSize = 5420000
 
       // Act
@@ -366,7 +370,7 @@ describe("<ForgeFileUploader />", () => {
     
     it("Should allow for a file name to be updated if editableFileName is true", () => {
       // Arrange
-      const acceptedFileTypes = ['application/json', 'image/jpeg']
+      const acceptedFileTypes = [{ fileType: 'application/json', label: "JSON" }, { fileType: 'image/jpeg' }]
       const maxFileSize = 5420000
       const fileLocation = 'cypress/fixtures/testFile.json'
       const expectedFileName = 'newFileName.json'
@@ -404,7 +408,7 @@ describe("<ForgeFileUploader />", () => {
     ].forEach(({ title, fileLocation, expectedErrorMessage, expectedSeverity}) => {
       it(title, () => {
         // Arrange
-        const acceptedFileTypes = ['application/json']
+        const acceptedFileTypes = [{ fileType: 'application/json' }]
         const maxFileSize = 1
 
         // Act

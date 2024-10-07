@@ -20,12 +20,12 @@
 import { Icon } from "@iconify/vue";
 import { addFiles } from '../utilities/utilities'
 import { computed, ref, defineModel } from "vue";
-import { ForgeFileStatus } from "../../../types/forge-types";
+import { ForgeFileStatus, ForgeFileType } from "../../../types/forge-types";
 
 interface DragDropAreaProps {
   maxFileInput: number,
   maxFileSize: number,
-  acceptedFileTypes: string[]
+  acceptedFileTypes: ForgeFileType[]
 }
 
 const { acceptedFileTypes, maxFileInput, maxFileSize } = defineProps<DragDropAreaProps>()
@@ -41,7 +41,7 @@ const dropFiles = (event: any) => {
   if (event.dataTransfer.files.length > maxFileInput || uploadDisabled.value) {
     event.preventDefault()
   } else {
-    files.value = addFiles([...event.dataTransfer.files], files.value, acceptedFileTypes, maxFileSize)
+    files.value = addFiles([...event.dataTransfer.files], files.value, acceptedFileTypes.map(ft => ft.fileType), maxFileSize)
   }
 }
 </script>

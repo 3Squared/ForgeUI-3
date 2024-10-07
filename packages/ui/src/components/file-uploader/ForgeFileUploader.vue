@@ -25,13 +25,13 @@ import UploadButton from "@/components/file-uploader/components/UploadButton.vue
 import DragDropArea from "@/components/file-uploader/components/DragDropArea.vue";
 import FileInfo from "@/components/file-uploader/components/FileInfo.vue";
 import MaxFileSize from "@/components/file-uploader/components/MaxFileSize.vue";
-import { ForgeFileStatus } from "../../types/forge-types";
+import { ForgeFileStatus, ForgeFileType } from "../../types/forge-types";
 import {TypedSchema} from "vee-validate";
 
 const files = defineModel<ForgeFileStatus[]>({ default: []})
 
 export interface ForgeFileUploaderProps {
-  acceptedFileTypes: string[],
+  acceptedFileTypes: ForgeFileType[],
   maxFileSize: number,
   getFileUrlAction: (fileName: string) => Promise<[string, string]>,
   showDragDropArea?: boolean,

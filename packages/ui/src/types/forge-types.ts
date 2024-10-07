@@ -14,6 +14,11 @@ export type ForgeMultiSelectOrientation = "row" | "column"
 export type ForgeColumnDataType = 'text' | 'numeric' | 'date' | 'select' | 'multiselect' | undefined
 export type ForgeColumn = ColumnProps & { dataType?: ForgeColumnDataType }
 
+export interface ForgeFileType {
+  fileType: string,
+  label?: string
+}
+
 export interface ForgeFileStatus {
   file: File;
   status: FileUploadStatus;
