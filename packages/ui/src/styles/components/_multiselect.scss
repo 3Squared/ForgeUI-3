@@ -39,6 +39,7 @@
       background: white;
       border: $input-border-width solid $input-border-color;
       width: 100%;
+      z-index: $zindex-dropdown;
       left: 0;
       top: 100%;
       
