@@ -1,7 +1,7 @@
 <template>
   <a
       id="link"
-      class="cursor-pointer d-flex"
+      class="cursor-pointer d-flex text-break"
       :href="url"
       :target="target"
       :class="linkClasses"
