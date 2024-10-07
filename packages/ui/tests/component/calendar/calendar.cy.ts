@@ -79,7 +79,7 @@ describe("<Calendar />", () => {
     // Arrange
     const name = "datepicker"
     const errorMessage = "Required"
-    const invalidClass = 'is-invalid'
+    const invalidClass = 'datepicker-invalid'
     const errorMessageClass = 'text-invalid'
     const schema = yup.object().shape({
       datepicker: yup.date().required(errorMessage)

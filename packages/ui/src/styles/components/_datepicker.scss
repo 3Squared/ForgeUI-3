@@ -6,6 +6,11 @@
   max-width: 948px;
 }
 
+.datepicker-invalid {
+  @extend .is-invalid;
+  background-image: unset !important;
+}
+
 .p-datepicker-trigger {
   display: none !important;
 }
