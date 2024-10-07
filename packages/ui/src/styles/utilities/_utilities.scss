@@ -14,6 +14,15 @@
   @extend .form-control, :disabled;
 }
 
+.invalid-feedback {
+  @extend .invalid-feedback;
+  display: block;
+}
+
+.z-index-dropdown {
+  z-index: $zindex-dropdown
+}
+
 .text-invalid {
   color: $form-invalid-color
 }
@@ -23,7 +32,16 @@
 }
 
 .filter-placeholder {
+  white-space: nowrap;
+  overflow: hidden;
   color: $input-placeholder-color
+}
+
+.filter-trigger {
+  position: absolute;
+  right: 0;
+  margin-right: 8px;
+  background-color: white;
 }
 
 .rotate-180 {

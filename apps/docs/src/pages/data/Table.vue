@@ -23,7 +23,7 @@
                 v-model="filters[field].value"
                 :data-type="column.dataType"
                 :dropdown-options="column.dataType === 'multiselect' ? multiselectOptions : dropdownOptions"
-                :placeholder="field"
+                :placeholder="column.header"
               />
             </template>
             <template #editor="{ data, field }">

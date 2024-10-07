@@ -2,7 +2,7 @@
   <div class="d-flex justify-content-start align-items-baseline" data-cy="pagination-header">
     Number of results per page
     <div class="ms-2">
-      <Dropdown :options="props.pageSizes" :model-value="props.perPage"
+      <Dropdown :options="props.pageSizes" :model-value="props.perPage" class="page-size"
                 @change="(event : DropdownChangeEvent) => update(event)" />
     </div>
     <div v-if="props.total">

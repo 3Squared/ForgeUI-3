@@ -6,7 +6,7 @@ export default {
       
       return {
         class: [
-          'form-control d-flex cursor-pointer',
+          'form-control d-flex cursor-pointer position-relative',
           {
             'disabled': props.disabled
           }
@@ -18,7 +18,7 @@ export default {
 
       return {
         class: [
-          'my-auto ms-2',
+          'my-auto filter-trigger',
           {
             'rotate-180': state.overlayVisible
           }
@@ -26,7 +26,7 @@ export default {
       }
 
     },
-    list: 'list-unstyled mb-0 dropdown-menu show w-100',
+    list: 'list-unstyled mb-0 dropdown-menu overflow-y-auto show w-100',
     item: ({ context } : DropdownPassThroughMethodOptions<any>) => ({
       class: [
         'dropdown-item d-flex cursor-pointer text-wrap',

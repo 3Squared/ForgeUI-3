@@ -52,6 +52,10 @@ table.table-lg {
   @extend .form-check-input;
 }
 
+.page-size {
+  min-width: 70px;
+}
+
 .pagination .page-link.active {
   z-index: 0;
 }
