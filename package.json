@@ -10,7 +10,7 @@
   },
   "devDependencies": {
     "@changesets/cli": "2.27.9",
-    "@types/prismjs": "1.26.4",
+    "@types/prismjs": "1.26.5",
     "turbo": "latest"
   },
   "workspaces": [
