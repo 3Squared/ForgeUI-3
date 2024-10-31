@@ -17,9 +17,13 @@
     <Playground :code="componentCode" :options="options" :config="config" @reset="reset">
       <template #component>
         <component :is="ForgeTable" v-bind="options" v-model:filters="filters" v-model:selection="selection" :value="products">
+          <template #column-customiser>
+            <ForgeColumnCustomiser v-model="columns" />
+          </template>
           <Column v-for="column in columns" :key="column.field as string" sortable v-bind="column">
             <template #filter="{ field }">
               <forge-filter-header
+                v-if="filters[field]"
                 v-model="filters[field].value"
                 :data-type="column.dataType"
                 :dropdown-options="column.dataType === 'multiselect' ? multiselectOptions : dropdownOptions"
@@ -41,7 +45,7 @@
 
 <script setup lang="ts">
 import { computed, ref } from "vue";
-import { ForgePageHeader, ForgeFilterHeader, ForgeColumn, ForgeTable } from "@3squared/forge-ui-3";
+import { ForgePageHeader, ForgeColumnCustomiser, ForgeFilterHeader, ForgeColumn, ForgeTable } from "@3squared/forge-ui-3";
 import { Playground, usePlayground, CodeBlock } from "@3squared/forge-playground-3";
 import { severities } from "../../composables/playgroundOptions";
 import Column from "primevue/column";
@@ -49,13 +53,13 @@ import InputNumber from "primevue/inputnumber";
 import InputText from "primevue/inputtext";
 import { FilterMatchMode } from "primevue/api";
 
-const columns = [
+const columns = ref<ForgeColumn[]>([
   { field: "code", header: "Code", sortable: true },
   { field: "name", header: "Name", dataType: "select", sortable: true },
   { field: "category", header: "Category", dataType: "multiselect", sortable: true },
   { field: "quantity", header: "Quantity", dataType: "numeric", sortable: true },
   { field: "date", header: "Date", dataType: "date", sortable: true }
-] as ForgeColumn[];
+]);
 
 const filters = ref({
   global: { value: null, matchMode: FilterMatchMode.CONTAINS },
@@ -114,7 +118,7 @@ const { options, propVals, config, reset } = usePlayground(
     sortMode: { type: "select", options: ["single", "multiple"] },
     removableSort: { disabled: (): boolean => !(options.value.sortMode !== "") },
     selectionMode: { type: "select", options: ["single", "multiple"] },
-    dataKey: { type: "select", options: columns.map((column) => column.field) },
+    dataKey: { type: "select", options: columns.value.map((column) => column.field) },
     compareSelectionBy: {
       type: "select",
       options: ["equals", "deepEquals"],

@@ -24,6 +24,7 @@ import ForgeTile from "./src/components/ForgeTile.vue";
 import ForgeTable from "./src/components/table/ForgeTable.vue"; 
 import ForgeFilterHeader from "./src/components/table/ForgeFilterHeader.vue";
 import ForgeFileUploader from "./src/components/file-uploader/ForgeFileUploader.vue";
+import ForgeColumnCustomiser from './src/components/table/ForgeColumnCustomiser.vue'
 
 export {
   Bootstrap_PT,
@@ -31,6 +32,7 @@ export {
   ForgeAlert,
   ForgeCheckbox,
   ForgeChips,
+  ForgeColumnCustomiser,
   ForgeDatepicker,
   ForgeForm,
   ForgeFormField,

@@ -45,7 +45,7 @@ export default {
         class: [
           'btn',
           { 
-            'd-none': props.filters[props.field].value === null
+            'd-none': props.filters[props.field] ? props.filters[props.field].value === null : false
           }
         ]
       }
