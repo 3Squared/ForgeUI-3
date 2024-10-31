@@ -42,7 +42,6 @@
     <CodeBlock :code="scriptCode" />
     In order to use the Column Customiser, you can use the following code
     <CodeBlock :code="columnCustomiserCode" />
-
   </div>
 </template>
 
@@ -186,7 +185,8 @@ const scriptCode = computed<string>(
 `
 );
 
-const columnCustomiserCode = computed<string>(() => `
+const columnCustomiserCode = computed<string>(
+  () => `
   <template>
     <ForgeTable :value="tableData" v-model:filters="tableFilters"${propVals.value.length > 0 ? " " + propVals.value.join(" ") : ""}> 
        <template #column-customiser>
@@ -236,5 +236,6 @@ const columnCustomiserCode = computed<string>(() => `
      quantity: { value: null, matchMode: FilterMatchMode.EQUALS }
    })
   </\script>
-`); 
+`
+);
 </script>
