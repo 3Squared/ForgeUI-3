@@ -1,5 +1,5 @@
 <template>
-  <Button @click="toggle">
+  <Button @click="toggle" class="ms-2">
     <div class="d-flex">
       <div class="me-3">
         <Icon icon="bi:layout-three-columns" />
