@@ -19,7 +19,7 @@
         'pt-1': originalColumns.length - 1 === index,
         'pb-1': index === 0
       }" @click="toggleColumn(column.field)">
-        <Checkbox :id="column.field" :model-value="columns.some(s => s.field === column.field)" binary class="cursor-pointer" />
+        <Checkbox :id="column.field" :model-value="selectedColumns.find(s => s.field === column.field).selected" binary class="cursor-pointer" />
         <label :for="column.field" class="cursor-pointer">{{ column.header }}</label>
       </div>
 
@@ -40,24 +40,22 @@ const columns = defineModel<ForgeColumn[]>({ required: true })
 const columnCustomiserPanel = ref()
 const panelVisible = ref<boolean>(false)
 const originalColumns = ref<any[]>([])
+const selectedColumns = ref<any[]>([])
 
 const toggle = (event : Event) => {
   columnCustomiserPanel.value.toggle(event)
 }
 
 const toggleColumn = (field : string) => {
-  const index = columns.value.findIndex(o => o.field === field)
+  const column = selectedColumns.value.find(s => s.field === field)
 
-  if (index === -1) {
-    const obj = originalColumns.value.find(o => o.field == field)
+  column.selected = !column.selected;
 
-    columns.value.push({ ...obj })
-  } else {
-    columns.value.splice(index, 1)
-  }
+  columns.value = selectedColumns.value.filter(col => col.selected)
 }
 
 onMounted(() => {
   originalColumns.value = [...columns.value]
+  selectedColumns.value = [...columns.value].map((s) => ({ ...s, selected: true }))
 })
 </script>
