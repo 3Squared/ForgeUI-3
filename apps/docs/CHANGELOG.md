@@ -1,5 +1,17 @@
 # forge-ui-3-styleguide
 
+## 1.15.0
+
+### Minor Changes
+
+- 269c873: Add Forge Column Customiser.
+  - This component allows users hide and show columns.
+
+### Patch Changes
+
+- Updated dependencies [269c873]
+  - @3squared/forge-ui-3@1.1.0
+
 ## 1.14.0
 
 ### Minor Changes
