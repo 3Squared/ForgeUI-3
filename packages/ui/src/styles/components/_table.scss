@@ -60,6 +60,10 @@ table.table-lg {
   z-index: 0;
 }
 
+.column-customiser {
+  min-width: 180px !important;
+}
+
 @each $color, $value in $base-colors {
   .forge-table-#{$color} {
     & .page-link {

@@ -17,9 +17,13 @@
     <Playground :code="componentCode" :options="options" :config="config" @reset="reset">
       <template #component>
         <component :is="ForgeTable" v-bind="options" v-model:filters="filters" v-model:selection="selection" :value="products">
+          <template #column-customiser>
+            <ForgeColumnCustomiser v-model="columns" />
+          </template>
           <Column v-for="column in columns" :key="column.field as string" sortable v-bind="column">
             <template #filter="{ field }">
               <forge-filter-header
+                v-if="filters[field]"
                 v-model="filters[field].value"
                 :data-type="column.dataType"
                 :dropdown-options="column.dataType === 'multiselect' ? multiselectOptions : dropdownOptions"
@@ -36,12 +40,14 @@
     </Playground>
     To get you started, here is the script code for this documentation page!
     <CodeBlock :code="scriptCode" />
+    In order to use the Column Customiser, you can use the following code
+    <CodeBlock :code="columnCustomiserCode" />
   </div>
 </template>
 
 <script setup lang="ts">
 import { computed, ref } from "vue";
-import { ForgePageHeader, ForgeFilterHeader, ForgeColumn, ForgeTable } from "@3squared/forge-ui-3";
+import { ForgePageHeader, ForgeColumnCustomiser, ForgeFilterHeader, ForgeColumn, ForgeTable } from "@3squared/forge-ui-3";
 import { Playground, usePlayground, CodeBlock } from "@3squared/forge-playground-3";
 import { severities } from "../../composables/playgroundOptions";
 import Column from "primevue/column";
@@ -49,13 +55,13 @@ import InputNumber from "primevue/inputnumber";
 import InputText from "primevue/inputtext";
 import { FilterMatchMode } from "primevue/api";
 
-const columns = [
+const columns = ref<ForgeColumn[]>([
   { field: "code", header: "Code", sortable: true },
   { field: "name", header: "Name", dataType: "select", sortable: true },
   { field: "category", header: "Category", dataType: "multiselect", sortable: true },
   { field: "quantity", header: "Quantity", dataType: "numeric", sortable: true },
   { field: "date", header: "Date", dataType: "date", sortable: true }
-] as ForgeColumn[];
+]);
 
 const filters = ref({
   global: { value: null, matchMode: FilterMatchMode.CONTAINS },
@@ -114,7 +120,7 @@ const { options, propVals, config, reset } = usePlayground(
     sortMode: { type: "select", options: ["single", "multiple"] },
     removableSort: { disabled: (): boolean => !(options.value.sortMode !== "") },
     selectionMode: { type: "select", options: ["single", "multiple"] },
-    dataKey: { type: "select", options: columns.map((column) => column.field) },
+    dataKey: { type: "select", options: columns.value.map((column) => column.field) },
     compareSelectionBy: {
       type: "select",
       options: ["equals", "deepEquals"],
@@ -176,6 +182,60 @@ const scriptCode = computed<string>(
  })
   
  </\script>
+`
+);
+
+const columnCustomiserCode = computed<string>(
+  () => `
+  <template>
+    <ForgeTable :value="tableData" v-model:filters="tableFilters"${propVals.value.length > 0 ? " " + propVals.value.join(" ") : ""}> 
+       <template #column-customiser>
+         <ForgeColumnCustomiser v-model="columns" />
+      </template>
+      <Column v-for="column in columns" v-bind="column">
+        // Required for Filters
+        <template #filter="{ field }">
+          // The v-if will check if the column actually exists, this is important when using the column customiser.
+          <forge-filter-header v-if="filters[field]" :data-type="column.dataType" v-model="filters[field].value" :dropdown-options="dropdownOptions" />
+        </template>
+      </Column>
+    </ForgeTable>
+  </template>
+  
+  <script setup lang="ts">
+   import { ForgeColumn, ForgeFilterHeader, ForgeColumnCustomiser } from "@3squared/forge-ui-3";
+   import { FilterMatchMode } from "primevue/api";
+   import { ref } from 'vue'
+
+   // Data to appear in table, properties must match the 'field' property in columns array unless specified otherwise.
+   const tableData = [
+     { code: 1, name: "Blue Shirt", category: "Clothing", quantity: 10 },
+     { code: 2, name: "Running Trainers", category: "Fitness", quantity: 3 },
+     { code: 3, name: "Watch", category: "Accessories", quantity: 12 },
+   ]
+  
+   // Dropdown Filter options
+   const dropdownOptions = [
+     "Fitness",
+     "Clothing"
+   ]
+
+   // Columns the table should contain. DataType is used to specify the type of filter ForgeFilterHeader should display.
+   // IT IS IMPORTANT THAT THE COLUMNS IS A REF, This allows the column customsier to manipulate the columns array.
+   const columns = ref([
+     { field: "code", header: "Code", sortable: true },
+     { field: "name", header: "Name", sortable: true },
+     { field: "category", header: "Category", dataType: "multiselect", sortable: true },
+     { field: "quantity", header: "Quantity", dataType: "numeric", sortable: true }
+   ]); 
+  
+   const tableFilters = ref({
+     code: { value: null, matchMode: FilterMatchMode.STARTS_WITH },
+     name: { value: null, matchMode: FilterMatchMode.STARTS_WITH },
+     category: { value: null, matchMode: FilterMatchMode.IN },
+     quantity: { value: null, matchMode: FilterMatchMode.EQUALS }
+   })
+  </\script>
 `
 );
 </script>

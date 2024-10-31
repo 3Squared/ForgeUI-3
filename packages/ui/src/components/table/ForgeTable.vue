@@ -29,6 +29,7 @@
                 <Icon icon="typcn:export" width="24" height="24" />
                 Export
               </Button>
+              <slot name="column-customiser" />
             </div>
           </div>
         </div>
