@@ -1,5 +1,11 @@
 # @3squared/forge-ui-3
 
+## 1.1.1
+
+### Patch Changes
+
+- 9b98b29: Fix issue where ForgeColumnCustomisers spacing would be too tight to the Exporter and Clear All button
+
 ## 1.1.0
 
 ### Minor Changes
