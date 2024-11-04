@@ -58,7 +58,6 @@ const { handleChange, errors, errorMessage } = useField(
 );
 
 const onChange = (checkValue: boolean) => {
-  console.log(checkValue);
   if(props.name) handleChange(checkValue)
   else value.value = checkValue
 }
