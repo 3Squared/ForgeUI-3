@@ -1,5 +1,11 @@
 # @3squared/forge-ui-3
 
+## 1.1.2
+
+### Patch Changes
+
+- e87977c: Fix checkbox to make label trigger change event when validation is not used
+
 ## 1.1.1
 
 ### Patch Changes
