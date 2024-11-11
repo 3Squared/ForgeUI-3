@@ -1,5 +1,11 @@
 # @3squared/forge-ui-3
 
+## 1.1.3
+
+### Patch Changes
+
+- a482387: Fix file type validation to use ForgeFileType object instead of a string
+
 ## 1.1.2
 
 ### Patch Changes
