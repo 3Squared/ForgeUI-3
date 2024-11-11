@@ -31,12 +31,12 @@ const { options, propVals, config, reset } = usePlayground({
   autoUploadToBlob: true
 });
 
-const acceptedTypes = [{ fileType: "image/jpeg" }, { fileType: "image/gif", label: "GIF" }, { fileType: "image/csv", label: "CSV" }] as ForgeFileType[];
+const acceptedTypes = [{ fileType: "image/jpeg" }, { fileType: "application/vnd.openxmlformats-officedocument.wordprocessingml.document", label: "docx" }, { fileType: "image/gif", label: "GIF" }, { fileType: "image/csv", label: "CSV" }] as ForgeFileType[];
 
 const code = computed(
   () =>
     `    <template>
-      <ForgeFileUploader :accepted-file-types="['image/jpeg', 'application/pdf', 'text/csv']" get-file-url-action="yourFunction"${propVals.value.length > 0 ? " " + propVals.value.join(" ") : ""} />
+      <ForgeFileUploader :accepted-file-types="acceptedTypes" get-file-url-action="yourFunctionThatGetsContainerUrlForFile"${propVals.value.length > 0 ? " " + propVals.value.join(" ") : ""} />
     </template>
     
     <script setup lang="ts">
@@ -45,6 +45,7 @@ const code = computed(
       // Add custom labels to file types using the 'label' prop.
       const acceptedTypes = [
         { fileType: 'image/jpeg' },
+        { fileType: "application/vnd.openxmlformats-officedocument.wordprocessingml.document", label: "docx" }
         { fileType: 'image/gif', label: 'GIF' },
         { fileType: 'image/csv', label: 'CSV' }
       ] as ForgeFileType[]
