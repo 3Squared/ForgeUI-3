@@ -49,10 +49,11 @@ import {TypedSchema} from "vee-validate";
 import {computed, ref, onMounted} from "vue";
 import UploadStatus from "@/components/file-uploader/components/UploadStatus.vue";
 import {BlockBlobClient, BlockBlobParallelUploadOptions} from "@azure/storage-blob";
+import { ForgeFileType } from "../../../types/forge-types";
 
 interface FileInfoProps {
   editableFileName: boolean,
-  acceptedFileTypes: string,
+  acceptedFileTypes: ForgeFileType[],
   maxFileSize: number,
   getFileUrlAction: (fileName : string) => Promise<[string, string]>,
   customFileNameRules?: TypedSchema,
@@ -71,14 +72,14 @@ const blobUploadUrl = ref<string>("")
 const bytesUploaded = ref<number>(0)
 const controller = ref();
 
-const validFileType = computed<boolean>(() => acceptedFileTypes.includes(file.value.type))
+const validFileType = computed<boolean>(() => acceptedFileTypes.some(({fileType}) => fileType === file.value.type))
 const validFileSize = computed<boolean>(() => file.value.size <= maxFileSize)
 
 const updateFileName = () => {
   file.value = new File([file.value], fileName.value, { type: file.value.type, lastModified: (new Date()).valueOf()})
 }
 
-const uploadBlob = async () => {
+const uploadBlob = async () => {  
   if(!validFileType.value || !validFileSize.value){
     uploadStatus.value = !validFileType.value ? 'InvalidFileType' : 'InvalidFileSize'
     return;
