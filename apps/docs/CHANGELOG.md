@@ -1,5 +1,13 @@
 # forge-ui-3-styleguide
 
+## 1.15.1
+
+### Patch Changes
+
+- a482387: Fix file type validation to use ForgeFileType object instead of a string
+- Updated dependencies [a482387]
+  - @3squared/forge-ui-3@1.1.3
+
 ## 1.15.0
 
 ### Minor Changes
