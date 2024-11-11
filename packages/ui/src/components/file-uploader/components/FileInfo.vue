@@ -52,7 +52,7 @@ import {BlockBlobClient, BlockBlobParallelUploadOptions} from "@azure/storage-bl
 import { ForgeFileType } from "../../../types/forge-types";
 
 interface FileInfoProps {
-  editableFileName: File,
+  editableFileName: boolean,
   acceptedFileTypes: ForgeFileType[],
   maxFileSize: number,
   getFileUrlAction: (fileName : string) => Promise<[string, string]>,
