@@ -31,7 +31,12 @@ const { options, propVals, config, reset } = usePlayground({
   autoUploadToBlob: true
 });
 
-const acceptedTypes = [{ fileType: "image/jpeg" }, { fileType: "application/vnd.openxmlformats-officedocument.wordprocessingml.document", label: "docx" }, { fileType: "image/gif", label: "GIF" }, { fileType: "image/csv", label: "CSV" }] as ForgeFileType[];
+const acceptedTypes = [
+  { fileType: "image/jpeg" },
+  { fileType: "application/vnd.openxmlformats-officedocument.wordprocessingml.document", label: "docx" },
+  { fileType: "image/gif", label: "GIF" },
+  { fileType: "image/csv", label: "CSV" }
+] as ForgeFileType[];
 
 const code = computed(
   () =>
