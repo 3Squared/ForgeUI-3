@@ -8,7 +8,7 @@
     </p>
     <Playground :options="options" :code="code" :config="config" @reset="reset">
       <template #component>
-        <component :is="Fieldset" v-bind="options" >{{content}}</component>
+        <component :is="Fieldset" v-bind="options">{{ content }}</component>
       </template>
     </Playground>
   </div>
@@ -22,11 +22,9 @@ import Fieldset from "primevue/fieldset";
 
 const content = ref("Here is some example content!");
 
-const { options, propVals, config, reset } = usePlayground(
-    {
-      legend: "Header",
-      toggleable: false,
-    }
-);
+const { options, propVals, config, reset } = usePlayground({
+  legend: "Header",
+  toggleable: false
+});
 const code = computed(() => `<Fieldset ${propVals.value.length > 0 ? " " + propVals.value.join(" ") : ""} >{{content}}</Fieldset>`);
 </script>
