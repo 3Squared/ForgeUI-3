@@ -26,6 +26,7 @@ import CardPT from "./passthroughs/Card.pt.ts";
 import DividerPT from "./passthroughs/Divider.pt.ts";
 import ImagePT from "./passthroughs/Image.pt.ts";
 import ToastPT from "./passthroughs/Toast.pt.ts";
+import FieldsetPt from "./passthroughs/Fieldset.pt.ts";
 
 export default {
   ...BadgePT,
@@ -54,6 +55,7 @@ export default {
   ...TabsPT, 
   ...ToastPT,
   ...TextAreaPT,
+  ...FieldsetPt,
   directives: {
     ...TooltipPT
   }

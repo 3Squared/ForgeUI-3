@@ -25,6 +25,7 @@
     "test:component": "cypress open --component --browser chrome",
     "test:unit": "vitest --ui --coverage",
     "build": "vite build",
+    "build:watch": "vite build --watch",
     "preview": "vite preview"
   },
   "dependencies": {
