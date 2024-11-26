@@ -3,7 +3,7 @@
     <InputNumber v-if="dataType === 'numeric'" v-model="modelValue" v-bind="$attrs" />
     <ForgeDatepicker v-else-if="dataType === 'date'" v-model="modelValue" v-bind="$attrs" :show-icon="false"
                      :show-on-focus="true" />
-    <Dropdown v-else-if="dataType === 'select'" v-model="modelValue" v-bind="$attrs" :options="dropdownOptions"
+    <Select v-else-if="dataType === 'select'" v-model="modelValue" v-bind="$attrs" :options="dropdownOptions"
               :option-value="optionValue" :option-label="optionLabel"
     >
       <template #value="{ value, placeholder }">
@@ -16,7 +16,7 @@
           </Button>
         </div>
       </template>
-    </Dropdown>
+    </Select>
     <MultiSelect v-else-if="dataType === 'multiselect'" v-model="modelValue" v-bind="$attrs" :options="dropdownOptions"
                  :showToggleAll="false" :option-label="optionLabel" :option-value="optionValue" filter>
       <template #value="{ value, placeholder }">
@@ -41,11 +41,10 @@
 
 <script setup lang="ts"> 
 import InputText from "primevue/inputtext";
-import Dropdown from "primevue/dropdown";
+import Select from "primevue/select";
 import ForgeDatepicker from "@/components/ForgeDatepicker.vue";
 import MultiSelect from "primevue/multiselect";
 import { Icon } from '@iconify/vue'
-import { useAttrs } from "vue";
 
 export interface ForgeFilterHeaderProps {
   dataType: 'numeric' | 'date' | 'multiselect' | 'select' | undefined,

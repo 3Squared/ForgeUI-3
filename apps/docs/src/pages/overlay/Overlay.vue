@@ -8,7 +8,7 @@
     </p>
     <Playground :options="options" :code="code" :config="config" @reset="reset">
       <template #component>
-        <component :is="OverlayPanel" v-bind="options" ref="popover">Popover!</component>
+        <component :is="Popover" v-bind="options" ref="popover">Popover!</component>
         <Button label="Click me!" @click="toggle" />
       </template>
     </Playground>
@@ -17,7 +17,7 @@
 
 <script setup lang="ts">
 import { ForgePageHeader } from "@3squared/forge-ui-3";
-import OverlayPanel from "primevue/overlaypanel";
+import Popover from "primevue/popover";
 import Button from "primevue/button";
 import { Playground, usePlayground } from "@3squared/forge-playground-3";
 import { computed, ref } from "vue";
@@ -45,7 +45,7 @@ const { options, propVals, config, reset } = usePlayground(
 const code = computed(
   () => `
   <template>
-    <OverlayPanel${propVals.value.length > 0 ? " " + propVals.value.join(" ") : ""} />
+    <Popover${propVals.value.length > 0 ? " " + propVals.value.join(" ") : ""} />
     <Button label="Button" @click="toggle"/>
   </template>
  

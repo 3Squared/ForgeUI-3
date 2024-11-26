@@ -2,8 +2,8 @@
   <div class="d-flex justify-content-start align-items-baseline" data-cy="pagination-header">
     Number of results per page
     <div class="ms-2">
-      <Dropdown :options="props.pageSizes" :model-value="props.perPage" class="page-size"
-                @change="(event : DropdownChangeEvent) => update(event)" />
+      <Select :options="props.pageSizes" :model-value="props.perPage" class="page-size"
+                @change="(event : SelectChangeEvent) => update(event)" />
     </div>
     <div v-if="props.total">
       <span class="mx-2">|</span>
@@ -13,7 +13,8 @@
 </template>
 
 <script setup lang="ts">
-import Dropdown, { DropdownChangeEvent } from "primevue/dropdown";
+//import Dropdown, { DropdownChangeEvent } from "primevue/dropdown";
+import Select, { SelectChangeEvent } from "primevue/select";
 import { computed } from "vue";
 import { pluralise } from "./table-helpers";
 
@@ -30,7 +31,7 @@ const props = withDefaults(defineProps<ForgePaginationHeaderProps>(), {
   perPage: 10
 })
 
-const update = (event : DropdownChangeEvent) => {
+const update = (event : SelectChangeEvent) => {
   emits('update:perPage', event.value)
 }
 

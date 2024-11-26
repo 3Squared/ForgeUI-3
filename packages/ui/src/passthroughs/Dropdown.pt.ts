@@ -1,8 +1,8 @@
-import { DropdownPassThroughMethodOptions } from "primevue/dropdown";
+import { SelectPassThroughMethodOptions } from "primevue/select";
 
 export default {
-  dropdown: {
-    root: ({ props }: DropdownPassThroughMethodOptions<any>) => {
+  select: {
+    root: ({ props }: SelectPassThroughMethodOptions<any>) => {
       
       return {
         class: [
@@ -14,7 +14,7 @@ export default {
       }
 
     },
-    trigger: ({ state } : DropdownPassThroughMethodOptions<any>) => {
+    trigger: ({ state } : SelectPassThroughMethodOptions<any>) => {
 
       return {
         class: [
@@ -27,7 +27,7 @@ export default {
 
     },
     list: 'list-unstyled mb-0 dropdown-menu overflow-y-auto show w-100',
-    item: ({ context } : DropdownPassThroughMethodOptions<any>) => ({
+    item: ({ context } : SelectPassThroughMethodOptions<any>) => ({
       class: [
         'dropdown-item d-flex cursor-pointer text-wrap',
         {
@@ -53,7 +53,7 @@ export default {
       style: "top: 35%;"
     },
     closebutton: 'btn',
-    checkbox: (options: DropdownPassThroughMethodOptions<any>) => ({
+    checkbox: (options: SelectPassThroughMethodOptions<any>) => ({
       class: [
         'form-check-input px-2 py-2 rounded position-relative',
         {
@@ -66,7 +66,7 @@ export default {
     clearicon: "ms-auto my-auto",
     loadingIcon: 'spinner-border spinner-border-sm border-0',
     itemGroupLabel: "ps-2 fw-bold",
-    input: ({ instance } : DropdownPassThroughMethodOptions<any>) => ({
+    input: ({ instance } : SelectPassThroughMethodOptions<any>) => ({
       class: [
         'w-100',
         {

@@ -38,7 +38,7 @@
       <template #paginatorstart v-if="legacyPaginationFooter">
         <span class="d-flex" :class="props.loading ? 'opacity-50' : ''" data-cy="legacy-page-size">
           <span class="me-2 my-auto text-nowrap">Page Size:</span>
-          <Dropdown :options="pageSizes" v-model="perPage" class="ms-2" @click="emitPageSize"/>
+          <Select :options="pageSizes" v-model="perPage" class="ms-2" @click="emitPageSize"/>
         </span>
       </template>
       <template #paginatorend v-if="legacyPaginationFooter" >
@@ -60,7 +60,7 @@ import DataTable, {
 import Button from 'primevue/button'
 import ForgePaginationHeader from "@/components/table/ForgePaginationHeader.vue";
 import { computed, onMounted, ref, watch } from "vue";
-import Dropdown from "primevue/dropdown";
+import Select from "primevue/select";
 import { pluralise } from "@3squared/forge-ui-3/src/components/table/table-helpers";
 import { Icon } from '@iconify/vue'
 import { ForgeTableContext, Severity } from "../../types/forge-types";

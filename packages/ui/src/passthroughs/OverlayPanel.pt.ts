@@ -1,13 +1,13 @@
-import { OverlayPanelPassThroughMethodOptions } from "primevue/overlaypanel";
+import { PopoverPassThroughMethodOptions } from "primevue/popover";
 
 export default {
-  overlaypanel: {
-    root: (options : OverlayPanelPassThroughMethodOptions) => ({
+  popover: {
+    root: (options : PopoverPassThroughMethodOptions) => ({
       class: [
         "card w-fit-content m-0",
         {
-          'p-4': options.props.showCloseIcon,
-          'p-3': !options.props.showCloseIcon
+          'p-4': options.props.dismissable,
+          'p-3': !options.props.dismissable
         }
       ]
     }),
