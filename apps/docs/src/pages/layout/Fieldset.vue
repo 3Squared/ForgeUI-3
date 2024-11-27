@@ -16,7 +16,7 @@
 
 <script setup lang="ts">
 import { ForgePageHeader } from "@3squared/forge-ui-3";
-import { Playground, usePlayground } from "@3squared/forge-playground-3";
+import { CodeBlock, Playground, usePlayground } from "@3squared/forge-playground-3";
 import { computed, ref } from "vue";
 import Fieldset from "primevue/fieldset";
 
@@ -26,5 +26,15 @@ const { options, propVals, config, reset } = usePlayground({
   legend: "Header",
   toggleable: false
 });
-const code = computed(() => `<Fieldset ${propVals.value.length > 0 ? " " + propVals.value.join(" ") : ""} >{{content}}</Fieldset>`);
+const code = computed(() => `
+<template>
+   <Fieldset ${propVals.value.length > 0 ? " " + propVals.value.join(" ") : ""} >{{content}}</Fieldset> 
+</template>
+
+<script setup lang="ts">
+import Fieldset from "primevue/fieldset"; 
+
+const content = ref("Here is some example content!");
+</\script>
+`);
 </script>
