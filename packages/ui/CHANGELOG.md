@@ -1,5 +1,15 @@
 # @3squared/forge-ui-3
 
+## 1.2.0
+
+### Minor Changes
+
+- cf1b355: Add and style fieldset for forge
+
+### Patch Changes
+
+- fd61f4a: Update vitest to 2.1.5
+
 ## 1.1.3
 
 ### Patch Changes

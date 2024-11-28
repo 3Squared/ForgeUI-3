@@ -1,5 +1,17 @@
 # forge-ui-3-styleguide
 
+## 1.16.0
+
+### Minor Changes
+
+- cf1b355: Add and style fieldset for forge
+
+### Patch Changes
+
+- Updated dependencies [fd61f4a]
+- Updated dependencies [cf1b355]
+  - @3squared/forge-ui-3@1.2.0
+
 ## 1.15.1
 
 ### Patch Changes
