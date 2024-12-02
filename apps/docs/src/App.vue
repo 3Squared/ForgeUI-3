@@ -87,7 +87,8 @@ const pages = [
       { label: "Loader", command: () => router.push("/layout/loader") },
       { label: "Page Header", command: () => router.push("/layout/pageheader") },
       { label: "Stepper", command: () => router.push("/layout/stepper") },
-      { label: "Tabs", command: () => router.push("/layout/tabs") }
+      { label: "Tabs", command: () => router.push("/layout/tabs") },
+      { label: "Fieldset", command: () => router.push("/layout/fieldset") }
     ]
   },
   {
