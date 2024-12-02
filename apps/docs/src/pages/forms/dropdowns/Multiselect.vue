@@ -3,33 +3,20 @@
     <ForgePageHeader title="Multiselect" />
     <p>
       Further documentation and examples can be found in the
-      <a
-        class="link"
-        target="_blank"
-        href="https://v3.primevue.org/multiselect/"
-      >
+      <a class="link" target="_blank" href="https://v3.primevue.org/multiselect/">
         <strong>PrimeVue Multiselect documentation</strong>
       </a>
       .
     </p>
     <Playground :options="options" :code="code" :config="config" @reset="reset">
       <template #component>
-        <component
-          :is="Multiselect"
-          v-bind="options"
-          v-model="selectedOptions"
-          class="w-100"
-        />
+        <component :is="Multiselect" v-bind="options" v-model="selectedOptions" class="w-100" />
       </template>
     </Playground>
 
     <h3>Props Info:</h3>
     <ul>
-      <li>
-        maxSelectedLabels - Limit the selected labels shown, if the number
-        select goes over this the number selected will be shown and not the
-        pills.
-      </li>
+      <li>maxSelectedLabels - Limit the selected labels shown, if the number select goes over this the number selected will be shown and not the pills.</li>
       <li>selectionLimit - Maximum number of selectable items.</li>
     </ul>
   </div>
@@ -55,7 +42,7 @@ const optionsArray = ref([
   { id: 9, label: "Option 9", value: "opt_9" },
   { id: 10, label: "Option 10", value: "opt_10" },
   { id: 11, label: "Option 11", value: "opt_11" },
-  { id: 12, label: "Option 12", value: "opt_12" },
+  { id: 12, label: "Option 12", value: "opt_12" }
 ]);
 
 const placeHolder = ref("Select options");
@@ -72,7 +59,7 @@ const code = computed(
 <script>
  import Multiselect from "primevue/multiselect";     
 </\script>
-`,
+`
 );
 const { options, propVals, config, reset } = usePlayground(
   {
@@ -81,10 +68,10 @@ const { options, propVals, config, reset } = usePlayground(
     placeholder: placeHolder,
     display: "comma",
     maxSelectedLabels: 4,
-    filter: false,
+    filter: false
   },
   {
-    display: { type: "select", options: displays },
-  },
+    display: { type: "select", options: displays }
+  }
 );
 </script>
