@@ -22,7 +22,7 @@
 import { ForgePageHeader, ForgeMultiSelect } from "@3squared/forge-ui-3";
 import { Playground, usePlayground, CodeBlock } from "@3squared/forge-playground-3";
 import { computed, ref } from "vue";
-import { severities } from "../../../composables/playgroundOptions";
+import { severities } from "../../composables/playgroundOptions";
 
 const multiSelectOptions = [
   { id: "option-1", label: "Option 1" },
