@@ -1,8 +1,13 @@
 <template>
   <div>
     <ForgePageHeader title="Multiselect" />
-    <p>Further documentation and examples can be found in the
-      <a class="link" target="_blank" href="https://v3.primevue.org/multiselect/">
+    <p>
+      Further documentation and examples can be found in the
+      <a
+        class="link"
+        target="_blank"
+        href="https://v3.primevue.org/multiselect/"
+      >
         <strong>PrimeVue Multiselect documentation</strong>
       </a>
       .
@@ -20,15 +25,18 @@
 
     <h3>Props Info:</h3>
     <ul>
-      <li>maxSelectedLabels - Limit the selected labels shown, if the number select goes over this the number selected will be shown and not the pills.</li>
+      <li>
+        maxSelectedLabels - Limit the selected labels shown, if the number
+        select goes over this the number selected will be shown and not the
+        pills.
+      </li>
       <li>selectionLimit - Maximum number of selectable items.</li>
     </ul>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ForgePageHeader,
-  } from "@3squared/forge-ui-3";
+import { ForgePageHeader } from "@3squared/forge-ui-3";
 import Multiselect from "primevue/multiselect";
 import { Playground, usePlayground } from "@3squared/forge-playground-3";
 import { computed, ref } from "vue";
@@ -56,7 +64,15 @@ const displays = ["chip", "comma"];
 
 const code = computed(
   () =>
-    `<Multiselect ${propVals.value.length > 0 ? " " + propVals.value.join(" ") : ""} />`,
+    `
+<template> 
+  <Multiselect ${propVals.value.length > 0 ? " " + propVals.value.join(" ") : ""} /> 
+</template>
+
+<script>
+ import Multiselect from "primevue/multiselect";     
+</\script>
+`,
 );
 const { options, propVals, config, reset } = usePlayground(
   {
@@ -65,10 +81,10 @@ const { options, propVals, config, reset } = usePlayground(
     placeholder: placeHolder,
     display: "comma",
     maxSelectedLabels: 4,
-    filter: false
+    filter: false,
   },
   {
-    display: { type: "select", options: displays }
+    display: { type: "select", options: displays },
   },
 );
 </script>
