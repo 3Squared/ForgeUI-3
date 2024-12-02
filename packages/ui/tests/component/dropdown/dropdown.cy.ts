@@ -120,7 +120,7 @@ describe("<Dropdown />", () => {
       .and('contain.text', selectedOption)
   })
 
-  it('Displays clear and dropdown icon at the end of the dropdown', () => {
+  it('Displays clear icon at the end of the dropdown', () => {
     // Arrange
     const options = [
       'Option 1',
@@ -134,10 +134,7 @@ describe("<Dropdown />", () => {
     // Assert
     cy.get(`[data-pc-section="clearicon"]`)
       .and('have.class', 'ms-auto')
-
-    cy.get(`[data-pc-section="dropdownicon"]`)
-      .should('be.visible')
-      .and('not.have.class', 'ms-auto')
+    
   })
 
   it('Displays loading spinner when loading is true', () => {

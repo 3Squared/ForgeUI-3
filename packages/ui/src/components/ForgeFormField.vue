@@ -25,7 +25,7 @@
       />
       <Dropdown v-else-if="props.type === 'select'" v-bind="{...props,...$attrs}" v-model="model"
                 :class="{'is-invalid': hasErrors }" />
-      <ForgeMultiSelect v-else-if="props.type === 'multiselect'" v-bind="{...props,...$attrs}" v-model="model"
+      <MultiSelect v-else-if="props.type === 'multiselect'" v-bind="{...props,...$attrs}" v-model="model"
                         :class="{'is-invalid': hasErrors }" />
       <ForgeDatepicker v-else-if="props.type === 'datepicker'" v-bind="{...props,...$attrs}" v-model="model"
                        :class="{'is-invalid': hasErrors }"/>
