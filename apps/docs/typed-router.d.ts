@@ -60,5 +60,6 @@ declare module 'vue-router/auto-routes' {
     '/overlay/Overlay': RouteRecordInfo<'/overlay/Overlay', '/overlay/Overlay', Record<never, never>, Record<never, never>>,
     '/overlay/Toast': RouteRecordInfo<'/overlay/Toast', '/overlay/Toast', Record<never, never>, Record<never, never>>,
     '/overlay/Tooltip': RouteRecordInfo<'/overlay/Tooltip', '/overlay/Tooltip', Record<never, never>, Record<never, never>>,
+    '/test/Test': RouteRecordInfo<'/test/Test', '/test/Test', Record<never, never>, Record<never, never>>,
   }
 }

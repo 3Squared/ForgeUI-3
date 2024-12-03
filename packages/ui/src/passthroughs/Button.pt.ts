@@ -67,7 +67,7 @@ export default {
     loadingIcon: () => ({
       class: ['spinner-border spinner-border-sm border-0 me-2']
     }),
-    badge: ({ props } : ButtonPassThroughMethodOptions<any>) => {
+    pcBadge: ({ props } : ButtonPassThroughMethodOptions<any>) => {
       return {
         class: [
           {

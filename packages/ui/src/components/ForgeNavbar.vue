@@ -1,5 +1,5 @@
 <template>
-  <Menubar v-bind="{...props, ...$attrs}" :pt="pt" data-cy="navbar" >
+  <Menubar v-bind="{...props, ...$attrs}" :pt="pt" data-cy="navbar">
     <template #start >
       <a :href="logoUrl" class="navbar-brand ms-3" data-cy="logo">
         <slot name="logo">
@@ -8,8 +8,8 @@
       </a>
     </template>
 
-    <template #menubuttonicon>
-      <slot name="menubuttonicon">
+    <template #buttonicon>
+      <slot name="buttonIcon">
         <Icon icon="bi:list" :class="props.severity === 'light' ? 'text-black' : 'text-white'" height="24" data-cy="burger-icon" />
       </slot>
     </template>

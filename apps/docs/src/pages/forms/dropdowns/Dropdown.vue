@@ -8,7 +8,7 @@
     </p>
     <playground :options="options" :config="config" :code="code">
       <template #component>
-        <component :is="Dropdown" v-bind="options" v-model="selectedItem" class="w-100" />
+        <component :is="Select" v-bind="options" v-model="selectedItem" class="w-100" />
       </template>
     </playground>
     Here is an example of an options array and selected options array
@@ -18,7 +18,7 @@
 
 <script setup lang="ts">
 import { ForgePageHeader } from "@3squared/forge-ui-3";
-import Dropdown from "primevue/dropdown";
+import Select from "primevue/select"
 import { computed, ref } from "vue";
 import { usePlayground, Playground, CodeBlock } from "@3squared/forge-playground-3";
 import { stringFilterTypes } from "../../../composables/playgroundOptions";
@@ -65,7 +65,7 @@ const { options, propVals, config } = usePlayground(
   }
 );
 
-const code = computed(() => `<Dropdown ${propVals.value.join(" ")}/>`);
+const code = computed(() => `<Select ${propVals.value.join(" ")}/>`);
 const optionsArrayExample = computed(
   () => `<script setup lang="ts">
  const optionsArray = ref([

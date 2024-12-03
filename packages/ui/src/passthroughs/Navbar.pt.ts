@@ -59,8 +59,8 @@ export default {
     },
     submenuicon: 'ms-1'
   },
-  rootList: {
-    rootList: (options : MenuPassThroughMethodOptions) => ({
+  menu: {
+    menu: (options : MenuPassThroughMethodOptions) => ({
       class: [
         'dropdown dropdown-menu',
         {
@@ -68,7 +68,7 @@ export default {
         }
       ]
     }),
-    item: () => ({
+    menuitem: () => ({
       class: [
         'dropdown-item cursor-pointer'
       ]

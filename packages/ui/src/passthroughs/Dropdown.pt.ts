@@ -27,7 +27,7 @@ export default {
 
     },
     list: 'list-unstyled mb-0 dropdown-menu overflow-y-auto show w-100',
-    item: ({ context } : SelectPassThroughMethodOptions<any>) => ({
+    option: ({ context } : SelectPassThroughMethodOptions<any>) => ({
       class: [
         'dropdown-item d-flex cursor-pointer text-wrap',
         {
@@ -65,7 +65,7 @@ export default {
     checkboxicon: 'mb-1 fw-medium text-white position-absolute filter-header-multiselect__check-icon',
     clearicon: "ms-auto my-auto",
     loadingIcon: 'spinner-border spinner-border-sm border-0',
-    itemGroupLabel: "ps-2 fw-bold",
+    optionGroupLabel: "ps-2 fw-bold",
     label: ({ instance } : SelectPassThroughMethodOptions<any>) => ({
       class: [
         'w-100',

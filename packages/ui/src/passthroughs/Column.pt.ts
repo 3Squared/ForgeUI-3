@@ -2,7 +2,7 @@ import { ColumnPassThroughMethodOptions, ColumnProps } from "primevue/column";
 
 export default {
   column: {
-    sortBadge: 'ms-2 my-auto cursor-pointer',
+    pcSortBadge: 'ms-2 my-auto cursor-pointer',
     headerCell: (options: ColumnPassThroughMethodOptions & { props: { reorderableColumns: boolean }, column: { context: { frozen: boolean | '', resizable: boolean } } }) => {
       return {
         class: [
@@ -14,15 +14,15 @@ export default {
         }],
       }
     },
-    roweditorinitbutton: 'btn',
-    rowtoggler: {
+    pcRowEditorInit: 'btn',
+    rowToggleIcon: {
       class: 'btn'
     },
     columnresizer: {
       class: 'position-absolute top-0 end-0 m-0 h-100 p-0 cursor-resize border border-transparent'
     },
-    roweditorsavebutton: 'btn',
-    roweditorcancelbutton: 'btn',
+    pcRowEditorSave: 'btn',
+    pcRowEditorCancel: 'btn',
     bodyCell: (options: ColumnPassThroughMethodOptions & { props: { resizableColumns: boolean }, column: { props: { frozen: boolean | '' } } }) => {
       return {
         class: {

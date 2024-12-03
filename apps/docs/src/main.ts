@@ -14,4 +14,4 @@ const router = createRouter({
   routes
 });
 
-createApp(App).use(router).use(PrimeVue, { unstyled: true, pt: Bootstrap_PT, inputVariant: "filled" }).use(ToastService).use(DialogService).directive("tooltip", Tooltip).mount("#app");
+createApp(App).use(router).use(PrimeVue, {  theme: 'none', pt: Bootstrap_PT }).use(ToastService).use(DialogService).directive("tooltip", Tooltip).mount("#app");
