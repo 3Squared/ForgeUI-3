@@ -64,7 +64,7 @@ import Select from "primevue/select";
 import { pluralise } from "@3squared/forge-ui-3/src/components/table/table-helpers";
 import { Icon } from '@iconify/vue'
 import { ForgeTableContext, Severity } from "../../types/forge-types";
-import { DefaultPassThrough } from "primevue/ts-helpers";
+//import { DefaultPassThrough } from "primevue/ts-helpers";
 
 export interface ForgeTableProps extends DataTableProps {
   value: any[],
@@ -106,7 +106,7 @@ const pageText = computed<string>(() => {
   const pages = Math.ceil(total.value / perPage.value)
   return `${pages} ${pluralise(pages, 'page')}`
 })
-const pt = computed<DefaultPassThrough<DataTablePassThroughOptions>>(() => ({
+const pt = computed<DataTablePassThroughOptions>(() => ({
   thead: () => ({
     class: [
       {

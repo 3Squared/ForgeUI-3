@@ -14,7 +14,7 @@ export default {
       }
 
     },
-    trigger: ({ state } : SelectPassThroughMethodOptions<any>) => {
+    dropdown: ({ state } : SelectPassThroughMethodOptions<any>) => {
 
       return {
         class: [
@@ -46,8 +46,8 @@ export default {
       ]
     }),
     headercheckboxicon: 'mb-1 fw-medium text-white position-absolute filter-header-multiselect__check-icon',
-    filtercontainer: 'd-flex position-relative mt-1 ps-2 w-100',
-    filterinput: 'form-control w-100',
+    pcFilterContainer: 'd-flex position-relative mt-1 ps-2 w-100',
+    pcFilter: 'form-control w-100',
     filtericon: {
       class: ['position-absolute bottom-0 end-0 me-3'],
       style: "top: 35%;"
@@ -66,7 +66,7 @@ export default {
     clearicon: "ms-auto my-auto",
     loadingIcon: 'spinner-border spinner-border-sm border-0',
     itemGroupLabel: "ps-2 fw-bold",
-    input: ({ instance } : SelectPassThroughMethodOptions<any>) => ({
+    label: ({ instance } : SelectPassThroughMethodOptions<any>) => ({
       class: [
         'w-100',
         {

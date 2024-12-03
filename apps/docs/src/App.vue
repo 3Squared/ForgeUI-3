@@ -67,6 +67,7 @@ const pages = [
       {
         label: "Inputs",
         items: [
+          { label: "Autocomplete", command: () => router.push("/forms/inputs/autocomplete") },
           { label: "Chips", command: () => router.push("/forms/inputs/chips") },
           { label: "Form Field", command: () => router.push("/forms/inputs/formfield") },
           { label: "Inline Editor", command: () => router.push("/forms/inputs/inlineeditor") },

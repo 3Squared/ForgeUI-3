@@ -3,6 +3,7 @@ import '@/styles/main.scss'
 
 import ForgeAlert from "@/components/ForgeAlert.vue";
 import ForgeActionButton from "./src/components/ForgeActionButton.vue";
+import ForgeAutoComplete from "./src/components/ForgeAutoComplete.vue";
 import ForgeCheckbox from "@/components/ForgeCheckbox.vue";
 import ForgeLoader from "@/components/ForgeLoader.vue";
 import ForgeLink from "./src/components/ForgeLink.vue";
@@ -30,6 +31,7 @@ export {
   Bootstrap_PT,
   ForgeActionButton,
   ForgeAlert,
+  ForgeAutoComplete,
   ForgeCheckbox,
   ForgeChips,
   ForgeColumnCustomiser,

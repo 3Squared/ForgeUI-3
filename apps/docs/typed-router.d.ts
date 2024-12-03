@@ -37,6 +37,7 @@ declare module 'vue-router/auto-routes' {
     '/forms/dropdowns/MultiselectPreview': RouteRecordInfo<'/forms/dropdowns/MultiselectPreview', '/forms/dropdowns/MultiselectPreview', Record<never, never>, Record<never, never>>,
     '/forms/FileUploader': RouteRecordInfo<'/forms/FileUploader', '/forms/FileUploader', Record<never, never>, Record<never, never>>,
     '/forms/Form': RouteRecordInfo<'/forms/Form', '/forms/Form', Record<never, never>, Record<never, never>>,
+    '/forms/inputs/AutoComplete': RouteRecordInfo<'/forms/inputs/AutoComplete', '/forms/inputs/AutoComplete', Record<never, never>, Record<never, never>>,
     '/forms/inputs/Chips': RouteRecordInfo<'/forms/inputs/Chips', '/forms/inputs/Chips', Record<never, never>, Record<never, never>>,
     '/forms/inputs/FormField': RouteRecordInfo<'/forms/inputs/FormField', '/forms/inputs/FormField', Record<never, never>, Record<never, never>>,
     '/forms/inputs/InlineEditor': RouteRecordInfo<'/forms/inputs/InlineEditor', '/forms/inputs/InlineEditor', Record<never, never>, Record<never, never>>,

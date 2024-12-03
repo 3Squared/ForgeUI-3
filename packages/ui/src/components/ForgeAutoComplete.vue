@@ -1,11 +1,12 @@
-<script setup lang="ts">
-
-</script>
 
 <template>
-  $END$
+  <AutoComplete v-bind="{...$attrs}">
+ 
+  </AutoComplete>
 </template>
+<script setup lang="ts">
 
-<style scoped>
 
-</style>
+import  AutoComplete from "primevue/autocomplete";
+</script>
+

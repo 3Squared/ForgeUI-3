@@ -53,7 +53,7 @@ import { severities } from "../../composables/playgroundOptions";
 import Column from "primevue/column";
 import InputNumber from "primevue/inputnumber";
 import InputText from "primevue/inputtext";
-import { FilterMatchMode } from "primevue/api";
+import { FilterMatchMode } from "@primevue/core/api";
 
 const columns = ref<ForgeColumn[]>([
   { field: "code", header: "Code", sortable: true },

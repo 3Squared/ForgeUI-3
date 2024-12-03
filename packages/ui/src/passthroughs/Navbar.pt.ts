@@ -4,7 +4,7 @@ import { MenuPassThroughMethodOptions } from "primevue/menu";
 export default {
   // More PassThrough options in component file.
   menubar: {
-    menu: ({ instance }: MenubarPassThroughMethodOptions) => ({
+    rootList: ({ instance }: MenubarPassThroughMethodOptions) => ({
       class: [
         'navbar-nav navbar-collapse collapse me-auto',
         {
@@ -12,21 +12,21 @@ export default {
         }
       ]
     }),
-    menuitem: ({ context }: MenubarPassThroughMethodOptions) => ({
+    item: ({ context }: MenubarPassThroughMethodOptions) => ({
       class: [
         'nav-item cursor-pointer',
         {
-          'dropdown': context.item.items.length > 0,
+          'dropdown': context.item.items?.length > 0,
         }
       ]
     }),
-    action: ({ context, instance }: MenubarPassThroughMethodOptions) => ({
+    itemLink: ({ context, instance }: MenubarPassThroughMethodOptions) => ({
       class: [
         {
           'active': context.active,
           'nav-link': context.level === 0,
           'dropdown-item': context.level > 0,
-          'disabled': context.item.item.disabled,
+          'disabled': context.item.item?.disabled,
           'px-3': instance.mobileActive
         }
       ]
@@ -59,8 +59,8 @@ export default {
     },
     submenuicon: 'ms-1'
   },
-  menu: {
-    menu: (options : MenuPassThroughMethodOptions) => ({
+  rootList: {
+    rootList: (options : MenuPassThroughMethodOptions) => ({
       class: [
         'dropdown dropdown-menu',
         {
@@ -68,7 +68,7 @@ export default {
         }
       ]
     }),
-    menuitem: () => ({
+    item: () => ({
       class: [
         'dropdown-item cursor-pointer'
       ]

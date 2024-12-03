@@ -13,7 +13,6 @@
 </template>
 
 <script setup lang="ts">
-//import Dropdown, { DropdownChangeEvent } from "primevue/dropdown";
 import Select, { SelectChangeEvent } from "primevue/select";
 import { computed } from "vue";
 import { pluralise } from "./table-helpers";
