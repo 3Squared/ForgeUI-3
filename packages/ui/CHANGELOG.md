@@ -1,5 +1,39 @@
 # @3squared/forge-ui-3
 
+## 1.3.0
+
+### Minor Changes
+
+- 221d4c4: Replace use of VueMultiselect with PrimeVue Multiselect.
+
+  `ForgeMultiselect` is still usable but has been placed in a folder labelled deprecated to avoid future use.
+  It has also been removed from the styleguide and replace with the newly styled PrimeVue multiselect.
+
+  Migration Guide: Replace `ForgeMultiselect` with `Multiselect` see docs for how this can be implemented and use [PrimeVue](https://v3.primevue.org/multiselect/) docs.
+
+  `ForgeMultiselectPreview` now uses the PrimeVue `Multiselect`. This may mean some props no longer work. Again see PrimeVue docs for further guidance.
+
+- c8f1859: Add extra width classes:
+
+  - 5: 5%,
+  - 10: 10%,
+  - 20: 20%,
+  - 25: 25%,
+  - 30: 30%,
+  - 40: 40%,
+  - 50: 50%,
+  - 60: 60%,
+  - 75: 75%,
+  - 80: 80%,
+  - 90: 90%,
+  - 100: 100%,
+
+  These can be used by appending the size needed to `w-` e.g. 20% would be `w-20`
+
+### Patch Changes
+
+- a8ec24e: Fix fieldset test
+
 ## 1.2.0
 
 ### Minor Changes
