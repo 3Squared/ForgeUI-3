@@ -1,13 +1,9 @@
 <template>
   <div :class="orientation === 'column' ? 'row' : ''" data-cy="multiselect-preview">
     <div :class="orientation === 'row' ? 'col-12 mb-1' : 'col'" data-cy="multiselect-container">
-      <forge-multi-select v-model="model" :limit-text="() => `${model.length} selected`" :options="props.options" v-bind="{...$attrs}">
-        <template #tag>{{ "" }}</template>
-        <template #selection>
-          <span v-if="model.length > 0" class="pl-1">{{ model.length }} items selected</span>
-        </template>
+      <MultiSelect v-model="model" v-bind="{...$attrs}" :options="props.options" display="chip" optionLabel="label" :placeholder="multiselectPlaceholder" data-cy="multiselect">
         <slot v-for="(_, name) in $slots" :slot="name" :name="name" />
-      </forge-multi-select>
+      </MultiSelect>
       <!-- @slot If you need to display some content below the multi select such as validation content-->
       <slot name="after-multi-select" />
     </div>
@@ -35,7 +31,6 @@
 <script setup lang="ts">
 import { Icon } from '@iconify/vue'
 import { ForgeMultiSelectOrientation, MultiSelectOption } from "../types/forge-types"; 
-import ForgeMultiSelect from "@/components/ForgeMultiSelect.vue";
 
 export interface ForgeMultiSelectPreviewProps {
   title?: string,
@@ -43,7 +38,8 @@ export interface ForgeMultiSelectPreviewProps {
   height?: string,
   options: MultiSelectOption<any>[],
   canRemoveItemFromPreview?: boolean,
-  optionsPreviewEmptyText?: string
+  optionsPreviewEmptyText?: string,
+  multiselectPlaceholder?: string
 }
 
 const props = withDefaults(defineProps<ForgeMultiSelectPreviewProps>(), {
@@ -51,7 +47,8 @@ const props = withDefaults(defineProps<ForgeMultiSelectPreviewProps>(), {
   canRemoveItemFromPreview: false,
   height: "200px",
   title: "Selected Items",
-  optionsPreviewEmptyText: 'No Items Selected.'
+  optionsPreviewEmptyText: 'No Items Selected.',
+  multiselectPlaceholder: "Select"
 })
 
 const model = defineModel<MultiSelectOption<unknown>[]>({ default: []})

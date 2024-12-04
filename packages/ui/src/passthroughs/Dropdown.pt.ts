@@ -6,7 +6,7 @@ export default {
       
       return {
         class: [
-          'form-control d-flex cursor-pointer position-relative',
+          'form-select d-flex cursor-pointer position-relative',
           {
             'disabled': props.disabled
           }
@@ -18,7 +18,7 @@ export default {
 
       return {
         class: [
-          'my-auto filter-trigger',
+          'd-none my-auto filter-trigger',
           {
             'rotate-180': state.overlayVisible
           }

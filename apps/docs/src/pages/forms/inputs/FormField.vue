@@ -6,6 +6,46 @@
         <component :is="ForgeFormField" v-bind="options" v-model="value" :options="dropdownOptions" option-label="label" />
       </template>
     </Playground>
+
+    <h2>Validation:</h2>
+
+    <p class="flex">
+      Forge form field uses a combination of
+      <a href="https://vee-validate.logaretm.com/v4/">Vee-Validate</a>
+      and
+      <a href="https://github.com/jquense/yup">Yup</a>
+      to validate inputs. See doc for more info.
+    </p>
+
+    <Card>
+      <template #content>
+        <Form :validation-schema="schema" @submit="onSubmit">
+          <ForgeFormField v-model="name" name="name" placeholder="Enter name" field-label="Name" />
+
+          <ForgeFormField v-model="selectCity" name="city" type="select" placeholder="Select City" :options="cities" option-label="label" field-label="City" />
+
+          <ForgeFormField
+            v-model="selectedSkills"
+            name="skills"
+            type="multiselect"
+            placeholder="Select Skills"
+            :options="skills"
+            option-label="label"
+            display="chip"
+            filter
+            filter-placeholder="Search"
+            field-label="Skills"
+            max-selected-labels="4"
+          />
+          <div class="d-flex justify-content-end mt-1">
+            <Button label="Test" type="submit"></Button>
+          </div>
+        </Form>
+      </template>
+    </Card>
+
+    <CodeBlock :code="validationExampleCode"></CodeBlock>
+    <Toast />
   </div>
 </template>
 
@@ -14,6 +54,14 @@ import { Playground, usePlayground } from "@3squared/forge-playground-3";
 import { ForgeFormField, ForgePageHeader } from "@3squared/forge-ui-3";
 import { computed, ref, watch } from "vue";
 import { formFieldTypes } from "../../../composables/playgroundOptions";
+import { Form } from "vee-validate";
+import Toast from "primevue/toast";
+import Button from "primevue/button";
+import Card from "primevue/card";
+import CodeBlock from "@3squared/forge-playground-3/src/components/CodeBlock.vue";
+
+import * as yup from "yup";
+import { useToast } from "primevue/usetoast";
 
 const value = ref();
 const { options, propVals, config, reset } = usePlayground(
@@ -55,4 +103,165 @@ watch(
 );
 
 const code = computed(() => `<ForgeFormField${propVals.value.length > 0 ? " " + propVals.value.join(" ") : ""} />`);
+
+//For code example
+const toast = useToast();
+const schema = yup.object().shape({
+  city: yup.object().required(),
+  skills: yup.array().min(1, "Please select at least 1 option"),
+  name: yup.string().required()
+});
+
+const onSubmit = () => {
+  toast.add({ severity: "success", summary: "Success", closable: false, life: 3000 });
+};
+
+const selectedSkills = ref([]);
+const selectCity = ref();
+const name = ref();
+
+const cities = ref([
+  { id: 1, label: "London" },
+  { id: 2, label: "Manchester" },
+  { id: 3, label: "Birmingham" },
+  { id: 4, label: "Liverpool" },
+  { id: 5, label: "Leeds" },
+  { id: 6, label: "Sheffield" },
+  { id: 7, label: "Newcastle" },
+  { id: 8, label: "Nottingham" },
+  { id: 9, label: "Bristol" },
+  { id: 10, label: "Cambridge" },
+  { id: 11, label: "Oxford" },
+  { id: 12, label: "York" }
+]);
+
+const skills = ref([
+  { id: 1, label: "JavaScript" },
+  { id: 2, label: "Python" },
+  { id: 3, label: "HTML" },
+  { id: 4, label: "CSS" },
+  { id: 5, label: "React" },
+  { id: 6, label: "Node.js" },
+  { id: 7, label: "SQL" },
+  { id: 8, label: "Java" },
+  { id: 9, label: "C++" },
+  { id: 10, label: "Git" },
+  { id: 11, label: "Communication" },
+  { id: 12, label: "Problem Solving" }
+]);
+
+const validationExampleCode = computed(
+  () => `
+<template>
+  <Card>
+    <template #content>
+<!--      Set up form (imported from vee-validate) with schema object and submit function-->
+      <Form @submit="onSubmit" :validation-schema="schema">
+        <ForgeFormField
+            name="name"
+            v-model="name"
+            placeholder="Enter name"
+            fieldLabel="Name"
+        />
+        
+        <ForgeFormField
+            name="city"
+            v-model="selectCity"
+            type="select"
+            placeholder="Select City"
+            :options="cities"
+            optionLabel="label"
+            fieldLabel="City"
+        />
+        
+        <ForgeFormField
+          name="skills"
+          v-model="selectedSkills"
+          type="multiselect"
+          placeholder="Select Skills"
+          :options="skills"
+          optionLabel="label"
+          display="chip"
+          filter
+          filterPlaceholder="Search"
+          fieldLabel="Skills"
+          :maxSected
+        />
+        <div class="d-flex justify-content-end mt-1">
+        <!--          Add Button with type 'submit' to trigger submit event -->
+        <Button label="Test" type="submit" ></Button>
+        </div>
+      </Form>
+    </template>
+  </Card>
+
+  <Toast />
+
+</template>
+
+<script>
+import {
+  ForgeFormField
+} from "@3squared/forge-ui-3";
+
+import Button from "primevue/button";
+import Card from "primevue/card";
+import { useToast } from "primevue/usetoast";
+import Toast from "primevue/toast"
+//Validation imports
+import * as yup from 'yup';
+import { Form } from "vee-validate";
+
+
+const toast = useToast();
+
+//Build up validation schema with yup
+//Property in the object should match a name on the form input
+const schema = yup.object().shape({
+  city: yup.object().required(),
+  skills: yup.array().min(1, "Please select at least 1 option").required(),
+  name: yup.string().required()
+})
+
+
+const onSubmit = () => {
+  toast.add({ severity: "success", summary: "Success", closable: false, life: 3000 })
+}
+
+const selectedSkills = ref([]);
+const selectCity = ref();
+const name = ref();
+
+const cities = ref([
+  { id: 1, label: "London" },
+  { id: 2, label: "Manchester" },
+  { id: 3, label: "Birmingham" },
+  { id: 4, label: "Liverpool" },
+  { id: 5, label: "Leeds" },
+  { id: 6, label: "Sheffield" },
+  { id: 7, label: "Newcastle" },
+  { id: 8, label: "Nottingham" },
+  { id: 9, label: "Bristol" },
+  { id: 10, label: "Cambridge" },
+  { id: 11, label: "Oxford" },
+  { id: 12, label: "York" },
+]);
+
+const skills = ref([
+  { id: 1, label: "JavaScript" },
+  { id: 2, label: "Python" },
+  { id: 3, label: "HTML" },
+  { id: 4, label: "CSS" },
+  { id: 5, label: "React" },
+  { id: 6, label: "Node.js" },
+  { id: 7, label: "SQL" },
+  { id: 8, label: "Java" },
+  { id: 9, label: "C++" },
+  { id: 10, label: "Git" },
+  { id: 11, label: "Communication" },
+  { id: 12, label: "Problem Solving" },
+]);
+
+</\script>`
+);
 </script>

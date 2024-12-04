@@ -9,7 +9,7 @@ import ForgeLink from "./src/components/ForgeLink.vue";
 import ForgeModal from "./src/components/ForgeModal.vue";
 import ForgeInlineEditor from "./src/components/ForgeInlineEditor.vue";
 import ForgeNavbar from "./src/components/ForgeNavbar.vue";
-import ForgeMultiSelect from "./src/components/ForgeMultiSelect.vue";
+import ForgeMultiSelect from "./src/components/deprecated/ForgeMultiSelect.vue";
 import ForgeMultiSelectPreview from './src/components/ForgeMultiSelectPreview.vue'
 import ForgePageHeader from "./src/components/ForgePageHeader.vue";
 import ForgeDatepicker from "./src/components/ForgeDatepicker.vue";

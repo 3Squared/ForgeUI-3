@@ -45,7 +45,7 @@ describe('<ForgeMultiSelectPreview />', () => {
     // Act
     mountMultiselectPreview({ options: options, selectedOptions: selectedOptions })
     cy.get(multiselectId).click()
-    cy.get(option1Id).click()
+    cy.get('[data-pc-section=item]').contains('Option 1').click()
     cy.clickOff()
 
     // Assert
