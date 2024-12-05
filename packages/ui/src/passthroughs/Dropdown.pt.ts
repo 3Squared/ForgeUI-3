@@ -3,7 +3,7 @@ import { DropdownPassThroughMethodOptions } from "primevue/dropdown";
 export default {
   dropdown: {
     root: ({ props }: DropdownPassThroughMethodOptions<any>) => {
-      
+
       return {
         class: [
           'form-select d-flex cursor-pointer position-relative',
@@ -14,7 +14,7 @@ export default {
       }
 
     },
-    trigger: ({ state } : DropdownPassThroughMethodOptions<any>) => {
+    trigger: ({ state }: DropdownPassThroughMethodOptions<any>) => {
 
       return {
         class: [
@@ -22,12 +22,15 @@ export default {
           {
             'rotate-180': state.overlayVisible
           }
-        ] 
+        ]
       }
 
     },
-    list: 'list-unstyled mb-0 dropdown-menu overflow-y-auto show w-100',
-    item: ({ context } : DropdownPassThroughMethodOptions<any>) => ({
+    list: ({ props }: DropdownPassThroughMethodOptions<any>) => ({ 
+      class: [ 'mb-0 dropdown-menu overflow-y-auto show w-100'],
+      style: "max-height:" + (props.scrollHeight ? props.scrollHeight : 200)
+    }),
+    item: ({ context }: DropdownPassThroughMethodOptions<any>) => ({
       class: [
         'dropdown-item d-flex cursor-pointer text-wrap',
         {
@@ -66,7 +69,7 @@ export default {
     clearicon: "ms-auto my-auto",
     loadingIcon: 'spinner-border spinner-border-sm border-0',
     itemGroupLabel: "ps-2 fw-bold",
-    input: ({ instance } : DropdownPassThroughMethodOptions<any>) => ({
+    input: ({ instance }: DropdownPassThroughMethodOptions<any>) => ({
       class: [
         'w-100',
         {
