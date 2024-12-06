@@ -1,5 +1,13 @@
 # forge-ui-3-styleguide
 
+## 1.17.1
+
+### Patch Changes
+
+- b546490: Add Styling fixes and more example data
+- Updated dependencies [b546490]
+  - @3squared/forge-ui-3@1.3.1
+
 ## 1.17.0
 
 ### Minor Changes
