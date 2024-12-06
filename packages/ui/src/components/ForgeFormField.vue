@@ -3,7 +3,7 @@
                   :name="props.name" v-model="model" />
   <div class="d-flex flex-column w-100" v-else>
     <div data-cy="input-wrapper" class="d-flex" :class="props.fieldLabelPosition === 'top' ? 'flex-column' : 'flex-row'">
-      <label :for="props.name" :class="props.fieldLabelPosition === 'top' ? 'mb-1' : 'me-2'">{{ props.fieldLabel }}</label>
+      <label :for="props.name" :class="props.fieldLabelPosition === 'top' ? 'mb-1' : ('me-2 ' + props.labelWidthClass)">{{ props.fieldLabel }}</label>
       <input-number :id="props.name" v-if="props.type === 'number'" v-bind="$attrs"
                     :placeholder="props.placeholder" :input-class="{'is-invalid': hasErrors }" :class="{'is-invalid': hasErrors }"
                     v-model="model"
@@ -49,6 +49,7 @@ export interface ForgeFormFieldProps {
   type?: ForgeFormFieldTypes,
   mask?: string,
   placeholder?: string,
+  labelWidthClass?: string
 }
 
 const model = defineModel<any>()
@@ -57,7 +58,8 @@ const props = withDefaults(defineProps<ForgeFormFieldProps>(), {
   fieldLabelPosition: 'top',
   mask: "",
   placeholder: "",
-  type: "text"
+  type: "text",
+  labelWidthClass: "w-25"
 })
 
 const change = (event : any) => {
@@ -77,4 +79,5 @@ const hasErrors = computed(() => errors.value.length > 0)
 watch(() => value.value, (newValue) => {
   model.value = newValue
 }, { immediate: true })
+
 </script>

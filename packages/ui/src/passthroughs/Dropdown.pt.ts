@@ -3,7 +3,6 @@ import { DropdownPassThroughMethodOptions } from "primevue/dropdown";
 export default {
   dropdown: {
     root: ({ props }: DropdownPassThroughMethodOptions<any>) => {
-
       return {
         class: [
           'form-select d-flex cursor-pointer position-relative',
@@ -15,7 +14,6 @@ export default {
 
     },
     trigger: ({ state }: DropdownPassThroughMethodOptions<any>) => {
-
       return {
         class: [
           'd-none my-auto filter-trigger',
@@ -24,11 +22,10 @@ export default {
           }
         ]
       }
-
     },
     list: ({ props }: DropdownPassThroughMethodOptions<any>) => ({ 
-      class: [ 'mb-0 dropdown-menu overflow-y-auto show w-100'],
-      style: "max-height:" + (props.scrollHeight ? props.scrollHeight : 200)
+      class: [ 'list-unstyled mb-0 overflow-y-auto'],
+      style: "max-height:" + (props.scrollHeight ? props.scrollHeight : "200px")
     }),
     item: ({ context }: DropdownPassThroughMethodOptions<any>) => ({
       class: [
@@ -38,37 +35,17 @@ export default {
         }
       ]
     }),
-    header: "d-flex border-bottom pb-2",
-    headercheckboxcontainer: 'form-check ms-2 mt-2',
-    headercheckbox: (options: any) => ({
-      class: [
-        'form-check-input px-2 py-2 rounded position-relative',
-        {
-          'bg-primary': options.instance.allSelected
-        }
-      ]
-    }),
-    headercheckboxicon: 'mb-1 fw-medium text-white position-absolute filter-header-multiselect__check-icon',
-    filtercontainer: 'd-flex position-relative mt-1 ps-2 w-100',
-    filterinput: 'form-control w-100',
-    filtericon: {
+    panel: 'dropdown-menu overflow-y-auto show',
+    filterContainer: 'd-flex position-relative p-2 w-100',
+    filterInput: 'form-control w-100',
+    filterIcon: {
       class: ['position-absolute bottom-0 end-0 me-3'],
       style: "top: 35%;"
     },
-    closebutton: 'btn',
-    checkbox: (options: DropdownPassThroughMethodOptions<any>) => ({
-      class: [
-        'form-check-input px-2 py-2 rounded position-relative',
-        {
-          'bg-primary': options.context.selected,
-          'form-check-input__focus': options.state.focused,
-        }
-      ]
-    }),
-    checkboxicon: 'mb-1 fw-medium text-white position-absolute filter-header-multiselect__check-icon',
-    clearicon: "ms-auto my-auto",
+    clearIcon: "ms-auto my-auto",
     loadingIcon: 'spinner-border spinner-border-sm border-0',
     itemGroupLabel: "ps-2 fw-bold",
+    emptyMessage: 'mx-3 my-2',
     input: ({ instance }: DropdownPassThroughMethodOptions<any>) => ({
       class: [
         'w-100',
