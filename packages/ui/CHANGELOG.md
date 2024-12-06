@@ -1,5 +1,11 @@
 # @3squared/forge-ui-3
 
+## 1.3.1
+
+### Patch Changes
+
+- b546490: Add Styling fixes and more example data
+
 ## 1.3.0
 
 ### Minor Changes
