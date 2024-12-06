@@ -47,3 +47,9 @@
 .rotate-180 {
   transform: rotate(180deg)
 }
+
+.ellipsis-overflow {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

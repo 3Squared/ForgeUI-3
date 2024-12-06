@@ -47,19 +47,31 @@
 
 <script setup lang="ts">
 import { computed, ref } from "vue";
-import { ForgePageHeader, ForgeColumnCustomiser, ForgeFilterHeader, ForgeColumn, ForgeTable } from "@3squared/forge-ui-3";
+import { ForgePageHeader, ForgeColumnCustomiser, ForgeFilterHeader, ForgeTable } from "@3squared/forge-ui-3";
 import { Playground, usePlayground, CodeBlock } from "@3squared/forge-playground-3";
 import { severities } from "../../composables/playgroundOptions";
 import Column from "primevue/column";
 import InputNumber from "primevue/inputnumber";
 import InputText from "primevue/inputtext";
 import { FilterMatchMode } from "primevue/api";
+import type { ForgeColumn } from "@3squared/forge-ui-3/src/types/forge-types";
+import { products } from "./exampleTableData";
 
 const columns = ref<ForgeColumn[]>([
   { field: "code", header: "Code", sortable: true },
   { field: "name", header: "Name", dataType: "select", sortable: true },
-  { field: "category", header: "Category", dataType: "multiselect", sortable: true },
-  { field: "quantity", header: "Quantity", dataType: "numeric", sortable: true },
+  {
+    field: "category",
+    header: "Category",
+    dataType: "multiselect",
+    sortable: true
+  },
+  {
+    field: "quantity",
+    header: "Quantity",
+    dataType: "numeric",
+    sortable: true
+  },
   { field: "date", header: "Date", dataType: "date", sortable: true }
 ]);
 
@@ -72,17 +84,25 @@ const filters = ref({
   date: { value: null, matchMode: FilterMatchMode.EQUALS }
 });
 
-const multiselectOptions = ["Fitness", "Clothing"];
-const dropdownOptions = ["Blue Shirt", "Running Trainers", "Watch", "Socks", "Trousers"];
-const selection = ref();
-
-const products = [
-  { code: 1, name: "Blue Shirt", category: "Clothing", quantity: 10, date: new Date() },
-  { code: 2, name: "Running Trainers", category: "Fitness", quantity: 3, date: new Date().setDate(new Date().getDate() + 1) },
-  { code: 3, name: "Watch", category: "Accessories", quantity: 12, date: new Date().setDate(new Date().getDate() + 2) },
-  { code: 4, name: "Socks", category: "Clothing", quantity: 10, date: new Date().setDate(new Date().getDate() + 3) },
-  { code: 5, name: "Trousers", category: "Clothing", quantity: 15, date: new Date().setDate(new Date().getDate() + 4) }
+const multiselectOptions = ["Fitness", "Clothing", "Accessories"];
+const dropdownOptions = [
+  "Blue Shirt",
+  "Running Trainers",
+  "Watch",
+  "Socks",
+  "Trousers",
+  "Yoga Mat",
+  "Leather Belt",
+  "Winter Jacket",
+  "Sports Water Bottle",
+  "Baseball Cap",
+  "Gloves",
+  "Fitness Tracker",
+  "Sunglasses",
+  "Jeans",
+  "Backpack"
 ];
+const selection = ref();
 
 const { options, propVals, config, reset } = usePlayground(
   {
@@ -111,24 +131,36 @@ const { options, propVals, config, reset } = usePlayground(
     compareSelectionBy: "deepEquals",
     metaKeySelection: false,
     reorderableColumns: false,
-    editMode: ""
+    editMode: "",
+    paginator: true
   },
   {
     severity: { type: "select", options: ["undefined", ...severities] },
     size: { type: "select", options: ["small", "large"] },
     scrollHeight: { disabled: (): boolean => !options.value.scrollable },
     sortMode: { type: "select", options: ["single", "multiple"] },
-    removableSort: { disabled: (): boolean => !(options.value.sortMode !== "") },
+    removableSort: {
+      disabled: (): boolean => !(options.value.sortMode !== "")
+    },
     selectionMode: { type: "select", options: ["single", "multiple"] },
-    dataKey: { type: "select", options: columns.value.map((column) => column.field) },
+    dataKey: {
+      type: "select",
+      options: columns.value.map((column) => column.field)
+    },
     compareSelectionBy: {
       type: "select",
       options: ["equals", "deepEquals"],
       disabled: (): boolean => !(options.value.selectionMode !== "")
     },
-    metaKeySelection: { disabled: (): boolean => !(options.value.selectionMode !== "") },
-    exportFileName: { disabled: (): boolean => !options.value.showExporterButton },
-    csvSeparator: { disabled: (): boolean => !options.value.showExporterButton },
+    metaKeySelection: {
+      disabled: (): boolean => !(options.value.selectionMode !== "")
+    },
+    exportFileName: {
+      disabled: (): boolean => !options.value.showExporterButton
+    },
+    csvSeparator: {
+      disabled: (): boolean => !options.value.showExporterButton
+    },
     editMode: { type: "select", options: ["cell", "row"] }
   }
 );
@@ -149,7 +181,7 @@ const componentCode = computed<string>(
 const scriptCode = computed<string>(
   () => `
  <script setup lang="ts">
- import { ForgeColumn, ForgeFilterHeader } from "@3squared/forge-ui-3";
+ import { ForgeFilterHeader } from "@3squared/forge-ui-3";
  import { FilterMatchMode } from "primevue/api";
  import { ref } from 'vue'
 
@@ -164,6 +196,7 @@ const scriptCode = computed<string>(
   const dropdownOptions = [
     "Fitness",
     "Clothing"
+    "Accessories""
   ]
 
   // Columns the table should contain. DataType is used to specify the type of filter ForgeFilterHeader should display.
@@ -196,7 +229,7 @@ const columnCustomiserCode = computed<string>(
         // Required for Filters
         <template #filter="{ field }">
           // The v-if will check if the column actually exists, this is important when using the column customiser.
-          <forge-filter-header v-if="filters[field]" :data-type="column.dataType" v-model="filters[field].value" :dropdown-options="dropdownOptions" />
+          <ForgeFilterHeader v-if="filters[field]" :data-type="column.dataType" v-model="filters[field].value" :dropdown-options="dropdownOptions" />
         </template>
       </Column>
     </ForgeTable>
@@ -217,7 +250,8 @@ const columnCustomiserCode = computed<string>(
    // Dropdown Filter options
    const dropdownOptions = [
      "Fitness",
-     "Clothing"
+     "Clothing",
+     "Accessories"
    ]
 
    // Columns the table should contain. DataType is used to specify the type of filter ForgeFilterHeader should display.

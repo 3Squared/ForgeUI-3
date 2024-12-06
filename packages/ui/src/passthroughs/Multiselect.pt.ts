@@ -16,7 +16,7 @@ export default {
     header: 'd-flex dropdown-item',
     headerCheckbox: 'dropdown-item ',
     labelContainer: "w-100 me-2",
-    label: "w-100",
+    label: "w-100 ellipsis-overflow",
     filterContainer: "d-flex w-100 cursor-pointer",
     filterIcon: 'd-none',
     filterInput: "form-control form-control-sm",
@@ -24,11 +24,11 @@ export default {
     hiddenInput: 'd-none',
     token: 'badge rounded-pill bg-primary-subtle text-primary d-inline-flex align-items-center border border-primary me-1 pt-1',
     tokenLabel: 'px-2 fs-6 fw-400',
-    emptymessage: 'mx-3 my-2',
+    emptyMessage: 'mx-3 my-2',
+    clearIcon: "ms-auto my-auto",
     trigger: ({ state } : MultiSelectPassThroughMethodOptions) => {
       return {
         class: [
-          
           'd-none ms-auto my-auto filter-trigger', {
           'rotate-180': state.overlayVisible 
         }]
