@@ -20,11 +20,7 @@
 import { ForgePageHeader } from "@3squared/forge-ui-3";
 import Dropdown from "primevue/dropdown";
 import { computed, ref } from "vue";
-import {
-  usePlayground,
-  Playground,
-  CodeBlock,
-} from "@3squared/forge-playground-3";
+import { usePlayground, Playground, CodeBlock } from "@3squared/forge-playground-3";
 import { stringFilterTypes } from "../../../composables/playgroundOptions";
 
 const selectedItem = ref();
@@ -41,7 +37,7 @@ const opts = ref([
   { id: 9, optionLabel: "Option 9", value: "opt_9" },
   { id: 10, optionLabel: "Option 10", value: "opt_10" },
   { id: 11, optionLabel: "Option 11", value: "opt_11" },
-  { id: 12, optionLabel: "Option 12", value: "opt_12" },
+  { id: 12, optionLabel: "Option 12", value: "opt_12" }
 ]);
 
 const { options, propVals, config } = usePlayground(
@@ -64,7 +60,7 @@ const { options, propVals, config } = usePlayground(
     filterMessage: "{0} results are available",
     selectionMessage: "{0} items selected",
     emptySelectionMessage: "No selected items",
-    emptyFilterMessage: "No results found",
+    emptyFilterMessage: "No results found"
   },
   {
     vModel: { required: true, disabled: () => true },
@@ -72,13 +68,13 @@ const { options, propVals, config } = usePlayground(
     filterMatchMode: {
       type: "select",
       options: stringFilterTypes,
-      disabled: (): boolean => !options.value.filter,
+      disabled: (): boolean => !options.value.filter
     },
     filterPlaceholder: { disabled: (): boolean => !options.value.filter },
     optionLabel: { type: "select", options: Object.keys(opts.value[0]) },
     optionValue: { type: "select", options: Object.keys(opts.value[0]) },
-    dataKey: { type: "select", options: Object.keys(opts.value[0]) },
-  },
+    dataKey: { type: "select", options: Object.keys(opts.value[0]) }
+  }
 );
 
 const code = computed(() => `<Dropdown ${propVals.value.join(" ")}/>`);
@@ -102,6 +98,6 @@ import Dropdown from "primevue/dropdown";
 ]);
  
  const selectedItem = ref()
-<\/script>`,
+<\/script>`
 );
 </script>

@@ -3,55 +3,35 @@
     <ForgePageHeader title="Table" />
     <p>
       Further documentation and examples for
-      <strong>DataTable</strong> , <strong>Column</strong> ,
-      <strong>ColumnGroup</strong> and <strong>Row</strong> can be found in the
-      <a class="link" target="_blank" href="https://primevue.org/datatable/"
-        ><strong>PrimeVue documentation</strong></a
-      >
+      <strong>DataTable</strong>
+      ,
+      <strong>Column</strong>
+      ,
+      <strong>ColumnGroup</strong>
+      and
+      <strong>Row</strong>
+      can be found in the
+      <a class="link" target="_blank" href="https://primevue.org/datatable/"><strong>PrimeVue documentation</strong></a>
       .
     </p>
-    <Playground
-      :code="componentCode"
-      :options="options"
-      :config="config"
-      @reset="reset"
-    >
+    <Playground :code="componentCode" :options="options" :config="config" @reset="reset">
       <template #component>
-        <component
-          :is="ForgeTable"
-          v-bind="options"
-          v-model:filters="filters"
-          v-model:selection="selection"
-          :value="products"
-        >
+        <component :is="ForgeTable" v-bind="options" v-model:filters="filters" v-model:selection="selection" :value="products">
           <template #column-customiser>
             <ForgeColumnCustomiser v-model="columns" />
           </template>
-          <Column
-            v-for="column in columns"
-            :key="column.field as string"
-            sortable
-            v-bind="column"
-          >
+          <Column v-for="column in columns" :key="column.field as string" sortable v-bind="column">
             <template #filter="{ field }">
               <forge-filter-header
                 v-if="filters[field]"
                 v-model="filters[field].value"
                 :data-type="column.dataType"
-                :dropdown-options="
-                  column.dataType === 'multiselect'
-                    ? multiselectOptions
-                    : dropdownOptions
-                "
+                :dropdown-options="column.dataType === 'multiselect' ? multiselectOptions : dropdownOptions"
                 :placeholder="column.header"
               />
             </template>
             <template #editor="{ data, field }">
-              <InputText
-                v-if="field !== 'quantity' && field !== 'code'"
-                v-model="data[field]"
-                autofocus
-              />
+              <InputText v-if="field !== 'quantity' && field !== 'code'" v-model="data[field]" autofocus />
               <InputNumber v-else v-model="data[field]" autofocus />
             </template>
           </Column>
@@ -67,17 +47,8 @@
 
 <script setup lang="ts">
 import { computed, ref } from "vue";
-import {
-  ForgePageHeader,
-  ForgeColumnCustomiser,
-  ForgeFilterHeader,
-  ForgeTable,
-} from "@3squared/forge-ui-3";
-import {
-  Playground,
-  usePlayground,
-  CodeBlock,
-} from "@3squared/forge-playground-3";
+import { ForgePageHeader, ForgeColumnCustomiser, ForgeFilterHeader, ForgeTable } from "@3squared/forge-ui-3";
+import { Playground, usePlayground, CodeBlock } from "@3squared/forge-playground-3";
 import { severities } from "../../composables/playgroundOptions";
 import Column from "primevue/column";
 import InputNumber from "primevue/inputnumber";
@@ -93,15 +64,15 @@ const columns = ref<ForgeColumn[]>([
     field: "category",
     header: "Category",
     dataType: "multiselect",
-    sortable: true,
+    sortable: true
   },
   {
     field: "quantity",
     header: "Quantity",
     dataType: "numeric",
-    sortable: true,
+    sortable: true
   },
-  { field: "date", header: "Date", dataType: "date", sortable: true },
+  { field: "date", header: "Date", dataType: "date", sortable: true }
 ]);
 
 const filters = ref({
@@ -110,7 +81,7 @@ const filters = ref({
   name: { value: null, matchMode: FilterMatchMode.STARTS_WITH },
   category: { value: null, matchMode: FilterMatchMode.IN },
   quantity: { value: null, matchMode: FilterMatchMode.EQUALS },
-  date: { value: null, matchMode: FilterMatchMode.EQUALS },
+  date: { value: null, matchMode: FilterMatchMode.EQUALS }
 });
 
 const multiselectOptions = ["Fitness", "Clothing", "Accessories"];
@@ -129,7 +100,7 @@ const dropdownOptions = [
   "Fitness Tracker",
   "Sunglasses",
   "Jeans",
-  "Backpack",
+  "Backpack"
 ];
 const selection = ref();
 
@@ -161,7 +132,7 @@ const { options, propVals, config, reset } = usePlayground(
     metaKeySelection: false,
     reorderableColumns: false,
     editMode: "",
-    paginator: true,
+    paginator: true
   },
   {
     severity: { type: "select", options: ["undefined", ...severities] },
@@ -169,29 +140,29 @@ const { options, propVals, config, reset } = usePlayground(
     scrollHeight: { disabled: (): boolean => !options.value.scrollable },
     sortMode: { type: "select", options: ["single", "multiple"] },
     removableSort: {
-      disabled: (): boolean => !(options.value.sortMode !== ""),
+      disabled: (): boolean => !(options.value.sortMode !== "")
     },
     selectionMode: { type: "select", options: ["single", "multiple"] },
     dataKey: {
       type: "select",
-      options: columns.value.map((column) => column.field),
+      options: columns.value.map((column) => column.field)
     },
     compareSelectionBy: {
       type: "select",
       options: ["equals", "deepEquals"],
-      disabled: (): boolean => !(options.value.selectionMode !== ""),
+      disabled: (): boolean => !(options.value.selectionMode !== "")
     },
     metaKeySelection: {
-      disabled: (): boolean => !(options.value.selectionMode !== ""),
+      disabled: (): boolean => !(options.value.selectionMode !== "")
     },
     exportFileName: {
-      disabled: (): boolean => !options.value.showExporterButton,
+      disabled: (): boolean => !options.value.showExporterButton
     },
     csvSeparator: {
-      disabled: (): boolean => !options.value.showExporterButton,
+      disabled: (): boolean => !options.value.showExporterButton
     },
-    editMode: { type: "select", options: ["cell", "row"] },
-  },
+    editMode: { type: "select", options: ["cell", "row"] }
+  }
 );
 
 const componentCode = computed<string>(
@@ -204,7 +175,7 @@ const componentCode = computed<string>(
       </template>
     </Column>
   </ForgeTable>
-`,
+`
 );
 
 const scriptCode = computed<string>(
@@ -244,7 +215,7 @@ const scriptCode = computed<string>(
  })
   
  </\script>
-`,
+`
 );
 
 const columnCustomiserCode = computed<string>(
@@ -299,6 +270,6 @@ const columnCustomiserCode = computed<string>(
      quantity: { value: null, matchMode: FilterMatchMode.EQUALS }
    })
   </\script>
-`,
+`
 );
 </script>
