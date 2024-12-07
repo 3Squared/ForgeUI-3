@@ -32,8 +32,8 @@ describe("<Fieldset />", () => {
     mountFieldset({ });
     
     // Assert
-    cy.get(fieldsetRoot).and("have.class", expectedRootClasses);
-    cy.get(fieldsetLegend).and("have.class", expectedLegendClasses);
+    cy.get(fieldsetRoot).should("exist").and("have.class", expectedRootClasses);
+    cy.get(fieldsetLegend).should("exist").and("have.class", expectedLegendClasses);
   });
   
   it("Should show legend", () => {
@@ -44,6 +44,8 @@ describe("<Fieldset />", () => {
     mountFieldset({ legend: legend});
     
     // Assert
-    cy.get('[data-pc-section="legendtitle"]').and("contain.text", legend);
+    cy.get('[data-pc-section="legendtitle"]')
+      .should("exist")
+      .and("contain.text", legend);
   });
 });

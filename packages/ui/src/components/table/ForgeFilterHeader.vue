@@ -18,16 +18,7 @@
       </template>
     </Select>
     <MultiSelect v-else-if="dataType === 'multiselect'" v-model="modelValue" v-bind="$attrs" :options="dropdownOptions"
-                 :showToggleAll="false" :option-label="optionLabel" :option-value="optionValue" filter>
-      <template #value="{ value, placeholder }">
-        <div class="d-flex w-100">
-          <span :class="{ 'filter-placeholder': (value as string[])?.length === 0 || value === null }">{{ label(value, placeholder) }}</span>
-          <Button v-if="showClearButton && (value as [])?.length > 0" @click.prevent="clear" size="small"
-                  class="bg-transparent border-0 ms-auto p-0 pe-1">
-            <Icon icon="bi:x" width="1rem" height="1rem" class="text-black" />
-          </Button>
-        </div>
-      </template>
+                 :showToggleAll="false" :option-label="optionLabel" :option-value="optionValue" filter display="chip">
     </MultiSelect>
     <InputText v-else v-model="modelValue" v-bind="$attrs" />
     <Button v-if="showClearButton && modelValue !== null && dataType !== 'select' && dataType !== 'multiselect' && dataType !== 'date'"
@@ -44,7 +35,7 @@ import InputText from "primevue/inputtext";
 import Select from "primevue/select";
 import ForgeDatepicker from "@/components/ForgeDatepicker.vue";
 import MultiSelect from "primevue/multiselect";
-import { Icon } from '@iconify/vue'
+import { Icon } from '@iconify/vue';
 
 export interface ForgeFilterHeaderProps {
   dataType: 'numeric' | 'date' | 'multiselect' | 'select' | undefined,

@@ -1,5 +1,33 @@
 # forge-ui-3-styleguide
 
+## 1.17.1
+
+### Patch Changes
+
+- b546490: Add Styling fixes and more example data
+- Updated dependencies [b546490]
+  - @3squared/forge-ui-3@1.3.1
+
+## 1.17.0
+
+### Minor Changes
+
+- 221d4c4: Replace use of VueMultiselect with PrimeVue Multiselect.
+
+  `ForgeMultiselect` is still usable but has been placed in a folder labelled deprecated to avoid future use.
+  It has also been removed from the styleguide and replace with the newly styled PrimeVue multiselect.
+
+  Migration Guide: Replace `ForgeMultiselect` with `Multiselect` see docs for how this can be implemented and use [PrimeVue](https://v3.primevue.org/multiselect/) docs.
+
+  `ForgeMultiselectPreview` now uses the PrimeVue `Multiselect`. This may mean some props no longer work. Again see PrimeVue docs for further guidance.
+
+### Patch Changes
+
+- Updated dependencies [221d4c4]
+- Updated dependencies [a8ec24e]
+- Updated dependencies [c8f1859]
+  - @3squared/forge-ui-3@1.3.0
+
 ## 1.16.0
 
 ### Minor Changes
