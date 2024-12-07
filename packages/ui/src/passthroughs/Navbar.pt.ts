@@ -60,7 +60,7 @@ export default {
     submenuicon: 'ms-1'
   },
   menu: {
-    menu: (options : MenuPassThroughMethodOptions) => ({
+    list: (options : MenuPassThroughMethodOptions) => ({
       class: [
         'dropdown dropdown-menu',
         {
@@ -68,7 +68,7 @@ export default {
         }
       ]
     }),
-    menuitem: () => ({
+    item: () => ({
       class: [
         'dropdown-item cursor-pointer'
       ]
