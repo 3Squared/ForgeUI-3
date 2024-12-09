@@ -1,4 +1,5 @@
 import Fieldset, {FieldsetProps} from "primevue/fieldset";
+import FieldsetWrapper from "./fieldsetWrapper.vue";
 
 const fieldsetId = "fieldset";
 const fieldsetRoot = '[data-pc-section="root"]'
@@ -14,13 +15,31 @@ function mountFieldset(props: FieldsetProps) {
   });
 }
 
+function mountFieldsetWrapper(props: FieldsetProps) {
+  //@ts-ignore
+  cy.mount(FieldsetWrapper, {
+    props: {
+      id: fieldsetId,
+      ...props
+    }
+  });
+}
+
 describe("<Fieldset />", () => {
   it("Mounts", () => {
     // Act
-    mountFieldset({});
+    mountFieldsetWrapper({});
 
     // Assert
     cy.get(`#${fieldsetId}`).should("exist").and("be.visible");
+  });
+  
+  it("Displays content", () => {
+    // Act
+    mountFieldsetWrapper({});
+
+    // Assert
+    cy.get(`#${fieldsetId}`).should("exist").and("contain.text", " Here is some content!");
   });
 
   it("Have classes to make it look like a fieldset", () => {
