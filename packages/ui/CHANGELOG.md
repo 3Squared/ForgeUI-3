@@ -1,5 +1,11 @@
 # @3squared/forge-ui-3
 
+## 1.3.2
+
+### Patch Changes
+
+- cfbb0fc: Change default multiselect filter header back to comma
+
 ## 1.3.1
 
 ### Patch Changes
