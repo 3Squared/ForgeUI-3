@@ -18,7 +18,7 @@
       </template>
     </Dropdown>
     <MultiSelect v-else-if="dataType === 'multiselect'" v-model="modelValue" v-bind="$attrs" :options="dropdownOptions"
-                 :showToggleAll="false" :option-label="optionLabel" :option-value="optionValue" filter display="chip">
+                 :showToggleAll="false" :option-label="optionLabel" :option-value="optionValue" filter >
     </MultiSelect>
     <InputText v-else v-model="modelValue" v-bind="$attrs" />
     <Button v-if="showClearButton && modelValue !== null && dataType !== 'select' && dataType !== 'multiselect' && dataType !== 'date'"
