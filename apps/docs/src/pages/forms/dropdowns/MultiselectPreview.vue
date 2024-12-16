@@ -46,7 +46,9 @@ const { options, propVals, config } = usePlayground(
     multiple: true,
     trackBy: "id",
     label: "label",
-    optionsPreviewEmptyText: "No Items Selected."
+    optionsPreviewEmptyText: "No Items Selected.",
+    maxSelectedLabels: 3,
+    filter: false
   },
   {
     vModel: { required: true, disabled: () => true },
