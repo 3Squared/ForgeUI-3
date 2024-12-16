@@ -4,11 +4,8 @@ export default {
     root: () => ({
       class: ['progress']
     }),
-    value: () => ({
-      class: ['progress-bar']
-    }),
     label: () => ({
-      class: ['text-white']
+      class: ['text-white m-1']
     })
   }
 }

@@ -52,7 +52,7 @@ const pt = computed(() => ({
     style: props.pixelWidth ? `width: ${props.pixelWidth}px` : ''
   },
   value: {
-    class: [severity.value, striped.value, animate.value]
+    class: [severity.value, striped.value, animate.value, 'progress-bar']
   },
 }))
 

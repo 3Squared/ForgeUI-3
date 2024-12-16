@@ -6,9 +6,12 @@
       <a class="link" target="_blank" href="https://primevue.org/checkbox/"><strong>PrimeVue documentation</strong></a>
       .
     </p>
-    <Playground :options="options" :code="code" :config="config" @reset="reset">
+    <Playground :options="options" :code="code" :config="config" @reset="reset" displayValue>
       <template #component>
         <ForgeCheckbox v-model="value" v-bind="options" name="checkbox" />
+      </template>
+      <template #value>
+        {{value}}
       </template>
     </Playground>
   </div>
@@ -27,20 +30,19 @@ const { options, propVals, config, reset } = usePlayground(
     name: "test",
     disabled: false,
     readonly: false,
-    tabindex: 0
   },
   {}
 );
 
 const value = ref<boolean>(false);
-
-const schema = yup.object().shape({
-  checkbox: yup.boolean().required("Required")
-});
-
-const form = useForm({
-  validationSchema: schema
-});
+//
+// const schema = yup.object().shape({
+//   checkbox: yup.boolean().required("Required")
+// });
+//
+// const form = useForm({
+//   validationSchema: schema
+// });
 
 const code = computed(() => {
   return `<ForgeCheckbox${propVals.value.length > 0 ? " " + propVals.value.join(" ") : ""} />`;

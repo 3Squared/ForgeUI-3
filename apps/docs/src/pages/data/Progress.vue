@@ -15,7 +15,7 @@ import { Playground, usePlayground } from "@3squared/forge-playground-3";
 import { computed, ref } from "vue";
 import { severities } from "../../composables/playgroundOptions";
 
-const mode = ref(["determinate", "indeterminate"]);
+const mode = ref(["determinate", "indeterminate - not css implemented currently"]);
 
 const { options, propVals, config, reset } = usePlayground(
   {

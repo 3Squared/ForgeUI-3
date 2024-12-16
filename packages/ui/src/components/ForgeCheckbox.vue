@@ -1,10 +1,11 @@
 <template>
   <div class="d-flex flex-column">
     <div
-      class="d-flex cursor-pointer"
+      class="d-flex"
       data-cy="checkbox-container"
       @click="onChange(value)"
       v-bind="{ ...$attrs }"
+     
     >
       <Checkbox
         v-bind="{ ...props }"
@@ -12,6 +13,7 @@
         v-model="value"
         :input-id="props.name"
         :input-class="{ 'is-invalid': hasErrors }"
+        :class="props.disabled ? '' : 'cursor-pointer'"
       />
       <label
         :for="props.name"

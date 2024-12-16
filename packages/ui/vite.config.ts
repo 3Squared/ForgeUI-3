@@ -3,7 +3,7 @@ import vue from '@vitejs/plugin-vue'
 import istanbulPlugin from "vite-plugin-istanbul";
 import Components from 'unplugin-vue-components/vite'
 import { join, resolve } from "path";
-import { PrimeVueResolver } from "unplugin-vue-components/resolvers";
+import {PrimeVueResolver} from '@primevue/auto-import-resolver';
 import {visualizer} from "rollup-plugin-visualizer";
 import dts from 'vite-plugin-dts'
 
@@ -45,6 +45,7 @@ export default defineConfig(({mode}) => {
         'primevue/dialog',
         'primevue/dialogservice',
         'primevue/dropdown',
+        'primevue/fieldset',
         'primevue/image',
         'primevue/inputmask',
         'primevue/inputnumber',

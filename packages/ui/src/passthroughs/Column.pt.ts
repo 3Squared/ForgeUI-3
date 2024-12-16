@@ -18,7 +18,7 @@ export default {
     rowToggleIcon: {
       class: 'btn'
     },
-    columnresizer: {
+    columnResizer: {
       class: 'position-absolute top-0 end-0 m-0 h-100 p-0 cursor-resize border border-transparent'
     },
     pcRowEditorSave: 'btn',
@@ -40,16 +40,16 @@ export default {
           }]
       }
     },
-    headerFilterClearButton: ({ props } : ColumnPassThroughMethodOptions & { props: { filters: object}}) => {
-      return {
-        class: [
-          'btn',
-          { 
-            'd-none': props.filters[props.field] ? props.filters[props.field].value === null : false
-          }
-        ]
-      }
-    },
+    // headerFilterClearButton: ({ props } : ColumnPassThroughMethodOptions & { props: { filters: object}}) => {
+    //   return {
+    //     class: [
+    //       'btn',
+    //       { 
+    //         'd-none': props.filters[props.field] ? props.filters[props.field]?.value === null : false
+    //       }
+    //     ]
+    //   }
+    // },
     filterOverlay: {
       class: [
         'show dropdown-menu'
@@ -60,9 +60,9 @@ export default {
         'list-unstyled'
       ]
     },
-    columnfilter: 'd-flex w-100',
-    filterinput: "w-100",
-    filterRowItem: (options : ColumnPassThroughMethodOptions) => {
+    filter: 'd-flex w-100',
+    filterElementContainer: "w-100",
+    filterConstraint: (options : ColumnPassThroughMethodOptions) => {
       return {
         class: [
           'dropdown-item cursor-pointer',
@@ -73,15 +73,15 @@ export default {
         ]
       }
     },
-    filterSeparator: {
+    filterConstraintSeparator: {
       class: [
         'dropdown-divider'
       ]
     },
-    headerContent: 'd-flex',
-    headerTitle: "text-break",
+    columnHeaderContent: 'd-flex',
+    columnTitle: "text-break",
     sort: 'd-flex ms-auto cursor-pointer table-sort-icon',
-    rowCheckbox: (options: any) => {
+    pcRowCheckbox: (options: any) => {
       return {
         class: [
           'form-check-input px-2 py-2 rounded position-relative',
@@ -92,7 +92,7 @@ export default {
         ]
       }
     },
-    rowRadioButton: (options: any) => {
+    pcRowRadiobutton: (options: any) => {
       return {
         class: [
           'form-check-input',

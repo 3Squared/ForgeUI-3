@@ -42,7 +42,9 @@ export default {
       }
     }
   },
-  pcPaginator: {
+  
+  
+  paginator: {
     root: (options : PaginatorPassThroughMethodOptions<any>) => {
       return {
         class: [

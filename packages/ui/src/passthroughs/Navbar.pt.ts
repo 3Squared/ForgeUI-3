@@ -57,7 +57,7 @@ export default {
       }
 
     },
-    submenuicon: 'ms-1'
+    submenuIcon: 'ms-1'
   },
   menu: {
     list: (options : MenuPassThroughMethodOptions) => ({

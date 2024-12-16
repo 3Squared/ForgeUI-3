@@ -22,6 +22,7 @@
 
 <script setup lang="ts">
   import { Icon } from "@iconify/vue";
+  import Menubar from "primevue/menubar";
   import { MenubarPassThroughOptions, MenubarProps, MenubarSlots } from "primevue/menubar";
   import { ForgeNavbarPosition, Severity } from "../types/forge-types";
   import { computed } from "vue";
