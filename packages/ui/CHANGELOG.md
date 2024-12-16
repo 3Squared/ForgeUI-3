@@ -1,5 +1,13 @@
 # @3squared/forge-ui-3
 
+## 1.3.3
+
+### Patch Changes
+
+- a9fbd3e: Multiselect changes:
+  - Remove chip default from multiselect preview
+  - Improve to multiselect documentation
+
 ## 1.3.2
 
 ### Patch Changes
