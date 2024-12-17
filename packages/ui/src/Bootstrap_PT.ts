@@ -16,6 +16,7 @@ import TabsPT from "./passthroughs/Tabs.pt.ts";
 import DatepickerPT from "./passthroughs/Datepicker.pt.ts";
 import MultiselectPT from "./passthroughs/Multiselect.pt.ts";
 import ProgressBarPT from "./passthroughs/ProgressBar.pt.ts";
+import PanelPT from "./passthroughs/Panel.pt.ts";
 import TablePT from "./passthroughs/Table.pt.ts";
 import BadgePT from "./passthroughs/Badge.pt.ts";
 import NavbarPT from "./passthroughs/Navbar.pt.ts";
@@ -49,6 +50,7 @@ export default {
   ...OverlayPanelPT,
   ...ProgressBarPT,
   ...ProgressSpinnerPT,
+  ...PanelPT,
   ...SelectButtonPT,
   ...StepsPT,
   ...TablePT,

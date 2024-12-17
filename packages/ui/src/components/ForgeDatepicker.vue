@@ -7,13 +7,13 @@
     <div class="position-relative w-100">
       <DatePicker v-bind="{...props, ...$attrs}" :pt="pt" v-model="model" @update:model-value="handleChange"
                 @blur="handleBlur" :input-class="{'datepicker-invalid': hasErrors}"/>
-<!--      <Icon data-cy="icon" icon="bi:calendar4" v-show="props.showIcon"-->
-<!--            class="position-absolute end-0 top-50 bottom-50 my-auto me-2 bg-white" -->
-<!--            :class="`${ hasErrors ? 'text-danger-dark' : 'text-muted'}`"-->
-<!--      />-->
-<!--      <Icon data-cy="icon" icon="bi:x" v-show="props.modelValue" @click="clear"-->
-<!--            class="position-absolute end-0 top-50 bottom-50 my-auto text-muted cursor-pointer bg-white"-->
-<!--            :class="props.showIcon ? 'datepicker-close-icon' : 'me-2'" />-->
+      <Icon data-cy="icon" icon="bi:calendar4" v-show="props.showIcon"
+            class="position-absolute end-0 top-50 bottom-50 my-auto me-2 bg-white" 
+            :class="`${ hasErrors ? 'text-danger-dark' : 'text-muted'}`"
+      />
+      <Icon data-cy="icon" icon="bi:x" v-show="props.modelValue" @click="clear"
+            class="position-absolute end-0 top-50 bottom-50 my-auto text-muted cursor-pointer bg-white"
+            :class="props.showIcon ? 'datepicker-close-icon' : 'me-2'" />
     </div>
 
 
@@ -89,6 +89,7 @@ const pt = computed(() => ({
       }
     ]
   }),
+ 
   dayLabel: ({ context } : DatePickerPassThroughMethodOptions) => ({
     class: [
       // Disabled States
@@ -97,7 +98,7 @@ const pt = computed(() => ({
       }
     ]
   }),
-  clearButton: {
+  pcClearButton: {
     root: () => ({
       class: [
         'btn ms-auto',
@@ -113,7 +114,7 @@ const pt = computed(() => ({
       ]
     })
   },
-  todayButton: {
+  pcTodayButton: {
     root: () => ({
       class: [
         'btn',

@@ -6,6 +6,7 @@ export default {
   datepicker: {
     root: 'd-inline-flex relative w-100',
     pcInputText: "form-control",
+    dropdown: "d-none",
     panel: ({ props }: DatePickerPassThroughMethodOptions) => ({
       class: [
         "datepicker-panel bg-white",
@@ -16,19 +17,19 @@ export default {
     }),
     groupContainer: "d-flex flex-wrap",
     header: 'd-flex align-items-center justify-content-between p-2 border-bottom',
-    pcPrevButton: ({ props } : DatePickerPassThroughMethodOptions) => ({
+    pcPrevButton:{ root: ({ props } : DatePickerPassThroughMethodOptions) => ({
       class: {
         "btn mb-1 ms-auto": props.numberOfMonths === undefined || props.numberOfMonths == 1,
         "btn p-0 btn-sm": props.numberOfMonths !== undefined && props.numberOfMonths > 1
       }
-    }),
+    })},
     tableHeaderCell: "pe-none",
-    pcNextButton: ({ props }: DatePickerPassThroughMethodOptions) => ({
+    pcNextButton: { root:({ props }: DatePickerPassThroughMethodOptions) => ({
       class: {
         "btn mb-1 me-auto": props.numberOfMonths === undefined || props.numberOfMonths == 1,
         "btn p-0 btn-sm": props.numberOfMonths !== undefined && props.numberOfMonths > 1
       }
-    }),
+    })},
     group: ({ props } : DatePickerPassThroughMethodOptions) => ({
       class: [
         "d-flex flex-column",
@@ -48,8 +49,9 @@ export default {
         "btn ps-1 fw-bold": props.numberOfMonths === undefined || props.numberOfMonths == 1,
         "fw-bold text-black border-0 bg-white": props.numberOfMonths !== undefined && props.numberOfMonths > 1
       }
-    }), 
+    }),
     title: "d-flex mx-auto",
+    day: "d-flex date-primary justify-content-center align-items-center",
     decade: "fw-bold",
     dayView: "datepicker-table",
     tableHeaderRow: "text-center",
@@ -71,7 +73,7 @@ export default {
         }
       ]
     }),
-    decrementButton: "btn btn-sm",
-    incrementButton: "btn btn-sm",
+    pcDecrementButton:{ root: "btn btn-sm", label: "d-none"},
+    pcIncrementButton:{ root: "btn btn-sm", label: "d-none"},
   } as DatePickerPassThroughOptions,
 }

@@ -6,8 +6,8 @@
       <a class="link" target="_blank" href="https://primevue.org/inputmask/"><strong>PrimeVue documentation</strong></a>
       .
     </p>
-    <Accordion class="mb-3">
-      <AccordionTab header="Mask definitions">
+    <Panel class="mb-3" header="Mask definitions" toggleable>
+      
         <div class="d-flex flex-column">
           <p>
             <strong>a</strong>
@@ -30,11 +30,13 @@
             </div>
           </div>
         </div>
-      </AccordionTab>
-    </Accordion>
-    <Playground :options="options" :code="code" :config="config" @reset="reset">
+    </Panel>
+    <Playground :options="options" :code="code" :config="config" @reset="reset" displayValue>
       <template #component>
-        <component :is="InputMask" v-bind="options" />
+        <InputMask v-bind="options" v-model="value" />
+      </template>
+      <template #value>
+        {{value}}
       </template>
     </Playground>
   </div>
@@ -43,10 +45,13 @@
 <script setup lang="ts">
 import { ForgePageHeader } from "@3squared/forge-ui-3";
 import InputMask from "primevue/inputmask";
+import Panel from "primevue/panel"
 import Accordion from "primevue/accordion";
-import AccordionTab from "primevue/accordiontab";
+import AccordionPanel from "primevue/accordionpanel";
 import { Playground, usePlayground } from "@3squared/forge-playground-3";
-import { computed } from "vue";
+import { computed, ref } from "vue";
+
+const value = ref();
 
 const { options, propVals, config, reset } = usePlayground(
   {
