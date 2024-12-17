@@ -1,5 +1,8 @@
 import { ForgeFileStatus } from "../../../types/forge-types";
 import { BlockBlobClient } from "@azure/storage-blob";
+﻿import { Mime } from "mime";
+import standardTypes from "mime/types/standard.js";
+import otherTypes from "mime/types/other.js";
 
 export type FileUploadStatus =
   "Not Uploaded"
@@ -83,5 +86,11 @@ export function isImage(mimeType: string): boolean {
 
 export function getThumbnailUrl(file: File) {
   return URL.createObjectURL(file)
+}
+
+export function forgeMime(): Mime {
+  const mime = new Mime(standardTypes, otherTypes);
+  mime.define({ "application/vnd.ms-outlook": ["pst"] });
+  return mime;
 }
 
