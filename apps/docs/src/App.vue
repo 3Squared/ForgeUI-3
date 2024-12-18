@@ -96,7 +96,7 @@ const pages = [
     label: "Overlay",
     items: [
       { label: "Modal", command: () => router.push("/overlay/modal") },
-      { label: "Overlay Panel", command: () => router.push("/overlay/overlay") },
+      { label: "Popover", command: () => router.push("/overlay/popover") },
       { label: "Toast", command: () => router.push("/overlay/toast") },
       { label: "Tooltip", command: () => router.push("/overlay/tooltip") }
     ]

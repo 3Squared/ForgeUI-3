@@ -48,7 +48,7 @@ const { options, propVals, config } = usePlayground(
     optionValue: "value",
     scrollHeight: "200px",
     filter: false,
-    filterPlaceholder: "",
+    filterPlaceholder: "Search",
     filterMatchMode: stringFilterTypes[0],
     editable: false,
     showClear: false,

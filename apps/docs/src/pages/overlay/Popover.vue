@@ -1,9 +1,9 @@
 <template>
   <div>
-    <ForgePageHeader title="Overlay Panel" />
+    <ForgePageHeader title="Popover" />
     <p>
       Further documentation and examples can be found in the
-      <a class="link" target="_blank" href="https://primevue.org/overlaypanel/"><strong>PrimeVue documentation</strong></a>
+      <a class="link" target="_blank" href="https://primevue.org/popover/"><strong>PrimeVue documentation</strong></a>
       .
     </p>
     <Playground :options="options" :code="code" :config="config" @reset="reset">
@@ -31,7 +31,6 @@ const toggle = (event: Event) => {
 const { options, propVals, config, reset } = usePlayground(
   {
     dismissable: true,
-    showCloseIcon: false,
     autoZIndex: true,
     baseZIndex: 0,
     ref: "popover"

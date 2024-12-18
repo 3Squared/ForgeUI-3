@@ -7,9 +7,10 @@ import InputPT from "./passthroughs/Input.pt.ts";
 import InputMaskPT from "./passthroughs/InputMask.pt.ts";
 import InputSwitchPT from "./passthroughs/InputSwitch.pt.ts";
 import TextAreaPT from "./passthroughs/TextArea.pt.ts";
+import ChipPT from "./passthroughs/Chip.pt.ts";
 import ChipsPT from "./passthroughs/Chips.pt.ts";
 import DialogPT from "./passthroughs/Dialog.pt.ts";
-import OverlayPanelPT from "./passthroughs/OverlayPanel.pt.ts";
+import PopoverPT from "./passthroughs/Popover.pt.ts";
 import MessagePT from "./passthroughs/Message.pt.ts";
 import StepsPT from "./passthroughs/Steps.pt.ts";
 import TabsPT from "./passthroughs/Tabs.pt.ts";
@@ -34,6 +35,7 @@ export default {
   ...ButtonPT,
   ...CardPT,
   ...CheckboxPT,
+  ...ChipPT,
   ...ChipsPT, 
   ...ColumnPT,
   ...DatepickerPT,
@@ -47,7 +49,7 @@ export default {
   ...MessagePT,
   ...MultiselectPT,
   ...NavbarPT,
-  ...OverlayPanelPT,
+  ...PopoverPT,
   ...ProgressBarPT,
   ...ProgressSpinnerPT,
   ...PanelPT,
