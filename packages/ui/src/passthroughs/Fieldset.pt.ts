@@ -10,12 +10,15 @@ export default {
         "float-none w-auto px-2 mb-0 fw-semibold fs-6 fieldset-legend",
       ]
     }),
-    togglerIcon: () => ({
+    toggleButton: () => ({
+      class: ["border-0 bg-transparent mb-0 fw-semibold fs-6 fieldset-legend"]
+    }),
+    toggleIcon: () => ({
       class: [
         "me-1",
       ]
     }),
-    toggleableContent: () => ({
+    content: () => ({
       class: [
         "px-2",
       ]

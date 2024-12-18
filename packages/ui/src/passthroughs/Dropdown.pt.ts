@@ -42,6 +42,7 @@ export default {
     loadingIcon: 'spinner-border spinner-border-sm border-0',
     itemGroupLabel: "ps-2 fw-bold",
     emptyMessage: 'mx-3 my-2',
+    filterIcon: "d-none",
     label: ({ instance }: SelectPassThroughMethodOptions<any>) => ({
       class: [
         'w-100',
