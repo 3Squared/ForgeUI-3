@@ -2,9 +2,9 @@ import { PanelPassThroughOptions } from "primevue/panel";
 
 export default {
   panel: {
-    root: "card",
+    root: "card w-100",
     header: "d-flex justify-content-between align-items-center fw-600 mx-2",
     pcToggleButton: "btn",
-    contentContainer: "mx-2"
+    contentContainer: "m-2"
   } as PanelPassThroughOptions
 }

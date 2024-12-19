@@ -46,6 +46,7 @@ const pages = [
       { label: "Progress Bar", command: () => router.push("/data/progress") },
       { label: "Stat Widget", command: () => router.push("/data/statwidget") },
       { label: "Table", command: () => router.push("/data/table") },
+      { label: "Data View", command: () => router.push("/data/dataview") },
       { label: "Tile", command: () => router.push("/data/tile") }
     ]
   },
@@ -89,7 +90,8 @@ const pages = [
       { label: "Page Header", command: () => router.push("/layout/pageheader") },
       { label: "Stepper", command: () => router.push("/layout/stepper") },
       { label: "Tabs", command: () => router.push("/layout/tabs") },
-      { label: "Fieldset", command: () => router.push("/layout/fieldset") }
+      { label: "Fieldset", command: () => router.push("/layout/fieldset") },
+      { label: "Panel", command: () => router.push("/layout/panel") }
     ]
   },
   {

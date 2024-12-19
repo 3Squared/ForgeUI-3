@@ -3,7 +3,7 @@
     <span data-cy="above-table-slot" ><slot name="above-table" /></span>
     <DataTable class="w-100" :class="`${props.severity ? `forge-table-${props.severity}` : ''}`"
                v-bind="{...props, ...$attrs }" :pt="pt"  :rows="perPage" :total-records="total" :filter-display="props.filters ? 'row' : undefined" ref="forgeTable" data-cy="table"
-               @update:filters="emitUpdateFilter" @sort="emitSort" @page="emitPage">
+               @update:filters="emitUpdateFilter" @sort="emitSort" @page="emitPage" showHeaders>
       <template v-for="(_, name) in $slots as unknown as DataTableSlots" #[name]="slotProps">
         <slot :name="name" v-bind="slotProps || {}"></slot>
       </template>

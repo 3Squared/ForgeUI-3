@@ -16,7 +16,7 @@
       <template #additionalOptions>
         <div>
           <label>Position</label>
-          <Dropdown v-model="pos" :options="position" />
+          <Select v-model="pos" :options="position" />
         </div>
       </template>
     </Playground>
@@ -28,19 +28,15 @@ import { ForgePageHeader } from "@3squared/forge-ui-3";
 import { Playground, usePlayground } from "@3squared/forge-playground-3";
 import { computed, ref } from "vue";
 import InputText from "primevue/inputtext";
-import Dropdown from "primevue/dropdown";
+import Select from "primevue/select";
 
 const position = ["right", "top", "bottom", "left"];
 const pos = ref<"right" | "top" | "bottom" | "left">("right");
 
 const { options, config, reset } = usePlayground({
-  value: "",
-  disabled: false,
+  value: "Hello I'm a tooltip!",
   escape: true,
   fitContent: true,
-  showDelay: 0,
-  hideDelay: 0,
-  autoHide: true
 });
 
 const code = computed(() => `<InputText v-tooltip.${pos.value}="'${options.value.value}'" />`);
