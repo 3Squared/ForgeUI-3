@@ -1,11 +1,12 @@
 import Dropdown, { DropdownProps } from "primevue/dropdown";
+import Select, {SelectProps} from "primevue/select";
 import { ref } from "vue";
 import DropdownWrapper from "./dropdownWrapper.vue";
 
 const controlId = "dropdown"
-function mountDropdown(props : DropdownProps) {
+function mountSelect(props : SelectProps) {
   // @ts-ignore
-  return cy.mount(Dropdown, {
+  return cy.mount(Select, {
     props: {
       id: controlId,
       ...props,
@@ -13,7 +14,7 @@ function mountDropdown(props : DropdownProps) {
   })
 }
 
-function mountWrapperDropdown(props: DropdownProps) {
+function mountWrapperSelect(props: SelectProps) {
   // @ts-ignore
   return cy.mount(DropdownWrapper, {
     props: {
@@ -23,7 +24,7 @@ function mountWrapperDropdown(props: DropdownProps) {
   })
 }
   
-describe("<Dropdown />", () => {
+describe("<Select />", () => {
   it('Mounts', () => {
     // Arrange
     const options = [
@@ -33,7 +34,7 @@ describe("<Dropdown />", () => {
     ]
     
     // Act
-    mountWrapperDropdown({ options: options })
+    mountWrapperSelect({ options: options })
     
     // Assert
     cy.get(`#${controlId}`).should('be.visible')
@@ -48,7 +49,7 @@ describe("<Dropdown />", () => {
     ]
 
     // Act
-    mountDropdown({ options: options, modelValue: ref(options[0]).value })
+    mountSelect({ options: options, modelValue: ref(options[0]).value })
     cy.get(`#${controlId}`).click()
 
     // Assert
@@ -72,7 +73,7 @@ describe("<Dropdown />", () => {
     const hoverColour = 'rgb(248, 249, 250)'
 
     // Act
-    mountDropdown({ options: options })
+    mountSelect({ options: options })
     cy.get(`#${controlId}`).click()
     cy.get('#dropdown_0').realHover()
 
@@ -92,7 +93,7 @@ describe("<Dropdown />", () => {
     const placeholder = "I am a placeholder"
 
     // Act
-    mountDropdown({ options: options, placeholder: placeholder })
+    mountSelect({ options: options, placeholder: placeholder })
     
     // Assert
     cy.get(`#${controlId}`)
@@ -111,7 +112,7 @@ describe("<Dropdown />", () => {
     const selectedOption = options[0]
 
     // Act
-    mountDropdown({ options: options, placeholder: placeholder, modelValue: ref(selectedOption).value })
+    mountSelect({ options: options, placeholder: placeholder, modelValue: ref(selectedOption).value })
 
     // Assert
     cy.get(`#${controlId}`)
@@ -129,7 +130,7 @@ describe("<Dropdown />", () => {
     ]
 
     // Act
-    mountDropdown({ options: options, showClear: true, modelValue: ref(options[0]).value })
+    mountSelect({ options: options, showClear: true, modelValue: ref(options[0]).value })
 
     // Assert
     cy.get(`[data-pc-section="clearicon"]`)
@@ -147,7 +148,7 @@ describe("<Dropdown />", () => {
     const expectedClass = "spinner-border spinner-border-sm border-0"
 
     // Act
-    mountDropdown({ options: options, loading: true })
+    mountSelect({ options: options, loading: true })
 
     // Assert
     cy.get(`[data-pc-section="loadingicon"]`)
@@ -170,11 +171,11 @@ describe("<Dropdown />", () => {
     ]
 
     // Act
-    mountDropdown({ options: options, optionGroupLabel: 'label', optionGroupChildren: "items" })
+    mountSelect({ options: options, optionGroupLabel: 'label', optionGroupChildren: "items" })
     cy.get(`#${controlId}`).click()
 
     // Assert
-    cy.get('[data-pc-section="itemgrouplabel"]')
+    cy.get('[data-pc-section="optiongrouplabel"]')
       .should('be.visible')
       .and('contain.text', groupHeader)
       .and('have.class', boldClass)
@@ -190,16 +191,13 @@ describe("<Dropdown />", () => {
     ]
 
     // Act
-    mountDropdown({ options: options, filter: true })
+    mountSelect({ options: options, filter: true })
     cy.get(`#${controlId}`).click()
 
     // Assert
-    cy.get(`[data-pc-section="filterinput"]`)
+    cy.get(`[data-pc-name="pcfilter"]`)
       .should('be.visible')
       .and('have.class', formControlClass)
-    
-    cy.get(`[data-pc-section="filtericon"]`)
-      .should('be.visible')
   })
   
   it('Displays as disabled and is unclickable when disabled is true', () => {
@@ -212,7 +210,7 @@ describe("<Dropdown />", () => {
     ]
 
     // Act
-    mountDropdown({ options: options, disabled: true })
+    mountSelect({ options: options, disabled: true })
 
     // Assert
     cy.get(`#${controlId}`)

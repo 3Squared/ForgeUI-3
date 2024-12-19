@@ -55,7 +55,7 @@ const triggerToast = () => {
 };
 
 const sizingOptions = ref([3, 10, 15, 20]);
-const pageSize = ref<number>(5);
+const pageSize = ref<number>(3);
 const productType = ref();
 
 const productOptions = ref([
@@ -67,7 +67,7 @@ const productOptions = ref([
 const { options, propVals, config, reset } = usePlayground(
   {
     dataKey: "code",
-    rows: 3,
+    rows: pageSize,
     paginator: true,
   },
   {},
