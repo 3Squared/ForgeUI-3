@@ -1,49 +1,46 @@
 <template>
-  <Card>
-    <template #content>
-      <!--      Set up form (imported from vee-validate) with schema object and submit function-->
-      <Form @submit="onSubmit" :validation-schema="schema">
-        <ForgeFormField
-          name="name"
-          v-model="name"
-          placeholder="Enter name"
-          fieldLabel="Name"
-        />
+  <div>
+    <Card>
+      <template #content>
+        <!--      Set up form (imported from vee-validate) with schema object and submit function-->
+        <Form :validation-schema="schema" @submit="onSubmit">
+          <ForgeFormField v-model="name" name="name" placeholder="Enter name" field-label="Name" />
 
-        <ForgeFormField
-          name="city"
-          v-model="selectCity"
-          type="select"
-          placeholder="Select City"
-          :options="cities"
-          optionLabel="label"
-          fieldLabel="City"
-          :key="selectCity"
-        />
+          <ForgeFormField
+            :key="selectCity"
+            v-model="selectCity"
+            name="city"
+            type="select"
+            placeholder="Select City"
+            :options="cities"
+            option-label="label"
+            field-label="City"
+          />
 
-        <ForgeFormField
-          name="skills"
-          v-model="selectedSkills"
-          type="multiselect-preview"
-          placeholder="Select Skills"
-          :options="skills"
-          optionLabel="label"
-          display="chip"
-          filter
-          filterPlaceholder="Search"
-          fieldLabel="Skills"
-          :maxSected
-          :key="selectedSkills"
-        />
-        <div class="d-flex justify-content-end mt-1">
-          <!--          Add Button with type 'submit' to trigger submit event -->
-          <Button label="Test" type="submit"></Button>
-        </div>
-      </Form>
-    </template>
-  </Card>
+          <ForgeFormField
+            :key="selectedSkills"
+            v-model="selectedSkills"
+            name="skills"
+            type="multiselect-preview"
+            placeholder="Select Skills"
+            :options="skills"
+            option-label="label"
+            display="chip"
+            filter
+            filter-placeholder="Search"
+            field-label="Skills"
+            :max-sected
+          />
+          <div class="d-flex justify-content-end mt-1">
+            <!--          Add Button with type 'submit' to trigger submit event -->
+            <Button label="Test" type="submit"></Button>
+          </div>
+        </Form>
+      </template>
+    </Card>
 
-  <Toast />
+    <Toast />
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -64,7 +61,7 @@ const toast = useToast();
 const schema = yup.object().shape({
   city: yup.object().required(),
   skills: yup.array().min(1, "Please select at least 1 option").required(),
-  name: yup.string().required(),
+  name: yup.string().required()
 });
 
 const onSubmit = () => {
@@ -72,7 +69,7 @@ const onSubmit = () => {
     severity: "success",
     summary: "Success",
     closable: false,
-    life: 3000,
+    life: 3000
   });
 };
 
@@ -92,7 +89,7 @@ const cities = ref([
   { id: 9, label: "Bristol" },
   { id: 10, label: "Cambridge" },
   { id: 11, label: "Oxford" },
-  { id: 12, label: "York" },
+  { id: 12, label: "York" }
 ]);
 
 const skills = ref([
@@ -107,6 +104,6 @@ const skills = ref([
   { id: 9, label: "C++" },
   { id: 10, label: "Git" },
   { id: 11, label: "Communication" },
-  { id: 12, label: "Problem Solving" },
+  { id: 12, label: "Problem Solving" }
 ]);
 </script>
