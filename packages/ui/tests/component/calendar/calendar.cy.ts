@@ -1,16 +1,16 @@
 // @ts-ignore
 import ForgeDatepicker, { ForgeDatePickerProps } from "../../../src/components/ForgeDatepicker.vue";
-import CalendarValidationWrapper, { CalendarValidationWrapperProps } from "./calendarValidationWrapper.vue";
+import DatepickerValidationWrapper, { DatepickerValidationWrapperProps } from "./datepickerValidationWrapper.vue";
 import * as yup from 'yup'
 
-const id = "Calendar"
+const id = "Datepicker"
 const input = '[name="datepicker"]'
 const errorMessageId = '[data-cy="error"]'
 const beforeSlotId = "[data-cy='before-slot']"
 const afterSlotId = "[data-cy='after-slot']"
 const validationWrapperSubmitButton = "#form-button"
 
-function mountCalendar(props : ForgeDatePickerProps, beforeSlotContent : string = "", afterSlotContent : string = "") {
+function mountDatepicker(props : ForgeDatePickerProps, beforeSlotContent : string = "", afterSlotContent : string = "") {
   // @ts-ignore
   cy.mount(ForgeDatepicker, {
     props: {
@@ -24,9 +24,9 @@ function mountCalendar(props : ForgeDatePickerProps, beforeSlotContent : string 
   })
 }
 
-function mountCalendarValidationWrapper(props : CalendarValidationWrapperProps) {
+function mountDatepickerValidationWrapper(props : DatepickerValidationWrapperProps) {
   // @ts-ignore
-  cy.mount(CalendarValidationWrapper, {
+  cy.mount(DatepickerValidationWrapper, {
     props: {
       ...props,
       id: id
@@ -34,10 +34,10 @@ function mountCalendarValidationWrapper(props : CalendarValidationWrapperProps) 
   })
 }
 
-describe("<Calendar />", () => {
+describe("<Datepicker />", () => {
   it('Mounts', () => {
     // Act
-    mountCalendar({ })
+    mountDatepicker({ })
     
     // Assert
     cy.get(`#${id}`)
@@ -48,10 +48,10 @@ describe("<Calendar />", () => {
   describe("Slots", () => {
     it('Should add content before when element is added to the before slot', () => {
       // Arrange
-      const beforeSlotContent = "I am before the calendar!"
+      const beforeSlotContent = "I am before the datepicker!"
       
       // Act
-      mountCalendar({ }, beforeSlotContent)
+      mountDatepicker({ }, beforeSlotContent)
       
       // Assert
       cy.get(beforeSlotId)
@@ -62,10 +62,10 @@ describe("<Calendar />", () => {
 
     it('Should add content after when element is added to the after slot', () => {
       // Arrange
-      const afterSlotContent = "I am after the calendar!"
+      const afterSlotContent = "I am after the datepicker!"
 
       // Act
-      mountCalendar({}, "", afterSlotContent)
+      mountDatepicker({}, "", afterSlotContent)
 
       // Assert
       cy.get(afterSlotId)
@@ -86,7 +86,7 @@ describe("<Calendar />", () => {
     })
     
     // Act
-    mountCalendarValidationWrapper({ name, schema })
+    mountDatepickerValidationWrapper({ name, schema })
     cy.get(validationWrapperSubmitButton).click()
 
     // Assert

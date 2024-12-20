@@ -14,10 +14,9 @@ export default {
         }],
       }
     },
+    
     pcRowEditorInit: 'btn',
-    rowToggleIcon: {
-      class: 'btn'
-    },
+    rowToggleButton:       'btn',
     columnResizer: {
       class: 'position-absolute top-0 end-0 m-0 h-100 p-0 cursor-resize border border-transparent'
     },
@@ -32,24 +31,24 @@ export default {
       }
     },
     rowreordericon: 'cursor-move',
-    filterMenuButton: ({ props }: ColumnProps & { props: { type: string } }) => {
+    pcColumnFilterButton: ({ props }: ColumnProps & { props: { type: string } }) => {
       return {
         class: ['btn',
           {
             'd-none': props.type !== 'text' && props.type !== 'numeric' && props.type !== 'date'
-          }]
+          }],
       }
     },
-    // headerFilterClearButton: ({ props } : ColumnPassThroughMethodOptions & { props: { filters: object}}) => {
-    //   return {
-    //     class: [
-    //       'btn',
-    //       { 
-    //         'd-none': props.filters[props.field] ? props.filters[props.field]?.value === null : false
-    //       }
-    //     ]
-    //   }
-    // },
+    pcColumnFilterClearButton: ({ props } : ColumnPassThroughMethodOptions & { props: { filters: object}}) => {
+      return {
+        class: [
+          'btn',
+          { 
+            'd-none': props.filters[props.field] ? props.filters[props.field]?.value === null : false
+          }
+        ]
+      }
+    },
     filterOverlay: {
       class: [
         'show dropdown-menu'
@@ -102,5 +101,6 @@ export default {
         ]
       }
     },
+  
   }
 }

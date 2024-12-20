@@ -11,14 +11,13 @@
 
 <script setup lang="ts">
 import { YupSchema, Form } from "vee-validate";
-import { ForgeCheckProps } from "../../../dist/src/components/ForgeCheckbox.vue";
 import { ForgeDatePickerProps } from "../../../dist/src/components/ForgeDatepicker.vue";
 
-export interface CalendarValidationWrapperProps extends /* @vue-ignore */ ForgeDatePickerProps {
+export interface DatepickerValidationWrapperProps extends /* @vue-ignore */ ForgeDatePickerProps {
   schema: YupSchema
 }
 
-const props = defineProps<CalendarValidationWrapperProps>()
+const props = defineProps<DatepickerValidationWrapperProps>()
 
 const submit = () => {
   console.log("Valid!")

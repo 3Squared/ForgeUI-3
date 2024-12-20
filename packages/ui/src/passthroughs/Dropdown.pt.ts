@@ -16,7 +16,7 @@ export default {
       return {
         class: [
           'd-none my-auto filter-trigger'
-        ]
+        ],
       }
     },
     list: ({ props }: SelectPassThroughMethodOptions<any>) => ({ 
@@ -29,7 +29,7 @@ export default {
         {
           'bg-primary text-white': context.selected
         }
-      ]
+      ],
     }),
     overlay: 'dropdown-menu overflow-y-auto show',
     header: 'p-2 w-100',
@@ -40,7 +40,7 @@ export default {
     }},
     clearIcon: "ms-auto my-auto",
     loadingIcon: 'spinner-border spinner-border-sm border-0',
-    itemGroupLabel: "ps-2 fw-bold",
+    optionGroupLabel: "ps-2 fw-bold",
     emptyMessage: 'mx-3 my-2',
     filterIcon: "d-none",
     label: ({ instance }: SelectPassThroughMethodOptions<any>) => ({

@@ -1,14 +1,14 @@
 <template>
   <div>
-    <ForgePageHeader title="Autocomplete" />
+    <ForgePageHeader title="AutoComplete" />
     <p>
       Further documentation and examples can be found in the
-      <a class="link" target="_blank" href="https://primevue.org/chips/"><strong>PrimeVue documentation</strong></a>
+      <a class="link" target="_blank" href="https://primevue.org/autocomplete/"><strong>PrimeVue documentation</strong></a>
       .
     </p>
     <Playground :options="options" :code="code" :config="config" @reset="reset">
       <template #component>
-        <component :is="ForgeAutoComplete" v-bind="options" />
+        <component :is="ForgeAutoComplete" v-bind="options" v-model="selectedCountry" @complete="search" :suggestions="filteredCountries"  option-label="name"/>
       </template>
     </Playground>
   </div>
@@ -17,25 +17,32 @@
 <script setup lang="ts">
 import { ForgeAutoComplete, ForgePageHeader } from "@3squared/forge-ui-3";
 import { Playground, usePlayground } from "@3squared/forge-playground-3";
-import { computed } from "vue";
-import { severities } from "../../../composables/playgroundOptions";
+import { computed, ref } from "vue";
+import { countries } from "../../test/components/exampleCountries";
 
 const { options, propVals, config, reset } = usePlayground(
     {
       name: "",
-      chipSeverity: severities[0],
-      separator: ",",
-      pill: false,
-      max: 9999,
-      addOnBlur: false,
-      allowDuplicate: true,
-      disabled: false,
-      placeholder: ""
+      multiple: false,
     },
     {
-      chipSeverity: { type: "select", options: severities }
+      
     }
 );
 
-const code = computed(() => `<ForgeChips${propVals.value.length > 0 ? " " + propVals.value.join(" ") : ""} />`);
+const selectedCountry = ref();
+const filteredCountries = ref();
+
+const search = (event) => {
+  if (!event.query.trim().length) {
+    filteredCountries.value = [...countries];
+  } else {
+    filteredCountries.value = countries.filter((country) => {
+      return country.name.toLowerCase().startsWith(event.query.toLowerCase());
+    });
+  }
+
+}
+
+const code = computed(() => `<ForgeAutoComplete${propVals.value.length > 0 ? " " + propVals.value.join(" ") : ""} />`);
 </script>

@@ -1,4 +1,5 @@
 import { PrimeVuePTOptions } from "primevue/config";
+import AutoCompletePT from "./passthroughs/AutoComplete.pt.ts";
 import ButtonPT from "./passthroughs/Button.pt.ts";
 import CheckboxPT from "./passthroughs/Checkbox.pt.ts";
 import DropdownPT from "./passthroughs/Dropdown.pt.ts";
@@ -31,6 +32,7 @@ import ToastPT from "./passthroughs/Toast.pt.ts";
 import FieldsetPt from "./passthroughs/Fieldset.pt.ts";
 
 export default {
+  ...AutoCompletePT,
   ...BadgePT,
   ...ButtonPT,
   ...CardPT,
