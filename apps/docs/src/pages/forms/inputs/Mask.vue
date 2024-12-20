@@ -7,7 +7,6 @@
       .
     </p>
     <Panel class="mb-3" header="Mask definitions" toggleable>
-      
         <div class="d-flex flex-column">
           <p>
             <strong>a</strong>

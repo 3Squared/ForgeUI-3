@@ -54,6 +54,7 @@ declare module 'vue-router/auto-routes' {
     '/layout/Alert': RouteRecordInfo<'/layout/Alert', '/layout/Alert', Record<never, never>, Record<never, never>>,
     '/layout/Fieldset': RouteRecordInfo<'/layout/Fieldset', '/layout/Fieldset', Record<never, never>, Record<never, never>>,
     '/layout/Loader': RouteRecordInfo<'/layout/Loader', '/layout/Loader', Record<never, never>, Record<never, never>>,
+    '/layout/Navbar': RouteRecordInfo<'/layout/Navbar', '/layout/Navbar', Record<never, never>, Record<never, never>>,
     '/layout/PageHeader': RouteRecordInfo<'/layout/PageHeader', '/layout/PageHeader', Record<never, never>, Record<never, never>>,
     '/layout/Panel': RouteRecordInfo<'/layout/Panel', '/layout/Panel', Record<never, never>, Record<never, never>>,
     '/layout/Stepper': RouteRecordInfo<'/layout/Stepper', '/layout/Stepper', Record<never, never>, Record<never, never>>,
@@ -63,6 +64,12 @@ declare module 'vue-router/auto-routes' {
     '/overlay/Popover': RouteRecordInfo<'/overlay/Popover', '/overlay/Popover', Record<never, never>, Record<never, never>>,
     '/overlay/Toast': RouteRecordInfo<'/overlay/Toast', '/overlay/Toast', Record<never, never>, Record<never, never>>,
     '/overlay/Tooltip': RouteRecordInfo<'/overlay/Tooltip', '/overlay/Tooltip', Record<never, never>, Record<never, never>>,
+    '/test/components/ExampleAutoComplete': RouteRecordInfo<'/test/components/ExampleAutoComplete', '/test/components/ExampleAutoComplete', Record<never, never>, Record<never, never>>,
+    '/test/components/ExampleDataView': RouteRecordInfo<'/test/components/ExampleDataView', '/test/components/ExampleDataView', Record<never, never>, Record<never, never>>,
+    '/test/components/ExampleNavBar': RouteRecordInfo<'/test/components/ExampleNavBar', '/test/components/ExampleNavBar', Record<never, never>, Record<never, never>>,
+    '/test/components/ExampleStepper': RouteRecordInfo<'/test/components/ExampleStepper', '/test/components/ExampleStepper', Record<never, never>, Record<never, never>>,
+    '/test/components/ExampleTable': RouteRecordInfo<'/test/components/ExampleTable', '/test/components/ExampleTable', Record<never, never>, Record<never, never>>,
+    '/test/components/ExampleTableGroup': RouteRecordInfo<'/test/components/ExampleTableGroup', '/test/components/ExampleTableGroup', Record<never, never>, Record<never, never>>,
     '/test/Test': RouteRecordInfo<'/test/Test', '/test/Test', Record<never, never>, Record<never, never>>,
   }
 }

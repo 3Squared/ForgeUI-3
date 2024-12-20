@@ -1,15 +1,24 @@
-import { AutoCompletePassThroughMethodOptions } from "primevue";
+import { AutoCompletePassThroughMethodOptions } from "primevue/autocomplete";
 
 export default {
   autoComplete: {
-    root: 'd-flex form-control',
+    root: ({ props }: AutoCompletePassThroughMethodOptions) => {
+      return {
+        class: [
+          'd-flex form-control p-0',
+          {
+            'disabled': props.disabled
+          }
+        ]
+      }
+    },
     pcInputText: 'form-control',
     overlay: 'dropdown-menu overflow-y-auto show',
     list: ({ props }: AutoCompletePassThroughMethodOptions) => ({
       class: [ 'list-unstyled mb-0 overflow-y-auto'],
       style: "max-height:" + (props.scrollHeight ? props.scrollHeight : "200px")
     }),
-    inputMultiple: "list-unstyled d-flex align-items-center w-100 mb-0",
+    inputMultiple: "list-unstyled d-flex align-items-center w-100 mb-0 flex-wrap",
     option: ({ context }: AutoCompletePassThroughMethodOptions) => ({
       class: [
         'dropdown-item d-flex cursor-pointer text-wrap',

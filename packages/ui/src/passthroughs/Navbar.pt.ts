@@ -40,7 +40,7 @@ export default {
     }),
     submenu: ({ instance } : MenubarPassThroughMethodOptions) => ({
       class: [
-        'dropdown-menu w-fit-content',
+        'dropdown-menu w-fit-content flex-column ',
         {
           'position-absolute start-100 top-0': instance.level > 1
         }
@@ -60,9 +60,17 @@ export default {
     submenuIcon: 'ms-1'
   },
   menu: {
+    root: (options : MenuPassThroughMethodOptions) => ({
+      class: [
+        'dropdown',
+        {
+          'show': options.state.overlayVisible
+        }
+      ]
+    }),   
     list: (options : MenuPassThroughMethodOptions) => ({
       class: [
-        'dropdown dropdown-menu',
+        ' dropdown-menu',
         {
           'show': options.state.overlayVisible
         }

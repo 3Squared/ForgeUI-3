@@ -24,6 +24,8 @@ const { options, propVals, config, reset } = usePlayground(
     {
       name: "",
       multiple: false,
+      disabled: false,
+      placeholder: "Type a country name..."
     },
     {
       
