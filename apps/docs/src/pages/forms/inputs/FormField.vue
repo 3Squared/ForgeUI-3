@@ -3,13 +3,7 @@
     <ForgePageHeader title="Form Field" />
     <Playground :options="options" :code="code" :config="config" @reset="reset">
       <template #component>
-        <component
-          :is="ForgeFormField"
-          v-bind="options"
-          v-model="value"
-          :options="dropdownOptions"
-          option-label="label"
-        />
+        <component :is="ForgeFormField" v-bind="options" v-model="value" :options="dropdownOptions" option-label="label" />
       </template>
     </Playground>
 
@@ -46,15 +40,15 @@ const { options, propVals, config, reset } = usePlayground(
     fieldLabelPosition: "top",
     type: "text",
     mask: "",
-    placeholder: "",
+    placeholder: ""
   },
   {
     type: { type: "select", options: formFieldTypes },
     fieldLabelPosition: { type: "select", options: ["top", "left"] },
     name: { required: true },
     mask: { disabled: (): boolean => options.value.type !== "mask" },
-    placeholder: { disabled: (): boolean => options.value.type === "checkbox" },
-  },
+    placeholder: { disabled: (): boolean => options.value.type === "checkbox" }
+  }
 );
 
 const dropdownOptions = [
@@ -63,7 +57,7 @@ const dropdownOptions = [
   { id: "option-3", label: "Option 3" },
   { id: "option-4", label: "Option 4" },
   { id: "option-5", label: "Option 5" },
-  { id: "option-6", label: "Option 6" },
+  { id: "option-6", label: "Option 6" }
 ];
 
 watch(
@@ -74,13 +68,10 @@ watch(
     } else {
       value.value = null;
     }
-  },
+  }
 );
 
-const code = computed(
-  () =>
-    `<ForgeFormField${propVals.value.length > 0 ? " " + propVals.value.join(" ") : ""} />`,
-);
+const code = computed(() => `<ForgeFormField${propVals.value.length > 0 ? " " + propVals.value.join(" ") : ""} />`);
 
 const name = ref();
 
@@ -196,6 +187,6 @@ const skills = ref([
   { id: 12, label: "Problem Solving" },
 ]);
 
-</\script>`,
+</\script>`
 );
 </script>
