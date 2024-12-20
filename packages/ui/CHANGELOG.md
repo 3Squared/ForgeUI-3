@@ -1,5 +1,11 @@
 # @3squared/forge-ui-3
 
+## 1.3.5
+
+### Patch Changes
+
+- 2056e33: Add multiselect-preview into ForgeFormField so that validation can be easily implemented.
+
 ## 1.3.4
 
 ### Patch Changes
