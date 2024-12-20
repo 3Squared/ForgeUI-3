@@ -39,6 +39,7 @@ declare module 'vue-router/auto-routes' {
     '/forms/FileUploader': RouteRecordInfo<'/forms/FileUploader', '/forms/FileUploader', Record<never, never>, Record<never, never>>,
     '/forms/Form': RouteRecordInfo<'/forms/Form', '/forms/Form', Record<never, never>, Record<never, never>>,
     '/forms/inputs/Chips': RouteRecordInfo<'/forms/inputs/Chips', '/forms/inputs/Chips', Record<never, never>, Record<never, never>>,
+    '/forms/inputs/examples/FormExamples': RouteRecordInfo<'/forms/inputs/examples/FormExamples', '/forms/inputs/examples/FormExamples', Record<never, never>, Record<never, never>>,
     '/forms/inputs/FormField': RouteRecordInfo<'/forms/inputs/FormField', '/forms/inputs/FormField', Record<never, never>, Record<never, never>>,
     '/forms/inputs/InlineEditor': RouteRecordInfo<'/forms/inputs/InlineEditor', '/forms/inputs/InlineEditor', Record<never, never>, Record<never, never>>,
     '/forms/inputs/Mask': RouteRecordInfo<'/forms/inputs/Mask', '/forms/inputs/Mask', Record<never, never>, Record<never, never>>,
