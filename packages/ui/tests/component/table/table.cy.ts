@@ -2,7 +2,7 @@
 import { ForgeColumn } from "../../../src/types/forge-types";
 //@ts-ignore
 import TableWrapper, { TableWrapperProps } from './TableWrapper.vue'
-import { FilterMatchMode } from "primevue/api";
+import { FilterMatchMode } from "@primevue/core/api";
 
 function mountTable(props : TableWrapperProps) {
   cy.mount(TableWrapper, {
@@ -14,14 +14,14 @@ const tableId = '[data-cy="table"]'
 const datatableId = '[data-pc-section="table"]'
 const tableRowId = '[data-pc-section="bodyrow"]'
 const footerId = '[data-pc-section="footer"]'
-const loadingSpinnerId = '[data-pc-section="loadingoverlay"]'
+const loadingSpinnerId = '[data-pc-section="mask"]'
 
 //Filter
-const filterId = '[data-pc-section="filterinput"]'
+const filterId = '[data-pc-section="filterelementcontainer"]'
 const filterMenuId = '[data-pc-section="filtermenuicon"]'
-const filterMenuItemsId = '[data-pc-section="filterrowitems"]'
-const dropdownFilterLabelId = '[data-pc-section="item"]'
-const datePickerDayLabelId = '[data-pc-section="daylabel"]'
+const filterMenuItemsId = '[data-pc-section="filterconstraintlist"]'
+const dropdownFilterLabelId = '[data-pc-section="option"]'
+const datePickerDayLabelId = '[data-pc-section="day"]'
 const clearAllButtonId = '[data-cy="clear-all"]'
 
 // Pagination Header

@@ -15,6 +15,7 @@
 <script setup lang="ts">
 import { Icon } from '@iconify/vue'
 import { MessageProps } from "primevue/message";
+
 const props = withDefaults(
     defineProps<MessageProps>(), 
     {

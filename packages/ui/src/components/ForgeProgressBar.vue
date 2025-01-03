@@ -5,7 +5,6 @@
 </template>
 
 <script setup lang="ts">
-
 import { ProgressBarProps } from "primevue/progressbar";
 import { Severity } from "../types/forge-types";
 import { computed } from "vue";

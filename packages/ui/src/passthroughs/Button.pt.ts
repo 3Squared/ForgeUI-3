@@ -14,7 +14,7 @@ export default {
         },
         // Primary
         {
-          "btn-primary": (props.severity === null || props.severity === "primary") && !props.outlined && !props.link && !props.text,
+          "btn-primary": ( props.severity === undefined || props.severity === null|| props.severity === "primary") && !props.outlined && !props.link && !props.text,
           "btn-outline-primary": (props.severity === null || props.severity === "primary") && props.outlined,
           "text-primary fw-bold btn-text-primary": (props.severity === null || props.severity === "primary") && props.text,
           "link-primary text-decoration-underline link-underline-primary": (props.severity === null || props.severity === "primary") && props.link
@@ -67,11 +67,22 @@ export default {
     loadingIcon: () => ({
       class: ['spinner-border spinner-border-sm border-0 me-2']
     }),
-    pcBadge: ({ props } : ButtonPassThroughMethodOptions<any>) => {
+    label: ({ props } : ButtonPassThroughMethodOptions<any>) => {
       return {
         class: [
           {
-            "button-badge-primary": (props.severity === 'primary' || props.severity === null) && !props.outlined,
+            "d-none": (props.label === null)
+          }
+        ]
+      }
+    },
+  },
+  badge: {
+    root: ({ props } : ButtonPassThroughMethodOptions<any>) => {
+      return {
+        class: [ 'badge',
+          {
+            "button-badge-primary badge-primary": (props.severity === undefined || props.severity === 'primary' || props.severity === null) && !props.outlined,
             "button-badge-brand": props.severity === 'brand' && !props.outlined,
             "button-badge-secondary": props.severity === 'secondary' && !props.outlined,
             "button-badge-success": props.severity === 'success' && !props.outlined,
@@ -80,7 +91,7 @@ export default {
             'button-badge-info': props.severity === 'info' && !props.outlined
           },
           {
-            "button-badge-primary outlined": (props.severity === 'primary' || props.severity === null) && props.outlined,
+            "button-badge-primary outlined": (props.severity === undefined || props.severity === 'primary' || props.severity === null) && props.outlined,
             "button-badge-brand outlined": props.severity === 'brand' && props.outlined,
             "button-badge-secondary outlined": props.severity === 'secondary' && props.outlined,
             "button-badge-success outlined": props.severity === 'success' && props.outlined,
@@ -91,6 +102,6 @@ export default {
           "rounded-pill ms-2"
         ]
       }
-    }
+    },
   }
 }

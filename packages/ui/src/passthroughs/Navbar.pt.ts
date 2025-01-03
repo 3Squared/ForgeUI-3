@@ -14,7 +14,7 @@ export default {
     }),
     item: ({ context }: MenubarPassThroughMethodOptions) => ({
       class: [
-        'nav-item cursor-pointer',
+        'nav-item',
         {
           'dropdown': context.item.items?.length > 0,
         }
@@ -26,7 +26,7 @@ export default {
           'active': context.active,
           'nav-link': context.level === 0,
           'dropdown-item': context.level > 0,
-          'disabled': context.item.item?.disabled,
+          'disabled': context.item.disabled,
           'px-3': instance.mobileActive
         }
       ]

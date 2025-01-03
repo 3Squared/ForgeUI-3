@@ -12,6 +12,7 @@
 <script setup lang="ts">
 import { YupSchema, Form } from "vee-validate";
 import { ForgeDatePickerProps } from "../../../dist/src/components/ForgeDatepicker.vue";
+import ForgeDatepicker from "@/components/ForgeDatepicker.vue";
 
 export interface DatepickerValidationWrapperProps extends /* @vue-ignore */ ForgeDatePickerProps {
   schema: YupSchema

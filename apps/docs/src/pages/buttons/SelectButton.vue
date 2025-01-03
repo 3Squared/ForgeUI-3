@@ -22,8 +22,8 @@ import { computed, ref } from "vue";
 
 const opts = ref([
   { label: "Option 1", value: 1 },
-  { label: "Option 2", value: 2 },
-  { label: "Option 3", value: 3 }
+  { label: "Option 2", value: 2},
+  { label: "Option 3", value: 3, disabled: true }
 ]);
 
 const propertyNames = ["label", "value"];
@@ -34,7 +34,8 @@ const { options, propVals, config, reset } = usePlayground(
     optionValue: "value",
     disabled: false,
     allowEmpty: true,
-    multiple: false
+    multiple: false,
+    optionDisabled: 'disabled',
   },
   {
     optionLabel: { type: "select", options: propertyNames },

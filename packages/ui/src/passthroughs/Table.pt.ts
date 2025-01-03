@@ -42,7 +42,7 @@ export default {
       }
     },
     rowGroupHeaderCell: 'd-inline-flex align-items-center border border-0',
-    rowGroupHeader: 'border-top',
+    rowGroupHeader: 'border-top border-bottom',
     rowToggleButton: "btn"
   },
   

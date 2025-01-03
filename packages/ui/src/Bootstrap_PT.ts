@@ -7,9 +7,9 @@ import ColumnPT from "./passthroughs/Column.pt.ts";
 import InputPT from "./passthroughs/Input.pt.ts";
 import InputMaskPT from "./passthroughs/InputMask.pt.ts";
 import InputSwitchPT from "./passthroughs/InputSwitch.pt.ts";
+import TagPT from "./passthroughs/Tag.pt.ts";
 import TextAreaPT from "./passthroughs/TextArea.pt.ts";
 import ChipPT from "./passthroughs/Chip.pt.ts";
-import ChipsPT from "./passthroughs/Chips.pt.ts";
 import DialogPT from "./passthroughs/Dialog.pt.ts";
 import PopoverPT from "./passthroughs/Popover.pt.ts";
 import MessagePT from "./passthroughs/Message.pt.ts";
@@ -38,7 +38,6 @@ export default {
   ...CardPT,
   ...CheckboxPT,
   ...ChipPT,
-  ...ChipsPT, 
   ...ColumnPT,
   ...DatepickerPT,
   ...DialogPT,
@@ -58,6 +57,7 @@ export default {
   ...SelectButtonPT,
   ...StepsPT,
   ...TablePT,
+  ...TagPT,
   ...TabsPT, 
   ...ToastPT,
   ...TextAreaPT,

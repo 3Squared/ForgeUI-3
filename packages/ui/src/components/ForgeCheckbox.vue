@@ -5,7 +5,6 @@
       data-cy="checkbox-container"
       @click="onChange(value)"
       v-bind="{ ...$attrs }"
-     
     >
       <Checkbox
         v-bind="{ ...props }"

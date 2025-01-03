@@ -12,6 +12,7 @@
 <script setup lang="ts">
 import { YupSchema, Form } from "vee-validate";
 import { ForgeCheckProps } from "../../../dist/src/components/ForgeCheckbox.vue";
+import ForgeCheckbox from "@/components/ForgeCheckbox.vue";
 
 export interface CheckboxValidationWrapperProps extends /* @vue-ignore */ ForgeCheckProps {
   schema: YupSchema

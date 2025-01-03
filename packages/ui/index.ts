@@ -17,7 +17,7 @@ import ForgeDatepicker from "./src/components/ForgeDatepicker.vue";
 import ForgeRemainingCharacters from "./src/components/ForgeRemainingCharacters.vue";
 import ForgeForm from "./src/components/ForgeForm.vue";
 import ForgeFormField from "./src/components/ForgeFormField.vue";
-import ForgeChips from "./src/components/ForgeChips.vue";
+import ForgeChip from "./src/components/ForgeChip.vue";
 import ForgeProgressBar from "./src/components/ForgeProgressBar.vue";
 import ForgeStatWidget from "./src/components/ForgeStatWidget.vue";
 import ForgeStepper from "./src/components/ForgeStepper.vue";
@@ -33,7 +33,7 @@ export {
   ForgeAlert,
   ForgeAutoComplete,
   ForgeCheckbox,
-  ForgeChips,
+  ForgeChip,
   ForgeColumnCustomiser,
   ForgeDatepicker,
   ForgeForm,

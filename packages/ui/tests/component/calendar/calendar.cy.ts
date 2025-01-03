@@ -4,7 +4,7 @@ import DatepickerValidationWrapper, { DatepickerValidationWrapperProps } from ".
 import * as yup from 'yup'
 
 const id = "Datepicker"
-const input = '[name="datepicker"]'
+const input = '[data-pc-name="pcinputtext"]'
 const errorMessageId = '[data-cy="error"]'
 const beforeSlotId = "[data-cy='before-slot']"
 const afterSlotId = "[data-cy='after-slot']"

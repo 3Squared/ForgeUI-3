@@ -6,6 +6,7 @@
 import { ForgeMultiSelectPreviewProps } from "../../../src/components/ForgeMultiSelectPreview.vue";
 import { MultiSelectOption } from "../../../src/types/forge-types";
 import { ref } from "vue";
+import ForgeMultiSelectPreview from "@/components/ForgeMultiSelectPreview.vue";
 
 export interface MultiselectPreviewWrapperProps extends /* @vue-ignore */ ForgeMultiSelectPreviewProps {
   selectedOptions: MultiSelectOption<any>[]

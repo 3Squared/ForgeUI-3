@@ -5,8 +5,8 @@ import { Size } from "../../../src/types/forge-types.ts";
 
 const modalId = "modal"
 const dialog = '[data-pc-name="dialog"]'
-const maximiseButton = '[data-pc-section="maximizablebutton"]'
-const closeButton = '[data-pc-section="closebutton"]'
+const maximiseButton = '[data-pc-name="pcmaximizebutton"]'
+const closeButton = '[data-pc-name="pcclosebutton"]'
 
 const submitButtonId = "#submit-button"
 const cancelButtonId = "#cancel-button"
@@ -62,7 +62,7 @@ describe('<Dialog />', () => {
     mountDialog({ closable: true })
 
     // Assert
-    cy.get(`[data-pc-section="icons"]`)
+    cy.get(`[data-pc-section="headeractions"]`)
       .should('have.class', positionClass)
 
     cy.get(closeButton)
@@ -86,7 +86,7 @@ describe('<Dialog />', () => {
     mountDialog({ maximizable: true })
 
     // Assert
-    cy.get(`[data-pc-section="icons"]`)
+    cy.get(`[data-pc-section="headeractions"]`)
       .should('have.class', positionClass)
     
     cy.get(maximiseButton)

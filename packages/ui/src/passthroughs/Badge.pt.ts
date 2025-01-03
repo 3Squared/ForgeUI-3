@@ -7,7 +7,7 @@ export default {
         class: [
           'badge',
           {
-            "badge-primary": props.severity === 'primary' || props.severity === null,
+            "badge-primary": props.severity === 'primary' || props.severity === null || props.severity === undefined ,
             "badge-brand": props.severity === 'brand',
             "badge-secondary": props.severity === 'secondary',
             "badge-success": props.severity === "success",

@@ -8,25 +8,29 @@
     </p>
     <Playground :options="options" :code="code" :config="config" @reset="reset">
       <template #component>
-        <component :is="Chip" v-bind="options" />
+        <component :is="ForgeChip" v-bind="options" />
       </template>
     </Playground>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ForgePageHeader } from "@3squared/forge-ui-3";
+import { ForgePageHeader, ForgeChip } from "@3squared/forge-ui-3";
 import { Playground, usePlayground } from "@3squared/forge-playground-3";
 import { computed } from "vue";
 import { severities } from "../../../composables/playgroundOptions";
-import Chip from "primevue/chip"
 
 const { options, propVals, config, reset } = usePlayground(
   {
    label: "Chip",
     removable: false,
+    chipSeverity: severities[0],
+    pill: false
   },
+    {
+      chipSeverity: { type: "select", options: severities }
+    }
 );
 
-const code = computed(() => `<ForgeChips${propVals.value.length > 0 ? " " + propVals.value.join(" ") : ""} />`);
+const code = computed(() => `<ForgeChip${propVals.value.length > 0 ? " " + propVals.value.join(" ") : ""} />`);
 </script>

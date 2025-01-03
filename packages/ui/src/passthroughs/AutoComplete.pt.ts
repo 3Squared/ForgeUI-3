@@ -12,6 +12,7 @@ export default {
         ]
       }
     },
+    chipItem: 'mt-1 ms-1 mb-1',
     pcInputText: 'form-control',
     overlay: 'dropdown-menu overflow-y-auto show',
     list: ({ props }: AutoCompletePassThroughMethodOptions) => ({
