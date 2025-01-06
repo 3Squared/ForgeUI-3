@@ -1,11 +1,13 @@
 <template>
-  <div class="h3">Examples</div>
-  <Card>
-    <template #content>
-      <ForgeNavbar :model="pages" severity="dark" />
-    </template>
-  </Card>
-  <CodeBlock :code="code" />
+  <div>
+    <div class="h3">Examples</div>
+    <Card>
+      <template #content>
+        <ForgeNavbar :model="pages" severity="dark" />
+      </template>
+    </Card>
+    <CodeBlock :code="code" />
+  </div>
 </template>
 
 <script setup lang="ts">

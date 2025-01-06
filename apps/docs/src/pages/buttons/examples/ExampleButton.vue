@@ -1,8 +1,10 @@
 <template>
-  <div class="h3">Examples</div>
-  <div>A button with a badge:</div>
-  <Button label="Button" badge="8" badge-severity="primary" class="m-1" />
-  <CodeBlock :code="code" />
+  <div>
+    <div class="h3">Examples</div>
+    <div>A button with a badge:</div>
+    <Button label="Button" badge="8" badge-severity="primary" class="m-1" />
+    <CodeBlock :code="code" />
+  </div>
 </template>
 
 <script setup lang="ts">

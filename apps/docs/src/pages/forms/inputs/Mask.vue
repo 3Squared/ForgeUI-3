@@ -45,8 +45,6 @@
 import { ForgePageHeader } from "@3squared/forge-ui-3";
 import InputMask from "primevue/inputmask";
 import Panel from "primevue/panel";
-import Accordion from "primevue/accordion";
-import AccordionPanel from "primevue/accordionpanel";
 import { Playground, usePlayground } from "@3squared/forge-playground-3";
 import { computed, ref } from "vue";
 

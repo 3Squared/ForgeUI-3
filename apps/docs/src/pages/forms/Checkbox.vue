@@ -21,8 +21,6 @@
 import { ForgeCheckbox, ForgePageHeader } from "@3squared/forge-ui-3";
 import { usePlayground, Playground } from "@3squared/forge-playground-3";
 import { computed, ref } from "vue";
-import { useForm } from "vee-validate";
-import * as yup from "yup";
 
 const { options, propVals, config, reset } = usePlayground(
   {

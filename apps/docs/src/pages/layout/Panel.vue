@@ -16,7 +16,6 @@
 
 <script setup lang="ts">
 import { ForgePageHeader } from "@3squared/forge-ui-3";
-import InputMask from "primevue/inputmask";
 import Panel from "primevue/panel";
 import { Playground, usePlayground } from "@3squared/forge-playground-3";
 import { computed, ref } from "vue";

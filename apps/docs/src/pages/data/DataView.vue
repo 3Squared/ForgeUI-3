@@ -57,7 +57,6 @@
 import { ForgeFormField, ForgePageHeader } from "@3squared/forge-ui-3";
 import DataView from "primevue/dataview";
 import { Playground, usePlayground } from "@3squared/forge-playground-3";
-import { severities } from "../../composables/playgroundOptions";
 import { computed, ref } from "vue";
 import Button from "primevue/button";
 import { products } from "./exampleTableData";

@@ -40,7 +40,7 @@
 </template>
 
 <script setup lang="ts">
-import { ForgeFilterHeader, ForgeFormField, ForgeTable } from "@3squared/forge-ui-3";
+import { ForgeFilterHeader, ForgeTable } from "@3squared/forge-ui-3";
 import Card from "primevue/card";
 import Column from "primevue/column";
 import DataTable from "primevue/datatable";

@@ -70,6 +70,5 @@ declare module 'vue-router/auto-routes' {
     '/test/components/ExampleDataView': RouteRecordInfo<'/test/components/ExampleDataView', '/test/components/ExampleDataView', Record<never, never>, Record<never, never>>,
     '/test/components/ExampleTable': RouteRecordInfo<'/test/components/ExampleTable', '/test/components/ExampleTable', Record<never, never>, Record<never, never>>,
     '/test/components/ExampleTableGroup': RouteRecordInfo<'/test/components/ExampleTableGroup', '/test/components/ExampleTableGroup', Record<never, never>, Record<never, never>>,
-    '/test/Test': RouteRecordInfo<'/test/Test', '/test/Test', Record<never, never>, Record<never, never>>,
   }
 }

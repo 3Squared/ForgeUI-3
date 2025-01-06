@@ -30,7 +30,7 @@ const { options, propVals, config, reset } = usePlayground({
 const selectedCountry = ref();
 const filteredCountries = ref();
 
-const search = (event: any) => {
+const search = (event) => {
   if (!event.query.trim().length) {
     filteredCountries.value = [...countries];
   } else {
