@@ -27,6 +27,8 @@
                 :class="{'is-invalid': hasErrors }" />
       <MultiSelect v-else-if="props.type === 'multiselect'" v-bind="{...props,...$attrs}" v-model="model"
                         :class="{'is-invalid': hasErrors }" />
+      <ForgeMultiSelectPreview v-else-if="props.type === 'multiselect-preview'" v-bind="{...props,...$attrs}" v-model="model"
+                        :class="{'is-invalid': hasErrors }" />
       <ForgeDatepicker v-else-if="props.type === 'datepicker'" v-bind="{...props,...$attrs}" v-model="model"
                        :class="{'is-invalid': hasErrors }"/>
     </div>
@@ -40,6 +42,7 @@ import { useField } from 'vee-validate'
 import ForgeCheckbox from "./ForgeCheckbox.vue";
 import { computed, watch } from "vue";
 import { ForgeFormFieldTypes } from "../types/forge-types";
+import ForgeMultiSelectPreview from "@/components/ForgeMultiSelectPreview.vue";
 
 // @ts-ignore
 export interface ForgeFormFieldProps {

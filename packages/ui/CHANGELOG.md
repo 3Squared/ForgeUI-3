@@ -1,5 +1,31 @@
 # @3squared/forge-ui-3
 
+## 1.3.5
+
+### Patch Changes
+
+- 2056e33: Add multiselect-preview into ForgeFormField so that validation can be easily implemented.
+
+## 1.3.4
+
+### Patch Changes
+
+- 48991eb: Installed Mime package, added forge mime type to utilities and to file info. This allows us to send the content type and disposition header to blob
+
+## 1.3.3
+
+### Patch Changes
+
+- a9fbd3e: Multiselect changes:
+  - Remove chip default from multiselect preview
+  - Improve to multiselect documentation
+
+## 1.3.2
+
+### Patch Changes
+
+- cfbb0fc: Change default multiselect filter header back to comma
+
 ## 1.3.1
 
 ### Patch Changes

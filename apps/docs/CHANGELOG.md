@@ -1,5 +1,23 @@
 # forge-ui-3-styleguide
 
+## 1.17.3
+
+### Patch Changes
+
+- 2056e33: Add multiselect-preview into ForgeFormField so that validation can be easily implemented.
+- Updated dependencies [2056e33]
+  - @3squared/forge-ui-3@1.3.5
+
+## 1.17.2
+
+### Patch Changes
+
+- a9fbd3e: Multiselect changes:
+  - Remove chip default from multiselect preview
+  - Improve to multiselect documentation
+- Updated dependencies [a9fbd3e]
+  - @3squared/forge-ui-3@1.3.3
+
 ## 1.17.1
 
 ### Patch Changes

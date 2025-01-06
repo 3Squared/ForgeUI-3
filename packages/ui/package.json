@@ -2,7 +2,7 @@
   "name": "@3squared/forge-ui-3",
   "repository": "https://github.com/3Squared/ForgeUI-3",
   "description": "ForgeUI 3 is Vue 3 UI Library which combines a variety of popular packages to create a consistent UI for your application.",
-  "version": "1.3.1",
+  "version": "1.3.5",
   "type": "module",
   "license": "MIT",
   "contributors": [
@@ -39,8 +39,9 @@
     "@popperjs/core": "^2.11.8",
     "@vueuse/components": "^12.0.0",
     "bootstrap": "^5.3.3",
+    "mime": "^4.0.4",
+    "vee-validate": "^4.11.8",
     "primevue": "^4.2.5",
-    "vee-validate": "^4.14.7",
     "vue": "^3.5.13",
     "vue-multiselect": "^3.0.0-beta.3",
     "yup": "^1.6.1"

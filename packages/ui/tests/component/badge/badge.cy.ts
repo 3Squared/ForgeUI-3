@@ -7,7 +7,7 @@ function mountBadge(props : BadgeProps) {
     attrs: {
       id: id
     },
-    props,
+    props
   })
 }
 
@@ -27,7 +27,7 @@ describe('<Badge />', () => {
   
   describe('Variants', () => {
     ;[
-      { title: 'Defaults to primary when severity isnt defined', severity: undefined },
+      { title: 'Defaults to primary when severity is not defined', severity: undefined },
       { title: 'Displays primary badge when severity is primary', severity: 'primary' },
       { title: 'Displays brand badge when severity is brand', severity: 'brand' },
       { title: 'Displays secondary badge when severity is secondary', severity: 'secondary' },
@@ -42,7 +42,7 @@ describe('<Badge />', () => {
         const expectedClass = severity === undefined ? 'badge badge-primary' : `badge badge-${severity}`
 
         // Act
-        mountBadge({ value: value, severity: severity })
+        mountBadge({value: value, severity: severity })
 
         // Assert
         cy.get(`#${id}`)

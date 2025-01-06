@@ -43,7 +43,8 @@ import {
   getThumbnailUrl,
   formatFileSize,
   FileUploadStatus,
-  deleteFile
+  deleteFile,
+  forgeMime
 } from '../utilities/utilities'
 import {TypedSchema} from "vee-validate";
 import {computed, ref, onMounted} from "vue";
@@ -74,6 +75,12 @@ const controller = ref();
 
 const validFileType = computed<boolean>(() => acceptedFileTypes.some(({fileType}) => fileType === file.value.type))
 const validFileSize = computed<boolean>(() => file.value.size <= maxFileSize)
+const fileMimeType = computed<string|null>(() => {
+  if (file.value.type) {
+    return file.value.type;
+  }
+  return forgeMime().getType(file.value.name);
+});
 
 const updateFileName = () => {
   file.value = new File([file.value], fileName.value, { type: file.value.type, lastModified: (new Date()).valueOf()})
@@ -99,7 +106,11 @@ const uploadBlob = async () => {
     const options = {
       abortSignal: controller.value.signal,
       onProgress: (progress) => bytesUploaded.value = progress.loadedBytes,
-      tags: { temp: "true" }
+      blobHTTPHeaders: {
+        blobContentType: fileMimeType!.value,
+        blobContentDisposition: `attachment; filename="${file.value.name}"`
+      },
+      tags: { temp: "true" },
     } as BlockBlobParallelUploadOptions;
 
     // Upload directly to Azure Blob Storage

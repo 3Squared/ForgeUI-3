@@ -12,7 +12,6 @@ declare module 'vue' {
     Chip: typeof import('primevue/chip')['default']
     DatePicker: typeof import('primevue/datepicker')['default']
     Dialog: typeof import('primevue/dialog')['default']
-    Divider: typeof import('primevue/divider')['default']
     DragDropArea: typeof import('./src/components/file-uploader/components/DragDropArea.vue')['default']
     FileInfo: typeof import('./src/components/file-uploader/components/FileInfo.vue')['default']
     ForgeActionButton: typeof import('./src/components/ForgeActionButton.vue')['default']
@@ -46,14 +45,18 @@ declare module 'vue' {
     MaxFileSize: typeof import('./src/components/file-uploader/components/MaxFileSize.vue')['default']
     Message: typeof import('primevue/message')['default']
     MultiSelect: typeof import('primevue/multiselect')['default']
+    Popover: typeof import('primevue/popover')['default']
     ProgressBar: typeof import('primevue/progressbar')['default']
     ProgressSpinner: typeof import('primevue/progressspinner')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     Select: typeof import('primevue/select')['default']
-    Steps: typeof import('primevue/steps')['default']
+    TabPanels: typeof import('primevue/tabpanels')['default']
     Textarea: typeof import('primevue/textarea')['default']
     UploadButton: typeof import('./src/components/file-uploader/components/UploadButton.vue')['default']
     UploadStatus: typeof import('./src/components/file-uploader/components/UploadStatus.vue')['default']
+  }
+  export interface ComponentCustomProperties {
+    Tooltip: typeof import('primevue/tooltip')['default']
   }
 }

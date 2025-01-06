@@ -18,7 +18,7 @@
 import { ForgePageHeader } from "@3squared/forge-ui-3";
 import Badge from "primevue/badge";
 import { Playground, usePlayground } from "@3squared/forge-playground-3";
-import { computed, ref } from "vue";
+import { computed } from "vue";
 import { severities, sizes } from "../../composables/playgroundOptions";
 
 const { options, propVals, config, reset } = usePlayground(

@@ -1,7 +1,7 @@
 <template>
   <div :class="orientation === 'column' ? 'row' : ''" data-cy="multiselect-preview">
     <div :class="orientation === 'row' ? 'col-12 mb-1' : 'col'" data-cy="multiselect-container">
-      <MultiSelect v-model="model" v-bind="{...$attrs}" :options="props.options" display="chip" optionLabel="label" :placeholder="multiselectPlaceholder" data-cy="multiselect">
+      <MultiSelect v-model="model" v-bind="{...$attrs}" :options="props.options ?? []" optionLabel="label" :placeholder="multiselectPlaceholder" data-cy="multiselect">
         <slot v-for="(_, name) in $slots" :slot="name" :name="name" />
       </MultiSelect>
       <!-- @slot If you need to display some content below the multi select such as validation content-->
@@ -21,7 +21,7 @@
               <Icon icon="bi:x" class="close-icon" :data-cy="`close-icon-${item.id}`"/>
             </Button>
           </div>
-          <div v-if="model.length === 0" class="p-2 item d-flex justify-content-between align-items-center">{{ props.optionsPreviewEmptyText }}</div>
+          <div v-if="model == null || model.length == 0" class="p-2 item d-flex justify-content-between align-items-center">{{ props.optionsPreviewEmptyText }}</div>
         </div>
       </div>
     </div>
