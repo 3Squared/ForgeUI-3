@@ -16,6 +16,8 @@
         </component>
       </template>
     </Playground>
+    
+    <ExampleNavBar />
   </div>
 </template>
 
@@ -25,6 +27,7 @@ import { Playground, usePlayground } from "@3squared/forge-playground-3";
 import { computed } from "vue";
 import { severities } from "../../composables/playgroundOptions";
 import { Icon } from '@iconify/vue'
+import ExampleNavBar from "./examples/ExampleNavBar.vue";
 
 const { options, propVals, config, reset } = usePlayground(
   {

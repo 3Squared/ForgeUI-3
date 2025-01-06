@@ -30,7 +30,6 @@ declare module 'vue' {
     ForgeLink: typeof import('./src/components/ForgeLink.vue')['default']
     ForgeLoader: typeof import('./src/components/ForgeLoader.vue')['default']
     ForgeModal: typeof import('./src/components/ForgeModal.vue')['default']
-    ForgeMultiSelect: typeof import('./src/components/deprecated/ForgeMultiSelect.vue')['default']
     ForgeMultiSelectPreview: typeof import('./src/components/ForgeMultiSelectPreview.vue')['default']
     ForgeNavbar: typeof import('./src/components/ForgeNavbar.vue')['default']
     ForgePageHeader: typeof import('./src/components/ForgePageHeader.vue')['default']

@@ -9,6 +9,10 @@
     {
       "name": "Jacob Minor",
       "email": "jacob.minor@3squared.com"
+    },
+    {
+      "name": "Isabel Mallon",
+      "email": "isabel.mallon@velociti-solutions.com"
     }
   ],
   "main": "./dist/esm/forge-ui-3.js",

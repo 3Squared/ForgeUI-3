@@ -16,7 +16,7 @@
 
 .invalid-feedback {
   @extend .invalid-feedback;
-  display: block;
+  display: block !important;
 }
 
 .z-index-dropdown {

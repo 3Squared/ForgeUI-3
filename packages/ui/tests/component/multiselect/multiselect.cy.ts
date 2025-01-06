@@ -4,6 +4,7 @@ import MultiselectWrapper from "./multiselectWrapper.vue";
 import MultiselectValidationWrapper, { MultiSelectValidationWrapperProps } from "./multiselectValidationWrapper.vue";
 import * as yup from 'yup'
 import { MultiSelectOption } from "../../../src/types/forge-types.ts";
+import { MultiSelectProps } from "primevue";
 
 
 const options = [
@@ -12,18 +13,17 @@ const options = [
   { label: "Option 3", id: "3" }
 ] as MultiSelectOption<any>[]
 
-const multiselectId = '[data-cy="multiselect"]'
-const option1Id = '[data-cy="Option 1"]'
-const option2Id = '[data-cy="Option 2"]'
-const option3Id = '[data-cy="Option 3"]'
-const clearButtonId = '[data-cy="clear"]'
-const toggleAllId = '[data-cy="toggle-all"]'
+const multiselectId = '[data-pc-name="multiselect"]'
+const optionId = '[data-pc-section="option"]'
+const clearButtonId = '[data-pc-section="clearicon"]'
+const toggleAllId = '[data-pc-name="pcheadercheckbox"]'
 const errorMessageId = '[data-cy="error"]'
-const tagsWrapId = '.multiselect__tags-wrap'
-const inputId = ".multiselect__tags"
-const optionId = ".multiselect__option"
+const labelContainerId = '[data-pc-section="labelcontainer"]'
+const filterId = '[data-pc-name="pcfilter"]'
+const formButtonId = '[id="form-button"]'
 
-function mountMultiselect(props : ForgeMultiSelectProps) {
+
+function mountMultiselect(props : MultiSelectProps) {
   cy.mount(MultiselectWrapper, {
     props,
   })
@@ -35,7 +35,7 @@ function mountMultiselectValidationWrapper(props : MultiSelectValidationWrapperP
   })
 }
 
-describe("<ForgeMultiselect />", () => {
+describe("<Multiselect />", () => {
   it("Mounts", () => {
     // Act
     mountMultiselect({ options: options })
@@ -48,20 +48,16 @@ describe("<ForgeMultiselect />", () => {
   
   it("Displays validation", () => {
     // Arrange
-    const errorMessage = "Must be less than 1"
+    const errorMessage = "Please select at least 1 option"
     const schema = yup.object().shape({
-      select: yup.array().max(1, errorMessage)
+      select: yup.array().min(2, errorMessage)
     })
-    
     
     // Act
     //@ts-ignore
     mountMultiselectValidationWrapper({ options: options, schema: schema })
-    cy.get(multiselectId).click()
-    cy.get(option1Id).click()
-    cy.get(option2Id).click()
-    cy.get(option3Id).click()
     
+    cy.get(formButtonId).click();
     // Assert
     cy.get(errorMessageId).should('contain.text', errorMessage)
   })
@@ -69,14 +65,14 @@ describe("<ForgeMultiselect />", () => {
   describe("Multiselect", () => {
     it("Allows the user to select multiple options", () => {
       // Act
-      mountMultiselect({ options: options })
+      mountMultiselect({ options: options})
       cy.get(multiselectId).click()
-      cy.get(option1Id).click()
-      cy.get(option2Id).click()
+      cy.get(optionId).contains("Option 1").click()
+      cy.get(optionId).contains("Option 2").click()
+      
 
       // Assert
-      cy.get(tagsWrapId).children()
-        .should('have.length', 2)
+      cy.get(labelContainerId)
         .and('contain.text', 'Option 1')
         .and('contain.text', 'Option 2')
     })
@@ -88,79 +84,53 @@ describe("<ForgeMultiselect />", () => {
       // Act
       mountMultiselect({ options: options })
       cy.get(multiselectId).click()
-      cy.get(option1Id).click()
+      cy.get(optionId).contains("Option 1").click()
 
-      cy.get(tagsWrapId).children()
-        .should('have.length', 1)
+      cy.get(labelContainerId)
         .and('contain.text', 'Option 1')
 
-      cy.get(option1Id).click()
+      cy.get(optionId).contains("Option 1").click()
 
       // Assert
-      cy.get(inputId)
+      cy.get(multiselectId)
         .should('contain.text', expectedPlaceholder)
     })
   })
 
-  describe("Select", () => {
-    it("Allows only allows a user to select a singular option when multiple is false", () => {
+  describe("Filter", () => {
+    it("Should show filter if filter is true", () => {
       // Arrange
-      const multiple = false
-      const option1 = "Option 1"
-      const option2 = "Option 2"
-      
+    
+
       // Act
-      mountMultiselect({ options: options, multiple: multiple })
+      mountMultiselect({ options: options, filter: true })
       cy.get(multiselectId).click()
-      cy.get(optionId).contains(option1).click()
 
       // Assert
-      cy.get(inputId)
-        .and('contain.text', option1)
-
-      cy.get(optionId).contains(option2).click()
-
-      cy.get(inputId)
-        .and('contain.text', option2)
+      cy.get(filterId)
+        .should('exist')
     })
-  })
-  
-  describe("Placeholder", () => {
-    it("Should default to Search if searchable is true", () => {
+    
+    it("Should show not filter if filter not set to true", () => {
       // Arrange
-      const expectedPlaceholder = "Search"
-
       // Act
-      mountMultiselect({ options: options, searchable: true })
+      mountMultiselect({ options: options })
+      cy.get(multiselectId).click()
 
       // Assert
-      cy.get(inputId)
-        .should('contain.text', expectedPlaceholder)
-    })
-
-    it("Should default to Select if searchable is false", () => {
-      // Arrange
-      const expectedPlaceholder = "Select"
-
-      // Act
-      mountMultiselect({ options: options, searchable: false })
-
-      // Assert
-      cy.get(inputId)
-        .should('contain.text', expectedPlaceholder)
+      cy.get(filterId)
+        .should('not.exist')
     })
   })
   
   describe("Clear button", () => {
-    it("Displays a clear button in the multiselect when showClearSelection is true", () => {
+    it("Displays a clear button in the multiselect when showClear is true", () => {
       // Arrange
-      const showClearSelection = true
-
       // Act
-      mountMultiselect({ options: options, showClearSelection: showClearSelection })
+      mountMultiselect({ options: options, showClear: true })
       cy.get(multiselectId).click()
-      cy.get(option1Id).click()
-      cy.get(option2Id).click()
+      cy.get(optionId).contains("Option 1").click()
+      cy.get(optionId).contains("Option 2").click()
 
       // Assert
       cy.get(clearButtonId)
@@ -171,26 +141,21 @@ describe("<ForgeMultiselect />", () => {
     it('Clears all selected options on click of the clear button', () => {
       // Arrange
       const expectedPlaceholder = "Select"
-      const showClearSelection = true
 
       // Act
-      mountMultiselect({ options: options, showClearSelection: showClearSelection })
+      mountMultiselect({ options: options, showClear: true })
       cy.get(multiselectId).click()
-      cy.get(option1Id).click()
-      cy.get(option2Id).click()
+      cy.get(optionId).contains("Option 1").click()
+      cy.get(optionId).contains("Option 2").click()
 
-      cy.get(tagsWrapId).children()
-        .should('have.length', 2)
+      cy.get(labelContainerId)
         .and('contain.text', 'Option 1')
         .and('contain.text', 'Option 2')
 
       cy.get(clearButtonId).click()
 
       // Assert
-      cy.get(clearButtonId)
-        .and('not.exist')
-
-      cy.get(inputId)
+      cy.get(multiselectId)
         .should('contain.text', expectedPlaceholder)
     });
   })
@@ -198,32 +163,28 @@ describe("<ForgeMultiselect />", () => {
   describe("Toggle All", () => {
     it("Displays a toggle all button when showSelectAll is true", () => {
       // Arrange
-      const showSelectAll = true
-
       // Act
-      mountMultiselect({ options: options, showSelectAll: showSelectAll })
+      mountMultiselect({ options: options })
       cy.get(multiselectId).click()
 
       // Assert
       cy.get(toggleAllId)
+        .children()
         .should('exist')
-        .and('be.visible')
     })
 
     it("Selects all options on toggle on of select all", () => {
       // Arrange
-      const showSelectAll = true
 
       // Act
-      mountMultiselect({ options: options, showSelectAll: showSelectAll })
+      mountMultiselect({ options: options })
       cy.get(multiselectId).click()
       cy.get(toggleAllId).click()
 
       // Assert
       cy.get(`${toggleAllId} input`).should('be.checked')
 
-      cy.get(tagsWrapId).children()
-        .should('have.length', 3)
+      cy.get(labelContainerId)
         .and('contain.text', 'Option 1')
         .and('contain.text', 'Option 2')
         .and('contain.text', 'Option 3')
@@ -231,16 +192,14 @@ describe("<ForgeMultiselect />", () => {
 
     it("Unselects all options on toggle off of select all", () => {
       // Arrange
-      const showSelectAll = true
       const expectedPlaceholder = "Select"
 
       // Act
-      mountMultiselect({ options: options, showSelectAll: showSelectAll })
+      mountMultiselect({ options: options })
       cy.get(multiselectId).click()
       cy.get(toggleAllId).click()
 
-      cy.get(tagsWrapId).children()
-        .should('have.length', 3)
+      cy.get(labelContainerId)
         .and('contain.text', 'Option 1')
         .and('contain.text', 'Option 2')
         .and('contain.text', 'Option 3')
@@ -250,40 +209,8 @@ describe("<ForgeMultiselect />", () => {
       // Assert
       cy.get(`${toggleAllId} input`).should('not.be.checked')
 
-      cy.get(inputId)
+      cy.get(multiselectId)
         .should('contain.text', expectedPlaceholder)
-    })
-    
-    it("Adds row highlighting on hover of toggle all", () => {
-      // Arrange
-      const showSelectAll = true
-      const expectedClass = 'multiselect__option--highlight'
-      
-      // Act
-      mountMultiselect({ options: options, showSelectAll: showSelectAll })
-      cy.get(multiselectId).click()
-      cy.get(toggleAllId).realHover()
-      
-      // Assert
-      cy.get(`${toggleAllId} .multiselect__option`).should('have.class', expectedClass)
-    })
-
-    it("Removes row highlighting on mouse off of toggle all", () => {
-      // Arrange
-      const showSelectAll = true
-      const expectedClass = 'multiselect__option--highlight'
-
-      // Act
-      mountMultiselect({ options: options, showSelectAll: showSelectAll })
-      cy.get(multiselectId).click()
-      cy.get(toggleAllId).realHover()
-
-      cy.get(`${toggleAllId} .multiselect__option`).should('have.class', expectedClass)
-
-      cy.get(option1Id).realHover()
-      
-      // Assert
-      cy.get(`${toggleAllId} .multiselect__option`).should('not.have.class', expectedClass)
     })
   })
 })

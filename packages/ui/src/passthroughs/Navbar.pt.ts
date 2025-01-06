@@ -22,6 +22,7 @@ export default {
     }),
     itemLink: ({ context, instance }: MenubarPassThroughMethodOptions) => ({
       class: [
+        'cursor-pointer',
         {
           'active': context.active,
           'nav-link': context.level === 0,
@@ -56,8 +57,7 @@ export default {
         ]
       }
 
-    },
-    submenuIcon: 'ms-1'
+    }
   },
   menu: {
     root: (options : MenuPassThroughMethodOptions) => ({
@@ -80,6 +80,6 @@ export default {
       class: [
         'dropdown-item cursor-pointer'
       ]
-    })
+    }), 
   },
 }

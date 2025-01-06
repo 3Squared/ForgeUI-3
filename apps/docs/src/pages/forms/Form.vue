@@ -1,7 +1,6 @@
 <template>
   <div>
     <forge-page-header title="Form" />
-    <OPTIONS />
     <playground :options="options" :config="config" :code="code" @reset="reset">
       <template #component>
         <component :is="ForgeForm" v-bind="options" class="w-75" />

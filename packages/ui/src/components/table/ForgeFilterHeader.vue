@@ -36,9 +36,10 @@ import Select from "primevue/select";
 import ForgeDatepicker from "@/components/ForgeDatepicker.vue";
 import MultiSelect from "primevue/multiselect";
 import { Icon } from '@iconify/vue';
+import { ForgeColumnDataType } from "@/types/forge-types.ts";
 
 export interface ForgeFilterHeaderProps {
-  dataType: 'numeric' | 'date' | 'multiselect' | 'select' | undefined,
+  dataType: ForgeColumnDataType,
   dropdownOptions?: any[],
   showClearButton?: boolean
   clearFilter?: Function,

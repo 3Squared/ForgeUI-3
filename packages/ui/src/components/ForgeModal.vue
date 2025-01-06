@@ -55,6 +55,8 @@ export interface ForgeModalProps extends DialogProps {
   submitButtonType?: 'button' | 'reset' | 'submit',
   cancelButtonType?: 'button' | 'reset' | 'submit',
   size?: Size | 'xl'
+  cancelClass?: string,
+  submitClass?: string
 }
 
 const visible = defineModel<boolean>('visible', { required: true })

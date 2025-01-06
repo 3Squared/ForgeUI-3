@@ -64,7 +64,6 @@ import Select from "primevue/select";
 import { pluralise } from "@3squared/forge-ui-3/src/components/table/table-helpers";
 import { Icon } from '@iconify/vue'
 import { ForgeTableContext, Severity } from "../../types/forge-types";
-//import { DefaultPassThrough } from "primevue/ts-helpers";
 
 export interface ForgeTableProps extends DataTableProps {
   value: any[],
@@ -90,7 +89,7 @@ const props = withDefaults(defineProps<ForgeTableProps>(), {
 
 const forgeTable = ref()
 const pageSizes = ref<Array<number>>([5, 10, 20, 50, 100])
-const perPage = ref<number>(5)
+const perPage = ref<number>(10)
 
 const tableContext = ref<ForgeTableContext>({
   filters: props.filters,
