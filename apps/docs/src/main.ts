@@ -8,8 +8,6 @@ import { Bootstrap_PT } from "@3squared/forge-ui-3";
 import Tooltip from "primevue/tooltip";
 import { createRouter, createWebHashHistory } from "vue-router/auto";
 import { routes } from "vue-router/auto-routes";
-import NavbarPt from "@3squared/forge-ui-3/src/passthroughs/Navbar.pt";
-import TablePt from "@3squared/forge-ui-3/src/passthroughs/Table.pt";
 
 const router = createRouter({
   history: createWebHashHistory(),

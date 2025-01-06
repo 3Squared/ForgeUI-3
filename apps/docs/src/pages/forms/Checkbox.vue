@@ -35,14 +35,6 @@ const { options, propVals, config, reset } = usePlayground(
 );
 
 const value = ref<boolean>(false);
-//
-// const schema = yup.object().shape({
-//   checkbox: yup.boolean().required("Required")
-// });
-//
-// const form = useForm({
-//   validationSchema: schema
-// });
 
 const code = computed(() => {
   return `<ForgeCheckbox${propVals.value.length > 0 ? " " + propVals.value.join(" ") : ""} />`;
