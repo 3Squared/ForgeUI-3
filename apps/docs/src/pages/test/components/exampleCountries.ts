@@ -23,5 +23,5 @@ export const countries = [
   { name: "Norway", code: "NOR" },
   { name: "Turkey", code: "TUR" },
   { name: "Saudi Arabia", code: "SAU" },
-  { name: "Thailand", code: "THA" },
+  { name: "Thailand", code: "THA" }
 ];

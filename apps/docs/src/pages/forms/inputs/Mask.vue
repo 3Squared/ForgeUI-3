@@ -7,35 +7,35 @@
       .
     </p>
     <Panel class="mb-3" header="Mask definitions" toggleable>
+      <div class="d-flex flex-column">
+        <p>
+          <strong>a</strong>
+          - Alphabetic Characters
+        </p>
+        <p>
+          <strong>9</strong>
+          - Numeric Characters
+        </p>
+        <p>
+          <strong>*</strong>
+          - Alphanumeric Characters
+        </p>
         <div class="d-flex flex-column">
-          <p>
-            <strong>a</strong>
-            - Alphabetic Characters
-          </p>
-          <p>
-            <strong>9</strong>
-            - Numeric Characters
-          </p>
-          <p>
-            <strong>*</strong>
-            - Alphanumeric Characters
-          </p>
-          <div class="d-flex flex-column">
-            <h5>Formatting Characters</h5>
-            <div>
-              <strong>(</strong>
-              <strong>)</strong>
-              <strong>-</strong>
-            </div>
+          <h5>Formatting Characters</h5>
+          <div>
+            <strong>(</strong>
+            <strong>)</strong>
+            <strong>-</strong>
           </div>
         </div>
+      </div>
     </Panel>
-    <Playground :options="options" :code="code" :config="config" @reset="reset" displayValue>
+    <Playground :options="options" :code="code" :config="config" display-value @reset="reset">
       <template #component>
         <InputMask v-bind="options" v-model="value" />
       </template>
       <template #value>
-        {{value}}
+        {{ value }}
       </template>
     </Playground>
   </div>
@@ -44,7 +44,7 @@
 <script setup lang="ts">
 import { ForgePageHeader } from "@3squared/forge-ui-3";
 import InputMask from "primevue/inputmask";
-import Panel from "primevue/panel"
+import Panel from "primevue/panel";
 import Accordion from "primevue/accordion";
 import AccordionPanel from "primevue/accordionpanel";
 import { Playground, usePlayground } from "@3squared/forge-playground-3";

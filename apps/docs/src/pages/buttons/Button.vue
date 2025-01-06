@@ -11,7 +11,7 @@
         <component :is="Button" v-bind="options" />
       </template>
     </Playground>
-    
+
     <ExampleButton />
   </div>
 </template>

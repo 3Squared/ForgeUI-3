@@ -2,8 +2,9 @@
   <div class="h3">Examples</div>
   <Card>
     <template #content>
-  <ForgeNavbar :model="pages" severity="dark" />
-    </template></Card>
+      <ForgeNavbar :model="pages" severity="dark" />
+    </template>
+  </Card>
   <CodeBlock :code="code" />
 </template>
 
@@ -16,34 +17,20 @@ import Card from "primevue/card";
 const pages = [
   {
     label: "Guides",
-    items: [
-      { label: "Getting Started" },
-      { label: "Migrating from Forge.UI (Coming Soon...)" },
-    ],
+    items: [{ label: "Getting Started" }, { label: "Migrating from Forge.UI (Coming Soon...)" }]
   },
   {
     label: "Buttons",
-    items: [
-      { label: "Action Button", disabled: true },
-      { label: "Button" },
-      { label: "Link" },
-      { label: "Select Button" },
-    ],
+    items: [{ label: "Action Button", disabled: true }, { label: "Button" }, { label: "Link" }, { label: "Select Button" }]
   },
   {
     label: "Data",
-    items: [
-      { label: "Chart" },
-      { label: "Progress Bar" },
-      { label: "Stat Widget" },
-      { label: "Table" },
-      { label: "Tile" },
-    ],
-  },
+    items: [{ label: "Chart" }, { label: "Progress Bar" }, { label: "Stat Widget" }, { label: "Table" }, { label: "Tile" }]
+  }
 ];
 
-
-const code = computed(() => `
+const code = computed(
+  () => `
 <template>
  <ForgeNavbar :model="pages" severity="dark" />
 </template>
@@ -80,6 +67,6 @@ const pages = [
   },
 ];
 </\script>
-`);
-
+`
+);
 </script>

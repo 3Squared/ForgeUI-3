@@ -22,14 +22,14 @@ import { severities } from "../../../composables/playgroundOptions";
 
 const { options, propVals, config, reset } = usePlayground(
   {
-   label: "Chip",
+    label: "Chip",
     removable: false,
     chipSeverity: severities[0],
     pill: false
   },
-    {
-      chipSeverity: { type: "select", options: severities }
-    }
+  {
+    chipSeverity: { type: "select", options: severities }
+  }
 );
 
 const code = computed(() => `<ForgeChip${propVals.value.length > 0 ? " " + propVals.value.join(" ") : ""} />`);

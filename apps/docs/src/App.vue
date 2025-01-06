@@ -92,7 +92,7 @@ const pages = [
       { label: "Tabs", command: () => router.push("/layout/tabs") },
       { label: "Fieldset", command: () => router.push("/layout/fieldset") },
       { label: "Panel", command: () => router.push("/layout/panel") },
-      { label: "Navbar", command: () => router.push("/layout/navbar") },
+      { label: "Navbar", command: () => router.push("/layout/navbar") }
     ]
   },
   {

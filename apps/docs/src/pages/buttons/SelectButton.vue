@@ -22,7 +22,7 @@ import { computed, ref } from "vue";
 
 const opts = ref([
   { label: "Option 1", value: 1 },
-  { label: "Option 2", value: 2},
+  { label: "Option 2", value: 2 },
   { label: "Option 3", value: 3, disabled: true }
 ]);
 
@@ -35,7 +35,7 @@ const { options, propVals, config, reset } = usePlayground(
     disabled: false,
     allowEmpty: true,
     multiple: false,
-    optionDisabled: 'disabled',
+    optionDisabled: "disabled"
   },
   {
     optionLabel: { type: "select", options: propertyNames },
@@ -45,7 +45,5 @@ const { options, propVals, config, reset } = usePlayground(
 
 const value = ref();
 
-const code = computed(
-  () => `<SelectButton options="options" ${propVals.value.length > 0 ? " " + propVals.value.join(" ") : ""}/>`
-);
+const code = computed(() => `<SelectButton options="options" ${propVals.value.length > 0 ? " " + propVals.value.join(" ") : ""}/>`);
 </script>

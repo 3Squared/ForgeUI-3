@@ -8,7 +8,7 @@
     </p>
     <Playground :options="options" :code="code" :config="config" @reset="reset">
       <template #component>
-        <component :is="ForgeAutoComplete" v-bind="options" v-model="selectedCountry" @complete="search" :suggestions="filteredCountries"  option-label="name"/>
+        <component :is="ForgeAutoComplete" v-bind="options" v-model="selectedCountry" :suggestions="filteredCountries" option-label="name" @complete="search" />
       </template>
     </Playground>
   </div>
@@ -20,22 +20,17 @@ import { Playground, usePlayground } from "@3squared/forge-playground-3";
 import { computed, ref } from "vue";
 import { countries } from "../../test/components/exampleCountries";
 
-const { options, propVals, config, reset } = usePlayground(
-    {
-      name: "",
-      multiple: false,
-      disabled: false,
-      placeholder: "Type a country name..."
-    },
-    {
-      
-    }
-);
+const { options, propVals, config, reset } = usePlayground({
+  name: "",
+  multiple: false,
+  disabled: false,
+  placeholder: "Type a country name..."
+});
 
 const selectedCountry = ref();
 const filteredCountries = ref();
 
-const search = (event) => {
+const search = (event: any) => {
   if (!event.query.trim().length) {
     filteredCountries.value = [...countries];
   } else {
@@ -43,8 +38,7 @@ const search = (event) => {
       return country.name.toLowerCase().startsWith(event.query.toLowerCase());
     });
   }
-
-}
+};
 
 const code = computed(() => `<ForgeAutoComplete${propVals.value.length > 0 ? " " + propVals.value.join(" ") : ""} />`);
 </script>

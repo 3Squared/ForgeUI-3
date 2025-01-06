@@ -7,21 +7,35 @@
           <template #header>
             <div class="d-flex w-75 m-2">
               <div class="p-1 w-100">
-                <ForgeFormField v-model="productType" field-label="Type" type="select" name="product"
-                                :options="productOptions" option-label="label" option-value="value"
-                                placeholder="Please Select" show-clear field-label-position="left" />
+                <ForgeFormField
+                  v-model="productType"
+                  field-label="Type"
+                  type="select"
+                  name="product"
+                  :options="productOptions"
+                  option-label="label"
+                  option-value="value"
+                  placeholder="Please Select"
+                  show-clear
+                  field-label-position="left"
+                />
               </div>
               <div class="p-1 w-100">
-                <ForgeFormField v-model="pageSize" name="pageSize" type="select" field-label="Page size"
-                                :options="sizingOptions" field-label-position="left" label-width-class="w-25" />
+                <ForgeFormField
+                  v-model="pageSize"
+                  name="pageSize"
+                  type="select"
+                  field-label="Page size"
+                  :options="sizingOptions"
+                  field-label-position="left"
+                  label-width-class="w-25"
+                />
               </div>
             </div>
           </template>
           <template #list="slotProps">
             <div v-for="(product, index) in slotProps.items" :key="index">
-              <div
-                class="border-top p-3 d-flex w-100 justify-content-lg-between"
-              >
+              <div class="border-top p-3 d-flex w-100 justify-content-lg-between">
                 <div>
                   <div class="h3">{{ product.name }}</div>
                   <div class="p-1">Category: {{ product.category }}</div>
@@ -61,20 +75,17 @@ const productType = ref();
 const productOptions = ref([
   { label: "Fitness", value: "Fitness" },
   { label: "Accessories", value: "Accessories" },
-  { label: "Clothing", value: "Clothing" },
+  { label: "Clothing", value: "Clothing" }
 ]);
 
 const { options, propVals, config, reset } = usePlayground(
   {
     dataKey: "code",
     rows: pageSize,
-    paginator: true,
+    paginator: true
   },
-  {},
+  {}
 );
 
-const code = computed(
-  () =>
-    `<DataView${propVals.value.length > 0 ? " " + propVals.value.join(" ") : ""} />`,
-);
+const code = computed(() => `<DataView${propVals.value.length > 0 ? " " + propVals.value.join(" ") : ""} />`);
 </script>

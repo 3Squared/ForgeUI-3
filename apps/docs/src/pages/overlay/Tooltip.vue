@@ -36,7 +36,7 @@ const pos = ref<"right" | "top" | "bottom" | "left">("right");
 const { options, config, reset } = usePlayground({
   value: "Hello I'm a tooltip!",
   escape: true,
-  fitContent: true,
+  fitContent: true
 });
 
 const code = computed(() => `<InputText v-tooltip.${pos.value}="'${options.value.value}'" />`);

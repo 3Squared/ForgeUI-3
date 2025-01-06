@@ -6,12 +6,12 @@
       <a class="link" target="_blank" href="https://primevue.org/checkbox/"><strong>PrimeVue documentation</strong></a>
       .
     </p>
-    <Playground :options="options" :code="code" :config="config" @reset="reset" displayValue>
+    <Playground :options="options" :code="code" :config="config" display-value @reset="reset">
       <template #component>
         <ForgeCheckbox v-model="value" v-bind="options" name="checkbox" />
       </template>
       <template #value>
-        {{value}}
+        {{ value }}
       </template>
     </Playground>
   </div>
@@ -29,7 +29,7 @@ const { options, propVals, config, reset } = usePlayground(
     label: "Default Label",
     name: "test",
     disabled: false,
-    readonly: false,
+    readonly: false
   },
   {}
 );

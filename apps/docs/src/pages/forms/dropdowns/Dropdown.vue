@@ -18,7 +18,7 @@
 
 <script setup lang="ts">
 import { ForgePageHeader } from "@3squared/forge-ui-3";
-import Select from "primevue/select"
+import Select from "primevue/select";
 import { computed, ref } from "vue";
 import { usePlayground, Playground, CodeBlock } from "@3squared/forge-playground-3";
 import { stringFilterTypes } from "../../../composables/playgroundOptions";
