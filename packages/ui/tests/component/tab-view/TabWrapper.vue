@@ -29,10 +29,10 @@
 </template>
 
 <script setup lang="ts">
-import Tabs, {TabsProps} from "primevue/tabs";
+import Tabs from "primevue/tabs";
 import TabList from "primevue/tablist";
-import TabPanel, { TabPanelProps } from "primevue/tabpanel";
-import Tab, {TabProps} from 'primevue/tab';
+import TabPanel from "primevue/tabpanel";
+import Tab from 'primevue/tab';
 
 interface TabWrapperProps {
   disabled?: boolean

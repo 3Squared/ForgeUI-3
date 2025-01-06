@@ -7,5 +7,4 @@
 import { ref } from "vue";
 
 const selected = ref<Array<{label: string, value: string}>>([])
-
 </script>

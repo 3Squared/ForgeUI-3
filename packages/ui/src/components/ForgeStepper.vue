@@ -1,101 +1,78 @@
 <template>
-  <div class="d-flex flex-column align-items-center" data-cy="stepper">
-    <div class="d-flex align-items-center justify-content-center w-100">
-      <Button :severity="props.severity" :disabled="isBackButtonDisabled" @click="previousStep" class="rounded-circle py-2 me-4" data-cy="back-button">
-        <Icon icon="bi:chevron-left" class="mb-1" />
-      </Button>
-      <Steps v-model:active-step="localCurrentStep" :model="props.model" :pt="stepperPT" :readonly="false" />
-    </div>
-    <Divider class="m-4"/>
-    <div v-for="(step, index) in props.model" :key="index" class="w-100">
-      <slot v-if="index === localCurrentStep" :name="step.key ?? step.label" :next-step="nextStep" :previous-step="previousStep">
-        <ForgeAlert severity="info" data-cy="alert">
-          Please add Slot Content for the key {{ step.key ?? step.label }}
-          <Button severity="primary" label="Next" @click="nextStep" class="ms-2"/>
-        </ForgeAlert>
-      </slot>
-    </div>
-  </div>
-
+  <Stepper :value="currentStep">
+    <StepList>
+      <Step
+          v-for="step in steps"
+          :key="step.value"
+          :value="step.value"
+          :disabled="step.disabled"
+          v-bind="{...$attrs}"
+          :pt="stepPT"
+      >
+        <div v-if="showStepLabel">{{ step.label }}</div>
+      </Step>
+    </StepList>
+    <StepPanels>
+      <StepPanel v-for="step in steps" :key="step.value" :value="step.value">
+        <slot :name="'step' + step.value" />
+      </StepPanel>
+    </StepPanels>
+  </Stepper>
 </template>
 
 <script setup lang="ts">
-import { Icon } from '@iconify/vue'
-import { StepsPassThroughMethodOptions, StepsPassThroughOptions, StepsProps } from "primevue/steps";
-import { Severity } from "../types/forge-types";
-import { computed, ref } from "vue";
-import ForgeAlert from "@/components/ForgeAlert.vue";
-import { DefaultPassThrough } from "primevue/ts-helpers";
+import { StepsPassThroughMethodOptions, StepsProps } from "primevue/steps";
+import { Severity, ForgeSteps } from "../types/forge-types";
+import { computed } from "vue";
+import Step from "primevue/step";
+import Stepper from "primevue/stepper";
+import StepList from "primevue/steplist";
+import StepPanel from "primevue/steppanel";
+import StepPanels from "primevue/steppanels";
 
 export interface ForgeStepperProps extends /* vue-ignore */ StepsProps {
-  currentStep?: number,
-  severity?: Severity
+  currentStep?: number;
+  severity?: Severity;
+  steps: ForgeSteps[];
+  showStepLabel?: boolean
+  inlineSteps?: boolean
 }
-
-const emit = defineEmits(['update:currentStep'])
 
 const props = withDefaults(defineProps<ForgeStepperProps>(), {
   severity: "primary",
-  currentStep: 0
-})
+  currentStep: 1,
+  showStepLabel: true,
+  inlineSteps: false
+});
 
-const localCurrentStep = ref<number>(props.currentStep)
-
-const previousStep = () => {
-  do {
-    localCurrentStep.value--
-  } while (props.model![localCurrentStep.value].disabled)
-  emit('update:currentStep', localCurrentStep.value)
-}
-
-const nextStep = () => {
-  if (localCurrentStep.value < props.model!.length - 1){
-    do {
-      localCurrentStep.value++
-    } while (props.model![localCurrentStep.value].disabled)
-  }
-  emit('update:currentStep', localCurrentStep.value)
-}
-
-const isBackButtonDisabled = computed(() => {
-  const index = props.model!.findIndex((x) => !x.disabled)
-  return !(index < localCurrentStep.value && index > -1)
-})
-
-const stepperPT = computed<DefaultPassThrough<StepsPassThroughOptions>>(() => ({
-  menuitem: (options : StepsPassThroughMethodOptions) => ({
-    class: [{
-      'cursor-pointer': !options.context.disabled
-    }]
-  }),
-  step: (options : StepsPassThroughMethodOptions) => ({
-     class: [
-         'd-flex align-items-center justify-content-center mb-2 step',
-         {
-           'inactive': options.context.disabled,
-           'bg-primary text-white': options.context.index === localCurrentStep.value && (props.severity === undefined || props.severity === 'primary'),
-           'bg-brand text-white': options.context.index === localCurrentStep.value && props.severity === 'brand',
-           'bg-secondary text-white': options.context.index === localCurrentStep.value && props.severity === 'secondary',
-           'bg-success text-white': options.context.index === localCurrentStep.value && props.severity === 'success',
-           'bg-warning text-white': options.context.index === localCurrentStep.value && props.severity === 'warning',
-           'bg-danger text-white': options.context.index === localCurrentStep.value && props.severity === 'danger',
-           'bg-info text-white': options.context.index === localCurrentStep.value && props.severity === 'info'
-         }
-     ]
-  }),
-  label: (options: StepsPassThroughMethodOptions) => ({
+const stepPT = computed(() => ({
+  header: {
     class: [
-      'h5',
+      "p-0 m-0 d-flex align-items-center border border-0 bg-transparent gap-1",
       {
-        'border-bottom border-2 border-primary': options.context.index === localCurrentStep.value && (props.severity === undefined || props.severity === 'primary'),
-        'border-bottom border-2 border-brand': options.context.index === localCurrentStep.value && props.severity === 'brand',
-        'border-bottom border-2 border-secondary': options.context.index === localCurrentStep.value && props.severity === 'secondary',
-        'border-bottom border-2 border-success': options.context.index === localCurrentStep.value && props.severity === 'success',
-        'border-bottom border-2 border-warning': options.context.index === localCurrentStep.value && props.severity === 'warning',
-        'border-bottom border-2 border-danger': options.context.index === localCurrentStep.value && props.severity === 'danger',
-        'border-bottom border-2 border-info': options.context.index === localCurrentStep.value && props.severity === 'info'
+        "flex-row": props.inlineSteps,
+        "flex-column": !props.inlineSteps
       }
     ]
+  },
+  number: ({ context }: StepsPassThroughMethodOptions) => ({
+    class: [
+      "step mb-2 d-flex align-items-center justify-content-center",
+      {
+        inactive: context.disabled,
+        [`bg-${props.severity} text-white`]: context.active,
+      },
+    ],
   }),
-}))
+  title: ({ context }: StepsPassThroughMethodOptions) => ({
+    class: [
+      "h5",
+      {
+        inactive: context.disabled,
+        [`border-bottom border-2 border-${props.severity}`]: context.active
+      },
+    ],
+  }),
+}));
+
 </script>

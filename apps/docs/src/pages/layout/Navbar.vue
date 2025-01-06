@@ -3,8 +3,7 @@
     <ForgePageHeader title="Navbar" />
     <p>
       Further documentation and examples can be found in the
-      <a class="link" target="_blank" href="https://primevue.org/menubar/"><strong>PrimeVue documentation</strong></a>
-      .
+      <a class="link" target="_blank" href="https://primevue.org/menubar/"><strong>PrimeVue documentation</strong></a>.
     </p>
     <p>Position can be be changed by adding the `position` attribute. Options are: "fixed-top" | "fixed-bottom" | "sticky-top"</p>
     <Playground :options="options" :code="code" :config="config" @reset="reset">
@@ -38,7 +37,7 @@ const { options, propVals, config, reset } = usePlayground(
 
 const code = computed(
   () =>
-    `<ForgePageHeader${propVals.value.length > 0 ? " " + propVals.value.join(" ") : ""} />`,
+    `<ForgeNavbar${propVals.value.length > 0 ? " " + propVals.value.join(" ") : ""} />`,
 );
 
 const pages = [
@@ -51,8 +50,9 @@ const pages = [
   },
   {
     label: "Buttons",
+    disabled: true,
     items: [
-      { label: "Action Button" },
+      { label: "Action Button", disabled: true },
       { label: "Button" },
       { label: "Link" },
       { label: "Select Button" },

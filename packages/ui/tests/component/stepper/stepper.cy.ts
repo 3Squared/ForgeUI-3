@@ -1,33 +1,46 @@
 // @ts-ignore
 import ForgeStepper, { ForgeStepperProps } from "@/components/ForgeStepper.vue";
-import { MenuItem } from "primevue/menuitem";
+import type { ForgeSteps } from "../../../src/types/forge-types.ts";
+import StepperWrapper, {StepperWrapperProps} from "./StepperWrapper.vue";
 
-const stepperCyId = '[data-cy="stepper"]' 
-const backButtonCyId = '[data-cy="back-button"]'
-const stepId = '[data-pc-section="step"]'
-const alertId = '[data-cy="alert"]'
+const stepperCyId = '[data-pc-name="steplist"]' 
+const stepperPanelCyId = '[data-pc-name="steppanel"]' 
+const stepId = '[data-pc-section="number"]'
 
-function mountStepper(props : ForgeStepperProps) {
-  cy.mount(ForgeStepper, { props })
+function mountStepperWrapper(props : StepperWrapperProps) {
+  cy.mount(StepperWrapper, {
+    props
+  })
 }
 
 describe('<ForgeStepper />', () => {
   it("Mounts", () => {
       // Arrange
-      const steps = [
-        { label: "Step 1" },
-        { label: "Step 2" },
-        { label: "Step 3" }
-      ] as MenuItem[]
+      const steps = [{ label: "Step 1", value: 1 }, { label: "Step 2", value: 2 }, { label: "Step 3", value: 3 }] as ForgeSteps[]
     
       // Act
-      mountStepper({ model: steps })
+      mountStepperWrapper({ stepperProps: { steps: steps } })
         
       // Assert
       cy.get(stepperCyId)
         .should("exist")
         .and("be.visible")
   })
+
+  describe('Content', () => {
+    it("Displays panel content", () => {
+      // Arrange
+      const steps = [{ label: "Step 1", value: 1 }, { label: "Step 2", value: 2 }, { label: "Step 3", value: 3 }] as ForgeSteps[]
+
+      // Act
+      mountStepperWrapper({ stepperProps: { steps: steps } })
+
+      // Assert
+      cy.get(stepperPanelCyId)
+        .should("exist")
+        .contains("Panel 1")
+    })
+  });
   
   describe("Variant", () => {
     ;[
@@ -42,24 +55,17 @@ describe('<ForgeStepper />', () => {
     ].forEach(({ title, severity }) => {
       it(title, () => {
         // Arrange
-        const steps = [
-          { label: "Step 1" },
-          { label: "Step 2" },
-          { label: "Step 3" }
-        ] as MenuItem[]
+        const steps = [{ label: "Step 1", value: 1 }, { label: "Step 2", value: 2 }, { label: "Step 3", value: 3 }] as ForgeSteps[]
+
         const backgroundClass = severity === undefined ? 'bg-primary' : `bg-${severity}`
-        const buttonClass = severity === undefined ? 'btn-primary' : `btn-${severity}`
 
         // Act
-        mountStepper({ model: steps, severity: severity })
+        mountStepperWrapper({ stepperProps: { steps: steps, severity: severity } })
 
         // Assert
         cy.get(stepperCyId)
           .should("exist")
           .and("be.visible")
-
-        cy.get(backButtonCyId)
-          .should('have.class', buttonClass)
 
         cy.get(stepId)
           .should('have.class', backgroundClass)
@@ -70,55 +76,16 @@ describe('<ForgeStepper />', () => {
   describe("Disabled", () => {
     it("Should grey out steps if disabled", () => {
       // Arrange
-      const steps = [
-        { label: "Step 1" },
-        { label: "Step 2", disabled: true },
-        { label: "Step 3" }
-      ] as MenuItem[]
-      const expectedClass = 'step inactive'
+      const steps = [{ label: "Step 1", value: 1}, { label: "Step 2", value: 2 }, { label: "Step 3", value: 3, disabled: true }] as ForgeSteps[]
+
+      const expectedClass = 'inactive'
 
       // Act
-      mountStepper({ model: steps })
+      mountStepperWrapper({ stepperProps: { steps: steps} })
 
       // Assert
-      cy.get(stepId).eq(1)
+      cy.get(stepId).eq(2)
         .should('have.class', expectedClass)
-    })
-    
-    it("Skips over disabled step when moving forward", () => {
-      // Arrange
-      const steps = [
-        { label: "Step 1" },
-        { label: "Step 2", disabled: true },
-        { label: "Step 3" }
-      ] as MenuItem[]
-
-      // Act
-      mountStepper({ model: steps })
-
-      // Act/Assert
-      cy.get(stepId).eq(1).click()
-      cy.get(alertId).should('contain.text', "Step 1")
-
-      cy.get(stepId).eq(2).click()
-      cy.get(alertId).should('contain.text', "Step 3")
-    })
-    
-    it("Skips over disabled step when moving backwards", () => {
-      // Arrange
-      const steps = [
-        { label: "Step 1" },
-        { label: "Step 2", disabled: true },
-        { label: "Step 3" }
-      ] as MenuItem[]
-      const currentStep = 3
-
-      // Act
-      mountStepper({ model: steps, currentStep: currentStep })
-      cy.get(stepId).eq(0).click()
-
-      // Assert
-      cy.get(alertId).should('contain.text', "Step 1")
     })
   })
 })
