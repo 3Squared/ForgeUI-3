@@ -83,7 +83,9 @@ const fileMimeType = computed<string|null>(() => {
 });
 
 const updateFileName = () => {
-  file.value = new File([file.value], fileName.value, { type: file.value.type, lastModified: (new Date()).valueOf()})
+  if(fileName.value != null) {
+    file.value = new File([file.value], fileName.value, { type: file.value.type, lastModified: (new Date()).valueOf() })
+  }
 }
 
 const uploadBlob = async () => {  
