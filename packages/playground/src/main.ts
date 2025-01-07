@@ -7,4 +7,4 @@ import DialogService from "primevue/dialogservice";
 import PrimeVue from "primevue/config";
 import "./main.scss";
 
-createApp(App).use(PrimeVue, { theme: 'none', unstyled: true, pt: Bootstrap_PT }).use(ToastService).use(DialogService).mount("#app");
+createApp(App).use(PrimeVue, { theme: "none", unstyled: true, pt: Bootstrap_PT }).use(ToastService).use(DialogService).mount("#app");
