@@ -42,6 +42,7 @@ New features/Minor Fixes for ui:
   - Vueuse/components
   - Cypress
   - Yup
+  - Vite
 
 Playground:
 - Add option to display the value (useful for form components)

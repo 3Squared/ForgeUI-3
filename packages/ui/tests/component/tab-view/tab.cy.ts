@@ -30,8 +30,14 @@ describe('<Tab />', () => {
     mountTab({ })
     
     // Assert
-    cy.get(`[data-pc-name="tab"]`).contains('Header I').should('have.class', expectedActiveClass)
-    cy.get(`[data-pc-name="tab"]`).contains('Header II').should('not.have.class', expectedActiveClass)
+    cy.get(`[data-pc-name="tab"]`)
+      .contains('Header I')
+      .should('exist')
+      .should('have.class', expectedActiveClass)
+    cy.get(`[data-pc-name="tab"]`)
+      .contains('Header II')
+      .should('exist')
+      .should('not.have.class', expectedActiveClass)
 
     cy.get(`[data-pc-name="tab"]`).contains('Header II').click()
 

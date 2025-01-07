@@ -1,8 +1,4 @@
-import {
-  TabPassThroughMethodOptions,
-  TagPassThroughMethodOptions,
-} from "primevue";
-import { ButtonPassThroughMethodOptions } from "primevue/button";
+import {  TagPassThroughMethodOptions,} from "primevue";
 
 export default {
   tag: {
