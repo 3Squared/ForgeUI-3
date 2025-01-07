@@ -24,6 +24,7 @@ import BadgePT from "./passthroughs/Badge.pt.ts";
 import NavbarPT from "./passthroughs/Navbar.pt.ts";
 import TooltipPT from "./passthroughs/Tooltip.pt.ts";
 import SelectButtonPT from "./passthroughs/SelectButton.pt.ts";
+import SplitButtonPT from "./passthroughs/SplitButton.pt.ts";
 import ProgressSpinnerPT from "./passthroughs/ProgressSpinner.pt.ts";
 import CardPT from "./passthroughs/Card.pt.ts";
 import DividerPT from "./passthroughs/Divider.pt.ts";
@@ -55,6 +56,7 @@ export default {
   ...ProgressSpinnerPT,
   ...PanelPT,
   ...SelectButtonPT,
+  ...SplitButtonPT,
   ...StepsPT,
   ...TablePT,
   ...TagPT,

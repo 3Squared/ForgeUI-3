@@ -24,6 +24,7 @@ declare module 'vue-router/auto-routes' {
     '/buttons/examples/ExampleButton': RouteRecordInfo<'/buttons/examples/ExampleButton', '/buttons/examples/ExampleButton', Record<never, never>, Record<never, never>>,
     '/buttons/Link': RouteRecordInfo<'/buttons/Link', '/buttons/Link', Record<never, never>, Record<never, never>>,
     '/buttons/SelectButton': RouteRecordInfo<'/buttons/SelectButton', '/buttons/SelectButton', Record<never, never>, Record<never, never>>,
+    '/buttons/SplitButton': RouteRecordInfo<'/buttons/SplitButton', '/buttons/SplitButton', Record<never, never>, Record<never, never>>,
     '/Changelog': RouteRecordInfo<'/Changelog', '/Changelog', Record<never, never>, Record<never, never>>,
     '/Colours': RouteRecordInfo<'/Colours', '/Colours', Record<never, never>, Record<never, never>>,
     '/data/Chart': RouteRecordInfo<'/data/Chart', '/data/Chart', Record<never, never>, Record<never, never>>,
@@ -70,5 +71,6 @@ declare module 'vue-router/auto-routes' {
     '/test/components/ExampleDataView': RouteRecordInfo<'/test/components/ExampleDataView', '/test/components/ExampleDataView', Record<never, never>, Record<never, never>>,
     '/test/components/ExampleTable': RouteRecordInfo<'/test/components/ExampleTable', '/test/components/ExampleTable', Record<never, never>, Record<never, never>>,
     '/test/components/ExampleTableGroup': RouteRecordInfo<'/test/components/ExampleTableGroup', '/test/components/ExampleTableGroup', Record<never, never>, Record<never, never>>,
+    '/test/Test': RouteRecordInfo<'/test/Test', '/test/Test', Record<never, never>, Record<never, never>>,
   }
 }
