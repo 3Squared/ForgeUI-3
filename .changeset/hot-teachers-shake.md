@@ -2,6 +2,7 @@
 "@3squared/forge-ui-3": major
 "forge-ui-3-styleguide": major
 "@3squared/forge-playground-3": minor
+"eslint-config-custom": patch
 ---
 
 Update forge to use primevue 4:
