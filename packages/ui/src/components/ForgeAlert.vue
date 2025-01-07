@@ -21,6 +21,7 @@ const props = withDefaults(
     {
       life: undefined,
       closable: false,
+      sticky: true,
       severity: 'primary'
     })
 </script>

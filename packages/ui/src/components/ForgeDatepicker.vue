@@ -6,7 +6,7 @@
 
     <div class="position-relative w-100">
       <DatePicker v-bind="{...props, ...$attrs}" :pt="pt" v-model="model" @update:model-value="handleChange"
-                @blur="() => handleBlur" :input-class="{'datepicker-invalid': hasErrors}"/>
+                @blur="handleBlur" :input-class="{'datepicker-invalid': hasErrors}"/>
       <Icon data-cy="icon" icon="bi:calendar4" v-show="props.showIcon"
             class="position-absolute end-0 top-50 bottom-50 my-auto me-2 bg-white" 
             :class="`${ hasErrors ? 'text-danger-dark' : 'text-muted'}`"
