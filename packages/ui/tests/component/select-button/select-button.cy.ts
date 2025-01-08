@@ -80,8 +80,6 @@ describe('<SelectButton />', () => {
   
   it("Disables option when specified", () => {
     // Arrange
-    const disabledClass = "disabled"
-    const disabledOption = "Option 2"
     const options = [
       { label: "Option 1"},
       { label: "Option 2", disabled: true },

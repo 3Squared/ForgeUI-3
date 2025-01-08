@@ -22,7 +22,7 @@ import Button from "primevue/button";
 import { Playground, usePlayground } from "@3squared/forge-playground-3";
 import { computed, ref } from "vue";
 import { severities, sizes } from "../../composables/playgroundOptions";
-import ExampleButton from "./examples/ExampleButton.vue";
+import ExampleButton from "../examples/components/ExampleButton.vue";
 
 const badge = ref("");
 

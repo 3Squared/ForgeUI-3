@@ -1,12 +1,28 @@
 <template>
   <div>
     <ForgePageHeader title="Input Mask" />
+    <p>InputMask component is used to enter input in a certain format such as numeric, date, currency, email and phone.</p>
+    <p>
+      Mask format can be a combination of the following definitions;
+      <Tag>a</Tag>
+      for alphabetic characters,
+      <Tag>9</Tag>
+      for numeric characters and
+      <Tag>*</Tag>
+      for alphanumberic characters. In addition, formatting characters like
+      <Tag>(</Tag>
+      ,
+      <Tag>)</Tag>
+      ,
+      <Tag>-</Tag>
+      are also accepted.
+    </p>
     <p>
       Further documentation and examples can be found in the
       <a class="link" target="_blank" href="https://primevue.org/inputmask/"><strong>PrimeVue documentation</strong></a>
       .
     </p>
-    <Panel class="mb-3" header="Mask definitions" toggleable>
+    <Panel class="mb-3" header="Mask definitions" toggleable collapsed>
       <div class="d-flex flex-column">
         <p>
           <strong>a</strong>
@@ -45,6 +61,7 @@
 import { ForgePageHeader } from "@3squared/forge-ui-3";
 import InputMask from "primevue/inputmask";
 import Panel from "primevue/panel";
+import Tag from "primevue/tag";
 import { Playground, usePlayground } from "@3squared/forge-playground-3";
 import { computed, ref } from "vue";
 
@@ -53,8 +70,8 @@ const value = ref();
 const { options, propVals, config, reset } = usePlayground(
   {
     slotChar: "_",
-    mask: "",
-    placeholder: "",
+    mask: "99-999-aa",
+    placeholder: "99-999-aa",
     autoClear: true,
     unmask: false,
     readonly: false

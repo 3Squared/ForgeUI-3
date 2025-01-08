@@ -23,5 +23,4 @@ const overlayPanel = ref()
 const toggle = (event : Event) => {
   overlayPanel.value.toggle(event)
 }
-
 </script>

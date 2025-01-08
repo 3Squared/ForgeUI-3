@@ -1,15 +1,11 @@
-import {
-  TabPassThroughMethodOptions,
-  TagPassThroughMethodOptions,
-} from "primevue";
-import { ButtonPassThroughMethodOptions } from "primevue/button";
+import { TagPassThroughMethodOptions } from "primevue";
 
 export default {
   tag: {
     root: ({ props }: TagPassThroughMethodOptions) => {
       return {
         class: [
-          "badge rounded d-inline-flex align-items-center border me-1 p-1",
+          "badge d-inline-flex align-items-center border me-1 p-1",
           {
             "bg-primary-subtle text-primary border-primary":
               props.severity === null ||
@@ -26,6 +22,9 @@ export default {
             "bg-primary-danger text-danger border-danger":
               props.severity === "danger",
             "bg-primary-info text-info border-info": props.severity === "info",
+          },
+          {
+            "rounded-pill": props.rounded
           },
         ],
       };

@@ -1,4 +1,3 @@
-import Dropdown, { DropdownProps } from "primevue/dropdown";
 import Select, {SelectProps} from "primevue/select";
 import { ref } from "vue";
 import DropdownWrapper from "./dropdownWrapper.vue";

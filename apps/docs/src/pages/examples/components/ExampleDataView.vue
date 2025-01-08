@@ -69,60 +69,11 @@ import DataView from "primevue/dataview";
 import Button from "primevue/button";
 import { ForgeFormField } from "@3squared/forge-ui-3";
 import { ref } from "vue";
-import { FilterMatchMode } from "@primevue/core/api";
 
 const pageSize = ref<number>(5);
 const productType = ref();
 const sizingOptions = ref([5, 10, 15, 20]);
-const sortOrder = ref(-1);
 const date = ref();
-const expandedRowGroups = ref();
-
-const multiselectOptions = ["Fitness", "Clothing"];
-const dropdownOptions = [
-  "Blue Shirt",
-  "Running Trainers",
-  "Watch",
-  "Socks",
-  "Trousers",
-  "Yoga Mat",
-  "Leather Belt",
-  "Winter Jacket",
-  "Sports Water Bottle",
-  "Baseball Cap",
-  "Gloves",
-  "Fitness Tracker",
-  "Sunglasses",
-  "Jeans",
-  "Backpack"
-];
-
-const filters = ref({
-  global: { value: null, matchMode: FilterMatchMode.CONTAINS },
-  code: { value: null, matchMode: FilterMatchMode.STARTS_WITH },
-  name: { value: null, matchMode: FilterMatchMode.STARTS_WITH },
-  category: { value: null, matchMode: FilterMatchMode.IN },
-  quantity: { value: null, matchMode: FilterMatchMode.EQUALS },
-  date: { value: null, matchMode: FilterMatchMode.EQUALS }
-});
-
-const columns = ref([
-  { field: "code", header: "Code", sortable: true },
-  { field: "name", header: "Name", dataType: "select", sortable: true },
-  {
-    field: "category",
-    header: "Category",
-    dataType: "multiselect",
-    sortable: true
-  },
-  {
-    field: "quantity",
-    header: "Quantity",
-    dataType: "numeric",
-    sortable: true
-  },
-  { field: "date", header: "Date", dataType: "date", sortable: true }
-]);
 
 const products = [
   {
