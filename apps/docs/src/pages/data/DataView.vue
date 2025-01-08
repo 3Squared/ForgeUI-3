@@ -8,27 +8,27 @@
             <div class="d-flex w-75 m-2">
               <div class="p-1 w-100">
                 <ForgeFormField
-                    v-model="productType"
-                    field-label="Type"
-                    type="select"
-                    name="product"
-                    :options="productOptions"
-                    option-label="label"
-                    option-value="value"
-                    placeholder="Please Select"
-                    show-clear
-                    field-label-position="left"
+                  v-model="productType"
+                  field-label="Type"
+                  type="select"
+                  name="product"
+                  :options="productOptions"
+                  option-label="label"
+                  option-value="value"
+                  placeholder="Please Select"
+                  show-clear
+                  field-label-position="left"
                 />
               </div>
               <div class="p-1 w-100">
                 <ForgeFormField
-                    v-model="pageSize"
-                    name="pageSize"
-                    type="select"
-                    field-label="Page size"
-                    :options="sizingOptions"
-                    field-label-position="left"
-                    label-width-class="w-25"
+                  v-model="pageSize"
+                  name="pageSize"
+                  type="select"
+                  field-label="Page size"
+                  :options="sizingOptions"
+                  field-label-position="left"
+                  label-width-class="w-25"
                 />
               </div>
             </div>
@@ -51,8 +51,6 @@
       </template>
     </Playground>
   </div>
-
- 
 </template>
 
 <script setup lang="ts">
@@ -80,16 +78,17 @@ const productOptions = ref([
 ]);
 
 const { options, propVals, config, reset } = usePlayground(
-    {
-      dataKey: "code",
-      rows: pageSize,
-      paginator: true
-    },
-    {}
+  {
+    dataKey: "code",
+    rows: pageSize,
+    paginator: true
+  },
+  {}
 );
 
-const code = computed(() => `<template>
- <DataView ${propVals.value.length> 0 ? " " + propVals.value.join(" ") : ""}>
+const code = computed(
+  () => `<template>
+ <DataView ${propVals.value.length > 0 ? " " + propVals.value.join(" ") : ""}>
     <template #header>
       <div class="d-flex w-75 m-2">
         <div class="p-1 w-100">
@@ -261,7 +260,6 @@ const productOptions = ref([
   { label: "Clothing", value: "Clothing" }
 ]);
 </\script>
-`);
-
-
+`
+);
 </script>

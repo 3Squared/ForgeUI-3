@@ -6,7 +6,7 @@
       <ForgeNavbar :model="pages" severity="dark" />
 
       <CodeBlock :code="code" />
-    </Panel>    
+    </Panel>
   </div>
 </template>
 
@@ -19,7 +19,7 @@ import Panel from "primevue/panel";
 const pages = [
   {
     label: "Guides",
-    items: [{ label: "Getting Started" }, { label: "Migrating from Forge.UI (Coming Soon...)" }],
+    items: [{ label: "Getting Started" }, { label: "Migrating from Forge.UI (Coming Soon...)" }]
   },
   {
     label: "Buttons",
@@ -32,7 +32,7 @@ const pages = [
 ];
 
 const code = computed(
-    () => `
+  () => `
 <template>
  <ForgeNavbar :model="pages" severity="dark" />
 </template>

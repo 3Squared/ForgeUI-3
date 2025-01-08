@@ -28,7 +28,7 @@ const { options, propVals, config, reset } = usePlayground(
     rounded: false
   },
   {
-    severity: { type: "select", options: severities },
+    severity: { type: "select", options: severities }
   }
 );
 
