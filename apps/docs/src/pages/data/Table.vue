@@ -18,9 +18,9 @@
       <template #component>
         <component :is="ForgeTable" v-bind="options" v-model:filters="filters" v-model:selection="selection" :value="products">
           <template #column-customiser>
-            <ForgeColumnCustomiser v-model="columns" />
+            <ForgeColumnCustomiser v-model="columns"/>
           </template>
-          <Column v-for="column in columns" :key="column.field as string" sortable v-bind="column">
+          <Column v-for="column in selectedColumns" :key="column.field as string" sortable v-bind="column">
             <template #filter="{ field }">
               <forge-filter-header
                 v-if="filters[field]"
@@ -57,20 +57,23 @@ import { FilterMatchMode } from "@primevue/core/api";
 import type { ForgeColumn } from "@3squared/forge-ui-3/src/types/forge-types";
 import { products } from "./exampleTableData";
 
+const selectedColumns = computed<ForgeColumn[]>(() => { return columns.value.filter(s => s.selected)})
 const columns = ref<ForgeColumn[]>([
-  { field: "code", header: "Code", sortable: true },
-  { field: "name", header: "Name", dataType: "select", sortable: true },
+  { field: "code", header: "Code", sortable: true, selected: true },
+  { field: "name", header: "Name", dataType: "select", sortable: true, selected: true },
   {
     field: "category",
     header: "Category",
     dataType: "multiselect",
-    sortable: true
+    sortable: true,
+    selected: true
   },
   {
     field: "quantity",
     header: "Quantity",
     dataType: "numeric",
-    sortable: true
+    sortable: true,
+    selected: true
   },
   { field: "date", header: "Date", dataType: "date", sortable: true }
 ]);
@@ -237,7 +240,7 @@ const columnCustomiserCode = computed<string>(
   
   <script setup lang="ts">
    import { ForgeColumn, ForgeFilterHeader, ForgeColumnCustomiser } from "@3squared/forge-ui-3";
-   import { FilterMatchMode } from "primevue/api";
+   import { FilterMatchMode } from "@primevue/core/api";
    import { ref } from 'vue'
 
    // Data to appear in table, properties must match the 'field' property in columns array unless specified otherwise.
