@@ -11,7 +11,7 @@
 <script setup>
 import AutoComplete from "primevue/autocomplete";
 import { ref } from "vue";
-import { countries } from "./exampleCountries";
+import { countries } from "../data/exampleCountries";
 import ForgeAutoComplete from "@3squared/forge-ui-3/src/components/ForgeAutoComplete.vue";
 import Button from "primevue/button";
 

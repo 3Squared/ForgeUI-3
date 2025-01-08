@@ -1,12 +1,12 @@
 <template>
   <div>
     <div class="h3">Examples</div>
-    <Card>
-      <template #content>
-        <ForgeNavbar :model="pages" severity="dark" />
-      </template>
-    </Card>
-    <CodeBlock :code="code" />
+    <Panel header="Disabling menu options" toggleable>
+      <p>To do this just pass through the `disabled: true` as a property with the menu items</p>
+      <ForgeNavbar :model="pages" severity="dark" />
+
+      <CodeBlock :code="code" />
+    </Panel>    
   </div>
 </template>
 
@@ -14,12 +14,12 @@
 import { ForgeNavbar } from "@3squared/forge-ui-3";
 import CodeBlock from "@3squared/forge-playground-3/src/components/CodeBlock.vue";
 import { computed } from "vue";
-import Card from "primevue/card";
+import Panel from "primevue/panel";
 
 const pages = [
   {
     label: "Guides",
-    items: [{ label: "Getting Started" }, { label: "Migrating from Forge.UI (Coming Soon...)" }]
+    items: [{ label: "Getting Started" }, { label: "Migrating from Forge.UI (Coming Soon...)" }],
   },
   {
     label: "Buttons",
@@ -32,7 +32,7 @@ const pages = [
 ];
 
 const code = computed(
-  () => `
+    () => `
 <template>
  <ForgeNavbar :model="pages" severity="dark" />
 </template>

@@ -28,7 +28,7 @@ import { Playground, usePlayground } from "@3squared/forge-playground-3";
 import { computed } from "vue";
 import { severities } from "../../composables/playgroundOptions";
 import { Icon } from "@iconify/vue";
-import ExampleNavBar from "./examples/ExampleNavBar.vue";
+import ExampleNavBar from "../examples/components/ExampleNavBar.vue";
 
 const { options, propVals, config, reset } = usePlayground(
   {
@@ -49,7 +49,7 @@ const pages = [
   {
     label: "Buttons",
     disabled: true,
-    items: [{ label: "Action Button", disabled: true }, { label: "Button" }, { label: "Link" }, { label: "Select Button" }]
+    items: [{ label: "Action Button" }, { label: "Button" }, { label: "Link" }, { label: "Select Button" }]
   },
   {
     label: "Data",
