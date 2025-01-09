@@ -67,7 +67,8 @@ const { options, propVals, config, reset } = usePlayground(
   }
 );
 
-const code = computed(() => `
+const code = computed(
+  () => `
 <template>
  <SplitButton${propVals.value.length > 0 ? " " + propVals.value.join(" ") : ""} />
 </template>
@@ -103,5 +104,6 @@ const save = () => {
   toast.add({ severity: "success", summary: "Success", detail: "Data Saved", life: 3000 });
 };
 </\script>
-`);
+`
+);
 </script>
