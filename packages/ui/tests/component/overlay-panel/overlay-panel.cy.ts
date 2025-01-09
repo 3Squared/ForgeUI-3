@@ -10,7 +10,7 @@ function mountOverlayPanel(props : OverlayPanelWrapperProps) {
   })
 }
 
-describe("<OverlayPanel />", () => {
+describe("<Popover />", () => {
   it("Mounts", () => {
     // Arrange
     const content = "Hello"
@@ -19,20 +19,6 @@ describe("<OverlayPanel />", () => {
     mountOverlayPanel({ overlayPanelContent: content })
     cy.get(overlayToggleId).click()
     
-    // Assert
-    cy.get(overlayId)
-      .should("exist")
-      .and("be.visible")
-  })
-  
-  it("Shows close icon when showCloseIcon is true", () => {
-    // Arrange
-    const content = "Hello"
-
-    // Act
-    mountOverlayPanel({ overlayPanelContent: content, showCloseIcon: true })
-    cy.get(overlayToggleId).click()
-
     // Assert
     cy.get(overlayId)
       .should("exist")

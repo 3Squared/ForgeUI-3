@@ -1,8 +1,8 @@
-import { InputSwitchPassThroughOptions } from "primevue/inputswitch";
+import { ToggleSwitchPassThroughOptions } from "primevue/toggleswitch";
 
 export default {
-  inputSwitch: {
+  toggleSwitch: {
     root: "form-check form-switch",
     input: "form-check-input"
-  } as InputSwitchPassThroughOptions
+  } as ToggleSwitchPassThroughOptions
 }

@@ -18,7 +18,7 @@
 import { ForgeAutoComplete, ForgePageHeader } from "@3squared/forge-ui-3";
 import { Playground, usePlayground } from "@3squared/forge-playground-3";
 import { computed, ref } from "vue";
-import { countries } from "../../test/components/exampleCountries";
+import { countries } from "../../examples/data/exampleCountries";
 
 const { options, propVals, config, reset } = usePlayground({
   name: "",

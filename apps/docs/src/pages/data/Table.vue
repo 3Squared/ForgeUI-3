@@ -55,7 +55,7 @@ import InputNumber from "primevue/inputnumber";
 import InputText from "primevue/inputtext";
 import { FilterMatchMode } from "@primevue/core/api";
 import type { ForgeColumn } from "@3squared/forge-ui-3/src/types/forge-types";
-import { products } from "./exampleTableData";
+import { products } from "../examples/data/exampleTableData";
 
 const columns = ref<ForgeColumn[]>([
   { field: "code", header: "Code", sortable: true },

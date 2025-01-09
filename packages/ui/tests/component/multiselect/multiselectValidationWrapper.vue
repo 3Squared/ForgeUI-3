@@ -12,9 +12,9 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import { YupSchema, Form } from "vee-validate";
+//@ts-ignore
 import { MultiSelectOption } from "@/types/forge-types.ts";
-import MultiSelect from "primevue/multiselect";
-import { MultiSelectProps } from "primevue";
+import { MultiSelectProps } from "primevue/multiselect";
 import ForgeFormField from "@/components/ForgeFormField.vue";
 
 export interface MultiSelectValidationWrapperProps extends /* @vue-ignore */ MultiSelectProps {

@@ -1,23 +1,23 @@
-import InputSwitch, { InputSwitchProps } from "primevue/inputswitch";
+import ToggleSwitch, { ToggleSwitchProps } from "primevue/toggleswitch";
 
 const inputSwitch = "inputSwitch"
 const inputSwitchInput = '[data-pc-section="input"]'
 
-function mountInputSwitch(props : InputSwitchProps) {
+function mountToggleSwitch(props: ToggleSwitchProps) {
   //@ts-ignore
-  cy.mount(InputSwitch, {
+  cy.mount(ToggleSwitch, {
     props: {
       id: inputSwitch,
-      ...props  
+      ...props
     }
   })
 }
 
-describe("<InputSwitch />", () => {
+describe("<ToggleSwitch />", () => {
   it("Mounts", () => {
     // Act
-    mountInputSwitch({})
-    
+    mountToggleSwitch({})
+
     // Assert
     cy.get(`#${inputSwitch}`)
       .should("exist")
@@ -28,14 +28,14 @@ describe("<InputSwitch />", () => {
     // Arrange
     const expectedClasses = "form-check form-switch";
     const expectedInputClasses = "form-check-input"
-    
+
     // Act
-    mountInputSwitch({})
+    mountToggleSwitch({})
 
     // Assert
     cy.get(`#${inputSwitch}`)
       .should("have.class", expectedClasses)
-    
+
     cy.get(inputSwitchInput)
       .should("have.class", expectedInputClasses)
   });
@@ -44,12 +44,12 @@ describe("<InputSwitch />", () => {
     // Arrange
     const expectedCssBackgroundProperty = "background-color";
     const expectedCssBackgroundValue = "rgb(13, 110, 253)"
-    
+
     const expectedCssBorderProperty = "border-color"
     const expectedCssBorderValue = "rgb(13, 110, 253)"
 
     // Act
-    mountInputSwitch({ modelValue: true })
+    mountToggleSwitch({ modelValue: true })
 
     // Assert
     cy.get(inputSwitchInput)
