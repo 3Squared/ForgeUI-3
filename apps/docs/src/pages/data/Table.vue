@@ -18,7 +18,7 @@
       <template #component>
         <component :is="ForgeTable" v-bind="options" v-model:filters="filters" v-model:selection="selection" :value="products">
           <template #column-customiser>
-            <ForgeColumnCustomiser v-model="columns"/>
+            <ForgeColumnCustomiser v-model="columns" />
           </template>
           <Column v-for="column in selectedColumns" :key="column.field as string" sortable v-bind="column">
             <template #filter="{ field }">
@@ -57,7 +57,9 @@ import { FilterMatchMode } from "@primevue/core/api";
 import type { ForgeColumn } from "@3squared/forge-ui-3/src/types/forge-types";
 import { products } from "../examples/data/exampleTableData";
 
-const selectedColumns = computed<ForgeColumn[]>(() => { return columns.value.filter(s => s.selected)})
+const selectedColumns = computed<ForgeColumn[]>(() => {
+  return columns.value.filter((s) => s.selected);
+});
 const columns = ref<ForgeColumn[]>([
   { field: "code", header: "Code", sortable: true, selected: true },
   { field: "name", header: "Name", dataType: "select", sortable: true, selected: true },
