@@ -29,44 +29,44 @@ const badge = ref("");
 
 const items = [
   {
-    label: 'Update',
+    label: "Update",
     command: () => {
-      toast.add({ severity: 'success', summary: 'Updated', detail: 'Data Updated', life: 3000 });
+      toast.add({ severity: "success", summary: "Updated", detail: "Data Updated", life: 3000 });
     }
   },
   {
-    label: 'Delete',
+    label: "Delete",
     command: () => {
-      toast.add({ severity: 'warn', summary: 'Delete', detail: 'Data Deleted', life: 3000 });
+      toast.add({ severity: "warn", summary: "Delete", detail: "Data Deleted", life: 3000 });
     }
   },
   {
     separator: true
   },
   {
-    label: 'Quit',
+    label: "Quit",
     command: () => {
-      window.location.href = 'https://vuejs.org/';
+      window.location.href = "https://vuejs.org/";
     }
   }
 ];
 
 const save = () => {
-  toast.add({ severity: 'success', summary: 'Success', detail: 'Data Saved', life: 3000 });
+  toast.add({ severity: "success", summary: "Success", detail: "Data Saved", life: 3000 });
 };
 
 const { options, propVals, config, reset } = usePlayground(
-    {
-      label: "Button",
-      severity: severities[0],
-      outlined: false,
-      size: ""
-    },
-    {
-      label: { required: true },
-      size: { type: "select", options: sizes },
-      severity: { type: "select", options: severities },
-    },
+  {
+    label: "Button",
+    severity: severities[0],
+    outlined: false,
+    size: ""
+  },
+  {
+    label: { required: true },
+    size: { type: "select", options: sizes },
+    severity: { type: "select", options: severities }
+  }
 );
 
 const code = computed(() => `<SplitButton${propVals.value.length > 0 ? " " + propVals.value.join(" ") : ""} />`);
