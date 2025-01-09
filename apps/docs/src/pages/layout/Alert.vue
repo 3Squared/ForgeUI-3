@@ -24,7 +24,6 @@ const content = ref("Alert");
 
 const { options, propVals, config, reset } = usePlayground(
   {
-    sticky: true,
     severity: severities[0],
     closable: false,
     icon: ""

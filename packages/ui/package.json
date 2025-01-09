@@ -9,6 +9,10 @@
     {
       "name": "Jacob Minor",
       "email": "jacob.minor@3squared.com"
+    },
+    {
+      "name": "Isabel Mallon",
+      "email": "isabel.mallon@velociti-solutions.com"
     }
   ],
   "main": "./dist/esm/forge-ui-3.js",
@@ -31,23 +35,23 @@
   "dependencies": {
     "@azure/abort-controller": "^1.0.0",
     "@azure/storage-blob": "^12.17.0",
-    "@iconify/vue": "^4.1.1",
+    "@iconify/vue": "^4.2.0",
     "@popperjs/core": "^2.11.8",
-    "@vueuse/components": "^10.6.1",
+    "@vueuse/components": "^12.0.0",
     "bootstrap": "^5.3.3",
     "mime": "^4.0.4",
-    "primevue": "^3.53.1",
     "vee-validate": "^4.11.8",
-    "vue": "^3.4.14",
-    "vue-multiselect": "^3.0.0-beta.3",
-    "yup": "^1.4.0"
+    "primevue": "^4.2.5",
+    "vue": "^3.5.13",
+    "yup": "^1.6.1"
   },
   "devDependencies": {
-    "@cypress/code-coverage": "3.13.7",
+    "@cypress/code-coverage": "3.13.9",
+    "@primevue/auto-import-resolver": "^4.2.5",
     "@vitejs/plugin-vue": "5.2.1",
     "@vitest/coverage-v8": "2.1.6",
     "@vitest/ui": "2.1.6",
-    "cypress": "13.16.0",
+    "cypress": "13.17.0",
     "cypress-real-events": "1.13.0",
     "rollup-plugin-visualizer": "5.12.0",
     "sass": "1.81.0",

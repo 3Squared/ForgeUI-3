@@ -38,7 +38,6 @@ describe('<SelectButton />', () => {
     // Assert
     cy.get(`#${id}`)
       .contains(selectedOption)
-      .parent()
       .should('have.class', expectedClass)
   })
   
@@ -54,12 +53,10 @@ describe('<SelectButton />', () => {
     // Assert
     cy.get(`#${id}`)
       .contains(selectedOptions[0])
-      .parent()
       .should('have.class', expectedClass)
 
     cy.get(`#${id}`)
       .contains(selectedOptions[1])
-      .parent()
       .should('have.class', expectedClass)
 
 
@@ -71,31 +68,30 @@ describe('<SelectButton />', () => {
   
   it('Disables the entire component when disabled is set to true', () => {
     // Arrange
-    const disabledClass = "disabled"
     const options = ['Option 1', 'Option 2', 'Option 3']
 
     // Act
     mountSelectButton({ options: options, disabled: true })
 
     // Assert
-    cy.get(`#${id}`)
-      .children()
-      .should('have.class', disabledClass)
+    cy.get(`[data-pc-name="pctogglebutton"]`)
+      .should('be.disabled')
   })
   
   it("Disables option when specified", () => {
     // Arrange
-    const disabledClass = "disabled"
-    const disabledOption = "Option 2"
-    const options = ['Option 1', 'Option 2', 'Option 3']
+    const options = [
+      { label: "Option 1"},
+      { label: "Option 2", disabled: true },
+      { label: "Option 3"}
+    ]
 
     // Act
-    mountSelectButton({ options: options, optionDisabled: disabledOption })
+    mountSelectButton({ options: options, optionDisabled: 'disabled' })
 
     // Assert
     cy.get(`#${id}`)
-      .contains(disabledOption)
-      .parent()
-      .should('have.class', disabledClass)
+      .contains('Option 2')
+      .should('be.disabled')
   })
 })

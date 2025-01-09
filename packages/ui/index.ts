@@ -3,20 +3,20 @@ import '@/styles/main.scss'
 
 import ForgeAlert from "@/components/ForgeAlert.vue";
 import ForgeActionButton from "./src/components/ForgeActionButton.vue";
+import ForgeAutoComplete from "./src/components/ForgeAutoComplete.vue";
 import ForgeCheckbox from "@/components/ForgeCheckbox.vue";
 import ForgeLoader from "@/components/ForgeLoader.vue";
 import ForgeLink from "./src/components/ForgeLink.vue";
 import ForgeModal from "./src/components/ForgeModal.vue";
 import ForgeInlineEditor from "./src/components/ForgeInlineEditor.vue";
 import ForgeNavbar from "./src/components/ForgeNavbar.vue";
-import ForgeMultiSelect from "./src/components/deprecated/ForgeMultiSelect.vue";
 import ForgeMultiSelectPreview from './src/components/ForgeMultiSelectPreview.vue'
 import ForgePageHeader from "./src/components/ForgePageHeader.vue";
 import ForgeDatepicker from "./src/components/ForgeDatepicker.vue";
 import ForgeRemainingCharacters from "./src/components/ForgeRemainingCharacters.vue";
 import ForgeForm from "./src/components/ForgeForm.vue";
 import ForgeFormField from "./src/components/ForgeFormField.vue";
-import ForgeChips from "./src/components/ForgeChips.vue";
+import ForgeChip from "./src/components/ForgeChip.vue";
 import ForgeProgressBar from "./src/components/ForgeProgressBar.vue";
 import ForgeStatWidget from "./src/components/ForgeStatWidget.vue";
 import ForgeStepper from "./src/components/ForgeStepper.vue";
@@ -30,8 +30,9 @@ export {
   Bootstrap_PT,
   ForgeActionButton,
   ForgeAlert,
+  ForgeAutoComplete,
   ForgeCheckbox,
-  ForgeChips,
+  ForgeChip,
   ForgeColumnCustomiser,
   ForgeDatepicker,
   ForgeForm,
@@ -40,7 +41,6 @@ export {
   ForgeLink,
   ForgeLoader,
   ForgeModal,
-  ForgeMultiSelect,
   ForgeMultiSelectPreview,
   ForgeNavbar,
   ForgePageHeader,

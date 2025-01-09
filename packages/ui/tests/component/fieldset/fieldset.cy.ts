@@ -63,7 +63,7 @@ describe("<Fieldset />", () => {
     mountFieldset({ legend: legend});
     
     // Assert
-    cy.get('[data-pc-section="legendtitle"]')
+    cy.get('[data-pc-section="legendlabel"]')
       .should("exist")
       .and("contain.text", legend);
   });

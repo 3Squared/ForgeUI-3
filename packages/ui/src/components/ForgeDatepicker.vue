@@ -5,8 +5,8 @@
     </span>
 
     <div class="position-relative w-100">
-      <Calendar v-bind="{...props, ...$attrs}" :pt="pt" v-model="model" @update:model-value="handleChange"
-                @blur="handleBlur" :input-class="{'datepicker-invalid': hasErrors}" />
+      <DatePicker v-bind="{...props, ...$attrs}" :pt="pt" v-model="model" @update:model-value="handleChange"
+                @blur="() => handleBlur" :input-class="{'datepicker-invalid': hasErrors}"/>
       <Icon data-cy="icon" icon="bi:calendar4" v-show="props.showIcon"
             class="position-absolute end-0 top-50 bottom-50 my-auto me-2 bg-white" 
             :class="`${ hasErrors ? 'text-danger-dark' : 'text-muted'}`"
@@ -23,17 +23,16 @@
   </div>
 
   <small data-cy="error" class="text-invalid" v-show="hasErrors">{{ errorMessage }}</small>
-
 </template>
 
 <script setup lang="ts">
 import { Icon } from '@iconify/vue'
-import { CalendarPassThroughMethodOptions, CalendarProps } from "primevue/calendar";
+import { DatePickerPassThroughMethodOptions, DatePickerProps } from "primevue/datepicker";
 import { Severity } from "../types/forge-types";
 import { computed } from "vue";
 import { useField } from "vee-validate";
 
-export interface ForgeDatePickerProps extends /* vue-ignore */ Omit<CalendarProps, "aria-label" | "aria-labelledby"> {
+export interface ForgeDatePickerProps extends /* vue-ignore */ Omit<DatePickerProps, "aria-label" | "aria-labelledby"> {
   severity?: Severity
 }
 
@@ -68,9 +67,8 @@ const clear = () => {
 
 const hasErrors = computed(() => errors.value.length > 0)
 
-
 const pt = computed(() => ({
-  day: ({context} : CalendarPassThroughMethodOptions) => ({
+  dayCell: ({context} : DatePickerPassThroughMethodOptions) => ({
     class: [
       `text-center date-${ props.severity === undefined ? 'primary' : props.severity }`,
       {
@@ -91,7 +89,8 @@ const pt = computed(() => ({
       }
     ]
   }),
-  dayLabel: ({ context } : CalendarPassThroughMethodOptions) => ({
+ 
+  dayLabel: ({ context } : DatePickerPassThroughMethodOptions) => ({
     class: [
       // Disabled States
       {
@@ -99,7 +98,7 @@ const pt = computed(() => ({
       }
     ]
   }),
-  clearButton: {
+  pcClearButton: {
     root: () => ({
       class: [
         'btn ms-auto',
@@ -115,7 +114,7 @@ const pt = computed(() => ({
       ]
     })
   },
-  todayButton: {
+  pcTodayButton: {
     root: () => ({
       class: [
         'btn',
@@ -131,7 +130,7 @@ const pt = computed(() => ({
       ]
     })
   },
-  year: ({ context }: CalendarPassThroughMethodOptions) => {
+  year: ({ context }: DatePickerPassThroughMethodOptions) => {
     return {
       class: [
         "col-3 text-center cursor-pointer py-2",
@@ -147,7 +146,7 @@ const pt = computed(() => ({
       ]
     }
   },
-  month: ({ context }: CalendarPassThroughMethodOptions) => ({
+  month: ({ context }: DatePickerPassThroughMethodOptions) => ({
     class: [
       "col-3 text-center cursor-pointer py-2",
       {

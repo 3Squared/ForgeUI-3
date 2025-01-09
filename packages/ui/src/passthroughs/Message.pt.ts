@@ -19,7 +19,7 @@ export default {
     text: () => ({
       class: ['my-auto']
     }),
-    wrapper: () => ({
+    content: () => ({
       class: ['d-flex']
     }),
     icon: () => ({

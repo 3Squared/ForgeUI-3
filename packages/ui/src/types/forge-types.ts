@@ -1,5 +1,5 @@
 import { ColumnProps } from "primevue/column";
-import { FilterMatchModeOptions } from "primevue/api";
+import { FilterMatchModeOptions } from "@primevue/core/api";
 import { FileUploadStatus } from "../components/file-uploader/utilities/utilities";
 import { DataTableFilterMeta } from "primevue/datatable";
 
@@ -48,4 +48,11 @@ export interface ForgeTableContext {
   sortField: string,
   sortDirection: 'Asc' | 'Desc' | 'None',
   filters: DataTableFilterMeta | undefined
+}
+
+
+export interface ForgeSteps {
+  label: string;
+  value: number;
+  disabled: boolean;
 }

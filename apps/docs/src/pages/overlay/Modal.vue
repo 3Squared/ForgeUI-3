@@ -22,7 +22,7 @@ import { ForgePageHeader, ForgeModal } from "@3squared/forge-ui-3";
 import Button from "primevue/button";
 import { Playground, usePlayground, CodeBlock } from "@3squared/forge-playground-3";
 import { computed, ref } from "vue";
-import { buttonTypes, position, shorthandSizes, sizes } from "../../composables/playgroundOptions";
+import { buttonTypes, position, shorthandSizes } from "../../composables/playgroundOptions";
 
 const visible = ref<boolean>(false);
 

@@ -3,43 +3,48 @@ import { DialogPassThroughMethodOptions } from "primevue/dialog";
 export default {
   dialog: {
     header: () => ({
-      class: ['modal-header']
+      class: ["modal-header"],
     }),
     headerTitle: () => ({
-      class: ['h5 modal-title text-black']
+      class: ["h5 modal-title text-black"],
     }),
     content: () => ({
-      class: ['modal-body']
+      class: ["modal-body"],
     }),
     footer: () => ({
-      class: ['modal-footer']
+      class: ["modal-footer"],
     }),
     headerIcons: () => ({
-      class: ['ms-auto']
+      class: ["ms-auto"],
     }),
-    icons: 'd-flex ms-auto',
-    closeButton: ({ props } : DialogPassThroughMethodOptions<any>) => ({
+    headerActions: "d-flex ms-auto",
+    pcCloseButton: ({ props }: DialogPassThroughMethodOptions<any>) => ({
+      root: {
+        class: [
+          "btn p-1",
+          {
+            "ms-auto": !props.maximizable,
+          },
+        ],
+      },
+    }),
+    pcMaximizeButton: ({ props }: DialogPassThroughMethodOptions<any>) => ({
+      root: {
+        class: [
+          "btn ms-auto p-1",
+          {
+            "me-3": props.closable,
+          },
+        ],
+      },
+    }),
+    mask: ({ props }: DialogPassThroughMethodOptions<any>) => ({
       class: [
-        'btn p-0',
+        "z-3",
         {
-          'ms-auto': !props.maximizable
-        }
-      ]
+          "modal-open": props.modal && props.visible,
+        },
+      ],
     }),
-    maximizableButton: ({ props } : DialogPassThroughMethodOptions<any>) => ({
-      class: [
-        'btn ms-auto p-0',
-        {
-          "me-3": props.closable
-        }
-      ]
-    }),
-    mask: ({ props } : DialogPassThroughMethodOptions<any>) => ({
-      class: [
-      'z-3',
-      {
-        'modal-open': props.modal && props.visible
-      }]
-    })
-  }
-}
+  },
+};

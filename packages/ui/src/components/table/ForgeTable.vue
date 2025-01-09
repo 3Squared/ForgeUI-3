@@ -3,7 +3,7 @@
     <span data-cy="above-table-slot" ><slot name="above-table" /></span>
     <DataTable class="w-100" :class="`${props.severity ? `forge-table-${props.severity}` : ''}`"
                v-bind="{...props, ...$attrs }" :pt="pt"  :rows="perPage" :total-records="total" :filter-display="props.filters ? 'row' : undefined" ref="forgeTable" data-cy="table"
-               @update:filters="emitUpdateFilter" @sort="emitSort" @page="emitPage">
+               @update:filters="emitUpdateFilter" @sort="emitSort" @page="emitPage" showHeaders>
       <template v-for="(_, name) in $slots as unknown as DataTableSlots" #[name]="slotProps">
         <slot :name="name" v-bind="slotProps || {}"></slot>
       </template>
@@ -38,7 +38,7 @@
       <template #paginatorstart v-if="legacyPaginationFooter">
         <span class="d-flex" :class="props.loading ? 'opacity-50' : ''" data-cy="legacy-page-size">
           <span class="me-2 my-auto text-nowrap">Page Size:</span>
-          <Dropdown :options="pageSizes" v-model="perPage" class="ms-2" @click="emitPageSize"/>
+          <Select :options="pageSizes" v-model="perPage" class="ms-2" @click="emitPageSize"/>
         </span>
       </template>
       <template #paginatorend v-if="legacyPaginationFooter" >
@@ -60,11 +60,10 @@ import DataTable, {
 import Button from 'primevue/button'
 import ForgePaginationHeader from "@/components/table/ForgePaginationHeader.vue";
 import { computed, onMounted, ref, watch } from "vue";
-import Dropdown from "primevue/dropdown";
+import Select from "primevue/select";
 import { pluralise } from "@3squared/forge-ui-3/src/components/table/table-helpers";
 import { Icon } from '@iconify/vue'
 import { ForgeTableContext, Severity } from "../../types/forge-types";
-import { DefaultPassThrough } from "primevue/ts-helpers";
 
 export interface ForgeTableProps extends DataTableProps {
   value: any[],
@@ -90,7 +89,7 @@ const props = withDefaults(defineProps<ForgeTableProps>(), {
 
 const forgeTable = ref()
 const pageSizes = ref<Array<number>>([5, 10, 20, 50, 100])
-const perPage = ref<number>(5)
+const perPage = ref<number>(10)
 
 const tableContext = ref<ForgeTableContext>({
   filters: props.filters,
@@ -106,7 +105,7 @@ const pageText = computed<string>(() => {
   const pages = Math.ceil(total.value / perPage.value)
   return `${pages} ${pluralise(pages, 'page')}`
 })
-const pt = computed<DefaultPassThrough<DataTablePassThroughOptions>>(() => ({
+const pt = computed<DataTablePassThroughOptions>(() => ({
   thead: () => ({
     class: [
       {

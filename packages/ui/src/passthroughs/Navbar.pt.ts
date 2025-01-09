@@ -4,7 +4,7 @@ import { MenuPassThroughMethodOptions } from "primevue/menu";
 export default {
   // More PassThrough options in component file.
   menubar: {
-    menu: ({ instance }: MenubarPassThroughMethodOptions) => ({
+    rootList: ({ instance }: MenubarPassThroughMethodOptions) => ({
       class: [
         'navbar-nav navbar-collapse collapse me-auto',
         {
@@ -12,21 +12,22 @@ export default {
         }
       ]
     }),
-    menuitem: ({ context }: MenubarPassThroughMethodOptions) => ({
+    item: ({ context }: MenubarPassThroughMethodOptions) => ({
       class: [
-        'nav-item cursor-pointer',
+        'nav-item',
         {
-          'dropdown': context.item.items.length > 0,
+          'dropdown': context.item.items?.length > 0,
         }
       ]
     }),
-    action: ({ context, instance }: MenubarPassThroughMethodOptions) => ({
+    itemLink: ({ context, instance }: MenubarPassThroughMethodOptions) => ({
       class: [
+        'cursor-pointer',
         {
           'active': context.active,
           'nav-link': context.level === 0,
           'dropdown-item': context.level > 0,
-          'disabled': context.item.item.disabled,
+          'disabled': context.item.disabled,
           'px-3': instance.mobileActive
         }
       ]
@@ -40,7 +41,7 @@ export default {
     }),
     submenu: ({ instance } : MenubarPassThroughMethodOptions) => ({
       class: [
-        'dropdown-menu w-fit-content',
+        'dropdown-menu w-fit-content flex-column ',
         {
           'position-absolute start-100 top-0': instance.level > 1
         }
@@ -56,22 +57,29 @@ export default {
         ]
       }
 
-    },
-    submenuicon: 'ms-1'
+    }
   },
   menu: {
-    menu: (options : MenuPassThroughMethodOptions) => ({
+    root: (options : MenuPassThroughMethodOptions) => ({
       class: [
-        'dropdown dropdown-menu',
+        'dropdown',
+        {
+          'show': options.state.overlayVisible
+        }
+      ]
+    }),   
+    list: (options : MenuPassThroughMethodOptions) => ({
+      class: [
+        ' dropdown-menu',
         {
           'show': options.state.overlayVisible
         }
       ]
     }),
-    menuitem: () => ({
+    item: () => ({
       class: [
         'dropdown-item cursor-pointer'
       ]
-    })
+    }), 
   },
 }

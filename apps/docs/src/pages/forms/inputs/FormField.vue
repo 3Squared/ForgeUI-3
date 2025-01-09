@@ -29,8 +29,7 @@ import { ForgeFormField, ForgePageHeader } from "@3squared/forge-ui-3";
 import { computed, ref, watch } from "vue";
 import { formFieldTypes } from "../../../composables/playgroundOptions";
 import CodeBlock from "@3squared/forge-playground-3/src/components/CodeBlock.vue";
-import * as yup from "yup";
-import FormExamples from "./examples/FormExamples.vue";
+import FormExamples from "../../examples/components/FormExamples.vue";
 
 const value = ref();
 const { options, propVals, config, reset } = usePlayground(

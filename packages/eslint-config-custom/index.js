@@ -45,7 +45,7 @@ module.exports = {
   "vue/require-v-for-key": "off",
   "vue/no-v-model-argument": "off",
   "@typescript-eslint/ban-ts-comment": "warn",
-  "no-useless-escape": "warn",
+  "no-useless-escape": "off",
   "vue/html-closing-bracket-newline": [
    "error",
    {

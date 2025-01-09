@@ -1,6 +1,6 @@
 export default {
   progressspinner: {
-    spinner: () => ({
+    spin: () => ({
       class: [
         'spinner-border'
       ]

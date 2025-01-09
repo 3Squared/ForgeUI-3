@@ -1,11 +1,13 @@
-import { CalendarPassThroughMethodOptions, CalendarPassThroughOptions } from "primevue/calendar";
+//import { CalendarPassThroughMethodOptions, CalendarPassThroughOptions } from "primevue/calendar";
+import { DatePickerPassThroughMethodOptions, DatePickerPassThroughOptions } from "primevue/datepicker";
 
 export default {
   // More PassThrough options defined in ForgeDatepicker.
-  calendar: {
+  datepicker: {
     root: 'd-inline-flex relative w-100',
-    input: "form-control",
-    panel: ({ props }: CalendarPassThroughMethodOptions) => ({
+    pcInputText: "form-control",
+    dropdown: "d-none",
+    panel: ({ props }: DatePickerPassThroughMethodOptions) => ({
       class: [
         "datepicker-panel bg-white",
         {
@@ -15,20 +17,20 @@ export default {
     }),
     groupContainer: "d-flex flex-wrap",
     header: 'd-flex align-items-center justify-content-between p-2 border-bottom',
-    previousButton: ({ props } : CalendarPassThroughMethodOptions) => ({
+    pcPrevButton:{ root: ({ props } : DatePickerPassThroughMethodOptions) => ({
       class: {
         "btn mb-1 ms-auto": props.numberOfMonths === undefined || props.numberOfMonths == 1,
         "btn p-0 btn-sm": props.numberOfMonths !== undefined && props.numberOfMonths > 1
       }
-    }),
-    tableheadercell: "pe-none",
-    nextButton: ({ props }: CalendarPassThroughMethodOptions) => ({
+    })},
+    tableHeaderCell: "pe-none",
+    pcNextButton: { root:({ props }: DatePickerPassThroughMethodOptions) => ({
       class: {
         "btn mb-1 me-auto": props.numberOfMonths === undefined || props.numberOfMonths == 1,
         "btn p-0 btn-sm": props.numberOfMonths !== undefined && props.numberOfMonths > 1
       }
-    }),
-    group: ({ props } : CalendarPassThroughMethodOptions) => ({
+    })},
+    group: ({ props } : DatePickerPassThroughMethodOptions) => ({
       class: [
         "d-flex flex-column",
         {
@@ -36,24 +38,25 @@ export default {
         }
       ]
     }),
-    yearTitle: ({ props }) => ({
+    selectYear: ({ props } : DatePickerPassThroughMethodOptions) => ({
       class: {
         "btn ps-0 pe-1 fw-bold": props.numberOfMonths === undefined || props.numberOfMonths == 1,
         "fw-bold text-black border-0 bg-white": props.numberOfMonths !== undefined && props.numberOfMonths > 1
       }
     }),
-    monthTitle: ({ props }) => ({
+    selectMonth: ({ props } : DatePickerPassThroughMethodOptions) => ({
       class: {
         "btn ps-1 fw-bold": props.numberOfMonths === undefined || props.numberOfMonths == 1,
         "fw-bold text-black border-0 bg-white": props.numberOfMonths !== undefined && props.numberOfMonths > 1
       }
-    }), 
+    }),
     title: "d-flex mx-auto",
-    decadetitle: "fw-bold",
-    table: "datepicker-table",
+    day: "d-flex date-primary justify-content-center align-items-center",
+    decade: "fw-bold",
+    dayView: "datepicker-table",
     tableHeaderRow: "text-center",
-    monthPicker: "d-flex flex-row flex-wrap m-2",
-    yearPicker: "d-flex flex-row flex-wrap m-2",
+    monthView: "d-flex flex-row flex-wrap m-2",
+    yearView: "d-flex flex-row flex-wrap m-2",
     timePicker: 'd-flex justify-content-center align-items-center border-top p-2',
     separatorContainer: "d-flex flex-column align-items-center px-2",
     hourPicker: "px-2 d-flex flex-column",
@@ -62,7 +65,7 @@ export default {
     minute: "mx-auto",
     secondPicker: "px-2 d-flex flex-column",
     second: "mx-auto",
-    buttonbar: ({ props }: CalendarPassThroughMethodOptions) => ({
+    buttonbar: ({ props }: DatePickerPassThroughMethodOptions) => ({
       class: [
         'p-2 d-flex',
         {
@@ -70,7 +73,7 @@ export default {
         }
       ]
     }),
-    decrementButton: "btn btn-sm",
-    incrementButton: "btn btn-sm",
-  } as CalendarPassThroughOptions,
+    pcDecrementButton:{ root: "btn btn-sm", label: "d-none"},
+    pcIncrementButton:{ root: "btn btn-sm", label: "d-none"},
+  } as DatePickerPassThroughOptions,
 }

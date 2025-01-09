@@ -1,4 +1,5 @@
 import { PrimeVuePTOptions } from "primevue/config";
+import AutoCompletePT from "./passthroughs/AutoComplete.pt.ts";
 import ButtonPT from "./passthroughs/Button.pt.ts";
 import CheckboxPT from "./passthroughs/Checkbox.pt.ts";
 import DropdownPT from "./passthroughs/Dropdown.pt.ts";
@@ -6,16 +7,18 @@ import ColumnPT from "./passthroughs/Column.pt.ts";
 import InputPT from "./passthroughs/Input.pt.ts";
 import InputMaskPT from "./passthroughs/InputMask.pt.ts";
 import InputSwitchPT from "./passthroughs/InputSwitch.pt.ts";
+import TagPT from "./passthroughs/Tag.pt.ts";
 import TextAreaPT from "./passthroughs/TextArea.pt.ts";
-import ChipsPT from "./passthroughs/Chips.pt.ts";
+import ChipPT from "./passthroughs/Chip.pt.ts";
 import DialogPT from "./passthroughs/Dialog.pt.ts";
-import OverlayPanelPT from "./passthroughs/OverlayPanel.pt.ts";
+import PopoverPT from "./passthroughs/Popover.pt.ts";
 import MessagePT from "./passthroughs/Message.pt.ts";
 import StepsPT from "./passthroughs/Steps.pt.ts";
 import TabsPT from "./passthroughs/Tabs.pt.ts";
 import DatepickerPT from "./passthroughs/Datepicker.pt.ts";
 import MultiselectPT from "./passthroughs/Multiselect.pt.ts";
 import ProgressBarPT from "./passthroughs/ProgressBar.pt.ts";
+import PanelPT from "./passthroughs/Panel.pt.ts";
 import TablePT from "./passthroughs/Table.pt.ts";
 import BadgePT from "./passthroughs/Badge.pt.ts";
 import NavbarPT from "./passthroughs/Navbar.pt.ts";
@@ -29,11 +32,12 @@ import ToastPT from "./passthroughs/Toast.pt.ts";
 import FieldsetPt from "./passthroughs/Fieldset.pt.ts";
 
 export default {
+  ...AutoCompletePT,
   ...BadgePT,
   ...ButtonPT,
   ...CardPT,
   ...CheckboxPT,
-  ...ChipsPT, 
+  ...ChipPT,
   ...ColumnPT,
   ...DatepickerPT,
   ...DialogPT,
@@ -46,12 +50,14 @@ export default {
   ...MessagePT,
   ...MultiselectPT,
   ...NavbarPT,
-  ...OverlayPanelPT,
+  ...PopoverPT,
   ...ProgressBarPT,
   ...ProgressSpinnerPT,
+  ...PanelPT,
   ...SelectButtonPT,
   ...StepsPT,
   ...TablePT,
+  ...TagPT,
   ...TabsPT, 
   ...ToastPT,
   ...TextAreaPT,

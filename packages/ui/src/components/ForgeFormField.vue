@@ -23,7 +23,7 @@
                  v-model="model"
                  @input="change" @blur="handleBlur"
       />
-      <Dropdown v-else-if="props.type === 'select'" v-bind="{...props,...$attrs}" v-model="model"
+      <Select v-else-if="props.type === 'select'" v-bind="{...props,...$attrs}" v-model="model"
                 :class="{'is-invalid': hasErrors }" />
       <MultiSelect v-else-if="props.type === 'multiselect'" v-bind="{...props,...$attrs}" v-model="model"
                         :class="{'is-invalid': hasErrors }" />

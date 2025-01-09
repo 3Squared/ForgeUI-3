@@ -46,6 +46,7 @@ const pages = [
       { label: "Progress Bar", command: () => router.push("/data/progress") },
       { label: "Stat Widget", command: () => router.push("/data/statwidget") },
       { label: "Table", command: () => router.push("/data/table") },
+      { label: "Data View", command: () => router.push("/data/dataview") },
       { label: "Tile", command: () => router.push("/data/tile") }
     ]
   },
@@ -67,6 +68,7 @@ const pages = [
       {
         label: "Inputs",
         items: [
+          { label: "Autocomplete", command: () => router.push("/forms/inputs/autocomplete") },
           { label: "Chips", command: () => router.push("/forms/inputs/chips") },
           { label: "Form Field", command: () => router.push("/forms/inputs/formfield") },
           { label: "Inline Editor", command: () => router.push("/forms/inputs/inlineeditor") },
@@ -88,21 +90,26 @@ const pages = [
       { label: "Page Header", command: () => router.push("/layout/pageheader") },
       { label: "Stepper", command: () => router.push("/layout/stepper") },
       { label: "Tabs", command: () => router.push("/layout/tabs") },
-      { label: "Fieldset", command: () => router.push("/layout/fieldset") }
+      { label: "Fieldset", command: () => router.push("/layout/fieldset") },
+      { label: "Panel", command: () => router.push("/layout/panel") },
+      { label: "Navbar", command: () => router.push("/layout/navbar") }
     ]
   },
   {
     label: "Overlay",
     items: [
       { label: "Modal", command: () => router.push("/overlay/modal") },
-      { label: "Overlay Panel", command: () => router.push("/overlay/overlay") },
+      { label: "Popover", command: () => router.push("/overlay/popover") },
       { label: "Toast", command: () => router.push("/overlay/toast") },
       { label: "Tooltip", command: () => router.push("/overlay/tooltip") }
     ]
   },
   {
     label: "Misc",
-    items: [{ label: "Badge", command: () => router.push("/misc/badge") }]
+    items: [
+      { label: "Badge", command: () => router.push("/misc/badge") },
+      { label: "Tag", command: () => router.push("/misc/tag") }
+    ]
   },
   { label: "Icons", command: () => router.push("/icons") },
   { label: "Colours", command: () => router.push("/colours") }

@@ -11,7 +11,8 @@
 
 <script setup lang="ts">
 import { YupSchema, Form } from "vee-validate";
-import { ForgeInlineEditorProps } from "../../../dist/src/components/ForgeInlineEditor.vue";
+//@ts-ignore
+import { ForgeInlineEditorProps } from "@/components/ForgeInlineEditor.vue";
 
 export interface InlineEditorValidationWrapperProps extends /* @vue-ignore */ ForgeInlineEditorProps {
   schema: YupSchema

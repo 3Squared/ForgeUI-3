@@ -1,9 +1,9 @@
 <template>
-  <Dropdown :options="options" class="w-25" id="dropdown"/>
+  <Select :options="options" class="w-25" id="dropdown"/>
 </template>
 
 <script setup lang="ts">
-import Dropdown from 'primevue/dropdown'
+import Select from "primevue/select";
 
 const options = [
   'Option 1',

@@ -15,7 +15,7 @@
         <h5 class="mt-4">Message Options</h5>
         <div>
           <label>Severity</label>
-          <Dropdown v-model="severity" :options="severities" />
+          <Select v-model="severity" :options="severities" />
         </div>
         <ForgeFormField v-model="summary" label="Summary" type="text" class="my-2" />
         <ForgeFormField v-model="closable" label="Closable" type="checkbox" />
@@ -33,7 +33,7 @@ import { CodeBlock, Playground, usePlayground } from "@3squared/forge-playground
 import { computed, ref } from "vue";
 import Toast from "primevue/toast";
 import Button from "primevue/button";
-import Dropdown from "primevue/dropdown";
+import Select from "primevue/select";
 import { useToast } from "primevue/usetoast";
 
 const position = ["center", "top-left", "top-center", "top-right", "bottom-left", "bottom-center", "bottom-right"];

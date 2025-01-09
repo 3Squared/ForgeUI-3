@@ -1,18 +1,18 @@
 <template>
   <div>
     <Button label="Click Me!" data-cy="overlay-toggle" @click="toggle"/>
-    <OverlayPanel ref="overlayPanel" data-cy="overlay" v-bind="props">
+    <Popover ref="overlayPanel" data-cy="overlay" v-bind="props">
       {{ props.overlayPanelContent }}
-    </OverlayPanel>
+    </Popover>
   </div>
 </template>
 
 <script setup lang="ts">
 
 import { ref } from "vue";
-import { OverlayPanelProps } from "primevue/overlaypanel";
+import { PopoverProps } from "primevue/popover";
 
-export interface OverlayPanelWrapperProps extends /* vue-ignore */ OverlayPanelProps {
+export interface OverlayPanelWrapperProps extends /* vue-ignore */ PopoverProps {
   overlayPanelContent: string
 }
 
@@ -23,5 +23,4 @@ const overlayPanel = ref()
 const toggle = (event : Event) => {
   overlayPanel.value.toggle(event)
 }
-
 </script>

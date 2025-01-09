@@ -66,9 +66,11 @@ const { options, propVals, config, reset } = usePlayground(
     options: optionsArray,
     optionLabel: "label",
     placeholder: placeHolder,
+    filterPlaceholder: "Search",
     display: "comma",
     maxSelectedLabels: 4,
-    filter: false
+    filter: false,
+    showClear: false
   },
   {
     display: { type: "select", options: displays }

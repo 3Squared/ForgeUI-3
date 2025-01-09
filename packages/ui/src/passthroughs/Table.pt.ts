@@ -4,7 +4,7 @@ import { PaginatorPassThroughMethodOptions } from "primevue/paginator";
 export default {
   // More PT options can be found in the ForgeTable file.
   dataTable: {
-    datatable: 'position-relative',
+    root: 'position-relative',
     table: (options: DataTablePassThroughMethodOptions) => {
       return {
         class: [
@@ -27,7 +27,7 @@ export default {
         }
       }
     },
-    rowgrouptoggler: 'btn',
+  
     //@ts-ignore
     tbody: (options) => {
       return {
@@ -36,28 +36,34 @@ export default {
         }
       }
     },
-    loadingOverlay: () => {
+    mask: () => {
       return {
         class: 'table-overlay table-spinner'
       }
-    }
+    },
+    rowGroupHeaderCell: 'd-inline-flex align-items-center border border-0',
+    rowGroupHeader: 'border-top border-bottom',
+    rowToggleButton: "btn"
   },
+  
+  
   paginator: {
     root: (options : PaginatorPassThroughMethodOptions<any>) => {
       return {
         class: [
-          'm-auto pagination justify-content-center',
+          '',
           {
             'opacity-50': options.parent?.props.loading
           }]
       }
     },
+    content: 'm-auto pagination justify-content-center',
     pages: 'd-flex',
-    firstPageButton: 'page-link cursor-pointer',
-    previousPageButton: 'page-link cursor-pointer',
-    nextPageButton: 'page-link cursor-pointer',
-    lastPageButton: 'page-link me-2 cursor-pointer',
-    pageButton: ({ context } : PaginatorPassThroughMethodOptions<any>) => ({
+    first: 'page-link cursor-pointer',
+    prev: 'page-link cursor-pointer',
+    next: 'page-link cursor-pointer',
+    last: 'page-link me-2 cursor-pointer',
+    page: ({ context } : PaginatorPassThroughMethodOptions<any>) => ({
       class: [
         'page-link cursor-pointer',
         {

@@ -5,7 +5,6 @@
 </template>
 
 <script setup lang="ts">
-
 import { ProgressBarProps } from "primevue/progressbar";
 import { Severity } from "../types/forge-types";
 import { computed } from "vue";
@@ -52,7 +51,7 @@ const pt = computed(() => ({
     style: props.pixelWidth ? `width: ${props.pixelWidth}px` : ''
   },
   value: {
-    class: [severity.value, striped.value, animate.value]
+    class: [severity.value, striped.value, animate.value, 'progress-bar']
   },
 }))
 

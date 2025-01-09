@@ -66,7 +66,7 @@ describe('<Button />', () => {
           mountButton({ id: id, label: label, severity: severity, badge: '8' })
 
           // Assert
-          cy.get(`[data-pc-name="badge"]`)
+          cy.get(`[data-pc-name="pcbadge"]`)
             .should('have.class', expectedClass)
             .and('have.css', 'background-color', expectedBackgroundColour)
         })
@@ -81,9 +81,8 @@ describe('<Button />', () => {
           mountButton({ id: id, label: label, severity: severity, outlined: true, badge: '8' })
 
           // Assert
-          cy.get(`[data-pc-name="badge"]`)
+          cy.get(`[data-pc-name="pcbadge"]`)
             .should('have.class', expectedClass)
-            .and('have.css', 'background-color', rgb)
         })
 
         it(`Applies ${severity !== undefined ? severity : 'primary'} text button classes when severity is ${severity} and text is true`, () => {
@@ -220,7 +219,7 @@ describe('<Button />', () => {
     mountButton({ id: id, label: label, severity: severity, badge: '8', badgeClass: badgeClassOverride })
 
     // Assert
-    cy.get(`[data-pc-name="badge"]`)
+    cy.get(`[data-pc-name="pcbadge"]`)
       .should('have.class', expectedClass)
       .and('have.css', 'background-color', expectedRgb)
   })

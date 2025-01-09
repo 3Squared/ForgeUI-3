@@ -19,11 +19,11 @@
       </label>
     </div>
     <Button link class="ms-auto" v-if="showDragDropArea" :key="acceptedFileTypes.length" id="accepted-file-types" @click="toggleAcceptedFileTypesOverlay">Accepted File Types</Button>
-    <OverlayPanel ref="acceptedFilesOverlay">
+    <Popover ref="acceptedFilesOverlay">
       <div class="text-break accepted-file-types-container" id="accepted-file-types-overlay">
         {{acceptedFileTypes.map((type) => (type.label ?? type.fileType.split('/').pop())).join(", ")}}
       </div>
-    </OverlayPanel>
+    </Popover>
 <!--    : {{acceptedFileTypes.map((type) => type.split('/').pop()).join(", ")}}-->
   </div>
 </template>
@@ -32,7 +32,7 @@
 import { addFiles } from '../utilities/utilities'
 import { computed, ref } from "vue";
 import { ForgeFileStatus, ForgeFileType } from "../../../types/forge-types";
-import OverlayPanel from 'primevue/overlaypanel';
+import Popover from "primevue/popover"
 import { Icon } from "@iconify/vue";
 
 interface FileUploaderButtonProps {

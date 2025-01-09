@@ -1,5 +1,5 @@
 <template>
-  <menubar v-bind="{...props, ...$attrs}" :pt="pt" data-cy="navbar" >
+  <Menubar v-bind="{...props, ...$attrs}" :pt="pt" data-cy="navbar">
     <template #start >
       <a :href="logoUrl" class="navbar-brand ms-3" data-cy="logo">
         <slot name="logo">
@@ -8,8 +8,8 @@
       </a>
     </template>
 
-    <template #menubuttonicon>
-      <slot name="menubuttonicon">
+    <template #buttonicon>
+      <slot name="buttonIcon">
         <Icon icon="bi:list" :class="props.severity === 'light' ? 'text-black' : 'text-white'" height="24" data-cy="burger-icon" />
       </slot>
     </template>
@@ -17,15 +17,14 @@
     <template v-for="(_, slot) of $slots as unknown as MenubarSlots" #[slot]="scope">
       <slot :name="slot" v-bind="scope" />
     </template>
-  </menubar>
+  </Menubar>
 </template>
 
 <script setup lang="ts">
   import { Icon } from "@iconify/vue";
-  import { MenubarPassThroughOptions, MenubarProps, MenubarSlots } from "primevue/menubar";
+  import Menubar, { MenubarPassThroughOptions, MenubarProps, MenubarSlots } from "primevue/menubar";
   import { ForgeNavbarPosition, Severity } from "../types/forge-types";
   import { computed } from "vue";
-  import { PassThrough } from "primevue/ts-helpers";
 
   export interface ForgeNavbarProps extends /* vue-ignore */ Omit<MenubarProps, "aria-label" | "aria-labelledby"> {
     severity?: Severity | 'light' | 'dark',
@@ -38,7 +37,7 @@
     logoUrl: "#"
   })
   
-  const pt = computed<PassThrough<MenubarPassThroughOptions>>(() => ({
+  const pt = computed<MenubarPassThroughOptions>(() => ({
     root: () => ({
       class: [
         'navbar container-fluid navbar-expand-lg',

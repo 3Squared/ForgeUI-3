@@ -2,7 +2,7 @@ import { ColumnPassThroughMethodOptions, ColumnProps } from "primevue/column";
 
 export default {
   column: {
-    sortBadge: 'ms-2 my-auto cursor-pointer',
+    pcSortBadge: 'ms-2 my-auto cursor-pointer',
     headerCell: (options: ColumnPassThroughMethodOptions & { props: { reorderableColumns: boolean }, column: { context: { frozen: boolean | '', resizable: boolean } } }) => {
       return {
         class: [
@@ -14,15 +14,14 @@ export default {
         }],
       }
     },
-    roweditorinitbutton: 'btn',
-    rowtoggler: {
-      class: 'btn'
-    },
-    columnresizer: {
+    
+    pcRowEditorInit: 'btn',
+    rowToggleButton: 'btn',
+    columnResizer: {
       class: 'position-absolute top-0 end-0 m-0 h-100 p-0 cursor-resize border border-transparent'
     },
-    roweditorsavebutton: 'btn',
-    roweditorcancelbutton: 'btn',
+    pcRowEditorSave: 'btn',
+    pcRowEditorCancel: 'btn',
     bodyCell: (options: ColumnPassThroughMethodOptions & { props: { resizableColumns: boolean }, column: { props: { frozen: boolean | '' } } }) => {
       return {
         class: {
@@ -32,20 +31,20 @@ export default {
       }
     },
     rowreordericon: 'cursor-move',
-    filterMenuButton: ({ props }: ColumnProps & { props: { type: string } }) => {
+    pcColumnFilterButton: ({ props }: ColumnProps & { props: { type: string } }) => {
       return {
         class: ['btn',
           {
             'd-none': props.type !== 'text' && props.type !== 'numeric' && props.type !== 'date'
-          }]
+          }],
       }
     },
-    headerFilterClearButton: ({ props } : ColumnPassThroughMethodOptions & { props: { filters: object}}) => {
+    pcColumnFilterClearButton: ({ props } : ColumnPassThroughMethodOptions & { props: { filters: object}}) => {
       return {
         class: [
           'btn',
           { 
-            'd-none': props.filters[props.field] ? props.filters[props.field].value === null : false
+            'd-none': props.filters[props.field] ? props.filters[props.field]?.value === null : false
           }
         ]
       }
@@ -60,9 +59,10 @@ export default {
         'list-unstyled'
       ]
     },
-    columnfilter: 'd-flex w-100',
-    filterinput: "w-100",
-    filterRowItem: (options : ColumnPassThroughMethodOptions) => {
+    filter: 'd-flex w-100',
+    filterElementContainer: "w-100",
+    filterConstraintList: 'ps-0',
+    filterConstraint: (options : ColumnPassThroughMethodOptions) => {
       return {
         class: [
           'dropdown-item cursor-pointer',
@@ -73,15 +73,15 @@ export default {
         ]
       }
     },
-    filterSeparator: {
+    filterConstraintSeparator: {
       class: [
         'dropdown-divider'
       ]
     },
-    headerContent: 'd-flex',
-    headerTitle: "text-break",
+    columnHeaderContent: 'd-flex',
+    columnTitle: "text-break",
     sort: 'd-flex ms-auto cursor-pointer table-sort-icon',
-    rowCheckbox: (options: any) => {
+    pcRowCheckbox: (options: any) => {
       return {
         class: [
           'form-check-input px-2 py-2 rounded position-relative',
@@ -92,7 +92,7 @@ export default {
         ]
       }
     },
-    rowRadioButton: (options: any) => {
+    pcRowRadiobutton: (options: any) => {
       return {
         class: [
           'form-check-input',
@@ -102,5 +102,6 @@ export default {
         ]
       }
     },
+  
   }
 }

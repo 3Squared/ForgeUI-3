@@ -1,7 +1,7 @@
 // @ts-ignore
 import ToastWrapper, { ToastWrapperProps } from "./ToastWrapper.vue";
 
-const containerId = '[data-pc-section="container"]'
+const containerId = '[data-pc-section="messagecontent"]'
 
 describe("<Toast />", () => {
   function mountToast(props: ToastWrapperProps) {
@@ -25,7 +25,7 @@ describe("<Toast />", () => {
       .and("be.visible")
       .and("have.text", "Hello World");
 
-    cy.get('[data-pc-section="icon"]')
+    cy.get('[data-pc-section="messageicon"]')
       .should("exist")
       .and("be.visible")
       .and("have.class", "text-success");
@@ -46,7 +46,7 @@ describe("<Toast />", () => {
       .and("be.visible")
       .and("have.text", "Goodbye World");
 
-    cy.get('[data-pc-section="icon"]')
+    cy.get('[data-pc-section="messageicon"]')
       .should("exist")
       .and("be.visible")
       .and("have.class", "text-danger");
@@ -67,7 +67,7 @@ describe("<Toast />", () => {
       .and("be.visible")
       .and("have.text", "Warning World");
     
-    cy.get('[data-pc-section="icon"]')
+    cy.get('[data-pc-section="messageicon"]')
       .should("exist")
       .and("be.visible")
       .and("have.class", "text-warning");
@@ -88,7 +88,7 @@ describe("<Toast />", () => {
       .and("be.visible")
       .and("have.text", "Info World");
     
-    cy.get('[data-pc-section="icon"]')
+    cy.get('[data-pc-section="messageicon"]')
       .should("exist")
       .and("be.visible")
       .and("have.class", "text-primary");

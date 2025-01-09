@@ -18,7 +18,6 @@ const multiselectPreviewId = '[data-cy="multiselect-preview"]'
 const optionsPreviewId = '[data-cy="options-preview"]'
 const multiselectId = '[data-cy="multiselect"]'
 const multiselectContainerId = '[data-cy="multiselect-container"]'
-const option1Id = '[data-cy="Option 1"]'
 const titleId = '[data-cy="title"]'
 
 describe('<ForgeMultiSelectPreview />', () => {
@@ -45,7 +44,7 @@ describe('<ForgeMultiSelectPreview />', () => {
     // Act
     mountMultiselectPreview({ options: options, selectedOptions: selectedOptions })
     cy.get(multiselectId).click()
-    cy.get('[data-pc-section=item]').contains('Option 1').click()
+    cy.get('[data-pc-section="option"]').contains('Option 1').click()
     cy.clickOff()
 
     // Assert

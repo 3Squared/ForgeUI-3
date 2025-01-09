@@ -11,7 +11,7 @@
     </div>
 
   </Button>
-  <OverlayPanel ref="columnCustomiserPanel" class="column-customiser" @hide="() =>  panelVisible = false" @show="() => panelVisible = true">
+  <Popover ref="columnCustomiserPanel" class="column-customiser" @hide="() =>  panelVisible = false" @show="() => panelVisible = true">
     <div class="d-flex flex-column w-100">
       <div v-for="(column, index) in originalColumns" class="d-flex cursor-pointer" :class="{
         'border-top': index !== 0,
@@ -24,13 +24,13 @@
       </div>
 
     </div>
-  </OverlayPanel>
+  </Popover>
 </template>
 
 <script setup lang="ts">
 import Button from 'primevue/button'
 import Checkbox from "primevue/checkbox";
-import OverlayPanel from "primevue/overlaypanel";
+import Popover from "primevue/popover";
 import { Icon } from '@iconify/vue'
 import { onMounted, ref } from "vue";
 import { ForgeColumn } from "@/types/forge-types.ts";

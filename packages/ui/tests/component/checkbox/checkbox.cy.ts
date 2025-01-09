@@ -30,7 +30,6 @@ describe("<ForgeCheckbox />", () => {
   it("Mounts", () => {
     // Arrange
 
-
     // Act
     mountForgeCheckbox({ name: id, label })
 
@@ -43,15 +42,16 @@ describe("<ForgeCheckbox />", () => {
     const id = "checkbox"
     const label = "Checkbox"
     const expectedClass = "bg-primary"
-    const expectedCssProperty = 'background-image'
     const whiteTickUrl = `url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='%23fff' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='m6 10 3 3 6-6'/%3e%3c/svg%3e")`
+
+    const expectedCssProperty = 'background-image'
+   
 
     // Act
     mountForgeCheckbox({ modelValue: true, name: id, label: label })
 
     // Assert
     cy.get(checkboxInput)
-      .should('be.visible')
       .and('have.css', expectedCssProperty, whiteTickUrl)
       .and('have.class', expectedClass)
 

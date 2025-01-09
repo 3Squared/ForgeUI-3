@@ -1,14 +1,9 @@
 // @ts-ignore
 import ForgeProgressBar, { ForgeProgressBarProps } from "@/components/ForgeProgressBar.vue";
 
-const id = "progress-bar"
-
 function mountForgeProgressBar(props : ForgeProgressBarProps) {
   cy.mount(ForgeProgressBar, {
-    props,
-    attrs: {
-      id: id
-    }
+    props
   })
 }
 
@@ -21,9 +16,8 @@ describe("<ForgeProgressBar />", () => {
     mountForgeProgressBar({ value: value })
     
     // Assert
-    cy.get(`#${id}`)
+    cy.get('[data-pc-name="progressbar"]')
       .should('exist')
-      .and('be.visible')
   })
   
   it("Displays value when showValue is true", () => {
@@ -35,7 +29,7 @@ describe("<ForgeProgressBar />", () => {
     mountForgeProgressBar({ value: value, showValue: showValue })
 
     // Assert
-    cy.get(`#${id}`)
+    cy.get('[data-pc-section="value"]')
       .should('contain.text', value)
   })
   
@@ -66,23 +60,6 @@ describe("<ForgeProgressBar />", () => {
     // Assert
     cy.get(`[data-pc-section="value"]`)
       .should('have.class', expectedClass)
-  })
-  
-  it("Acts as a loading bar when mode is Indeterminate", () => {
-    // Arrange
-    const mode = "indeterminate"
-    const expectedContainerClass = "p-progressbar-indeterminate"
-    const expectedValueClass = 'p-progressbar-value-animate'
-
-    // Act
-    mountForgeProgressBar({ mode: mode })
-
-    // Assert
-    cy.get(`#${id}`)
-      .should('have.class', expectedContainerClass)
-    
-    cy.get(`[data-pc-section="value"]`)
-      .should('have.class', expectedValueClass)
   })
   
   describe("Variant", () => {

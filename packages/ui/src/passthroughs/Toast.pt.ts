@@ -5,11 +5,8 @@ export default {
     message: () => ({
       class: ['toast-container w-100 position-relative'],
     }),
-    content: () => ({
-      class: ['toast-body d-flex align-items-center gap-2']
-    }),
-    container: () => ({
-      class: ['toast bg-white show overflow-hidden text-break']
+    messageContent: () => ({
+      class: ['toast bg-white show overflow-hidden text-break toast-body d-flex align-items-center gap-2']
     }),
     buttonContainer: () => ({
       class: ['ms-auto']
@@ -20,10 +17,10 @@ export default {
     closeIcon: () => ({
       class: 'd-none'
     }),
-    text: () => ({
+    messageText: () => ({
       class: ['ps-1']
     }),
-    icon: ({ props } : ToastPassThroughMethodOptions) => ({
+    messageIcon: ({ props } : ToastPassThroughMethodOptions) => ({
       class: [
         'toast-icon',
         {

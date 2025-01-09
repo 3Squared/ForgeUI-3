@@ -6,9 +6,12 @@
       <a class="link" target="_blank" href="https://primevue.org/calendar/"><strong>PrimeVue documentation</strong></a>
       .
     </p>
-    <Playground :options="options" :code="code" :config="config" @reset="reset">
+    <Playground :options="options" :code="code" :config="config" display-value @reset="reset">
       <template #component>
         <component :is="ForgeDatepicker" v-bind="options" v-model="value" />
+      </template>
+      <template #value>
+        {{ value ?? "Select a date..." }}
       </template>
     </Playground>
   </div>
