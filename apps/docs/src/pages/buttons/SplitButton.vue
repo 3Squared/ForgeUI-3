@@ -18,7 +18,7 @@
 <script setup lang="ts">
 import { ForgePageHeader } from "@3squared/forge-ui-3";
 import { Playground, usePlayground } from "@3squared/forge-playground-3";
-import { computed, ref } from "vue";
+import { computed } from "vue";
 import { severities, sizes } from "../../composables/playgroundOptions";
 import SplitButton from "primevue/splitbutton";
 import { useToast } from "primevue/usetoast";
@@ -69,10 +69,12 @@ const { options, propVals, config, reset } = usePlayground(
 
 const code = computed(() => `
 <template>
-<SplitButton${propVals.value.length > 0 ? " " + propVals.value.join(" ") : ""} />
+ <SplitButton${propVals.value.length > 0 ? " " + propVals.value.join(" ") : ""} />
 </template>
 
 <script setup lang="ts">
+import SplitButton from "primevue/splitbutton";
+
 const items = [
   {
     label: "Update",
@@ -100,6 +102,6 @@ const items = [
 const save = () => {
   toast.add({ severity: "success", summary: "Success", detail: "Data Saved", life: 3000 });
 };
-</script>
+</\script>
 `);
 </script>
