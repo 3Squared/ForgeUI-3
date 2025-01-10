@@ -1,5 +1,22 @@
 # forge-ui-3-styleguide
 
+## 2.1.0
+
+### Minor Changes
+
+- 3b87252: Add styling to primevue split button with documentation
+
+### Patch Changes
+
+- eb1a02d: Alter column customiser so that selected columns can we sent in.
+
+  Add `selected` property to `ForgeColumn`, this allows selected columns to be set to true or false outside forge ui.
+
+- ca37bab: Add an example of the script code for split button
+- Updated dependencies [3b87252]
+- Updated dependencies [eb1a02d]
+  - @3squared/forge-ui-3@2.1.0
+
 ## 2.0.0
 
 ### Major Changes
