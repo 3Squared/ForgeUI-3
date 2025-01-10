@@ -12,7 +12,7 @@ export type ForgeNavbarPosition = "fixed-top" | "fixed-bottom" | "sticky-top"
 
 export type ForgeMultiSelectOrientation = "row" | "column"
 export type ForgeColumnDataType = 'text' | 'numeric' | 'date' | 'select' | 'multiselect' | undefined
-export type ForgeColumn = ColumnProps & { dataType?: ForgeColumnDataType }
+export type ForgeColumn = ColumnProps & { dataType?: ForgeColumnDataType, selected?: boolean }
 
 export interface ForgeFileType {
   fileType: string,

@@ -20,7 +20,7 @@
           <template #column-customiser>
             <ForgeColumnCustomiser v-model="columns" />
           </template>
-          <Column v-for="column in columns" :key="column.field as string" sortable v-bind="column">
+          <Column v-for="column in selectedColumns" :key="column.field as string" sortable v-bind="column">
             <template #filter="{ field }">
               <forge-filter-header
                 v-if="filters[field]"
@@ -57,20 +57,26 @@ import { FilterMatchMode } from "@primevue/core/api";
 import type { ForgeColumn } from "@3squared/forge-ui-3/src/types/forge-types";
 import { products } from "../examples/data/exampleTableData";
 
+const selectedColumns = computed<ForgeColumn[]>(() => {
+  return columns.value.filter((s) => s.selected);
+});
+
 const columns = ref<ForgeColumn[]>([
-  { field: "code", header: "Code", sortable: true },
-  { field: "name", header: "Name", dataType: "select", sortable: true },
+  { field: "code", header: "Code", sortable: true, selected: true },
+  { field: "name", header: "Name", dataType: "select", sortable: true, selected: true },
   {
     field: "category",
     header: "Category",
     dataType: "multiselect",
-    sortable: true
+    sortable: true,
+    selected: true
   },
   {
     field: "quantity",
     header: "Quantity",
     dataType: "numeric",
-    sortable: true
+    sortable: true,
+    selected: true
   },
   { field: "date", header: "Date", dataType: "date", sortable: true }
 ]);
@@ -225,7 +231,7 @@ const columnCustomiserCode = computed<string>(
        <template #column-customiser>
          <ForgeColumnCustomiser v-model="columns" />
       </template>
-      <Column v-for="column in columns" v-bind="column">
+      <Column v-for="column in selectedColumns" :key="column.field as string" sortable v-bind="column">
         // Required for Filters
         <template #filter="{ field }">
           // The v-if will check if the column actually exists, this is important when using the column customiser.
@@ -237,9 +243,13 @@ const columnCustomiserCode = computed<string>(
   
   <script setup lang="ts">
    import { ForgeColumn, ForgeFilterHeader, ForgeColumnCustomiser } from "@3squared/forge-ui-3";
-   import { FilterMatchMode } from "primevue/api";
+   import { FilterMatchMode } from "@primevue/core/api";
    import { ref } from 'vue'
 
+   const selectedColumns = computed<ForgeColumn[]>(() => {
+     return columns.value.filter((s) => s.selected);
+   });
+   
    // Data to appear in table, properties must match the 'field' property in columns array unless specified otherwise.
    const tableData = [
      { code: 1, name: "Blue Shirt", category: "Clothing", quantity: 10 },
@@ -256,18 +266,33 @@ const columnCustomiserCode = computed<string>(
 
    // Columns the table should contain. DataType is used to specify the type of filter ForgeFilterHeader should display.
    // IT IS IMPORTANT THAT THE COLUMNS IS A REF, This allows the column customsier to manipulate the columns array.
-   const columns = ref([
-     { field: "code", header: "Code", sortable: true },
-     { field: "name", header: "Name", sortable: true },
-     { field: "category", header: "Category", dataType: "multiselect", sortable: true },
-     { field: "quantity", header: "Quantity", dataType: "numeric", sortable: true }
-   ]); 
+   // Displayed columns are controlled using 'selected'
+   const columns = ref<ForgeColumn[]>([
+      { field: "code", header: "Code", sortable: true, selected: true },
+      { field: "name", header: "Name", dataType: "select", sortable: true, selected: true },
+      {
+        field: "category",
+        header: "Category",
+        dataType: "multiselect",
+        sortable: true,
+        selected: true
+      },
+      {
+        field: "quantity",
+        header: "Quantity",
+        dataType: "numeric",
+        sortable: true,
+        selected: true
+      },
+      { field: "date", header: "Date", dataType: "date", sortable: true }
+   ]);
   
    const tableFilters = ref({
      code: { value: null, matchMode: FilterMatchMode.STARTS_WITH },
      name: { value: null, matchMode: FilterMatchMode.STARTS_WITH },
      category: { value: null, matchMode: FilterMatchMode.IN },
-     quantity: { value: null, matchMode: FilterMatchMode.EQUALS }
+     quantity: { value: null, matchMode: FilterMatchMode.EQUALS },
+     date: { value: null, matchMode: FilterMatchMode.EQUALS }
    })
   </\script>
 `
