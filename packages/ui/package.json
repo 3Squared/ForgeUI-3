@@ -62,7 +62,7 @@
     "vite-plugin-dts": "3.9.1",
     "vite-plugin-istanbul": "6.0.2",
     "vitest": "2.1.8",
-    "vue-drawing-canvas": "^1.0.14"
+    "vue-drawing-canvas": "1.0.14"
   },
   "optionalDependencies": {
     "@rollup/rollup-linux-x64-gnu": "4.30.1"
