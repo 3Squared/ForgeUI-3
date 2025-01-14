@@ -1,5 +1,16 @@
 # forge-ui-3-styleguide
 
+## 2.2.0
+
+### Minor Changes
+
+- 7c1cf42: Add ForgeScratchpad component
+
+### Patch Changes
+
+- Updated dependencies [7c1cf42]
+  - @3squared/forge-ui-3@2.2.0
+
 ## 2.1.0
 
 ### Minor Changes

@@ -1,5 +1,11 @@
 # @3squared/forge-ui-3
 
+## 2.2.0
+
+### Minor Changes
+
+- 7c1cf42: Add ForgeScratchpad component
+
 ## 2.1.0
 
 ### Minor Changes
