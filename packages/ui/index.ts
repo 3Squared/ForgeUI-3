@@ -18,6 +18,7 @@ import ForgeForm from "./src/components/ForgeForm.vue";
 import ForgeFormField from "./src/components/ForgeFormField.vue";
 import ForgeChip from "./src/components/ForgeChip.vue";
 import ForgeProgressBar from "./src/components/ForgeProgressBar.vue";
+import ForgeScratchpad from "./src/components/ForgeScratchpad.vue";
 import ForgeStatWidget from "./src/components/ForgeStatWidget.vue";
 import ForgeStepper from "./src/components/ForgeStepper.vue";
 import ForgeTile from "./src/components/ForgeTile.vue";
@@ -46,6 +47,7 @@ export {
   ForgePageHeader,
   ForgeRemainingCharacters,
   ForgeProgressBar,
+  ForgeScratchpad,
   ForgeStatWidget,
   ForgeStepper,
   ForgeTile,

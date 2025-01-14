@@ -60,7 +60,6 @@ export default defineConfig(({mode}) => {
         'primevue/selectbutton',
         'primevue/steps',
         'primevue/tabpanel',
-        'primevue/tabview',
         'primevue/textarea',
         'primevue/toast',
         'primevue/toastservice',

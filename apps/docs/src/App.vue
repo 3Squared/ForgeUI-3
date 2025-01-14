@@ -80,6 +80,7 @@ const pages = [
         ]
       },
       { label: "Remaining Characters", command: () => router.push("/forms/remainingcharacters") },
+      { label: "Scratchpad", command: () => router.push("/forms/scratchpad") },
       { label: "Switch", command: () => router.push("/forms/switch") }
     ]
   },

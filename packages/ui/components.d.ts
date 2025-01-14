@@ -35,6 +35,7 @@ declare module 'vue' {
     ForgePaginationHeader: typeof import('./src/components/table/ForgePaginationHeader.vue')['default']
     ForgeProgressBar: typeof import('./src/components/ForgeProgressBar.vue')['default']
     ForgeRemainingCharacters: typeof import('./src/components/ForgeRemainingCharacters.vue')['default']
+    ForgeScratchpad: typeof import('./src/components/ForgeScratchpad.vue')['default']
     ForgeStatWidget: typeof import('./src/components/ForgeStatWidget.vue')['default']
     ForgeStepper: typeof import('./src/components/ForgeStepper.vue')['default']
     ForgeTable: typeof import('./src/components/table/ForgeTable.vue')['default']
