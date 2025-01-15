@@ -11,17 +11,17 @@ export default {
               props.severity === null ||
               props.severity === undefined ||
               props.severity === "primary",
-            "bg-primary-brand text-brand border-brand":
+            "bg-brand-subtle text-brand border-brand":
               props.severity === "brand",
-            "bg-primary-secondary text-secondary border-secondary":
+            "bg-secondary-subtle text-secondary border-secondary":
               props.severity === "secondary",
-            "bg-primary-success text-success border-success":
+            "bg-success-subtle text-success border-success":
               props.severity === "success",
-            "bg-primary-warning text-warning border-warning":
+            "bg-warning-subtle text-warning border-warning":
               props.severity === "warning" || props.severity === "warn",
-            "bg-primary-danger text-danger border-danger":
+            "bg-danger-subtle text-danger border-danger":
               props.severity === "danger",
-            "bg-primary-info text-info border-info": props.severity === "info",
+            "bg-info-subtle text-info border-info": props.severity === "info",
           },
           {
             "rounded-pill": props.rounded
