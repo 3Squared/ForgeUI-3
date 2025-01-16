@@ -1,5 +1,14 @@
 # @3squared/forge-ui-3
 
+## 2.2.1
+
+### Patch Changes
+
+- ca67ae5: - Fix tag severity background
+  - Update dropdown primevue links/update code example
+  - Add better select button code example
+  - Add styling to panel
+
 ## 2.2.0
 
 ### Minor Changes
