@@ -11,7 +11,7 @@ export default {
               props.severity === null ||
               props.severity === undefined ||
               props.severity === "primary",
-            "bg-brand-subtle text-brand border-brand":
+            "bg-brand-shade-1 text-brand border-brand":
               props.severity === "brand",
             "bg-secondary-subtle text-secondary border-secondary":
               props.severity === "secondary",
