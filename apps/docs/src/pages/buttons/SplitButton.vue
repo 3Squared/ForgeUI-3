@@ -43,7 +43,7 @@ const items = [
   },
   {
     label: "Quit",
-    url:  "https://vuejs.org/"
+    url: "https://vuejs.org/"
   }
 ];
 

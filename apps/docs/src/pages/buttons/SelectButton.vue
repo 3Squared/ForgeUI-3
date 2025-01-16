@@ -45,7 +45,8 @@ const { options, propVals, config, reset } = usePlayground(
 
 const value = ref();
 
-const code = computed(() => `
+const code = computed(
+  () => `
 <template>
  <SelectButton options="options" ${propVals.value.length > 0 ? " " + propVals.value.join(" ") : ""}/>
 </template>
@@ -59,6 +60,6 @@ const opts = ref([
   { label: "Option 3", value: 3, disabled: true }
 ]);
 <\/script>
-`);
-
+`
+);
 </script>
