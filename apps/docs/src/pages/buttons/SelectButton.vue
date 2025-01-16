@@ -45,5 +45,20 @@ const { options, propVals, config, reset } = usePlayground(
 
 const value = ref();
 
-const code = computed(() => `<SelectButton options="options" ${propVals.value.length > 0 ? " " + propVals.value.join(" ") : ""}/>`);
+const code = computed(() => `
+<template>
+ <SelectButton options="options" ${propVals.value.length > 0 ? " " + propVals.value.join(" ") : ""}/>
+</template>
+
+<script setup lang="ts">
+import SelectButton from "primevue/selectbutton";
+
+const opts = ref([
+  { label: "Option 1", value: 1 },
+  { label: "Option 2", value: 2 },
+  { label: "Option 3", value: 3, disabled: true }
+]);
+<\/script>
+`);
+
 </script>

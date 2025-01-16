@@ -3,7 +3,7 @@
     <forge-page-header title="Dropdown" />
     <p>
       Further documentation and examples can be found in the
-      <a class="link" target="_blank" href="https://primevue.org/dropdown/"><strong>PrimeVue documentation</strong></a>
+      <a class="link" target="_blank" href="https://primevue.org/select/"><strong>PrimeVue documentation</strong></a>
       .
     </p>
     <playground :options="options" :config="config" :code="code">
@@ -80,7 +80,7 @@ const { options, propVals, config } = usePlayground(
 const code = computed(() => `<Select ${propVals.value.join(" ")}/>`);
 const optionsArrayExample = computed(
   () => `<script setup lang="ts">
-import Dropdown from "primevue/dropdown";
+import Select from "primevue/select";
 
  const opts = ref([
   { id: 1, optionLabel: "Option 1", value: "opt_1" },

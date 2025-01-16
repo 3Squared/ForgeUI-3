@@ -43,9 +43,7 @@ const items = [
   },
   {
     label: "Quit",
-    command: () => {
-      window.location.href = "https://vuejs.org/";
-    }
+    url:  "https://vuejs.org/"
   }
 ];
 
