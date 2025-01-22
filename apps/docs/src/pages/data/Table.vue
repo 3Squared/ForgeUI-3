@@ -187,8 +187,8 @@ const componentCode = computed<string>(
 const scriptCode = computed<string>(
   () => `
  <script setup lang="ts">
- import { ForgeFilterHeader } from "@3squared/forge-ui-3";
- import { FilterMatchMode } from "primevue/api";
+ import { ForgeFilterHeader, ForgeTable } from "@3squared/forge-ui-3";
+ import { FilterMatchMode } from "@primevue/core/api";
  import { ref } from 'vue'
 
   // Data to appear in table, properties must match the 'field' property in columns array unless specified otherwise.
