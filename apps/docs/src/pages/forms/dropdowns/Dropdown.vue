@@ -13,6 +13,12 @@
     </playground>
     Here is an example of an options array and selected options array
     <code-block :code="optionsArrayExample" />
+
+    <Panel class="mb-3" header="Example: Dropdown with a boolean output" toggleable collapsed>
+      Here is an example of customising the output of the dropdown using `optionValue` to use the `value` property of an option rather than using the default
+      which would be whole option object.
+      <ExampleSelectBool />
+    </Panel>
   </div>
 </template>
 
@@ -22,6 +28,8 @@ import Select from "primevue/select";
 import { computed, ref } from "vue";
 import { usePlayground, Playground, CodeBlock } from "@3squared/forge-playground-3";
 import { stringFilterTypes } from "../../../composables/playgroundOptions";
+import Panel from "primevue/panel";
+import ExampleSelectBool from "../../examples/components/ExampleSelectBool.vue";
 
 const selectedItem = ref();
 

@@ -70,7 +70,8 @@ const { options, propVals, config, reset } = usePlayground(
     display: "comma",
     maxSelectedLabels: 4,
     filter: false,
-    showClear: false
+    showClear: false,
+    showToggleAll: true
   },
   {
     display: { type: "select", options: displays }

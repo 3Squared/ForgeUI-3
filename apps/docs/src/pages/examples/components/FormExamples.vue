@@ -29,7 +29,6 @@
             filter
             filter-placeholder="Search"
             field-label="Skills"
-            :max-sected
           />
           <div class="d-flex justify-content-end mt-1">
             <!--          Add Button with type 'submit' to trigger submit event -->
