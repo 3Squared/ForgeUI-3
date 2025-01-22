@@ -35,6 +35,7 @@ declare module 'vue-router/auto-routes' {
     '/examples/CodeTesting': RouteRecordInfo<'/examples/CodeTesting', '/examples/CodeTesting', Record<never, never>, Record<never, never>>,
     '/examples/components/ExampleAutoComplete': RouteRecordInfo<'/examples/components/ExampleAutoComplete', '/examples/components/ExampleAutoComplete', Record<never, never>, Record<never, never>>,
     '/examples/components/ExampleButton': RouteRecordInfo<'/examples/components/ExampleButton', '/examples/components/ExampleButton', Record<never, never>, Record<never, never>>,
+    '/examples/components/ExampleConfirmDialogue': RouteRecordInfo<'/examples/components/ExampleConfirmDialogue', '/examples/components/ExampleConfirmDialogue', Record<never, never>, Record<never, never>>,
     '/examples/components/ExampleDataView': RouteRecordInfo<'/examples/components/ExampleDataView', '/examples/components/ExampleDataView', Record<never, never>, Record<never, never>>,
     '/examples/components/ExampleDrawer': RouteRecordInfo<'/examples/components/ExampleDrawer', '/examples/components/ExampleDrawer', Record<never, never>, Record<never, never>>,
     '/examples/components/ExampleFileUploader': RouteRecordInfo<'/examples/components/ExampleFileUploader', '/examples/components/ExampleFileUploader', Record<never, never>, Record<never, never>>,

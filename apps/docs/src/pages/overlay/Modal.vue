@@ -14,15 +14,31 @@
     </Playground>
     Make sure to include the DialogService plugin in your main.ts file.
     <CodeBlock :code="mainTsCode" />
+
+    <Panel class="mb-3" header="Generic Confirmation Modal" toggleable collapsed>
+      <p>
+        If you only a small popup seeking confirmation from the user, theres a quick programmatic way to display one using the ConfirmService.
+        <br/>
+        Make sure to add <code>.use(ConfirmationService)</code> to your main.ts file before using it.
+      </p>
+      <p>
+        Further documentation and examples can be found in the
+        <a class="link" target="_blank" href="https://primevue.org/confirmdialog/"><strong>PrimeVue documentation</strong></a>
+        .
+      </p>
+      <ExampleConfirmDialogue class="mt-3" />
+    </Panel>
   </div>
 </template>
 
 <script setup lang="ts">
 import { ForgePageHeader, ForgeModal } from "@3squared/forge-ui-3";
 import Button from "primevue/button";
+import Panel from "primevue/panel";
 import { Playground, usePlayground, CodeBlock } from "@3squared/forge-playground-3";
 import { computed, ref } from "vue";
 import { buttonTypes, position, shorthandSizes } from "../../composables/playgroundOptions";
+import ExampleConfirmDialogue from "../examples/components/ExampleConfirmDialogue.vue";
 
 const visible = ref<boolean>(false);
 
