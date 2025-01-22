@@ -9,7 +9,7 @@
     "@vue/eslint-config-prettier": "9.0.0",
     "@vue/eslint-config-typescript": "13.0.0",
     "@typescript-eslint/parser": "^8.0.0",
-    "eslint": "8.57.1",
+    "eslint": "9.18.0",
     "eslint-config-prettier": "9.1.0",
     "eslint-plugin-prettier": "5.2.3",
     "eslint-plugin-unused-imports": "4.1.4",
