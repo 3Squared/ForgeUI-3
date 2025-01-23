@@ -96,18 +96,17 @@ const ensureFileNameHasCorrectExtension = () => {
   // add missing file extension
   if (fileNameSections.length === 1) {
     if (lastWordInFileName && lastWordInFileName.length > 0) {
-      let validName = [fileName.value, fileExtensionFromMime].join('.');
-      fileName.value = validName;
+      fileName.value = [fileName.value, fileExtensionFromMime].join('.');
     }
   }
   //correct wrong file extension
   else if (fileNameSections.length > 1) {
     if (lastWordInFileName !== fileExtensionFromMime) {
-      let validName =  fileName.value.replace(lastWordInFileName!, fileExtensionFromMime!);
-      fileName.value = validName;
+      fileName.value =  fileName.value.replace(lastWordInFileName!, fileExtensionFromMime!);
     }
   }
 }
+
 const uploadBlob = async () => {
   if (!validFileType.value || !validFileSize.value) {
     uploadStatus.value = !validFileType.value ? 'InvalidFileType' : 'InvalidFileSize'
