@@ -5,9 +5,9 @@
         <div class="d-flex justify-content-between align-items-center position-relative" v-on-click-outside="editFinished">
           <slot name="editor" :class="{ 'is-invalid': hasErrors }" :edit-finished="editFinished" :cancel="cancel" :val="value">
             <InputText
+                v-model.trim="value"
                 data-cy="input"
                 ref="input"
-                v-model.trim="value"
                 :class="{ 'is-invalid': hasErrors }"
                 @keydown.enter="editFinished"
                 @keydown.esc="cancel"
@@ -55,40 +55,40 @@ const props = withDefaults(defineProps<ForgeInlineEditorProps>(),{
   readonly: false
 })
 
-const modelValue = defineModel()
-const editing = ref<boolean>(false)
-const input = ref()
+const modelValue = defineModel();
+const editing = ref<boolean>(false);
+const input = ref();
 
 const beginEdit = () => {
-  editing.value = !editing.value
-  input.value?.focus()
+  editing.value = !editing.value;
+  input.value?.focus();
 }
 
 const editFinished = async () => {
   if(hasErrors.value) {
-    return false
+    return false;
   }
   modelValue.value = value.value
   if (props.completeAction) {
     try {
-      await props.completeAction.apply(this, props.params)
-      editing.value = !editing.value
+      await props.completeAction.apply(this, props.params);
+      editing.value = !editing.value;
     } catch (completeActionError) {
       if (props.errorAction) {
-        await props.errorAction.apply(this, props.errorParams)
+        await props.errorAction.apply(this, props.errorParams);
       }
     }
   } else {
-    editing.value = !editing.value
+    editing.value = !editing.value;
   }
 }
 
 const cancel = () => {
-  editing.value = !editing.value
+  editing.value = !editing.value;
 }
 
 const reset = () => {
-  value.value = null
+  value.value = null;
 }
 
 const { errorMessage, errors, value } = useField(() => props.name, undefined, {
@@ -96,8 +96,8 @@ const { errorMessage, errors, value } = useField(() => props.name, undefined, {
 })
 
 onMounted(() => {
-  value.value = modelValue.value
+  value.value = modelValue.value;
 })
 
-const hasErrors = computed(() => errors.value.length > 0)
+const hasErrors = computed(() => errors.value.length > 0);
 </script>
