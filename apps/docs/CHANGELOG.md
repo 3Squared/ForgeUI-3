@@ -1,5 +1,11 @@
 # forge-ui-3-styleguide
 
+## 2.2.1
+
+### Patch Changes
+
+- 77339ad: Update forge docs with select example and update FilterMatchMode import
+
 ## 2.2.0
 
 ### Minor Changes
