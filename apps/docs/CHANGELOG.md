@@ -1,5 +1,17 @@
 # forge-ui-3-styleguide
 
+## 2.3.0
+
+### Minor Changes
+
+- 81c21e4: Ensure file names have correct file extension
+
+### Patch Changes
+
+- Updated dependencies [81c21e4]
+  - @3squared/forge-playground-3@1.2.0
+  - @3squared/forge-ui-3@2.3.0
+
 ## 2.2.1
 
 ### Patch Changes
