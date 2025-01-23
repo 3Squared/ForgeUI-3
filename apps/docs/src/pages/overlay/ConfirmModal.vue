@@ -1,9 +1,7 @@
 <template>
   <div>
     <ForgePageHeader title="Confirmation Modal" />
-    <p>
-      If you only a small popup seeking confirmation from the user, theres a quick programmatic way to display one using the ConfirmService.
-    </p>
+    <p>If you only a small popup seeking confirmation from the user, theres a quick programmatic way to display one using the ConfirmService.</p>
     <p>
       Further documentation and examples can be found in the
       <a class="link" target="_blank" href="https://primevue.org/confirmdialog/"><strong>PrimeVue documentation</strong></a>
@@ -31,35 +29,34 @@ import { computed, ref } from "vue";
 import { buttonTypes, position } from "../../composables/playgroundOptions";
 import ExampleConfirmDialogue from "../examples/components/ExampleConfirmDialogue.vue";
 import ConfirmDialog from "primevue/confirmdialog";
-import {useConfirm} from "primevue/useconfirm";
+import { useConfirm } from "primevue/useconfirm";
 
 function getPropValue<T>(key: string, fallback: T): T {
-  return propVals?.value?.find((val) => val?.startsWith(key) == true)?.split("=")[1] as T ?? fallback;
+  return (propVals?.value?.find((val) => val?.startsWith(key) == true)?.split("=")[1] as T) ?? fallback;
 }
 
 const { options, propVals, config, reset } = usePlayground(
-    {
-      message: "Are you sure you want to proceed?",
-      header: "Confirmation",
-      rejectProps: {
-        label: "Cancel",
-        severity: "secondary",
-        outlined: true
-      },
-      acceptProps: {
-        label: "Save"
-      }
-    },
   {
-  }
+    message: "Are you sure you want to proceed?",
+    header: "Confirmation",
+    rejectProps: {
+      label: "Cancel",
+      severity: "secondary",
+      outlined: true
+    },
+    acceptProps: {
+      label: "Save"
+    }
+  },
+  {}
 );
 
 const confirm = useConfirm();
 
 const confirm1 = () => {
   confirm.require({
-    message: getPropValue('message', 'Are you sure you want to proceed?').replaceAll("\"", ""),
-    header: getPropValue('header', 'Confirmation').replaceAll("\"", ""),
+    message: getPropValue("message", "Are you sure you want to proceed?").replaceAll('"', ""),
+    header: getPropValue("header", "Confirmation").replaceAll('"', ""),
     rejectProps: {
       label: "Cancel",
       severity: "secondary",
@@ -77,8 +74,8 @@ const confirm1 = () => {
   });
 };
 
-
-const code = computed(() => `
+const code = computed(
+  () => `
 <template>
     <ConfirmDialog />
     <Button label="Click me!" @click="confirm1()" />
@@ -92,8 +89,8 @@ const confirm = useConfirm();
 
 const confirm1 = () => {
   confirm.require({
-    message: "${getPropValue('message', 'Are you sure you want to proceed?').replaceAll("\"", "")}",
-    header: "${getPropValue('header', 'Confirmation').replaceAll("\"", "")}",
+    message: "${getPropValue("message", "Are you sure you want to proceed?").replaceAll('"', "")}",
+    header: "${getPropValue("header", "Confirmation").replaceAll('"', "")}",
     rejectProps: {
       label: "Cancel",
       severity: "secondary",
@@ -111,6 +108,6 @@ const confirm1 = () => {
   });
 };
 <\/script>
-`);
-
+`
+);
 </script>

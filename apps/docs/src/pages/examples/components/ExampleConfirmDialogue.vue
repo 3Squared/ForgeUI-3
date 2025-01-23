@@ -1,11 +1,14 @@
 <template>
-  <p>
-    Passing through a magic ID from somewhere into the confirmation.
-    This can also be used for any other of the configuration options within that <code>confirm.require({})</code> call.
-  </p>
   <div>
-    <Button label="Save" @click="confirmExample('my-cool-id')" />
-    <CodeBlock :code="code" />
+    <p>
+      Passing through a magic ID from somewhere into the confirmation. This can also be used for any other of the configuration options within that
+      <code>confirm.require({})</code>
+      call.
+    </p>
+    <div>
+      <Button label="Save" @click="confirmExample('my-cool-id')" />
+      <CodeBlock :code="code" />
+    </div>
   </div>
 </template>
 
