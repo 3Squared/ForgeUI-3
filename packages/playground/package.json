@@ -22,7 +22,7 @@
   },
   "devDependencies": {
     "@types/node": "18.19.74",
-    "@typescript-eslint/eslint-plugin": "^8.21.0",
+    "@typescript-eslint/eslint-plugin": "8.21.0",
     "@vitejs/plugin-vue": "5.2.1",
     "eslint-config-custom": "*",
     "eslint-plugin-prettier": "5.2.3",
