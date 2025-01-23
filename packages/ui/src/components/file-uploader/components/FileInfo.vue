@@ -1,28 +1,27 @@
 <template>
   <div class="py-4 px-3 d-flex" :data-cy="`file-info-${file.name}`">
     <div>
-      <Image v-if="isImage(file.type)" id="thumbnail-image" image-class="image-file-thumbnail border"  :src="getThumbnailUrl(file)" :alt="file.name" width="75px" preview />
-      <Icon v-else id="file-earmark" icon="bi:file-earmark" color="black" width="75px"/>
+      <Image v-if="isImage(file.type)" id="thumbnail-image" image-class="image-file-thumbnail border"
+        :src="getThumbnailUrl(file)" :alt="file.name" width="75px" preview />
+      <Icon v-else id="file-earmark" icon="bi:file-earmark" color="black" width="75px" />
     </div>
     <div class="ms-3 d-flex flex-column">
       <div>
-        <ForgeInlineEditor v-if="editableFileName" id="edit-file-name" v-model="fileName" :rules="customFileNameRules" :name="file.name" :complete-action="updateFileName"/>
-        <span v-else id="file-name">{{ file.name }}</span>
+        <ForgeInlineEditor v-if="editableFileName" id="edit-file-name" v-model="fileName" :rules="customFileNameRules"
+          :name="file.name" :complete-action="updateFileName" />
+        <span v-else id="file-name">{{ fileName }}</span>
       </div>
       <span class="text-black-50" id="file-type">File type: {{ file.type.split('/').pop() }}</span>
       <span class="text-black-50" id="file-size">File size: {{ formatFileSize(file.size) }}</span>
     </div>
 
     <div class="ms-auto my-auto d-flex">
-      <UploadStatus
-          :key="uploadStatus"
-          :file-size="file.size"
-          :upload-status="uploadStatus"
-          :bytes-uploaded="bytesUploaded"
-          :max-file-size="maxFileSize"
-      />
-      <Button link @click="uploadBlob" v-if="uploadStatus === 'Not Uploaded' || uploadStatus === 'Failed' || uploadStatus === 'Duplicate' || uploadStatus === 'Aborted'">
-        <Icon :icon="uploadStatus === 'Not Uploaded' || uploadStatus === 'Duplicate' ? 'bi:upload' : 'bi:arrow-clockwise'" />
+      <UploadStatus :key="uploadStatus" :file-size="file.size" :upload-status="uploadStatus"
+        :bytes-uploaded="bytesUploaded" :max-file-size="maxFileSize" />
+      <Button link @click="uploadBlob"
+        v-if="uploadStatus === 'Not Uploaded' || uploadStatus === 'Failed' || uploadStatus === 'Duplicate' || uploadStatus === 'Aborted'">
+        <Icon
+          :icon="uploadStatus === 'Not Uploaded' || uploadStatus === 'Duplicate' ? 'bi:upload' : 'bi:arrow-clockwise'" />
       </Button>
       <Button link @click="controller.value.abort()" v-if="uploadStatus === 'Uploading'">
         <Icon :icon="'bi:x-circle-fill'" />
@@ -37,7 +36,8 @@
 <script setup lang="ts">
 import ForgeInlineEditor from "@/components/ForgeInlineEditor.vue";
 import { Icon } from "@iconify/vue";
-import Image from 'primevue/image'
+import Image from 'primevue/image';
+import mime from "mime";
 import {
   isImage,
   getThumbnailUrl,
@@ -46,17 +46,17 @@ import {
   deleteFile,
   forgeMime
 } from '../utilities/utilities'
-import {TypedSchema} from "vee-validate";
-import {computed, ref, onMounted} from "vue";
+import { TypedSchema } from "vee-validate";
+import { computed, ref, onMounted } from "vue";
 import UploadStatus from "@/components/file-uploader/components/UploadStatus.vue";
-import {BlockBlobClient, BlockBlobParallelUploadOptions} from "@azure/storage-blob";
+import { BlockBlobClient, BlockBlobParallelUploadOptions } from "@azure/storage-blob";
 import { ForgeFileType } from "../../../types/forge-types";
 
 interface FileInfoProps {
   editableFileName: boolean,
   acceptedFileTypes: ForgeFileType[],
   maxFileSize: number,
-  getFileUrlAction: (fileName : string) => Promise<[string, string]>,
+  getFileUrlAction: (fileName: string) => Promise<[string, string]>,
   customFileNameRules?: TypedSchema,
   autoUploadToBlob?: boolean
 }
@@ -73,9 +73,9 @@ const blobUploadUrl = ref<string>("")
 const bytesUploaded = ref<number>(0)
 const controller = ref();
 
-const validFileType = computed<boolean>(() => acceptedFileTypes.some(({fileType}) => fileType === file.value.type))
+const validFileType = computed<boolean>(() => acceptedFileTypes.some(({ fileType }) => fileType === file.value.type))
 const validFileSize = computed<boolean>(() => file.value.size <= maxFileSize)
-const fileMimeType = computed<string|null>(() => {
+const fileMimeType = computed<string | null>(() => {
   if (file.value.type) {
     return file.value.type;
   }
@@ -83,13 +83,32 @@ const fileMimeType = computed<string|null>(() => {
 });
 
 const updateFileName = () => {
-  if(fileName.value != null) {
+  if (fileName.value != null) {
+    ensureFileNameHasCorrectExtension();
     file.value = new File([file.value], fileName.value, { type: file.value.type, lastModified: (new Date()).valueOf() })
   }
 }
 
-const uploadBlob = async () => {  
-  if(!validFileType.value || !validFileSize.value){
+const ensureFileNameHasCorrectExtension = () => {
+  let fileNameSections = fileName.value.split('.');
+  let fileExtensionFromMime = mime.getExtension(fileMimeType.value!);
+  let lastWordInFileName = fileName.value.split('.').pop();
+  // add missing file extension
+  if (fileNameSections.length === 1) {
+    if (lastWordInFileName && lastWordInFileName.length > 0) {
+      fileName.value = [fileName.value, fileExtensionFromMime].join('.');
+    }
+  }
+  //correct wrong file extension
+  else if (fileNameSections.length > 1) {
+    if (lastWordInFileName !== fileExtensionFromMime) {
+      fileName.value =  fileName.value.replace(lastWordInFileName!, fileExtensionFromMime!);
+    }
+  }
+}
+
+const uploadBlob = async () => {
+  if (!validFileType.value || !validFileSize.value) {
     uploadStatus.value = !validFileType.value ? 'InvalidFileType' : 'InvalidFileSize'
     return;
   }
@@ -97,14 +116,14 @@ const uploadBlob = async () => {
 
   controller.value = new AbortController();
   const [uploadUrl, blobFileName] = await getFileUrlAction(file.value.name)
-  if(!uploadUrl) {
+  if (!uploadUrl) {
     uploadStatus.value = 'Failed'
     return;
   }
 
   try {
     uploadStatus.value = 'Uploading'
-    const blockBlobClient = new BlockBlobClient(uploadUrl)
+    const blockBlobClient = new BlockBlobClient(uploadUrl);
     const options = {
       abortSignal: controller.value.signal,
       onProgress: (progress) => bytesUploaded.value = progress.loadedBytes,
@@ -131,13 +150,13 @@ const uploadBlob = async () => {
 }
 
 const deleteFileFromBlob = async () => {
-  await deleteFile(uploadStatus.value, blobUploadUrl.value)
-  emits('deleted', file.value)
+  await deleteFile(uploadStatus.value, blobUploadUrl.value);
+  emits('deleted', file.value);
 }
 
 onMounted(() => {
-  if(autoUploadToBlob) {
-    uploadBlob()
+  if (autoUploadToBlob) {
+    uploadBlob();
   }
 })
 </script>
