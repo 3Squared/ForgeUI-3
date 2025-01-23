@@ -30,8 +30,7 @@ const acceptedTypes = [
 const getSasToken = async (fileName: string) => {
   //to get the url you need to run azurite and (using storage explorer) create a blob contianer called forgefileuploader and get it's access signature.
   //you also need to include the filename in the url: http://127.0.0.1:10000/devstoreaccount1/forgefileuploader/${filename}...
-  const fileWriteUrl =
-    `http://127.0.0.1:10000/devstoreaccount1/forgefileuploader/${fileName}?sv=2018-03-28&si=forgefileuploader-1948E8286AB&sr=c&sig=AEEo7ornbXBufk4W9JHicGr2AzrUhbskTcme4Frr1q0%3D`;
+  const fileWriteUrl = `http://127.0.0.1:10000/devstoreaccount1/forgefileuploader/${fileName}?sv=2018-03-28&si=forgefileuploader-1948E8286AB&sr=c&sig=AEEo7ornbXBufk4W9JHicGr2AzrUhbskTcme4Frr1q0%3D`;
   const blobFileName = fileName;
   return Promise.resolve([fileWriteUrl, blobFileName]);
 };
