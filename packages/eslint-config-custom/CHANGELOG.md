@@ -1,5 +1,11 @@
 # eslint-config-custom
 
+## 0.1.0
+
+### Minor Changes
+
+- 81c21e4: Ensure file names have correct file extension
+
 ## 0.0.1
 
 ### Patch Changes
