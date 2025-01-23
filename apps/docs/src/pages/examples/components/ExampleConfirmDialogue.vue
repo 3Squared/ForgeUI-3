@@ -1,7 +1,10 @@
 <template>
+  <p>
+    Passing through a magic ID from somewhere into the confirmation.
+    This can also be used for any other of the configuration options within that <code>confirm.require({})</code> call.
+  </p>
   <div>
-    <ConfirmDialog></ConfirmDialog>
-    <Button label="Save" @click="confirm1()" />
+    <Button label="Save" @click="confirmExample('my-cool-id')" />
     <CodeBlock :code="code" />
   </div>
 </template>
@@ -15,9 +18,9 @@ import { computed } from "vue";
 
 const confirm = useConfirm();
 
-const confirm1 = () => {
+const confirmExample = (id: string) => {
   confirm.require({
-    message: "Are you sure you want to proceed?",
+    message: `Are you sure you want to proceed with ID: ${id}?`,
     header: "Confirmation",
     rejectProps: {
       label: "Cancel",
@@ -40,7 +43,7 @@ const code = computed(
   () => `<template>
   <div>
     <ConfirmDialog></ConfirmDialog>
-    <Button @click="confirm1()" label="Save" />
+    <Button @click="confirmExample('my-cool-id')" label="Save" />
   </div>
 </template>
 
@@ -52,9 +55,9 @@ import {useConfirm} from "primevue/useconfirm";
 const confirm = useConfirm()
 
 
-const confirm1 = () => {
+const confirmExample = (id: string) => {
   confirm.require({
-    message: 'Are you sure you want to proceed?',
+    message: \`Are you sure you want to proceed with ID: \$\{id\}?\`,
     header: 'Confirmation',
     rejectProps: {
       label: 'Cancel',
