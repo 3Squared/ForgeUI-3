@@ -72,8 +72,6 @@ watch(
 
 const code = computed(() => `<ForgeFormField${propVals.value.length > 0 ? " " + propVals.value.join(" ") : ""} />`);
 
-const name = ref();
-
 const validationExampleCode = computed(
   () => `
 <template>

@@ -3,7 +3,10 @@
     <div class="d-flex flex-row mb-2 h-100">
       <Card class="w-75 vh-70 me-2" :pt="{ content: { class: 'h-100' } }">
         <template #content>
-          <div class="d-flex align-items-center justify-content-center" :class="displayValue ? 'h-75' : 'h-100'">
+          <div
+            class="d-flex align-items-center justify-content-center"
+            :class="displayValue ? 'h-75' : 'h-100'"
+          >
             <slot href="component" name="component" />
           </div>
           <div v-if="displayValue" class="h-25">
@@ -22,9 +25,15 @@
             <h1 class="h3">Options</h1>
             <div class="d-flex align-items-center">
               <slot name="re-render">
-                <Button v-if="props.rerender" class="mr-2" @click="$emit('re-render')">Re-render</Button>
+                <Button
+                  v-if="props.rerender"
+                  class="mr-2"
+                  @click="$emit('re-render')"
+                >
+                  Re-render
+                </Button>
               </slot>
-              <Button @click="$emit('reset')">Reset</Button>
+              <Button @click="$emit('reset')"> Reset </Button>
             </div>
           </div>
           <slot name="header" />
@@ -35,7 +44,12 @@
               <slot :name="key" v-bind="props.options">
                 <div v-if="isSelect(getConfig(key))">
                   <label>{{ key }}</label>
-                  <Select v-model="props.options[key]" :options="getOptions(key)" class="mb-3" :disabled="isDisabled(key)" />
+                  <Select
+                    v-model="props.options[key]"
+                    :options="getOptions(key)"
+                    class="mb-3"
+                    :disabled="isDisabled(key)"
+                  />
                 </div>
                 <ForgeCheckbox
                   v-else-if="typeof option === 'boolean'"
@@ -48,15 +62,28 @@
                 />
                 <template v-else-if="typeof option === 'number'">
                   <label>{{ key }}</label>
-                  <InputText v-model.number="props.options[key]" class="mb-2" type="number" :disabled="isDisabled(key)" />
+                  <InputText
+                    v-model.number="props.options[key]"
+                    class="mb-2"
+                    type="number"
+                    :disabled="isDisabled(key)"
+                  />
                 </template>
-                <template v-else-if="typeof option === 'string' || typeof option === undefined">
+                <template
+                  v-else-if="
+                    typeof option === 'string' || typeof option === undefined
+                  "
+                >
                   <label>{{ key }}</label>
-                  <InputText v-model="props.options[key]" class="mb-2" :disabled="isDisabled(key)" />
+                  <InputText
+                    v-model="props.options[key]"
+                    class="mb-2"
+                    :disabled="isDisabled(key)"
+                  />
                 </template>
               </slot>
             </template>
-            <slot name="additionalOptions"></slot>
+            <slot name="additionalOptions" />
           </div>
         </template>
       </Card>
@@ -87,11 +114,11 @@ export interface ForgePlaygroundProps {
 const props = withDefaults(defineProps<ForgePlaygroundProps>(), {
   rerender: false,
   code: "",
-  displayValue: false
+  displayValue: false,
 });
 
 function getConfig(key: string): PropDefs {
-  return props.config![key]! ?? {};
+  return props.config[key]! ?? {};
 }
 
 function isDisabled(key: string) {
@@ -103,7 +130,7 @@ function isDisabled(key: string) {
 }
 
 function isSelect(config: PropDefs): config is SelectPropDef {
-  return (config as SelectPropDef)?.type === "select" ?? false;
+  return (config as SelectPropDef)?.type === "select";
 }
 
 function getOptions(key: string) {

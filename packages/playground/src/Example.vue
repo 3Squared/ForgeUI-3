@@ -3,19 +3,25 @@
     <h3>Button</h3>
     <p>
       Further documentation and examples can be found in the
-      <a class="link" href="https://saforgestyleguide.z33.web.core.windows.net/#/general/button/button" target="_blank">
+      <a
+        class="link"
+        href="https://saforgestyleguide.z33.web.core.windows.net/#/general/button/button"
+        target="_blank"
+      >
         <strong>Forge.UI documentation</strong>
       </a>
       .
     </p>
     <playground :code="code" :config="config" :options="options" @reset="reset">
       <template #component>
-        <component :is="Button" v-bind="options">{{ content }}</component>
+        <component :is="Button" v-bind="options">
+          {{ content }}
+        </component>
       </template>
       <template #additionalOptions>
         <div>
           <label>Button Content</label>
-          <InputText v-model="content"></InputText>
+          <InputText v-model="content" />
         </div>
       </template>
     </playground>
@@ -40,12 +46,12 @@ const { options, propVals, config, reset } = usePlayground(
     pressed: false,
     to: "",
     replace: false,
-    href: ""
+    href: "",
   },
   {
-    replace: { disabled: () => !options.value.to }
+    replace: { disabled: () => !options.value.to },
   },
-  () => (content.value = "I am a Button")
+  () => (content.value = "I am a Button"),
 );
 
 const code = computed(() => {
@@ -58,6 +64,6 @@ watch(
     if (!val) {
       options.value.replace = false;
     }
-  }
+  },
 );
 </script>

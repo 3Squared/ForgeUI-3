@@ -37,8 +37,7 @@ const { options, propVals, config, reset } = usePlayground(
     height: 300,
     width: 600
   },
-  {},
-  () => {}
+  {}
 );
 
 const image = ref();

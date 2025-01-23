@@ -38,21 +38,13 @@
 </template>
 
 <script setup lang="ts">
-import { ForgeFilterHeader, ForgeFormField, ForgeTable } from "@3squared/forge-ui-3";
+import { ForgeFilterHeader, ForgeTable } from "@3squared/forge-ui-3";
 import Card from "primevue/card";
 import Column from "primevue/column";
-import DataTable from "primevue/datatable";
 import { ref } from "vue";
 import InputText from "primevue/inputtext";
 import InputNumber from "primevue/inputnumber";
 import { FilterMatchMode } from "@primevue/core/api";
-
-const pageSize = ref<number>(5);
-const productType = ref();
-const sizingOptions = ref([5, 10, 15, 20]);
-const sortOrder = ref(-1);
-const date = ref();
-const expandedRowGroups = ref();
 
 const multiselectOptions = ["Fitness", "Clothing"];
 const dropdownOptions = [
@@ -207,10 +199,4 @@ const products = [
     date: new Date().setDate(new Date().getDate() + 14)
   }
 ];
-
-const productOptions = ref([
-  { label: "Fitness", value: "Fitness" },
-  { label: "Accessories", value: "Accessories" },
-  { label: "Clothing", value: "Clothing" }
-]);
 </script>

@@ -25,8 +25,7 @@
 import { ForgePageHeader } from "@3squared/forge-ui-3";
 import Button from "primevue/button";
 import { Playground, usePlayground } from "@3squared/forge-playground-3";
-import { computed, ref } from "vue";
-import { buttonTypes, position } from "../../composables/playgroundOptions";
+import { computed } from "vue";
 import ExampleConfirmDialogue from "../examples/components/ExampleConfirmDialogue.vue";
 import ConfirmDialog from "primevue/confirmdialog";
 import { useConfirm } from "primevue/useconfirm";

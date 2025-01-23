@@ -10,8 +10,8 @@
     "network": "npm run build && vite preview --host",
     "dev": "vite",
     "start": "vite preview --port=3000",
-    "lint": "eslint . --ext .ts,.vue",
-    "lint:fix": "eslint . --ext .ts,.vue --fix"
+    "lint": "eslint src",
+    "lint:fix": "eslint src --fix"
   },
   "dependencies": {
     "@3squared/forge-playground-3": "*",
@@ -26,7 +26,6 @@
     "@typescript-eslint/eslint-plugin": "8.21.0",
     "@vitejs/plugin-vue": "5.2.1",
     "eslint-config-custom": "*",
-    "eslint-plugin-prettier": "5.2.3",
     "typescript": "5.7.3",
     "unplugin-vue-router": "0.11.1",
     "vite": "5.4.14",
