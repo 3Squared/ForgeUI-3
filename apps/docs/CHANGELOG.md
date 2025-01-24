@@ -1,5 +1,11 @@
 # forge-ui-3-styleguide
 
+## 2.4.1
+
+### Patch Changes
+
+- bb69f43: Fix loading error in router
+
 ## 2.4.0
 
 ### Minor Changes
