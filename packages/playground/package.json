@@ -22,7 +22,6 @@
   },
   "devDependencies": {
     "@types/node": "18.19.74",
-    "@typescript-eslint/eslint-plugin": "8.21.0",
     "@vitejs/plugin-vue": "5.2.1",
     "eslint-config-custom": "*",
     "rollup-plugin-visualizer": "5.14.0",

@@ -29,21 +29,6 @@ export const config = typescriptEslint.config(
             },
         },
         rules: {
-             //"prettier/prettier": [
-             //   "error",
-             //   {
-             //       "tabWidth": 2,
-             //       "useTabs": false,
-             //       "printWidth": 160,
-             //       "singleQuote": false,
-             //       "trailingComma": "none",
-             //       "bracketSpacing": true,
-             //       "bracketSemiLine": false,
-             //       "arrowParens": "always",
-             //       "endOfLine": "auto",
-             //       htmlWhitespaceSensitivity: "ignore"
-             //   }
-            //],
             "no-console": process.env.NODE_ENV === "production" ? "error" : "warn",
             "no-debugger": process.env.NODE_ENV === "production" ? "error" : "warn",
             "no-undef": "off",

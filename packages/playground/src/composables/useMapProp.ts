@@ -4,10 +4,7 @@ function formatKey(key: string) {
   return key.replace(/[A-Z]/g, "-$&").toLowerCase();
 }
 
-function useStringifyProp(
-  key: string,
-  prop: string | number | boolean | object,
-) {
+function useStringifyProp(key: string, prop: string | number | boolean | object) {
   if (typeof prop === "string" || typeof prop === "number") {
     return `${formatKey(key)}="${prop}"`;
   } else if (typeof prop === "boolean") {
@@ -37,9 +34,7 @@ export interface SelectPropDef extends PropDef {
 
 export type PropDefs = SelectPropDef | PropDef;
 
-export function usePlayground<
-  T extends Record<string, string | number | boolean | object>,
->(
+export function usePlayground<T extends Record<string, string | number | boolean | object>, >(
   defaultProps: T,
   inConfig?: Partial<Record<keyof T, PropDefs>>,
   additionalReset?: () => void,
