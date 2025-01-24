@@ -1,5 +1,12 @@
 # eslint-config-custom
 
+## 0.1.1
+
+### Patch Changes
+
+- dfc7f9c: Introduce PT for ConfirmDialog
+- dfc7f9c: Linting migration to ESLintV9 and ran linter
+
 ## 0.1.0
 
 ### Minor Changes

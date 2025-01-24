@@ -1,5 +1,13 @@
 # @3squared/forge-playground-3
 
+## 1.2.1
+
+### Patch Changes
+
+- dfc7f9c: Linting migration to ESLintV9 and ran linter
+- Updated dependencies [dfc7f9c]
+  - @3squared/forge-ui-3@2.4.0
+
 ## 1.2.0
 
 ### Minor Changes

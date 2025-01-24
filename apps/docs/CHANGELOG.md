@@ -1,5 +1,18 @@
 # forge-ui-3-styleguide
 
+## 2.4.0
+
+### Minor Changes
+
+- dfc7f9c: Introduce PT for ConfirmDialog
+
+### Patch Changes
+
+- Updated dependencies [dfc7f9c]
+- Updated dependencies [dfc7f9c]
+  - @3squared/forge-ui-3@2.4.0
+  - @3squared/forge-playground-3@1.2.1
+
 ## 2.3.0
 
 ### Minor Changes
