@@ -1,7 +1,7 @@
 {
   "name": "@3squared/forge-playground-3",
   "author": "Jacob Minor",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "license": "MIT",
   "main": "./dist/esm/forge-playground-3.mjs",
   "module": "./dist/esm/forge-playground-3.mjs",
@@ -22,7 +22,6 @@
   },
   "devDependencies": {
     "@types/node": "18.19.74",
-    "@typescript-eslint/eslint-plugin": "8.21.0",
     "@vitejs/plugin-vue": "5.2.1",
     "eslint-config-custom": "*",
     "rollup-plugin-visualizer": "5.14.0",

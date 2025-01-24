@@ -1,16 +1,10 @@
 ﻿<template>
   <div class="position-relative mt-2">
-    <Button
-      class="copy-code position-absolute text-white"
-      link
-      @click="copyToClipboard"
-    >
+    <Button class="copy-code position-absolute text-white" link @click="copyToClipboard">
       Copy
       <Icon icon="bi:files" />
     </Button>
-    <pre class="position-relative p-3 pt-4 rounded-lg code-block">
-      <code class="text-white" v-html="formattedCode" />
-    </pre>
+    <pre class="position-relative p-3 pt-4 rounded-lg code-block"><code class="text-white" v-html="formattedCode" /></pre>
   </div>
 </template>
 
@@ -26,9 +20,7 @@ export interface CodeBlockProps {
 
 const props = defineProps<CodeBlockProps>();
 
-const formattedCode = computed(() =>
-  Prism.highlight(props.code, Prism.languages.markup, "vue"),
-);
+const formattedCode = computed(() => Prism.highlight(props.code, Prism.languages.markup, "vue"),);
 
 function copyToClipboard() {
   void navigator.clipboard.writeText(props.code);
