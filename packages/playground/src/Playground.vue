@@ -24,7 +24,7 @@
               <slot name="re-render">
                 <Button v-if="props.rerender" class="mr-2" @click="$emit('re-render')">Re-render</Button>
               </slot>
-              <Button @click="$emit('reset')">Reset</Button>
+              <Button @click="$emit('reset')"> Reset </Button>
             </div>
           </div>
           <slot name="header" />
@@ -56,7 +56,7 @@
                 </template>
               </slot>
             </template>
-            <slot name="additionalOptions"></slot>
+            <slot name="additionalOptions" />
           </div>
         </template>
       </Card>
@@ -87,11 +87,11 @@ export interface ForgePlaygroundProps {
 const props = withDefaults(defineProps<ForgePlaygroundProps>(), {
   rerender: false,
   code: "",
-  displayValue: false
+  displayValue: false,
 });
 
 function getConfig(key: string): PropDefs {
-  return props.config![key]! ?? {};
+  return props.config[key]! ?? {};
 }
 
 function isDisabled(key: string) {
@@ -103,7 +103,7 @@ function isDisabled(key: string) {
 }
 
 function isSelect(config: PropDefs): config is SelectPropDef {
-  return (config as SelectPropDef)?.type === "select" ?? false;
+  return (config as SelectPropDef)?.type === "select";
 }
 
 function getOptions(key: string) {

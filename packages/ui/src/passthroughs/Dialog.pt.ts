@@ -2,10 +2,17 @@ import { DialogPassThroughMethodOptions } from "primevue/dialog";
 
 export default {
   dialog: {
+    root: ({parent}: DialogPassThroughMethodOptions<any>) => {
+      if(parent.instance.$.type.name == 'ConfirmDialog')
+        return {
+          class: ["modal modal-dialog modal-content h-auto m-0 modal-sm"]
+        }
+      return {}
+    },
     header: () => ({
       class: ["modal-header"],
     }),
-    headerTitle: () => ({
+    title: () => ({
       class: ["h5 modal-title text-black"],
     }),
     content: () => ({
@@ -17,17 +24,35 @@ export default {
     headerIcons: () => ({
       class: ["ms-auto"],
     }),
-    headerActions: "d-flex ms-auto",
-    pcCloseButton: ({ props }: DialogPassThroughMethodOptions<any>) => ({
-      root: {
-        class: [
-          "btn p-1",
-          {
-            "ms-auto": !props.maximizable,
-          },
-        ],
-      },
+    icon: () => ({
+      class: ["ms-auto"],
     }),
+    headerActions: ({parent}: DialogPassThroughMethodOptions<any>) => {
+      if(parent.instance.$.type.name == 'ConfirmDialog')
+        return {
+          class: ["d-none"]
+        }
+      return {
+        class: ["d-flex ms-auto"]
+      }
+    },
+    pcCloseButton: ({ props, parent }: DialogPassThroughMethodOptions<any>) => {
+      if(parent.instance.$.type.name == 'ConfirmDialog') {
+        return ({
+          class: ["btn p-1", "ms-auto"]
+        })
+      }
+      return ({
+        root: {
+          class: [
+            "btn p-1",
+            {
+              "ms-auto": !props.maximizable,
+            },
+          ],
+        },
+      })
+    },
     pcMaximizeButton: ({ props }: DialogPassThroughMethodOptions<any>) => ({
       root: {
         class: [

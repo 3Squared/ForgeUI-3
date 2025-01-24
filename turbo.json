@@ -1,6 +1,6 @@
 {
   "$schema": "https://turbo.build/schema.json",
-  "pipeline": {
+  "tasks": {
     "@3squared/forge-playground-3#build": {
       "dependsOn": [
         "@3squared/forge-ui-3#build"

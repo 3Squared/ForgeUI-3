@@ -14,6 +14,11 @@
     </Playground>
     Make sure to include the DialogService plugin in your main.ts file.
     <CodeBlock :code="mainTsCode" />
+
+    <p>
+      If you are looking for small, simple confirm prompts for user input, check out the
+      <RouterLink to="/overlay/confirmmodal">Confirm Modal</RouterLink>
+    </p>
   </div>
 </template>
 

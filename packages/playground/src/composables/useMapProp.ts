@@ -34,25 +34,26 @@ export interface SelectPropDef extends PropDef {
 
 export type PropDefs = SelectPropDef | PropDef;
 
-export function usePlayground<T extends Record<string, string | number | boolean | object>>(
+export function usePlayground<T extends Record<string, string | number | boolean | object>, >(
   defaultProps: T,
   inConfig?: Partial<Record<keyof T, PropDefs>>,
-  additionalReset?: () => void
+  additionalReset?: () => void,
 ) {
   const options = ref<T>({ ...defaultProps });
   const config = ref(inConfig ?? ({} as Partial<Record<keyof T, PropDefs>>));
 
   const propVals = computed(() => {
-    return (
-      Object.entries(options.value)
-        // @ts-expect-error
-        .filter(([key, value]) => defaultProps[key] !== value || (defaultProps[key] !== value && !value) || (config.value[key] && config.value[key].required))
-        .map(([k, v]) => useStringifyProp(k, v))
-    );
+    return Object.entries(options.value)
+      .filter(
+        ([key, value]) =>
+          defaultProps[key] !== value ||
+          (defaultProps[key] !== value && !value) ||
+          config.value[key]?.required,
+      )
+      .map(([k, v]) => useStringifyProp(k, v));
   });
 
   const reset = () => {
-    // @ts-ignore
     options.value = { ...defaultProps };
     if (additionalReset) {
       additionalReset();

@@ -15,7 +15,7 @@
       <template #additionalOptions>
         <div>
           <label>Button Content</label>
-          <InputText v-model="content"></InputText>
+          <InputText v-model="content" />
         </div>
       </template>
     </playground>
@@ -40,12 +40,12 @@ const { options, propVals, config, reset } = usePlayground(
     pressed: false,
     to: "",
     replace: false,
-    href: ""
+    href: "",
   },
   {
-    replace: { disabled: () => !options.value.to }
+    replace: { disabled: () => !options.value.to },
   },
-  () => (content.value = "I am a Button")
+  () => (content.value = "I am a Button"),
 );
 
 const code = computed(() => {
@@ -58,6 +58,6 @@ watch(
     if (!val) {
       options.value.replace = false;
     }
-  }
+  },
 );
 </script>
