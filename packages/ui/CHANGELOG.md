@@ -1,5 +1,11 @@
 # @3squared/forge-ui-3
 
+## 2.4.0
+
+### Minor Changes
+
+- dfc7f9c: Introduce PT for ConfirmDialog
+
 ## 2.3.0
 
 ### Minor Changes
