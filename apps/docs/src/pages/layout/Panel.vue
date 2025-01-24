@@ -8,14 +8,15 @@
     </p>
     <Playground :options="options" :code="code" :config="config" @reset="reset">
       <template #component>
-        <component :is="ForgePanel" v-bind="options">{{ content }}</component>
+        <component :is="Panel" v-bind="options">{{ content }}</component>
       </template>
     </Playground>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ForgePageHeader, ForgePanel } from "@3squared/forge-ui-3";
+import { ForgePageHeader } from "@3squared/forge-ui-3";
+import Panel from "primevue/panel";
 import { Playground, usePlayground } from "@3squared/forge-playground-3";
 import { computed, ref } from "vue";
 
@@ -29,5 +30,5 @@ const { options, propVals, config, reset } = usePlayground(
   {}
 );
 
-const code = computed(() => `<ForgePanel${propVals.value.length > 0 ? " " + propVals.value.join(" ") : ""}> <ForgePanel />`);
+const code = computed(() => `<Panel${propVals.value.length > 0 ? " " + propVals.value.join(" ") : ""}> <Panel />`);
 </script>
