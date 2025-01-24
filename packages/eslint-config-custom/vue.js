@@ -12,7 +12,7 @@ import typescriptEslint from 'typescript-eslint';
  */
 
 export const config = typescriptEslint.config(
-    { ignores: ['*.d.ts', '**/coverage', '**/dist'] },
+    { ignores: ['*.d.ts', '**/coverage', '**/dist', 'src/pages/examples/*'] },
     {
         extends: [
             eslint.configs.recommended,
