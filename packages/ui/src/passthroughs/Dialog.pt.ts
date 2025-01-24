@@ -27,7 +27,15 @@ export default {
     icon: () => ({
       class: ["ms-auto"],
     }),
-    headerActions: "d-flex ms-auto",
+    headerActions: ({parent}: DialogPassThroughMethodOptions<any>) => {
+      if(parent.instance.$.type.name == 'ConfirmDialog')
+        return {
+          class: ["d-none"]
+        }
+      return {
+        class: ["d-flex ms-auto"]
+      }
+    },
     pcCloseButton: ({ props, parent }: DialogPassThroughMethodOptions<any>) => {
       if(parent.instance.$.type.name == 'ConfirmDialog') {
         return ({
