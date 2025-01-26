@@ -1,6 +1,6 @@
 import { ForgeFileStatus } from "../../../types/forge-types";
 import { BlockBlobClient } from "@azure/storage-blob";
-﻿import { Mime } from "mime";
+import { Mime } from "mime";
 import standardTypes from "mime/types/standard.js";
 import otherTypes from "mime/types/other.js";
 

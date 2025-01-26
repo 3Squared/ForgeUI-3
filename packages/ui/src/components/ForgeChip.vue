@@ -1,6 +1,8 @@
 <template>
   <Chip v-bind="{ ...$attrs, ...$props }" :pt="chipPt">
-    <slot v-for="(_, name) in $slots" :slot="name" :name="name" />
+    <template v-for="(_, name) in $slots" #[name]>
+<slot   :name="name" />
+</template>
   </Chip>
 </template>
 

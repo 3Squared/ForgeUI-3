@@ -2,7 +2,7 @@
   <Message v-bind="{...$attrs, ...props}">
     <template #icon>
       <div :class="props.icon ? 'me-2 pe-1' : ''">
-        <Icon data-cy="message-icon" v-if="props.icon" :icon="props.icon" :class="`text-${props.severity}`" :height="35" />
+        <Icon v-if="props.icon" data-cy="message-icon" :icon="props.icon" :class="`text-${props.severity}`" :height="35" />
       </div>
     </template>
     <slot/>

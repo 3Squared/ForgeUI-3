@@ -1,7 +1,7 @@
 <template>
   <div class="d-flex align-items-center me-2">
-    <ForgeProgressBar v-if="uploadStatus === 'Uploading'" :pixelWidth="200" animate striped >{{ ((bytesUploaded / fileSize) * 100).toFixed(0)}}%</ForgeProgressBar>
-    <ForgeAlert id="upload-status-alert" v-if="uploadStatus !== 'Uploading' && uploadStatus !== 'Not Uploaded' && uploadStatus !== 'Uploaded' && uploadStatus !== 'Preparing'" :severity="alertSeverity" class="mb-0 w-75 ms-auto">{{ alertMessage }}</ForgeAlert>
+    <ForgeProgressBar v-if="uploadStatus === 'Uploading'" :pixel-width="200" animate striped >{{ ((bytesUploaded / fileSize) * 100).toFixed(0)}}%</ForgeProgressBar>
+    <ForgeAlert v-if="uploadStatus !== 'Uploading' && uploadStatus !== 'Not Uploaded' && uploadStatus !== 'Uploaded' && uploadStatus !== 'Preparing'" id="upload-status-alert" :severity="alertSeverity" class="mb-0 w-75 ms-auto">{{ alertMessage }}</ForgeAlert>
   </div>
 </template>
 

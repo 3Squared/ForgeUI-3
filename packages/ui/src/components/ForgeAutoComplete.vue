@@ -1,6 +1,8 @@
 <template>
-  <AutoComplete v-bind="{ ...$attrs, ...$props }" inputClass="form-control border-0">
-    <slot v-for="(_, name) in $slots" :slot="name" :name="name" />
+  <AutoComplete v-bind="{ ...$attrs, ...$props }" input-class="form-control border-0">
+    <template v-for="(_, name) in $slots" #[name]>
+<slot   :name="name" />
+</template>
   </AutoComplete>
 </template>
 
