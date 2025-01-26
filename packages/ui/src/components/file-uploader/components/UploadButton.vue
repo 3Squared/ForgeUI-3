@@ -11,16 +11,16 @@
           :multiple="maxFileInput > 1"
           @input="(event) => addUploadedFiles([...(event.target as any).files])"
       />
-      <label :class="{ disabled: uploadDisabled }" class="btn btn-primary" id="file-input-button" for="file-input">
+      <label id="file-input-button" :class="{ disabled: uploadDisabled }" class="btn btn-primary" for="file-input">
         <slot name="button-content">
           <Icon icon="bi:upload" class="me-2" height="20px" width="20px" />
           Browse your computer
         </slot>
       </label>
     </div>
-    <Button link class="ms-auto" v-if="showDragDropArea" :key="acceptedFileTypes.length" id="accepted-file-types" @click="toggleAcceptedFileTypesOverlay">Accepted File Types</Button>
+    <Button v-if="showDragDropArea" id="accepted-file-types" :key="acceptedFileTypes.length" link class="ms-auto" @click="toggleAcceptedFileTypesOverlay">Accepted File Types</Button>
     <Popover ref="acceptedFilesOverlay">
-      <div class="text-break accepted-file-types-container" id="accepted-file-types-overlay">
+      <div id="accepted-file-types-overlay" class="text-break accepted-file-types-container">
         {{acceptedFileTypes.map((type) => (type.label ?? type.fileType.split('/').pop())).join(", ")}}
       </div>
     </Popover>
