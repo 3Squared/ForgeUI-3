@@ -1,32 +1,36 @@
 <template>
   <div class="py-4 px-3 d-flex" :data-cy="`file-info-${file.name}`">
     <div>
-      <Image v-if="isImage(file.type)" id="thumbnail-image" image-class="image-file-thumbnail border"
+      <Image
+v-if="isImage(file.type)" id="thumbnail-image" image-class="image-file-thumbnail border"
         :src="getThumbnailUrl(file)" :alt="file.name" width="75px" preview />
       <Icon v-else id="file-earmark" icon="bi:file-earmark" color="black" width="75px" />
     </div>
     <div class="ms-3 d-flex flex-column">
       <div>
-        <ForgeInlineEditor v-if="editableFileName" id="edit-file-name" v-model="fileName" :rules="customFileNameRules"
+        <ForgeInlineEditor
+v-if="editableFileName" id="edit-file-name" v-model="fileName" :rules="customFileNameRules"
           :name="file.name" :complete-action="updateFileName" />
         <span v-else id="file-name">{{ fileName }}</span>
       </div>
-      <span class="text-black-50" id="file-type">File type: {{ file.type.split('/').pop() }}</span>
-      <span class="text-black-50" id="file-size">File size: {{ formatFileSize(file.size) }}</span>
+      <span id="file-type" class="text-black-50">File type: {{ file.type.split('/').pop() }}</span>
+      <span id="file-size" class="text-black-50">File size: {{ formatFileSize(file.size) }}</span>
     </div>
 
     <div class="ms-auto my-auto d-flex">
-      <UploadStatus :key="uploadStatus" :file-size="file.size" :upload-status="uploadStatus"
+      <UploadStatus
+:key="uploadStatus" :file-size="file.size" :upload-status="uploadStatus"
         :bytes-uploaded="bytesUploaded" :max-file-size="maxFileSize" />
-      <Button link @click="uploadBlob"
-        v-if="uploadStatus === 'Not Uploaded' || uploadStatus === 'Failed' || uploadStatus === 'Duplicate' || uploadStatus === 'Aborted'">
+      <Button
+v-if="uploadStatus === 'Not Uploaded' || uploadStatus === 'Failed' || uploadStatus === 'Duplicate' || uploadStatus === 'Aborted'" link
+        @click="uploadBlob">
         <Icon
           :icon="uploadStatus === 'Not Uploaded' || uploadStatus === 'Duplicate' ? 'bi:upload' : 'bi:arrow-clockwise'" />
       </Button>
-      <Button link @click="controller.value.abort()" v-if="uploadStatus === 'Uploading'">
+      <Button v-if="uploadStatus === 'Uploading'" link @click="controller.value.abort()">
         <Icon :icon="'bi:x-circle-fill'" />
       </Button>
-      <Button link @click="deleteFileFromBlob" v-else id="delete-button">
+      <Button v-else id="delete-button" link @click="deleteFileFromBlob">
         <Icon :icon="'bi:trash'" />
       </Button>
     </div>
@@ -90,9 +94,9 @@ const updateFileName = () => {
 }
 
 const ensureFileNameHasCorrectExtension = () => {
-  let fileNameSections = fileName.value.split('.');
-  let fileExtensionFromMime = mime.getExtension(fileMimeType.value!);
-  let lastWordInFileName = fileName.value.split('.').pop();
+  const fileNameSections = fileName.value.split('.');
+  const fileExtensionFromMime = mime.getExtension(fileMimeType.value!);
+  const lastWordInFileName = fileName.value.split('.').pop();
   // add missing file extension
   if (fileNameSections.length === 1) {
     if (lastWordInFileName && lastWordInFileName.length > 0) {

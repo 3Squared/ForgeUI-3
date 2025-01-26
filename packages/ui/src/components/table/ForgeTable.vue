@@ -1,9 +1,10 @@
 <template>
   <div class="position-relative">
     <span data-cy="above-table-slot" ><slot name="above-table" /></span>
-    <DataTable class="w-100" :class="`${props.severity ? `forge-table-${props.severity}` : ''}`"
-               v-bind="{...props, ...$attrs }" :pt="pt"  :rows="perPage" :total-records="total" :filter-display="props.filters ? 'row' : undefined" ref="forgeTable" data-cy="table"
-               @update:filters="emitUpdateFilter" @sort="emitSort" @page="emitPage" showHeaders>
+    <DataTable
+v-bind="{...props, ...$attrs }" ref="forgeTable"
+               class="w-100" :class="`${props.severity ? `forge-table-${props.severity}` : ''}`"  :pt="pt" :rows="perPage" :total-records="total" :filter-display="props.filters ? 'row' : undefined" data-cy="table"
+               show-headers @update:filters="emitUpdateFilter" @sort="emitSort" @page="emitPage">
       <template v-for="(_, name) in $slots as unknown as DataTableSlots" #[name]="slotProps">
         <slot :name="name" v-bind="slotProps || {}"></slot>
       </template>
@@ -17,15 +18,15 @@
           <div class="d-flex">
             <div class="d-flex align-items-end mb-2">
               <span v-if="paginator && !legacyPaginationFooter">
-                <forge-pagination-header :total="total" :page-sizes="pageSizes" v-model:per-page="perPage"  @update:perPage="emitPageSize" />
+                <forge-pagination-header v-model:per-page="perPage" :total="total" :page-sizes="pageSizes"  @update:per-page="emitPageSize" />
               </span>
             </div>
             <div class="ms-auto">
-              <Button v-if="showClearButton" outlined :class="showExporterButton ? 'me-2' : ''" @click="clearAllFilters" data-cy="clear-all">
+              <Button v-if="showClearButton" outlined :class="showExporterButton ? 'me-2' : ''" data-cy="clear-all" @click="clearAllFilters">
                 <Icon icon="bi:funnel-fill" width="24" height="24" />
                 Clear
               </Button>
-              <Button v-if="showExporterButton" outlined @click="exportData" data-cy="exporter">
+              <Button v-if="showExporterButton" outlined data-cy="exporter" @click="exportData">
                 <Icon icon="typcn:export" width="24" height="24" />
                 Export
               </Button>
@@ -35,13 +36,13 @@
         </div>
       </template>
       <slot />
-      <template #paginatorstart v-if="legacyPaginationFooter">
+      <template v-if="legacyPaginationFooter" #paginatorstart>
         <span class="d-flex" :class="props.loading ? 'opacity-50' : ''" data-cy="legacy-page-size">
           <span class="me-2 my-auto text-nowrap">Page Size:</span>
-          <Select :options="pageSizes" v-model="perPage" class="ms-2" @click="emitPageSize"/>
+          <Select v-model="perPage" :options="pageSizes" class="ms-2" @click="emitPageSize"/>
         </span>
       </template>
-      <template #paginatorend v-if="legacyPaginationFooter" >
+      <template v-if="legacyPaginationFooter" #paginatorend >
         <span data-cy="legacy-total" :class="props.loading ? 'opacity-50' : ''">
         {{ total }} {{ pluralise(total, "result") }} across {{ pageText }}
         </span>
@@ -72,7 +73,7 @@ export interface ForgeTableProps extends DataTableProps {
   showExporterButton?: boolean,
   stickyHeader?: boolean,
   severity?: Severity,
-  clearAll?: Function,
+  clearAll?: () => void,
   emptyMessage?: string
 }
 

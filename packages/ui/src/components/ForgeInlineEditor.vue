@@ -2,18 +2,18 @@
   <div :id="props.name">
     <div v-if="!readonly">
       <div v-if="editing">
-        <div class="d-flex justify-content-between align-items-center position-relative" v-on-click-outside="editFinished">
+        <div v-on-click-outside="editFinished" class="d-flex justify-content-between align-items-center position-relative">
           <slot name="editor" :class="{ 'is-invalid': hasErrors }" :edit-finished="editFinished" :cancel="cancel" :val="value">
             <InputText
+                ref="input"
                 v-model.trim="value"
                 data-cy="input"
-                ref="input"
                 :class="{ 'is-invalid': hasErrors }"
                 @keydown.enter="editFinished"
                 @keydown.esc="cancel"
             />
           </slot>
-          <Icon icon="bi:x-circle" class="mx-2 cursor-pointer" @click="reset" @keydown.enter="reset" data-cy="clear-icon"/>
+          <Icon icon="bi:x-circle" class="mx-2 cursor-pointer" data-cy="clear-icon" @click="reset" @keydown.enter="reset"/>
         </div>
       </div>
       <div v-else class="d-flex text-muted" @click="beginEdit" @focus="beginEdit" >
@@ -42,8 +42,8 @@ import { vOnClickOutside } from '@vueuse/components'
 
 export interface ForgeInlineEditorProps {
   name?: string,
-  completeAction?: Function,
-  errorAction?: Function,
+  completeAction?: (...params: any[]) => Promise<void>,
+  errorAction?: (...params: any[]) => Promise<void>,
   params?: Array<any>,
   errorParams?: Array<any>,
   readonly?: boolean,
@@ -73,9 +73,9 @@ const editFinished = async () => {
     try {
       await props.completeAction.apply(this, props.params);
       editing.value = !editing.value;
-    } catch (completeActionError) {
+    } catch {
       if (props.errorAction) {
-        await props.errorAction.apply(this, props.errorParams);
+        await props.errorAction.apply(this, props.errorParams ?? []);
       }
     }
   } else {
