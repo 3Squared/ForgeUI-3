@@ -86,7 +86,6 @@ describe('<SplitButton />', () => {
       .forEach(({ title, size, expectedClass }) => {
         it(title, () => {
           // Arrange
-          const id = "button"
           const label = "Button"
 
           // Act
