@@ -1,5 +1,12 @@
 # @3squared/forge-ui-3
 
+## 2.5.0
+
+### Minor Changes
+
+- 6eab332: - Add ForgePanel - this is so we can have the chevron icon instead of the plus/minus.
+  - Set eslint config to ignore example files
+
 ## 2.4.0
 
 ### Minor Changes

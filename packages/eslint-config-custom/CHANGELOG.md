@@ -1,5 +1,12 @@
 # eslint-config-custom
 
+## 0.1.2
+
+### Patch Changes
+
+- 6eab332: - Add ForgePanel - this is so we can have the chevron icon instead of the plus/minus.
+  - Set eslint config to ignore example files
+
 ## 0.1.1
 
 ### Patch Changes
