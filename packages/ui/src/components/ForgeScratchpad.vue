@@ -9,7 +9,7 @@
         :height="height"
         :width="width"
         :style="`height: ${height}px; width: ${width}px`"
-        line-join="round"
+        :line-join="lineJoin"
     />
     <div class="d-flex flex-row mt-1 gap-1">
       <Button v-if="props.showUndo" @click="undo" outlined data-cy="undo-button">Undo</Button>
