@@ -65,7 +65,7 @@
     "vue-drawing-canvas": "1.0.14"
   },
   "optionalDependencies": {
-    "@rollup/rollup-linux-x64-gnu": "4.32.0"
+    "@rollup/rollup-linux-x64-gnu": "4.32.1"
   },
   "nyc": {
     "all": true,
