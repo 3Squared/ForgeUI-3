@@ -60,6 +60,12 @@ table.table-lg {
   z-index: 0;
 }
 
+.pagination .page-link:disabled {
+  border-color: $gray-300;
+  color: $gray-400;
+  pointer-events: none;
+}
+
 .column-customiser {
   min-width: 180px !important;
 }
