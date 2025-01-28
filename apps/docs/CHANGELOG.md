@@ -1,5 +1,14 @@
 # forge-ui-3-styleguide
 
+## 2.4.3
+
+### Patch Changes
+
+- a6f4d90: Fix scratchpad line interpolation, by adding default lineJoin of round
+- Updated dependencies [a6f4d90]
+- Updated dependencies [dd6a455]
+  - @3squared/forge-ui-3@2.5.1
+
 ## 2.4.2
 
 ### Patch Changes

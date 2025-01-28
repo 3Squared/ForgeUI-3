@@ -1,5 +1,14 @@
 # @3squared/forge-ui-3
 
+## 2.5.1
+
+### Patch Changes
+
+- a6f4d90: Fix scratchpad line interpolation, by adding default lineJoin of round
+- dd6a455: Improve paginator:
+  - Remove if there are no initial values
+  - Disable if the buttons don't do anything
+
 ## 2.5.0
 
 ### Minor Changes
