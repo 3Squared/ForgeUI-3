@@ -1,5 +1,11 @@
 # forge-ui-3-styleguide
 
+## 2.4.4
+
+### Patch Changes
+
+- 01f4e8e: Update docs to follow naming conventions
+
 ## 2.4.3
 
 ### Patch Changes
