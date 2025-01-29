@@ -32,6 +32,14 @@ const { options, propVals, config, reset } = usePlayground(
 );
 
 const code = computed(() => {
-  return `<forge-form ${propVals.value.join(" ")}/>`;
+  return `
+<template>
+ <ForgeForm ${propVals.value.join(" ")}/>
+</template>
+
+<script setup lang="ts">
+import { ForgeForm } from "@3squared/forge-ui-3";
+<\/script>
+`;
 });
 </script>

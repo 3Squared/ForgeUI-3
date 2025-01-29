@@ -70,5 +70,13 @@ watch(
   (message) => (errorMessage.value = message)
 );
 
-const code = computed(() => `<forge-action-button ${propVals.value.join(" ")}>${content.value}</forge-action-button>`);
+const code = computed(() => `
+<template>
+  <ForgeActionButton ${propVals.value.join(" ")}>${content.value}</ForgeActionButton
+</template>
+
+<script setup lang="ts">
+import { ForgeActionButton } from "@3squared/forge-ui-3";
+<\/script>
+`);
 </script>
