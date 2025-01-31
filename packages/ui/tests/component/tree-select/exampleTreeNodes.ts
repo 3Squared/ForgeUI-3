@@ -1,57 +1,4 @@
-<template>
-  <div>
-    <forge-page-header title="Tree" />
-    <p>
-      Further documentation and examples can be found in the
-      <a class="link" target="_blank" href="https://primevue.org/treeselect/"><strong>PrimeVue documentation</strong></a>
-      .
-    </p>
-    <p><strong>Controlling what you can select: </strong>You can control if each node is selectable by using the <strong>selectable</strong> prop on the option object.</p>
-    <Playground :options="options" :config="config" :code="code" display-value>
-      <template #component>
-        <component :is="Tree" v-bind="options" v-model:selection-keys="selectedValues" :value="nodes" class="w-100" />
-      </template>
-      <template #value>
-        {{ selectedValues == null ? "Select a value..." : selectedValues }}
-      </template>
-    </Playground>
-
-    <p>
-      See 
-      <a class="link" target="_blank" href="https://primevue.org/treeselect/#api.options.TreeNode"><strong>TreeNode</strong></a>
-      for full object model
-    </p>
-    <CodeBlock :code="optionsCode" />
-  </div>
-</template>
-
-<script setup lang="ts">
-import { ForgePageHeader } from "@3squared/forge-ui-3";
-import { computed, ref } from "vue";
-import { usePlayground, Playground } from "@3squared/forge-playground-3";
-import Tree from "primevue/tree";
-import { nodes } from "../examples/data/exampleTreeNodes";
-import CodeBlock from "@3squared/forge-playground-3/src/components/CodeBlock.vue";
-
-const selectedValues = ref();
-
-const displays = ["chip", "comma"];
-const selectionModes = ["single", "multiple", "checkbox"];
-
-const { options, propVals, config } = usePlayground(
-    {
-      display: "comma",
-      filter: false,
-      selectionMode: ""
-    },
-    {
-      display: { type: "select", options: displays },
-      selectionMode: { type: "select", options: selectionModes }
-    }
-);
-
-const code = computed(() => `<Tree ${propVals.value.join(" ")}/>`);
-const optionsCode = computed(() => `const options = const nodes = [
+export const nodes = [
   {
     key: '0',
     label: 'Documents',
@@ -116,5 +63,4 @@ const optionsCode = computed(() => `const options = const nodes = [
       }
     ]
   }
-];/>`);
-</script>
+];
