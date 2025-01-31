@@ -55,6 +55,7 @@ export default defineConfig(({mode}) => {
         'primevue/message',
         'primevue/multiselect',
         'primevue/progressbar',
+        'primevue/panel',
         'primevue/progressspinner',
         'primevue/overlaypanel',
         'primevue/selectbutton',
