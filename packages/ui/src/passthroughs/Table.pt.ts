@@ -27,7 +27,7 @@ export default {
         }
       }
     },
-  
+
     //@ts-ignore
     tbody: (options) => {
       return {
@@ -43,12 +43,22 @@ export default {
     },
     rowGroupHeaderCell: 'd-inline-flex align-items-center border border-0',
     rowGroupHeader: 'border-top border-bottom',
-    rowToggleButton: "btn"
+    rowToggleButton: "btn",
+    pcPaginator: {
+      //remove paginator if there are initially no values
+      paginatorContainer: (options: DataTablePassThroughMethodOptions) => {
+        return {
+          class: {
+            'd-none': options.parent.props.value?.length == 0
+          }
+        }
+      },
+    }
+
   },
   
-  
   paginator: {
-    root: (options : PaginatorPassThroughMethodOptions<any>) => {
+    root: (options: PaginatorPassThroughMethodOptions<any>) => {
       return {
         class: [
           '',
@@ -63,7 +73,7 @@ export default {
     prev: 'page-link cursor-pointer',
     next: 'page-link cursor-pointer',
     last: 'page-link me-2 cursor-pointer',
-    page: ({ context } : PaginatorPassThroughMethodOptions<any>) => ({
+    page: ({ context }: PaginatorPassThroughMethodOptions<any>) => ({
       class: [
         'page-link cursor-pointer',
         {
@@ -73,4 +83,4 @@ export default {
       ]
     })
   }
-}
+} 
