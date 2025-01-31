@@ -1,5 +1,14 @@
 # forge-ui-3-styleguide
 
+## 2.4.5
+
+### Patch Changes
+
+- c1ab88e: Update vite to v6
+- Updated dependencies [c1ab88e]
+  - @3squared/forge-playground-3@1.2.2
+  - @3squared/forge-ui-3@2.5.2
+
 ## 2.4.4
 
 ### Patch Changes
