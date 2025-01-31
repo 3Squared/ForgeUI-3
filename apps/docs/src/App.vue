@@ -48,7 +48,8 @@ const pages = [
       { label: "Stat Widget", command: () => router.push("/data/statwidget") },
       { label: "Table", command: () => router.push("/data/table") },
       { label: "Data View", command: () => router.push("/data/dataview") },
-      { label: "Tile", command: () => router.push("/data/tile") }
+      { label: "Tile", command: () => router.push("/data/tile") },
+      { label: "Tree", command: () => router.push("/data/Tree") }
     ]
   },
   {
@@ -61,7 +62,8 @@ const pages = [
         items: [
           { label: "Dropdown", command: () => router.push("/forms/dropdowns/dropdown") },
           { label: "Multiselect", command: () => router.push("/forms/dropdowns/multiselect") },
-          { label: "Multiselect Preview", command: () => router.push("/forms/dropdowns/multiselectpreview") }
+          { label: "Multiselect Preview", command: () => router.push("/forms/dropdowns/multiselectpreview") },
+          { label: "Tree Select", command: () => router.push("/forms/dropdowns/TreeSelect") }
         ]
       },
       { label: "File Uploader", command: () => router.push("/forms/fileuploader") },
