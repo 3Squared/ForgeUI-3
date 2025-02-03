@@ -27,7 +27,7 @@
         <Icon :icon="'bi:x-circle-fill'" />
       </Button>
       <Button link @click="deleteFileFromBlob" v-else id="delete-button">
-        <Icon :icon="'bi:trash'" />
+        <Icon icon="bi:trash" />
       </Button>
     </div>
   </div>

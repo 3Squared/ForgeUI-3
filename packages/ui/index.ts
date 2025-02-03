@@ -27,6 +27,7 @@ import ForgeFilterHeader from "./src/components/table/ForgeFilterHeader.vue";
 import ForgeFileUploader from "./src/components/file-uploader/ForgeFileUploader.vue";
 import ForgeColumnCustomiser from './src/components/table/ForgeColumnCustomiser.vue'
 import ForgePanel from './src/components/ForgePanel.vue'
+import ForgeConfirmDialog from './src/components/ForgeConfirmDialog.vue'
 
 export {
   Bootstrap_PT,
@@ -55,7 +56,8 @@ export {
   ForgeTable,
   ForgeFilterHeader,
   ForgeFileUploader,
-  ForgePanel
+  ForgePanel,
+  ForgeConfirmDialog
 }
 
 export * from './src/types/forge-types.ts'
