@@ -14,9 +14,9 @@ const pt = computed<ConfirmPopupPassThroughOptions>(() => ({
     'card w-fit-content position-absolute',
   ],
   footer: () => ({
-    class: ["modal-footer gap-1 p-1"],
+    class: ["modal-footer gap-1 p-2"],
   }),
-  content: 'p-3',
+  content: 'pt-2 px-2',
   pcRejectButton: {root: 'btn btn-outline-primary btn-sm'},
   pcAcceptButton: {root: 'btn btn-primary btn-sm'}
 }))
