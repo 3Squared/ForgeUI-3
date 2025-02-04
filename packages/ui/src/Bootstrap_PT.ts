@@ -30,6 +30,8 @@ import CardPT from "./passthroughs/Card.pt.ts";
 import DividerPT from "./passthroughs/Divider.pt.ts";
 import ImagePT from "./passthroughs/Image.pt.ts";
 import ToastPT from "./passthroughs/Toast.pt.ts";
+import TreePT from "./passthroughs/Tree.pt.ts";
+import TreeSelectPT from "./passthroughs/TreeSelect.pt.ts";
 import FieldsetPt from "./passthroughs/Fieldset.pt.ts";
 
 export default {
@@ -64,6 +66,8 @@ export default {
   ...ToastPT,
   ...TextAreaPT,
   ...FieldsetPt,
+  ...TreeSelectPT,
+  ...TreePT,
   directives: {
     ...TooltipPT
   }
