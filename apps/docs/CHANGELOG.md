@@ -1,5 +1,16 @@
 # forge-ui-3-styleguide
 
+## 2.5.0
+
+### Minor Changes
+
+- c0a13c9: Style and document Tree and Tree Select
+
+### Patch Changes
+
+- Updated dependencies [c0a13c9]
+  - @3squared/forge-ui-3@2.6.0
+
 ## 2.4.5
 
 ### Patch Changes
