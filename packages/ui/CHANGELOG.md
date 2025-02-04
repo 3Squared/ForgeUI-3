@@ -1,5 +1,11 @@
 # @3squared/forge-ui-3
 
+## 2.6.0
+
+### Minor Changes
+
+- c0a13c9: Style and document Tree and Tree Select
+
 ## 2.5.2
 
 ### Patch Changes
