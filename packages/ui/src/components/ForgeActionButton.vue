@@ -11,8 +11,8 @@
   const loading = ref<boolean>(false)
 
   export interface ForgeActionButtonProps extends /* @vue-ignore */ ButtonProps {
-    action: Function,
-    errorAction: Function,
+    action: (...params: any[]) => Promise<void>,
+    errorAction: (...params: any[]) => Promise<void>,
     errorParams?: Array<any>,
     params?: Array<any>
   }
