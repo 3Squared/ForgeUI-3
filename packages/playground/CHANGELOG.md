@@ -1,5 +1,13 @@
 # @3squared/forge-playground-3
 
+## 1.2.2
+
+### Patch Changes
+
+- c1ab88e: Update vite to v6
+- Updated dependencies [c1ab88e]
+  - @3squared/forge-ui-3@2.5.2
+
 ## 1.2.1
 
 ### Patch Changes

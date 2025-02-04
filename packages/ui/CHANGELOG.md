@@ -1,5 +1,11 @@
 # @3squared/forge-ui-3
 
+## 2.5.2
+
+### Patch Changes
+
+- c1ab88e: Update vite to v6
+
 ## 2.5.1
 
 ### Patch Changes
