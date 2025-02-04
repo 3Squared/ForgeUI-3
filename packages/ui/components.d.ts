@@ -53,7 +53,6 @@ declare module 'vue' {
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     Select: typeof import('primevue/select')['default']
-    TabPanels: typeof import('primevue/tabpanels')['default']
     Textarea: typeof import('primevue/textarea')['default']
     UploadButton: typeof import('./src/components/file-uploader/components/UploadButton.vue')['default']
     UploadStatus: typeof import('./src/components/file-uploader/components/UploadStatus.vue')['default']
