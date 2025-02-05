@@ -7,12 +7,15 @@ export default {
     }),
   },
   toggleButton: {
-    root: ({ context }: SelectButtonPassThroughMethodOptions) => ({
+    
+    root: (options: any) => (
+      console.log(options),
+      {
       class: [
         'btn',
         {
-          'btn-primary': context.active,
-          'btn-outline-primary': !context.active
+          'btn-primary': options.context.active,
+          'btn-outline-primary': !options.context.active
         },
       ]
     }),

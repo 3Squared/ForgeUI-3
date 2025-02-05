@@ -6,9 +6,12 @@
       <a class="link" target="_blank" href="https://primevue.org/selectbutton/"><strong>PrimeVue documentation</strong></a>
       .
     </p>
-    <Playground :options="options" :code="code" :config="config" @reset="reset">
+    <Playground :options="options" :code="code" :config="config" @reset="reset" display-value>
       <template #component>
         <component :is="SelectButton" v-bind="options" v-model="value" :options="opts" />
+      </template>
+      <template #value>
+        {{value}}
       </template>
     </Playground>
   </div>
