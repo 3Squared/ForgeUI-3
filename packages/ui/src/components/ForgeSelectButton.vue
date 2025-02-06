@@ -25,9 +25,9 @@ const options = defineModel<ForgeSelectButtonOption[]>({ required: true });
 
 const onOptionSelected = (option: ForgeSelectButtonOption) => {
   if (option.disabled) return;
-  if (!props.allowEmpty && option.selected && (options.value.filter((op) => option.value != op.value && op.selected).length < 1)) {
-    return;
-  }
+  
+  const isOptionLastOption = option.selected && (options.value.filter((op) => option.value != op.value && op.selected).length < 1)
+  if (!props.allowEmpty && isOptionLastOption) return;
 
   if (!props.multiple) {
     options.value.forEach((opt) => {
