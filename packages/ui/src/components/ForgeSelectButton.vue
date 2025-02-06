@@ -1,52 +1,40 @@
 <template>
-  <div class="btn-group">
+  <div class="btn-group" data-cy="forge-select-button">
     <ForgeToggleButton v-for="(option, index) in options" :onLabel="option.label" :offLabel="option.label" :severity="option.severity" :key="index"
-      @change="onOptionSelected($event, option, index)" :defaultValue="option.selected" :disabled="option.disabled"
+                       @change="onOptionSelected(option)" :defaultValue="option.selected" :disabled="option.disabled" :data-cy="`toggle-button-${option.value}`"
     />
   </div>
 </template>
 
 <script setup lang="ts">
-import { computed, ref } from "vue";
-import { Severity } from "@/types/forge-types.ts";
-import { ToggleButtonPassThroughMethodOptions } from "primevue";
+import { ForgeSelectButtonOption } from "@/types/forge-types.ts";
 import ForgeToggleButton from "@/components/ForgeToggleButton.vue";
 
 export interface ForgeSelectButtonProps {
   multiple?: boolean
   allowEmpty?: boolean
 }
+
 const props = withDefaults(defineProps<ForgeSelectButtonProps>(), {
   multiple: false,
   allowEmpty: true
 })
 
 const emit = defineEmits(['change']);
-const options = defineModel<ToggleButtonOption[]>({required: true});
+const options = defineModel<ForgeSelectButtonOption[]>({ required: true });
 
-interface ToggleButtonOption {
-  label: string,
-  value: string,
-  severity?: Severity
-  disabled?: boolean,
-  selected?: boolean,
-}
-
-const onOptionSelected = (event: Event, option: ToggleButtonOption, index: number) => {
-  console.log(event, option, index)
-  if(option.disabled) return;
-  if(!props.allowEmpty){
-    if(option.selected && (options.value.filter((op) => option.value != op.value && op.selected).length < 1)){
-      return;
-    }
+const onOptionSelected = (option: ForgeSelectButtonOption) => {
+  if (option.disabled) return;
+  if (!props.allowEmpty && option.selected && (options.value.filter((op) => option.value != op.value && op.selected).length < 1)) {
+    return;
   }
-  
-  if(!props.multiple){
+
+  if (!props.multiple) {
     options.value.forEach((opt) => {
-      if(opt.value != option.value) opt.selected = false
+      if (opt.value != option.value) opt.selected = false
     })
   }
-  
+
   option.selected = !option.selected;
   emit('change', option)
 }

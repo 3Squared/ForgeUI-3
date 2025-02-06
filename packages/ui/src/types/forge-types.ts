@@ -3,7 +3,7 @@ import { FilterMatchModeOptions } from "@primevue/core/api";
 import { FileUploadStatus } from "../components/file-uploader/utilities/utilities";
 import { DataTableFilterMeta } from "primevue/datatable";
 
-export type Severity = 'primary' | 'secondary' | 'success' | 'warning' | 'danger' | 'info' | 'brand' | undefined
+export type Severity = 'primary' | 'secondary' | 'success'| 'success-dark' | 'warning' | 'danger' | 'info' | 'brand' | undefined
 export type Size = 'sm' | 'md' | 'lg' | undefined
 export type BarPosition = 'top' | 'left' | 'none'
 
@@ -55,4 +55,12 @@ export interface ForgeSteps {
   label: string;
   value: number;
   disabled: boolean;
+}
+
+export interface ForgeSelectButtonOption {
+  label: string,
+  value: string,
+  severity?: Severity
+  disabled?: boolean,
+  selected?: boolean,
 }

@@ -4,11 +4,11 @@
 
 <script setup lang="ts">
 import { Severity } from "@/types/forge-types.ts";
-import { computed, ref } from "vue";
+import { computed } from "vue";
 import { ToggleButton, ToggleButtonPassThroughMethodOptions } from "primevue";
 
 export interface ForgeToggleButtonProps {
-  severity?: Severity,
+  severity?: Severity
 }
 
 const props = withDefaults(defineProps<ForgeToggleButtonProps>(), {
@@ -22,9 +22,9 @@ const pt = computed(() => ({
         class: [
           'btn',
           {
-            [`btn-${props.severity} focus-ring focus-ring-${props.severity} btn-${props.severity}-subtle border border-2 border-${props.severity} fw-500 text-${props.severity}`]: options.context.active,
+            [`focus-ring focus-ring-${props.severity} btn-${props.severity}-subtle border border-2 border-${props.severity} fw-500 text-${props.severity}`]: options.context.active,
             [`border text-${props.severity} select-btn-${props.severity}`]: !options.context.active,
-            ['text-secondary btn-secondary-subtle']: options.context.disabled
+            ['btn-secondary-subtle']: options.context.disabled
           },
         ]
       }),
