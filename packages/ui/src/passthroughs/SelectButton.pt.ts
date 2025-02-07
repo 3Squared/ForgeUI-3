@@ -1,5 +1,3 @@
-import { SelectButtonPassThroughMethodOptions } from "primevue/selectbutton";
-
 export default {
   selectButton: {
     root: () => ({
@@ -7,10 +5,7 @@ export default {
     }),
   },
   toggleButton: {
-    
-    root: (options: any) => (
-      console.log(options),
-      {
+    root: (options: any) => ({
       class: [
         'btn',
         {
