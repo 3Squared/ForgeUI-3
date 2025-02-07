@@ -33,6 +33,7 @@ import ToastPT from "./passthroughs/Toast.pt.ts";
 import TreePT from "./passthroughs/Tree.pt.ts";
 import TreeSelectPT from "./passthroughs/TreeSelect.pt.ts";
 import FieldsetPt from "./passthroughs/Fieldset.pt.ts";
+import AccordionPT from "./passthroughs/Accordion.pt.ts";
 
 export default {
   ...AutoCompletePT,
@@ -68,6 +69,7 @@ export default {
   ...FieldsetPt,
   ...TreeSelectPT,
   ...TreePT,
+  ...AccordionPT,
   directives: {
     ...TooltipPT
   }

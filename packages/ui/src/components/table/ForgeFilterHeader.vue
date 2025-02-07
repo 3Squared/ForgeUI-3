@@ -36,7 +36,7 @@ import Select from "primevue/select";
 import ForgeDatepicker from "@/components/ForgeDatepicker.vue";
 import MultiSelect from "primevue/multiselect";
 import { Icon } from '@iconify/vue';
-import { ForgeColumnDataType } from "@/types/forge-types.ts";
+import type { ForgeColumnDataType } from "@/types/forge-types.ts";
 
 export interface ForgeFilterHeaderProps {
   dataType: ForgeColumnDataType,
