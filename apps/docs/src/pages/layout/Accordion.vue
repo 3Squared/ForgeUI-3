@@ -6,9 +6,16 @@
       <a class="link" target="_blank" href="https://primevue.org/accordion/"><strong>PrimeVue documentation</strong></a>
       .
     </p>
-    <Playground :options="options" :code="code" :config="config" @reset="reset" :value="value">
+    <Playground :options="options" :code="code" :config="config" :value="tabs" @reset="reset">
       <template #component>
-        <component :is="Accordion" v-bind="options">{{ content }}</component>
+        <Accordion value="0" class="w-75 m-0">
+          <AccordionPanel v-for="tab in tabs" :key="tab.title" :value="tab.value">
+            <AccordionHeader>{{ tab.title }}</AccordionHeader>
+            <AccordionContent>
+              <p class="m-0">{{ tab.content }}</p>
+            </AccordionContent>
+          </AccordionPanel>
+        </Accordion>
       </template>
     </Playground>
   </div>
@@ -18,9 +25,11 @@
 import {ForgePageHeader} from "@3squared/forge-ui-3";
 import { Playground, usePlayground } from "@3squared/forge-playground-3";
 import { computed, ref } from "vue";
+import AccordionPanel from "primevue/accordionpanel";
+import AccordionHeader from "primevue/accordionheader";
+import AccordionContent from "primevue/accordioncontent";
 import Accordion from "primevue/accordion";
 
-const content = ref("I am some panel content");
 
 const tabs = ref([
   { title: 'Title 1', content: 'Content 1', value: '0' },
@@ -30,8 +39,8 @@ const tabs = ref([
 
 const { options, propVals, config, reset } = usePlayground(
   {
-    toggleable: true,
-    header: "Header"
+    multiple: false,
+    lazy: true
   },
   {}
 );
