@@ -1,8 +1,3 @@
-<template>
-  <div><ForgePanel header="I am a header">I am content</ForgePanel></div>
-</template>
+<template><div>Use this page to test your components in local dev, to get here go to "examples/codetesting" in the browser.</div></template>
 
-<script setup lang="ts">
-import ExampleFileUploader from "./components/ExampleFileUploader.vue";
-import { ForgePanel } from "@3squared/forge-ui-3";
-</script>
+<script setup lang="ts"></script>
