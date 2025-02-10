@@ -69,6 +69,7 @@ declare module 'vue-router/auto-routes' {
     '/forms/Switch': RouteRecordInfo<'/forms/Switch', '/forms/Switch', Record<never, never>, Record<never, never>>,
     '/guides/Installation': RouteRecordInfo<'/guides/Installation', '/guides/Installation', Record<never, never>, Record<never, never>>,
     '/Icons': RouteRecordInfo<'/Icons', '/Icons', Record<never, never>, Record<never, never>>,
+    '/layout/Accordion': RouteRecordInfo<'/layout/Accordion', '/layout/Accordion', Record<never, never>, Record<never, never>>,
     '/layout/Alert': RouteRecordInfo<'/layout/Alert', '/layout/Alert', Record<never, never>, Record<never, never>>,
     '/layout/Fieldset': RouteRecordInfo<'/layout/Fieldset', '/layout/Fieldset', Record<never, never>, Record<never, never>>,
     '/layout/Loader': RouteRecordInfo<'/layout/Loader', '/layout/Loader', Record<never, never>, Record<never, never>>,

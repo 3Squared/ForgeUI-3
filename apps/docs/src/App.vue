@@ -91,6 +91,7 @@ const pages = [
   {
     label: "Layout",
     items: [
+      { label: "Accordion", command: () => router.push("/layout/Accordion") },
       { label: "Alert", command: () => router.push("/layout/alert") },
       { label: "Loader", command: () => router.push("/layout/loader") },
       { label: "Page Header", command: () => router.push("/layout/pageheader") },
