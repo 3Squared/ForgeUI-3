@@ -1,5 +1,3 @@
-import { SelectButtonPassThroughMethodOptions } from "primevue/selectbutton";
-
 export default {
   selectButton: {
     root: () => ({
@@ -7,12 +5,12 @@ export default {
     }),
   },
   toggleButton: {
-    root: ({ context }: SelectButtonPassThroughMethodOptions) => ({
+    root: (options: any) => ({
       class: [
         'btn',
         {
-          'btn-primary': context.active,
-          'btn-outline-primary': !context.active
+          'btn-primary': options.context.active,
+          'btn-outline-primary': !options.context.active
         },
       ]
     }),

@@ -37,7 +37,9 @@ const pages = [
       { label: "Button", command: () => router.push("/buttons/button") },
       { label: "Link", command: () => router.push("/buttons/link") },
       { label: "Select Button", command: () => router.push("/buttons/selectbutton") },
-      { label: "Split Button", command: () => router.push("/buttons/splitbutton") }
+      { label: "Split Button", command: () => router.push("/buttons/splitbutton") },
+      { label: "Button Group", command: () => router.push("/buttons/ButtonGroup") },
+      { label: "Toggle Button", command: () => router.push("/buttons/ToggleButton") },
     ]
   },
   {

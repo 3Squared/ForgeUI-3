@@ -69,6 +69,7 @@ export default defineConfig(({mode}) => {
         'primevue/textarea',
         'primevue/toast',
         'primevue/toastservice',
+        'primevue/togglebutton',
         'primevue/tree',
         'primevue/treeselect',
         'primevue/tooltip',

@@ -19,3 +19,15 @@
     }
   }
 }
+
+@each $color, $value in $base-colors {
+  .btn.select-btn-#{$color} {
+    &:hover, &:active:focus {
+      @if ($color == 'brand') {
+        background-color: map-get($subtle-colors, '#{$color}-shade-1');
+      } @else {
+        background-color: map-get($subtle-colors, '#{$color}-subtle');
+      }
+    }
+  }
+}
