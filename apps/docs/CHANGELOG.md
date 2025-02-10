@@ -1,5 +1,19 @@
 # forge-ui-3-styleguide
 
+## 2.6.0
+
+### Minor Changes
+
+- 4224fe6: Add ForgeSelectButton and ForgeToggleButton
+  - Allow severity to be passed into each button within a select group
+- 6bcdcb7: Add styled accordion component and docs
+
+### Patch Changes
+
+- Updated dependencies [4224fe6]
+- Updated dependencies [6bcdcb7]
+  - @3squared/forge-ui-3@2.7.0
+
 ## 2.5.0
 
 ### Minor Changes
