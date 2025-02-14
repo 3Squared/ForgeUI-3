@@ -60,7 +60,7 @@
     "vite": "6.1.0",
     "vite-bundle-visualizer": "1.2.1",
     "vite-plugin-dts": "4.5.0",
-    "vite-plugin-istanbul": "6.0.2",
+    "vite-plugin-istanbul": "7.0.0",
     "vitest": "3.0.5",
     "vue-drawing-canvas": "1.0.14"
   },
