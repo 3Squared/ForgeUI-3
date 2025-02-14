@@ -20,7 +20,6 @@
 </template>
 
 <script setup lang="ts">
-import { ForgePageHeader } from "@3squared/forge-ui-3";
 import { CodeBlock } from "@3squared/forge-playground-3";
 
 const tableCode = `<ForgeTable>`;
