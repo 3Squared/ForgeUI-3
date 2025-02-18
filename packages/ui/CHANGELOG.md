@@ -1,5 +1,11 @@
 # @3squared/forge-ui-3
 
+## 2.8.2
+
+### Patch Changes
+
+- 51b10d5: Trim text filter value in table
+
 ## 2.8.1
 
 ### Patch Changes
