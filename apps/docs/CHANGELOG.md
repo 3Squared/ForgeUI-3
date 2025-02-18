@@ -1,5 +1,16 @@
 # forge-ui-3-styleguide
 
+## 2.7.0
+
+### Minor Changes
+
+- 1c0488f: Add forge resolver with docs update
+
+### Patch Changes
+
+- Updated dependencies [1c0488f]
+  - @3squared/forge-ui-3@2.8.0
+
 ## 2.6.0
 
 ### Minor Changes
