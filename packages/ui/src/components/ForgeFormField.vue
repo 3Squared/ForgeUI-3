@@ -4,7 +4,7 @@
   <div class="d-flex flex-column w-100" v-else>
     <div data-cy="input-wrapper" class="d-flex" :class="props.fieldLabelPosition === 'top' ? 'flex-column' : 'flex-row'">
       <label :for="props.name" :class="props.fieldLabelPosition === 'top' ? 'mb-1' : ('me-2 ' + props.labelWidthClass)">
-        {{ props.fieldLabel }}
+        {{ props.fieldLabel }} <span v-if="required" class="text-danger fw-600">*</span>
       </label>
 
       <!-- Slot for Custom Inputs -->
@@ -61,7 +61,8 @@ export interface ForgeFormFieldProps {
   type?: ForgeFormFieldTypes,
   mask?: string,
   placeholder?: string,
-  labelWidthClass?: string
+  labelWidthClass?: string,
+  required?: boolean,
 }
 
 const model = defineModel<any>()
@@ -71,7 +72,8 @@ const props = withDefaults(defineProps<ForgeFormFieldProps>(), {
   mask: "",
   placeholder: "",
   type: "text",
-  labelWidthClass: "w-25"
+  labelWidthClass: "w-25",
+  required: false,
 })
 
 const change = (event: any) => {

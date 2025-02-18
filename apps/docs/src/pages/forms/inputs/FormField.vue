@@ -41,7 +41,8 @@ const { options, propVals, config, reset } = usePlayground(
     fieldLabelPosition: "top",
     type: "text",
     mask: "",
-    placeholder: ""
+    placeholder: "",
+    required: false
   },
   {
     type: { type: "select", options: formFieldTypes },
