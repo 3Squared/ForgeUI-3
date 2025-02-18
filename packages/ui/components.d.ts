@@ -50,14 +50,18 @@ declare module 'vue' {
     Message: typeof import('primevue/message')['default']
     MultiSelect: typeof import('primevue/multiselect')['default']
     Panel: typeof import('primevue/panel')['default']
+    Popover: typeof import('primevue/popover')['default']
     ProgressBar: typeof import('primevue/progressbar')['default']
     ProgressSpinner: typeof import('primevue/progressspinner')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     Select: typeof import('primevue/select')['default']
+    TabPanels: typeof import('primevue/tabpanels')['default']
     Textarea: typeof import('primevue/textarea')['default']
-    ToggleButton: typeof import('primevue/togglebutton')['default']
     UploadButton: typeof import('./src/components/file-uploader/components/UploadButton.vue')['default']
     UploadStatus: typeof import('./src/components/file-uploader/components/UploadStatus.vue')['default']
+  }
+  export interface ComponentCustomProperties {
+    Tooltip: typeof import('primevue/tooltip')['default']
   }
 }

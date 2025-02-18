@@ -16,6 +16,8 @@
       <a href="https://github.com/jquense/yup">Yup</a>
       to validate inputs. See doc for more info.
     </p>
+    
+    <p>Forge form field has a slot that any input can be passed into, as seem in the forge select field below, however the css red border may not be configured for every input.</p>
 
     <FormExamples />
 
@@ -111,6 +113,16 @@ const validationExampleCode = computed(
           :maxSected
           :key="selectedSkills" --add key for selects/multiselects
         />
+        
+        <ForgeFormField name="rating" field-label="Rating" v-model="rating">
+          <template #default="{ modelValue, updateModel, hasErrors }">
+            <ForgeSelectButton :model-value="modelValue"
+                                 :options="ratingOptions"
+                                 @update:modelValue="updateModel"
+                                 :invalid="hasErrors"
+            />
+          </template>
+        </ForgeFormField>  
         <div class="d-flex justify-content-end mt-1">
         <!--          Add Button with type 'submit' to trigger submit event -->
         <Button label="Test" type="submit" ></Button>
@@ -124,7 +136,7 @@ const validationExampleCode = computed(
 </template>
 
 <script>
-import { ForgeFormField } from "@3squared/forge-ui-3";
+import { ForgeFormField, ForgeSelectButton } from "@3squared/forge-ui-3";
 import Button from "primevue/button";
 import Card from "primevue/card";
 import { useToast } from "primevue/usetoast";
@@ -142,7 +154,8 @@ const toast = useToast();
 const schema = yup.object().shape({
   city: yup.object().required(),
   skills: yup.array().min(1, "Please select at least 1 option").required(),
-  name: yup.string().required()
+  name: yup.string().required(),
+  rating: yup.array().min(1, "Please select at least 1 option").required()
 })
 
 
@@ -184,6 +197,14 @@ const skills = ref([
   { id: 12, label: "Problem Solving" },
 ]);
 
+
+const ratingOptions = ref<ForgeSelectButtonOption[]>([
+  { label: "Maj", value: "1", severity: "danger", disabled: true, },
+  { label: "Min", value: "2", severity: "warning"},
+  { label: "Pro", value: "3", severity: "success" },
+  { label: "Ex", value: "4", severity: "success-dark" },
+  { label: "N/A", value: "5", severity: "secondary" }
+]);
 </\script>`
 );
 </script>
