@@ -3,7 +3,7 @@
     <div
       class="d-flex"
       data-cy="checkbox-container"
-      @click="onChange(value)"
+      @click="evt => onChange(evt, value)"
       v-bind="{ ...$attrs }"
     >
       <Checkbox
@@ -12,12 +12,12 @@
         v-model="value"
         :input-id="props.name"
         :input-class="{ 'is-invalid': hasErrors }"
-        :class="props.disabled ? '' : 'cursor-pointer'"
+        :class="(props.disabled || props.readonly) ? '' : 'cursor-pointer'"
       />
       <label
         :for="props.name"
-        @click="onChange(!value)"
-        :class="`${props.disabled ? 'opacity-50' : 'cursor-pointer'} ${
+        @click="evt => onChange(evt, !value)"
+        :class="`${(props.disabled || props.readonly) ? 'opacity-50' : 'cursor-pointer'} ${
           hasErrors ? 'text-danger-dark' : ''
         }`"
         class="w-100 my-auto"
@@ -58,7 +58,10 @@ const { handleChange, errors, errorMessage } = useField(
   }
 );
 
-const onChange = (checkValue: boolean) => {
+const onChange = (event: MouseEvent, checkValue: boolean) => {
+  if(props.disabled || props.readonly) {
+    event.preventDefault();
+  }
   if(props.name) handleChange(checkValue)
   else value.value = checkValue
 }
