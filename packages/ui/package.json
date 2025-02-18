@@ -30,7 +30,9 @@
     "test:unit": "vitest --ui --coverage",
     "build": "vite build",
     "build:watch": "vite build --watch",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "lint": "eslint src",
+    "lint:fix": "eslint src --fix"
   },
   "dependencies": {
     "@azure/abort-controller": "^2.0.0",

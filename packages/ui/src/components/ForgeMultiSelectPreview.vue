@@ -1,8 +1,10 @@
 <template>
   <div :class="orientation === 'column' ? 'row' : ''" data-cy="multiselect-preview">
     <div :class="orientation === 'row' ? 'col-12 mb-1' : 'col'" data-cy="multiselect-container">
-      <MultiSelect v-model="model" v-bind="{...$attrs}" :options="props.options ?? []" optionLabel="label" :placeholder="multiselectPlaceholder" data-cy="multiselect">
-        <slot v-for="(_, name) in $slots" :slot="name" :name="name" />
+      <MultiSelect v-model="model" v-bind="{...$attrs}" :options="props.options ?? []" option-label="label" :placeholder="multiselectPlaceholder" data-cy="multiselect">
+        <template v-for="(_, name) in $slots" #[name]>
+<slot   :name="name" />
+</template>
       </MultiSelect>
       <!-- @slot If you need to display some content below the multi select such as validation content-->
       <slot name="after-multi-select" />
@@ -11,7 +13,8 @@
       <div :style="{ height: height }" class="overflow-auto">
         <div class="border alternating-item-list">
           <div v-if="title" class="p-2 border-top border-bottom" data-cy="title">{{ title }}</div>
-          <div v-for="item in model" :key="item.id"
+          <div
+v-for="item in model" :key="item.id"
                class="p-2 item d-flex justify-content-between align-items-center">
             <!-- @slot Use this slot if the default labels is not enough, maybe for a b-link to redirect the user to the item -->
             <slot name="list-item" :item="item">
