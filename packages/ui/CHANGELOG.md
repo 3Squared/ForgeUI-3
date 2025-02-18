@@ -1,5 +1,11 @@
 # @3squared/forge-ui-3
 
+## 2.8.0
+
+### Minor Changes
+
+- 1c0488f: Add forge resolver with docs update
+
 ## 2.7.0
 
 ### Minor Changes
