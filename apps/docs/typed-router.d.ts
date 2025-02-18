@@ -67,6 +67,7 @@ declare module 'vue-router/auto-routes' {
     '/forms/RemainingCharacters': RouteRecordInfo<'/forms/RemainingCharacters', '/forms/RemainingCharacters', Record<never, never>, Record<never, never>>,
     '/forms/Scratchpad': RouteRecordInfo<'/forms/Scratchpad', '/forms/Scratchpad', Record<never, never>, Record<never, never>>,
     '/forms/Switch': RouteRecordInfo<'/forms/Switch', '/forms/Switch', Record<never, never>, Record<never, never>>,
+    '/guides/ForgeResolver': RouteRecordInfo<'/guides/ForgeResolver', '/guides/ForgeResolver', Record<never, never>, Record<never, never>>,
     '/guides/Installation': RouteRecordInfo<'/guides/Installation', '/guides/Installation', Record<never, never>, Record<never, never>>,
     '/Icons': RouteRecordInfo<'/Icons', '/Icons', Record<never, never>, Record<never, never>>,
     '/layout/Accordion': RouteRecordInfo<'/layout/Accordion', '/layout/Accordion', Record<never, never>, Record<never, never>>,
