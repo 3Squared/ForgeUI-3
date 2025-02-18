@@ -33,7 +33,8 @@
     "src",
     "**/*.cy.ts",
     "cypress/support/component.ts",
-    "index.ts"
+    "index.ts",
+    "components.d.ts"
   ],
   "exclude": [
     "node_modules",

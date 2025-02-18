@@ -1,5 +1,17 @@
 # @3squared/forge-ui-3
 
+## 2.8.1
+
+### Patch Changes
+
+- c4a1d42: Fix checkbox > readonly not working properly
+
+## 2.8.0
+
+### Minor Changes
+
+- 1c0488f: Add forge resolver with docs update
+
 ## 2.7.0
 
 ### Minor Changes
