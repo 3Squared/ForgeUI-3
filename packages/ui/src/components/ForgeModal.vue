@@ -1,6 +1,5 @@
 <template>
   <Dialog v-bind="props" @maximize="maximise" @unmaximize="minimise" :pt="pt">
-
     <template #closeicon>
       <Icon data-cy="close-icon" icon="bi:x-lg" width="18" height="18" @click="closeModal"/>
     </template>
@@ -56,7 +55,8 @@ export interface ForgeModalProps extends DialogProps {
   cancelButtonType?: 'button' | 'reset' | 'submit',
   size?: Size | 'xl'
   cancelClass?: string,
-  submitClass?: string
+  submitClass?: string,
+  resetErrorOnClose?: boolean,
 }
 
 const visible = defineModel<boolean>('visible', { required: true })
@@ -75,7 +75,8 @@ const props = withDefaults(defineProps<ForgeModalProps>(), {
   onConfirm: null,
   cancelButtonType: "button",
   submitButtonType: "button",
-  size: "md"
+  size: "md",
+  resetErrorOnClose: false
 })
 
 const loading = ref(false)
@@ -107,6 +108,7 @@ const maximise = () => {
 }
 
 const closeModal = () => {
+  if(props.resetErrorOnClose) resetError();
   visible.value = false
 }
 
@@ -130,6 +132,8 @@ const success = async () => {
     loading.value = false;
   }
 }
+
+
 
 const pt = computed<DialogPassThroughOptions>(() => ({
   root: [
