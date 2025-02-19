@@ -133,8 +133,6 @@ const success = async () => {
   }
 }
 
-
-
 const pt = computed<DialogPassThroughOptions>(() => ({
   root: [
     'modal modal-dialog modal-content h-auto m-0',
