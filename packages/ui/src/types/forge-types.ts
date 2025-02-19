@@ -62,5 +62,4 @@ export interface ForgeSelectButtonOption {
   value: string,
   severity?: Severity
   disabled?: boolean,
-  selected?: boolean,
 }
