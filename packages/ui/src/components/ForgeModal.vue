@@ -1,6 +1,5 @@
 <template>
   <Dialog v-bind="props" @maximize="maximise" @unmaximize="minimise" :pt="pt">
-
     <template #closeicon>
       <Icon data-cy="close-icon" icon="bi:x-lg" width="18" height="18" @click="closeModal"/>
     </template>
@@ -56,7 +55,8 @@ export interface ForgeModalProps extends DialogProps {
   cancelButtonType?: 'button' | 'reset' | 'submit',
   size?: Size | 'xl'
   cancelClass?: string,
-  submitClass?: string
+  submitClass?: string,
+  resetErrorOnClose?: boolean,
 }
 
 const visible = defineModel<boolean>('visible', { required: true })
@@ -75,7 +75,8 @@ const props = withDefaults(defineProps<ForgeModalProps>(), {
   onConfirm: null,
   cancelButtonType: "button",
   submitButtonType: "button",
-  size: "md"
+  size: "md",
+  resetErrorOnClose: true
 })
 
 const loading = ref(false)
@@ -84,6 +85,19 @@ const error = ref<ModalError>({
   header: "",
   message: []
 })
+
+const resetError = () => {
+  error.value = {
+    hasError: false,
+    header: "",
+    message: []
+  };
+};
+
+//expose reset function so it can be called by the parent
+defineExpose({
+  resetError
+});
 
 const minimise = () => {
   fullscreen.value = false
@@ -94,6 +108,7 @@ const maximise = () => {
 }
 
 const closeModal = () => {
+  if(props.resetErrorOnClose) resetError();
   visible.value = false
 }
 

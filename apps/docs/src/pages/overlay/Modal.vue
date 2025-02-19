@@ -51,7 +51,8 @@ const { options, propVals, config, reset } = usePlayground(
     baseZIndex: 0,
     blockScroll: false,
     cancelButtonType: "button",
-    submitButtonType: "button"
+    submitButtonType: "button",
+    resetErrorOnClose: true
   },
   {
     size: { type: "select", options: [...shorthandSizes, "xl"] },
