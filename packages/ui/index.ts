@@ -61,7 +61,6 @@ export {
   ForgePanel,
   ForgeSelectButton,
   ForgeToggleButton,
-  ForgeConfirmDialog
 }
 
 export * from './src/types/forge-types.ts'

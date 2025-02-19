@@ -85,6 +85,19 @@ const error = ref<ModalError>({
   message: []
 })
 
+const resetError = () => {
+  error.value = {
+    hasError: false,
+    header: "",
+    message: []
+  };
+};
+
+//expose reset function so it can be called by the parent
+defineExpose({
+  resetError
+});
+
 const minimise = () => {
   fullscreen.value = false
 }
