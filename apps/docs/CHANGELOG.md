@@ -1,5 +1,16 @@
 # forge-ui-3-styleguide
 
+## 2.8.0
+
+### Minor Changes
+
+- 7337a7d: Add resetError function to the ForgeModal
+
+### Patch Changes
+
+- Updated dependencies [7337a7d]
+  - @3squared/forge-ui-3@2.9.0
+
 ## 2.7.0
 
 ### Minor Changes
