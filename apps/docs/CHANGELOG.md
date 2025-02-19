@@ -1,5 +1,17 @@
 # forge-ui-3-styleguide
 
+## 2.9.0
+
+### Minor Changes
+
+- 7cd55cc: - ForgeFormField - Add a slot to pass any input into
+  - Change ForgeSelectButton to v-model for the select values rather than the whole option object
+
+### Patch Changes
+
+- Updated dependencies [7cd55cc]
+  - @3squared/forge-ui-3@2.10.0
+
 ## 2.8.0
 
 ### Minor Changes
