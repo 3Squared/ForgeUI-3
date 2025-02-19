@@ -1,5 +1,11 @@
 # @3squared/forge-ui-3
 
+## 2.9.0
+
+### Minor Changes
+
+- 7337a7d: Add resetError function to the ForgeModal
+
 ## 2.8.2
 
 ### Patch Changes
