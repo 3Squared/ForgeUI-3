@@ -76,7 +76,7 @@ const props = withDefaults(defineProps<ForgeModalProps>(), {
   cancelButtonType: "button",
   submitButtonType: "button",
   size: "md",
-  resetErrorOnClose: false
+  resetErrorOnClose: true
 })
 
 const loading = ref(false)

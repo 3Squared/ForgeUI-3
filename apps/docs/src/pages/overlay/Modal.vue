@@ -52,7 +52,7 @@ const { options, propVals, config, reset } = usePlayground(
     blockScroll: false,
     cancelButtonType: "button",
     submitButtonType: "button",
-    resetErrorOnClose: false
+    resetErrorOnClose: true
   },
   {
     size: { type: "select", options: [...shorthandSizes, "xl"] },
