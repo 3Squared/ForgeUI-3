@@ -1,5 +1,12 @@
 # @3squared/forge-ui-3
 
+## 2.10.0
+
+### Minor Changes
+
+- 7cd55cc: - ForgeFormField - Add a slot to pass any input into
+  - Change ForgeSelectButton to v-model for the select values rather than the whole option object
+
 ## 2.9.0
 
 ### Minor Changes
