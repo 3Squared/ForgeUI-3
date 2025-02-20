@@ -22,7 +22,8 @@ import ForgeScratchpad from "./src/components/ForgeScratchpad.vue";
 import ForgeStatWidget from "./src/components/ForgeStatWidget.vue";
 import ForgeStepper from "./src/components/ForgeStepper.vue";
 import ForgeTile from "./src/components/ForgeTile.vue";
-import ForgeTable from "./src/components/table/ForgeTable.vue"; 
+import ForgeTable from "./src/components/table/ForgeTable.vue";
+import ForgeTreeTable from "./src/components/ForgeTreeTable.vue"; 
 import ForgeFilterHeader from "./src/components/table/ForgeFilterHeader.vue";
 import ForgeFileUploader from "./src/components/file-uploader/ForgeFileUploader.vue";
 import ForgeColumnCustomiser from './src/components/table/ForgeColumnCustomiser.vue'
@@ -59,7 +60,8 @@ export {
   ForgeFileUploader,
   ForgePanel,
   ForgeSelectButton,
-  ForgeToggleButton
+  ForgeToggleButton,
+  ForgeTreeTable
 }
 
 export * from './src/types/forge-types.ts'

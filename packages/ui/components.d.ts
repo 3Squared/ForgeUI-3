@@ -43,6 +43,7 @@ declare module 'vue' {
     ForgeTable: typeof import('./src/components/table/ForgeTable.vue')['default']
     ForgeTile: typeof import('./src/components/ForgeTile.vue')['default']
     ForgeToggleButton: typeof import('./src/components/ForgeToggleButton.vue')['default']
+    ForgeTreeTable: typeof import('./src/components/ForgeTreeTable.vue')['default']
     InputMask: typeof import('primevue/inputmask')['default']
     InputNumber: typeof import('primevue/inputnumber')['default']
     InputText: typeof import('primevue/inputtext')['default']
@@ -56,7 +57,6 @@ declare module 'vue' {
     RouterView: typeof import('vue-router')['RouterView']
     Select: typeof import('primevue/select')['default']
     Textarea: typeof import('primevue/textarea')['default']
-    ToggleButton: typeof import('primevue/togglebutton')['default']
     UploadButton: typeof import('./src/components/file-uploader/components/UploadButton.vue')['default']
     UploadStatus: typeof import('./src/components/file-uploader/components/UploadStatus.vue')['default']
   }
