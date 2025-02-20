@@ -15,7 +15,7 @@
         />
       </span>
       </DragDropArea>
-      <MaxFileSize :max-file-size="props.maxFileSize"/>
+      <FileInputInfo :max-file-size="props.maxFileSize" :max-file-input="maxFileInput" />
     </div>
   </div>
 </template>
@@ -24,11 +24,11 @@
 import UploadButton from "@/components/file-uploader/components/UploadButton.vue";
 import DragDropArea from "@/components/file-uploader/components/DragDropArea.vue";
 import FileInfo from "@/components/file-uploader/components/FileInfo.vue";
-import MaxFileSize from "@/components/file-uploader/components/MaxFileSize.vue";
 import { ForgeFileStatus, ForgeFileType } from "../../types/forge-types";
-import {TypedSchema} from "vee-validate";
+import { TypedSchema } from "vee-validate";
+import FileInputInfo from "@/components/file-uploader/components/FileInputInfo.vue";
 
-const files = defineModel<ForgeFileStatus[]>({ default: []})
+const files = defineModel<ForgeFileStatus[]>({ default: [] })
 
 export interface ForgeFileUploaderProps {
   acceptedFileTypes: ForgeFileType[],
@@ -48,7 +48,7 @@ const props = withDefaults(defineProps<ForgeFileUploaderProps>(), {
   showDragDropArea: true
 })
 
-const deleteFiles = (fileInfo : File) => {
+const deleteFiles = (fileInfo: File) => {
   files.value = files.value.filter((f) => f.file != fileInfo)
 }
 </script>

@@ -1,6 +1,7 @@
 <template>
-  <div class="d-flex justify-content-end mt-1">
+  <div class="d-flex justify-content-end mt-1 gap-1">
     <div id="max-file-size">Max file size: {{ formatFileSize(maxFileSize) }}</div>
+    <div id="max-file-input">| Max file count: {{ maxFileInput }}</div>
   </div>
 </template>
 
@@ -8,8 +9,9 @@
 import { formatFileSize } from '../utilities/utilities'
 
 interface MaxFileSizeProps {
-  maxFileSize: number
+  maxFileSize: number,
+  maxFileInput: number
 }
-
-const { maxFileSize } = defineProps<MaxFileSizeProps>()
+ 
+defineProps<MaxFileSizeProps>()
 </script>
