@@ -44,3 +44,4 @@ packages/ui/test-results
 *.csv
 packages/ui/stats.html
 /packages/playground/stats.html
+packages/ui/cypress/downloads/

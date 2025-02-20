@@ -263,7 +263,7 @@ describe('<ForgeTable />', () => {
 
     it('Filters out rows based on date value', () => {
       // Arrange
-      const expectedDate = "19"
+      const expectedDate = new Date().getDate();
       
       // Act
       cy.get(filterId).eq(2).click()
