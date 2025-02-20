@@ -8,10 +8,10 @@
 <script setup lang="ts">
 import { formatFileSize } from '../utilities/utilities'
 
-interface MaxFileSizeProps {
+interface FileInputInfoProps {
   maxFileSize: number,
   maxFileInput: number
 }
  
-defineProps<MaxFileSizeProps>()
+defineProps<FileInputInfoProps>()
 </script>
