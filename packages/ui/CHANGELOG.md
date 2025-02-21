@@ -1,5 +1,11 @@
 # @3squared/forge-ui-3
 
+## 2.10.1
+
+### Patch Changes
+
+- b37a89e: Add max file count display
+
 ## 2.10.0
 
 ### Minor Changes
