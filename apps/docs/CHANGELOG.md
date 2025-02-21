@@ -1,5 +1,16 @@
 # forge-ui-3-styleguide
 
+## 2.10.0
+
+### Minor Changes
+
+- df4fc12: Add customisable modal error
+
+### Patch Changes
+
+- Updated dependencies [df4fc12]
+  - @3squared/forge-ui-3@2.11.0
+
 ## 2.9.0
 
 ### Minor Changes

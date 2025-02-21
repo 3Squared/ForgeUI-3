@@ -1,5 +1,11 @@
 # @3squared/forge-ui-3
 
+## 2.11.0
+
+### Minor Changes
+
+- df4fc12: Add customisable modal error
+
 ## 2.10.1
 
 ### Patch Changes
