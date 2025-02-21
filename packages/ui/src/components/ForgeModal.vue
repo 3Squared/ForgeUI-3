@@ -1,20 +1,22 @@
 <template>
   <Dialog v-bind="props" @maximize="maximise" @unmaximize="minimise" :pt="pt">
     <template #closeicon>
-      <Icon data-cy="close-icon" icon="bi:x-lg" width="18" height="18" @click="closeModal"/>
+      <Icon data-cy="close-icon" icon="bi:x-lg" width="18" height="18" @click="closeModal" />
     </template>
     <template #maximizeicon>
       <Icon data-cy="maximisable-icon" :icon="!fullscreen ? 'bi:arrows-angle-expand' : 'bi:arrows-angle-contract'" width="16" height="16" />
     </template>
     <template v-for="(_, name) in $slots as unknown as DialogSlots" #[name]="slotProps">
-      <forge-alert v-if="error.hasError" severity="danger" data-cy="error">
-        <p :class="error.message.length > 0 ? 'my-auto' : 'mb-0'">{{ error.header }}</p>
-        <ul v-if="error.message.length > 0">
-          <li v-for="detail in error.message" :key="detail">
-            {{ detail }}
-          </li>
-        </ul>
-      </forge-alert>
+      <template v-if="name !== 'footer'">
+        <forge-alert v-if="error.hasError" severity="danger" data-cy="error">
+          <p :class="error.message.length > 0 ? 'my-auto' : 'mb-0'">{{ error.header }}</p>
+          <ul v-if="error.message.length > 0">
+            <li v-for="detail in error.message" :key="detail">
+              {{ detail }}
+            </li>
+          </ul>
+        </forge-alert>
+      </template>
       <slot :name="name" v-bind="slotProps || {}" />
       <slot v-if="loading" name="loader">
         <forge-loader data-cy="loader" />
@@ -24,7 +26,7 @@
       <div class="d-flex w-100" data-cy="footer">
         <Button :label="cancelText" :class="props.cancelClass" outlined @click="closeModal" id="cancel-button" :type="props.cancelButtonType" />
         <Button :label="submitText" :class="props.submitClass" class="ms-auto" @click="success" id="submit-button"
-                :type="props.submitButtonType"/>
+                :type="props.submitButtonType" />
       </div>
     </template>
 
@@ -40,7 +42,7 @@ import { computed, ref } from "vue";
 import { parseError } from "../helpers";
 import { Size } from "../types/forge-types.ts";
 
-interface ModalError {
+export interface ForgeModalError {
   hasError: boolean;
   header: string;
   message: string[];
@@ -80,10 +82,13 @@ const props = withDefaults(defineProps<ForgeModalProps>(), {
 })
 
 const loading = ref(false)
-const error = ref<ModalError>({
-  hasError: false,
-  header: "",
-  message: []
+const error = defineModel<ForgeModalError>('error', {
+  required: false,
+  default: {
+    hasError: false,
+    header: "",
+    message: []
+  }
 })
 
 const resetError = () => {
@@ -108,12 +113,12 @@ const maximise = () => {
 }
 
 const closeModal = () => {
-  if(props.resetErrorOnClose) resetError();
+  if (props.resetErrorOnClose) resetError();
   visible.value = false
 }
 
 const success = async () => {
-  if(props.onConfirm) {
+  if (props.onConfirm) {
     loading.value = true;
 
     error.value.hasError = false;

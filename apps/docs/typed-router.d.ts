@@ -42,6 +42,7 @@ declare module 'vue-router/auto-routes' {
     '/examples/components/ExampleDataView': RouteRecordInfo<'/examples/components/ExampleDataView', '/examples/components/ExampleDataView', Record<never, never>, Record<never, never>>,
     '/examples/components/ExampleDrawer': RouteRecordInfo<'/examples/components/ExampleDrawer', '/examples/components/ExampleDrawer', Record<never, never>, Record<never, never>>,
     '/examples/components/ExampleFileUploader': RouteRecordInfo<'/examples/components/ExampleFileUploader', '/examples/components/ExampleFileUploader', Record<never, never>, Record<never, never>>,
+    '/examples/components/ExampleModal': RouteRecordInfo<'/examples/components/ExampleModal', '/examples/components/ExampleModal', Record<never, never>, Record<never, never>>,
     '/examples/components/ExampleNavBar': RouteRecordInfo<'/examples/components/ExampleNavBar', '/examples/components/ExampleNavBar', Record<never, never>, Record<never, never>>,
     '/examples/components/ExampleScratchpad': RouteRecordInfo<'/examples/components/ExampleScratchpad', '/examples/components/ExampleScratchpad', Record<never, never>, Record<never, never>>,
     '/examples/components/ExampleSelectBool': RouteRecordInfo<'/examples/components/ExampleSelectBool', '/examples/components/ExampleSelectBool', Record<never, never>, Record<never, never>>,

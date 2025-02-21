@@ -8,12 +8,18 @@
     </p>
     <Playground :options="options" :code="code" :config="config" @reset="reset">
       <template #component>
-        <component :is="ForgeModal" v-bind="options" v-model:visible="visible" />
+        <component :is="ForgeModal" v-bind="options" v-model:visible="visible">
+          I am a Modal component.
+        </component>
         <Button label="Click me!" @click="visible = true" />
       </template>
     </Playground>
     Make sure to include the DialogService plugin in your main.ts file.
     <CodeBlock :code="mainTsCode" />
+    
+    <p>If you are using your own footer slot you will have to set you own error. You can pass this in through v-model.</p>
+    <ExampleModal />
+    <CodeBlock :code="customFooterModal" />
 
     <p>
       If you are looking for small, simple confirm prompts for user input, check out the
@@ -28,6 +34,7 @@ import Button from "primevue/button";
 import { Playground, usePlayground, CodeBlock } from "@3squared/forge-playground-3";
 import { computed, ref } from "vue";
 import { buttonTypes, position, shorthandSizes } from "../../composables/playgroundOptions";
+import ExampleModal from "../examples/components/ExampleModal.vue";
 
 const visible = ref<boolean>(false);
 
@@ -70,5 +77,45 @@ const mainTsCode = `
     .use(PrimeVue, { unstyled: true, pt: Bootstrap_PT })
     .use(DialogService)
     .mount('#app')
+`;
+
+const customFooterModal = `
+<template>
+  <ForgeModal ref="modalRef" v-model:visible="visible" :error="error" :showFooter="false">
+    I'm a modal
+
+    <template #footer>
+      <Button @click="cancel" outlined class="me-auto">Cancel</Button>
+      <Button @click="save">Save</Button>
+    </template>
+  </ForgeModal>
+
+  <Button @click="visible = true">Show</Button>
+</template>
+
+<script setup lang="ts">
+import Button from "primevue/button"
+import { ref } from "vue";
+import { ForgeModalError } from "@3squared/forge-ui-3/dist/src/components/ForgeModal.vue";
+import { ForgeModal } from "@3squared/forge-ui-3";
+
+const visible = ref(false)
+const error = ref<ForgeModalError>()
+const modalRef = ref();
+
+const cancel = () => {
+  modalRef.value?.resetError();
+  visible.value = false
+}
+
+const save = async () => {
+  error.value = {
+    hasError: true,
+    header: 'I am an error',
+    message: []
+  };
+};
+</\script>
+
 `;
 </script>
