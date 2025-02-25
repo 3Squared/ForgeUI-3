@@ -59,6 +59,7 @@ export interface ForgeModalProps extends DialogProps {
   cancelClass?: string,
   submitClass?: string,
   resetErrorOnClose?: boolean,
+  maxHeight?: string | null
 }
 
 const visible = defineModel<boolean>('visible', { required: true })
@@ -146,6 +147,12 @@ const pt = computed<DialogPassThroughOptions>(() => ({
       'modal-sm': props.size === 'sm',
       'modal-lg': props.size === 'lg',
       'modal-xl': props.size === 'xl'
+    }
+  ],
+  content: [
+    'modal-body overflow-y-auto',
+    { 
+      [`${props.maxHeight}`]: props.maxHeight && !fullscreen.value
     }
   ]
 }))
