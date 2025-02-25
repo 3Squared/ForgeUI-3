@@ -41,7 +41,7 @@ const visible = ref<boolean>(false);
 const { options, propVals, config, reset } = usePlayground(
   {
     showHeader: true,
-    header: "",
+    header: "Modal Example",
     showFooter: true,
     footer: "",
     closable: false,
@@ -59,7 +59,8 @@ const { options, propVals, config, reset } = usePlayground(
     blockScroll: false,
     cancelButtonType: "button",
     submitButtonType: "button",
-    resetErrorOnClose: true
+    resetErrorOnClose: true,
+    maxHeight: 'mh-300px'
   },
   {
     size: { type: "select", options: [...shorthandSizes, "xl"] },
