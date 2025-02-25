@@ -1,5 +1,12 @@
 # @3squared/forge-ui-3
 
+## 2.12.0
+
+### Minor Changes
+
+- 2682662: - Add max height prop to modal
+  - Move helpful classes to utilities so they can be used in app and don't have to be added in railsmart design system
+
 ## 2.11.0
 
 ### Minor Changes
