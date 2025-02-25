@@ -59,7 +59,7 @@ export interface ForgeModalProps extends DialogProps {
   cancelClass?: string,
   submitClass?: string,
   resetErrorOnClose?: boolean,
-  maxHeight?: string | number
+  maxHeight?: string | null
 }
 
 const visible = defineModel<boolean>('visible', { required: true })
