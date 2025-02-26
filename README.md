@@ -1,81 +1,109 @@
-# Turborepo starter
+# Forge-UI 3
 
-This is an official starter Turborepo.
+ForgeUI
+is designed to be a wrapper around different libraries that provide a consistent UI style. It is comprised of many different packages, as well as custom components, that have been combined to create a one-stop shop for UI.
 
-## Using this example
+It is primarily built upon [PrimeVue](https://primevue.org/) and provides reusable UI components, an interactive playground, and a well-structured documentation system to streamline development.
 
-Run the following command:
+The Forge-UI component library is built with a monorepo structure using Turbo. There are four projects within the monorepo:
+```
+ForgeUI-3/
+├── packages/
+│   ├── ui/          # Main UI components library
+│   ├── eslint-config-custom/   # Shared ESLint configuration
+│   ├── playground/  # Interactive playground for components
+├── apps/
+│   ├── docs/        # Documentation & styleguide
+├── turbo.json       # Turbo configuration
+└── package.json     # Root package.json
+|__ rennovate.json   # Rennovate config
+```
+## Installation
+
+### Getting Started with Turbo
+Turbo helps manage and optimize the monorepo structure efficiently. To get started with Turbo in Forge:
+
+#### Install turbo globally
 
 ```sh
-npx create-turbo@latest
+npm install -g turbo
 ```
 
-## What's inside?
+#### Running Turbo Commands
 
-This Turborepo includes the following packages/apps:
+##### Running All Builds
 
-### Apps and Packages
-
-- `docs`: a [Next.js](https://nextjs.org/) app
-- `web`: another [Next.js](https://nextjs.org/) app
-- `ui`: a stub React component library shared by both `web` and `docs` applications
-- `eslint-config-custom`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
-- `tsconfig`: `tsconfig.json`s used throughout the monorepo
-
-Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
-
-### Utilities
-
-This Turborepo has some additional tools already setup for you:
-
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
-
-### Build
-
-To build all apps and packages, run the following command:
-
-```
-cd my-turborepo
-pnpm build
+```sh
+turbo run build
 ```
 
-### Develop
-
-To develop all apps and packages, run the following command:
-
-```
-cd my-turborepo
-pnpm dev
+##### Running a Specific Package
+To build a specific package, use:
+```sh
+turbo run build --filter ui
 ```
 
-### Remote Caching
-
-Turborepo can use a technique known as [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
-
-By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup), then enter the following commands:
-
-```
-cd my-turborepo
-npx turbo login
+##### Running the Development Server
+```sh
+turbo run dev
 ```
 
-This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
-
-Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your Turborepo:
-
-```
-npx turbo link
+##### Clearing the Cache
+To clear Turbo's cache, use:
+```sh
+turbo prune --force
 ```
 
-## Useful Links
+### Running Forge Locally
+Clone the repository and install the dependencies:
+```sh
+npm i
+```
 
-Learn more about the power of Turborepo:
+Do an initial build of all the packages
+(you may want to do this whenever you pull a new branch, particularly if there are changes to multiple projects): 
+```sh
+turbo build
+```
 
-- [Tasks](https://turbo.build/repo/docs/core-concepts/monorepos/running-tasks)
-- [Caching](https://turbo.build/repo/docs/core-concepts/caching)
-- [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching)
-- [Filtering](https://turbo.build/repo/docs/core-concepts/monorepos/filtering)
-- [Configuration Options](https://turbo.build/repo/docs/reference/configuration)
-- [CLI Usage](https://turbo.build/repo/docs/reference/command-line-reference)
+#### Running the styleguide(docs):
+Running this should serve the docs with localhost:
+```sh
+cd apps/docs
+npm run dev
+```
+
+If you have errors with this it could be because you have not built another package.
+
+#### Building the UI
+```sh
+cd packages/ui
+npm run build
+```
+
+If you are working a on a component and don't want to keep building this every time you make a change, 
+you can run build watch:
+```sh
+cd packages/ui
+npm run build:watch
+```
+
+#### Running UI tests:
+Run these within the ui project.
+
+
+This will run the full suite of test which include both the cypress tests and vitest tests.
+```sh
+npm run tests
+```
+
+If you want to run individual cypress tests for debugging or add news one use this:
+```sh
+npm run test:component
+```
+
+
+
+
+
+
