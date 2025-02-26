@@ -1,5 +1,11 @@
 # @3squared/forge-ui-3
 
+## 2.12.1
+
+### Patch Changes
+
+- f185006: Add type import fix
+
 ## 2.12.0
 
 ### Minor Changes
