@@ -45,16 +45,16 @@ const columns = [
 ] as ForgeColumn[]
 
 const items = [
-  { column1: "column 1", column2: 2, column3: new Date(), column4: 'Column 4', column5: 'Column 4' },
-  { column1: "column i", column2: 3, column3: new Date(new Date().setDate(new Date().getDate() + 1)), column4: 'Column Four', column5: 'Column Four' },
-  { column1: "column one", column2: 4, column3: new Date(new Date().setDate(new Date().getDate() + 2)), column4: 'column iiii', column5: 'Column iiii' },
-  { column1: "column", column2: 5, column3: new Date(new Date().setDate(new Date().getDate() + 4)), column4: 'column', column5: 'Column' },
-  { column1: "column", column2: 5, column3: new Date(new Date().setDate(new Date().getDate() + 4)), column4: 'column', column5: 'Column' },
-  { column1: "column", column2: 5, column3: new Date(new Date().setDate(new Date().getDate() + 4)), column4: 'column', column5: 'Column' },
-  { column1: "column", column2: 5, column3: new Date(new Date().setDate(new Date().getDate() + 4)), column4: 'column', column5: 'Column' },
-  { column1: "column", column2: 5, column3: new Date(new Date().setDate(new Date().getDate() + 4)), column4: 'column', column5: 'Column' },
-  { column1: "column", column2: 5, column3: new Date(new Date().setDate(new Date().getDate() + 4)), column4: 'column', column5: 'Column' },
-  { column1: "column", column2: 5, column3: new Date(new Date().setDate(new Date().getDate() + 4)), column4: 'column', column5: 'Column' },
+  { column1: "column 1", column2: 2, column3: new Date("December 17, 2024 03:24:00"), column4: 'Column 4', column5: 'Column 4' },
+  { column1: "column i", column2: 3, column3: new Date("December 18, 2024 03:24:00"), column4: 'Column Four', column5: 'Column Four' },
+  { column1: "column one", column2: 4, column3: new Date("December 18, 2024 03:24:00"), column4: 'column iiii', column5: 'Column iiii' },
+  { column1: "column", column2: 5, column3: new Date("December 19, 2024 03:24:00"), column4: 'column', column5: 'Column' },
+  { column1: "column", column2: 5, column3: new Date("December 19, 2024 04:24:00"), column4: 'column', column5: 'Column' },
+  { column1: "column", column2: 5, column3: new Date("December 19, 2024 05:24:00"), column4: 'column', column5: 'Column' },
+  { column1: "column", column2: 5, column3: new Date("December 19, 2024 06:24:00"), column4: 'column', column5: 'Column' },
+  { column1: "column", column2: 5, column3: new Date("December 19, 2024 07:24:00"), column4: 'column', column5: 'Column' },
+  { column1: "column", column2: 5, column3: new Date("December 19, 2024 08:24:00"), column4: 'column', column5: 'Column' },
+  { column1: "column", column2: 5, column3: new Date("December 19, 2024 09:24:00"), column4: 'column', column5: 'Column' },
 ]
 
 describe('<ForgeTable />', () => {
@@ -263,11 +263,10 @@ describe('<ForgeTable />', () => {
 
     it('Filters out rows based on date value', () => {
       // Arrange
-      const expectedDate = new Date().getDate();
-      
+      const expectedDate = new Date("December 17, 2024 03:24:00");
+      const filter = '17/12/2024'
       // Act
-      cy.get(filterId).eq(2).click()
-      cy.get(datePickerDayLabelId).not(".disabled").contains(expectedDate).click()
+      cy.get(filterId).eq(2).type(`${filter.toString()}{enter}`)
 
       // Assert
       cy.get(tableRowId).should('contain.text', expectedDate).and('have.length', 1)
