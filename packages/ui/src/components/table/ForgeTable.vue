@@ -154,7 +154,9 @@ const exportData = () => {
 const emitSort = (sort: DataTableSortEvent) => {
   tableContext.value.sortDirection = sort.sortOrder === 1 ? 'Asc' : sort.sortOrder === -1 ? 'Desc' : 'None'
   tableContext.value.sortField = sort.sortField?.toString() ?? ''
-  
+  tableContext.value.page = pageNumber.value = 0;
+  setFirstIndex();
+
   emits("update:tableContext", tableContext.value)
   emits('sort', sort)
 }
@@ -166,14 +168,16 @@ const emitUpdateFilter = (filters: DataTableFilterMeta | undefined) => {
 }
 const emitPage = (page : DataTablePageEvent) => {
   tableContext.value.page = pageNumber.value = page.page
+  
   setFirstIndex();
   emits("update:tableContext", tableContext.value)
   emits('page', page)
 }
 const emitPageSize = () => {
   tableContext.value.perPage = perPage.value
-  //reset page index 
-  pageNumber.value = 0;
+  // Set page based on current index
+  tableContext.value.page = pageNumber.value = Math.floor(firstValueIndex.value/perPage.value)
+
   setFirstIndex();
   emits("update:tableContext", tableContext.value)
 }
