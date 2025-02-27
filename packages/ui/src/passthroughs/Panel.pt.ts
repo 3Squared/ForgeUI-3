@@ -11,6 +11,6 @@ export default {
         ]
       }
     },
-    contentContainer: "mt-2 mx-4 mb-4 p-3",
+    contentContainer: "mt-2 mx-4 mb-4",
   } as PanelPassThroughOptions
 }
