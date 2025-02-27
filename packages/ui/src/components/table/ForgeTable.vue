@@ -2,7 +2,7 @@
   <div class="position-relative">
     <span data-cy="above-table-slot" ><slot name="above-table" /></span>
     <DataTable
-v-bind="{...props, ...$attrs }" ref="forgeTable"
+      v-bind="{...props, ...$attrs }" ref="forgeTable"
                class="w-100" :class="`${props.severity ? `forge-table-${props.severity}` : ''}`"  :pt="pt" :rows="perPage" :total-records="total" :filter-display="props.filters ? 'row' : undefined" data-cy="table"
                show-headers @update:filters="emitUpdateFilter" @sort="emitSort" @page="emitPage">
       <template v-for="(_, name) in $slots as unknown as DataTableSlots" #[name]="slotProps">

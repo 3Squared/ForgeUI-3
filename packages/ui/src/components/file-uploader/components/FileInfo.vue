@@ -2,14 +2,14 @@
   <div class="py-4 px-3 d-flex" :data-cy="`file-info-${file.name}`">
     <div>
       <Image
-v-if="isImage(file.type)" id="thumbnail-image" image-class="image-file-thumbnail border"
+        v-if="isImage(file.type)" id="thumbnail-image" image-class="image-file-thumbnail border"
         :src="getThumbnailUrl(file)" :alt="file.name" width="75px" preview />
       <Icon v-else id="file-earmark" icon="bi:file-earmark" color="black" width="75px" />
     </div>
     <div class="ms-3 d-flex flex-column">
       <div>
         <ForgeInlineEditor
-v-if="editableFileName" id="edit-file-name" v-model="fileName" :rules="customFileNameRules"
+          v-if="editableFileName" id="edit-file-name" v-model="fileName" :rules="customFileNameRules"
           :name="file.name" :complete-action="updateFileName" />
         <span v-else id="file-name">{{ fileName }}</span>
       </div>
@@ -19,10 +19,10 @@ v-if="editableFileName" id="edit-file-name" v-model="fileName" :rules="customFil
 
     <div class="ms-auto my-auto d-flex">
       <UploadStatus
-:key="uploadStatus" :file-size="file.size" :upload-status="uploadStatus"
+        :key="uploadStatus" :file-size="file.size" :upload-status="uploadStatus"
         :bytes-uploaded="bytesUploaded" :max-file-size="maxFileSize" />
       <Button
-v-if="uploadStatus === 'Not Uploaded' || uploadStatus === 'Failed' || uploadStatus === 'Duplicate' || uploadStatus === 'Aborted'" link
+        v-if="uploadStatus === 'Not Uploaded' || uploadStatus === 'Failed' || uploadStatus === 'Duplicate' || uploadStatus === 'Aborted'" link
         @click="uploadBlob">
         <Icon
           :icon="uploadStatus === 'Not Uploaded' || uploadStatus === 'Duplicate' ? 'bi:upload' : 'bi:arrow-clockwise'" />
