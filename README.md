@@ -21,15 +21,17 @@ ForgeUI-3/
 ## Installation
 
 ### Getting Started with Turbo
-Turbo helps manage and optimize the monorepo structure efficiently. To get started with Turbo in Forge:
+[Turbo](https://turbo.build/repo/docs) helps manage and optimize the monorepo structure efficiently. To get started with Turbo in Forge:
 
-#### Install turbo globally
+#### (Optional) Install turbo
+
+If you want to install turbo you can do this globally, otherwise it will just be installed with `npm i`:
 
 ```sh
 npm install -g turbo
 ```
 
-#### Running Turbo Commands
+### Running Turbo Commands
 
 ##### Running All Builds
 
