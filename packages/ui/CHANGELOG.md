@@ -1,5 +1,11 @@
 # @3squared/forge-ui-3
 
+## 2.12.2
+
+### Patch Changes
+
+- 7774358: Change the way slots are passed into the panel
+
 ## 2.12.1
 
 ### Patch Changes
