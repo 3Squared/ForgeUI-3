@@ -263,11 +263,17 @@ describe('<ForgeTable />', () => {
 
     it('Filters out rows based on date value', () => {
       // Arrange
-      const expectedDate = new Date().getDate();
+      const tomorrow = new Date()
+      tomorrow.setDate(tomorrow.getDate() + 1);
+      const expectedDate = tomorrow.getDate();
       
       // Act
       cy.get(filterId).eq(2).click()
-      cy.get(datePickerDayLabelId).not(".disabled").contains(expectedDate).click()
+      if(expectedDate < 15) {
+        cy.get(`.p-datepicker-day-view [aria-label="${expectedDate}"]`).first().not(".disabled").click()
+      } else {
+        cy.get(`.p-datepicker-day-view [aria-label="${expectedDate}"]`).last().not(".disabled").click()
+      }
 
       // Assert
       cy.get(tableRowId).should('contain.text', expectedDate).and('have.length', 1)
