@@ -1,5 +1,5 @@
 <template>
-  <Button @click="togglePanel" class="ms-2">
+  <Button class="ms-2" @click="togglePanel">
     <div class="d-flex">
       <div class="me-3">
         <Icon icon="bi:layout-three-columns" />
@@ -13,7 +13,8 @@
 
   <Popover ref="columnCustomiserPanel" class="column-customiser" @hide="() =>  panelVisible = false" @show="() => panelVisible = true">
     <div class="d-flex flex-column w-100">
-      <div v-for="(column, index) in columns" class="d-flex cursor-pointer"
+      <div
+v-for="(column, index) in columns" class="d-flex cursor-pointer"
            :class="{
             'border-top': index !== 0,
             'py-1': index !== 0 && columns.length - 1 !== index,
@@ -31,7 +32,7 @@
 import Button from 'primevue/button';
 import Popover from "primevue/popover";
 import { Icon } from '@iconify/vue'
-import { onMounted, ref } from "vue";
+import { ref } from "vue";
 import { ForgeColumn } from "@/types/forge-types.ts";
 import ForgeCheckbox from "@/components/ForgeCheckbox.vue";
 
