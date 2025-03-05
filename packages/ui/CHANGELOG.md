@@ -1,5 +1,11 @@
 # @3squared/forge-ui-3
 
+## 2.12.3
+
+### Patch Changes
+
+- f0a5c70: Fix passthrough for splitbutton dropdown to allow for automatic alignment instead of pageoverflow
+
 ## 2.12.2
 
 ### Patch Changes
