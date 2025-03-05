@@ -3,7 +3,7 @@
     <UploadButton v-bind="props" v-model="files" />
     <div v-if="showDragDropArea">
       <DragDropArea :max-file-input="props.maxFileInput" :max-file-size="props.maxFileSize" :accepted-file-types="props.acceptedFileTypes" v-model="files">
-      <span v-for="({ file }, index) in files">
+      <div v-for="({ file }, index) in files">
         <FileInfo
             :key="file.name"
             :class="index === files.length - 1 || files.length == 1 ? '' : 'border-bottom'"
@@ -13,7 +13,7 @@
             v-bind="props"
             @deleted="deleteFiles"
         />
-      </span>
+      </div>
       </DragDropArea>
       <FileInputInfo :max-file-size="props.maxFileSize" :max-file-input="maxFileInput" />
     </div>
@@ -24,7 +24,7 @@
 import UploadButton from "@/components/file-uploader/components/UploadButton.vue";
 import DragDropArea from "@/components/file-uploader/components/DragDropArea.vue";
 import FileInfo from "@/components/file-uploader/components/FileInfo.vue";
-import { ForgeFileStatus, ForgeFileType } from "../../types/forge-types";
+import { ForgeFileStatus, ForgeFileType } from "@/types/forge-types.ts";
 import { TypedSchema } from "vee-validate";
 import FileInputInfo from "@/components/file-uploader/components/FileInputInfo.vue";
 

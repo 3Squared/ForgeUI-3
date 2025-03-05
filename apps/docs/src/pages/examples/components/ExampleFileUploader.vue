@@ -10,13 +10,15 @@
 
 <script setup lang="ts">
 import { ForgeFileUploader } from "@3squared/forge-ui-3";
-import { ForgeFileType, ForgeFileStatus } from "@3squared/forge-ui-3/src/types/forge-types.ts";
+import { ForgeFileStatus, ForgeFileType } from "@3squared/forge-ui-3/src/types/forge-types.ts";
 import { ref } from "vue";
 
 const file = ref<ForgeFileStatus[]>();
 // Add custom labels to file types using the 'label' prop.
 const acceptedTypes = [
   { fileType: "image/jpeg" },
+  { fileType: "image/jpg" },
+  { fileType: "image/png" },
   { fileType: "application/vnd.openxmlformats-officedocument.wordprocessingml.document", label: "docx" },
   { fileType: "image/gif", label: "GIF" },
   { fileType: "image/csv", label: "CSV" },
