@@ -5,6 +5,7 @@ import { Size } from "../../../src/types/forge-types.ts";
 
 const modalId = "modal"
 const dialog = '[data-pc-name="dialog"]'
+const content = '[data-pc-section="content"]'
 const maximiseButton = '[data-pc-name="pcmaximizebutton"]'
 const closeButton = '[data-pc-name="pcclosebutton"]'
 
@@ -116,6 +117,39 @@ describe('<Dialog />', () => {
       .and('have.class', fullscreenClass)
   })
   
+  it("Content should limit to correct height when maxHeight prop is passed in", () => {
+    // Arrange
+    const contentClass = 'p-dialog-content modal-body overflow-y-auto mh-50px'
+    const maxHeightClass = 'mh-50px'
+    
+    // Act
+    mountDialog({ maxHeight: maxHeightClass })
+    
+    // Assert
+    cy.get(content)
+      .should('exist')
+      .and('be.visible')
+      .and('have.class', contentClass)
+  })
+
+  it("Should remove the max height class on content when modal is maximised", () => {
+    // Arrange
+    const fullscreenClass = 'mw-100 vh-100 vw-100 top-0 start-0'
+    const maxHeightClass = 'mh-50px'
+
+    // Act
+    mountDialog({ maximizable: true, maxHeight: maxHeightClass })
+
+    cy.get(maximiseButton).click()
+
+    // Assert
+    cy.get(dialog)
+      .should('exist')
+      .and('be.visible')
+      .and('have.class', fullscreenClass)
+  })
+
+
   it('Displays custom title which is passed in via props', () => {
     // Arrange
     const expectedTitle = "Custom Title"

@@ -1,15 +1,14 @@
 import ForgeSelectButton from "@/components/ForgeSelectButton.vue";
 import { ForgeSelectButtonProps } from "../../../src/components/ForgeSelectButton.vue";
-import { ref } from "vue";
-import { ForgeSelectButtonOption, Severity } from "../../../src/types/forge-types.ts";
+import { ForgeSelectButtonOption } from "../../../src/types/forge-types.ts";
 
 const id = '[data-cy="forge-select-button"]'
 
-function mountSelectButton(props : ForgeSelectButtonProps, options: ForgeSelectButtonOption[]) {
+function mountSelectButton(props : ForgeSelectButtonProps, value?: string[]) {
   cy.mount(ForgeSelectButton, {
     props: {
       ...props,
-      modelValue: options
+      modelValue: value
     },
     attrs: {
       id: id
@@ -28,7 +27,7 @@ describe('<ForgeSelectButton />', () => {
       { label: "N/A", value: "5", severity: "secondary" }
     ] as ForgeSelectButtonOption[]
     
-    mountSelectButton({}, options)
+    mountSelectButton({options: options} )
     // Assert
     cy.get(`${id}`)
       .should('exist')
@@ -53,8 +52,7 @@ describe('<ForgeSelectButton />', () => {
         const expectedClasses =`border text-${severity} select-btn-${severity}`
 
         // Act
-        mountSelectButton({}, options)
-        
+        mountSelectButton({options: options} )
 
         // Assert
         cy.get('[data-cy="toggle-button-1"]')
@@ -78,7 +76,8 @@ describe('<ForgeSelectButton />', () => {
     const severity = `danger`
     const expectedSelectedClasses = `focus-ring focus-ring-${severity} btn-${severity}-subtle border border-2 border-${severity} fw-500 text-${severity}`
 
-    mountSelectButton({}, options)
+    mountSelectButton({options: options} )
+
     // Assert
     cy.get('[data-cy="toggle-button-1"]').click();
     cy.get('[data-cy="toggle-button-1"]')
@@ -98,7 +97,7 @@ describe('<ForgeSelectButton />', () => {
     const severity = `primary`
     const expectedSelectedClasses = `focus-ring focus-ring-${severity} btn-${severity}-subtle border border-2 border-${severity} fw-500 text-${severity}`
 
-    mountSelectButton({multiple: true}, options)
+    mountSelectButton({multiple: true, options: options})
 
     cy.get('[data-cy="toggle-button-1"]').click();
     cy.get('[data-cy="toggle-button-2"]').click();
@@ -122,7 +121,7 @@ describe('<ForgeSelectButton />', () => {
     const severity = `primary`
     const expectedSelectedClasses = `focus-ring focus-ring-${severity} btn-${severity}-subtle border border-2 border-${severity} fw-500 text-${severity}`
 
-    mountSelectButton({multiple: false}, options)
+    mountSelectButton({multiple: false, options: options})
 
     cy.get('[data-cy="toggle-button-1"]').click();
     cy.get('[data-cy="toggle-button-2"]').click();
@@ -135,7 +134,7 @@ describe('<ForgeSelectButton />', () => {
   it("Show options as selected if set to select when first loaded", () => {
     // Arrange
     const options = [
-      { label: "Maj", value: "1", selected: true },
+      { label: "Maj", value: "1"},
       { label: "Min", value: "2" },
       { label: "Pro", value: "3"},
       { label: "Ex", value: "4" },
@@ -144,8 +143,8 @@ describe('<ForgeSelectButton />', () => {
 
     const severity = `primary`
     const expectedSelectedClasses = `focus-ring focus-ring-${severity} btn-${severity}-subtle border border-2 border-${severity} fw-500 text-${severity}`
-
-    mountSelectButton({}, options)
+    
+    mountSelectButton({options: options}, ['1'] )
 
     cy.get('[data-cy="toggle-button-1"]')
       .should('have.class', expectedSelectedClasses)
@@ -154,7 +153,7 @@ describe('<ForgeSelectButton />', () => {
   it("Should not allow deselection of the last option when allow empty is set to false", () => {
     // Arrange
     const options = [
-      { label: "Maj", value: "1", selected: true },
+      { label: "Maj", value: "1" },
       { label: "Min", value: "2" },
       { label: "Pro", value: "3"},
       { label: "Ex", value: "4" },
@@ -164,7 +163,7 @@ describe('<ForgeSelectButton />', () => {
     const severity = `primary`
     const expectedSelectedClasses = `focus-ring focus-ring-${severity} btn-${severity}-subtle border border-2 border-${severity} fw-500 text-${severity}`
 
-    mountSelectButton({allowEmpty: false}, options)
+    mountSelectButton({allowEmpty: false, options: options}, ['1'])
 
     cy.get('[data-cy="toggle-button-1"]')
       .should('have.class', expectedSelectedClasses)

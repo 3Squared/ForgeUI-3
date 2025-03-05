@@ -1,7 +1,10 @@
 <template>
   <div class="btn-group" data-cy="forge-select-button">
-    <ForgeToggleButton v-for="(option, index) in options" :onLabel="option.label" :offLabel="option.label" :severity="option.severity" :key="index"
-                       @change="onOptionSelected(option)" :defaultValue="option.selected" :disabled="option.disabled" :data-cy="`toggle-button-${option.value}`"
+    <ForgeToggleButton v-for="(option, index) in options" :key="index"
+                       :onLabel="option.label" :offLabel="option.label" 
+                       :severity="option.severity"
+                       @change="onOptionSelected(option)" :defaultValue="isSelected(option)" :disabled="option.disabled" :data-cy="`toggle-button-${option.value}`"
+                       :invalid="invalid"
     />
   </div>
 </template>
@@ -11,31 +14,41 @@ import { ForgeSelectButtonOption } from "@/types/forge-types.ts";
 import ForgeToggleButton from "@/components/ForgeToggleButton.vue";
 
 export interface ForgeSelectButtonProps {
+  options: ForgeSelectButtonOption[];
   multiple?: boolean
-  allowEmpty?: boolean
+  allowEmpty?: boolean,
+  invalid?: boolean
 }
 
 const props = withDefaults(defineProps<ForgeSelectButtonProps>(), {
-  multiple: false,
-  allowEmpty: true
+  multiple: true,
+  allowEmpty: false,
+  invalid: false,
 })
 
-const emit = defineEmits(['change']);
-const options = defineModel<ForgeSelectButtonOption[]>({ required: true });
+const model = defineModel<string | string[] | null>({ required: true });
+
+const isSelected = (option: ForgeSelectButtonOption) => {
+  return props.multiple ? model?.value?.includes(option.value) : model.value === option.value;
+};
 
 const onOptionSelected = (option: ForgeSelectButtonOption) => {
   if (option.disabled) return;
+  if (props.multiple) {
+    let selectedValues = model.value?.length ? [...(model.value as string[])] : [];
+    
+    const isValueSelected = selectedValues.length >= 1 && selectedValues.includes(option.value)
+    
+    if(isValueSelected){
+      if (!props.allowEmpty && selectedValues.length === 1 ) return;
+      selectedValues = selectedValues.length > 1 ? selectedValues.filter((val) => val !== option.value) : [];
+    } else {
+      selectedValues.push(option.value)
+    }    
+    model.value = selectedValues;
   
-  const isOptionLastOption = option.selected && (options.value.filter((op) => option.value != op.value && op.selected).length < 1)
-  if (!props.allowEmpty && isOptionLastOption) return;
-
-  if (!props.multiple) {
-    options.value.forEach((opt) => {
-      if (opt.value != option.value) opt.selected = false
-    })
-  }
-
-  option.selected = !option.selected;
-  emit('change', option)
+  } else {
+    model.value = model.value === option.value && props.allowEmpty ? null : option.value;
+  }  
 }
 </script>

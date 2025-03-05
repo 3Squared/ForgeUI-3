@@ -1,5 +1,73 @@
 # @3squared/forge-ui-3
 
+## 2.12.3
+
+### Patch Changes
+
+- f0a5c70: Fix passthrough for splitbutton dropdown to allow for automatic alignment instead of pageoverflow
+
+## 2.12.2
+
+### Patch Changes
+
+- 7774358: Change the way slots are passed into the panel
+
+## 2.12.1
+
+### Patch Changes
+
+- f185006: Add type import fix
+
+## 2.12.0
+
+### Minor Changes
+
+- 2682662: - Add max height prop to modal
+  - Move helpful classes to utilities so they can be used in app and don't have to be added in railsmart design system
+
+## 2.11.0
+
+### Minor Changes
+
+- df4fc12: Add customisable modal error
+
+## 2.10.1
+
+### Patch Changes
+
+- b37a89e: Add max file count display
+
+## 2.10.0
+
+### Minor Changes
+
+- 7cd55cc: - ForgeFormField - Add a slot to pass any input into
+  - Change ForgeSelectButton to v-model for the select values rather than the whole option object
+
+## 2.9.0
+
+### Minor Changes
+
+- 7337a7d: Add resetError function to the ForgeModal
+
+## 2.8.2
+
+### Patch Changes
+
+- 51b10d5: Trim text filter value in table
+
+## 2.8.1
+
+### Patch Changes
+
+- c4a1d42: Fix checkbox > readonly not working properly
+
+## 2.8.0
+
+### Minor Changes
+
+- 1c0488f: Add forge resolver with docs update
+
 ## 2.7.0
 
 ### Minor Changes

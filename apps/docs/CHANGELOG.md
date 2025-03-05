@@ -1,5 +1,62 @@
 # forge-ui-3-styleguide
 
+## 2.11.0
+
+### Minor Changes
+
+- 2682662: - Add max height prop to modal
+  - Move helpful classes to utilities so they can be used in app and don't have to be added in railsmart design system
+
+### Patch Changes
+
+- Updated dependencies [2682662]
+  - @3squared/forge-ui-3@2.12.0
+
+## 2.10.0
+
+### Minor Changes
+
+- df4fc12: Add customisable modal error
+
+### Patch Changes
+
+- Updated dependencies [df4fc12]
+  - @3squared/forge-ui-3@2.11.0
+
+## 2.9.0
+
+### Minor Changes
+
+- 7cd55cc: - ForgeFormField - Add a slot to pass any input into
+  - Change ForgeSelectButton to v-model for the select values rather than the whole option object
+
+### Patch Changes
+
+- Updated dependencies [7cd55cc]
+  - @3squared/forge-ui-3@2.10.0
+
+## 2.8.0
+
+### Minor Changes
+
+- 7337a7d: Add resetError function to the ForgeModal
+
+### Patch Changes
+
+- Updated dependencies [7337a7d]
+  - @3squared/forge-ui-3@2.9.0
+
+## 2.7.0
+
+### Minor Changes
+
+- 1c0488f: Add forge resolver with docs update
+
+### Patch Changes
+
+- Updated dependencies [1c0488f]
+  - @3squared/forge-ui-3@2.8.0
+
 ## 2.6.0
 
 ### Minor Changes

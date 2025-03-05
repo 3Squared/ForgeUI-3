@@ -5,13 +5,12 @@ export default {
     root: () => ({
       class: ["form-check"],
     }),
-    input: ({ context, state }: CheckboxPassThroughMethodOptions) => ({
+    input: ({ context, props }: CheckboxPassThroughMethodOptions) => ({
       class: [
         "form-check-input px-2 py-2 rounded",
         {
           "bg-primary": context?.checked,
-          "cursor-pointer": !context?.disabled,
-          "form-check-input__focus": state.focused,
+          "cursor-pointer": (!props.disabled && !props.readonly)
         },
       ],
     }),

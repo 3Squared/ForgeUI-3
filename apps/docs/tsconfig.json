@@ -31,6 +31,7 @@
     "tests/**/*.tsx",
     "./src/custom-typings.ts",
     "./types/routes.d.ts",
-    "./typed-router.d.ts"
+    "./typed-router.d.ts",
+    "components.d.ts"
   ]
 }

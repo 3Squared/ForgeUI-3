@@ -1,5 +1,6 @@
 import Bootstrap_PT from "./src/Bootstrap_PT"
 import '@/styles/main.scss'
+import type { ComponentResolver, ComponentResolveResult } from 'unplugin-vue-components/types';
 
 import ForgeAlert from "@/components/ForgeAlert.vue";
 import ForgeActionButton from "./src/components/ForgeActionButton.vue";
@@ -66,3 +67,18 @@ export {
 
 export * from './src/types/forge-types.ts'
 export * from "./src/helpers/index";
+
+export const ForgeResolver = (): ComponentResolver => {
+  return {
+    type: 'component',
+    resolve: (name: string) => {
+      if (!name.startsWith('Forge')) return;
+
+      return {
+        from: `@3squared/forge-ui-3`,
+        name: name
+      } as ComponentResolveResult;
+    }
+  };
+}
+

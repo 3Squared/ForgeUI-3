@@ -2,7 +2,7 @@
   "name": "@3squared/forge-ui-3",
   "repository": "https://github.com/3Squared/ForgeUI-3",
   "description": "ForgeUI 3 is Vue 3 UI Library which combines a variety of popular packages to create a consistent UI for your application.",
-  "version": "2.7.0",
+  "version": "2.12.3",
   "type": "module",
   "license": "MIT",
   "contributors": [
@@ -47,26 +47,26 @@
     "yup": "^1.6.1"
   },
   "devDependencies": {
-    "@cypress/code-coverage": "3.13.11",
-    "@primevue/auto-import-resolver": "4.2.5",
+    "@cypress/code-coverage": "3.13.12",
+    "@primevue/auto-import-resolver": "4.3.1",
     "@vitejs/plugin-vue": "5.2.1",
-    "@vitest/coverage-v8": "3.0.5",
-    "@vitest/ui": "3.0.5",
-    "cypress": "14.0.3",
+    "@vitest/coverage-v8": "3.0.7",
+    "@vitest/ui": "3.0.7",
+    "cypress": "14.1.0",
     "cypress-real-events": "1.14.0",
     "rollup-plugin-visualizer": "5.14.0",
-    "sass": "1.84.0",
-    "typescript": "5.7.3",
-    "unplugin-vue-components": "28.0.0",
-    "vite": "6.1.0",
+    "sass": "1.85.1",
+    "typescript": "5.8.2",
+    "unplugin-vue-components": "28.4.1",
+    "vite": "6.2.0",
     "vite-bundle-visualizer": "1.2.1",
-    "vite-plugin-dts": "4.5.0",
-    "vite-plugin-istanbul": "6.0.2",
-    "vitest": "3.0.5",
+    "vite-plugin-dts": "4.5.3",
+    "vite-plugin-istanbul": "7.0.0",
+    "vitest": "3.0.7",
     "vue-drawing-canvas": "1.0.14"
   },
   "optionalDependencies": {
-    "@rollup/rollup-linux-x64-gnu": "4.34.6"
+    "@rollup/rollup-linux-x64-gnu": "4.34.9"
   },
   "nyc": {
     "all": true,
