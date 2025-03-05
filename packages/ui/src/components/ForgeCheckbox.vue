@@ -3,29 +3,29 @@
     <div
       class="d-flex"
       data-cy="checkbox-container"
-      @click="evt => onChange(evt, value)"
       v-bind="{ ...$attrs }"
+      @click="evt => onChange(evt, value)"
     >
       <Checkbox
         v-bind="{ ...props }"
-        binary
         v-model="value"
+        binary
         :input-id="props.name"
         :input-class="{ 'is-invalid': hasErrors }"
         :class="(props.disabled || props.readonly) ? '' : 'cursor-pointer'"
       />
       <label
         :for="props.name"
-        @click="evt => onChange(evt, !value)"
         :class="`${(props.disabled || props.readonly) ? 'opacity-50' : 'cursor-pointer'} ${
           hasErrors ? 'text-danger-dark' : ''
         }`"
         class="w-100 my-auto"
+        @click="evt => onChange(evt, !value)"
       >
         <slot>{{ props.label }}</slot>
       </label>
     </div>
-    <small data-cy="error" class="text-invalid" v-show="hasErrors">{{
+    <small v-show="hasErrors" data-cy="error" class="text-invalid">{{
       errorMessage
     }}</small>
   </div>
