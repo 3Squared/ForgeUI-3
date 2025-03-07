@@ -3,7 +3,7 @@
     <span data-cy="above-table-slot" ><slot name="above-table" /></span>
     <DataTable class="w-100" :class="`${props.severity ? `forge-table-${props.severity}` : ''}`"
                v-bind="{...props, ...$attrs }" :pt="pt"  :rows="perPage" :total-records="total" :filter-display="props.filters ? 'row' : undefined" ref="forgeTable" data-cy="table"
-               @update:filters="emitUpdateFilter" @sort="emitSort" @page="emitPage" showHeaders>
+               @update:filters="emitUpdateFilter" @sort="emitSort" @page="emitPage" showHeaders :first="firstValueIndex">
       <template v-for="(_, name) in $slots as unknown as DataTableSlots" #[name]="slotProps">
         <slot :name="name" v-bind="slotProps || {}"></slot>
       </template>
@@ -90,6 +90,8 @@ const props = withDefaults(defineProps<ForgeTableProps>(), {
 const forgeTable = ref()
 const pageSizes = ref<Array<number>>([5, 10, 20, 50, 100])
 const perPage = ref<number>(10)
+const pageNumber = ref<number>(0);
+const firstValueIndex = ref<number>(0);
 
 const tableContext = ref<ForgeTableContext>({
   filters: props.filters,
@@ -152,7 +154,9 @@ const exportData = () => {
 const emitSort = (sort: DataTableSortEvent) => {
   tableContext.value.sortDirection = sort.sortOrder === 1 ? 'Asc' : sort.sortOrder === -1 ? 'Desc' : 'None'
   tableContext.value.sortField = sort.sortField?.toString() ?? ''
-  
+  tableContext.value.page = pageNumber.value = 0;
+  setFirstIndex();
+
   emits("update:tableContext", tableContext.value)
   emits('sort', sort)
 }
@@ -163,14 +167,18 @@ const emitUpdateFilter = (filters: DataTableFilterMeta | undefined) => {
   emits('update:filters', filters)
 }
 const emitPage = (page : DataTablePageEvent) => {
-  tableContext.value.page = page.page
-
+  tableContext.value.page = pageNumber.value = page.page
+  
+  setFirstIndex();
   emits("update:tableContext", tableContext.value)
   emits('page', page)
 }
 const emitPageSize = () => {
   tableContext.value.perPage = perPage.value
-  
+  // Set page based on current index
+  tableContext.value.page = pageNumber.value = Math.floor(firstValueIndex.value/perPage.value)
+
+  setFirstIndex();
   emits("update:tableContext", tableContext.value)
 }
 
@@ -181,4 +189,11 @@ watch(() => props.filters, (newValue) => {
 }, {deep: true})
 
 onMounted(() => emits("update:tableContext", tableContext.value))
+
+const setFirstIndex = () => 
+{
+  console.log('Setting First Index')
+  firstValueIndex.value = pageNumber.value++ * perPage.value;
+}
+
 </script>
