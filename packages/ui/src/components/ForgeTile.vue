@@ -22,7 +22,7 @@ import { Severity, BarPosition } from "../types/forge-types";
 import { computed } from "vue";
 
 export interface ForgeTileProps {
-  severity: Severity,
+  severity?: Severity,
   barPosition: BarPosition,
   clickable: boolean,
   selected?: boolean
