@@ -16,18 +16,18 @@ export default {
     },
     pcRowEditorInit: 'btn',
     rowToggleButton: 'btn',
-    nodeToggleButton: "btn",
+    nodeToggleButton: "btn btn-sm",
     columnResizer: {
       class: 'position-absolute top-0 end-0 m-0 h-100 p-0 cursor-resize border border-transparent'
     },
     pcRowEditorSave: 'btn',
     pcRowEditorCancel: 'btn',
-    bodyCell: (options: ColumnPassThroughMethodOptions & { props: { resizableColumns: boolean }, column: { props: { frozen: boolean | '', expander: boolean | null } } }) => {
+    bodyCell: ({props, parent}: ColumnPassThroughMethodOptions) => {
       return {
         class: {
-          'expander-cell': options.column.props.expander,
-          'position-sticky': options.column.props?.frozen !== undefined,
-          'overflow-hidden text-nowrap': options.props.resizableColumns
+          'expander-cell': props.column.props.expander,
+          'position-sticky': props.column.props.frozen,
+          'overflow-hidden text-nowrap': parent.instance.resizableColumns
         }
       }
     },

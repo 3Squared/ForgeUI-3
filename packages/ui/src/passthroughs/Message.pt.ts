@@ -10,6 +10,7 @@ export default {
           'alert-brand': props.severity === 'brand',
           'alert-secondary': props.severity === 'secondary',
           'alert-success': props.severity === 'success',
+          'alert-success-alternate': props.severity === 'success-alternate',
           'alert-warning': props.severity === 'warning' || props.severity === 'warn',
           'alert-danger': props.severity === 'danger' || props.severity === 'error',
           'alert-info': props.severity === 'info'

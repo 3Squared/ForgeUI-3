@@ -33,6 +33,8 @@ const severity = computed(() => {
       return 'bg-secondary'
     case 'success':
       return 'bg-success'
+    case 'success-alternate':
+      return 'bg-success-alternate'
     case 'warning':
       return 'bg-warning'
     case 'danger': 

@@ -4,10 +4,10 @@
       <h1 class="mb-4 pb-1">{{ palette.title }}</h1>
       <div class="d-flex">
         <div v-for="colour in palette.colours">
-          <div class="d-flex mb-4 pb-1 me-5">
+          <div class="d-flex mb-4 pb-1 me-5 text-center">
             <div class="color-swatch d-flex flex-column h-100 pr-5">
               <p class="text-center mb-1">{{ colour.label }}</p>
-              <div :id="`swatch-${colour.background}`" :class="colour.background"></div>
+              <div :id="`swatch-${colour.background}`" :class="colour.background" style="margin: 0 auto;"></div>
               <Button link @click="(event) => toggle(event, colour.text)">
                 Copy
                 <Icon icon="bi:chevron-down" />
@@ -54,7 +54,8 @@ const menuItems = ref([
 const toast = useToast();
 
 const toggle = (event: Event, text: string) => {
-  menu.value.find((s: { id: string }) => s.id === `${text}-menu`).toggle(event);
+  console.log(menu);
+  menu.value.find((s: { $id: string }) => s.$id === `${text}-menu`).toggle(event);
 };
 
 const palettes = [
@@ -80,6 +81,7 @@ const palettes = [
       { background: "bg-secondary", text: "text-secondary", label: "Secondary" },
       { background: "bg-info", text: "text-info", label: "Info" },
       { background: "bg-success", text: "text-success", label: "Success" },
+      { background: "bg-success-alternate", text: "text-success-alternate", label: "Success Alternate" },
       { background: "bg-warning", text: "text-warning", label: "Warning" },
       { background: "bg-danger", text: "text-danger", label: "Danger" },
       { background: "bg-light", text: "text-light", label: "Light" },

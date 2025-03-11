@@ -1,5 +1,3 @@
-import { TreeSelectPassThroughOptions } from "primevue/treeselect";
-import { SelectPassThroughMethodOptions } from "primevue/select";
 import { TreePassThroughOptions, TreePassThroughMethodOptions } from "primevue/tree";
 
 export default {

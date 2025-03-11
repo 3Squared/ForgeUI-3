@@ -71,7 +71,7 @@ export default {
   ...TreeSelectPT,
   ...TreePT,
   ...AccordionPT,
- ...TreeTable,
+  ...TreeTable,
   directives: {
     ...TooltipPT
   }

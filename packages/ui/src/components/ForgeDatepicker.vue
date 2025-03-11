@@ -83,6 +83,7 @@ const pt = computed(() => ({
         'text-brand': !context.selected && context.today && props.severity === 'brand',
         'text-secondary': !context.selected && context.today && props.severity === 'secondary',
         'text-success': !context.selected && context.today && props.severity === 'success',
+        'text-success-alternate': !context.selected && context.today && props.severity === 'success-alternate',
         'text-warning': !context.selected && context.today && props.severity === 'warning',
         'text-danger': !context.selected && context.today && props.severity === 'danger',
         'text-info': !context.selected && context.today && props.severity === 'info'
@@ -107,6 +108,7 @@ const pt = computed(() => ({
           'btn-link text-brand': props.severity === 'brand',
           'btn-link text-secondary': props.severity === 'secondary',
           'btn-link text-success': props.severity === 'success',
+          'btn-link text-success-alternate': props.severity === 'success-alternate',
           'btn-link text-warning': props.severity === 'warning',
           'btn-link text-danger': props.severity === 'danger',
           'btn-link text-info': props.severity === 'info'
@@ -123,6 +125,7 @@ const pt = computed(() => ({
           'btn-link text-brand': props.severity === 'brand',
           'btn-link text-secondary': props.severity === 'secondary',
           'btn-link text-success': props.severity === 'success',
+          'btn-link text-success-alternate': props.severity === 'success-alternate',
           'btn-link text-warning': props.severity === 'warning',
           'btn-link text-danger': props.severity === 'danger',
           'btn-link text-info': props.severity === 'info'
@@ -139,6 +142,7 @@ const pt = computed(() => ({
           'text-brand': props.severity === 'brand' && context.year.value === new Date().getFullYear(),
           'text-secondary': props.severity === 'secondary' && context.year.value === new Date().getFullYear(),
           'text-success': props.severity === 'success' && context.year.value === new Date().getFullYear(),
+          'text-success-alternate': props.severity === 'success-alternate' && context.year.value === new Date().getFullYear(),
           'text-warning': props.severity === 'warning' && context.year.value === new Date().getFullYear(),
           'text-danger': props.severity === 'danger' && context.year.value === new Date().getFullYear(),
           'text-info': props.severity === 'info' && context.year.value === new Date().getFullYear()
@@ -154,6 +158,7 @@ const pt = computed(() => ({
         'text-brand': props.severity === 'brand' && (context.monthIndex + 1) === (new Date().getMonth() + 1),
         'text-secondary': props.severity === 'secondary' && (context.monthIndex + 1) === (new Date().getMonth() + 1),
         'text-success': props.severity === 'success' && (context.monthIndex + 1) === (new Date().getMonth() + 1),
+        'text-success-alternate': props.severity === 'success-alternate' && (context.monthIndex + 1) === (new Date().getMonth() + 1),
         'text-warning': props.severity === 'warning' && (context.monthIndex + 1) === (new Date().getMonth() + 1),
         'text-danger': props.severity === 'danger' && (context.monthIndex + 1) === (new Date().getMonth() + 1),
         'text-info': props.severity === 'info' && (context.monthIndex + 1) === (new Date().getMonth() + 1)

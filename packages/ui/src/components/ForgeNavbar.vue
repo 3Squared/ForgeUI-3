@@ -48,6 +48,7 @@
           'bg-brand': props.severity === 'brand',
           'bg-secondary': props.severity === 'secondary',
           'bg-success': props.severity === 'success',
+          'bg-success-alternate': props.severity === 'success-alternate',
           'bg-warning': props.severity === 'warning',
           'bg-danger': props.severity === 'danger',
           'bg-info': props.severity === 'info'

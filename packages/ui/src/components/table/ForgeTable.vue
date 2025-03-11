@@ -2,7 +2,7 @@
   <div class="position-relative">
     <span data-cy="above-table-slot" ><slot name="above-table" /></span>
     <DataTable class="w-100" :class="`${props.severity ? `forge-table-${props.severity}` : ''}`"
-               v-bind="{...props, ...$attrs }" :pt="pt"  :rows="perPage" :total-records="total" :filter-display="props.filters ? 'row' : undefined" ref="forgeTable" data-cy="table"
+               v-bind="{...props, ...$attrs }" :pt="pt" :rows="perPage" :total-records="total" :filter-display="props.filters ? 'row' : undefined" ref="forgeTable" data-cy="table"
                @update:filters="emitUpdateFilter" @sort="emitSort" @page="emitPage" showHeaders>
       <template v-for="(_, name) in $slots as unknown as DataTableSlots" #[name]="slotProps">
         <slot :name="name" v-bind="slotProps || {}"></slot>
@@ -122,6 +122,7 @@ const pt = computed<DataTablePassThroughOptions>(() => ({
           'text-brand': props.severity === "brand",
           'text-primary': props.severity === "primary",
           'text-success': props.severity === "success",
+          'text-success-alternate': props.severity === "success-alternate",
           'text-warning': props.severity === "warning",
           'text-danger': props.severity === "danger",
           'text-info': props.severity === "info"

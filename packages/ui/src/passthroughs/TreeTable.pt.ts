@@ -1,32 +1,43 @@
-import { TreeTablePassThroughOptions, TreeTablePassThroughOptionType } from "primevue/treetable";
-import { PaginatorPassThroughMethodOptions } from "primevue/paginator";
-import { ColumnContext } from "primevue";
+import { TreeTablePassThroughMethodOptions } from "primevue"
 
 export default {
   // More PT options can be found in the ForgeTable file.
   treetable: {
     root: 'position-relative',
-    table: (options) => {
+    table: ({props, attrs}) => {
       return {
         class: [
-          'table position-relative blah',
+          'table position-relative',
           {
-            'table-striped': options.props.stripedRows,
-            'table-hover': options.props.rowHover,
-            'table-bordered': options.props.showGridlines,
-            'table-sm': options.props.size === 'small',
-            'table-lg': options.props.size === 'large',
-            'opacity-50': options.props.loading
+            'table-striped': attrs.stripedRows || attrs.stripedRows == "",
+            'table-hover': props.rowHover,
+            'table-bordered': props.showGridlines,
+            'table-sm': props.size === 'small',
+            'table-lg': props.size === 'large',
+            'opacity-50': props.loading
           }
         ]
       }
     },
-    nodeToggleButton: "btn",
-    row: ({ props, instance }) => [
+    mask: () => {
+      return {
+        class: 'tree-table-overlay tree-table-spinner'
+      }
+    },
+      loadingIcon: ({props}) => {
+    return {
+      class: [
+        'spinner-border border-0',
         {
-            'test': true,
-            'parent-node': instance.node.hasOwnProperty("children")
-        }
-    ]
+          'text-brand': props.severity === "brand",
+          'text-primary': props.severity === "primary",
+          'text-success': props.severity === "success",
+          'text-success-alternate': props.severity === "success-alternate",
+          'text-warning': props.severity === "warning",
+          'text-danger': props.severity === "danger",
+          'text-info': props.severity === "info"
+        }]
+    }
+  },
   }
 }

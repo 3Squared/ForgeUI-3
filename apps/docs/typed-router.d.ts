@@ -35,6 +35,7 @@ declare module 'vue-router/auto-routes' {
     '/data/Table': RouteRecordInfo<'/data/Table', '/data/Table', Record<never, never>, Record<never, never>>,
     '/data/Tile': RouteRecordInfo<'/data/Tile', '/data/Tile', Record<never, never>, Record<never, never>>,
     '/data/Tree': RouteRecordInfo<'/data/Tree', '/data/Tree', Record<never, never>, Record<never, never>>,
+    '/data/TreeTable': RouteRecordInfo<'/data/TreeTable', '/data/TreeTable', Record<never, never>, Record<never, never>>,
     '/examples/CodeTesting': RouteRecordInfo<'/examples/CodeTesting', '/examples/CodeTesting', Record<never, never>, Record<never, never>>,
     '/examples/components/ExampleAutoComplete': RouteRecordInfo<'/examples/components/ExampleAutoComplete', '/examples/components/ExampleAutoComplete', Record<never, never>, Record<never, never>>,
     '/examples/components/ExampleButton': RouteRecordInfo<'/examples/components/ExampleButton', '/examples/components/ExampleButton', Record<never, never>, Record<never, never>>,

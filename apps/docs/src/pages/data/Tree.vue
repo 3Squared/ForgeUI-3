@@ -51,7 +51,7 @@ const { options, propVals, config } = usePlayground(
 );
 
 const code = computed(() => `<Tree ${propVals.value.join(" ")}/>`);
-const optionsCode = computed(() => `const options = const nodes = [
+const optionsCode = computed(() => `const options = [
   {
     key: '0',
     label: 'Documents',
