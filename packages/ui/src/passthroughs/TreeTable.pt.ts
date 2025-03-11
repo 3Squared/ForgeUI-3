@@ -24,7 +24,7 @@ export default {
         class: 'tree-table-overlay tree-table-spinner'
       }
     },
-      loadingIcon: ({props}) => {
+    loadingIcon: ({props}) => {
     return {
       class: [
         'spinner-border border-0',

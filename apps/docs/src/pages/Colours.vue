@@ -54,7 +54,6 @@ const menuItems = ref([
 const toast = useToast();
 
 const toggle = (event: Event, text: string) => {
-  console.log(menu);
   menu.value.find((s: { $id: string }) => s.$id === `${text}-menu`).toggle(event);
 };
 
