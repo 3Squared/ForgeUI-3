@@ -26,6 +26,7 @@ export default {
         {
           'text-primary': props.message?.severity === 'info',
           'text-success': props.message?.severity === 'success',
+          'text-success-alternate': props.message?.severity === 'success-alternate',
           'text-danger': props.message?.severity === 'error',
           'text-warning': props.message?.severity === 'warn',
         }

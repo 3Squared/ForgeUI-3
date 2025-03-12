@@ -14,19 +14,21 @@ export default {
         }],
       }
     },
-    
     pcRowEditorInit: 'btn',
     rowToggleButton: 'btn',
+    nodeToggleButton: "btn btn-sm",
     columnResizer: {
       class: 'position-absolute top-0 end-0 m-0 h-100 p-0 cursor-resize border border-transparent'
     },
     pcRowEditorSave: 'btn',
     pcRowEditorCancel: 'btn',
-    bodyCell: (options: ColumnPassThroughMethodOptions & { props: { resizableColumns: boolean }, column: { props: { frozen: boolean | '' } } }) => {
+    bodyCell: (options: ColumnPassThroughMethodOptions & { props: { resizableColumns: boolean }, column: { props: { frozen: boolean | '', expander: boolean | undefined } } }) => {
+      console.log(options.parent.props.resizableColumns);
       return {
         class: {
+          'expander-cell': options.column.props?.expander,
           'position-sticky': options.column.props?.frozen !== undefined,
-          'overflow-hidden text-nowrap': options.props.resizableColumns
+          'overflow-hidden text-nowrap': options.parent.props.resizableColumns
         }
       }
     },

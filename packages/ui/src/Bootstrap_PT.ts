@@ -34,6 +34,7 @@ import TreePT from "./passthroughs/Tree.pt.ts";
 import TreeSelectPT from "./passthroughs/TreeSelect.pt.ts";
 import FieldsetPt from "./passthroughs/Fieldset.pt.ts";
 import AccordionPT from "./passthroughs/Accordion.pt.ts";
+import TreeTable from "./passthroughs/TreeTable.pt.ts";
 
 export default {
   ...AutoCompletePT,
@@ -70,6 +71,7 @@ export default {
   ...TreeSelectPT,
   ...TreePT,
   ...AccordionPT,
+  ...TreeTable,
   directives: {
     ...TooltipPT
   }
