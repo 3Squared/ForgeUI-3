@@ -46,7 +46,6 @@ const { options, propVals, config } = usePlayground(
     legacyPaginationFooter: false,
     expandedKeys: expandKeys,
     totalRecords: nodes.length,
-    stickyHeader: true,
     showGridlines: false,
     stripedRows: false,
     rowHover: false,

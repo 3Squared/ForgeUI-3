@@ -1,7 +1,7 @@
 <template>
     <div class="position-relative">
       <span data-cy="above-table-slot" ><slot name="above-table" /></span>
-      <TreeTable class="w-100" :class="`${props.severity ? `forge-table-${props.severity}` : ''}`" v-bind="{...props, ...$attrs }" :pt="treetablePT" ref="forgeTreeTable" :filter-display="props.filters ? 'row' : undefined"
+      <TreeTable class="w-100" :class="`${props.severity ? `forge-table-${props.severity}` : ''}`" v-bind="{...props, ...$attrs }" :pt="treetablePT" :filter-display="props.filters ? 'row' : undefined"
       :rows="paginator ? perPage : undefined" data-cy="tree-table"
       @update:filters="emitUpdateFilter" @sort="emitSort" @page="emitPage" @node-expand="(() => setExpanderColumns())" showHeaders :first="firstValueIndex">
         <template v-for="(_, name) in $slots as unknown as TreeTableSlots" #[name]="slotProps">
@@ -13,7 +13,7 @@
             <div class="d-flex">
               <div class="d-flex align-items-end mb-2">
                 <span v-if="paginator && !legacyPaginationFooter">
-                  <forge-pagination-header :total="total" :page-sizes="pageSizes" v-model:per-page="perPage" @update:perPage="emitPageSize" />
+                  <ForgePaginationHeader :total="total" :page-sizes="pageSizes" v-model:per-page="perPage" @update:perPage="emitPageSize" />
                 </span>
               </div>
               <div class="ms-auto">
@@ -65,7 +65,6 @@ export interface ForgeTreeTableProps extends TreeTableProps {
   value: any[],
   legacyPaginationFooter?: boolean,
   showClearButton?: boolean,
-  stickyHeader?: boolean,
   clearAll?: Function,
   emptyMessage?: string
 }
@@ -79,18 +78,16 @@ const props = withDefaults(
     paginator: true,
     alwaysShowPaginator: true,
     showClearButton: false,
-    stickyHeader: true,
     stripedRows: false
   })
 
 
 const emits = defineEmits(['update:filters', 'update:tableContext', 'sort', 'page'])
 
-const pageSizes = ref<Array<number>>([5, 10, 20, 50, 100])
+const pageSizes = ref<number[]>([5, 10, 20, 50, 100])
 const perPage = ref<number>(10)
 const firstValueIndex = ref<number>(0);
 const pageNumber = ref<number>(0);
-const forgeTreeTable = ref();
 
 const tableContext = ref<ForgeTableContext>({
   filters: props.filters,
@@ -147,8 +144,8 @@ const treetablePT = computed(() => ({
 }
 ));
 
-watch(() => props.parentExpanderFullRow, (newVallue) => {
-  if (newVallue) {
+watch(() => props.parentExpanderFullRow, (newValue) => {
+  if (newValue) {
     setExpanderColumns();
   } else{
     removeExpanderColumns();

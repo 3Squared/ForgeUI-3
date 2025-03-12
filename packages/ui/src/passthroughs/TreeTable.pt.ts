@@ -4,7 +4,7 @@ export default {
   // More PT options can be found in the ForgeTable file.
   treetable: {
     root: 'position-relative',
-    table: ({props, attrs}) => {
+    table: ({props, attrs} : TreeTablePassThroughMethodOptions) => {
       return {
         class: [
           'table position-relative',
@@ -21,23 +21,8 @@ export default {
     },
     mask: () => {
       return {
-        class: 'tree-table-overlay tree-table-spinner'
+        class: 'table-overlay table-spinner'
       }
-    },
-    loadingIcon: ({props}) => {
-    return {
-      class: [
-        'spinner-border border-0',
-        {
-          'text-brand': props.severity === "brand",
-          'text-primary': props.severity === "primary",
-          'text-success': props.severity === "success",
-          'text-success-alternate': props.severity === "success-alternate",
-          'text-warning': props.severity === "warning",
-          'text-danger': props.severity === "danger",
-          'text-info': props.severity === "info"
-        }]
     }
   },
-  }
 }

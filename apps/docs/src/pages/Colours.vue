@@ -7,7 +7,7 @@
           <div class="d-flex mb-4 pb-1 me-5 text-center">
             <div class="color-swatch d-flex flex-column h-100 pr-5">
               <p class="text-center mb-1">{{ colour.label }}</p>
-              <div :id="`swatch-${colour.background}`" :class="colour.background" style="margin: 0 auto;"></div>
+              <div :id="`swatch-${colour.background}`" class="m-auto" :class="colour.background"></div>
               <Button link @click="(event) => toggle(event, colour.text)">
                 Copy
                 <Icon icon="bi:chevron-down" />

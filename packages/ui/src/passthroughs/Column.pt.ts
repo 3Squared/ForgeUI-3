@@ -22,12 +22,13 @@ export default {
     },
     pcRowEditorSave: 'btn',
     pcRowEditorCancel: 'btn',
-    bodyCell: ({props, parent}: ColumnPassThroughMethodOptions) => {
+    bodyCell: (options: ColumnPassThroughMethodOptions & { props: { resizableColumns: boolean }, column: { props: { frozen: boolean | '', expander: boolean | undefined } } }) => {
+      console.log(options.parent.props.resizableColumns);
       return {
         class: {
-          'expander-cell': props.column.props.expander,
-          'position-sticky': props.column.props.frozen,
-          'overflow-hidden text-nowrap': parent.instance.resizableColumns
+          'expander-cell': options.column.props?.expander,
+          'position-sticky': options.column.props?.frozen !== undefined,
+          'overflow-hidden text-nowrap': options.parent.props.resizableColumns
         }
       }
     },
