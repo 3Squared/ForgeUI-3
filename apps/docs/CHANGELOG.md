@@ -1,5 +1,20 @@
 # forge-ui-3-styleguide
 
+## 2.13.0
+
+### Minor Changes
+
+- 6d2d6e7: Added ForgeTreeTable
+  - Added new ForegTreeTable component based on PrimeVue TreeTable with addtional props top allow for parent nodes being full width, based on a column count prop
+  - Added passthrough for the TreeTable to be used, if not using the ForgeTreeTable Component
+  - Added a new base colour called success-alternate
+  - Fixed the Colour page menus
+
+### Patch Changes
+
+- Updated dependencies [6d2d6e7]
+  - @3squared/forge-ui-3@2.14.0
+
 ## 2.12.0
 
 ### Minor Changes
