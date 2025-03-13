@@ -8,10 +8,10 @@ export default {
         class: [
           'align-top',
           {
-          'cursor-move': options.props.reorderableColumns,
-          'position-sticky': options.column?.context.frozen !== undefined || options.column?.context.frozen || options.column?.context.frozen === '',
-          'overflow-hidden position-relative bg-clip-padding': options.column?.context.resizable
-        }],
+            'cursor-move': options.props.reorderableColumns,
+            'position-sticky': options.column?.context.frozen !== undefined || options.column?.context.frozen || options.column?.context.frozen === '',
+            'overflow-hidden position-relative bg-clip-padding': options.column?.context.resizable
+          }],
       }
     },
     pcRowEditorInit: 'btn',
@@ -23,7 +23,6 @@ export default {
     pcRowEditorSave: 'btn',
     pcRowEditorCancel: 'btn',
     bodyCell: (options: ColumnPassThroughMethodOptions & { props: { resizableColumns: boolean }, column: { props: { frozen: boolean | '', expander: boolean | undefined } } }) => {
-      console.log(options.parent.props.resizableColumns);
       return {
         class: {
           'expander-cell': options.column.props?.expander,
@@ -41,11 +40,11 @@ export default {
           }],
       }
     },
-    pcColumnFilterClearButton: ({ props } : ColumnPassThroughMethodOptions & { props: { filters: object}}) => {
+    pcColumnFilterClearButton: ({ props }: ColumnPassThroughMethodOptions & { props: { filters: object } }) => {
       return {
         class: [
           'btn',
-          { 
+          {
             'd-none': props.filters[props.field] ? props.filters[props.field]?.value === null : false
           }
         ]
@@ -64,7 +63,7 @@ export default {
     filter: 'd-flex w-100',
     filterElementContainer: "w-100",
     filterConstraintList: 'ps-0',
-    filterConstraint: (options : ColumnPassThroughMethodOptions) => {
+    filterConstraint: (options: ColumnPassThroughMethodOptions) => {
       return {
         class: [
           'dropdown-item cursor-pointer',
@@ -104,6 +103,6 @@ export default {
         ]
       }
     },
-  
+
   }
 }
