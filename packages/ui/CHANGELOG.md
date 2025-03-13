@@ -1,5 +1,12 @@
 # @3squared/forge-ui-3
 
+## 2.14.1
+
+### Patch Changes
+
+- 12f3dd0: - Update primevue and extra packages
+  - Remove console log
+
 ## 2.14.0
 
 ### Minor Changes
