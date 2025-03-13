@@ -252,6 +252,11 @@ watch(() => props.filters, (newValue) => {
   emits("update:tableContext", tableContext.value)
 }, {deep: true})
 
+
+watch(() => props.value, () => {
+  setExpanderColumns();
+})
+
 onMounted(() => {
   setExpanderColumns();
   emits("update:tableContext", tableContext.value);
