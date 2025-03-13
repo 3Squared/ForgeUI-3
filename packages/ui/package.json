@@ -34,17 +34,17 @@
   },
   "dependencies": {
     "@azure/abort-controller": "^2.0.0",
-    "@azure/storage-blob": "^12.17.0",
-    "@iconify/vue": "^4.2.0",
-    "@popperjs/core": "^2.11.8",
+    "@azure/storage-blob": "12.17.0",
+    "@iconify/vue": "4.2.0",
+    "@popperjs/core": "2.11.8",
     "@vueuse/components": "^13.0.0",
     "bootstrap": "^5.3.3",
-    "lodash-es": "^4.17.21",
+    "lodash-es": "4.17.21",
     "mime": "^4.0.4",
-    "primevue": "^4.2.5",
-    "vee-validate": "^4.11.8",
+    "primevue": "^4.3.2",
+    "vee-validate": "4.15.0",
     "vue": "^3.5.13",
-    "yup": "^1.6.1"
+    "yup": "1.6.1"
   },
   "devDependencies": {
     "@cypress/code-coverage": "3.13.12",
