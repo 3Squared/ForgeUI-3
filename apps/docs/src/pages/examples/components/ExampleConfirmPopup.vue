@@ -27,15 +27,6 @@ const showTemplate = (event) => {
     target: event.currentTarget,
     group: 'templating',
     message: 'Please confirm to proceed moving forward.',
-    icon: 'pi pi-exclamation-circle',
-    rejectProps: {
-      icon: 'pi pi-times',
-      label: 'Cancel',
-    },
-    acceptProps: {
-      icon: 'pi pi-check',
-      label: 'Confirm'
-    },
     accept: () => {
       toast.add({severity:'info', summary:'Confirmed', detail:'You have accepted', life: 3000});
     },

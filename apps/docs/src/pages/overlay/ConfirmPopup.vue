@@ -57,14 +57,6 @@ const showTemplate = (event) => {
     target: event.currentTarget,
     group: 'templating',
     message: message.value,
-    rejectProps: {
-      label: "Cancel",
-      severity: "secondary",
-      outlined: true
-    },
-    acceptProps: {
-      label: "Save"
-    },
     accept: () => {
       toast.add({ severity: 'info', summary: 'Confirmed', detail: 'You have accepted', life: 3000 });
     },
@@ -103,15 +95,7 @@ const showTemplate = (event) => {
     target: event.currentTarget,
     //group - Optional key to match the key of the confirmation, useful to target a specific confirm dialog instance.
     group: 'templating', 
-    message: message.value,
-    rejectProps: {
-      label: "Cancel",
-      severity: "secondary",
-      outlined: true
-    },
-    acceptProps: {
-      label: "Save"
-    },
+    message: "Are you sure you want to proceed?",
     accept: () => {
       toast.add({severity:'info', summary:'Confirmed', detail:'You have accepted', life: 3000});
     },
