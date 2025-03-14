@@ -31,7 +31,7 @@ import ForgeColumnCustomiser from './src/components/table/ForgeColumnCustomiser.
 import ForgePanel from './src/components/ForgePanel.vue'
 import ForgeSelectButton from './src/components/ForgeSelectButton.vue'
 import ForgeToggleButton from './src/components/ForgeToggleButton.vue'
-import ForgeConfirmDialog from './src/components/ForgeConfirmDialog.vue'
+import ForgeConfirmPopup from './src/components/ForgeConfirmPopup.vue'
 
 export {
   Bootstrap_PT,
@@ -64,7 +64,7 @@ export {
   ForgeSelectButton,
   ForgeToggleButton,
   ForgeTreeTable,
-  ForgeConfirmDialog
+  ForgeConfirmPopup
 }
 
 export * from './src/types/forge-types.ts'

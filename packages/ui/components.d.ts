@@ -22,7 +22,7 @@ declare module 'vue' {
     ForgeCheckbox: typeof import('./src/components/ForgeCheckbox.vue')['default']
     ForgeChip: typeof import('./src/components/ForgeChip.vue')['default']
     ForgeColumnCustomiser: typeof import('./src/components/table/ForgeColumnCustomiser.vue')['default']
-    ForgeConfirmDialog: typeof import('./src/components/ForgeConfirmDialog.vue')['default']
+    ForgeConfirmPopup: typeof import('./src/components/ForgeConfirmPopup.vue')['default']
     ForgeDatepicker: typeof import('./src/components/ForgeDatepicker.vue')['default']
     ForgeFileUploader: typeof import('./src/components/file-uploader/ForgeFileUploader.vue')['default']
     ForgeFilterHeader: typeof import('./src/components/table/ForgeFilterHeader.vue')['default']

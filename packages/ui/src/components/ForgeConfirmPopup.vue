@@ -1,11 +1,10 @@
 <template>
-  <ConfirmPopup group="templating" :pt="pt" v-bind="{ ...$attrs, ...$props }">
+  <ConfirmPopup :pt="pt" v-bind="{ ...$attrs, ...$props }">
     <slot v-for="(_, name) in $slots" :slot="name" :name="name" />
   </ConfirmPopup>
 </template>
 
 <script setup lang="ts">
-
 import ConfirmPopup, { ConfirmPopupPassThroughOptions } from "primevue/confirmpopup";
 import { computed } from "vue";
 
