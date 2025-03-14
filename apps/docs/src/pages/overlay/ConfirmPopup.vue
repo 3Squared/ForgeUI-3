@@ -37,12 +37,8 @@ import { computed, ref } from "vue";
 import { useConfirm } from "primevue/useconfirm";
 import { useToast } from "primevue/usetoast";
 
-function getPropValue<T>(key: string, fallback: T): T {
-  return (propVals?.value?.find((val) => val?.startsWith(key) == true)?.split("=")[1] as T) ?? fallback;
-}
-
 const message = ref("Are you sure you want to proceed?")
-const { options, propVals, config, reset } = usePlayground(
+const { options, config, reset } = usePlayground(
     {
       group: "templating"
     },
