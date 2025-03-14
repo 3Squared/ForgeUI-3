@@ -1,5 +1,11 @@
 # @3squared/forge-ui-3
 
+## 2.14.2
+
+### Patch Changes
+
+- ae165d2: Fix full row expander on model value change not firing the setExpanderColumns, by adding a watch and firing the event
+
 ## 2.14.1
 
 ### Patch Changes
