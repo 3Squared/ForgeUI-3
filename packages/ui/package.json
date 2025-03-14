@@ -24,6 +24,7 @@
     "src/types/*"
   ],
   "scripts": {
+    "preinstall": "npx only-allow pnpm",
     "dev": "vite",
     "test": "cypress run --component --headed --browser chrome && vitest run --coverage && node ./scripts/merge.cjs",
     "test:component": "cypress open --component --browser chrome",

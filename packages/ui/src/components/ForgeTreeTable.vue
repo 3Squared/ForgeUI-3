@@ -53,7 +53,7 @@ import Button from 'primevue/button'
 import ForgePaginationHeader from "@/components/table/ForgePaginationHeader.vue";
 import { computed, onMounted, ref, watch } from 'vue';
 import Select from "primevue/select";
-import { pluralise } from "@3squared/forge-ui-3/src/components/table/table-helpers";
+import { pluralise } from "@/components/table/table-helpers.ts";
 import { Icon } from '@iconify/vue'
 import { ForgeTableContext, Severity } from "../types/forge-types";
 

@@ -4,10 +4,10 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "preview": "npm run build && vite preview",
+    "preview": "pnpm run build && vite preview",
     "build-bundle": "cd .. && npm i && npm run build && cd docs",
     "build": "vite build --base=/ForgeUI-3/",
-    "network": "npm run build && vite preview --host",
+    "network": "pnpm run build && vite preview --host",
     "dev": "vite",
     "start": "vite preview --port=3000",
     "lint": "eslint src",
@@ -27,6 +27,7 @@
     "eslint-config-custom": "*",
     "typescript": "5.8.2",
     "unplugin-vue-router": "0.12.0",
+    "unplugin-vue-components": "28.4.1",
     "vite": "6.2.2",
     "vue-tsc": "2.2.8"
   }
