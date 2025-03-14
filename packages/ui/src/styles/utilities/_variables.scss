@@ -19,6 +19,10 @@ $success: #21aa64;
 $success-dark: #177746;
 $success-subtle: #e9f7f0;
 
+$success-alternate: #99C541;
+$success-alternate-dark: #779A31;
+$success-alternate-subtle: #F2FFDC;
+
 $warning: #ffae00;
 $warning-dark: #B05319;
 $warning-subtle: #fff7e6;
@@ -34,6 +38,7 @@ $base-colors: (
   'primary': $primary,
   'secondary': $secondary,
   'success': $success,
+  'success-alternate': $success-alternate,
   'warning': $warning,
   'danger': $danger,
   'light': $light,
@@ -49,6 +54,7 @@ $subtle-colors: (
         'primary-subtle': $primary-subtle,
         'secondary-subtle': $light,
         'success-subtle': $success-subtle,
+        'success-alternate-subtle': $success-alternate-subtle,
         'warning-subtle': $warning-subtle,
         'danger-subtle': $danger-subtle,
         'info-subtle': $info-bg-subtle
@@ -58,63 +64,26 @@ $dark-colors: (
         'brand-dark': $brand-dark,
         'primary-dark': $primary-dark,
         'success-dark': $success-dark,
+        'success-alternate-dark': $success-alternate-dark,
         'warning-dark': $warning-dark,
         'danger-dark': $danger-dark
 );
-
-$font-weights: (
-        'fw-100': 100,
-        'fw-200': 200,
-        'fw-300': 300,
-        'fw-400': 400,
-        'fw-500': 500,
-        'fw-600': 600,
-        'fw-700': 700,
-        'fw-800': 800,
-        'fw-900': 900
-);
-
-$sizes: (
-        5: 5%,
-        10: 10%,
-        20: 20%,
-        25: 25%,
-        30: 30%,
-        40: 40%,
-        50: 50%,
-        60: 60%,
-        75: 75%,
-        80: 80%,
-        90: 90%,
-        100: 100%,
-        auto: auto
-);
-
-@each $size, $value in $sizes {
-  .w-#{$size} {
-    width: $value;
-  }
-}
-
-@each $color, $value in $grays {
-  .bg-grey-#{$color} {
-    background-color: $value !important;
-  }
-}
-
-@each $font-weight, $value in $font-weights {
- .fw-#{$value} {
-   font-weight: $value;
- }
-}
-
-
 
 $theme-colors: map-merge-multiple($theme-colors, $base-colors, $subtle-colors, $dark-colors);
 
 $brand-text-emphasis: shade-color($brand, 60%) !default;
 $brand-bg-subtle: $brand-shade-1 !default;
 $brand-border-subtle: tint-color($brand-dark, 60%) !default;
+
+$success-alternate-text-emphasis: shade-color($success-alternate, 60%) !default;
+$success-alternate-bg-subtle: $success-alternate-subtle !default;
+$success-alternate-border-subtle: tint-color($success-alternate-dark, 60%) !default;
+
+:root {
+  --bs-success-alternate-text-emphasis: #{$success-alternate-text-emphasis};
+  --bs-success-alternate-bg-subtle: #{$success-alternate-bg-subtle};
+  --bs-success-alternate-border-subtle: #{$success-alternate-border-subtle};
+}
 
 @import 'bootstrap/scss/maps';
 

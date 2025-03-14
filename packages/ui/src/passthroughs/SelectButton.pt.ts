@@ -1,4 +1,4 @@
-import { SelectButtonPassThroughMethodOptions } from "primevue/selectbutton";
+import { ToggleButtonPassThroughMethodOptions } from "primevue/togglebutton";
 
 export default {
   selectButton: {
@@ -7,12 +7,13 @@ export default {
     }),
   },
   toggleButton: {
-    root: ({ context }: SelectButtonPassThroughMethodOptions) => ({
+    root: (options: ToggleButtonPassThroughMethodOptions) => ({
       class: [
         'btn',
         {
-          'btn-primary': context.active,
-          'btn-outline-primary': !context.active
+          'btn-primary': options.context.active,
+          'border-danger': options.parent.props.invalid,
+          'btn-outline-primary': !options.context.active
         },
       ]
     }),

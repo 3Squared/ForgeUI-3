@@ -1,5 +1,118 @@
 # forge-ui-3-styleguide
 
+## 2.13.0
+
+### Minor Changes
+
+- 6d2d6e7: Added ForgeTreeTable
+  - Added new ForegTreeTable component based on PrimeVue TreeTable with addtional props top allow for parent nodes being full width, based on a column count prop
+  - Added passthrough for the TreeTable to be used, if not using the ForgeTreeTable Component
+  - Added a new base colour called success-alternate
+  - Fixed the Colour page menus
+
+### Patch Changes
+
+- Updated dependencies [6d2d6e7]
+  - @3squared/forge-ui-3@2.14.0
+
+## 2.12.0
+
+### Minor Changes
+
+- 14ce4d6: Changes:
+  - Add `inLine` version of `ForgeLoader`: a smaller version so it can for showing the uploading status of each file in the file uploader.
+  - `ForgeFileUploader`:
+    - Fix functionality to stop file upload
+    - Stop files from uploading again if new files are added
+  - Make severity optional for `ForgeTile`
+
+### Patch Changes
+
+- Updated dependencies [14ce4d6]
+  - @3squared/forge-ui-3@2.13.0
+
+## 2.11.0
+
+### Minor Changes
+
+- 2682662: - Add max height prop to modal
+  - Move helpful classes to utilities so they can be used in app and don't have to be added in railsmart design system
+
+### Patch Changes
+
+- Updated dependencies [2682662]
+  - @3squared/forge-ui-3@2.12.0
+
+## 2.10.0
+
+### Minor Changes
+
+- df4fc12: Add customisable modal error
+
+### Patch Changes
+
+- Updated dependencies [df4fc12]
+  - @3squared/forge-ui-3@2.11.0
+
+## 2.9.0
+
+### Minor Changes
+
+- 7cd55cc: - ForgeFormField - Add a slot to pass any input into
+  - Change ForgeSelectButton to v-model for the select values rather than the whole option object
+
+### Patch Changes
+
+- Updated dependencies [7cd55cc]
+  - @3squared/forge-ui-3@2.10.0
+
+## 2.8.0
+
+### Minor Changes
+
+- 7337a7d: Add resetError function to the ForgeModal
+
+### Patch Changes
+
+- Updated dependencies [7337a7d]
+  - @3squared/forge-ui-3@2.9.0
+
+## 2.7.0
+
+### Minor Changes
+
+- 1c0488f: Add forge resolver with docs update
+
+### Patch Changes
+
+- Updated dependencies [1c0488f]
+  - @3squared/forge-ui-3@2.8.0
+
+## 2.6.0
+
+### Minor Changes
+
+- 4224fe6: Add ForgeSelectButton and ForgeToggleButton
+  - Allow severity to be passed into each button within a select group
+- 6bcdcb7: Add styled accordion component and docs
+
+### Patch Changes
+
+- Updated dependencies [4224fe6]
+- Updated dependencies [6bcdcb7]
+  - @3squared/forge-ui-3@2.7.0
+
+## 2.5.0
+
+### Minor Changes
+
+- c0a13c9: Style and document Tree and Tree Select
+
+### Patch Changes
+
+- Updated dependencies [c0a13c9]
+  - @3squared/forge-ui-3@2.6.0
+
 ## 2.4.5
 
 ### Patch Changes

@@ -6,6 +6,9 @@
       <a class="link" target="_blank" href="https://primevue.org/button/"><strong>PrimeVue documentation</strong></a>
       .
     </p>
+    <p>
+      <b>IMPORTANT:</b> Please make sure to pass in an <code>id</code> attribute when using SplitButtons to make sure the dropdown alignment is correct.
+    </p>
     <Playground :options="options" :code="code" :config="config" @reset="reset">
       <template #component>
         <component :is="SplitButton" v-bind="options" :model="items" @click="save" />
@@ -53,12 +56,14 @@ const save = () => {
 
 const { options, propVals, config, reset } = usePlayground(
   {
+    id: "my-unique-id",
     label: "Button",
     severity: severities[0],
     outlined: false,
     size: ""
   },
   {
+    id: { required: true },
     label: { required: true },
     size: { type: "select", options: sizes },
     severity: { type: "select", options: severities }

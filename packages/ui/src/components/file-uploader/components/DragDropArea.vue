@@ -20,7 +20,7 @@
 import { Icon } from "@iconify/vue";
 import { addFiles } from '../utilities/utilities'
 import { computed, ref, defineModel } from "vue";
-import { ForgeFileStatus, ForgeFileType } from "../../../types/forge-types";
+import { ForgeFileStatus, ForgeFileType } from "@/types/forge-types.ts";
 
 interface DragDropAreaProps {
   maxFileInput: number,

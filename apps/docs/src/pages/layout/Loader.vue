@@ -22,7 +22,8 @@ import { severities } from "../../composables/playgroundOptions";
 
 const { options, propVals, config, reset } = usePlayground(
   {
-    severity: severities[0]
+    severity: severities[0],
+    inLine: false
   },
   {
     severity: { type: "select", options: severities }

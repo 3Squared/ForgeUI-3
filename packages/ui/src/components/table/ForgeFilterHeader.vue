@@ -1,6 +1,6 @@
 <template>
   <div class="d-flex position-relative">
-    <InputNumber v-if="dataType === 'numeric'" v-model="modelValue" v-bind="$attrs" />
+    <InputNumber v-if="dataType === 'numeric'" v-model.trim="modelValue" v-bind="$attrs" />
     <ForgeDatepicker v-else-if="dataType === 'date'" v-model="modelValue" v-bind="$attrs" :show-icon="false"
                      :show-on-focus="true" />
     <Select v-else-if="dataType === 'select'" v-model="modelValue" v-bind="$attrs" :options="dropdownOptions"
@@ -20,7 +20,7 @@
     <MultiSelect v-else-if="dataType === 'multiselect'" v-model="modelValue" v-bind="$attrs" :options="dropdownOptions"
                  :showToggleAll="false" :option-label="optionLabel" :option-value="optionValue" filter >
     </MultiSelect>
-    <InputText v-else v-model="modelValue" v-bind="$attrs" />
+    <InputText v-else v-model.trim="modelValue" v-bind="$attrs" />
     <Button v-if="showClearButton && modelValue !== null && dataType !== 'select' && dataType !== 'multiselect' && dataType !== 'date'"
             @click.prevent="clear" size="small"
             class="bg-transparent border-0 ms-auto p-0 pe-1 position-absolute end-0 top-0 bottom-0">
@@ -36,7 +36,7 @@ import Select from "primevue/select";
 import ForgeDatepicker from "@/components/ForgeDatepicker.vue";
 import MultiSelect from "primevue/multiselect";
 import { Icon } from '@iconify/vue';
-import { ForgeColumnDataType } from "@/types/forge-types.ts";
+import type { ForgeColumnDataType } from "@/types/forge-types.ts";
 
 export interface ForgeFilterHeaderProps {
   dataType: ForgeColumnDataType,

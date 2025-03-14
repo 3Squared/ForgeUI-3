@@ -12,6 +12,7 @@ const previewContainer = '[data-pc-section="originalcontainer"]'
 const fileTypeId = '#file-type'
 const fileSizeId = '#file-size'
 const maxFileSizeId = '#max-file-size'
+const maxFileInputId = '#max-file-input'
 const acceptedFileTypesId = '#accepted-file-types'
 const dragDropAreaPlaceholderId = '#placeholder-message'
 const editableFileNameInputId = '#edit-file-name'
@@ -282,6 +283,27 @@ describe("<ForgeFileUploader />", () => {
         .should('exist')
         .and('be.visible')
         .and('contain.text', parsedFileSize)
+    })
+    
+    it("Should display the maximum file count", () => {
+      // Arrange
+      const acceptedFileTypes = [{ fileType: 'application/json' }]
+      const maxFileInput = 4
+      const maxFileSize = 5420000
+      
+      // Act
+      mountFileUploader({
+        acceptedFileTypes: acceptedFileTypes,
+        getFileUrlAction: (fileName: string): Promise<[string, string]> => Promise.resolve([fileName, 'sdfsd']),
+        maxFileSize: maxFileSize,
+        maxFileInput: maxFileInput
+      })
+      
+      // Assert
+      cy.get(maxFileInputId)
+        .should('exist')
+        .and('be.visible')
+        .and('contain.text', maxFileInput)
     })
     
     it("Should stop accepting files if number of uploaded files is greater than maxFileInput", () => {

@@ -10,7 +10,7 @@ import { Severity } from "../types/forge-types";
 import { computed } from "vue";
 
 export interface ForgeProgressBarProps extends /* vue-ignore */ ProgressBarProps {
-  severity: Severity,
+  severity?: Severity,
   striped: boolean,
   animate: boolean,
   pixelWidth?: number
@@ -33,6 +33,8 @@ const severity = computed(() => {
       return 'bg-secondary'
     case 'success':
       return 'bg-success'
+    case 'success-alternate':
+      return 'bg-success-alternate'
     case 'warning':
       return 'bg-warning'
     case 'danger': 

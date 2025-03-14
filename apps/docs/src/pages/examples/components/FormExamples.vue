@@ -7,29 +7,40 @@
           <ForgeFormField v-model="name" name="name" placeholder="Enter name" field-label="Name" />
 
           <ForgeFormField
-            :key="selectCity"
-            v-model="selectCity"
-            name="city"
-            type="select"
-            placeholder="Select City"
-            :options="cities"
-            option-label="label"
-            field-label="City"
+              :key="selectCity"
+              v-model="selectCity"
+              name="city"
+              type="select"
+              placeholder="Select City"
+              :options="cities"
+              option-label="label"
+              field-label="City"
           />
 
           <ForgeFormField
-            :key="selectedSkills"
-            v-model="selectedSkills"
-            name="skills"
-            type="multiselect-preview"
-            placeholder="Select Skills"
-            :options="skills"
-            option-label="label"
-            display="chip"
-            filter
-            filter-placeholder="Search"
-            field-label="Skills"
+              :key="selectedSkills"
+              v-model="selectedSkills"
+              name="skills"
+              type="multiselect-preview"
+              placeholder="Select Skills"
+              :options="skills"
+              option-label="label"
+              display="chip"
+              filter
+              filter-placeholder="Search"
+              field-label="Skills"
           />
+          
+          <ForgeFormField name="rating" field-label="Rating" v-model="rating">
+            <template #default="{ modelValue, updateModel, hasErrors }">
+              <ForgeSelectButton :model-value="modelValue"
+                                 :options="ratingOptions"
+                                 @update:modelValue="updateModel"
+                                 :invalid="hasErrors"
+              />
+            </template>
+          </ForgeFormField>
+          
           <div class="d-flex justify-content-end mt-1">
             <!--          Add Button with type 'submit' to trigger submit event -->
             <Button label="Test" type="submit"></Button>
@@ -43,7 +54,8 @@
 </template>
 
 <script setup lang="ts">
-import { ForgeFormField } from "@3squared/forge-ui-3";
+import { ForgeFormField, ForgeSelectButton } from "@3squared/forge-ui-3";
+import type { ForgeSelectButtonOption } from "@3squared/forge-ui-3/src/types/forge-types";
 import Button from "primevue/button";
 import Card from "primevue/card";
 import { useToast } from "primevue/usetoast";
@@ -60,7 +72,8 @@ const toast = useToast();
 const schema = yup.object().shape({
   city: yup.object().required(),
   skills: yup.array().min(1, "Please select at least 1 option").required(),
-  name: yup.string().required()
+  name: yup.string().required(),
+  rating: yup.array().min(1, "Please select at least 1 option").required()
 });
 
 const onSubmit = () => {
@@ -75,6 +88,7 @@ const onSubmit = () => {
 const selectedSkills = ref([]);
 const selectCity = ref();
 const name = ref();
+const rating = ref();
 
 const cities = ref([
   { id: 1, label: "London" },
@@ -104,5 +118,13 @@ const skills = ref([
   { id: 10, label: "Git" },
   { id: 11, label: "Communication" },
   { id: 12, label: "Problem Solving" }
+]);
+
+const ratingOptions = ref<ForgeSelectButtonOption[]>([
+  { label: "Maj", value: "1", severity: "danger", disabled: true, },
+  { label: "Min", value: "2", severity: "warning"},
+  { label: "Pro", value: "3", severity: "success" },
+  { label: "Ex", value: "4", severity: "success-dark" },
+  { label: "N/A", value: "5", severity: "secondary" }
 ]);
 </script>

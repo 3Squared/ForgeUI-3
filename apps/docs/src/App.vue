@@ -28,7 +28,11 @@ const router = useRouter();
 const pages = [
   {
     label: "Guides",
-    items: [{ label: "Getting Started", command: () => router.push("/guides/installation") }, { label: "Migrating from Forge.UI (Coming Soon...)" }]
+    items: [
+      { label: "Getting Started", command: () => router.push("/guides/installation") },
+      { label: "Forge Resolver", command: () => router.push("/guides/ForgeResolver") },
+      { label: "Migrating from Forge.UI (Coming Soon...)" }
+    ]
   },
   {
     label: "Buttons",
@@ -37,7 +41,9 @@ const pages = [
       { label: "Button", command: () => router.push("/buttons/button") },
       { label: "Link", command: () => router.push("/buttons/link") },
       { label: "Select Button", command: () => router.push("/buttons/selectbutton") },
-      { label: "Split Button", command: () => router.push("/buttons/splitbutton") }
+      { label: "Split Button", command: () => router.push("/buttons/splitbutton") },
+      { label: "Button Group", command: () => router.push("/buttons/ButtonGroup") },
+      { label: "Toggle Button", command: () => router.push("/buttons/ToggleButton") },
     ]
   },
   {
@@ -48,7 +54,9 @@ const pages = [
       { label: "Stat Widget", command: () => router.push("/data/statwidget") },
       { label: "Table", command: () => router.push("/data/table") },
       { label: "Data View", command: () => router.push("/data/dataview") },
-      { label: "Tile", command: () => router.push("/data/tile") }
+      { label: "Tile", command: () => router.push("/data/tile") },
+      { label: "Tree", command: () => router.push("/data/Tree") },
+      { label: "TreeTable", command: () => router.push("/data/TreeTable") }
     ]
   },
   {
@@ -61,7 +69,8 @@ const pages = [
         items: [
           { label: "Dropdown", command: () => router.push("/forms/dropdowns/dropdown") },
           { label: "Multiselect", command: () => router.push("/forms/dropdowns/multiselect") },
-          { label: "Multiselect Preview", command: () => router.push("/forms/dropdowns/multiselectpreview") }
+          { label: "Multiselect Preview", command: () => router.push("/forms/dropdowns/multiselectpreview") },
+          { label: "Tree Select", command: () => router.push("/forms/dropdowns/TreeSelect") }
         ]
       },
       { label: "File Uploader", command: () => router.push("/forms/fileuploader") },
@@ -87,6 +96,7 @@ const pages = [
   {
     label: "Layout",
     items: [
+      { label: "Accordion", command: () => router.push("/layout/Accordion") },
       { label: "Alert", command: () => router.push("/layout/alert") },
       { label: "Loader", command: () => router.push("/layout/loader") },
       { label: "Page Header", command: () => router.push("/layout/pageheader") },

@@ -1,5 +1,121 @@
 # @3squared/forge-ui-3
 
+## 2.14.2
+
+### Patch Changes
+
+- ae165d2: Fix full row expander on model value change not firing the setExpanderColumns, by adding a watch and firing the event
+
+## 2.14.1
+
+### Patch Changes
+
+- 12f3dd0: - Update primevue and extra packages
+  - Remove console log
+
+## 2.14.0
+
+### Minor Changes
+
+- 6d2d6e7: Added ForgeTreeTable
+  - Added new ForegTreeTable component based on PrimeVue TreeTable with addtional props top allow for parent nodes being full width, based on a column count prop
+  - Added passthrough for the TreeTable to be used, if not using the ForgeTreeTable Component
+  - Added a new base colour called success-alternate
+  - Fixed the Colour page menus
+
+## 2.13.0
+
+### Minor Changes
+
+- 14ce4d6: Changes:
+  - Add `inLine` version of `ForgeLoader`: a smaller version so it can for showing the uploading status of each file in the file uploader.
+  - `ForgeFileUploader`:
+    - Fix functionality to stop file upload
+    - Stop files from uploading again if new files are added
+  - Make severity optional for `ForgeTile`
+
+## 2.12.3
+
+### Patch Changes
+
+- f0a5c70: Fix passthrough for splitbutton dropdown to allow for automatic alignment instead of pageoverflow
+
+## 2.12.2
+
+### Patch Changes
+
+- 7774358: Change the way slots are passed into the panel
+
+## 2.12.1
+
+### Patch Changes
+
+- f185006: Add type import fix
+
+## 2.12.0
+
+### Minor Changes
+
+- 2682662: - Add max height prop to modal
+  - Move helpful classes to utilities so they can be used in app and don't have to be added in railsmart design system
+
+## 2.11.0
+
+### Minor Changes
+
+- df4fc12: Add customisable modal error
+
+## 2.10.1
+
+### Patch Changes
+
+- b37a89e: Add max file count display
+
+## 2.10.0
+
+### Minor Changes
+
+- 7cd55cc: - ForgeFormField - Add a slot to pass any input into
+  - Change ForgeSelectButton to v-model for the select values rather than the whole option object
+
+## 2.9.0
+
+### Minor Changes
+
+- 7337a7d: Add resetError function to the ForgeModal
+
+## 2.8.2
+
+### Patch Changes
+
+- 51b10d5: Trim text filter value in table
+
+## 2.8.1
+
+### Patch Changes
+
+- c4a1d42: Fix checkbox > readonly not working properly
+
+## 2.8.0
+
+### Minor Changes
+
+- 1c0488f: Add forge resolver with docs update
+
+## 2.7.0
+
+### Minor Changes
+
+- 4224fe6: Add ForgeSelectButton and ForgeToggleButton
+  - Allow severity to be passed into each button within a select group
+- 6bcdcb7: Add styled accordion component and docs
+
+## 2.6.0
+
+### Minor Changes
+
+- c0a13c9: Style and document Tree and Tree Select
+
 ## 2.5.2
 
 ### Patch Changes

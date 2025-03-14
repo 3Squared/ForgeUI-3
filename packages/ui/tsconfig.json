@@ -13,6 +13,9 @@
     ],
     "declaration": true,
     "declarationDir": "dist/types",
+    "paths": {
+      "@/*": ["./src/*"]
+    },
     
     /* Bundler mode */
     "moduleResolution": "node",
@@ -33,7 +36,8 @@
     "src",
     "**/*.cy.ts",
     "cypress/support/component.ts",
-    "index.ts"
+    "index.ts",
+    "components.d.ts"
   ],
   "exclude": [
     "node_modules",
