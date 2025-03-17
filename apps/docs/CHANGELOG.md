@@ -1,5 +1,16 @@
 # forge-ui-3-styleguide
 
+## 2.14.0
+
+### Minor Changes
+
+- 930808b: Add ForgeConfirmDialog
+
+### Patch Changes
+
+- Updated dependencies [930808b]
+  - @3squared/forge-ui-3@2.15.0
+
 ## 2.13.0
 
 ### Minor Changes
