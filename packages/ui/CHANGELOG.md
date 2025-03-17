@@ -1,5 +1,11 @@
 # @3squared/forge-ui-3
 
+## 2.15.0
+
+### Minor Changes
+
+- 930808b: Add ForgeConfirmDialog
+
 ## 2.14.2
 
 ### Patch Changes
