@@ -39,6 +39,7 @@ const chipPt = computed(() => ({
       "bg-danger-subtle border-danger text-danger":
         props.chipSeverity === "danger",
       "bg-info-subtle border-info text-info": props.chipSeverity === "info",
+      "bg-info-success-alternate border-success-alternate text-success-alternate": props.chipSeverity === "success-alternate"
     },
   ],
 }));

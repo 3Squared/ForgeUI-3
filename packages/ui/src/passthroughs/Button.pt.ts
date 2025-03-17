@@ -33,6 +33,13 @@ export default {
           "text-success fw-bold btn-text-success": props.severity === "success" && props.text,
           "link-success text-decoration-underline link-underline-success": props.severity === "success" && props.link
         },
+        // Success Alternate
+        {
+          "btn-success-alternate text-white": props.severity === "success-alternate" && !props.outlined && !props.link && !props.text,
+          "btn-outline-success-alternate": props.severity === "success-alternate" && props.outlined,
+          "text-success-alternate fw-bold btn-text-success-alternate": props.severity === "success-alternate" && props.text,
+          "link-success-alternate text-decoration-underline link-underline-success-alternate": props.severity === "success-alternate" && props.link
+        },
         // Warning
         {
           "btn-warning text-white": props.severity === "warning" && !props.outlined && !props.link && !props.text,
@@ -85,6 +92,7 @@ export default {
               "button-badge-brand": props.severity === 'brand' && !props.outlined,
               "button-badge-secondary": props.severity === 'secondary' && !props.outlined,
               "button-badge-success": props.severity === 'success' && !props.outlined,
+              "button-badge-success-alternate": props.severity === 'success-alternate' && !props.outlined,
               "button-badge-warning": (props.severity === 'warning' || props.severity === 'warn') && !props.outlined,
               "button-badge-danger": props.severity === 'danger' && !props.outlined,
               'button-badge-info': props.severity === 'info' && !props.outlined
@@ -94,6 +102,7 @@ export default {
               "button-badge-brand outlined": props.severity === 'brand' && props.outlined,
               "button-badge-secondary outlined": props.severity === 'secondary' && props.outlined,
               "button-badge-success outlined": props.severity === 'success' && props.outlined,
+              "button-badge-success-alternate outlined": props.severity === 'success-alternate' && props.outlined,
               "button-badge-warning outlined": (props.severity === 'warning' || props.severity === 'warn') && props.outlined,
               "button-badge-danger outlined": props.severity === 'danger' && props.outlined,
               'button-badge-info outlined': props.severity === 'info' && props.outlined

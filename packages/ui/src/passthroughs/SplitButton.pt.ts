@@ -15,6 +15,7 @@ export default {
             "btn-brand": props.severity === 'brand' && !props.outlined,
             "btn-secondary": props.severity === 'secondary'&& !props.outlined,
             "btn-success": props.severity === 'success'&& !props.outlined,
+            "btn-success-alternate": props.severity === 'success-alternate'&& !props.outlined,
             "btn-warning": (props.severity === 'warning' || props.severity === 'warn')&& !props.outlined,
             "btn-danger": props.severity === 'danger'&& !props.outlined,
             'btn-info': props.severity === 'info'&& !props.outlined
@@ -24,6 +25,7 @@ export default {
             "btn-outline-brand": props.severity === 'brand' && props.outlined,
             "btn-outline-secondary": props.severity === 'secondary' && props.outlined,
             "btn-outline-success": props.severity === 'success' && props.outlined,
+            "btn-outline-success-alternate": props.severity === 'success-alternate' && props.outlined,
             "btn-outline-warning": (props.severity === 'warning' || props.severity === 'warn') && props.outlined,
             "btn-outline-danger": props.severity === 'danger' && props.outlined,
             'btn-outline-info': props.severity === 'info' && props.outlined

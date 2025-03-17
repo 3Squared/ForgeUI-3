@@ -55,7 +55,8 @@ const pages = [
       { label: "Table", command: () => router.push("/data/table") },
       { label: "Data View", command: () => router.push("/data/dataview") },
       { label: "Tile", command: () => router.push("/data/tile") },
-      { label: "Tree", command: () => router.push("/data/Tree") }
+      { label: "Tree", command: () => router.push("/data/Tree") },
+      { label: "TreeTable", command: () => router.push("/data/TreeTable") }
     ]
   },
   {
