@@ -11,20 +11,20 @@
           :multiple="maxFileInput > 1"
           @input="(event) => addUploadedFiles([...(event.target as any).files])"
       />
-      <label :class="{ disabled: uploadDisabled }" class="btn btn-primary" id="file-input-button" for="file-input">
+      <label id="file-input-button" :class="{ disabled: uploadDisabled }" class="btn btn-primary" for="file-input">
         <slot name="button-content">
           <Icon icon="bi:upload" class="me-2" height="20px" width="20px" />
           Browse your computer
         </slot>
       </label>
     </div>
-    <Button link class="ms-auto" v-if="showDragDropArea" :key="acceptedFileTypes.length" id="accepted-file-types" @click="toggleAcceptedFileTypesOverlay">Accepted File Types</Button>
+    <Button v-if="showDragDropArea" id="accepted-file-types" :key="acceptedFileTypes.length" link class="ms-auto" @click="toggleAcceptedFileTypesOverlay">Accepted File Types</Button>
     <Popover ref="acceptedFilesOverlay">
-      <div class="text-break accepted-file-types-container" id="accepted-file-types-overlay">
-        {{acceptedFileTypes.map((type) => (type.label ?? type.fileType.split('/').pop())).join(", ")}}
+      <div id="accepted-file-types-overlay" class="text-break accepted-file-types-container">
+        {{ acceptedFileTypes.map((type) => (type.label ?? type.fileType.split('/').pop())).join(", ") }}
       </div>
     </Popover>
-<!--    : {{acceptedFileTypes.map((type) => type.split('/').pop()).join(", ")}}-->
+    <!--    : {{acceptedFileTypes.map((type) => type.split('/').pop()).join(", ")}}-->
   </div>
 </template>
 
@@ -50,7 +50,7 @@ const { acceptedFileTypes, maxFileInput, showDragDropArea } = defineProps<FileUp
 
 const uploadDisabled = computed<boolean>(() => maxFileInput <= files.value.length)
 
-const addUploadedFiles = (filesToUpload : File[]) => {
+const addUploadedFiles = (filesToUpload: File[]) => {
   files.value = addFiles(filesToUpload, files.value, acceptedFileTypes.map(ft => ft.fileType), maxFileInput)
 }
 </script>

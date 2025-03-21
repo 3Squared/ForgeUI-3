@@ -1,6 +1,6 @@
 <template>
-  <ProgressBar v-bind="{...$attrs, ...props}" :pt="pt" >
-    <slot/>
+  <ProgressBar v-bind="{...$attrs, ...props}" :pt="pt">
+    <slot />
   </ProgressBar>
 </template>
 
@@ -37,7 +37,7 @@ const severity = computed(() => {
       return 'bg-success-alternate'
     case 'warning':
       return 'bg-warning'
-    case 'danger': 
+    case 'danger':
       return 'bg-danger'
     case 'info':
       return 'bg-info'

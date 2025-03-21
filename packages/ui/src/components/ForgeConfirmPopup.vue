@@ -1,6 +1,8 @@
 <template>
   <ConfirmPopup :pt="pt" v-bind="{ ...$attrs, ...$props }">
-    <slot v-for="(_, name) in $slots" :slot="name" :name="name" />
+    <template v-for="(_, name) in $slots" #[name]>
+      <slot :name="name" />
+    </template>
   </ConfirmPopup>
 </template>
 
@@ -16,7 +18,7 @@ const pt = computed<ConfirmPopupPassThroughOptions>(() => ({
     class: ["modal-footer gap-1 p-2"],
   }),
   content: 'pt-2 px-2',
-  pcRejectButton: {root: 'btn btn-outline-primary btn-sm'},
-  pcAcceptButton: {root: 'btn btn-primary btn-sm'}
+  pcRejectButton: { root: 'btn btn-outline-primary btn-sm' },
+  pcAcceptButton: { root: 'btn btn-primary btn-sm' }
 }))
 </script>

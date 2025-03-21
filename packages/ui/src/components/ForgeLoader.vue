@@ -1,6 +1,6 @@
 <template>
   <div :class="inLine ? '': 'forge-loader'">
-    <progress-spinner animation-duration=".75" :class="`text-${props.severity === undefined ? 'primary': props.severity }`" :pt="pt"/>
+    <progress-spinner animation-duration=".75" :class="`text-${props.severity === undefined ? 'primary': props.severity }`" :pt="pt" />
   </div>
 </template>
 

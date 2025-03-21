@@ -12,6 +12,6 @@ interface FileInputInfoProps {
   maxFileSize: number,
   maxFileInput: number
 }
- 
+
 defineProps<FileInputInfoProps>()
 </script>

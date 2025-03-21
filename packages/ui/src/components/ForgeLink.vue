@@ -7,7 +7,7 @@
       :class="linkClasses"
   >
     <slot>
-      <Icon id="link-icon" :icon="iconName" class="bi my-auto" :class="iconClasses" v-if="iconName"/>
+      <Icon v-if="iconName" id="link-icon" :icon="iconName" class="bi my-auto" :class="iconClasses" />
       {{ label }}
     </slot>
   </a>
@@ -52,7 +52,7 @@ const {
   url
 } = defineProps<ForgeLinkProps>()
 
-const linkClasses = computed<Object>(() => ({
+const linkClasses = computed<object>(() => ({
   [`link-${severity}`]: severity,
   [`link-underline-${underlineSeverity}`]: underlineSeverity,
   [`link-opacity-${opacity}`]: opacity,
@@ -63,7 +63,7 @@ const linkClasses = computed<Object>(() => ({
   'icon-link icon-link-hover': animateIconOnHover,
 }))
 
-const iconClasses = computed<Object>(() => ({
+const iconClasses = computed<object>(() => ({
   'order-2': positionIconEnd,
   'me-1': !positionIconEnd && !animateIconOnHover,
   'ms-1': positionIconEnd && !animateIconOnHover,

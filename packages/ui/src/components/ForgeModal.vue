@@ -1,5 +1,5 @@
 <template>
-  <Dialog v-bind="props" @maximize="maximise" @unmaximize="minimise" :pt="pt">
+  <Dialog v-bind="props" :pt="pt" @maximize="maximise" @unmaximize="minimise">
     <template #closeicon>
       <Icon data-cy="close-icon" icon="bi:x-lg" width="18" height="18" @click="closeModal" />
     </template>
@@ -22,11 +22,12 @@
         <forge-loader data-cy="loader" />
       </slot>
     </template>
-    <template #footer v-if="showFooter">
+    <template v-if="showFooter" #footer>
       <div class="d-flex w-100" data-cy="footer">
-        <Button :label="cancelText" :class="props.cancelClass" outlined @click="closeModal" id="cancel-button" :type="props.cancelButtonType" />
-        <Button :label="submitText" :class="props.submitClass" class="ms-auto" @click="success" id="submit-button"
-                :type="props.submitButtonType" />
+        <Button id="cancel-button" :label="cancelText" :class="props.cancelClass" outlined :type="props.cancelButtonType" @click="closeModal" />
+        <Button
+            id="submit-button" :label="submitText" :class="props.submitClass" class="ms-auto" :type="props.submitButtonType"
+            @click="success" />
       </div>
     </template>
 
@@ -52,7 +53,7 @@ export interface ForgeModalProps extends DialogProps {
   cancelText?: string,
   submitText?: string,
   showFooter?: boolean,
-  onConfirm?: Function | null,
+  onConfirm?: () => Promise<void> | null,
   submitButtonType?: 'button' | 'reset' | 'submit',
   cancelButtonType?: 'button' | 'reset' | 'submit',
   size?: Size | 'xl'
@@ -151,7 +152,7 @@ const pt = computed<DialogPassThroughOptions>(() => ({
   ],
   content: [
     'modal-body overflow-y-auto',
-    { 
+    {
       [`${props.maxHeight}`]: props.maxHeight && !fullscreen.value
     }
   ]
