@@ -7,7 +7,7 @@
       :class="linkClasses"
   >
     <slot>
-      <Icon v-if="iconName" id="link-icon" :icon="iconName" class="bi my-auto" :class="iconClasses"/>
+      <Icon v-if="iconName" id="link-icon" :icon="iconName" class="bi my-auto" :class="iconClasses" />
       {{ label }}
     </slot>
   </a>

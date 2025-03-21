@@ -2,40 +2,40 @@
   <div class="d-flex position-relative">
     <InputNumber v-if="dataType === 'numeric'" v-model.trim="modelValue" v-bind="$attrs" />
     <ForgeDatepicker
-      v-else-if="dataType === 'date'" v-model="modelValue" v-bind="$attrs" :show-icon="false"
-                     :show-on-focus="true" />
+        v-else-if="dataType === 'date'" v-model="modelValue" v-bind="$attrs" :show-icon="false"
+        :show-on-focus="true" />
     <Select
-      v-else-if="dataType === 'select'" v-model="modelValue" v-bind="$attrs" :options="dropdownOptions"
-              :option-value="optionValue" :option-label="optionLabel"
+        v-else-if="dataType === 'select'" v-model="modelValue" v-bind="$attrs" :options="dropdownOptions"
+        :option-value="optionValue" :option-label="optionLabel"
     >
       <template #value="{ value, placeholder }">
         <div class="d-flex w-100">
           <span :class="{ 'filter-placeholder': value === null }">{{ label(value, placeholder) }}</span>
           <Button
-            v-if="showClearButton && modelValue !== null"
-                  size="small" class="bg-transparent border-0 ms-auto p-0 pe-1"
-                  @click.prevent="clear">
+              v-if="showClearButton && modelValue !== null"
+              size="small" class="bg-transparent border-0 ms-auto p-0 pe-1"
+              @click.prevent="clear">
             <Icon icon="bi:x" width="1rem" height="1rem" class="text-black" />
           </Button>
         </div>
       </template>
     </Select>
     <MultiSelect
-      v-else-if="dataType === 'multiselect'" v-model="modelValue" v-bind="$attrs" :options="dropdownOptions"
-                 :show-toggle-all="false" :option-label="optionLabel" :option-value="optionValue" filter >
+        v-else-if="dataType === 'multiselect'" v-model="modelValue" v-bind="$attrs" :options="dropdownOptions"
+        :show-toggle-all="false" :option-label="optionLabel" :option-value="optionValue" filter>
     </MultiSelect>
     <InputText v-else v-model.trim="modelValue" v-bind="$attrs" />
     <Button
-      v-if="showClearButton && modelValue !== null && dataType !== 'select' && dataType !== 'multiselect' && dataType !== 'date'"
-            size="small" class="bg-transparent border-0 ms-auto p-0 pe-1 position-absolute end-0 top-0 bottom-0"
-            @click.prevent="clear">
+        v-if="showClearButton && modelValue !== null && dataType !== 'select' && dataType !== 'multiselect' && dataType !== 'date'"
+        size="small" class="bg-transparent border-0 ms-auto p-0 pe-1 position-absolute end-0 top-0 bottom-0"
+        @click.prevent="clear">
       <Icon icon="bi:x" width="1rem" height="1rem" class="text-black bg-white" />
     </Button>
   </div>
 
 </template>
 
-<script setup lang="ts"> 
+<script setup lang="ts">
 import InputText from "primevue/inputtext";
 import Select from "primevue/select";
 import ForgeDatepicker from "@/components/ForgeDatepicker.vue";
@@ -72,7 +72,7 @@ const label = (values: string[] | string | object, placeholder: string): string 
     const option = dropdownOptions?.find(opt =>
         optionValue ? opt[optionValue as string] === value : Object.keys(opt).every(key => Object.prototype.hasOwnProperty.call(value, key) && opt[key] === value[key])
     );
-    
+
     return optionLabel ? option[optionLabel] : option;
   };
 
@@ -84,7 +84,7 @@ const label = (values: string[] | string | object, placeholder: string): string 
 };
 
 const clear = () => {
-  if(clearFilter) {
+  if (clearFilter) {
     clearFilter()
   } else {
     modelValue.value = null

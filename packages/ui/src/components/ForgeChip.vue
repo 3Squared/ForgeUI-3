@@ -1,8 +1,8 @@
 <template>
   <Chip v-bind="{ ...$attrs, ...$props }" :pt="chipPt">
     <template v-for="(_, name) in $slots" #[name]>
-<slot   :name="name" />
-</template>
+      <slot :name="name" />
+    </template>
   </Chip>
 </template>
 
@@ -12,7 +12,7 @@ import { Severity } from "../types/forge-types";
 import { computed } from "vue";
 
 export interface ForgeChipProps
-  extends /* vue-ignore */ Omit<ChipProps, "aria-label" | "aria-labelledby"> {
+    extends /* vue-ignore */ Omit<ChipProps, "aria-label" | "aria-labelledby"> {
   chipSeverity?: Severity;
   pill?: boolean;
 }
@@ -30,17 +30,18 @@ const chipPt = computed(() => ({
     },
     {
       "bg-primary-subtle border-primary text-primary":
-        props.chipSeverity === undefined || props.chipSeverity === "primary",
+          props.chipSeverity === undefined || props.chipSeverity === "primary",
       "bg-brand-subtle border-brand text-brand": props.chipSeverity === "brand",
       "bg-secondary-subtle border-secondary text-secondary":
-        props.chipSeverity === "secondary",
+          props.chipSeverity === "secondary",
       "bg-success-subtle border-success text-success":
-        props.chipSeverity === "success",
+          props.chipSeverity === "success",
       "bg-warning-subtle border-warning text-warning":
-        props.chipSeverity === "warning",
+          props.chipSeverity === "warning",
       "bg-danger-subtle border-danger text-danger":
-        props.chipSeverity === "danger",
+          props.chipSeverity === "danger",
       "bg-info-subtle border-info text-info": props.chipSeverity === "info",
+      "bg-info-success-alternate border-success-alternate text-success-alternate": props.chipSeverity === "success-alternate"
     },
   ],
 }));

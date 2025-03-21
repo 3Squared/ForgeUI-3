@@ -26,8 +26,8 @@
       <div class="d-flex w-100" data-cy="footer">
         <Button id="cancel-button" :label="cancelText" :class="props.cancelClass" outlined :type="props.cancelButtonType" @click="closeModal" />
         <Button
-          id="submit-button" :label="submitText" :class="props.submitClass" class="ms-auto" :type="props.submitButtonType"
-                @click="success" />
+            id="submit-button" :label="submitText" :class="props.submitClass" class="ms-auto" :type="props.submitButtonType"
+            @click="success" />
       </div>
     </template>
 
@@ -152,7 +152,7 @@ const pt = computed<DialogPassThroughOptions>(() => ({
   ],
   content: [
     'modal-body overflow-y-auto',
-    { 
+    {
       [`${props.maxHeight}`]: props.maxHeight && !fullscreen.value
     }
   ]

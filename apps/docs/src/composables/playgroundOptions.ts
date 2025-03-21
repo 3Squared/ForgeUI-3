@@ -1,4 +1,4 @@
-export const severities = ["primary", "secondary", "warning", "danger", "success", "info", "brand"];
+export const severities = ["primary", "secondary", "warning", "danger", "success", "info", "brand", "success-alternate"];
 
 export const formFieldTypes = ["text", "number", "checkbox", "textarea", "mask", "select", "multiselect", "datepicker", "multiselect-preview"];
 export const sizes = ["small", "large"];

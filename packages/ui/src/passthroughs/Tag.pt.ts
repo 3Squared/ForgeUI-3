@@ -22,6 +22,7 @@ export default {
             "bg-danger-subtle text-danger border-danger":
               props.severity === "danger",
             "bg-info-subtle text-info border-info": props.severity === "info",
+            "bg-success-alternate-subtle text-success-alternate border-success-alternate": props.severity === "success-alternate",
           },
           {
             "rounded-pill": props.rounded

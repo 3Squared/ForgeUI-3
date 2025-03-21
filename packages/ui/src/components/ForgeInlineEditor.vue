@@ -13,20 +13,20 @@
                 @keydown.esc="cancel"
             />
           </slot>
-          <Icon icon="bi:x-circle" class="mx-2 cursor-pointer" data-cy="clear-icon" @click="reset" @keydown.enter="reset"/>
+          <Icon icon="bi:x-circle" class="mx-2 cursor-pointer" data-cy="clear-icon" @click="reset" @keydown.enter="reset" />
         </div>
       </div>
-      <div v-else class="d-flex text-muted" @click="beginEdit" @focus="beginEdit" >
+      <div v-else class="d-flex text-muted" @click="beginEdit" @focus="beginEdit">
         <slot>
           <div class="pe-2 cursor-pointer" :class="{ 'text-invalid': hasErrors }" data-cy="value">{{ !value ? 'Click to edit' : value }}</div>
         </slot>
         <Button link class="p-0 m-0">
-          <Icon icon="bi:pencil" :class="hasErrors ? 'text-invalid' : 'text-muted'" data-cy="edit-icon" @keydown.enter="beginEdit"/>
+          <Icon icon="bi:pencil" :class="hasErrors ? 'text-invalid' : 'text-muted'" data-cy="edit-icon" @keydown.enter="beginEdit" />
         </Button>
       </div>
     </div>
     <div v-else>
-      <slot >
+      <slot>
         <span data-cy="readonly-value">{{ value }}</span>
       </slot>
     </div>
@@ -49,7 +49,7 @@ export interface ForgeInlineEditorProps {
   readonly?: boolean,
 }
 
-const props = withDefaults(defineProps<ForgeInlineEditorProps>(),{
+const props = withDefaults(defineProps<ForgeInlineEditorProps>(), {
   name: "",
   params: Array,
   readonly: false
@@ -65,7 +65,7 @@ const beginEdit = () => {
 }
 
 const editFinished = async () => {
-  if(hasErrors.value) {
+  if (hasErrors.value) {
     return false;
   }
   modelValue.value = value.value

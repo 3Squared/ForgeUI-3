@@ -55,7 +55,8 @@ const pages = [
       { label: "Table", command: () => router.push("/data/table") },
       { label: "Data View", command: () => router.push("/data/dataview") },
       { label: "Tile", command: () => router.push("/data/tile") },
-      { label: "Tree", command: () => router.push("/data/Tree") }
+      { label: "Tree", command: () => router.push("/data/Tree") },
+      { label: "TreeTable", command: () => router.push("/data/TreeTable") }
     ]
   },
   {
@@ -111,6 +112,7 @@ const pages = [
     items: [
       { label: "Modal", command: () => router.push("/overlay/modal") },
       { label: "Confirmation Modal", command: () => router.push("/overlay/confirmmodal") },
+      { label: "Confirmation Popup", command: () => router.push("/overlay/ConfirmPopup") },
       { label: "Popover", command: () => router.push("/overlay/popover") },
       { label: "Toast", command: () => router.push("/overlay/toast") },
       { label: "Tooltip", command: () => router.push("/overlay/tooltip") }

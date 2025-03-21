@@ -6,17 +6,17 @@
 
     <div class="position-relative w-100">
       <DatePicker
-v-bind="{...props, ...$attrs}" v-model="model" :pt="pt" :input-class="{'datepicker-invalid': hasErrors}"
-                @update:model-value="handleChange" @blur="() => handleBlur"/>
+          v-bind="{...props, ...$attrs}" v-model="model" :pt="pt" :input-class="{'datepicker-invalid': hasErrors}"
+          @update:model-value="handleChange" @blur="() => handleBlur" />
       <Icon
-v-show="props.showIcon" data-cy="icon" icon="bi:calendar4"
-            class="position-absolute end-0 top-50 bottom-50 my-auto me-2 bg-white" 
-            :class="`${ hasErrors ? 'text-danger-dark' : 'text-muted'}`"
+          v-show="props.showIcon" data-cy="icon" icon="bi:calendar4"
+          class="position-absolute end-0 top-50 bottom-50 my-auto me-2 bg-white"
+          :class="`${ hasErrors ? 'text-danger-dark' : 'text-muted'}`"
       />
       <Icon
-v-show="props.modelValue" data-cy="icon" icon="bi:x" class="position-absolute end-0 top-50 bottom-50 my-auto text-muted cursor-pointer bg-white"
-            :class="props.showIcon ? 'datepicker-close-icon' : 'me-2'"
-            @click="clear" />
+          v-show="props.modelValue" data-cy="icon" icon="bi:x" class="position-absolute end-0 top-50 bottom-50 my-auto text-muted cursor-pointer bg-white"
+          :class="props.showIcon ? 'datepicker-close-icon' : 'me-2'"
+          @click="clear" />
     </div>
 
 
@@ -71,9 +71,9 @@ const clear = () => {
 const hasErrors = computed(() => errors.value.length > 0)
 
 const pt = computed(() => ({
-  dayCell: ({context} : DatePickerPassThroughMethodOptions) => ({
+  dayCell: ({ context }: DatePickerPassThroughMethodOptions) => ({
     class: [
-      `text-center date-${ props.severity === undefined ? 'primary' : props.severity }`,
+      `text-center date-${props.severity === undefined ? 'primary' : props.severity}`,
       {
         'cursor-pointer': !context.disabled,
         'pe-none': context.disabled,
@@ -86,14 +86,15 @@ const pt = computed(() => ({
         'text-brand': !context.selected && context.today && props.severity === 'brand',
         'text-secondary': !context.selected && context.today && props.severity === 'secondary',
         'text-success': !context.selected && context.today && props.severity === 'success',
+        'text-success-alternate': !context.selected && context.today && props.severity === 'success-alternate',
         'text-warning': !context.selected && context.today && props.severity === 'warning',
         'text-danger': !context.selected && context.today && props.severity === 'danger',
         'text-info': !context.selected && context.today && props.severity === 'info'
       }
     ]
   }),
- 
-  dayLabel: ({ context } : DatePickerPassThroughMethodOptions) => ({
+
+  dayLabel: ({ context }: DatePickerPassThroughMethodOptions) => ({
     class: [
       // Disabled States
       {
@@ -110,6 +111,7 @@ const pt = computed(() => ({
           'btn-link text-brand': props.severity === 'brand',
           'btn-link text-secondary': props.severity === 'secondary',
           'btn-link text-success': props.severity === 'success',
+          'btn-link text-success-alternate': props.severity === 'success-alternate',
           'btn-link text-warning': props.severity === 'warning',
           'btn-link text-danger': props.severity === 'danger',
           'btn-link text-info': props.severity === 'info'
@@ -126,6 +128,7 @@ const pt = computed(() => ({
           'btn-link text-brand': props.severity === 'brand',
           'btn-link text-secondary': props.severity === 'secondary',
           'btn-link text-success': props.severity === 'success',
+          'btn-link text-success-alternate': props.severity === 'success-alternate',
           'btn-link text-warning': props.severity === 'warning',
           'btn-link text-danger': props.severity === 'danger',
           'btn-link text-info': props.severity === 'info'
@@ -142,6 +145,7 @@ const pt = computed(() => ({
           'text-brand': props.severity === 'brand' && context.year.value === new Date().getFullYear(),
           'text-secondary': props.severity === 'secondary' && context.year.value === new Date().getFullYear(),
           'text-success': props.severity === 'success' && context.year.value === new Date().getFullYear(),
+          'text-success-alternate': props.severity === 'success-alternate' && context.year.value === new Date().getFullYear(),
           'text-warning': props.severity === 'warning' && context.year.value === new Date().getFullYear(),
           'text-danger': props.severity === 'danger' && context.year.value === new Date().getFullYear(),
           'text-info': props.severity === 'info' && context.year.value === new Date().getFullYear()
@@ -157,6 +161,7 @@ const pt = computed(() => ({
         'text-brand': props.severity === 'brand' && (context.monthIndex + 1) === (new Date().getMonth() + 1),
         'text-secondary': props.severity === 'secondary' && (context.monthIndex + 1) === (new Date().getMonth() + 1),
         'text-success': props.severity === 'success' && (context.monthIndex + 1) === (new Date().getMonth() + 1),
+        'text-success-alternate': props.severity === 'success-alternate' && (context.monthIndex + 1) === (new Date().getMonth() + 1),
         'text-warning': props.severity === 'warning' && (context.monthIndex + 1) === (new Date().getMonth() + 1),
         'text-danger': props.severity === 'danger' && (context.monthIndex + 1) === (new Date().getMonth() + 1),
         'text-info': props.severity === 'info' && (context.monthIndex + 1) === (new Date().getMonth() + 1)

@@ -11,6 +11,7 @@ export default {
             "badge-brand": props.severity === 'brand',
             "badge-secondary": props.severity === 'secondary',
             "badge-success": props.severity === "success",
+            "badge-success-alternate": props.severity === "success-alternate",
             "badge-warning": props.severity === "warning" || props.severity === "warn",
             "badge-danger": props.severity === "danger",
             "badge-info": props.severity === "info"

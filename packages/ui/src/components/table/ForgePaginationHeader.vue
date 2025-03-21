@@ -3,8 +3,8 @@
     Number of results per page
     <div class="ms-2">
       <Select
-:options="props.pageSizes" :model-value="props.perPage" class="page-size"
-                @change="(event : SelectChangeEvent) => update(event)" />
+          :options="props.pageSizes" :model-value="props.perPage" class="page-size"
+          @change="(event : SelectChangeEvent) => update(event)" />
     </div>
     <div v-if="props.total">
       <span class="mx-2">|</span>
@@ -31,7 +31,7 @@ const props = withDefaults(defineProps<ForgePaginationHeaderProps>(), {
   perPage: 10
 })
 
-const update = (event : SelectChangeEvent) => {
+const update = (event: SelectChangeEvent) => {
   emits('update:perPage', event.value)
 }
 

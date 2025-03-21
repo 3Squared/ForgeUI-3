@@ -1,5 +1,47 @@
 # forge-ui-3-styleguide
 
+## 2.14.0
+
+### Minor Changes
+
+- 930808b: Add ForgeConfirmDialog
+
+### Patch Changes
+
+- Updated dependencies [930808b]
+  - @3squared/forge-ui-3@2.15.0
+
+## 2.13.0
+
+### Minor Changes
+
+- 6d2d6e7: Added ForgeTreeTable
+  - Added new ForegTreeTable component based on PrimeVue TreeTable with addtional props top allow for parent nodes being full width, based on a column count prop
+  - Added passthrough for the TreeTable to be used, if not using the ForgeTreeTable Component
+  - Added a new base colour called success-alternate
+  - Fixed the Colour page menus
+
+### Patch Changes
+
+- Updated dependencies [6d2d6e7]
+  - @3squared/forge-ui-3@2.14.0
+
+## 2.12.0
+
+### Minor Changes
+
+- 14ce4d6: Changes:
+  - Add `inLine` version of `ForgeLoader`: a smaller version so it can for showing the uploading status of each file in the file uploader.
+  - `ForgeFileUploader`:
+    - Fix functionality to stop file upload
+    - Stop files from uploading again if new files are added
+  - Make severity optional for `ForgeTile`
+
+### Patch Changes
+
+- Updated dependencies [14ce4d6]
+  - @3squared/forge-ui-3@2.13.0
+
 ## 2.11.0
 
 ### Minor Changes

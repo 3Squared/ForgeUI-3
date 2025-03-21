@@ -21,10 +21,10 @@
     <Button v-if="showDragDropArea" id="accepted-file-types" :key="acceptedFileTypes.length" link class="ms-auto" @click="toggleAcceptedFileTypesOverlay">Accepted File Types</Button>
     <Popover ref="acceptedFilesOverlay">
       <div id="accepted-file-types-overlay" class="text-break accepted-file-types-container">
-        {{acceptedFileTypes.map((type) => (type.label ?? type.fileType.split('/').pop())).join(", ")}}
+        {{ acceptedFileTypes.map((type) => (type.label ?? type.fileType.split('/').pop())).join(", ") }}
       </div>
     </Popover>
-<!--    : {{acceptedFileTypes.map((type) => type.split('/').pop()).join(", ")}}-->
+    <!--    : {{acceptedFileTypes.map((type) => type.split('/').pop()).join(", ")}}-->
   </div>
 </template>
 
@@ -50,7 +50,7 @@ const { acceptedFileTypes, maxFileInput, showDragDropArea } = defineProps<FileUp
 
 const uploadDisabled = computed<boolean>(() => maxFileInput <= files.value.length)
 
-const addUploadedFiles = (filesToUpload : File[]) => {
+const addUploadedFiles = (filesToUpload: File[]) => {
   files.value = addFiles(filesToUpload, files.value, acceptedFileTypes.map(ft => ft.fileType), maxFileInput)
 }
 </script>

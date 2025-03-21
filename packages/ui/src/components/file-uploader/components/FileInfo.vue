@@ -2,36 +2,37 @@
   <div class="py-4 px-3 d-flex" :data-cy="`file-info-${file.name}`">
     <div>
       <Image
-        v-if="isImage(file.type)" id="thumbnail-image" image-class="image-file-thumbnail border"
-        :src="getThumbnailUrl(file)" :alt="file.name" width="75px" preview />
+          v-if="isImage(file.type)" id="thumbnail-image" image-class="image-file-thumbnail border"
+          :src="getThumbnailUrl(file)" :alt="file.name" width="75px" preview />
       <Icon v-else id="file-earmark" icon="bi:file-earmark" color="black" width="75px" />
     </div>
     <div class="ms-3 d-flex flex-column">
       <div>
         <ForgeInlineEditor
-          v-if="editableFileName" id="edit-file-name" v-model="fileName" :rules="customFileNameRules"
-          :name="file.name" :complete-action="updateFileName" />
+            v-if="editableFileName" id="edit-file-name" v-model="fileName" :rules="customFileNameRules"
+            :name="file.name" :complete-action="updateFileName" />
         <span v-else id="file-name">{{ fileName }}</span>
       </div>
       <span id="file-type" class="text-black-50">File type: {{ file.type.split('/').pop() }}</span>
       <span id="file-size" class="text-black-50">File size: {{ formatFileSize(file.size) }}</span>
     </div>
 
-    <div class="ms-auto my-auto d-flex">
+    <div class="ms-auto my-auto d-flex align-items-center gap-1">
       <UploadStatus
-        :key="uploadStatus" :file-size="file.size" :upload-status="uploadStatus"
-        :bytes-uploaded="bytesUploaded" :max-file-size="maxFileSize" />
-      <Button
-        v-if="uploadStatus === 'Not Uploaded' || uploadStatus === 'Failed' || uploadStatus === 'Duplicate' || uploadStatus === 'Aborted'" link
-        @click="uploadBlob">
-        <Icon
-          :icon="uploadStatus === 'Not Uploaded' || uploadStatus === 'Duplicate' ? 'bi:upload' : 'bi:arrow-clockwise'" />
+          :key="uploadStatus"
+          :file-size="file.size"
+          :upload-status="uploadStatus"
+          :bytes-uploaded="bytesUploaded"
+          :max-file-size="maxFileSize"
+      />
+      <Button v-if="uploadStatus === 'Not Uploaded' || uploadStatus === 'Failed' || uploadStatus === 'Duplicate' || uploadStatus === 'Aborted'" link @click="uploadBlob">
+        <Icon :icon="uploadStatus === 'Not Uploaded' || uploadStatus === 'Duplicate' ? 'bi:upload' : 'bi:arrow-clockwise'" />
       </Button>
-      <Button v-if="uploadStatus === 'Uploading'" link @click="controller.value.abort()">
+      <Button v-if="uploadStatus === 'Uploading'" link @click="controller.abort()">
         <Icon :icon="'bi:x-circle-fill'" />
       </Button>
       <Button v-else id="delete-button" link @click="deleteFileFromBlob">
-        <Icon :icon="'bi:trash'" />
+        <Icon icon="bi:trash" />
       </Button>
     </div>
   </div>
@@ -54,7 +55,7 @@ import { TypedSchema } from "vee-validate";
 import { computed, ref, onMounted } from "vue";
 import UploadStatus from "@/components/file-uploader/components/UploadStatus.vue";
 import { BlockBlobClient, BlockBlobParallelUploadOptions } from "@azure/storage-blob";
-import { ForgeFileType } from "../../../types/forge-types";
+import { ForgeFileType } from "@/types/forge-types.ts";
 
 interface FileInfoProps {
   editableFileName: boolean,
@@ -106,7 +107,7 @@ const ensureFileNameHasCorrectExtension = () => {
   //correct wrong file extension
   else if (fileNameSections.length > 1) {
     if (lastWordInFileName !== fileExtensionFromMime) {
-      fileName.value =  fileName.value.replace(lastWordInFileName!, fileExtensionFromMime!);
+      fileName.value = fileName.value.replace(lastWordInFileName!, fileExtensionFromMime!);
     }
   }
 }
@@ -159,7 +160,7 @@ const deleteFileFromBlob = async () => {
 }
 
 onMounted(() => {
-  if (autoUploadToBlob) {
+  if (autoUploadToBlob && uploadStatus.value != 'Uploaded') {
     uploadBlob();
   }
 })

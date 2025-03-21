@@ -1,6 +1,6 @@
 <template>
-  <ProgressBar v-bind="{...$attrs, ...props}" :pt="pt" >
-    <slot/>
+  <ProgressBar v-bind="{...$attrs, ...props}" :pt="pt">
+    <slot />
   </ProgressBar>
 </template>
 
@@ -10,7 +10,7 @@ import { Severity } from "../types/forge-types";
 import { computed } from "vue";
 
 export interface ForgeProgressBarProps extends /* vue-ignore */ ProgressBarProps {
-  severity: Severity,
+  severity?: Severity,
   striped: boolean,
   animate: boolean,
   pixelWidth?: number
@@ -33,9 +33,11 @@ const severity = computed(() => {
       return 'bg-secondary'
     case 'success':
       return 'bg-success'
+    case 'success-alternate':
+      return 'bg-success-alternate'
     case 'warning':
       return 'bg-warning'
-    case 'danger': 
+    case 'danger':
       return 'bg-danger'
     case 'info':
       return 'bg-info'

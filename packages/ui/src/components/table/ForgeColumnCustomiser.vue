@@ -14,8 +14,8 @@
   <Popover ref="columnCustomiserPanel" class="column-customiser" @hide="() =>  panelVisible = false" @show="() => panelVisible = true">
     <div class="d-flex flex-column w-100">
       <div
-v-for="(column, index) in columns" class="d-flex cursor-pointer"
-           :class="{
+          v-for="(column, index) in columns" class="d-flex cursor-pointer"
+          :class="{
             'border-top': index !== 0,
             'py-1': index !== 0 && columns.length - 1 !== index,
             'pt-1': columns.length - 1 === index,

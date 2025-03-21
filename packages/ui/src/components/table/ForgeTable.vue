@@ -1,16 +1,17 @@
 <template>
   <div class="position-relative">
-    <span data-cy="above-table-slot" ><slot name="above-table" /></span>
+    <span data-cy="above-table-slot"><slot name="above-table" /></span>
     <DataTable
-      v-bind="{...props, ...$attrs }" ref="forgeTable"
-               class="w-100" :class="`${props.severity ? `forge-table-${props.severity}` : ''}`"  :pt="pt" :rows="perPage" :total-records="total" :filter-display="props.filters ? 'row' : undefined" data-cy="table"
-               show-headers @update:filters="emitUpdateFilter" @sort="emitSort" @page="emitPage">
+        v-bind="{...props, ...$attrs }" ref="forgeTable"
+        class="w-100" :class="`${props.severity ? `forge-table-${props.severity}` : ''}`" :pt="pt" :rows="perPage" :total-records="total" :filter-display="props.filters ? 'row' : undefined"
+        data-cy="table"
+        show-headers @update:filters="emitUpdateFilter" @sort="emitSort" @page="emitPage">
       <template v-for="(_, name) in $slots as unknown as DataTableSlots" #[name]="slotProps">
         <slot :name="name" v-bind="slotProps || {}"></slot>
       </template>
       <template #empty>
         <div class="d-flex w-100">
-          <h5 class="mx-auto" data-cy="empty-message">{{ emptyMessage ?? 'No items Found.'}}</h5>
+          <h5 class="mx-auto" data-cy="empty-message">{{ emptyMessage ?? 'No items Found.' }}</h5>
         </div>
       </template>
       <template #header>
@@ -18,7 +19,7 @@
           <div class="d-flex">
             <div class="d-flex align-items-end mb-2">
               <span v-if="paginator && !legacyPaginationFooter">
-                <forge-pagination-header v-model:per-page="perPage" :total="total" :page-sizes="pageSizes"  @update:per-page="emitPageSize" />
+                <forge-pagination-header v-model:per-page="perPage" :total="total" :page-sizes="pageSizes" @update:per-page="emitPageSize" />
               </span>
             </div>
             <div class="ms-auto">
@@ -39,10 +40,10 @@
       <template v-if="legacyPaginationFooter" #paginatorstart>
         <span class="d-flex" :class="props.loading ? 'opacity-50' : ''" data-cy="legacy-page-size">
           <span class="me-2 my-auto text-nowrap">Page Size:</span>
-          <Select v-model="perPage" :options="pageSizes" class="ms-2" @click="emitPageSize"/>
+          <Select v-model="perPage" :options="pageSizes" class="ms-2" @click="emitPageSize" />
         </span>
       </template>
-      <template v-if="legacyPaginationFooter" #paginatorend >
+      <template v-if="legacyPaginationFooter" #paginatorend>
         <span data-cy="legacy-total" :class="props.loading ? 'opacity-50' : ''">
         {{ total }} {{ pluralise(total, "result") }} across {{ pageText }}
         </span>
@@ -64,7 +65,7 @@ import { computed, onMounted, ref, watch } from "vue";
 import Select from "primevue/select";
 import { pluralise } from "@3squared/forge-ui-3/src/components/table/table-helpers";
 import { Icon } from '@iconify/vue'
-import { ForgeTableContext, Severity } from "../../types/forge-types";
+import { ForgeTableContext, Severity } from "@/types/forge-types.ts";
 
 export interface ForgeTableProps extends DataTableProps {
   value: any[],
@@ -123,6 +124,7 @@ const pt = computed<DataTablePassThroughOptions>(() => ({
           'text-brand': props.severity === "brand",
           'text-primary': props.severity === "primary",
           'text-success': props.severity === "success",
+          'text-success-alternate': props.severity === "success-alternate",
           'text-warning': props.severity === "warning",
           'text-danger': props.severity === "danger",
           'text-info': props.severity === "info"
@@ -132,11 +134,11 @@ const pt = computed<DataTablePassThroughOptions>(() => ({
 }))
 
 const clearAllFilters = () => {
-  if(props.clearAll) {
+  if (props.clearAll) {
     props.clearAll()
   } else {
-    for (const key in props.filters){
-      if(typeof props.filters[key] === "string") {
+    for (const key in props.filters) {
+      if (typeof props.filters[key] === "string") {
         props.filters[key] = ""
       } else {
         (props.filters[key] as DataTableFilterMetaData).value = null
@@ -153,7 +155,7 @@ const exportData = () => {
 const emitSort = (sort: DataTableSortEvent) => {
   tableContext.value.sortDirection = sort.sortOrder === 1 ? 'Asc' : sort.sortOrder === -1 ? 'Desc' : 'None'
   tableContext.value.sortField = sort.sortField?.toString() ?? ''
-  
+
   emits("update:tableContext", tableContext.value)
   emits('sort', sort)
 }
@@ -163,7 +165,7 @@ const emitUpdateFilter = (filters: DataTableFilterMeta | undefined) => {
   emits("update:tableContext", tableContext.value)
   emits('update:filters', filters)
 }
-const emitPage = (page : DataTablePageEvent) => {
+const emitPage = (page: DataTablePageEvent) => {
   tableContext.value.page = page.page
 
   emits("update:tableContext", tableContext.value)
@@ -171,15 +173,15 @@ const emitPage = (page : DataTablePageEvent) => {
 }
 const emitPageSize = () => {
   tableContext.value.perPage = perPage.value
-  
+
   emits("update:tableContext", tableContext.value)
 }
 
 watch(() => props.filters, (newValue) => {
   tableContext.value.filters = newValue
-  
+
   emits("update:tableContext", tableContext.value)
-}, {deep: true})
+}, { deep: true })
 
 onMounted(() => emits("update:tableContext", tableContext.value))
 </script>

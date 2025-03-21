@@ -2,7 +2,7 @@
   <div class="d-flex justify-content-between pb-2">
     <h3 data-cy="title" class="my-auto">{{ props.title }}</h3>
     <div data-cy="slot" class="d-flex align-items-center">
-      <slot /> 
+      <slot />
     </div>
   </div>
 </template>

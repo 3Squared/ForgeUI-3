@@ -1,33 +1,33 @@
 <template>
   <div class="d-flex flex-column">
     <div
-      class="d-flex"
-      data-cy="checkbox-container"
-      v-bind="{ ...$attrs }"
-      @click="evt => onChange(evt, value)"
+        class="d-flex"
+        data-cy="checkbox-container"
+        v-bind="{ ...$attrs }"
+        @click="evt => onChange(evt, value)"
     >
       <Checkbox
-        v-bind="{ ...props }"
-        v-model="value"
-        binary
-        :input-id="props.name"
-        :input-class="{ 'is-invalid': hasErrors }"
-        :class="(props.disabled || props.readonly) ? '' : 'cursor-pointer'"
+          v-bind="{ ...props }"
+          v-model="value"
+          binary
+          :input-id="props.name"
+          :input-class="{ 'is-invalid': hasErrors }"
+          :class="(props.disabled || props.readonly) ? '' : 'cursor-pointer'"
       />
       <label
-        :for="props.name"
-        :class="`${(props.disabled || props.readonly) ? 'opacity-50' : 'cursor-pointer'} ${
+          :for="props.name"
+          :class="`${(props.disabled || props.readonly) ? 'opacity-50' : 'cursor-pointer'} ${
           hasErrors ? 'text-danger-dark' : ''
         }`"
-        class="w-100 my-auto"
-        @click="evt => onChange(evt, !value)"
+          class="w-100 my-auto"
+          @click="evt => onChange(evt, !value)"
       >
         <slot>{{ props.label }}</slot>
       </label>
     </div>
     <small v-show="hasErrors" data-cy="error" class="text-invalid">{{
-      errorMessage
-    }}</small>
+        errorMessage
+      }}</small>
   </div>
 </template>
 
@@ -50,19 +50,19 @@ const props = withDefaults(defineProps<ForgeCheckProps>(), {
 const value = defineModel<boolean>({ required: true });
 
 const { handleChange, errors, errorMessage } = useField(
-  () => props.name ?? "",
-  undefined,
-  {
-    type: "checkbox",
-    checkedValue: value.value,
-  }
+    () => props.name ?? "",
+    undefined,
+    {
+      type: "checkbox",
+      checkedValue: value.value,
+    }
 );
 
 const onChange = (event: MouseEvent, checkValue: boolean) => {
-  if(props.disabled || props.readonly) {
+  if (props.disabled || props.readonly) {
     event.preventDefault();
   }
-  if(props.name) handleChange(checkValue)
+  if (props.name) handleChange(checkValue)
   else value.value = checkValue
 }
 
