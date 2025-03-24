@@ -45,7 +45,7 @@ const opts = ref([
   { id: 9, optionLabel: "Option 9", value: "opt_9" },
   { id: 10, optionLabel: "Option 10", value: "opt_10" },
   { id: 11, optionLabel: "Option 11", value: "opt_11" },
-  { id: 12, optionLabel: "Option 12", value: "opt_12" }
+  { id: 12, optionLabel: "Option 12 - I am an example of a longer label. I am an example of a longer label. I am an example of a longer label. I am an example of a longer label. I am an example of a longer label. I am an example of a longer label. I am an example of a longer label.I am an example of a longer label. I am an example of a longer label.", value: "opt_12" }
 ]);
 
 const { options, propVals, config } = usePlayground(
