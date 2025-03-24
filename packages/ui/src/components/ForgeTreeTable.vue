@@ -1,45 +1,46 @@
 <template>
-    <div class="position-relative">
-      <span data-cy="above-table-slot" ><slot name="above-table" /></span>
-      <TreeTable class="w-100" :class="`${props.severity ? `forge-table-${props.severity}` : ''}`" v-bind="{...props, ...$attrs }" :pt="treetablePT" :filter-display="props.filters ? 'row' : undefined"
-      :rows="paginator ? perPage : undefined" data-cy="tree-table"
-      @update:filters="emitUpdateFilter" @sort="emitSort" @page="emitPage" @node-expand="(() => setExpanderColumns())" showHeaders :first="firstValueIndex">
-        <template v-for="(_, name) in $slots as unknown as TreeTableSlots" #[name]="slotProps">
-            <slot :name="name" v-bind="slotProps || {}"></slot>
-        </template>
+  <div class="position-relative">
+    <span data-cy="above-table-slot"><slot name="above-table" /></span>
+    <TreeTable
+        class="w-100" :class="`${props.severity ? `forge-table-${props.severity}` : ''}`" v-bind="{...props, ...$attrs }" :pt="treetablePT" :filter-display="props.filters ? 'row' : undefined"
+        :rows="paginator ? perPage : undefined" data-cy="tree-table"
+        show-headers :first="firstValueIndex" @update:filters="emitUpdateFilter" @sort="emitSort" @page="emitPage" @node-expand="(() => setExpanderColumns())">
+      <template v-for="(_, name) in $slots as unknown as TreeTableSlots" #[name]="slotProps">
+        <slot :name="name" v-bind="slotProps || {}"></slot>
+      </template>
 
-        <template #header>
-          <div :class="props.loading ? 'opacity-50' : ''">
-            <div class="d-flex">
-              <div class="d-flex align-items-end mb-2">
+      <template #header>
+        <div :class="props.loading ? 'opacity-50' : ''">
+          <div class="d-flex">
+            <div class="d-flex align-items-end mb-2">
                 <span v-if="paginator && !legacyPaginationFooter">
-                  <ForgePaginationHeader :total="total" :page-sizes="pageSizes" v-model:per-page="perPage" @update:perPage="emitPageSize" />
+                  <ForgePaginationHeader v-model:per-page="perPage" :total="total" :page-sizes="pageSizes" @update:per-page="emitPageSize" />
                 </span>
-              </div>
-              <div class="ms-auto">
-                <Button v-if="showClearButton" outlined @click="clearAllFilters" data-cy="clear-all">
-                  <Icon icon="bi:funnel-fill" width="24" height="24" />
-                  Clear
-                </Button>
-                <slot name="column-customiser" />
-              </div>
+            </div>
+            <div class="ms-auto">
+              <Button v-if="showClearButton" outlined data-cy="clear-all" @click="clearAllFilters">
+                <Icon icon="bi:funnel-fill" width="24" height="24" />
+                Clear
+              </Button>
+              <slot name="column-customiser" />
             </div>
           </div>
-        </template> 
-        <slot />
-        <template #paginatorstart v-if="legacyPaginationFooter">
+        </div>
+      </template>
+      <slot />
+      <template v-if="legacyPaginationFooter" #paginatorstart>
           <span class="d-flex" :class="props.loading ? 'opacity-50' : ''" data-cy="legacy-page-size">
             <span class="me-2 my-auto text-nowrap">Page Size:</span>
-            <Select :options="pageSizes" v-model="perPage" class="ms-2" @click="emitPageSize"/>
+            <Select v-model="perPage" :options="pageSizes" class="ms-2" @click="emitPageSize" />
           </span>
-        </template>
-        <template #paginatorend v-if="legacyPaginationFooter" >
+      </template>
+      <template v-if="legacyPaginationFooter" #paginatorend>
           <span data-cy="legacy-total" :class="props.loading ? 'opacity-50' : ''">
           {{ total }} {{ pluralise(total, "result") }} across {{ pageText }}
           </span>
-        </template>
-      </TreeTable>
-    </div>
+      </template>
+    </TreeTable>
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -65,21 +66,21 @@ export interface ForgeTreeTableProps extends TreeTableProps {
   value: any[],
   legacyPaginationFooter?: boolean,
   showClearButton?: boolean,
-  clearAll?: Function,
+  clearAll?: () => void,
   emptyMessage?: string
 }
 
 const props = withDefaults(
-  defineProps<ForgeTreeTableProps>(), 
-  {
-    parentExpanderFullRow: false,
-    totalColumns: 1,
-    legacyPaginationFooter: false,
-    paginator: true,
-    alwaysShowPaginator: true,
-    showClearButton: false,
-    stripedRows: false
-  })
+    defineProps<ForgeTreeTableProps>(),
+    {
+      parentExpanderFullRow: false,
+      totalColumns: 1,
+      legacyPaginationFooter: false,
+      paginator: true,
+      alwaysShowPaginator: true,
+      showClearButton: false,
+      stripedRows: false
+    })
 
 
 const emits = defineEmits(['update:filters', 'update:tableContext', 'sort', 'page'])
@@ -103,72 +104,72 @@ const pageText = computed<string>(() => {
   const pages = Math.ceil(total.value / perPage.value)
   return `${pages} ${pluralise(pages, 'page')}`
 })
- 
+
 const treetablePT = computed(() => ({
-  root: 'position-relative',
-  table: (options: TreeTablePassThroughMethodOptions) => {
-    return {
-      class: [
-        'table position-relative',
+      root: 'position-relative',
+      table: (options: TreeTablePassThroughMethodOptions) => {
+        return {
+          class: [
+            'table position-relative',
+            {
+              'table-striped': options.attrs.stripedRows,
+              'table-hover': options.props.rowHover,
+              'table-bordered': options.props.showGridlines,
+              'table-sm': options.props.size === 'small',
+              'table-lg': options.props.size === 'large',
+              'opacity-50': options.props.loading
+            }
+          ]
+        }
+      },
+      loadingIcon: () => {
+        return {
+          class: [
+            'spinner-border border-0',
+            {
+              'text-brand': props.severity === "brand",
+              'text-primary': props.severity === "primary",
+              'text-success': props.severity === "success",
+              'text-success-alternate': props.severity === "success-alternate",
+              'text-warning': props.severity === "warning",
+              'text-danger': props.severity === "danger",
+              'text-info': props.severity === "info"
+            }]
+        }
+      },
+      row: ({ instance }: TreeTablePassThroughMethodOptions) => [
         {
-          'table-striped': options.attrs.stripedRows,
-          'table-hover': options.props.rowHover,
-          'table-bordered': options.props.showGridlines,
-          'table-sm': options.props.size === 'small',
-          'table-lg': options.props.size === 'large',
-          'opacity-50': options.props.loading
+          'parent-node': instance.node.hasOwnProperty("children")
         }
       ]
     }
-  },
-  loadingIcon: () => {
-    return {
-      class: [
-        'spinner-border border-0',
-        {
-          'text-brand': props.severity === "brand",
-          'text-primary': props.severity === "primary",
-          'text-success': props.severity === "success",
-          'text-success-alternate': props.severity === "success-alternate",
-          'text-warning': props.severity === "warning",
-          'text-danger': props.severity === "danger",
-          'text-info': props.severity === "info"
-        }]
-    }
-  },
-  row: ({ instance }: TreeTablePassThroughMethodOptions) => [
-    {
-      'parent-node': instance.node.hasOwnProperty("children")
-    }
-  ]
-}
 ));
 
 watch(() => props.parentExpanderFullRow, (newValue) => {
   if (newValue) {
     setExpanderColumns();
-  } else{
+  } else {
     removeExpanderColumns();
   }
 })
 
 const setExpanderColumns = () => {
-  if(props.parentExpanderFullRow){
+  if (props.parentExpanderFullRow) {
     setTimeout(() => {
-        const rowExpanderCells = Array.from(
-            document.querySelectorAll(".parent-node td.expander-cell")
-        );
-        const rowExpanderOtherCells = Array.from(
-            document.querySelectorAll(".parent-node td")
-        );
+          const rowExpanderCells = Array.from(
+              document.querySelectorAll(".parent-node td.expander-cell")
+          );
+          const rowExpanderOtherCells = Array.from(
+              document.querySelectorAll(".parent-node td")
+          );
 
-        rowExpanderOtherCells.forEach((rowExpanderCell) => {
+          rowExpanderOtherCells.forEach((rowExpanderCell) => {
             rowExpanderCell.classList.add("d-none")
-        });
-        rowExpanderCells.forEach((rowExpanderCell) => {
+          });
+          rowExpanderCells.forEach((rowExpanderCell) => {
             rowExpanderCell.setAttribute("colspan", props.totalColumns.toString());
             rowExpanderCell.classList.remove("d-none")
-            });
+          });
         },
         0
     );
@@ -176,7 +177,7 @@ const setExpanderColumns = () => {
 }
 
 const removeExpanderColumns = () => {
-    setTimeout(() => {
+  setTimeout(() => {
         const rowExpanderCells = Array.from(
             document.querySelectorAll(".parent-node td.expander-cell")
         );
@@ -185,23 +186,23 @@ const removeExpanderColumns = () => {
         );
 
         rowExpanderCells.forEach((rowExpanderCell) => {
-            rowExpanderCell.removeAttribute("colspan");
-            });
+          rowExpanderCell.removeAttribute("colspan");
+        });
 
         rowExpanderOtherCells.forEach((rowExpanderCell) => {
-            rowExpanderCell.classList.remove("d-none")
-            });
-        },
-        0
-    );
+          rowExpanderCell.classList.remove("d-none")
+        });
+      },
+      0
+  );
 }
 
 const clearAllFilters = () => {
-  if(props.clearAll) {
+  if (props.clearAll) {
     props.clearAll()
   } else {
-    for (const key in props.filters){
-      if(typeof props.filters[key] === "string") {
+    for (const key in props.filters) {
+      if (typeof props.filters[key] === "string") {
         props.filters[key] = ""
       } else {
         (props.filters[key] as TreeTableFilterMetaData).value = null
@@ -227,7 +228,7 @@ const emitUpdateFilter = (filters: TreeTableFilterMeta | undefined) => {
   emits('update:filters', filters)
   setExpanderColumns();
 }
-const emitPage = (page : TreeTablePageEvent) => {
+const emitPage = (page: TreeTablePageEvent) => {
   tableContext.value.page = pageNumber.value = page.page
 
   setFirstIndex();
@@ -240,7 +241,7 @@ const emitPageSize = () => {
   tableContext.value.perPage = perPage.value
   pageNumber.value = 0;
 
-  tableContext.value.page = pageNumber.value = Math.floor(firstValueIndex.value/perPage.value)
+  tableContext.value.page = pageNumber.value = Math.floor(firstValueIndex.value / perPage.value)
   setFirstIndex();
   emits("update:tableContext", tableContext.value)
   setExpanderColumns();
@@ -248,9 +249,9 @@ const emitPageSize = () => {
 
 watch(() => props.filters, (newValue) => {
   tableContext.value.filters = newValue
-  
+
   emits("update:tableContext", tableContext.value)
-}, {deep: true})
+}, { deep: true })
 
 
 watch(() => props.value, () => {
@@ -262,8 +263,7 @@ onMounted(() => {
   emits("update:tableContext", tableContext.value);
 })
 
-const setFirstIndex = () => 
-{
+const setFirstIndex = () => {
   firstValueIndex.value = pageNumber.value * perPage.value;
 }
 

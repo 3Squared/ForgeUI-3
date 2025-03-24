@@ -21,7 +21,8 @@
         Triggered when the cancel button is clicked
         @event cancel
         -->
-        <Button v-if="!hideCancel" data-cy="cancel-btn" type="reset" severity="secondary" outlined
+        <Button
+v-if="!hideCancel" data-cy="cancel-btn" type="reset" severity="secondary" outlined
                   @click="$emit('cancel')">{{ cancelText }}
         </Button>
       </slot>
@@ -31,7 +32,7 @@
         </Button>
       </slot>
     </div>
-    <forge-loader data-cy="loading-spinner" v-if="loading"/>
+    <forge-loader v-if="loading" data-cy="loading-spinner"/>
   </form>
 </template>
 
@@ -41,7 +42,7 @@ import ForgeAlert from "./ForgeAlert.vue";
 import ForgeLoader from "./ForgeLoader.vue";
 
 export interface ForgeFormProps {
-  onSubmit: Function,
+  onSubmit: () => Promise<void>,
   title?: string,
   hideTitle?: boolean,
   titleClass?: string,

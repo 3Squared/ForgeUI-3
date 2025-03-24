@@ -36,7 +36,7 @@ const props = withDefaults(defineProps<ForgeTileProps>(), {
 })
 
 const buttonClass = computed(() => {
-  return `${props.severity === undefined ? `tile-primary` :`tile-${props.severity}`} ${props.barPosition === 'none' ? '' : `tile-bar-${props.barPosition}`} ${props.selected ? 'selected' : ''}`
+  return `${props.severity === undefined ? `tile-primary` : `tile-${props.severity}`} ${props.barPosition === 'none' ? '' : `tile-bar-${props.barPosition}`} ${props.selected ? 'selected' : ''}`
 })
 
 const tileClass = computed(() => {

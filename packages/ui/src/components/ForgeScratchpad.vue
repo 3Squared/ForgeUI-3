@@ -12,10 +12,10 @@
         :line-join="lineJoin"
     />
     <div class="d-flex flex-row mt-1 gap-1">
-      <Button v-if="props.showUndo" @click="undo" outlined data-cy="undo-button">Undo</Button>
-      <Button v-if="props.showRedo" @click="redo" outlined data-cy="redo-button">Redo</Button>
-      <Button v-if="props.showClear" @click="clear" outlined data-cy="clear-button">Clear</Button>
-      <Button v-if="props.showSave" @click="save" class="ms-auto" data-cy="save-button">Save</Button>
+      <Button v-if="props.showUndo" outlined data-cy="undo-button" @click="undo">Undo</Button>
+      <Button v-if="props.showRedo" outlined data-cy="redo-button" @click="redo">Redo</Button>
+      <Button v-if="props.showClear" outlined data-cy="clear-button" @click="clear">Clear</Button>
+      <Button v-if="props.showSave" class="ms-auto" data-cy="save-button" @click="save">Save</Button>
     </div>
   </div>
 </template>

@@ -5,15 +5,18 @@
     </span>
 
     <div class="position-relative w-100">
-      <DatePicker v-bind="{...props, ...$attrs}" :pt="pt" v-model="model" @update:model-value="handleChange"
-                @blur="() => handleBlur" :input-class="{'datepicker-invalid': hasErrors}"/>
-      <Icon data-cy="icon" icon="bi:calendar4" v-show="props.showIcon"
-            class="position-absolute end-0 top-50 bottom-50 my-auto me-2 bg-white" 
-            :class="`${ hasErrors ? 'text-danger-dark' : 'text-muted'}`"
+      <DatePicker
+          v-bind="{...props, ...$attrs}" v-model="model" :pt="pt" :input-class="{'datepicker-invalid': hasErrors}"
+          @update:model-value="handleChange" @blur="() => handleBlur" />
+      <Icon
+          v-show="props.showIcon" data-cy="icon" icon="bi:calendar4"
+          class="position-absolute end-0 top-50 bottom-50 my-auto me-2 bg-white"
+          :class="`${ hasErrors ? 'text-danger-dark' : 'text-muted'}`"
       />
-      <Icon data-cy="icon" icon="bi:x" v-show="props.modelValue" @click="clear"
-            class="position-absolute end-0 top-50 bottom-50 my-auto text-muted cursor-pointer bg-white"
-            :class="props.showIcon ? 'datepicker-close-icon' : 'me-2'" />
+      <Icon
+          v-show="props.modelValue" data-cy="icon" icon="bi:x" class="position-absolute end-0 top-50 bottom-50 my-auto text-muted cursor-pointer bg-white"
+          :class="props.showIcon ? 'datepicker-close-icon' : 'me-2'"
+          @click="clear" />
     </div>
 
 
@@ -22,7 +25,7 @@
     </span>
   </div>
 
-  <small data-cy="error" class="text-invalid" v-show="hasErrors">{{ errorMessage }}</small>
+  <small v-show="hasErrors" data-cy="error" class="text-invalid">{{ errorMessage }}</small>
 </template>
 
 <script setup lang="ts">
@@ -68,9 +71,9 @@ const clear = () => {
 const hasErrors = computed(() => errors.value.length > 0)
 
 const pt = computed(() => ({
-  dayCell: ({context} : DatePickerPassThroughMethodOptions) => ({
+  dayCell: ({ context }: DatePickerPassThroughMethodOptions) => ({
     class: [
-      `text-center date-${ props.severity === undefined ? 'primary' : props.severity }`,
+      `text-center date-${props.severity === undefined ? 'primary' : props.severity}`,
       {
         'cursor-pointer': !context.disabled,
         'pe-none': context.disabled,
@@ -90,8 +93,8 @@ const pt = computed(() => ({
       }
     ]
   }),
- 
-  dayLabel: ({ context } : DatePickerPassThroughMethodOptions) => ({
+
+  dayLabel: ({ context }: DatePickerPassThroughMethodOptions) => ({
     class: [
       // Disabled States
       {
