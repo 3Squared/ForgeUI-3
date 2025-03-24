@@ -47,7 +47,6 @@ export default {
           ]
         }
       },
-      nodeLabel: "",
       pcFilterIconContainer: {
         root: {
           class: ['position-absolute bottom-0 end-0 me-3'],
