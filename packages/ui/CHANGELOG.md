@@ -1,5 +1,18 @@
 # @3squared/forge-ui-3
 
+## 2.16.0
+
+### Minor Changes
+
+- 7d341ef: Updated forge table to have a perPage prop to set the default page size to something other that the current default 10
+  - Added page size prop for forge table to allow us to set the default page size to anything other than 10
+  - Add tests to ensure the perPage prop is being used correctly in paging, and the data table rows
+
+### Patch Changes
+
+- a45f020: Remove need to have a url in a ForgeLink so it can be used with just a click event
+- c89cb6c: Add css fixes to dropdowns
+
 ## 2.15.0
 
 ### Minor Changes
