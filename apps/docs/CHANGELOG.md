@@ -1,5 +1,13 @@
 # forge-ui-3-styleguide
 
+## 2.15.1
+
+### Patch Changes
+
+- 451d57e: Add useful links to navbar
+- Updated dependencies [e64aa35]
+  - @3squared/forge-ui-3@2.16.1
+
 ## 2.15.0
 
 ### Minor Changes
