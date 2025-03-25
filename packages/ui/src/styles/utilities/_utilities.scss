@@ -140,13 +140,25 @@ $pixels: (
 }
 
 @each $key, $value in $pixels {
-  .minh-#{$key} {
+  .max-h-#{$key} {
+    max-height: $value !important;
+  }
+}
+
+@each $key, $value in $pixels {
+  .min-w-#{$key} {
+    max-width: $value !important;
+  }
+}
+
+@each $key, $value in $pixels {
+  .min-h-#{$key} {
     min-height: $value !important;
   }
 }
 
 @each $key, $value in $pixels {
-  .minw-#{$key} {
+  .min-w-#{$key} {
     min-width: $value !important;
   }
 }
