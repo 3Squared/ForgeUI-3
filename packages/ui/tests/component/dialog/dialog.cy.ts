@@ -176,24 +176,32 @@ describe('<Dialog />', () => {
       return expect(str).to.equal(alertMessage)
     })
   })
+  
+  describe("Errors", () => {
+    const errorMessage = "I am an Error!";
 
-  it("Displays an error alert if onConfirm throws an error", () => {
-    // Arrange
-    const errorMessage = "I am an Error!"
-    const onConfirm = () => {
-      throw Error(errorMessage)
-    }
+    beforeEach(() => {
+      const onConfirm = () => {
+        throw new Error(errorMessage);
+      };
+      mountDialog({ onConfirm });
+      cy.get(submitButtonId).click();
+    });
 
-    // Act
-    mountDialog({ onConfirm: onConfirm })
-    cy.get(submitButtonId).click()
+    it("Displays an error alert if onConfirm throws an error", () => {
+      cy.get('[data-cy="error"]')
+        .should("exist")
+        .and("be.visible")
+        .and("contain.text", errorMessage);
+    });
 
-    // Assert
-    cy.get(`[data-cy="error"]`)
-      .should('exist')
-      .and('be.visible')
-      .and('contain.text', errorMessage)
-  })
+    it("Sets error to be sticky", () => {
+      cy.get('[data-cy="error-wrapper"]').should(
+        "have.class",
+        "sticky-top py-3 error-bg"
+      );
+    });
+  });
 
   it("Shows loading spinner whilst waiting for the function to complete", () => {
     // Arrange
