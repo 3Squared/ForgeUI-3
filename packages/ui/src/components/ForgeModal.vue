@@ -8,18 +8,18 @@
     </template>
     <template v-for="(_, name) in $slots as unknown as DialogSlots" #[name]="slotProps">
       <template v-if="name !== 'footer'">
-        <forge-alert v-if="error.hasError" severity="danger" data-cy="error">
+        <ForgeAlert v-if="error.hasError" severity="danger" data-cy="error">
           <p :class="error.message.length > 0 ? 'my-auto' : 'mb-0'">{{ error.header }}</p>
           <ul v-if="error.message.length > 0">
             <li v-for="detail in error.message" :key="detail">
               {{ detail }}
             </li>
           </ul>
-        </forge-alert>
+        </ForgeAlert>
       </template>
       <slot :name="name" v-bind="slotProps || {}" />
       <slot v-if="loading" name="loader">
-        <forge-loader data-cy="loader" />
+        <ForgeLoader data-cy="loader" />
       </slot>
     </template>
     <template #footer v-if="showFooter">
@@ -59,7 +59,8 @@ export interface ForgeModalProps extends DialogProps {
   cancelClass?: string,
   submitClass?: string,
   resetErrorOnClose?: boolean,
-  maxHeight?: string | null
+  maxHeight?: string | null,
+  minHeight?: string | null
 }
 
 const visible = defineModel<boolean>('visible', { required: true })
@@ -151,8 +152,9 @@ const pt = computed<DialogPassThroughOptions>(() => ({
   ],
   content: [
     'modal-body overflow-y-auto',
-    { 
-      [`${props.maxHeight}`]: props.maxHeight && !fullscreen.value
+    {
+      [`${props.maxHeight}`]: props.maxHeight && !fullscreen.value,
+      [`${props.minHeight}`]: props.minHeight && !fullscreen.value
     }
   ]
 }))
