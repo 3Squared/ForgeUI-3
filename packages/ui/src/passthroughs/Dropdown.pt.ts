@@ -47,7 +47,7 @@ export default {
     filterIcon: "d-none",
     label: ({ instance }: SelectPassThroughMethodOptions<any>) => ({
       class: [
-        'w-100',
+        'w-100 ellipsis-overflow',
         {
           'filter-placeholder': instance.modelValue === undefined
         }

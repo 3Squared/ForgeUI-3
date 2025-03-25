@@ -23,7 +23,7 @@ export type UnderlineOffset = '1' | '2' | '3'
 export type Target = '_blank' | '_parent' | '_self' | '_top'
 
 export interface ForgeLinkProps {
-  url: string,
+  url?: string,
   label?: string,
   target?: Target,
   opacity?: LinkOpacity,

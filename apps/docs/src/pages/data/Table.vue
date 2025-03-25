@@ -108,6 +108,8 @@ const dropdownOptions = [
   "Jeans",
   "Backpack"
 ];
+
+const perPageOptions = ref([5, 10, 20, 50, 100]);
 const selection = ref();
 
 const { options, propVals, config, reset } = usePlayground(
@@ -138,7 +140,8 @@ const { options, propVals, config, reset } = usePlayground(
     metaKeySelection: false,
     reorderableColumns: false,
     editMode: "",
-    paginator: true
+    paginator: true,
+    perPage: 5
   },
   {
     severity: { type: "select", options: ["undefined", ...severities] },
@@ -167,7 +170,8 @@ const { options, propVals, config, reset } = usePlayground(
     csvSeparator: {
       disabled: (): boolean => !options.value.showExporterButton
     },
-    editMode: { type: "select", options: ["cell", "row"] }
+    editMode: { type: "select", options: ["cell", "row"] },
+    perPage: {type: "select", options: perPageOptions.value}
   }
 );
 

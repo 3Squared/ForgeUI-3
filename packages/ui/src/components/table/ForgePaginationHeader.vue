@@ -3,7 +3,7 @@
     Number of results per page
     <div class="ms-2">
       <Select :options="props.pageSizes" :model-value="props.perPage" class="page-size"
-                @change="(event : SelectChangeEvent) => update(event)" />
+                @change="(event : SelectChangeEvent) => update(event)" data-cy="pagination-page-size-select" />
     </div>
     <div v-if="props.total">
       <span class="mx-2">|</span>

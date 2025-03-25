@@ -44,7 +44,8 @@ const { options, propVals, config } = usePlayground(
       showClear: false,
       placeholder: "Select an option",
       disabled: false,
-      maxSelectedLabels: 2,
+      maxSelectedLabels: 2
+      selectionMode: "single",
       appendTo: "self"
     },
     {

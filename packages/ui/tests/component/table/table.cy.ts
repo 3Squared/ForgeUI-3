@@ -27,10 +27,15 @@ const clearAllButtonId = '[data-cy="clear-all"]'
 // Pagination Header
 const paginationHeaderId = '[data-cy="pagination-header"]'
 const totalId = '[data-cy="total"]'
+const paginationPageSizeSelect = '[data-cy="pagination-page-size-select"]'
+const paginationPageSizeSelectLabel = '[data-pc-section="label"]'
 
 // Pagination Footer
 const legacyPageSizeId = '[data-cy="legacy-page-size"]'
+const legacyPageSizeLabel = '[data-pc-section="label"]'
 const legacyTotalId = '[data-cy="legacy-total"]'
+
+const pageLinkId = '[data-pc-section="page"]'
 
 const aboveTableSlotId = '[data-cy="above-table-slot"]'
 const emptyTableSlotId = '[data-cy="empty-message"]'
@@ -67,6 +72,102 @@ describe('<ForgeTable />', () => {
       .should('exist')
       .and('be.visible')
   })
+
+  describe('Per Page/Rows', () => {
+    [{ perPage: 5 }, { perPage: 10 }, { perPage: 20 }].forEach(({ perPage }) => {
+
+      const largerItems = [...items, ...items, ...items]
+
+      it(`Should show total number of pages using ${perPage} per page`, () => {
+        // Arrange
+        const pageCount = Math.ceil(largerItems.length / perPage)
+        const pagesText = `${pageCount} page`;
+
+        // Act
+        mountTable({ tableProps: { value: largerItems, perPage }, columns: columns })
+
+        // Assert
+        cy.get(totalId)
+          .should('exist')
+          .and('be.visible')
+          .and('contain.text', pagesText)
+      })
+
+      it(`Should show selected page size using ${perPage} per page`, () => {
+        // Arrange
+
+        // Act
+        mountTable({ tableProps: { value: largerItems, perPage }, columns: columns })
+
+        // Assert
+        cy.get(paginationPageSizeSelect)
+          .should('exist')
+          .and('be.visible')
+          .find(paginationPageSizeSelectLabel)
+          .and('contain.text', perPage)
+      })
+
+      it(`Should show legacy selected page size using ${perPage} per page`, () => {
+        // Arrange
+
+        // Act
+        mountTable({ tableProps: { value: largerItems, perPage, legacyPaginationFooter: true }, columns: columns })
+
+        // Assert
+        cy.get(legacyPageSizeId)
+          .should('exist')
+          .and('be.visible')
+          .find(legacyPageSizeLabel)
+          .and('contain.text', perPage)
+      })
+
+      it(`Should show total number of pages using ${perPage} per page and legacy paging`, () => {
+        // Arrange
+        const pageCount = Math.ceil(largerItems.length / perPage)
+        const pagesText = `${pageCount} page`;
+
+        // Act
+        mountTable({ tableProps: { value: largerItems, perPage, legacyPaginationFooter: true }, columns: columns })
+
+        // Assert
+        cy.get(legacyTotalId)
+          .should('exist')
+          .and('be.visible')
+          .and('contain.text', pagesText)
+      })
+
+      it(`Should show total number of items using ${perPage} per page`, () => {
+        // Arrange
+        let rowCount = perPage;
+        if(largerItems.length < perPage){
+          rowCount = largerItems.length;
+        }
+
+        // Act
+        mountTable({ tableProps: { value: largerItems, perPage }, columns: columns })
+
+        // Assert
+        // Assert b
+        cy.get(tableRowId)
+          .should('have.length', rowCount)
+      })
+
+      it(`Should show total number of paging links using ${perPage} per page`, () => {
+        // Arrange
+        let pageCount = Math.ceil(largerItems.length / perPage);
+        if(pageCount > 5){
+          pageCount = 5
+        }
+        // Act
+        mountTable({ tableProps: { value: largerItems, perPage }, columns: columns })
+
+        // Assert
+        // Assert b
+        cy.get(pageLinkId)
+          .should('have.length', pageCount)
+      })
+    })
+  })
   
   describe('Header Pagination', () => {
     it("Should show total number of items if specified", () => {
@@ -82,7 +183,6 @@ describe('<ForgeTable />', () => {
         .and('be.visible')
         .and('contain.text', total)
     })
-    
     it("Should display the total number of items in the array if the total prop isn't specified", () => {
       // Act
       mountTable({ tableProps: { value: items }, columns: columns })

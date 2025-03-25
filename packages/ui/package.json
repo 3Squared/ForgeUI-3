@@ -2,7 +2,7 @@
   "name": "@3squared/forge-ui-3",
   "repository": "https://github.com/3Squared/ForgeUI-3",
   "description": "ForgeUI 3 is Vue 3 UI Library which combines a variety of popular packages to create a consistent UI for your application.",
-  "version": "2.15.0",
+  "version": "2.16.0",
   "type": "module",
   "license": "MIT",
   "contributors": [
@@ -58,7 +58,7 @@
     "sass": "1.86.0",
     "typescript": "5.8.2",
     "unplugin-vue-components": "28.4.1",
-    "vite": "6.2.2",
+    "vite": "6.2.3",
     "vite-bundle-visualizer": "1.2.1",
     "vite-plugin-dts": "4.5.3",
     "vite-plugin-istanbul": "7.0.0",
@@ -66,7 +66,7 @@
     "vue-drawing-canvas": "1.0.14"
   },
   "optionalDependencies": {
-    "@rollup/rollup-linux-x64-gnu": "4.36.0"
+    "@rollup/rollup-linux-x64-gnu": "4.37.0"
   },
   "nyc": {
     "all": true,
