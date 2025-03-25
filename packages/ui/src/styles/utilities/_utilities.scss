@@ -146,7 +146,7 @@ $pixels: (
 }
 
 @each $key, $value in $pixels {
-  .min-w-#{$key} {
+  .max-w-#{$key} {
     max-width: $value !important;
   }
 }
