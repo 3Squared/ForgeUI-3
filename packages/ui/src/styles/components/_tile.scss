@@ -5,6 +5,8 @@
     @return #FFEFCF;
   } @else if $color == success {
     @return #C3E7D5;
+  } @else if $color == success-alternate {
+    @return #EFFFC7;
   } @else if $color == secondary {
     @return #E5E5E5;
   } @else if $color == brand {

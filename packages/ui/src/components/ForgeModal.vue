@@ -7,15 +7,17 @@
       <Icon data-cy="maximisable-icon" :icon="!fullscreen ? 'bi:arrows-angle-expand' : 'bi:arrows-angle-contract'" width="16" height="16" />
     </template>
     <template v-for="(_, name) in $slots as unknown as DialogSlots" #[name]="slotProps">
-      <template v-if="name !== 'footer'">
-        <ForgeAlert v-if="error.hasError" severity="danger" data-cy="error">
-          <p :class="error.message.length > 0 ? 'my-auto' : 'mb-0'">{{ error.header }}</p>
-          <ul v-if="error.message.length > 0">
-            <li v-for="detail in error.message" :key="detail">
-              {{ detail }}
-            </li>
-          </ul>
-        </ForgeAlert>
+      <template v-if="name == 'default'">
+        <div v-if="error.hasError" class="sticky-top py-3 error-bg" data-cy="error-wrapper">
+          <forge-alert severity="danger" data-cy="error" class="mb-0">
+            <p :class="error.message.length > 0 ? 'my-auto' : 'mb-0'">{{ error.header }}</p>
+            <ul v-if="error.message.length > 0">
+              <li v-for="detail in error.message" :key="detail">
+                {{ detail }}
+              </li>
+            </ul>
+          </forge-alert>
+        </div>
       </template>
       <slot :name="name" v-bind="slotProps || {}" />
       <slot v-if="loading" name="loader">
@@ -154,7 +156,8 @@ const pt = computed<DialogPassThroughOptions>(() => ({
     'modal-body overflow-y-auto',
     {
       [`${props.maxHeight}`]: props.maxHeight && !fullscreen.value,
-      [`${props.minHeight}`]: props.minHeight && !fullscreen.value
+      [`${props.minHeight}`]: props.minHeight && !fullscreen.value,
+      'pt-0': error.value.hasError
     }
   ]
 }))

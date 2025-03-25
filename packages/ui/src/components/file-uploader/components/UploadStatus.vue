@@ -1,6 +1,6 @@
 <template>
   <div class="d-flex align-items-center me-2">
-    <ForgeLoader v-if="props.uploadStatus === 'Uploading'" />
+    <ForgeLoader v-if="props.uploadStatus === 'Uploading'" in-line />
     <ForgeAlert id="upload-status-alert" v-if="props.uploadStatus !== 'Uploading' && props.uploadStatus !== 'Not Uploaded' && props.uploadStatus !== 'Uploaded' && props.uploadStatus !== 'Preparing'"
                 :severity="alertSeverity" class="mb-0 w-75 ms-auto">{{ alertMessage }}
     </ForgeAlert>
