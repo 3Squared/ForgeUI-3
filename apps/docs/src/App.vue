@@ -5,6 +5,7 @@
       <template #end>
         <div class="navbar-nav cursor-pointer nav-item me-3">
           <a class="nav-link" @click.capture="router.push('/changelog')">v{{ version }}</a>
+          <a class="nav-link" href="https://github.com/3Squared/ForgeUI-3" target="_blank"><Icon icon="mdi:github" width="24" height="24" /></a>
         </div>
       </template>
     </ForgeNavbar>
@@ -22,10 +23,12 @@ import { RouterView, useRouter } from "vue-router/auto";
 import Toast from "primevue/toast";
 import { ForgeNavbar } from "@3squared/forge-ui-3";
 import { version } from "../../../packages/ui/package.json";
+import { onMounted, ref } from "vue";
+import { Icon } from '@iconify/vue'
 
 const router = useRouter();
 
-const pages = [
+const pages = ref([
   {
     label: "Guides",
     items: [
@@ -126,6 +129,13 @@ const pages = [
     ]
   },
   { label: "Icons", command: () => router.push("/icons") },
-  { label: "Colours", command: () => router.push("/colours") }
-];
+  { label: "Colours", command: () => router.push("/colours") },
+  //{ label: "Code Testing", command: () => router.push("/examples/CodeTesting") },
+]);
+
+onMounted(() => {
+  if(import.meta.env.DEV){
+    pages.value.push({ label: "Code Testing", command: () => router.push("/examples/CodeTesting") })
+  }
+})
 </script>
