@@ -1,5 +1,11 @@
 # @3squared/forge-ui-3
 
+## 2.16.1
+
+### Patch Changes
+
+- e64aa35: Set forge loader to be inline for file uploader
+
 ## 2.16.0
 
 ### Minor Changes
