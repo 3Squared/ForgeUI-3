@@ -1,5 +1,18 @@
 # @3squared/forge-ui-3
 
+## 2.17.0
+
+### Minor Changes
+
+- 503e0b8: Add min height to modal
+
+### Patch Changes
+
+- 1ec4b53: Fix ForgeToggleButton border - add z-index
+- a84189c: Set error banner to be sticky
+- 282cad7: Add more width classes
+- 901475d: Fix missing success-alternate tile hover colour
+
 ## 2.16.1
 
 ### Patch Changes

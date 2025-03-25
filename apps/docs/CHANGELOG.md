@@ -1,5 +1,21 @@
 # forge-ui-3-styleguide
 
+## 2.16.0
+
+### Minor Changes
+
+- 503e0b8: Add min height to modal
+
+### Patch Changes
+
+- 1ec4b53: Fix ForgeToggleButton border - add z-index
+- Updated dependencies [1ec4b53]
+- Updated dependencies [a84189c]
+- Updated dependencies [282cad7]
+- Updated dependencies [503e0b8]
+- Updated dependencies [901475d]
+  - @3squared/forge-ui-3@2.17.0
+
 ## 2.15.1
 
 ### Patch Changes
