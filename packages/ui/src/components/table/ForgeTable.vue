@@ -73,7 +73,8 @@ export interface ForgeTableProps extends DataTableProps {
   stickyHeader?: boolean,
   severity?: Severity,
   clearAll?: Function,
-  emptyMessage?: string
+  emptyMessage?: string,
+  perPage?: number
 }
 
 const emits = defineEmits(['update:filters', 'update:tableContext', 'sort', 'page'])
@@ -89,7 +90,7 @@ const props = withDefaults(defineProps<ForgeTableProps>(), {
 
 const forgeTable = ref()
 const pageSizes = ref<Array<number>>([5, 10, 20, 50, 100])
-const perPage = ref<number>(10)
+const perPage = ref<number>(props.perPage ?? 10)
 
 const tableContext = ref<ForgeTableContext>({
   filters: props.filters,
@@ -99,6 +100,13 @@ const tableContext = ref<ForgeTableContext>({
   sortField: '',
   total: props.totalRecords ?? props.value.length
 })
+
+watch(() => props.perPage, (newValue) => {
+  if(newValue){
+    perPage.value = newValue;;
+    tableContext.value.perPage = newValue
+  }
+});
 
 const total = computed<number>(() => props.totalRecords ?? props.value.length)
 const pageText = computed<string>(() => {
