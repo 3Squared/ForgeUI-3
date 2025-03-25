@@ -1,3 +1,7 @@
 .modal-open {
   background-color: rgba($modal-backdrop-bg, $modal-backdrop-opacity);
 }
+
+.error-bg{
+  background-color: var(--bs-modal-bg);
+}
