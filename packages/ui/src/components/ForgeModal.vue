@@ -21,7 +21,7 @@
       </template>
       <slot :name="name" v-bind="slotProps || {}" />
       <slot v-if="loading" name="loader">
-        <forge-loader data-cy="loader" />
+        <ForgeLoader data-cy="loader" />
       </slot>
     </template>
     <template #footer v-if="showFooter">
@@ -61,7 +61,8 @@ export interface ForgeModalProps extends DialogProps {
   cancelClass?: string,
   submitClass?: string,
   resetErrorOnClose?: boolean,
-  maxHeight?: string | null
+  maxHeight?: string | null,
+  minHeight?: string | null
 }
 
 const visible = defineModel<boolean>('visible', { required: true })
@@ -155,6 +156,7 @@ const pt = computed<DialogPassThroughOptions>(() => ({
     'modal-body overflow-y-auto',
     {
       [`${props.maxHeight}`]: props.maxHeight && !fullscreen.value,
+      [`${props.minHeight}`]: props.minHeight && !fullscreen.value,
       'pt-0': error.value.hasError
     }
   ]

@@ -69,15 +69,23 @@ $font-weights: (
 $sizes: (
         5: 5%,
         10: 10%,
+        15: 15%,
         20: 20%,
         25: 25%,
         30: 30%,
+        35: 35%,
         40: 40%,
+        45: 45%,
         50: 50%,
+        55: 55%,
         60: 60%,
+        65: 65%,
+        70: 70%,
         75: 75%,
         80: 80%,
+        85: 85%,
         90: 90%,
+        95: 95%,
         100: 100%,
         auto: auto
 );
@@ -100,7 +108,7 @@ $sizes: (
   }
 }
 
-$max-pixels: (
+$pixels: (
         50px: 50px,
         100px: 100px,
         150px: 150px,
@@ -119,14 +127,38 @@ $max-pixels: (
 );
 
 
-@each $key, $value in $max-pixels {
+@each $key, $value in $pixels {
   .mh-#{$key} {
     max-height: $value !important;
   }
 }
 
-@each $key, $value in $max-pixels {
+@each $key, $value in $pixels {
   .mw-#{$key} {
     max-width: $value !important;
+  }
+}
+
+@each $key, $value in $pixels {
+  .max-h-#{$key} {
+    max-height: $value !important;
+  }
+}
+
+@each $key, $value in $pixels {
+  .max-w-#{$key} {
+    max-width: $value !important;
+  }
+}
+
+@each $key, $value in $pixels {
+  .min-h-#{$key} {
+    min-height: $value !important;
+  }
+}
+
+@each $key, $value in $pixels {
+  .min-w-#{$key} {
+    min-width: $value !important;
   }
 }
