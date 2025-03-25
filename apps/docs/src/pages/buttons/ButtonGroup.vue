@@ -26,7 +26,7 @@ const opts = ref<ForgeSelectButtonOption[]>([
   { label: "Maj", value: "1", severity: "danger", disabled: true, },
   { label: "Min", value: "2", severity: "warning"},
   { label: "Pro", value: "3", severity: "success" },
-  { label: "Ex", value: "4", severity: "success-dark" },
+  { label: "Ex", value: "4", severity: "success-alternate" },
   { label: "N/A", value: "5", severity: "secondary" }
 ]);
 
