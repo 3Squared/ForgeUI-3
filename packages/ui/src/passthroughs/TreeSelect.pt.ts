@@ -1,4 +1,4 @@
-import { TreeSelectPassThroughOptions } from "primevue/treeselect";
+import { TreeSelectPassThroughMethodOptions, TreeSelectPassThroughOptions } from "primevue/treeselect";
 import { SelectPassThroughMethodOptions } from "primevue/select";
 import { TreePassThroughMethodOptions } from "primevue/tree";
 
@@ -16,11 +16,12 @@ export default {
     },
     dropdown: 'd-none',
     panel: 'dropdown-menu overflow-y-auto show',
-    labelContainer: "w-100 me-2",
-    label: "w-100 d-flex ellipsis-overflow",
+    labelContainer: "w-100 me-2 d-flex ellipsis-overflow",
+    label: ({ props }: TreeSelectPassThroughMethodOptions) => {
+      return { class: ["w-100 ellipsis-overflow", { 'd-flex': props.display == 'chip' }] }
+    },
     clearIcon: "ms-auto my-auto",
     header: 'p-2 w-100',
-
     pcTree: {
       node: 'mx-1',
       nodeToggleButton: ({ context }: TreePassThroughMethodOptions) => {
@@ -28,7 +29,7 @@ export default {
           class: [
             'btn py-0 px-1',
             {
-              'invisible': context.leaf
+              'd-none': context.leaf
             }
           ]
         }

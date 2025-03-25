@@ -62,5 +62,15 @@ export const nodes = [
         ]
       }
     ]
-  }
+  },
+  {
+    key: '3',
+    label: 'This is a long label that will be longer that the length of the dropdown. This is a long label that will be longer that the length of the dropdown. This is a long label that will be longer that the length of the dropdown. This is a long label that will be longer that the length of the dropdown.',
+    data: 'Long label',
+    children: [
+      { key: '3-0', label: 'Option 1', icon: 'pi pi-fw pi-calendar-plus', data: 'Option 1' },
+      { key: '3-1', label: 'Option 2', icon: 'pi pi-fw pi-calendar-plus', data: 'Option 2' },
+      { key: '3-2', label: 'Option 3', icon: 'pi pi-fw pi-calendar-plus', data: 'Option 3' }
+    ]
+  },
 ];
