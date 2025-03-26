@@ -67,11 +67,11 @@ const code = computed<string>(() =>
 `<template>
     <ForgeTreeTable ${propVals.value.join(" ")}>
         <Column v-for="column in nodeColumns" v-bind="column" />
-    <ForegTreeTable />
+    <ForgeTreeTable />
 </template>
 
 <script setup lang="ts">
-import { ForgeColumn, ForegTreeTable } from "@3squared/forge-ui-3";
+import { ForgeColumn, ForgeTreeTable } from "@3squared/forge-ui-3";
 import Column from "primevue/column";
 import { ref } from 'vue'
 
