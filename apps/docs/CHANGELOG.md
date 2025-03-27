@@ -1,5 +1,17 @@
 # forge-ui-3-styleguide
 
+## 2.17.0
+
+### Minor Changes
+
+- 5b83578: Introduce ForgeTreeTable empty message slot
+  Update existing documentation use use correct spleeing in example code
+
+### Patch Changes
+
+- Updated dependencies [5b83578]
+  - @3squared/forge-ui-3@2.18.0
+
 ## 2.16.0
 
 ### Minor Changes
