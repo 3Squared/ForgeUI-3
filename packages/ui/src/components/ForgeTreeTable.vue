@@ -7,7 +7,11 @@
         <template v-for="(_, name) in $slots as unknown as TreeTableSlots" #[name]="slotProps">
             <slot :name="name" v-bind="slotProps || {}"></slot>
         </template>
-
+        <template #empty>
+          <div class="d-flex w-100">
+            <h5 class="mx-auto" data-cy="empty-message">{{ emptyMessage ?? 'No items Found.'}}</h5>
+          </div>
+        </template>
         <template #header>
           <div :class="props.loading ? 'opacity-50' : ''">
             <div class="d-flex">
