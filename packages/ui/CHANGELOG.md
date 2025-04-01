@@ -1,5 +1,11 @@
 # @3squared/forge-ui-3
 
+## 2.18.1
+
+### Patch Changes
+
+- 7ba7ba3: give image preview toolbar a background so its visible on light backgrounds
+
 ## 2.18.0
 
 ### Minor Changes
