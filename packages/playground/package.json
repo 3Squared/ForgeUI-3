@@ -16,7 +16,7 @@
   "dependencies": {
     "@3squared/forge-ui-3": "*",
     "@iconify/vue": "^4.1.1",
-    "markdown-it-prism": "^2.3.0",
+    "markdown-it-prism": "^3.0.0",
     "prismjs": "^1.29.0",
     "vue": "^3.3.4"
   },
