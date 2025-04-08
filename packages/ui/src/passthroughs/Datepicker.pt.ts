@@ -51,7 +51,29 @@ export default {
       }
     }),
     title: "d-flex mx-auto",
-    day: "d-flex date-primary justify-content-center align-items-center",
+
+    dayCell: ({ context} : DatePickerPassThroughMethodOptions) => {
+      return {
+       class: [
+        {
+          "selected": context.selected
+        }
+        ]
+    }},
+    day: ({ context, props } : DatePickerPassThroughMethodOptions) => {
+      return {
+       class: [
+        "d-flex date date-primary justify-content-center align-items-center",
+        {
+          "text-white": context.selected && (!context.disabled || (context.disabled && context.otherMonth)),
+          "opacity-50": context.otherMonth,
+          "today": context.today,
+          "selected": context.selected && (!context.disabled || (context.disabled && context.otherMonth)),
+          "text-grey-300": (context.disabled && !context.otherMonth) || (props.minDate != undefined && new Date(context.date.year, context.date.month, context.date.day) < props.minDate) || (props.maxDate != undefined && new Date(context.date.year, context.date.month, context.date.day) > props.maxDate),
+          "fw-500": (context.disabled && !context.otherMonth) || (props.minDate != undefined && new Date(context.date.year, context.date.month, context.date.day) < props.minDate) || (props.maxDate != undefined && new Date(context.date.year, context.date.month, context.date.day) > props.maxDate),
+        }
+        ]
+    }},
     decade: "fw-bold",
     dayView: "datepicker-table",
     tableHeaderRow: "text-center",

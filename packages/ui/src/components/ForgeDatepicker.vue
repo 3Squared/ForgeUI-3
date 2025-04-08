@@ -68,29 +68,31 @@ const clear = () => {
 const hasErrors = computed(() => errors.value.length > 0)
 
 const pt = computed(() => ({
-  dayCell: ({context} : DatePickerPassThroughMethodOptions) => ({
+  day: ({context, props, attrs} : DatePickerPassThroughMethodOptions) => {
+  return {
     class: [
-      `text-center date-${ props.severity === undefined ? 'primary' : props.severity }`,
+    "d-flex justify-content-center align-items-center",
       {
-        'cursor-pointer': !context.disabled,
-        'pe-none': context.disabled,
-        'text-white': context.selected
+          "text-white": context.selected && (!context.disabled || (context.disabled && context.otherMonth)),
+          "opacity-50": context.otherMonth,
+          "today": context.today,
+          "selected": context.selected && (!context.disabled || (context.disabled && context.otherMonth)),
+          "text-grey-300": (context.disabled && !context.otherMonth) || (props.minDate != undefined && new Date(context.date.year, context.date.month, context.date.day) < props.minDate) || (props.maxDate != undefined && new Date(context.date.year, context.date.month, context.date.day) > props.maxDate),
+          "fw-500": (context.disabled && !context.otherMonth) || (props.minDate != undefined && new Date(context.date.year, context.date.month, context.date.day) < props.minDate) || (props.maxDate != undefined && new Date(context.date.year, context.date.month, context.date.day) > props.maxDate),
       },
       // Severities
       {
-        'selected': context.selected && !context.disabled,
-        'text-primary': !context.selected && context.today && (props.severity === undefined || props.severity === 'primary'),
-        'text-brand': !context.selected && context.today && props.severity === 'brand',
-        'text-secondary': !context.selected && context.today && props.severity === 'secondary',
-        'text-success': !context.selected && context.today && props.severity === 'success',
-        'text-success-alternate': !context.selected && context.today && props.severity === 'success-alternate',
-        'text-warning': !context.selected && context.today && props.severity === 'warning',
-        'text-danger': !context.selected && context.today && props.severity === 'danger',
-        'text-info': !context.selected && context.today && props.severity === 'info'
+        'date-primary': attrs.severity === undefined || attrs.severity === 'primary',
+        'date-brand': attrs.severity === 'brand',
+        'date-secondary': attrs.severity === 'secondary',
+        'date-success': attrs.severity === 'success',
+        'date-success-alternate': attrs.severity === 'success-alternate',
+        'date-warning': attrs.severity === 'warning',
+        'date-danger': attrs.severity === 'danger',
+        'date-info': attrs.severity === 'info'
       }
     ]
-  }),
- 
+  }},
   dayLabel: ({ context } : DatePickerPassThroughMethodOptions) => ({
     class: [
       // Disabled States
