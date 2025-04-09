@@ -1,14 +1,14 @@
 <template>
   <div>
     <div v-if="skills">
-      <ForgeTable :value="skills" v-model:filters="tableFilters" severity="brand" striped-rows show-gridlines :emptyMessage="('NoRecordsToDisplay')">
+      <ForgeTable :value="skills" v-model:filters="tableFilters" severity="brand" striped-rows show-gridlines :emptyMessage="('NoRecordsToDisplay')" reorderableColumns>
         <ColumnGroup type="header">
           <Row>
-            <Column :header="('SkillCode')" sortable field="skillCode" :rowspan="2" header-class="align-bottom"/>
-            <Column :header="('SkillName')" sortable field="skillName" :rowspan="2" header-class="align-bottom"/>
-            <Column :header="('SigningType')" sortable field="signingType" :rowspan="2" header-class="align-bottom"/>
-            <Column :header="('ValidFromDate')" sortable field="userSkillValidFrom" :rowspan="2" header-class="align-bottom"/>
-            <Column :header="('ExpiryDate')" sortable field="userSkillExpiryDate" :rowspan="2" header-class="align-bottom"/>
+            <Column :header="('SkillCode')" sortable field="skillCode" :rowspan="2" />
+            <Column :header="('SkillName')" sortable field="skillName" :rowspan="2" />
+            <Column :header="('SigningType')" sortable field="signingType" :rowspan="2" />
+            <Column :header="('ValidFromDate')" sortable field="userSkillValidFrom" :rowspan="2" />
+            <Column :header="('ExpiryDate')" sortable field="userSkillExpiryDate" :rowspan="2" />
             <Column :header="('LinkedCriteria')" :colspan="4" />
           </Row>
           <Row>
@@ -20,10 +20,10 @@
         </ColumnGroup>
         <Column v-for="column in columns" v-bind="column">
           <template #filter="{ field }">
-            <ForgeFilterHeader v-if="tableFilters[field]" v-model="tableFilters[field].value" :placeholder="column.header" :data-type="column.dataType"  :show-clear-button="true"/>
+            <ForgeFilterHeader v-if="tableFilters[field]" v-model="tableFilters[field].value" :placeholder="column.header" :data-type="column.dataType" :show-clear-button="true" />
           </template>
           <template #body="{ data }">            
-            <span >
+            <span>
             {{ data[column.field] }}
           </span>
           </template>
@@ -31,7 +31,7 @@
 
       </ForgeTable>
     </div>
-    <div v-else class="mt-3">{{ ('NoSkillsWereUpdatedDuringThisAssessment') }}</div>
+    <div v-else class="mt-3">{{ ("NoSkillsWereUpdatedDuringThisAssessment") }}</div>
 
   </div>
 </template>
@@ -41,7 +41,7 @@ import { onMounted, ref } from "vue";
 import { ForgeFilterHeader, ForgeTable } from "@3squared/forge-ui-3";
 import Column from "primevue/column";
 import Row from "primevue/row";
-import ColumnGroup from "primevue/columngroup"
+import ColumnGroup from "primevue/columngroup";
 import { FilterMatchMode } from "@primevue/core/api";
 
 const skills = ref([
@@ -73,18 +73,18 @@ const tableFilters = ref({
   competencyCriteriaTitle: { value: null, matchMode: FilterMatchMode.CONTAINS },
   competencyElementName: { value: null, matchMode: FilterMatchMode.CONTAINS },
   competencyUnitName: { value: null, matchMode: FilterMatchMode.CONTAINS },
-  assessmentCriteriaRatingReference: { value: null, matchMode: FilterMatchMode.CONTAINS },
-})
+  assessmentCriteriaRatingReference: { value: null, matchMode: FilterMatchMode.CONTAINS }
+});
 
 const columns = [
-  { field: "skillCode", header: 'SkillCode', sortable: true, dataType: 'text' },
-  { field: "skillName", header: 'SkillName', sortable: true, dataType: 'text' },
-  { field: "signingType", header: 'SigningType', sortable: true, dataType: 'text' },
-  { field: "userSkillValidFrom", header: 'ValidFromDate', sortable: true, dataType: 'date' },
-  { field: "userSkillExpiryDate", header: 'ExpiryDate', sortable: true, dataType: 'date' },
-  { field: "competencyUnitName", header: 'Unit', sortable: true, dataType: 'text' },
-  { field: "competencyElementName", header: 'Element', sortable: true, dataType: 'text' },
-  { field: "competencyCriteriaTitle", header: 'Criteria', sortable: true, dataType: 'text' },
-  { field: "assessmentCriteriaRatingReference", header: 'ProficiencyRating', sortable: true, dataType: 'text' },
+  { field: "skillCode", header: "SkillCode", sortable: true, dataType: "text" },
+  { field: "skillName", header: "SkillName", sortable: true, dataType: "text" },
+  { field: "signingType", header: "SigningType", sortable: true, dataType: "text" },
+  { field: "userSkillValidFrom", header: "ValidFromDate", sortable: true, dataType: "date" },
+  { field: "userSkillExpiryDate", header: "ExpiryDate", sortable: true, dataType: "date" },
+  { field: "competencyUnitName", header: "Unit", sortable: true, dataType: "text" },
+  { field: "competencyElementName", header: "Element", sortable: true, dataType: "text" },
+  { field: "competencyCriteriaTitle", header: "Criteria", sortable: true, dataType: "text" },
+  { field: "assessmentCriteriaRatingReference", header: "ProficiencyRating", sortable: true, dataType: "text" }
 ];
 </script>

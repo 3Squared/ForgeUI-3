@@ -3,14 +3,15 @@ import { ColumnPassThroughMethodOptions, ColumnProps } from "primevue/column";
 export default {
   column: {
     pcSortBadge: 'ms-2 my-auto cursor-pointer',
-    headerCell: (options: ColumnPassThroughMethodOptions & { props: { reorderableColumns: boolean }, column: { context: { frozen: boolean | '', resizable: boolean } } }) => {
+    headerCell: (options: any) => {
       return {
         class: [
           'align-top',
           {
             'cursor-move': options.props.reorderableColumns,
             'position-sticky': options.column?.context.frozen !== undefined || options.column?.context.frozen || options.column?.context.frozen === '',
-            'overflow-hidden position-relative bg-clip-padding': options.column?.context.resizable
+            'overflow-hidden position-relative bg-clip-padding': options.column?.context.resizable,
+            'align-bottom': options.column.props.rowspan > 1,
           }],
       }
     },
@@ -84,7 +85,7 @@ export default {
         class: [
           'd-flex',
           {
-            'justify-content-center': options.column.props.colspan > 1,
+            'justify-content-center': options.column.props.colspan > 1
           }
         ]
       }
