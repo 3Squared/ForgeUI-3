@@ -102,6 +102,12 @@ $sizes: (
   }
 }
 
+@each $color, $value in $grays {
+  .text-grey-#{$color} {
+    color: $value !important;
+  }
+}
+
 @each $font-weight, $value in $font-weights {
   .fw-#{$value} {
     font-weight: $value;

@@ -31,24 +31,40 @@
 
 @each $color, $value in $base-colors {
   .date-#{$color} {
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
+    width: 32px !important;
+    height: 32px !important;
+    border-radius: 50% !important;
     
-    &.selected, &.selected:hover {
-      border-radius: 50%;
-      background-color: map-get($theme-colors, $color);
-    }
-    
-    &:hover {
+    &.today {
       @if($color == 'brand') {
         background-color: map-get($subtle-colors, '#{$color}-shade-1');
-        color: map-get($theme-colors, $color)
+        color: map-get($theme-colors, $color);
       } @else {
         background-color: map-get($subtle-colors, '#{$color}-subtle');
-        color: map-get($theme-colors, $color)
+        color: map-get($theme-colors, $color);
+      }    
+    }
+
+    &.selected, &.selected:hover {
+      background-color: map-get($theme-colors, $color);
+    }
+
+    &.text-grey-300.opacity-50 {
+      opacity: 1 !important;
+    }
+    
+    &:hover:not(.text-grey-300) {
+      @if($color == 'brand') {
+        background-color: map-get($subtle-colors, '#{$color}-shade-1');
+        color: map-get($theme-colors, $color) !important;
+      } @else {
+        background-color: map-get($subtle-colors, '#{$color}-subtle');
+        color: map-get($theme-colors, $color) !important;
       }
-      
+    }
+
+    &:hover:not(.text-grey-300, .opacity-50) {
+      cursor: pointer;
     }
   }
 }

@@ -51,7 +51,35 @@ export default {
       }
     }),
     title: "d-flex mx-auto",
-    day: "d-flex date-primary justify-content-center align-items-center",
+
+    dayCell: ({ context} : DatePickerPassThroughMethodOptions) => {
+      return {
+       class: [
+        {
+          "selected": context.selected
+        }
+        ]
+    }},
+    day: ({ context, props } : DatePickerPassThroughMethodOptions) => {
+      return {
+       class: [
+        "d-flex date date-primary justify-content-center align-items-center",
+        {
+          //When using a range, a disabled date can be both selected and disabled. This logic fights that and also applies the class if a 
+          //date across a month boundary is also selected (not prime vue functionality for some reason)
+          "text-white": context.selected && (!context.disabled || (context.disabled && context.otherMonth)),
+          "opacity-50": context.otherMonth,
+          "today": context.today,
+          //When using a range, a disabled date can be both selected and disabled. This logic fights that and also applies the class if a 
+          //date across a month boundary is also selected (not prime vue functionality for some reason)
+          "selected": context.selected && (!context.disabled || (context.disabled && context.otherMonth)),
+          //This is used to show which dates should be shows as 'disabled'. The first part of logic is used to only (due to prime vue passing 
+          //disabled for otherMonth dates) show the disabled styling for current calendar dates. The second part of logic is used to set the 
+          //disabled state for dates out of the min/max date range, as they would also come through the context as disabled dates without knowing why
+          "text-grey-300": (context.disabled && !context.otherMonth) || (props.minDate != undefined && new Date(context.date.year, context.date.month, context.date.day) < props.minDate) || (props.maxDate != undefined && new Date(context.date.year, context.date.month, context.date.day) > props.maxDate),
+          "fw-500": (context.disabled && !context.otherMonth) || (props.minDate != undefined && new Date(context.date.year, context.date.month, context.date.day) < props.minDate) || (props.maxDate != undefined && new Date(context.date.year, context.date.month, context.date.day) > props.maxDate)
+        }]
+    }},
     decade: "fw-bold",
     dayView: "datepicker-table",
     tableHeaderRow: "text-center",
