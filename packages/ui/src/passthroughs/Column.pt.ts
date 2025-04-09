@@ -79,7 +79,16 @@ export default {
         'dropdown-divider'
       ]
     },
-    columnHeaderContent: 'd-flex',
+    columnHeaderContent: (options: any) => {
+      return {
+        class: [
+          'd-flex',
+          {
+            'justify-content-center': options.column.props.colspan > 1,
+          }
+        ]
+      }
+    },
     columnTitle: "text-break",
     sort: 'd-flex ms-auto cursor-pointer table-sort-icon',
     pcRowCheckbox: (options: any) => {
