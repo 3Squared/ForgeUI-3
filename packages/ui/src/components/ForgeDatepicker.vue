@@ -6,12 +6,12 @@
 
     <div class="position-relative w-100">
       <DatePicker v-bind="{...props, ...$attrs}" :pt="pt" v-model="model" @update:model-value="handleChange"
-                @blur="() => handleBlur" :input-class="{'datepicker-invalid': hasErrors}"/>
-      <Icon data-cy="icon" icon="bi:calendar4" v-show="props.showIcon"
-            class="position-absolute end-0 top-50 bottom-50 my-auto me-2 bg-white" 
+                @blur="() => handleBlur" :input-class="{'text-truncate':true, 'datepicker-invalid': hasErrors, 'pe-5': props.showIcon && props.modelValue, 'pe-4': (props.showIcon || props.modelValue) && !(props.showIcon && props.modelValue) }"/>
+      <Icon data-cy="icon" icon="bi:calendar4" v-show="props.showIcon && !props.inline"
+            class="position-absolute end-0 top-50 bottom-50 my-auto me-2 bg-white pe-none" 
             :class="`${ hasErrors ? 'text-danger-dark' : 'text-muted'}`"
       />
-      <Icon data-cy="icon" icon="bi:x" v-show="props.modelValue" @click="clear"
+      <Icon data-cy="icon" icon="bi:x" v-show="props.modelValue && !props.inline" @click="clear"
             class="position-absolute end-0 top-50 bottom-50 my-auto text-muted cursor-pointer bg-white"
             :class="props.showIcon ? 'datepicker-close-icon' : 'me-2'" />
     </div>
@@ -71,14 +71,21 @@ const pt = computed(() => ({
   day: ({context, props, attrs} : DatePickerPassThroughMethodOptions) => {
   return {
     class: [
-    "d-flex justify-content-center align-items-center",
+      "d-flex justify-content-center align-items-center",
       {
-          "text-white": context.selected && (!context.disabled || (context.disabled && context.otherMonth)),
-          "opacity-50": context.otherMonth,
-          "today": context.today,
-          "selected": context.selected && (!context.disabled || (context.disabled && context.otherMonth)),
-          "text-grey-300": (context.disabled && !context.otherMonth) || (props.minDate != undefined && new Date(context.date.year, context.date.month, context.date.day) < props.minDate) || (props.maxDate != undefined && new Date(context.date.year, context.date.month, context.date.day) > props.maxDate),
-          "fw-500": (context.disabled && !context.otherMonth) || (props.minDate != undefined && new Date(context.date.year, context.date.month, context.date.day) < props.minDate) || (props.maxDate != undefined && new Date(context.date.year, context.date.month, context.date.day) > props.maxDate),
+        //When using a range, a disabled date can be both selected and disabled. This logic fights that and also applies the class if a 
+        //date across a month boundary is also selected (not prime vue functionality for some reason)
+        "text-white": context.selected && (!context.disabled || (context.disabled && context.otherMonth)),
+        "opacity-50": context.otherMonth,
+        "today": context.today,
+        //When using a range, a disabled date can be both selected and disabled. This logic fights that and also applies the class if a 
+        //date across a month boundary is also selected (not prime vue functionality for some reason)
+        "selected": context.selected && (!context.disabled || (context.disabled && context.otherMonth)),
+        //This is used to show which dates should be shows as 'disabled'. The first part of logic is used to only (due to prime vue passing 
+        //disabled for otherMonth dates) show the disabled styling for current calendar dates. The second part of logic is used to set the 
+        //disabled state for dates out of the min/max date range, as they would also come through the context as disabled dates without knowing why
+        "text-grey-300": (context.disabled && !context.otherMonth) || (props.minDate != undefined && new Date(context.date.year, context.date.month, context.date.day) < props.minDate) || (props.maxDate != undefined && new Date(context.date.year, context.date.month, context.date.day) > props.maxDate),
+        "fw-500": (context.disabled && !context.otherMonth) || (props.minDate != undefined && new Date(context.date.year, context.date.month, context.date.day) < props.minDate) || (props.maxDate != undefined && new Date(context.date.year, context.date.month, context.date.day) > props.maxDate)
       },
       // Severities
       {
