@@ -1,5 +1,16 @@
 # @3squared/forge-ui-3
 
+## 2.19.0
+
+### Minor Changes
+
+- 160d3ab: Update styling classes for the Datepicker component
+  Add classes and passthrough options to check for disabled, dates, today and other months
+
+### Patch Changes
+
+- 9c2245a: Set css to center titles of rows and columns used in a ColumnGroup
+
 ## 2.18.1
 
 ### Patch Changes
