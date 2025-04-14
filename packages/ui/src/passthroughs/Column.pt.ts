@@ -8,10 +8,10 @@ export default {
         class: [
           'align-top',
           {
-            'cursor-move': options.props.reorderableColumns,
+            'cursor-move': options.props?.reorderableColumns,
             'position-sticky': options.column?.context.frozen !== undefined || options.column?.context.frozen || options.column?.context.frozen === '',
             'overflow-hidden position-relative bg-clip-padding': options.column?.context.resizable,
-            'align-bottom': options.column.props.rowspan > 1,
+            'align-bottom': options.column.props?.rowspan > 1,
           }],
       }
     },
@@ -85,7 +85,7 @@ export default {
         class: [
           'd-flex',
           {
-            'justify-content-center': options.column.props.colspan > 1
+            'justify-content-center': options.column.props?.colspan > 1
           }
         ]
       }
