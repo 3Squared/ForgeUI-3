@@ -1,5 +1,11 @@
 # @3squared/forge-ui-3
 
+## 2.19.1
+
+### Patch Changes
+
+- df3ece7: Fix colspan and rowspan prop check on Table passthrough
+
 ## 2.19.0
 
 ### Minor Changes
