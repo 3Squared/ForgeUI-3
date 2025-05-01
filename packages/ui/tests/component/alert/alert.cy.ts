@@ -55,7 +55,7 @@ describe('<ForgeAlert />', () => {
     // Assert
     cy.get(`[data-cy="message-icon"]`)
       .should('be.visible')
-      .and('have.class', `text-${severity} iconify iconify--bi`)
+      .and('have.class', `iconify iconify--bi text-${severity}`)
   })
   
   it('Should disappear after the time limit when sticky is false', () => {
