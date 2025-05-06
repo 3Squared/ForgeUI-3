@@ -1,5 +1,14 @@
 # @3squared/forge-ui-3
 
+## 2.19.2
+
+### Patch Changes
+
+- 147c194: Add a couple of fixes:
+  - Update primevue and bootstrap
+  - Fix cursor on split button
+  - Add property to date picker docs
+
 ## 2.19.1
 
 ### Patch Changes
