@@ -38,7 +38,8 @@ const { options, propVals, config, reset } = usePlayground(
     manualInput: true,
     autoZIndex: true,
     inline: false,
-    baseZIndex: 0
+    baseZIndex: 0,
+    timeOnly: true,
   },
   {
     selectionMode: { type: "select", options: ["single", "multiple", "range"], required: false },
