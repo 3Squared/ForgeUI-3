@@ -1,7 +1,7 @@
 <template>
   <div data-cy="file-uploader">
-    <ForgeAlert id="max-files-alert" v-if="files.length == maxFileInput && props.showMaxFileAlert" severity="danger">
-      Maximum number of files reached.
+    <ForgeAlert id="max-files-alert" v-if="files.length == maxFileInput && props.maxFileWarning != null" severity="danger">
+      {{maxFileWarning}}
     </ForgeAlert>
     <UploadButton v-bind="props" v-model="files" />
     <div v-if="showDragDropArea">
@@ -36,7 +36,6 @@ import ForgeAlert from "@/components/ForgeAlert.vue";
 const files = defineModel<ForgeFileStatus[]>({ default: [] })
 
 watch(files, (newFiles, oldFiles) => {
-  console.log(oldFiles.length, newFiles.length);
   if(newFiles.length > props.maxFileInput) {
     newFiles.length = props.maxFileInput;
     
@@ -52,7 +51,7 @@ export interface ForgeFileUploaderProps {
   maxFileInput?: number,
   editableFileName?: boolean,
   autoUploadToBlob?: boolean,
-  showMaxFileAlert?: boolean
+  maxFileWarning?: string
 }
 
 const props = withDefaults(defineProps<ForgeFileUploaderProps>(), {
@@ -60,7 +59,7 @@ const props = withDefaults(defineProps<ForgeFileUploaderProps>(), {
   editableFileName: false,
   autoUploadToBlob: true,
   showDragDropArea: true,
-  showMaxFileAlert: true
+  maxFileWarning: "Maximum number of files reached."
 })
 
 const deleteFiles = (fileInfo: File) => {
