@@ -1,5 +1,11 @@
 # @3squared/forge-ui-3
 
+## 2.20.0
+
+### Minor Changes
+
+- 2fbbdfb: add a max file alert to the file uploader
+
 ## 2.19.2
 
 ### Patch Changes
