@@ -1,5 +1,8 @@
 <template>
   <div data-cy="file-uploader">
+    <ForgeAlert id="max-files-alert" v-if="files.length == maxFileInput && props.maxFileWarning != null" severity="danger">
+      {{maxFileWarning}}
+    </ForgeAlert>
     <UploadButton v-bind="props" v-model="files" />
     <div v-if="showDragDropArea">
       <DragDropArea :max-file-input="props.maxFileInput" :max-file-size="props.maxFileSize" :accepted-file-types="props.acceptedFileTypes" v-model="files">
@@ -27,8 +30,17 @@ import FileInfo from "@/components/file-uploader/components/FileInfo.vue";
 import { ForgeFileStatus, ForgeFileType } from "@/types/forge-types.ts";
 import { TypedSchema } from "vee-validate";
 import FileInputInfo from "@/components/file-uploader/components/FileInputInfo.vue";
+import { watch } from "vue";
+import ForgeAlert from "@/components/ForgeAlert.vue";
 
 const files = defineModel<ForgeFileStatus[]>({ default: [] })
+
+watch(files, (newFiles, oldFiles) => {
+  if(newFiles.length > props.maxFileInput) {
+    newFiles.length = props.maxFileInput;
+    
+  }
+}, {deep: 2})
 
 export interface ForgeFileUploaderProps {
   acceptedFileTypes: ForgeFileType[],
@@ -38,14 +50,16 @@ export interface ForgeFileUploaderProps {
   customFileNameRules?: TypedSchema,
   maxFileInput?: number,
   editableFileName?: boolean,
-  autoUploadToBlob?: boolean
+  autoUploadToBlob?: boolean,
+  maxFileWarning?: string
 }
 
 const props = withDefaults(defineProps<ForgeFileUploaderProps>(), {
   maxFileInput: 3,
   editableFileName: false,
   autoUploadToBlob: true,
-  showDragDropArea: true
+  showDragDropArea: true,
+  maxFileWarning: "Maximum number of files reached."
 })
 
 const deleteFiles = (fileInfo: File) => {

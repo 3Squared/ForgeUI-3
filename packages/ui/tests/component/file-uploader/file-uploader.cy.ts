@@ -19,6 +19,7 @@ const editableFileNameInputId = '#edit-file-name'
 const inlineEditorInputId = '[data-cy="input"]'
 const deleteButtonId = '#delete-button'
 const uploadStatusAlertId = '#upload-status-alert'
+const maxFileAlertId = '#max-files-alert'
 const acceptedFileTypesOverlay = '#accepted-file-types-overlay'
 
 function mountFileUploader(props : ForgeFileUploaderProps) {
@@ -388,6 +389,8 @@ describe("<ForgeFileUploader />", () => {
       
       cy.get(dragDropAreaId)
         .should('not.exist')
+
+      cy.get(maxFileAlertId).should("not.exist")
     })
     
     it("Should allow for a file name to be updated if editableFileName is true", () => {
@@ -420,6 +423,8 @@ describe("<ForgeFileUploader />", () => {
       
       cy.get(editableFileNameInputId)
         .should('contain.text', expectedFileName)
+
+      cy.get(maxFileAlertId).should("not.exist")
     })
   })
   
@@ -437,7 +442,8 @@ describe("<ForgeFileUploader />", () => {
         mountFileUploader({
           acceptedFileTypes: acceptedFileTypes,
           getFileUrlAction: (fileName: string): Promise<[string, string]> => Promise.resolve([fileName, 'sdfsd']),
-          maxFileSize: maxFileSize
+          maxFileSize: maxFileSize,
+          maxFileInput: 1
         })
 
         cy.get(dragDropAreaId).selectFile(fileLocation, { action: 'drag-drop' })
@@ -450,6 +456,8 @@ describe("<ForgeFileUploader />", () => {
 
         cy.get(`${uploadStatusAlertId} > [data-pc-section="root"]`)
           .should('have.class', expectedSeverity)
+        
+        cy.get(maxFileAlertId).should("exist")
       });
     })
   })
