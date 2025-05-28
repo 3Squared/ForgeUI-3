@@ -21,7 +21,7 @@
     "vue": "^3.3.4"
   },
   "devDependencies": {
-    "@types/node": "22.15.21",
+    "@types/node": "22.15.23",
     "@vitejs/plugin-vue": "5.2.4",
     "eslint-config-custom": "*",
     "rollup-plugin-visualizer": "5.14.0",
