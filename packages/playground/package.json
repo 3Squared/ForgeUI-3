@@ -24,7 +24,7 @@
     "@types/node": "22.15.23",
     "@vitejs/plugin-vue": "5.2.4",
     "eslint-config-custom": "*",
-    "rollup-plugin-visualizer": "5.14.0",
+    "rollup-plugin-visualizer": "6.0.1",
     "sass": "1.89.0",
     "typescript": "5.8.3",
     "vite": "6.3.5",
