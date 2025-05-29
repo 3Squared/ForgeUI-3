@@ -89,7 +89,7 @@ const props = withDefaults(defineProps<ForgeTableProps>(), {
 })
 
 const forgeTable = ref()
-const pageSizes = ref<Array<number>>([5, 10, 20, 50, 100])
+const pageSizes = ref<number[]>([5, 10, 20, 50, 100])
 const perPage = ref<number>(props.perPage ?? 10)
 
 const tableContext = ref<ForgeTableContext>({
