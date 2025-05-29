@@ -3,4 +3,4 @@
 "forge-ui-3-styleguide": patch
 ---
 
-Fix table sort badge and rowGroupHeader stylying
+Fix table sort badge and rowGroupHeader styling
