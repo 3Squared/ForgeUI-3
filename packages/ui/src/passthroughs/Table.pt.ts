@@ -41,7 +41,7 @@ export default {
         class: 'table-overlay table-spinner'
       }
     },
-    rowGroupHeaderCell: 'd-inline-flex align-items-center border border-0',
+    rowGroupHeaderCell: 'border',
     rowGroupHeader: 'border-top border-bottom',
     rowToggleButton: "btn",
     pcPaginator: {

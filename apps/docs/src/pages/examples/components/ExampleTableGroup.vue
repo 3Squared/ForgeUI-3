@@ -1,40 +1,38 @@
 <template>
-  <Card>
-    <template #content>
-      <ForgeTable
-        v-model:filters="filters"
-        :value="products"
-        sticky-header
-        row-group-mode="subheader"
-        group-rows-by="category"
-        :total-records="products.length"
-      >
-        <Column v-for="column in columns" :key="column.field as string" v-bind="column">
-          <template #filter="{ field }">
-            <ForgeFilterHeader
-              v-if="filters[field]"
-              v-model="filters[field].value"
-              :data-type="column.dataType"
-              :dropdown-options="column.dataType === 'multiselect' ? multiselectOptions : dropdownOptions"
-              :placeholder="column.header"
-              scroll-height="200px"
-              display="chip"
-            />
-          </template>
-          <template #editor="{ data, field }">
-            <InputText v-if="field !== 'quantity' && field !== 'code'" v-model="data[field]" autofocus />
-            <InputNumber v-else v-model="data[field]" autofocus />
-          </template>
-        </Column>
-        <Column expander header-style="width: 3.5rem"></Column>
-        <template #groupheader="slotProps">
-          <div class="flex items-center gap-2">
-            <span>{{ slotProps.data.category }}</span>
-          </div>
-        </template>
-      </ForgeTable>
+
+  <ForgeTable
+    v-model:filters="filters"
+    :value="products"
+    sticky-header
+    row-group-mode="subheader"
+    group-rows-by="category"
+    sortField="category"
+    :total-records="products.length"
+    severity="brand"
+    striped-rows show-gridlines
+  >
+    <Column v-for="column in columns" :key="column.field as string" v-bind="column">
+      <template #filter="{ field }">
+        <ForgeFilterHeader
+          v-if="filters[field]"
+          v-model="filters[field].value"
+          :data-type="column.dataType"
+          :dropdown-options="column.dataType === 'multiselect' ? multiselectOptions : dropdownOptions"
+          :placeholder="column.header"
+          scroll-height="200px"
+          display="chip"
+        />
+      </template>
+      <template #editor="{ data, field }">
+        <InputText v-if="field !== 'quantity' && field !== 'code'" v-model="data[field]" autofocus />
+        <InputNumber v-else v-model="data[field]" autofocus />
+      </template>
+    </Column>
+    <Column expander header-style="width: 3.5rem"></Column>
+    <template #groupheader="slotProps">
+      <span>{{ slotProps.data.category }}</span>
     </template>
-  </Card>
+  </ForgeTable>
 </template>
 
 <script setup lang="ts">
