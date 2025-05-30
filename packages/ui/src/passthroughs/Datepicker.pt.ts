@@ -4,7 +4,7 @@ import { DatePickerPassThroughMethodOptions, DatePickerPassThroughOptions } from
 export default {
   // More PassThrough options defined in ForgeDatepicker.
   datepicker: {
-    root: 'd-inline-flex relative w-100',
+    root: 'd-flex flex-1 relative',
     pcInputText: "form-control",
     dropdown: "d-none",
     panel: ({ props }: DatePickerPassThroughMethodOptions) => ({

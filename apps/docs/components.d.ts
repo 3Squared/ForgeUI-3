@@ -8,7 +8,8 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
-    ForgeDatepicker: typeof import('@3squared/forge-ui-3')['ForgeDatepicker']
+    ForgeConfirmPopup: typeof import('@3squared/forge-ui-3')['ForgeConfirmPopup']
+    ForgePageHeader: typeof import('@3squared/forge-ui-3')['ForgePageHeader']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
   }
