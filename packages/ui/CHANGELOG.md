@@ -1,5 +1,11 @@
 # @3squared/forge-ui-3
 
+## 2.20.1
+
+### Patch Changes
+
+- 015c21f: Fix table sort badge and rowGroupHeader styling
+
 ## 2.20.0
 
 ### Minor Changes
