@@ -32,6 +32,7 @@ import ForgePanel from './src/components/ForgePanel.vue'
 import ForgeSelectButton from './src/components/ForgeSelectButton.vue'
 import ForgeToggleButton from './src/components/ForgeToggleButton.vue'
 import ForgeConfirmPopup from './src/components/ForgeConfirmPopup.vue'
+import ForgePickList from './src/components/ForgePickList.vue'
 
 export {
   Bootstrap_PT,
@@ -64,7 +65,8 @@ export {
   ForgeSelectButton,
   ForgeToggleButton,
   ForgeTreeTable,
-  ForgeConfirmPopup
+  ForgeConfirmPopup,
+  ForgePickList
 }
 
 export * from './src/types/forge-types.ts'
