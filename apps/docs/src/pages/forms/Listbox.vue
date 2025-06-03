@@ -1,15 +1,10 @@
 <template>
   <div>
-    <ForgePageHeader title="PickList" />
+    <ForgePageHeader title="Listbox" />
     <p>
-      ForgePickList was created so that we can use a filter within the PrimeVue Picklist.
       Further documentation and examples can be found in the
-      <a class="link" target="_blank" href="https://primevue.org/picklist/"><strong>PrimeVue documentation</strong></a>
+      <a class="link" target="_blank" href="https://primevue.org/listbox/"><strong>PrimeVue documentation</strong></a>
       .
-    </p>
-    
-    <p>
-      The <strong>v-model</strong> value here is a multi-dimensional array. The first array is the source list, the second is the target.
     </p>
     <playground :options="options" :config="config" :code="code" display-value @reset="reset">
       <template #component>
