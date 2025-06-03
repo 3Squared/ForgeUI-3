@@ -28,7 +28,11 @@ import { computed, onMounted, ref } from "vue";
 import { usePlayground, Playground } from "@3squared/forge-playground-3";
 import { countries, notSelectedCountries, selectedCountries } from "../examples/data/exampleCountries";
 
-const value = ref([notSelectedCountries, selectedCountries]);
+const value = ref([]);
+
+onMounted(() => [
+  value.value = [notSelectedCountries, selectedCountries] 
+])
 
 const { options, propVals, config, reset } = usePlayground(
   {

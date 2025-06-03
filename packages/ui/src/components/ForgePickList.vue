@@ -7,12 +7,12 @@
   >
     <template #sourceheader>
       <div v-if="sourceTitle" class="mb-1">{{ sourceTitle }}</div>
-      <InputText v-model="sourceFilter" @update:modelValue="filterSource" class="mb-2" placeholder="Search" />
+      <InputText v-model="sourceFilter" @update:modelValue="filterSource" class="mb-2" placeholder="Search" data-cy="source-search"/>
     </template>
 
     <template #targetheader>
       <div v-if="targetTitle" class="mb-1">{{ targetTitle }}</div>
-      <InputText v-model="targetFilter" @update:modelValue="filterTarget" class="mb-2" placeholder="Search" />
+      <InputText v-model="targetFilter" @update:modelValue="filterTarget" class="mb-2" placeholder="Search" data-cy="target-search" />
     </template>
     <template #option="{ option }">
       {{ option[filterBy] }}
@@ -26,7 +26,7 @@ import PickList, { PickListMoveToSourceEvent, PickListMoveToTargetEvent, PickLis
 import InputText from "primevue/inputtext";
 import { ref, watch } from "vue";
 
-interface ForgePickListProps extends PickListProps {
+export interface ForgePickListProps extends PickListProps {
   options?: any[],
   filterBy: string,
   sourceTitle?: string,
@@ -73,6 +73,7 @@ const filterSource = () => {
 
 const filterTarget = () => {
   const field = props.filterBy;
+  console.log(field)
   const filteredTarget = targetFilter.value
     ? model.value[1]?.filter((option: any) => option[field].toLowerCase().includes(targetFilter.value?.toLowerCase()))
     : targetList.value;
