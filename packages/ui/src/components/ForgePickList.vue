@@ -7,7 +7,7 @@
   >
     <template #sourceheader>
       <div v-if="sourceTitle" class="mb-1">{{ sourceTitle }}</div>
-      <InputText v-model="sourceFilter" @update:modelValue="filterSource" class="mb-2" placeholder="Search" data-cy="source-search"/>
+      <InputText v-model="sourceFilter" @update:modelValue="filterSource" class="mb-2" placeholder="Search" data-cy="source-search" />
     </template>
 
     <template #targetheader>
@@ -27,7 +27,6 @@ import InputText from "primevue/inputtext";
 import { ref, watch } from "vue";
 
 export interface ForgePickListProps extends PickListProps {
-  options?: any[],
   filterBy: string,
   sourceTitle?: string,
   targetTitle?: string,
@@ -84,13 +83,8 @@ watch(() => model.value,
   (initialModel) => {
     if (!initialModel) return;
 
-    if (initialModel[1]) {
-      targetList.value = initialModel[1];
-      sourceList.value = initialModel[0];
-    } else {
-      sourceList.value = props.options ?? [];
-      targetList.value = [];
-    }
+    targetList.value = initialModel[1] ?? [];
+    sourceList.value = initialModel[0] ?? [];
 
     model.value = [sourceList.value, targetList.value];
   }, { once: true });
