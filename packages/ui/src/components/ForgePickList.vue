@@ -68,17 +68,16 @@ const filterSource = () => {
   const filteredSource = sourceFilter.value
     ? model.value[0]?.filter((option: any) => option[field].toLowerCase().includes(sourceFilter.value?.toLowerCase()))
     : sourceList.value;
-  model.value = [filteredSource, targetList.value];
+  model.value = [filteredSource, model.value[1] ?? []];
 };
 
 const filterTarget = () => {
   const field = props.filterBy;
-  console.log(field)
   const filteredTarget = targetFilter.value
     ? model.value[1]?.filter((option: any) => option[field].toLowerCase().includes(targetFilter.value?.toLowerCase()))
     : targetList.value;
 
-  model.value = [sourceList.value, filteredTarget];
+  model.value = [model.value[0] ?? [], filteredTarget];
 };
 
 watch(() => model.value,
