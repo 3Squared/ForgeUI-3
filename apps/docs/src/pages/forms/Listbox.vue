@@ -11,9 +11,9 @@
     <p>
       The <strong>v-model</strong> value here is a multi-dimensional array. The first array is the source list, the second is the target.
     </p>
-    <playground :options="options" :config="config" :code="code" @reset="reset" display-value>
+    <playground :options="options" :config="config" :code="code" display-value @reset="reset">
       <template #component>
-        <component :is="Listbox" v-bind="options" class="w-100" v-model="value"/>
+        <component :is="Listbox" v-bind="options" v-model="value" class="w-100"/>
       </template>
       <template #value>
         {{ value }}
@@ -23,8 +23,8 @@
 </template>
 
 <script setup lang="ts">
-import { ForgePageHeader, ForgePickList } from "@3squared/forge-ui-3";
-import { computed, onMounted, ref } from "vue";
+import { ForgePageHeader} from "@3squared/forge-ui-3";
+import { computed, ref } from "vue";
 import { usePlayground, Playground } from "@3squared/forge-playground-3";
 import Listbox from "primevue/listbox";
 

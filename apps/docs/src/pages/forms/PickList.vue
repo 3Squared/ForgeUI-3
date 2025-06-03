@@ -11,9 +11,9 @@
     <p>
       The <strong>v-model</strong> value here is a multi-dimensional array. The first array is the source list, the second is the target.
     </p>
-    <playground :options="options" :config="config" :code="code" @reset="reset" display-value>
+    <playground :options="options" :config="config" :code="code" display-value @reset="reset">
       <template #component>
-        <component :is="ForgePickList" v-bind="options" class="w-100" v-model="value"/>
+        <component :is="ForgePickList" v-bind="options" v-model="value" class="w-100"/>
       </template>
       <template #value>
         {{ value }}
@@ -26,7 +26,7 @@
 import { ForgePageHeader, ForgePickList } from "@3squared/forge-ui-3";
 import { computed, onMounted, ref } from "vue";
 import { usePlayground, Playground } from "@3squared/forge-playground-3";
-import { countries, notSelectedCountries, selectedCountries } from "../examples/data/exampleCountries";
+import { notSelectedCountries, selectedCountries } from "../examples/data/exampleCountries";
 
 const value = ref([]);
 
@@ -34,7 +34,7 @@ onMounted(() => [
   value.value = [notSelectedCountries, selectedCountries] 
 ])
 
-const { options, propVals, config, reset } = usePlayground(
+const { options, config, reset } = usePlayground(
   {
     filterBy: "name",
     dataKey: "code",
