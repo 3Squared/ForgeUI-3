@@ -21,11 +21,11 @@
     "vue": "^3.3.4"
   },
   "devDependencies": {
-    "@types/node": "22.15.24",
+    "@types/node": "22.15.29",
     "@vitejs/plugin-vue": "5.2.4",
     "eslint-config-custom": "*",
     "rollup-plugin-visualizer": "6.0.1",
-    "sass": "1.89.0",
+    "sass": "1.89.1",
     "typescript": "5.8.3",
     "vite": "6.3.5",
     "vite-plugin-dts": "4.5.4"
