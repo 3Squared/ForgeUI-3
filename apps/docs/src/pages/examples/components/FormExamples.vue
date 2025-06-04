@@ -4,11 +4,15 @@
       <template #content>
         <!--      Set up form (imported from vee-validate) with schema object and submit function-->
         <Form :validation-schema="schema" @submit="onSubmit">
-          <ForgeFormField v-model="name" name="name" placeholder="Enter name" field-label="Name" />
+          <ForgeFormField v-model="name" name="name" placeholder="Enter name" field-label="Name"
+                          field-label-position="left"
+          
+          />
 
           <ForgeFormField
               :key="selectCity"
               v-model="selectCity"
+              field-label-position="left"
               name="city"
               type="select"
               placeholder="Select City"
@@ -20,6 +24,7 @@
           <ForgeFormField
               :key="selectedSkills"
               v-model="selectedSkills"
+              field-label-position="left"
               name="skills"
               type="multiselect-preview"
               placeholder="Select Skills"
@@ -31,7 +36,7 @@
               field-label="Skills"
           />
           
-          <ForgeFormField name="rating" field-label="Rating" v-model="rating">
+          <ForgeFormField name="rating" field-label="Rating" v-model="rating" field-label-position="left" >
             <template #default="{ modelValue, updateModel, hasErrors }">
               <ForgeSelectButton :model-value="modelValue"
                                  :options="ratingOptions"

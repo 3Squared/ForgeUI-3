@@ -1,5 +1,5 @@
 <template>
-  <div :class="orientation === 'column' ? 'row' : ''" data-cy="multiselect-preview">
+  <div :class="orientation === 'column' ? 'row' : 'flex-1'" data-cy="multiselect-preview">
     <div :class="orientation === 'row' ? 'col-12 mb-1' : 'col'" data-cy="multiselect-container">
       <MultiSelect v-model="model" v-bind="{...$attrs}" :options="props.options ?? []" optionLabel="label" :placeholder="multiselectPlaceholder" data-cy="multiselect">
         <slot v-for="(_, name) in $slots" :slot="name" :name="name" />
