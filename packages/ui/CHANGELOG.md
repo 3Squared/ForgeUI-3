@@ -1,5 +1,15 @@
 # @3squared/forge-ui-3
 
+## 2.21.0
+
+### Minor Changes
+
+- 1fb5a19: Add ForgePickList and Listbox
+
+### Patch Changes
+
+- 015c21f: Fix table sort badge and rowGroupHeader styling
+
 ## 2.20.0
 
 ### Minor Changes
