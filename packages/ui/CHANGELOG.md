@@ -1,5 +1,11 @@
 # @3squared/forge-ui-3
 
+## 2.21.1
+
+### Patch Changes
+
+- 4d52e28: Move flex class to export it properly
+
 ## 2.21.0
 
 ### Minor Changes
