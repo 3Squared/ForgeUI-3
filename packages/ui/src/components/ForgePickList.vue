@@ -4,6 +4,7 @@
             @move-all-to-target="allToTarget"
             @move-to-target="(values) => moveToTarget(values)"
             @move-to-source="(values) => moveToSource(values)"
+            style="height: 14rem"
   >
     <template #sourceheader>
       <div v-if="sourceTitle" class="mb-1">{{ sourceTitle }}</div>
@@ -18,7 +19,6 @@
       {{ option[filterBy] }}
     </template>
   </PickList>
-
 </template>
 
 <script setup lang="ts">

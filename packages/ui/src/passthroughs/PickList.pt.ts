@@ -17,9 +17,9 @@ export default {
     pcTargetMoveDownButton: {root: 'btn btn-sm btn-outline-primary focus-ring'},
     pcTargetMoveTopButton: {root: 'btn btn-sm btn-outline-primary focus-ring'},
     pcTargetMoveUpButton: {root: 'btn btn-sm btn-outline-primary focus-ring'},
-    sourceControls: 'd-flex flex-column gap-1',
-    transferControls: 'd-flex flex-column gap-1',
-    targetControls: 'd-flex flex-column gap-1',
+    sourceControls: 'd-flex flex-column justify-content-center gap-1',
+    transferControls: 'd-flex flex-column justify-content-center gap-1',
+    targetControls: 'd-flex flex-column justify-content-center gap-1',
     pcListbox: {
       root: '',
       list: 'list-unstyled list-group list-group-flush',
