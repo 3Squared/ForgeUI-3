@@ -1,5 +1,11 @@
 # @3squared/forge-ui-3
 
+## 2.21.2
+
+### Patch Changes
+
+- 214fd89: Center buttons vertically in pick list component
+
 ## 2.21.1
 
 ### Patch Changes
