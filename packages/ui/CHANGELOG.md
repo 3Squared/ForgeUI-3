@@ -1,5 +1,11 @@
 # @3squared/forge-ui-3
 
+## 2.21.3
+
+### Patch Changes
+
+- 2f8a743: Updated the click.prevent method to be click.stop to ensure the select popup closes when the clear button is clicked
+
 ## 2.21.2
 
 ### Patch Changes
