@@ -1,5 +1,11 @@
 # @3squared/forge-ui-3
 
+## 2.21.4
+
+### Patch Changes
+
+- ed87bd7: Update the placeholder logic on the forge filter header when using a select, and the value is a boolean
+
 ## 2.21.3
 
 ### Patch Changes
