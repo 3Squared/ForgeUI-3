@@ -59,7 +59,7 @@ const {
 const modelValue = defineModel({ required: true })
 
 const label = (values: string[] | string | object, placeholder: string): string => {
-  if (!values || (Array.isArray(values) && values.length === 0)) {
+  if ((!values && typeof values != "boolean") || (Array.isArray(values) && values.length === 0)) {
     return placeholder;
   }
 
