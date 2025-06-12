@@ -38,6 +38,7 @@ import { Icon } from "@iconify/vue";
 interface FileUploaderButtonProps {
   acceptedFileTypes: ForgeFileType[],
   maxFileInput: number,
+  maxFileSize: number,
   showDragDropArea: boolean
 }
 
@@ -46,11 +47,11 @@ const acceptedFilesOverlay = ref()
 
 const toggleAcceptedFileTypesOverlay = (event: Event) => acceptedFilesOverlay.value.toggle(event)
 
-const { acceptedFileTypes, maxFileInput, showDragDropArea } = defineProps<FileUploaderButtonProps>()
+const { acceptedFileTypes, maxFileInput, maxFileSize, showDragDropArea } = defineProps<FileUploaderButtonProps>()
 
 const uploadDisabled = computed<boolean>(() => maxFileInput <= files.value.length)
 
 const addUploadedFiles = (filesToUpload : File[]) => {
-  files.value = addFiles(filesToUpload, files.value, acceptedFileTypes.map(ft => ft.fileType), maxFileInput)
+  files.value = addFiles(filesToUpload, files.value, acceptedFileTypes.map(ft => ft.fileType), maxFileSize)
 }
 </script>
