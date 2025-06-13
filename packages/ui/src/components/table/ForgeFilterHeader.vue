@@ -21,7 +21,7 @@
                  :showToggleAll="false" :option-label="optionLabel" :option-value="optionValue" filter >
     </MultiSelect>
     <InputText v-else v-model.trim="modelValue" v-bind="$attrs" />
-    <Button v-if="showClearButton && modelValue !== null && dataType !== 'select' && dataType !== 'multiselect' && dataType !== 'date'"
+    <Button v-if="showClearButton && modelValue !== null && dataType !== 'select' && dataType !== 'multiselect' && dataType !== 'date' && modelValue != ''"
             @click.prevent="clear" size="small"
             class="bg-transparent border-0 ms-auto p-0 pe-1 position-absolute end-0 top-0 bottom-0">
       <Icon icon="bi:x" width="1rem" height="1rem" class="text-black bg-white" />
