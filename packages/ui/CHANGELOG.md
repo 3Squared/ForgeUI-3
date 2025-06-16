@@ -1,5 +1,14 @@
 # @3squared/forge-ui-3
 
+## 2.21.6
+
+### Patch Changes
+
+- 015eee1: Change how the 2 sets of lists are used and model populated within the picklist, using new arrays, and splifce methods to mutate the model
+- 43b8d53: Update turbo
+  Remove outdated npm config and then empty `.npmrc`
+- 017c01b: Change the forge form field to make sure the input takes up the full width
+
 ## 2.21.5
 
 ### Patch Changes
