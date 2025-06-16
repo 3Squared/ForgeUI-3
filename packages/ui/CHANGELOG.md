@@ -1,5 +1,32 @@
 # @3squared/forge-ui-3
 
+## 2.21.5
+
+### Patch Changes
+
+- 312cf2e: Add styling to row group header cell
+- 86238c9: Fix issue with file upload size being validated against the number of allowed files to upload when using the file input button.
+
+  Add the extra prop for the file size to be added to the Upload button and passed into the addFiles method to validate the file size correctly.
+
+## 2.21.4
+
+### Patch Changes
+
+- ed87bd7: Update the placeholder logic on the forge filter header when using a select, and the value is a boolean
+
+## 2.21.3
+
+### Patch Changes
+
+- 2f8a743: Updated the click.prevent method to be click.stop to ensure the select popup closes when the clear button is clicked
+
+## 2.21.2
+
+### Patch Changes
+
+- 214fd89: Center buttons vertically in pick list component
+
 ## 2.21.1
 
 ### Patch Changes

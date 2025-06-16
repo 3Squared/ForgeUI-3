@@ -10,7 +10,7 @@
         <div class="d-flex w-100">
           <span :class="{ 'filter-placeholder': value === null }">{{ label(value, placeholder) }}</span>
           <Button v-if="showClearButton && modelValue !== null"
-                  @click.prevent="clear" size="small"
+                  @click.stop="clear" size="small"
                   class="bg-transparent border-0 ms-auto p-0 pe-1">
             <Icon icon="bi:x" width="1rem" height="1rem" class="text-black" />
           </Button>
@@ -21,7 +21,7 @@
                  :showToggleAll="false" :option-label="optionLabel" :option-value="optionValue" filter >
     </MultiSelect>
     <InputText v-else v-model.trim="modelValue" v-bind="$attrs" />
-    <Button v-if="showClearButton && modelValue !== null && dataType !== 'select' && dataType !== 'multiselect' && dataType !== 'date'"
+    <Button v-if="showClearButton && modelValue !== null && dataType !== 'select' && dataType !== 'multiselect' && dataType !== 'date' && modelValue != ''"
             @click.prevent="clear" size="small"
             class="bg-transparent border-0 ms-auto p-0 pe-1 position-absolute end-0 top-0 bottom-0">
       <Icon icon="bi:x" width="1rem" height="1rem" class="text-black bg-white" />
@@ -59,7 +59,7 @@ const {
 const modelValue = defineModel({ required: true })
 
 const label = (values: string[] | string | object, placeholder: string): string => {
-  if (!values || (Array.isArray(values) && values.length === 0)) {
+  if ((!values && typeof values != "boolean") || (Array.isArray(values) && values.length === 0)) {
     return placeholder;
   }
 

@@ -4,6 +4,7 @@
             @move-all-to-target="allToTarget"
             @move-to-target="(values) => moveToTarget(values)"
             @move-to-source="(values) => moveToSource(values)"
+            style="height: 14rem"
   >
     <template #sourceheader>
       <div v-if="sourceTitle" class="mb-1">{{ sourceTitle }}</div>
@@ -18,7 +19,6 @@
       {{ option[filterBy] }}
     </template>
   </PickList>
-
 </template>
 
 <script setup lang="ts">
@@ -48,44 +48,55 @@ const moveToTarget = (event: PickListMoveToTargetEvent) => {
 
 const moveToSource = (event: PickListMoveToSourceEvent) => {
   const { items } = event;
-  sourceList.value = [...sourceList.value, ...items];
+  sourceList.value = sourceList.value.push(...items);
   targetList.value = targetList.value.filter((option) => !items.includes(option));
 };
 
 const allToSource = () => {
-  sourceList.value = targetList.value;
-  targetList.value = [];
+  sourceList.value = [...new Set([...sourceList.value, ...model.value[1]])];
+  targetList.value = targetList.value.filter((option) => !model.value[1].includes(option));
 };
 
 const allToTarget = () => {
-  targetList.value = sourceList.value;
-  sourceList.value = [];
+  targetList.value = [...new Set([...targetList.value, ...model.value[0]])];
+  sourceList.value = sourceList.value.filter((option) => !model.value[0].includes(option));
 };
+
+watch(sourceList, async () => {
+  filterSource();
+})
+
+watch(targetList, async () => {
+  filterTarget();
+})
 
 const filterSource = () => {
   const field = props.filterBy;
   const filteredSource = sourceFilter.value
-    ? model.value[0]?.filter((option: any) => option[field].toLowerCase().includes(sourceFilter.value?.toLowerCase()))
-    : sourceList.value;
-  model.value = [filteredSource, model.value[1] ?? []];
+  ? sourceList.value.filter((option: any) => option[field].toLowerCase().includes(sourceFilter.value?.toLowerCase()))
+  : [...sourceList.value];
+
+  model.value?.splice(0, 1, filteredSource);
 };
 
 const filterTarget = () => {
   const field = props.filterBy;
   const filteredTarget = targetFilter.value
-    ? model.value[1]?.filter((option: any) => option[field].toLowerCase().includes(targetFilter.value?.toLowerCase()))
-    : targetList.value;
+    ? targetList.value.filter((option: any) => option[field].toLowerCase().includes(targetFilter.value?.toLowerCase()))
+    : [...targetList.value];
 
-  model.value = [model.value[0] ?? [], filteredTarget];
+  model.value?.splice(1, 1, filteredTarget);
 };
 
 watch(() => model.value,
   (initialModel) => {
     if (!initialModel) return;
 
-    targetList.value = initialModel[1] ?? [];
-    sourceList.value = initialModel[0] ?? [];
+    targetList.value = initialModel[1].length > 0 ? [...initialModel[1]] : [];
+    sourceList.value = initialModel[0].length > 0 ? [...initialModel[0]] : [];
 
-    model.value = [sourceList.value, targetList.value];
+    model.value.splice(0, 1, sourceList.value);
+    model.value.splice(1, 1, targetList.value);
+    
   }, { once: true });
 </script>

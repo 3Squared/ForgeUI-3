@@ -63,7 +63,7 @@ import { computed, onMounted, ref, watch } from "vue";
 import Select from "primevue/select";
 import { pluralise } from "@3squared/forge-ui-3/src/components/table/table-helpers";
 import { Icon } from '@iconify/vue'
-import { ForgeTableContext, Severity } from "../../types/forge-types";
+import { ForgeTableContext, Severity } from "@/types/forge-types.ts";
 
 export interface ForgeTableProps extends DataTableProps {
   value: any[],
