@@ -2,7 +2,9 @@ import { ColumnPassThroughMethodOptions, ColumnProps } from "primevue/column";
 
 export default {
   column: {
-    pcSortBadge: 'ms-2 my-auto cursor-pointer',
+    pcSortBadge: {
+      root: 'ms-2 my-auto cursor-pointer'
+    },
     headerCell: (options: any) => {
       return {
         class: [

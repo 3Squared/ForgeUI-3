@@ -54,6 +54,10 @@
   text-overflow: ellipsis;
 }
 
+.flex-1 {
+  flex: 1
+}
+
 $font-weights: (
         'fw-100': 100,
         'fw-200': 200,

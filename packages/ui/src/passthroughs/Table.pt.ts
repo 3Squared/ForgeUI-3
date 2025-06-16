@@ -41,8 +41,7 @@ export default {
         class: 'table-overlay table-spinner'
       }
     },
-    rowGroupHeaderCell: 'd-inline-flex align-items-center border border-0',
-    rowGroupHeader: 'border-top border-bottom',
+    rowGroupHeaderCell: 'fw-600 bg-grey-300',
     rowToggleButton: "btn",
     pcPaginator: {
       //remove paginator if there are initially no values

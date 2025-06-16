@@ -93,7 +93,9 @@ const pages = ref([
       },
       { label: "Remaining Characters", command: () => router.push("/forms/remainingcharacters") },
       { label: "Scratchpad", command: () => router.push("/forms/scratchpad") },
-      { label: "Switch", command: () => router.push("/forms/switch") }
+      { label: "Switch", command: () => router.push("/forms/switch") },
+      { label: "Pick List", command: () => router.push("/forms/PickList") },
+      { label: "Listbox", command: () => router.push("/forms/Listbox") }
     ]
   },
   {
