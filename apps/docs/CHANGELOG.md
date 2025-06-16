@@ -1,5 +1,15 @@
 # forge-ui-3-styleguide
 
+## 2.18.1
+
+### Patch Changes
+
+- 017c01b: Change the forge form field to make sure the input takes up the full width
+- Updated dependencies [015eee1]
+- Updated dependencies [43b8d53]
+- Updated dependencies [017c01b]
+  - @3squared/forge-ui-3@2.21.6
+
 ## 2.18.0
 
 ### Minor Changes
