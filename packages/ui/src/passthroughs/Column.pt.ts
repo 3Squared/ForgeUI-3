@@ -2,8 +2,18 @@ import { ColumnPassThroughMethodOptions, ColumnProps } from "primevue/column";
 
 export default {
   column: {
-    pcSortBadge: {
-      root: 'ms-2 my-auto cursor-pointer'
+    pcSortBadge: (options: ColumnPassThroughMethodOptions) => {
+      return {
+        root: {
+          class: [
+            'ms-2 my-auto cursor-pointer',
+            {
+              // Remove the badge, if one of the (2) sort columns is the row grouping, as it looks like only one column is sortable. Will show numbers if not only 2 sort values
+              'd-none': options.parent.state.d_groupRowsSortMeta != undefined && options.parent.state.d_multiSortMeta != undefined && options.parent.state.d_multiSortMeta.length == 2 && options.parent.state.d_multiSortMeta.some((sort) => {return sort.field == options.parent.state.d_groupRowsSortMeta.field})
+            }
+          ]
+        }
+      }
     },
     headerCell: (options: any) => {
       return {
