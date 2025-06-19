@@ -1,5 +1,14 @@
 # @3squared/forge-ui-3
 
+## 2.21.7
+
+### Patch Changes
+
+- d03bc3f: Update passthroughs for Dropdown and Columns for small fixes
+
+  - Make dropdown disables use different cursor, fgor when disabled, so it doesn't look like you can click it
+  - Add conditional logic on the sort badge icons, if the table is also sorted by the row group and an additional column, as this adds a 1 next to the single sortable field, and doesn't match the standard functionality
+
 ## 2.21.6
 
 ### Patch Changes
