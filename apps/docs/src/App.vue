@@ -34,6 +34,7 @@ const pages = ref([
     items: [
       { label: "Getting Started", command: () => router.push("/guides/installation") },
       { label: "Forge Resolver", command: () => router.push("/guides/ForgeResolver") },
+      { label: "Adding a new component", command: () => router.push("/guides/NewComponent") },
       { label: "Migrating from Forge.UI (Coming Soon...)" }
     ]
   },
