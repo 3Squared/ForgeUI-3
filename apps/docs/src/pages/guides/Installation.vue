@@ -69,7 +69,7 @@ const step3CodeBasicImport = `
   import { Bootstrap_PT } from '@3squared/forge-ui-3'
 
   createApp(App)
-    .use(PrimeVue, { unstyled: true, pt: Bootstrap_PT })
+    .use(PrimeVue, { unstyled: true, theme: "none", pt: Bootstrap_PT })
     .mount('#app')
 `;
 
