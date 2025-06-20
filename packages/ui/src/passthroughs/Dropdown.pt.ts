@@ -5,9 +5,10 @@ export default {
     root: ({ props }: SelectPassThroughMethodOptions<any>) => {
       return {
         class: [
-          'form-select d-flex cursor-pointer position-relative',
+          'form-select flex-1 d-flex position-relative',
           {
-            'disabled': props.disabled
+            'disabled': props.disabled,
+            'cursor-pointer ': !props.disabled
           }
         ]
       }

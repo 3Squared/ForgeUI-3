@@ -10,31 +10,31 @@
       <!-- Slot for Custom Inputs -->
       <slot v-bind="{ modelValue: model, updateModel: handleChange, hasErrors  }">
         <!-- Default Inputs (if no input is provided) -->
-        <InputNumber :id="props.name" v-if="props.type === 'number'" v-bind="$attrs"
+        <InputNumber :id="props.name" v-if="props.type === 'number'" v-bind="$attrs" class="flex-1"
                      :placeholder="props.placeholder" :input-class="{'is-invalid': hasErrors }" :class="{'is-invalid': hasErrors }"
-                     @input="change"         v-model="model"
+                     @input="change" v-model="model"
         />
-        <Textarea :id="props.name" v-else-if="props.type === 'textarea'" v-bind="$attrs"
+        <Textarea :id="props.name" v-else-if="props.type === 'textarea'" v-bind="$attrs" class="flex-1"
                   :placeholder="props.placeholder" :class="{'is-invalid': hasErrors }"
                   v-model="model"
                   @input="change" @blur="handleBlur"
         />
-        <InputMask :id="props.name" v-else-if="props.type === 'mask'" v-bind="$attrs"
+        <InputMask :id="props.name" v-else-if="props.type === 'mask'" v-bind="$attrs" class="flex-1"
                    :placeholder="props.placeholder" :mask="props.mask" :class="{'is-invalid': hasErrors }"
                    v-model="model" @complete="change" @blur="handleBlur"
         />
-        <InputText :id="props.name" v-else-if="props.type === 'text'" v-bind="$attrs"
+        <InputText :id="props.name" v-else-if="props.type === 'text'" v-bind="$attrs" class="flex-1"
                    :placeholder="props.placeholder" :class="{'is-invalid': hasErrors }"
                    v-model="model"
                    @input="change" @blur="handleBlur"
         />
         <Select v-else-if="props.type === 'select'" v-bind="{...props,...$attrs}" v-model="model"
                 :class="{'is-invalid': hasErrors }" />
-        <MultiSelect v-else-if="props.type === 'multiselect'" v-bind="{...props,...$attrs}" v-model="model"
+        <MultiSelect v-else-if="props.type === 'multiselect'" v-bind="{...props,...$attrs}" v-model="model" 
                      :class="{'is-invalid': hasErrors }" />
-        <ForgeMultiSelectPreview v-else-if="props.type === 'multiselect-preview'" v-bind="{...props,...$attrs}" v-model="model"
+        <ForgeMultiSelectPreview v-else-if="props.type === 'multiselect-preview'" v-bind="{...props,...$attrs}" v-model="model" 
                                  :class="{'is-invalid': hasErrors }" />
-        <ForgeDatepicker v-else-if="props.type === 'datepicker'" v-bind="{...props,...$attrs}" v-model="model"
+        <ForgeDatepicker v-else-if="props.type === 'datepicker'" v-bind="{...props,...$attrs}" v-model="model" 
                          :class="{'is-invalid': hasErrors }" />
       </slot>
 

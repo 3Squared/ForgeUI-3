@@ -1,5 +1,23 @@
 # @3squared/forge-ui-3
 
+## 2.21.7
+
+### Patch Changes
+
+- d03bc3f: Update passthroughs for Dropdown and Columns for small fixes
+
+  - Make dropdown disables use different cursor, fgor when disabled, so it doesn't look like you can click it
+  - Add conditional logic on the sort badge icons, if the table is also sorted by the row group and an additional column, as this adds a 1 next to the single sortable field, and doesn't match the standard functionality
+
+## 2.21.6
+
+### Patch Changes
+
+- 015eee1: Change how the 2 sets of lists are used and model populated within the picklist, using new arrays, and splifce methods to mutate the model
+- 43b8d53: Update turbo
+  Remove outdated npm config and then empty `.npmrc`
+- 017c01b: Change the forge form field to make sure the input takes up the full width
+
 ## 2.21.5
 
 ### Patch Changes
