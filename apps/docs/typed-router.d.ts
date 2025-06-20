@@ -91,6 +91,7 @@ declare module 'vue-router/auto-routes' {
     '/misc/Tag': RouteRecordInfo<'/misc/Tag', '/misc/Tag', Record<never, never>, Record<never, never>>,
     '/overlay/ConfirmModal': RouteRecordInfo<'/overlay/ConfirmModal', '/overlay/ConfirmModal', Record<never, never>, Record<never, never>>,
     '/overlay/ConfirmPopup': RouteRecordInfo<'/overlay/ConfirmPopup', '/overlay/ConfirmPopup', Record<never, never>, Record<never, never>>,
+    '/overlay/Drawer': RouteRecordInfo<'/overlay/Drawer', '/overlay/Drawer', Record<never, never>, Record<never, never>>,
     '/overlay/Modal': RouteRecordInfo<'/overlay/Modal', '/overlay/Modal', Record<never, never>, Record<never, never>>,
     '/overlay/Popover': RouteRecordInfo<'/overlay/Popover', '/overlay/Popover', Record<never, never>, Record<never, never>>,
     '/overlay/Toast': RouteRecordInfo<'/overlay/Toast', '/overlay/Toast', Record<never, never>, Record<never, never>>,

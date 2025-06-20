@@ -120,7 +120,8 @@ const pages = ref([
       { label: "Confirmation Popup", command: () => router.push("/overlay/ConfirmPopup") },
       { label: "Popover", command: () => router.push("/overlay/popover") },
       { label: "Toast", command: () => router.push("/overlay/toast") },
-      { label: "Tooltip", command: () => router.push("/overlay/tooltip") }
+      { label: "Tooltip", command: () => router.push("/overlay/tooltip") },
+      { label: "Drawer", command: () => router.push("/overlay/drawer") }
     ]
   },
   {
@@ -131,8 +132,7 @@ const pages = ref([
     ]
   },
   { label: "Icons", command: () => router.push("/icons") },
-  { label: "Colours", command: () => router.push("/colours") },
-  //{ label: "Code Testing", command: () => router.push("/examples/CodeTesting") },
+  { label: "Colours", command: () => router.push("/colours") }
 ]);
 
 onMounted(() => {
