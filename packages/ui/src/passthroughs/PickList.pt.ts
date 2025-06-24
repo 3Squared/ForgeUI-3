@@ -1,5 +1,4 @@
-import { ListboxPassThroughMethodOptions, ListboxPassThroughOptions, PickListPassThroughOptions } from "primevue";
-import { MultiSelectPassThroughMethodOptions } from "primevue/multiselect";
+import { ListboxPassThroughMethodOptions, PickListPassThroughOptions } from "primevue";
 
 
 export default {
@@ -21,7 +20,6 @@ export default {
     transferControls: 'd-flex flex-column justify-content-center gap-1',
     targetControls: 'd-flex flex-column justify-content-center gap-1',
     pcListbox: {
-      root: '',
       list: 'list-unstyled list-group list-group-flush',
       option: ({ context }: ListboxPassThroughMethodOptions) => ({
         class: [
@@ -38,7 +36,4 @@ export default {
     sourceListContainer: ' h-100 flex-1',
     targetListContainer: 'h-100 flex-1'
   } as PickListPassThroughOptions,
-  
-  listbox : {
-  }
 };

@@ -35,7 +35,10 @@ const pages = ref([
       { label: "Getting Started", command: () => router.push("/guides/installation") },
       { label: "Forge Resolver", command: () => router.push("/guides/ForgeResolver") },
       { label: "Adding a new component", command: () => router.push("/guides/NewComponent") },
-      { label: "Migrating from Forge.UI (Coming Soon...)" }
+      { label: "Passthroughs", command: () => router.push("/guides/Passthroughs") },
+      { label: "Forge Playground", command: () => router.push("/guides/ForgePlayground") },
+      { label: "Changeset", command: () => router.push("/guides/Changeset") },
+      { label: "Testing", command: () => router.push("/guides/Testing") },
     ]
   },
   {
