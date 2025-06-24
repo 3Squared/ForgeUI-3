@@ -39,6 +39,7 @@ const pages = ref([
       { label: "Forge Playground", command: () => router.push("/guides/ForgePlayground") },
       { label: "Changeset", command: () => router.push("/guides/Changeset") },
       { label: "Testing", command: () => router.push("/guides/Testing") },
+      { label: "Validation", command: () => router.push("/guides/Validation") },
     ]
   },
   {

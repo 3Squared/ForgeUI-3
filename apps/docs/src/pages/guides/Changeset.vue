@@ -31,7 +31,7 @@ In order to add a [changeset](#changesets), we need to run the `npx changeset` c
 
 Running this command will bring up a wizard to help you create a changeset. First it will ask you which projects require a version bump, detailing which projects have changed since the last version. You can select as many options as you require using the arrow keys to navigate, the space bar to select and the enter key to continue to the next step.
 
-![Changset Wizard Step 1](/images/Changeset_Wizard_1.png)
+![Changset Wizard Step 1](../assets/Changeset_Wizard_1.png)
 
 Once you have selected the projects which require a version bump, you will be asked if any of the packages require a `major` bump. If they do, select using space bar else press enter to continue.
 
@@ -61,9 +61,11 @@ Clicking into this file, you will find the changeset that you have created. It w
 
 Once you are happy with the changeset, you can then commit it to your branch and the versioning will be handled! For more information on this, see the [deployments](#deployments) section.
 "></VueMarkdown>
+  
+ 
 </template>
 
 <script setup lang="ts">
 import { VueMarkdown } from "@crazydos/vue-markdown";
-
+import Image from "primevue/image";
 </script>

@@ -33,6 +33,7 @@
         src > passthrough`</code> folder.
     </li>
     <li>Export your new Passthrough object in the <code>`Bootstrap_PT.ts`</code> file if you are developing in Forge.</li>
+    <li>Visit <router-link to="/guides/Passthroughs">Passthroughs</router-link> for more info.</li>
 
   </ol>
 

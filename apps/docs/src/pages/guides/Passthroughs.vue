@@ -35,7 +35,7 @@
     Below is a template that you can use to get started with adding a passthrough option:
   </p>
 
-  <CodeBlock :code="example" class="mt-3" />
+  <CodeBlock :code="example" class="mt-3" language="js" />
   <div class="h4">Components within components:</div>
   <p>
     PrimeVue often build components with their own components. Within the passthrough these are denoted with <code>pc</code>. You can then target these within the component.
@@ -52,24 +52,23 @@ import { VueMarkdown } from "@crazydos/vue-markdown";
 import Image from "primevue/image";
 import { CodeBlock } from "@3squared/forge-playground-3";
 
-
 const example = `
 import { SomeComponentPassThroughMethodOptions } from 'primevue/somecomponent'
 
-    export default {
-    someComponent: {
+export default {
+  someComponent: {
     someOption: ({ instance, props, context, parent, global } : SomeComponentPassThroughMethodOptions) => ({
-        class: [
-                  // Static class.
-                  'some-static-class-that-should-always-be-added',
-                  // Conditional classes, they're only added if the condition is true.
-                  {
-                  'some-conditional-class': props.someProp === true
-                  }
-                ]
-        })
-      }
-    }
+      class: [
+        // Static class.
+        'some-static-class-that-should-always-be-added',
+        // Conditional classes, they're only added if the condition is true.
+        {
+          'some-conditional-class': props.someProp === true
+        }
+      ]
+    })
+  }
+}
 `;
 
 const pcExample = `
