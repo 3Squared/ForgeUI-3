@@ -37,6 +37,7 @@ import AccordionPT from "./passthroughs/Accordion.pt.ts";
 import TreeTablePT from "./passthroughs/TreeTable.pt.ts";
 import PickListPT from "./passthroughs/PickList.pt.ts";
 import ListboxPT from "./passthroughs/Listbox.pt.ts";
+import DrawerPT from "./passthroughs/Drawer.pt.ts";
 
 export default {
   ...AutoCompletePT,
@@ -76,6 +77,7 @@ export default {
   ...TreeTablePT,
   ...PickListPT,
   ...ListboxPT,
+  ...DrawerPT,
   directives: {
     ...TooltipPT
   }
