@@ -14,7 +14,7 @@
               </Button>
               <Menu :id="`${colour.text}-menu`" ref="menu" :model="menuItems" :popup="true">
                 <template #item="{ label }">
-                  <div @click="getColour(colour.background)">{{ label }}</div>
+                  <div @click="getColour(colour, label as string)">{{ label }}</div>
                 </template>
               </Menu>
             </div>
@@ -86,6 +86,36 @@ const palettes = [
       { background: "bg-light", text: "text-light", label: "Light" },
       { background: "bg-dark", text: "text-dark", label: "Dark" }
     ]
+  },
+  {
+    title: "Extra Brand Shades",
+    colours: [
+      { background: "bg-brand-shade-1", text: "text-brand-shade-1", label: "Brand shade 1" },
+      { background: "bg-brand-shade-2", text: "text-brand-shade-2", label: "Brand shade 2" },
+      { background: "bg-brand-shade-3", text: "text-brand-shade-3", label: "Brand shade 3" }
+    ]
+  }, 
+  {
+    title: "Subtle Colours",
+    colours: [
+      { background: "bg-primary-subtle", text: "text-primary-subtle", label: "Primary Subtle" },
+      { background: "bg-secondary-subtle", text: "text-secondary-subtle", label: "Secondary Subtle" },
+      { background: "bg-info-subtle", text: "text-info-subtle", label: "Info Subtle" },
+      { background: "bg-success-subtle", text: "text-success-subtle", label: "Success Subtle" },
+      { background: "bg-warning-subtle", text: "text-warning-subtle", label: "Warning Subtle" },
+      { background: "bg-danger-subtle", text: "text-danger-subtle", label: "Danger Subtle" },
+      { background: "bg-success-alternate-subtle", text: "text-success-subtle", label: "Success Alternate Subtle" }
+    ]
+  }, 
+  {
+    title: "Dark Colours",
+    colours: [
+      { background: "bg-primary-dark", text: "text-primary-dark", label: "Primary Dark" },
+      { background: "bg-success-dark", text: "text-success-dark", label: "Success Dark" },
+      { background: "bg-warning-dark", text: "text-warning-dark", label: "Warning Dark" },
+      { background: "bg-danger-dark", text: "text-danger-dark", label: "Danger Dark" },
+      { background: "bg-success-alternate-dark", text: "text-success-dark", label: "Success Alternate Dark" }
+    ]
   }
 ] as Colour[];
 
@@ -94,11 +124,19 @@ const copyToClipboard = (value: string) => {
   toast.add({ severity: "success", summary: "Copied to clipboard", life: 3000 });
 };
 
-const getColour = (colour: string) => {
-  const swatch = document.getElementById(`swatch-${colour}`) as Element;
-  const swatchStyles = getComputedStyle(swatch);
-  const hex = `#${rgbHex(swatchStyles.backgroundColor)}`;
-  copyToClipboard(hex);
+const getColour = (colour: Shade, label: string) => {
+  if (label === "Hex Code") {
+    const swatch = document.getElementById(`swatch-${colour.background}`) as Element;
+    const swatchStyles = getComputedStyle(swatch);
+    const hex = `#${rgbHex(swatchStyles.backgroundColor)}`;
+    copyToClipboard(hex);
+
+  } else if (label === "Background Class") {
+    copyToClipboard(colour.background);
+
+  } else {
+    copyToClipboard(colour.text);
+  }
 };
 </script>
 
