@@ -1,5 +1,13 @@
 # @3squared/forge-ui-3
 
+## 2.22.0
+
+### Minor Changes
+
+- c876179: - Style PrimeVue drawer component and add documentation
+  - Fix colour copying and the other colour options to forge docs
+- a9f5a10: Make some picklist bug changes
+
 ## 2.21.7
 
 ### Patch Changes
