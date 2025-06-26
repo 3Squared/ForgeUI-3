@@ -1,13 +1,13 @@
 <template>
-  <ForgePageHeader title="Forge.Playground" />
+  <ForgePageHeader title="Forge.Playground" class="mx-3" />
+<div class="m-3">
   <p>
     Forge Playground is a package which the Documentation sites use to allow users to see how props affect components in real time whilst generating code snippets that they can use in their Vue code.
     The package is made up of one file called <code>Playground.vue</code>.
   </p>
+  <Image :src="ForgePlaygroundImg" alt="Forge Playground" class="mb-3" height="400"></Image>
+
   <VueMarkdown markdown="
-
-![Forge Playground](/images/Playground.png)
-
 The playground accepts the following props:
 
 - code
@@ -78,30 +78,36 @@ This composable has been designed to improve the usability of the playground, gi
   If the option type is set in the config prop (currently it can only be set to `select`), it will disregard the type of the prop and render a dropdown instead.
 
   As mentioned in the slots section, this card also contains a slot for any additional options which might be useful for the documentation site.
+" />
+  <Image :src="OptionsCardImg" alt="Options Card" class="mb-4" height="600" />
 
-  ![Options Card](/images/Options_Card.png)
-
+  <VueMarkdown markdown="
   ### Preview Card
 
   The Preview card is where the component will render.
   - The slot called `component` is used to display the component that they are documenting.
   - The `result` slot will display the preview of the output result of the component, this is useful for form components.
-
-  ![Preview Card](/images/Preview_Card.png)
-
+" />
+  <Image :src="PreviewCardImg" alt="Preview Card" class="mb-4" height="200" />
+  <VueMarkdown markdown="
   ### Code Block
 
   The Code Block appears underneath the Preview and Options Cards. It is a div which uses a `code` html tag to display a string which is passed into it. It uses [prismjs](https://prismjs.com/) to highlight the code in the same way that vue does.
 
   It also contains a `copy` button in the top right corner of the component. It allows the user to copy the generated code to their clipboard so that they can use it in their project.
-
-  ![Code Block](/images/Code_Block.png)
 " />
+  <Image :src="CodeBlockImg" alt="Preview Card" class="mb-4" height="600" />
+</div>
 </template>
 
 <script setup lang="ts">
 import { VueMarkdown } from "@crazydos/vue-markdown";
 import CodeBlock from "@3squared/forge-playground-3/src/components/CodeBlock.vue";
+import ForgePlaygroundImg from "/src/assets/Playground.png";
+import OptionsCardImg from "/src/assets/Options_Card.png";
+import PreviewCardImg from "/src/assets/Preview_Card.png";
+import CodeBlockImg from "/src/assets/Code_Block.png";
+import Image from "primevue/image";
 
 const codeExample = `
 const { options, propVals, config, reset } = usePlayground(

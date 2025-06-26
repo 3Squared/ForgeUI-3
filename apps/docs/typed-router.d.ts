@@ -46,6 +46,7 @@ declare module 'vue-router/auto-routes' {
     '/examples/components/ExampleFileUploader': RouteRecordInfo<'/examples/components/ExampleFileUploader', '/examples/components/ExampleFileUploader', Record<never, never>, Record<never, never>>,
     '/examples/components/ExampleListbox': RouteRecordInfo<'/examples/components/ExampleListbox', '/examples/components/ExampleListbox', Record<never, never>, Record<never, never>>,
     '/examples/components/ExampleModal': RouteRecordInfo<'/examples/components/ExampleModal', '/examples/components/ExampleModal', Record<never, never>, Record<never, never>>,
+    '/examples/components/ExampleModalValidation': RouteRecordInfo<'/examples/components/ExampleModalValidation', '/examples/components/ExampleModalValidation', Record<never, never>, Record<never, never>>,
     '/examples/components/ExampleNavBar': RouteRecordInfo<'/examples/components/ExampleNavBar', '/examples/components/ExampleNavBar', Record<never, never>, Record<never, never>>,
     '/examples/components/ExamplePickList': RouteRecordInfo<'/examples/components/ExamplePickList', '/examples/components/ExamplePickList', Record<never, never>, Record<never, never>>,
     '/examples/components/ExampleScratchpad': RouteRecordInfo<'/examples/components/ExampleScratchpad', '/examples/components/ExampleScratchpad', Record<never, never>, Record<never, never>>,
