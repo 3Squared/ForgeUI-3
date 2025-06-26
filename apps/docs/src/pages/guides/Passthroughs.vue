@@ -1,5 +1,6 @@
 <template>
-  <ForgePageHeader title="Passthroughs" />
+  <ForgePageHeader title="Passthroughs" class="mx-3"/>
+  <div class="m-3">
   <p>
     <a href="https://primevue.org/passthrough/">Passthrough objects</a> are used to style PrimeVue components. Each passthrough object has a list of properties which relate to different parts of a
     component.
@@ -44,7 +45,7 @@
 
   <CodeBlock :code="pcExample" class="mt-3" />
 
-
+  </div>
 </template>
 
 <script setup lang="ts">

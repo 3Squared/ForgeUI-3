@@ -1,13 +1,14 @@
 <template>
   <ForgePageHeader title="Forge.Playground" class="mx-3" />
-<div class="m-3">
-  <p>
-    Forge Playground is a package which the Documentation sites use to allow users to see how props affect components in real time whilst generating code snippets that they can use in their Vue code.
-    The package is made up of one file called <code>Playground.vue</code>.
-  </p>
-  <Image :src="ForgePlaygroundImg" alt="Forge Playground" class="mb-3" height="400"></Image>
+  <div class="m-3">
+    <p>
+      Forge Playground is a package which the Documentation sites use to allow users to see how props affect components in real time whilst generating code snippets that they can use in their Vue
+      code.
+      The package is made up of one file called <code>Playground.vue</code>.
+    </p>
+    <Image :src="ForgePlaygroundImg" alt="Forge Playground" class="mb-3" height="400"></Image>
 
-  <VueMarkdown markdown="
+    <VueMarkdown markdown="
 The playground accepts the following props:
 
 - code
@@ -63,8 +64,8 @@ The function then returns four values which include:
 
 This composable has been designed to improve the usability of the playground, giving the exact values which the Playground requires as props. This means that these values can be directly passed into the `<ForgePlayground />` component.
 " />
-  <CodeBlock :code="codeExample" />
-  <VueMarkdown markdown="
+    <CodeBlock :code="codeExample" />
+    <VueMarkdown markdown="
   ## Component Structure
 
   The playground is made up of three main parts, the options card, the preview card and the code block.
@@ -79,25 +80,25 @@ This composable has been designed to improve the usability of the playground, gi
 
   As mentioned in the slots section, this card also contains a slot for any additional options which might be useful for the documentation site.
 " />
-  <Image :src="OptionsCardImg" alt="Options Card" class="mb-4" height="600" />
+    <Image :src="OptionsCardImg" alt="Options Card" class="mb-4" height="600" />
 
-  <VueMarkdown markdown="
+    <VueMarkdown markdown="
   ### Preview Card
 
   The Preview card is where the component will render.
   - The slot called `component` is used to display the component that they are documenting.
   - The `result` slot will display the preview of the output result of the component, this is useful for form components.
 " />
-  <Image :src="PreviewCardImg" alt="Preview Card" class="mb-4" height="200" />
-  <VueMarkdown markdown="
+    <Image :src="PreviewCardImg" alt="Preview Card" class="mb-4" height="200" />
+    <VueMarkdown markdown="
   ### Code Block
 
   The Code Block appears underneath the Preview and Options Cards. It is a div which uses a `code` html tag to display a string which is passed into it. It uses [prismjs](https://prismjs.com/) to highlight the code in the same way that vue does.
 
   It also contains a `copy` button in the top right corner of the component. It allows the user to copy the generated code to their clipboard so that they can use it in their project.
 " />
-  <Image :src="CodeBlockImg" alt="Preview Card" class="mb-4" height="600" />
-</div>
+    <Image :src="CodeBlockImg" alt="Preview Card" class="mb-4" height="600" />
+  </div>
 </template>
 
 <script setup lang="ts">

@@ -1,7 +1,6 @@
 <template>
-  <div>
-    <ForgePageHeader title="Getting Started with Forge.UI 3" />
-
+  <ForgePageHeader title="Getting Started with Forge.UI 3" class="mx-3" />
+  <div class="m-3">
     This getting started guide will give a comprehensive guide of how to install ForgeUI into your app, please consult the component pages for detailed examples
     of how to use each component.
 

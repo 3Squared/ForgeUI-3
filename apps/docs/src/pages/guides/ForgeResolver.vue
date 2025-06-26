@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <ForgePageHeader title="Forge Resolver" />
+  <ForgePageHeader title="Forge Resolver" class="mx-3" />
+  <div class="m-3">
     <div class="my-3">The ForgeResolver enables automatic imports of Forge UI components in a Vue + Vite project, eliminating the need for manual import statements.
       This allows you to use
       <code>{{ tableCode }}</code>
