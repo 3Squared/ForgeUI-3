@@ -56,6 +56,7 @@ declare module 'vue-router/auto-routes' {
     '/examples/components/ExampleTableWithColumnGroups': RouteRecordInfo<'/examples/components/ExampleTableWithColumnGroups', '/examples/components/ExampleTableWithColumnGroups', Record<never, never>, Record<never, never>>,
     '/examples/components/FormExamples': RouteRecordInfo<'/examples/components/FormExamples', '/examples/components/FormExamples', Record<never, never>, Record<never, never>>,
     '/examples/components/SimpleFormValidationExample': RouteRecordInfo<'/examples/components/SimpleFormValidationExample', '/examples/components/SimpleFormValidationExample', Record<never, never>, Record<never, never>>,
+    '/examples/components/SimpleModalValidationExample': RouteRecordInfo<'/examples/components/SimpleModalValidationExample', '/examples/components/SimpleModalValidationExample', Record<never, never>, Record<never, never>>,
     '/forms/Checkbox': RouteRecordInfo<'/forms/Checkbox', '/forms/Checkbox', Record<never, never>, Record<never, never>>,
     '/forms/Datepicker': RouteRecordInfo<'/forms/Datepicker', '/forms/Datepicker', Record<never, never>, Record<never, never>>,
     '/forms/dropdowns/Dropdown': RouteRecordInfo<'/forms/dropdowns/Dropdown', '/forms/dropdowns/Dropdown', Record<never, never>, Record<never, never>>,

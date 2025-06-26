@@ -1,7 +1,6 @@
 <template>
-  <ForgeModal ref="modalRef" v-model:visible="visible" :error="error">
+  <ForgeModal ref="modalRef" v-model:visible="visible" :error="error" >
     I'm a modal
-    
   </ForgeModal>
 
   <Button @click="visible = true">Show Modal</Button>

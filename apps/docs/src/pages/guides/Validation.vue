@@ -16,7 +16,8 @@
     </p>
     <p>
       This is set up with a slot <code>#default</code> you can pass any input into. This input can then be treated as usual, you just need to extract the props and pass them into the input. Doing it
-      this way means that new inputs don't need to be manually added to the <code>ForgeFormField</code>. Here is an example
+      this way means that new inputs don't need to be manually added to the <code>ForgeFormField</code>. A couple of these inputs are already set up in the ForgeFormField, e.g. InputText. Here is an
+      example
     </p>
     <CodeBlock :code="formFieldSlot"></CodeBlock>
     <p>
@@ -24,7 +25,6 @@
     </p>
 
     <div class="h4">Validation Schema</div>
-
     <p>
       In order to set this validation up you need to create a validation schema. This registers the component as a field to use in a Vee-Validate form. Each component which implements this validation
       will accept a prop called <code>name</code>.
@@ -42,10 +42,10 @@
     <p>
       Here is an example of the validation schema:
     </p>
-    <CodeBlock :code="validationSchema"></CodeBlock>
+    <CodeBlock :code="validationSchema" />
 
     <p>The validation schema should be customised based on the type of data you are validating, here is a more complex example</p>
-    <CodeBlock :code="yupValidationSchema"></CodeBlock>
+    <CodeBlock :code="yupValidationSchema" />
 
     <div class="h4">Validation with a <code>Form</code></div>
     <p>
@@ -64,31 +64,16 @@
       in the validation schema</p>
     <CodeBlock :code="formWithButtonExample" />
 
-
     <p>Here is a simple example validating a <code>name</code> field.</p>
     <CodeBlock :code="fullFormExample" />
     <SimpleFormValidationExample class="mb-3" />
-    <p>See
-      <router-link to="/examples/components/FormExamples" class="link">Form example</router-link>
+    <p>See <router-link to="/examples/components/FormExamples" class="link">Form example</router-link>
       for a more complex example of this.
     </p>
 
     You can then utilise the `useForm` method supplied by Vee-Validate, this will return a method called `handleSubmit` to link the form to the validation schema. Here you can define what
     should happen when the validation is successful and unsuccessful. More information can be found <a class="link" target="_blank" href="https://vee-validate.logaretm.com/v4/api/use-form/"><strong>here
     4</strong></a>
-    <p>
-      The `useField` method also accepts a set of rules as it's second parameter. In Forge.UI 3, this is set to undefined as we want to allow the user to set these via the Validation Schema. Finally
-      it
-      accepts some configuration props as the third parameter, typically I have used them to set an initial value or in the case of ForgeCheckbox, used it to specify that it's a checkbox.
-
-      Finally, the `useField` method returns a variety of useful data which Forge.UI 3 uses to handle validation. Typically, each component will use the `handleChange` and `handleBlur` functions and
-      pass them to the relevant events emitted by the component. This allows us to run validation once these events are emitted. Each component will also use the `errors` array and `errorMessage` to
-      display the validation error back to the user and to add any invalid styling which is required. You can find more out about the `useField` method
-      [here](https://vee-validate.logaretm.com/v4/api/use-field/).
-
-    </p>
-
-    <div class="h4">Validation within a <code>Modal</code></div>
   </div>
 </template>
 
