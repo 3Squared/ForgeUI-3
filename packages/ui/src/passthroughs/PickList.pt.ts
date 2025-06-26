@@ -20,6 +20,7 @@ export default {
     transferControls: 'd-flex flex-column justify-content-center gap-1',
     targetControls: 'd-flex flex-column justify-content-center gap-1',
     pcListbox: {
+      root: 'border-0',
       list: 'list-unstyled list-group list-group-flush',
       option: ({ context }: ListboxPassThroughMethodOptions) => ({
         class: [
