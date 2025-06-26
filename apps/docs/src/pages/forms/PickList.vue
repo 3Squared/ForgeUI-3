@@ -13,7 +13,7 @@
     </p>
     <playground :options="options" :config="config" :code="code" display-value @reset="reset">
       <template #component>
-        <ForgePickList :is="ForgePickList" v-bind="options" v-model="value" v-model:target-list="targetList" v-model:source-list="sourceList" class="w-100" />
+        <ForgePickList v-bind="options" v-model="value" v-model:target-list="targetList" v-model:source-list="sourceList" class="w-100" />
       </template>
       <template #value>
         <div class="d-flex flex-column gap-2 ">
