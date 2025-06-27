@@ -52,9 +52,26 @@
       styles > components`</code> folder. Follow the convention of using the component name to match the , i.e. <code>_{componentName}.scss</code>.
       Once you've done this, you'll then need to import your new <code>`.scss`</code> file into the <code>`forge-components.scss`</code> file if you are developing in Forge.
     </p>
+
+    <ForgePageHeader title="Binding props and $attrs" />
+    <p>
+
+      On the majority of components, you'll find the code <code>v-bind="{...$attrs, ...props}"</code>. This code is there to pass all props and attributes in one go so that you don't have to pass each
+      prop individually.
+
+      The `props` object is defined in the component itself, along with a custom type if there are more props required for custom functionality. The <code>$attrs</code> object is on that is define by
+      Vue, it captures any emits or props that aren't explicitly defined on the component. You can find out more about <a href="https://vuejs.org/guide/components/props">props()</a> and <a
+      href="https://vuejs.org/guide/components/attrs">$attrs</a> in the Vue documentation.
+    </p>
+    <Image :src="VBindImg" alt="v-bind" class="mb-4" height="300" />
+
+
   </div>
 </template>
 
 <script setup lang="ts">
+import VBindImg from "../../assets/v-bind.png";
+import Image from "primevue/image";
+
 
 </script>

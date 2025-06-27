@@ -71,9 +71,22 @@
       for a more complex example of this.
     </p>
 
-    You can then utilise the `useForm` method supplied by Vee-Validate, this will return a method called `handleSubmit` to link the form to the validation schema. Here you can define what
-    should happen when the validation is successful and unsuccessful. More information can be found <a class="link" target="_blank" href="https://vee-validate.logaretm.com/v4/api/use-form/"><strong>here
-    4</strong></a>
+    <div class="h4">Validation with <code>useForm</code></div>
+    <p>
+      Another way to set up validation is with the <a target="_blank" href="https://vee-validate.logaretm.com/v4/api/use-form/">useForm</a> function, this is imported from VeeValidate.
+    </p>
+    <CodeBlock :code="useFormImport" />
+    <p>
+      This is similar the <code>Form</code> component. You can pass in multiple arguments and extract functions from it. Look at the <a target="_blank" href="https://vee-validate.logaretm.com/v4/api/use-form/#composable-api">docs</a> for the options.
+      The main one we use this is called <code>handleSubmit</code>`. First you will need to link the form field to the validation schema by passing it into the <code>useForm</code> function. Then you can wrap your event with the <code>handleSubmit</code>
+      function. If validation has not passed it will prevent the submit method executing. Here is an example of the set up:
+    </p>
+    <CodeBlock :code="useForm" />
+
+    <div class="h4">ForgeModal implementation</div>
+    
+    <p>Here is simple Forge Modal implementation, here is the demo: <router-link to="/examples/components/SimpleModalValidationExample">Simple Modal Validation</router-link></p>
+    <CodeBlock :code="modalExample" />
   </div>
 </template>
 
@@ -178,4 +191,77 @@ const formFieldSlot = `<ForgeFormField name="rating" field-label="Rating" v-mode
   </template>          
 </ForgeFormField> 
 `;
+
+const useFormImport = `import { useForm } from "vee-validate";`
+const useForm = `
+const { handleSubmit } = useForm({ validationSchema: schema });
+
+//wrap the submit event in the handleSubmit function
+const onSubmit = handleSubmit(() => {
+  toast.add({
+    severity: "success",
+    summary: "Success",
+    closable: false,
+    life: 3000
+  });
+});
+`
+
+const modalExample = `
+<template>
+  <!-- Set the submit button type to 'submit' to make it trigger validation --->
+  <!-- onConfirm is the event trigger by the submit button, the forge modal will catch any errors that are thrown in this and stop the modal closing --->
+  <ForgeModal v-model:visible="visible" :on-confirm="onSubmit" submit-button-type="submit" @show="reset">
+    <ForgeFormField v-model="name" name="Name" placeholder="Enter name" field-label="Name" />
+
+  </ForgeModal>
+
+  <Button @click="visible = true">Show Modal</Button>
+  <Toast />
+</template>
+
+<script setup lang="ts">
+import Button from "primevue/button";
+import { ref } from "vue";
+import { ForgeFormField, ForgeModal } from "@3squared/forge-ui-3";
+import { useToast } from "primevue/usetoast";
+import Toast from "primevue/toast";
+//Validation imports
+import * as yup from "yup";
+import { useForm } from "vee-validate";
+
+const toast = useToast();
+
+//Build up validation schema with yup
+//Property in the object should match a name on the form input
+const schema = yup.object().shape({
+  Name: yup.string().required()
+});
+
+const visible = ref(false);
+const name = ref();
+
+const { handleSubmit } = useForm({ validationSchema: schema });
+
+//throw error here to be caught by the ForgeModal
+//without this the modal will close automatically
+//this will be reset when the modal is closed
+const onInvalidSubmit = () => {
+  throw Error("Enter required fields");
+};
+
+const onSubmit = handleSubmit(() => {
+  toast.add({
+    severity: "success",
+    summary: "Success",
+    closable: false,
+    life: 3000
+  });
+}, onInvalidSubmit);
+
+const reset = () => {
+  name.value = "";
+}
+</\script>
+`
 </script>

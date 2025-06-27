@@ -1,6 +1,14 @@
 <template>
   <div>
     <ForgePageHeader title="Form Field" />
+
+    <p class="flex">
+      Forge form field uses a combination of
+      <a href="https://vee-validate.logaretm.com/v4/">Vee-Validate</a>
+      and
+      <a href="https://github.com/jquense/yup">Yup</a>
+      . See doc for more info. See the <router-link class="link" to="/guides/Validation">validation guide</router-link> for more info on setting up to validation.
+    </p>
     <Playground :options="options" :code="code" :config="config" @reset="reset">
       <template #component>
         <component :is="ForgeFormField" v-bind="options" v-model="value" :options="dropdownOptions" option-label="label" />
@@ -9,15 +17,8 @@
 
     <h2>Validation:</h2>
 
-    <p class="flex">
-      Forge form field uses a combination of
-      <a href="https://vee-validate.logaretm.com/v4/">Vee-Validate</a>
-      and
-      <a href="https://github.com/jquense/yup">Yup</a>
-      to validate inputs. See doc for more info.
-    </p>
     
-    <p>Forge form field has a slot that any input can be passed into, as seem in the forge select field below, however the css red border may not be configured for every input.</p>
+    <p>Forge form field has a slot that any input can be passed into, as seen in the forge select field below, however the css red border may not be configured for every input.</p>
 
     <FormExamples />
 

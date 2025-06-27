@@ -4,7 +4,7 @@
     <p>
       Further documentation and examples can be found in the
       <a class="link" target="_blank" href="https://primevue.org/dialog/"><strong>PrimeVue documentation</strong></a>
-      .
+      . See the <router-link class="link" to="/guides/Validation">validation guide</router-link> for more info on setting up modal validation.
     </p>
     <Playground :options="options" :code="code" :config="config" @reset="reset">
       <template #component>
