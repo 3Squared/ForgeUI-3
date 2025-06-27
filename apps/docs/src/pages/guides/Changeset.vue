@@ -1,12 +1,14 @@
 <template>
   <ForgePageHeader class="mx-3" title="Changesets" />
- <div class="m-3"> <VueMarkdown markdown="
+ <div class="m-3"> <VueMarkdown
+markdown="
 [Changesets](https://github.com/changesets/changesets) are used to [semantically version](https://semver.org/) the packages in the Forge.UI 3 Monorepo. Steps for this can be found in the [Creating a Changeset](#creating-a-changeset) guide in the Walkthroughs section.
 
 Changesets are made up of two parts, the version number and the description. The version number is used when the user installs the project via an `npm install` and allows them to install different versions of the package if required. The description is used to provide information about what the version changes, fixes or breaks. It is used in Forge.UI 3 to generate a changelog, which can be found by clicking the version number in the navbar on the Documentation Site.
 " />
   <Image :src="ForgeChangelog" alt="Preview Card" class="mb-4" height="300" />
-  <VueMarkdown markdown="
+  <VueMarkdown
+markdown="
 Changesets are versioned using semantic versioning, this means that we can release a Major, Minor or Patch version of the packages. The link above details this further, however here is a cheatsheet that you can use to decipher which is the right version number bump to use:
 
 - Major (**1**.0.0)
@@ -27,7 +29,8 @@ Changesets are versioned using semantic versioning, this means that we can relea
 The current changeset which you have created can be found in the `.changeset` folder which is at the root of the project. In here you can update the versioning and the description of the change.
 " />
 
-  <VueMarkdown markdown="### Creating a changeset
+  <VueMarkdown
+markdown="### Creating a changeset
 
 In order to add a [changeset](#changesets), we need to run the `npx changeset` command at the same level as the `.changeset` folder. In the case of Forge.UI 3, this is at the root of the project. 
 
@@ -35,7 +38,8 @@ Running this command will bring up a wizard to help you create a changeset. Firs
 " />
   <Image :src="ChangesetWizard1Img" alt="Changeset Wizard" class="mb-4" height="150" />
 
-  <VueMarkdown markdown="
+  <VueMarkdown
+markdown="
 Once you have selected the projects which require a version bump, you will be asked if any of the packages require a `major` bump. If they do, select using space bar else press enter to continue.
 " />
   <Image :src="ChangesetWizardMajorIma" alt="Changeset Wizard Major" class="mb-4" height="100" />
@@ -86,5 +90,4 @@ import ChangesetWizardMajorIma from "/src/assets/Changeset_Wizard_Major.png";
 import ChangesetMinorImg from "/src/assets/Changeset_Wizard_Minor.png";
 import ChangesetWizardSummary from "/src/assets/Changeset_Wizard_Summary.png";
 import ChangesetWizardOverview from "/src/assets/Changeset_Wizard_Overview.png";
-import PreviewCardImg from "../../assets/Preview_Card.png";
 </script>

@@ -14,7 +14,7 @@
           </p>
         </Drawer>
         <div class="d-flex gap-1">
-          <Button @click="visible = true" label="Open Drawer" />
+          <Button label="Open Drawer" @click="visible = true" />
         </div>
       </template>
       <template #additionalOptions>

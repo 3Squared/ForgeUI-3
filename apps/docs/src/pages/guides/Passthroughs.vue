@@ -49,8 +49,6 @@
 </template>
 
 <script setup lang="ts">
-import { VueMarkdown } from "@crazydos/vue-markdown";
-import Image from "primevue/image";
 import { CodeBlock } from "@3squared/forge-playground-3";
 
 const example = `

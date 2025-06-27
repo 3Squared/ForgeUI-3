@@ -8,7 +8,8 @@
     </p>
     <Image :src="ForgePlaygroundImg" alt="Forge Playground" class="mb-3" height="400"></Image>
 
-    <VueMarkdown markdown="
+    <VueMarkdown
+markdown="
 The playground accepts the following props:
 
 - code
@@ -65,7 +66,8 @@ The function then returns four values which include:
 This composable has been designed to improve the usability of the playground, giving the exact values which the Playground requires as props. This means that these values can be directly passed into the `<ForgePlayground />` component.
 " />
     <CodeBlock :code="codeExample" />
-    <VueMarkdown markdown="
+    <VueMarkdown
+markdown="
   ## Component Structure
 
   The playground is made up of three main parts, the options card, the preview card and the code block.
@@ -82,7 +84,8 @@ This composable has been designed to improve the usability of the playground, gi
 " />
     <Image :src="OptionsCardImg" alt="Options Card" class="mb-4" height="600" />
 
-    <VueMarkdown markdown="
+    <VueMarkdown
+markdown="
   ### Preview Card
 
   The Preview card is where the component will render.
@@ -90,7 +93,8 @@ This composable has been designed to improve the usability of the playground, gi
   - The `result` slot will display the preview of the output result of the component, this is useful for form components.
 " />
     <Image :src="PreviewCardImg" alt="Preview Card" class="mb-4" height="200" />
-    <VueMarkdown markdown="
+    <VueMarkdown
+markdown="
   ### Code Block
 
   The Code Block appears underneath the Preview and Options Cards. It is a div which uses a `code` html tag to display a string which is passed into it. It uses [prismjs](https://prismjs.com/) to highlight the code in the same way that vue does.

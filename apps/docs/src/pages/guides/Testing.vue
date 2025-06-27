@@ -1,7 +1,8 @@
 <template>
   <ForgePageHeader title="Testing" class="mx-3" />
   <div class="m-3">
-    <VueMarkdown markdown="
+    <VueMarkdown
+markdown="
 Forge.UI 3 and RailSmart Design System 3 rely heavily on Automation Testing. This is achieved using [Cypress](https://docs.cypress.io/app/get-started/why-cypress) and [Vitest](https://vitest.dev/). Cypress is used for component testing, this is where the browser interacts with the component in various states to ensure that the styling/functionality works as expected. Vitest is used for unit testing, currently testing any functions that are in the utlities file.
 
 ### Component Tests
@@ -12,7 +13,8 @@ Each test file will contain a mount function, if there is a wrapper component it
 " />
     <Image :src="MountFunction" alt="Mount Function" class="mb-4" height="300" />
 
-    <VueMarkdown markdown="
+    <VueMarkdown
+markdown="
 
 Where it makes sense, tests are grouped together using the [`describe`](https://docs.cypress.io/app/core-concepts/writing-and-organizing-tests) function. This is used to organise the tests in the runner and to also make it easier to remove/run groups of tests using `.only` and `.skip`.
 
@@ -20,17 +22,20 @@ A test is declared using the `it` function, it accepts two parameters which are 
 " />
     <Image :src="CypressTest" alt="Cypress Test" class="mb-4" height="300" />
     <Image :src="DynamicTest" alt="Dynamic Test" class="mb-4" height="300" />
-    <VueMarkdown markdown="
+    <VueMarkdown
+markdown="
 The component tests utilise dynamic tests where suitable. This form of testing is where one `generic` test is written and different data sets are passed into it. This is particularly useful when testing a prop which accepts different inputs, i.e. Severity, Size etc. By using these dynamic tests, we don't have to repeat multiple tests which take in different inputs and can ensure that all of the tests which test that prop are consistent.
 
   In order to do this, we first create an array using the `;[]` syntax; The `;` is particulary important here else it won't work! Next we can populate the array with objects which inlcude properties about our test i.e. testName, severity, expectedCss etc. Finally we can loop over the array using `.forEach()` and write a generic test in the body which plugs in the test data. To explain this further, please refer to the example below which can be found in the `table.cy.ts` file.
 " />
     <Image :src="DynamicTest" alt="Dynamic Test" class="mb-4" height="300" />
-    <VueMarkdown markdown="
+    <VueMarkdown
+markdown="
   It is also worth noting that in some files, all of the ID's and Selectors that a component uses are stored globally at the top. I found that this was a good approach as it meant that I didn't have to constantly redefine ID's and Selectors in each test body and would also only have to change it in one place if they had changed.
 " />
     <Image :src="GlobalIds" alt="Global Ids" class="mb-4" height="300" />
-    <VueMarkdown markdown="
+    <VueMarkdown
+markdown="
   Tests will sometimes fail as pipeline will find new dependency. To fix this add whatever its tried to optimise into the `optimizeDeps` section in `vite.config.ts`.
 
   You can run the Cypress tests using the `npm run test:component` command in the `ui` folder.
