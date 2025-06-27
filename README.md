@@ -50,12 +50,6 @@ turbo run build --filter ui
 turbo run dev
 ```
 
-##### Clearing the Cache
-To clear Turbo's cache, use:
-```sh
-turbo prune --force
-```
-
 ### Running Forge Locally
 Clone the repository and install the dependencies:
 ```sh

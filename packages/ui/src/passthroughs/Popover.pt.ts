@@ -13,6 +13,5 @@ export default {
     }),
     content: "d-flex position-relative",
     closeButton: 'position-absolute top-0 end-0 p-1 btn btn-link text-black ms-2'
-
   }
 }
