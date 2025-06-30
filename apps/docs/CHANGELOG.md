@@ -1,5 +1,13 @@
 # forge-ui-3-styleguide
 
+## 2.19.1
+
+### Patch Changes
+
+- 80358f3: Update guides
+- Updated dependencies [80358f3]
+  - @3squared/forge-ui-3@2.22.1
+
 ## 2.19.0
 
 ### Minor Changes
