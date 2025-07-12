@@ -1,5 +1,11 @@
 # @3squared/forge-ui-3
 
+## 2.22.1
+
+### Patch Changes
+
+- 80358f3: Update guides
+
 ## 2.22.0
 
 ### Minor Changes
