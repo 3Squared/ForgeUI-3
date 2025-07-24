@@ -5,7 +5,7 @@ export default {
     root: ({parent}: DialogPassThroughMethodOptions<any>) => {
       if(parent.instance.$.type.name == 'ConfirmDialog')
         return {
-          class: ["modal modal-dialog modal-content h-auto m-0 modal-sm"]
+          class: ["modal modal-dialog modal-content h-auto m-0"]
         }
       return {}
     },
