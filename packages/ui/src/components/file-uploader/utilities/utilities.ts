@@ -28,8 +28,12 @@ export function addFiles(filesToUpload: File[], files : ForgeFileStatus[], accep
     const fileIndex = uploadedFiles.findIndex(uploadedFile => uploadedFile.name === file.name)
     let status: FileUploadStatus = 'Not Uploaded'
     if (fileIndex === -1) {
-      if (!acceptedFileTypes.includes(file.type) || !(file.size <= maxFileSize)) {
-        status = !acceptedFileTypes.includes(file.type) ? 'InvalidFileType' : 'InvalidFileSize'
+      const fileMimeType = getFileMimeType(file);
+      if (!fileMimeType || !acceptedFileTypes.includes(fileMimeType)) {
+        status = 'InvalidFileType';
+      }
+      else if (!(file.size <= maxFileSize)) {
+        status = 'InvalidFileSize';
       }
       
       files.unshift({
@@ -86,6 +90,13 @@ export function isImage(mimeType: string): boolean {
 
 export function getThumbnailUrl(file: File) {
   return URL.createObjectURL(file)
+}
+
+export function getFileMimeType(file: File): string | null {
+  if (file.type) {
+    return file.type;
+  }
+  return forgeMime().getType(file.name);
 }
 
 export function forgeMime(): Mime {
