@@ -29,8 +29,11 @@ export function addFiles(filesToUpload: File[], files : ForgeFileStatus[], accep
     let status: FileUploadStatus = 'Not Uploaded'
     if (fileIndex === -1) {
       const fileMimeType = getFileMimeType(file);
-      if (!fileMimeType || !acceptedFileTypes.includes(fileMimeType) || !(file.size <= maxFileSize)) {
-        status = (!fileMimeType || !acceptedFileTypes.includes(fileMimeType)) ? 'InvalidFileType' : 'InvalidFileSize'
+      if (!fileMimeType || !acceptedFileTypes.includes(fileMimeType)) {
+        status = 'InvalidFileType';
+      }
+      else if (!(file.size <= maxFileSize)) {
+        status = 'InvalidFileSize';
       }
       
       files.unshift({
