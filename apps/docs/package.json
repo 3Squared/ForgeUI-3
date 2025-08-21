@@ -20,7 +20,7 @@
     "@iconify/vue": "5.0.0",
     "rgb-hex": "4.1.0",
     "unplugin-vue-markdown": "29.1.0",
-    "vue": "3.5.18",
+    "vue": "3.5.19",
     "vue-router": "4.5.1"
   },
   "devDependencies": {
