@@ -203,6 +203,23 @@ describe('<Dialog />', () => {
     });
   });
 
+    describe("Hide Errors", () => {
+    const errorMessage = "I am an Error!";
+
+    beforeEach(() => {
+      const onConfirm = () => {
+        throw new Error(errorMessage);
+      };
+      mountDialog({ onConfirm, hideErrorBanner: true });
+      cy.get(submitButtonId).click();
+    });
+
+    it("Hides Error alert if onConfirm throws an error and hideErrorBanner is true", () => {
+      cy.get('[data-cy="error"]')
+        .should("not.exist");
+    });
+  });
+
   it("Shows loading spinner whilst waiting for the function to complete", () => {
     // Arrange
     const onConfirm = () => new Promise((resolve) => setTimeout(resolve, 10000))
