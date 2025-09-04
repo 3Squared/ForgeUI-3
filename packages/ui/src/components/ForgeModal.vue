@@ -63,7 +63,7 @@ export interface ForgeModalProps extends DialogProps {
   resetErrorOnClose?: boolean,
   maxHeight?: string | null,
   minHeight?: string | null
-  hideErrorBanner: boolean
+  hideErrorBanner?: boolean
 }
 
 const visible = defineModel<boolean>('visible', { required: true })
