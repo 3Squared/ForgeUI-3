@@ -1,5 +1,11 @@
 # @3squared/forge-ui-3
 
+## 2.24.0
+
+### Minor Changes
+
+- fc97353: Add error override in forge modal
+
 ## 2.23.1
 
 ### Patch Changes
