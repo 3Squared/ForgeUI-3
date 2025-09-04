@@ -8,7 +8,7 @@
     </template>
     <template v-for="(_, name) in $slots as unknown as DialogSlots" #[name]="slotProps">
       <template v-if="name == 'default'">
-        <div v-if="error.hasError" class="sticky-top py-3 error-bg" data-cy="error-wrapper">
+        <div v-if="error.hasError && !hideErrorBanner" class="sticky-top py-3 error-bg" data-cy="error-wrapper">
           <forge-alert severity="danger" data-cy="error" class="mb-0">
             <p :class="error.message.length > 0 ? 'my-auto' : 'mb-0'">{{ error.header }}</p>
             <ul v-if="error.message.length > 0">
@@ -63,6 +63,7 @@ export interface ForgeModalProps extends DialogProps {
   resetErrorOnClose?: boolean,
   maxHeight?: string | null,
   minHeight?: string | null
+  hideErrorBanner: boolean
 }
 
 const visible = defineModel<boolean>('visible', { required: true })
@@ -82,7 +83,8 @@ const props = withDefaults(defineProps<ForgeModalProps>(), {
   cancelButtonType: "button",
   submitButtonType: "button",
   size: "md",
-  resetErrorOnClose: true
+  resetErrorOnClose: true,
+  hideErrorBanner: false
 })
 
 const loading = ref(false)
