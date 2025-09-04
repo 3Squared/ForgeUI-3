@@ -1,5 +1,11 @@
 # @3squared/forge-ui-3
 
+## 2.24.1
+
+### Patch Changes
+
+- 4bc5cfc: Update the hideErrorBanner property on ForgeModalProps to be nullable with default
+
 ## 2.24.0
 
 ### Minor Changes
