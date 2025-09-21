@@ -57,7 +57,7 @@
     "rollup-plugin-visualizer": "6.0.3",
     "sass": "1.93.0",
     "typescript": "5.9.2",
-    "unplugin-vue-components": "29.0.0",
+    "unplugin-vue-components": "29.1.0",
     "vite": "6.3.6",
     "vite-bundle-visualizer": "1.2.1",
     "vite-plugin-dts": "4.5.4",
