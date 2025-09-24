@@ -11,7 +11,7 @@
   "devDependencies": {
     "@changesets/cli": "2.29.7",
     "@types/prismjs": "1.26.5",
-    "turbo": "2.5.7"
+    "turbo": "2.5.8"
   },
   "packageManager": "npm@11.6.0",
   "workspaces": [
