@@ -19,7 +19,7 @@
     "@crazydos/vue-markdown": "1.1.4",
     "@iconify/vue": "5.0.0",
     "rgb-hex": "4.1.0",
-    "unplugin-vue-markdown": "29.1.0",
+    "unplugin-vue-markdown": "29.2.0",
     "vue": "3.5.21",
     "vue-router": "4.5.1"
   },
