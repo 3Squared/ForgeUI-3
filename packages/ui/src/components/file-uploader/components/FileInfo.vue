@@ -52,7 +52,9 @@ import {
 import { TypedSchema } from "vee-validate";
 import { computed, ref, onMounted } from "vue";
 import UploadStatus from "@/components/file-uploader/components/UploadStatus.vue";
-import { BlockBlobClient, BlockBlobParallelUploadOptions } from "@azure/storage-blob";
+import { BlockBlobClient, BlockBlobParallelUploadOptions, newPipeline, StoragePipelineOptions } from "@azure/storage-blob";
+import { PipelinePolicy } from "@azure/core-rest-pipeline";
+
 import { ForgeFileType } from "@/types/forge-types.ts";
 
 interface FileInfoProps {
@@ -61,10 +63,11 @@ interface FileInfoProps {
   maxFileSize: number,
   getFileUrlAction: (fileName: string) => Promise<[string, string]>,
   customFileNameRules?: TypedSchema,
-  autoUploadToBlob?: boolean
+  autoUploadToBlob?: boolean,
+  storageServiceVersionOverride?: string
 }
 
-const { autoUploadToBlob, maxFileSize, getFileUrlAction, customFileNameRules, editableFileName, acceptedFileTypes } = defineProps<FileInfoProps>()
+const { autoUploadToBlob, maxFileSize, getFileUrlAction, customFileNameRules, editableFileName, acceptedFileTypes, storageServiceVersionOverride } = defineProps<FileInfoProps>()
 const file = defineModel<File>('file', { required: true })
 const fileBlobFileName = defineModel<string>('blobFileName', { required: true })
 const uploadStatus = defineModel<FileUploadStatus>('uploadStatus', { required: true })
@@ -110,6 +113,33 @@ const ensureFileNameHasCorrectExtension = () => {
   }
 }
 
+const createBlockBlobClient = (uploadUrl: string, versionOverride?: string): BlockBlobClient => {
+  let pipelineOptions = {};
+
+  if (versionOverride) {
+    const forceVersionPolicy: PipelinePolicy = {
+      name: "forceVersionPolicy",
+      sendRequest: async (req, next) => {
+        req.headers.set("x-ms-version", versionOverride);
+        return next(req);
+      }
+    };
+
+    pipelineOptions = {
+      // 👇 this is where additional policies go
+      additionalPolicies: [
+        { policy: forceVersionPolicy, position: "perRetry" }
+      ]
+    };
+
+    // Build a pipeline with the policy
+    const pipeline = newPipeline(undefined, pipelineOptions);
+    return new BlockBlobClient(uploadUrl, pipeline);
+  }
+
+  return new BlockBlobClient(uploadUrl);
+}
+
 const uploadBlob = async () => {
   if (!validFileType.value || !validFileSize.value) {
     uploadStatus.value = !validFileType.value ? 'InvalidFileType' : 'InvalidFileSize'
@@ -126,7 +156,7 @@ const uploadBlob = async () => {
 
   try {
     uploadStatus.value = 'Uploading'
-    const blockBlobClient = new BlockBlobClient(uploadUrl);
+    const blockBlobClient = createBlockBlobClient(uploadUrl, storageServiceVersionOverride);
     const options = {
       abortSignal: controller.value.signal,
       onProgress: (progress) => bytesUploaded.value = progress.loadedBytes,
