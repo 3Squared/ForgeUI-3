@@ -51,7 +51,8 @@ export interface ForgeFileUploaderProps {
   maxFileInput?: number,
   editableFileName?: boolean,
   autoUploadToBlob?: boolean,
-  maxFileWarning?: string
+  maxFileWarning?: string,
+  storageServiceVersionOverride?: string
 }
 
 const props = withDefaults(defineProps<ForgeFileUploaderProps>(), {
