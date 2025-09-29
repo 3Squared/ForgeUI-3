@@ -1,5 +1,11 @@
 # @3squared/forge-ui-3
 
+## 2.25.0
+
+### Minor Changes
+
+- b1eea8d: Add in the ability to be able to override the sazure storage version ms-api-version header
+
 ## 2.24.1
 
 ### Patch Changes
