@@ -56,7 +56,7 @@
     "cypress-real-events": "1.15.0",
     "rollup-plugin-visualizer": "6.0.3",
     "sass": "1.93.2",
-    "typescript": "5.9.2",
+    "typescript": "5.9.3",
     "unplugin-vue-components": "29.1.0",
     "vite": "6.3.6",
     "vite-bundle-visualizer": "1.2.1",
