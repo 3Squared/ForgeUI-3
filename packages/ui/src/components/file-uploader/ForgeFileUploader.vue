@@ -15,6 +15,7 @@
             v-model:upload-status="files[index].status"
             v-bind="props"
             @deleted="deleteFiles"
+            :storage-service-version-override="storageServiceVersionOverride"
         />
       </div>
       </DragDropArea>
