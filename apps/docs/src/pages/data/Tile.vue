@@ -3,7 +3,7 @@
     <ForgePageHeader title="Tile" />
     <Playground :options="options" :code="code" :config="config" @reset="reset">
       <template #component>
-        <component :is="ForgeTile" v-bind="options" class="w-100">Content</component>
+        <component :is="ForgeTile" v-bind="options" class="w-100" @button-click="console.log('registered click')">Content</component>
       </template>
     </Playground>
   </div>
@@ -30,5 +30,5 @@ const { options, propVals, config, reset } = usePlayground(
   }
 );
 
-const code = computed(() => `<ForgeTile${propVals.value.length > 0 ? " " + propVals.value.join(" ") : ""}>Content</ForgeTile>`);
+const code = computed(() => `<ForgeTile${propVals.value.length > 0 ? " " + propVals.value.join(" ") : ""} @button-click="console.log('registered click')">Content</ForgeTile>`);
 </script>
