@@ -106,4 +106,376 @@ declare module 'vue-router/auto-routes' {
     '/overlay/Toast': RouteRecordInfo<'/overlay/Toast', '/overlay/Toast', Record<never, never>, Record<never, never>>,
     '/overlay/Tooltip': RouteRecordInfo<'/overlay/Tooltip', '/overlay/Tooltip', Record<never, never>, Record<never, never>>,
   }
+
+  /**
+   * Route file to route info map by unplugin-vue-router.
+   * Used by the volar plugin to automatically type useRoute()
+   *
+   * Each key is a file path relative to the project root with 2 properties:
+   * - routes: union of route names of the possible routes when in this page (passed to useRoute<...>())
+   * - views: names of nested views (can be passed to <RouterView name="...">)
+   *
+   * @internal
+   */
+  export interface _RouteFileInfoMap {
+    'src/pages/index.vue': {
+      routes: '/'
+      views: never
+    }
+    'src/pages/buttons/ActionButton.vue': {
+      routes: '/buttons/ActionButton'
+      views: never
+    }
+    'src/pages/buttons/Button.vue': {
+      routes: '/buttons/Button'
+      views: never
+    }
+    'src/pages/buttons/ButtonGroup.vue': {
+      routes: '/buttons/ButtonGroup'
+      views: never
+    }
+    'src/pages/buttons/Link.vue': {
+      routes: '/buttons/Link'
+      views: never
+    }
+    'src/pages/buttons/SelectButton.vue': {
+      routes: '/buttons/SelectButton'
+      views: never
+    }
+    'src/pages/buttons/SplitButton.vue': {
+      routes: '/buttons/SplitButton'
+      views: never
+    }
+    'src/pages/buttons/ToggleButton.vue': {
+      routes: '/buttons/ToggleButton'
+      views: never
+    }
+    'src/pages/Changelog.vue': {
+      routes: '/Changelog'
+      views: never
+    }
+    'src/pages/Colours.vue': {
+      routes: '/Colours'
+      views: never
+    }
+    'src/pages/data/Chart.vue': {
+      routes: '/data/Chart'
+      views: never
+    }
+    'src/pages/data/DataView.vue': {
+      routes: '/data/DataView'
+      views: never
+    }
+    'src/pages/data/Progress.vue': {
+      routes: '/data/Progress'
+      views: never
+    }
+    'src/pages/data/StatWidget.vue': {
+      routes: '/data/StatWidget'
+      views: never
+    }
+    'src/pages/data/Table.vue': {
+      routes: '/data/Table'
+      views: never
+    }
+    'src/pages/data/Tile.vue': {
+      routes: '/data/Tile'
+      views: never
+    }
+    'src/pages/data/Tree.vue': {
+      routes: '/data/Tree'
+      views: never
+    }
+    'src/pages/data/TreeTable.vue': {
+      routes: '/data/TreeTable'
+      views: never
+    }
+    'src/pages/examples/CodeTesting.vue': {
+      routes: '/examples/CodeTesting'
+      views: never
+    }
+    'src/pages/examples/components/ExampleAutoComplete.vue': {
+      routes: '/examples/components/ExampleAutoComplete'
+      views: never
+    }
+    'src/pages/examples/components/ExampleButton.vue': {
+      routes: '/examples/components/ExampleButton'
+      views: never
+    }
+    'src/pages/examples/components/ExampleConfirmDialogue.vue': {
+      routes: '/examples/components/ExampleConfirmDialogue'
+      views: never
+    }
+    'src/pages/examples/components/ExampleConfirmPopup.vue': {
+      routes: '/examples/components/ExampleConfirmPopup'
+      views: never
+    }
+    'src/pages/examples/components/ExampleDataView.vue': {
+      routes: '/examples/components/ExampleDataView'
+      views: never
+    }
+    'src/pages/examples/components/ExampleDrawer.vue': {
+      routes: '/examples/components/ExampleDrawer'
+      views: never
+    }
+    'src/pages/examples/components/ExampleFileUploader.vue': {
+      routes: '/examples/components/ExampleFileUploader'
+      views: never
+    }
+    'src/pages/examples/components/ExampleListbox.vue': {
+      routes: '/examples/components/ExampleListbox'
+      views: never
+    }
+    'src/pages/examples/components/ExampleModal.vue': {
+      routes: '/examples/components/ExampleModal'
+      views: never
+    }
+    'src/pages/examples/components/ExampleModalValidation.vue': {
+      routes: '/examples/components/ExampleModalValidation'
+      views: never
+    }
+    'src/pages/examples/components/ExampleNavBar.vue': {
+      routes: '/examples/components/ExampleNavBar'
+      views: never
+    }
+    'src/pages/examples/components/ExamplePickList.vue': {
+      routes: '/examples/components/ExamplePickList'
+      views: never
+    }
+    'src/pages/examples/components/ExampleScratchpad.vue': {
+      routes: '/examples/components/ExampleScratchpad'
+      views: never
+    }
+    'src/pages/examples/components/ExampleSelectBool.vue': {
+      routes: '/examples/components/ExampleSelectBool'
+      views: never
+    }
+    'src/pages/examples/components/ExampleTableExapandableGroup.vue': {
+      routes: '/examples/components/ExampleTableExapandableGroup'
+      views: never
+    }
+    'src/pages/examples/components/ExampleTableGroup.vue': {
+      routes: '/examples/components/ExampleTableGroup'
+      views: never
+    }
+    'src/pages/examples/components/ExampleTableWithColumnGroups.vue': {
+      routes: '/examples/components/ExampleTableWithColumnGroups'
+      views: never
+    }
+    'src/pages/examples/components/FormExamples.vue': {
+      routes: '/examples/components/FormExamples'
+      views: never
+    }
+    'src/pages/examples/components/SimpleFormValidationExample.vue': {
+      routes: '/examples/components/SimpleFormValidationExample'
+      views: never
+    }
+    'src/pages/examples/components/SimpleModalValidationExample.vue': {
+      routes: '/examples/components/SimpleModalValidationExample'
+      views: never
+    }
+    'src/pages/forms/Checkbox.vue': {
+      routes: '/forms/Checkbox'
+      views: never
+    }
+    'src/pages/forms/Datepicker.vue': {
+      routes: '/forms/Datepicker'
+      views: never
+    }
+    'src/pages/forms/dropdowns/Dropdown.vue': {
+      routes: '/forms/dropdowns/Dropdown'
+      views: never
+    }
+    'src/pages/forms/dropdowns/Multiselect.vue': {
+      routes: '/forms/dropdowns/Multiselect'
+      views: never
+    }
+    'src/pages/forms/dropdowns/MultiselectPreview.vue': {
+      routes: '/forms/dropdowns/MultiselectPreview'
+      views: never
+    }
+    'src/pages/forms/dropdowns/TreeSelect.vue': {
+      routes: '/forms/dropdowns/TreeSelect'
+      views: never
+    }
+    'src/pages/forms/FileUploader.vue': {
+      routes: '/forms/FileUploader'
+      views: never
+    }
+    'src/pages/forms/Form.vue': {
+      routes: '/forms/Form'
+      views: never
+    }
+    'src/pages/forms/inputs/AutoComplete.vue': {
+      routes: '/forms/inputs/AutoComplete'
+      views: never
+    }
+    'src/pages/forms/inputs/Chips.vue': {
+      routes: '/forms/inputs/Chips'
+      views: never
+    }
+    'src/pages/forms/inputs/FormField.vue': {
+      routes: '/forms/inputs/FormField'
+      views: never
+    }
+    'src/pages/forms/inputs/InlineEditor.vue': {
+      routes: '/forms/inputs/InlineEditor'
+      views: never
+    }
+    'src/pages/forms/inputs/Mask.vue': {
+      routes: '/forms/inputs/Mask'
+      views: never
+    }
+    'src/pages/forms/inputs/Number.vue': {
+      routes: '/forms/inputs/Number'
+      views: never
+    }
+    'src/pages/forms/inputs/Text.vue': {
+      routes: '/forms/inputs/Text'
+      views: never
+    }
+    'src/pages/forms/inputs/TextArea.vue': {
+      routes: '/forms/inputs/TextArea'
+      views: never
+    }
+    'src/pages/forms/Listbox.vue': {
+      routes: '/forms/Listbox'
+      views: never
+    }
+    'src/pages/forms/PickList.vue': {
+      routes: '/forms/PickList'
+      views: never
+    }
+    'src/pages/forms/RemainingCharacters.vue': {
+      routes: '/forms/RemainingCharacters'
+      views: never
+    }
+    'src/pages/forms/Scratchpad.vue': {
+      routes: '/forms/Scratchpad'
+      views: never
+    }
+    'src/pages/forms/Switch.vue': {
+      routes: '/forms/Switch'
+      views: never
+    }
+    'src/pages/guides/Changeset.vue': {
+      routes: '/guides/Changeset'
+      views: never
+    }
+    'src/pages/guides/ForgePlayground.vue': {
+      routes: '/guides/ForgePlayground'
+      views: never
+    }
+    'src/pages/guides/ForgeResolver.vue': {
+      routes: '/guides/ForgeResolver'
+      views: never
+    }
+    'src/pages/guides/Installation.vue': {
+      routes: '/guides/Installation'
+      views: never
+    }
+    'src/pages/guides/NewComponent.vue': {
+      routes: '/guides/NewComponent'
+      views: never
+    }
+    'src/pages/guides/Passthroughs.vue': {
+      routes: '/guides/Passthroughs'
+      views: never
+    }
+    'src/pages/guides/Testing.vue': {
+      routes: '/guides/Testing'
+      views: never
+    }
+    'src/pages/guides/Validation.vue': {
+      routes: '/guides/Validation'
+      views: never
+    }
+    'src/pages/Icons.vue': {
+      routes: '/Icons'
+      views: never
+    }
+    'src/pages/layout/Accordion.vue': {
+      routes: '/layout/Accordion'
+      views: never
+    }
+    'src/pages/layout/Alert.vue': {
+      routes: '/layout/Alert'
+      views: never
+    }
+    'src/pages/layout/Fieldset.vue': {
+      routes: '/layout/Fieldset'
+      views: never
+    }
+    'src/pages/layout/Loader.vue': {
+      routes: '/layout/Loader'
+      views: never
+    }
+    'src/pages/layout/Navbar.vue': {
+      routes: '/layout/Navbar'
+      views: never
+    }
+    'src/pages/layout/PageHeader.vue': {
+      routes: '/layout/PageHeader'
+      views: never
+    }
+    'src/pages/layout/Panel.vue': {
+      routes: '/layout/Panel'
+      views: never
+    }
+    'src/pages/layout/Stepper.vue': {
+      routes: '/layout/Stepper'
+      views: never
+    }
+    'src/pages/layout/Tabs.vue': {
+      routes: '/layout/Tabs'
+      views: never
+    }
+    'src/pages/misc/Badge.vue': {
+      routes: '/misc/Badge'
+      views: never
+    }
+    'src/pages/misc/Tag.vue': {
+      routes: '/misc/Tag'
+      views: never
+    }
+    'src/pages/overlay/ConfirmModal.vue': {
+      routes: '/overlay/ConfirmModal'
+      views: never
+    }
+    'src/pages/overlay/ConfirmPopup.vue': {
+      routes: '/overlay/ConfirmPopup'
+      views: never
+    }
+    'src/pages/overlay/Drawer.vue': {
+      routes: '/overlay/Drawer'
+      views: never
+    }
+    'src/pages/overlay/Modal.vue': {
+      routes: '/overlay/Modal'
+      views: never
+    }
+    'src/pages/overlay/Popover.vue': {
+      routes: '/overlay/Popover'
+      views: never
+    }
+    'src/pages/overlay/Toast.vue': {
+      routes: '/overlay/Toast'
+      views: never
+    }
+    'src/pages/overlay/Tooltip.vue': {
+      routes: '/overlay/Tooltip'
+      views: never
+    }
+  }
+
+  /**
+   * Get a union of possible route names in a certain route component file.
+   * Used by the volar plugin to automatically type useRoute()
+   *
+   * @internal
+   */
+  export type _RouteNamesForFilePath<FilePath extends string> =
+    _RouteFileInfoMap extends Record<FilePath, infer Info>
+      ? Info['routes']
+      : keyof RouteNamedMap
 }

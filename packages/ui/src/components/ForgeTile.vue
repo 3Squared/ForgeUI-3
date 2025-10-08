@@ -1,5 +1,9 @@
 <template>
-  <Button v-if="props.clickable" class="d-flex w-100 p-0 text-body" :severity="props.severity" :class="buttonClass" unstyled data-cy="button-tile">
+  <Button v-if="props.clickable"
+          class="d-flex w-100 p-0 text-body" :severity="props.severity"
+          :class="buttonClass" unstyled data-cy="button-tile"
+          @click="$emit('button-click')"
+  >
     <div class="p-4 text-wrap w-100">
       <!-- 
         @slot Allows for content to be inserted into the Tile.
