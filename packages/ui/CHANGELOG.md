@@ -1,5 +1,11 @@
 # @3squared/forge-ui-3
 
+## 2.26.0
+
+### Minor Changes
+
+- 244e6bc: tweak forgeTile to not use native click as it gets fired on the div (clickable = false) too
+
 ## 2.25.1
 
 ### Patch Changes
