@@ -13,7 +13,7 @@
     "@types/prismjs": "1.26.5",
     "turbo": "2.5.8"
   },
-  "packageManager": "npm@11.6.1",
+  "packageManager": "npm@11.6.2",
   "workspaces": [
     "apps/*",
     "packages/*"
