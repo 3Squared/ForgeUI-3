@@ -63,10 +63,8 @@ import { useToast } from "primevue/usetoast";
 
 const image =  ref();
 const toast = useToast();
-const saving = ref<boolean>(false);
 
 const onSave = (isEmpty: boolean) => {
-  saving.value = true;
   if(isEmpty){
     toast.add({ severity: "error", summary: "Scratchpad is empty", closable: true, life: undefined })
   }
@@ -74,7 +72,6 @@ const onSave = (isEmpty: boolean) => {
     toast.add({ severity: "success", summary: "Saving your image..", closable: true, life: undefined })
     
   }
-  saving.value = false;
 }
 </\script>`;
 });
