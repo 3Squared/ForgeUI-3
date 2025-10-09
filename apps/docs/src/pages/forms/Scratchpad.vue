@@ -35,7 +35,8 @@ const { options, propVals, config, reset } = usePlayground(
     showUndo: true,
     showSave: true,
     height: 300,
-    width: 600
+    width: 600,
+    performingSave: false
   },
   {}
 );
@@ -63,7 +64,7 @@ import { useToast } from "primevue/usetoast";
 const image =  ref();
 const toast = useToast();
 
-const onSave = (isEmpty: boolean) => {  
+const onSave = (isEmpty: boolean) => {
   if(isEmpty){
     toast.add({ severity: "error", summary: "Scratchpad is empty", closable: true, life: undefined })
   }
