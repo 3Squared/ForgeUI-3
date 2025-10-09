@@ -1,5 +1,16 @@
 # forge-ui-3-styleguide
 
+## 2.20.0
+
+### Minor Changes
+
+- 470ad0e: Introduces performingConfirm, and performingSave prop in forge modal, and forge scratchpad to disable the buttons whilst the action is being performed
+
+### Patch Changes
+
+- Updated dependencies [470ad0e]
+  - @3squared/forge-ui-3@2.27.0
+
 ## 2.19.2
 
 ### Patch Changes
