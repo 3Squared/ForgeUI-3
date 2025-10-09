@@ -15,7 +15,7 @@
       <Button v-if="props.showUndo" @click="undo" outlined data-cy="undo-button">Undo</Button>
       <Button v-if="props.showRedo" @click="redo" outlined data-cy="redo-button">Redo</Button>
       <Button v-if="props.showClear" @click="clear" outlined data-cy="clear-button">Clear</Button>
-      <Button v-if="props.showSave" @click="save" class="ms-auto" data-cy="save-button">Save</Button>
+      <Button v-if="props.showSave" @click="save" :disabled="performingSave" class="ms-auto" data-cy="save-button">Save</Button>
     </div>
   </div>
 </template>
@@ -31,7 +31,8 @@ export interface ScratchpadProps {
   showSave?: boolean,
   height?: number,
   width?: number,
-  lineJoin?: string
+  lineJoin?: string,
+  performingSave? : boolean
 }
 
 const props = withDefaults(defineProps<ScratchpadProps>(), {
@@ -41,7 +42,8 @@ const props = withDefaults(defineProps<ScratchpadProps>(), {
   showSave: true,
   height: 300,
   width: 600,
-  lineJoin: 'round'
+  lineJoin: 'round',
+  performingSave: false
 })
 
 const emit = defineEmits(['save'])

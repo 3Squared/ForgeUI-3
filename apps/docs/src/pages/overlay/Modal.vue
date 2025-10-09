@@ -61,7 +61,8 @@ const { options, propVals, config, reset } = usePlayground(
     submitButtonType: "button",
     resetErrorOnClose: true,
     maxHeight: 'max-h-300px',
-    minHeight: 'min-h-100px'
+    minHeight: 'min-h-100px',
+    performingConfirm: false
   },
   {
     size: { type: "select", options: [...shorthandSizes, "xl"] },

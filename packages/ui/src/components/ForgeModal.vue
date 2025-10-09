@@ -28,7 +28,7 @@
       <div class="d-flex w-100" data-cy="footer">
         <Button :label="cancelText" :class="props.cancelClass" outlined @click="closeModal" id="cancel-button" :type="props.cancelButtonType" />
         <Button :label="submitText" :class="props.submitClass" class="ms-auto" @click="success" id="submit-button"
-                :type="props.submitButtonType" />
+                :type="props.submitButtonType" :disabled="performingConfirm" />
       </div>
     </template>
 
@@ -63,7 +63,8 @@ export interface ForgeModalProps extends DialogProps {
   resetErrorOnClose?: boolean,
   maxHeight?: string | null,
   minHeight?: string | null
-  hideErrorBanner?: boolean
+  hideErrorBanner?: boolean,
+  performingConfirm?: boolean
 }
 
 const visible = defineModel<boolean>('visible', { required: true })
@@ -84,7 +85,8 @@ const props = withDefaults(defineProps<ForgeModalProps>(), {
   submitButtonType: "button",
   size: "md",
   resetErrorOnClose: true,
-  hideErrorBanner: false
+  hideErrorBanner: false,
+  performingConfirm: false
 })
 
 const loading = ref(false)
