@@ -28,7 +28,7 @@
     "eslint-config-custom": "*",
     "typescript": "5.9.3",
     "unplugin-vue-router": "0.16.0",
-    "vite": "6.4.0",
+    "vite": "6.4.1",
     "vue-tsc": "2.2.12"
   }
 }
