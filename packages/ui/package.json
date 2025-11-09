@@ -61,7 +61,7 @@
     "vite": "6.4.1",
     "vite-bundle-visualizer": "1.2.1",
     "vite-plugin-dts": "4.5.4",
-    "vite-plugin-istanbul": "7.2.0",
+    "vite-plugin-istanbul": "7.2.1",
     "vitest": "3.2.4",
     "vue-drawing-canvas": "1.0.14"
   },
