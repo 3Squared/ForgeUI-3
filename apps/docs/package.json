@@ -27,7 +27,7 @@
     "@vitejs/plugin-vue": "6.0.2",
     "eslint-config-custom": "*",
     "typescript": "5.9.3",
-    "unplugin-vue-router": "0.17.0",
+    "unplugin-vue-router": "0.17.1",
     "vite": "6.4.1",
     "vue-tsc": "2.2.12"
   }
