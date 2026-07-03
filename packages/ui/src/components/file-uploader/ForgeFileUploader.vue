@@ -1,6 +1,6 @@
 <template>
   <div data-cy="file-uploader">
-    <ForgeAlert id="max-files-alert" v-if="files.length == maxFileInput && props.maxFileWarning != null" severity="danger">
+    <ForgeAlert id="max-files-alert" v-if="files.length == maxFileInput && props.maxFileWarning != null" severity="warn">
       {{maxFileWarning}}
     </ForgeAlert>
     <UploadButton v-bind="props" v-model="files" />

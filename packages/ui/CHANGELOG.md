@@ -1,5 +1,11 @@
 # @3squared/forge-ui-3
 
+## 2.27.1
+
+### Patch Changes
+
+- 6485b56: change to file uploader banner to be a warning and not an error
+
 ## 2.27.0
 
 ### Minor Changes
