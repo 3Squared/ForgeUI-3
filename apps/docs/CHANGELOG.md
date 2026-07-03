@@ -1,5 +1,13 @@
 # forge-ui-3-styleguide
 
+## 2.20.1
+
+### Patch Changes
+
+- 6485b56: change to file uploader banner to be a warning and not an error
+- Updated dependencies [6485b56]
+  - @3squared/forge-ui-3@2.27.1
+
 ## 2.20.0
 
 ### Minor Changes
