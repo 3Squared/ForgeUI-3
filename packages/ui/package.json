@@ -37,7 +37,7 @@
     "@azure/storage-blob": "12.29.1",
     "@iconify/vue": "5.0.0",
     "@popperjs/core": "2.11.8",
-    "@vueuse/components": "^13.4.0",
+    "@vueuse/components": "^14.0.0",
     "bootstrap": "^5.3.7",
     "lodash-es": "4.17.21",
     "mime": "^4.0.7",
