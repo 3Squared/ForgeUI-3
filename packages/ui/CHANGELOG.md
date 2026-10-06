@@ -1,5 +1,11 @@
 # @3squared/forge-ui-3
 
+## 2.27.2
+
+### Patch Changes
+
+- 59e6e1c: fix: Resolve unsupported file type, empty string fileName on upload and duplilcate ForgeLoader in modal
+
 ## 2.27.1
 
 ### Patch Changes
