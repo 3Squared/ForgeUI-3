@@ -18,11 +18,11 @@
             </ul>
           </forge-alert>
         </div>
+        <slot v-if="loading" name="loader">
+          <ForgeLoader data-cy="loader" />
+        </slot>
       </template>
       <slot :name="name" v-bind="slotProps || {}" />
-      <slot v-if="loading" name="loader">
-        <ForgeLoader data-cy="loader" />
-      </slot>
     </template>
     <template #footer v-if="showFooter">
       <div class="d-flex w-100" data-cy="footer">
