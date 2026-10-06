@@ -11,7 +11,7 @@
                            :name="file.name" :complete-action="updateFileName" />
         <span v-else id="file-name">{{ fileName }}</span>
       </div>
-      <span class="text-black-50" id="file-type">File type: {{ file.type.split('/').pop() }}</span>
+      <span class="text-black-50" id="file-type">File type: {{ (fileMimeType ?? "").split('/').pop() }}</span>
       <span class="text-black-50" id="file-size">File size: {{ formatFileSize(file.size) }}</span>
     </div>
 
@@ -79,7 +79,7 @@ const blobUploadUrl = ref<string>("")
 const bytesUploaded = ref<number>(0)
 const controller = ref();
 
-const validFileType = computed<boolean>(() => acceptedFileTypes.some(({ fileType }) => fileType === file.value.type))
+const validFileType = computed<boolean>(() => acceptedFileTypes.some(({ fileType }) => fileType === fileMimeType.value))
 const validFileSize = computed<boolean>(() => file.value.size <= maxFileSize)
 const fileMimeType = computed<string | null>(() => {
   if (file.value.type) {
@@ -89,7 +89,7 @@ const fileMimeType = computed<string | null>(() => {
 });
 
 const updateFileName = () => {
-  if (fileName.value != null) {
+  if (fileName.value != null && fileName.value != '') {
     ensureFileNameHasCorrectExtension();
     file.value = new File([file.value], fileName.value, { type: file.value.type, lastModified: (new Date()).valueOf() })
   }
